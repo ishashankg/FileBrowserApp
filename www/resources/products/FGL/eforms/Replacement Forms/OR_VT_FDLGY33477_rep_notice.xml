@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section>
+			<group style='font-weight: bold;margin-left:18px;margin-bottom:10px'>   
+				<footer>This document must be signed by the applicant and the producer, if there is one, and a copy left with the applicant.</footer>
+			</group>
+		</section>
+		<section style="border:1px solid black">		
+			<group labelWidth="300px">
+				<paragragh text="You are contemplating the purchase of a life insurance policy or annuity contract. In some cases, this purchase may involve discontinuing or changing an existing policy or contract. If so, a replacement is occurring. Financed purchases are also considered replacements."  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="A replacement occurs when a new policy or contract is purchased and, in connection with the sale, you discontinue making premium payments on the existing policy or contract, or an existing policy or contract is surrendered, forfeited, assigned to the replacing insurer, or otherwise terminated or used in a financed purchase." styleClass="groupParagraph" >
+				</paragragh>
+			</group>			
+			<group labelWidth="300px">
+				<paragragh text="A financed purchase occurs when the purchase of a new life insurance policy involves the use of funds obtained by the withdrawal or surrender of or by borrowing some or all of the policy values, including accumulated dividends, of an existing policy, to pay all or part of any premium or payment due on the new policy. A financed purchase is a replacement." styleClass="groupParagraph">
+				</paragragh>
+			</group>		
+			<group labelWidth="300px">
+				<paragragh text="You should carefully consider whether a replacement is in your best interest. You will pay acquisition costs and there may be surrender costs deducted from your policy or contract. You may be able to make changes to your existing policy or contract to meet your insurance needs at less cost. A financed purchase will reduce the value of your existing policy and may reduce the amount paid upon the death of the insured." styleClass="groupParagraph">
+				</paragragh>
+			</group>			
+		</section>		
+		<section title="REPLACEMENT OF LIFE INSURANCE OR ANNUITIES">
+			<group style="margin-left:8px;margin-top:20px;">
+				<question id='applicant_confirmation' text="Do you want this notice read aloud to you." type='RADIO' answerSet="Y:Yes|N:No" labelWidth="300px" labelStyle='margin-left:8px' tabindex ='19'/>	
+				<question id='applicant_confirmation_signature' text="Applicant's Signature" type='CHECKBOX' required="true" answerWidth="120px" labelWidth="300px" labelStyle='margin-left:8px' tabindex ='20'/> 				
+			</group>							
+			<group labelWidth="300px"  style="margin-left:8px">
+				<paragragh  text="(Applicants must initial only if they do not want the notice read aloud.)" styleClass="groupParagraph">
+				</paragragh>
+			</group>				
+			<group style='font-weight: bold;margin-left:18px;margin-bottom:10px'>   
+				<footer>NOTICE: You have the right within 30 days from the date of delivery of your new life insurance policy or annuity contract, to return it to our office and receive an unconditional full refund of all premiums or considerations paid on it, including policy fees or charges. In the case of a variable or market value adjustment policy or contract, you will receive a payment of the cash surrender benefits provided under the policy or contract, plus the amount of all fees and other charges deducted from gross considerations.</footer>
+			</group>			
+		</section>	
+		<section style="border:1px solid black;margin-bottom:10px">		
+			<group labelWidth="300px" style="height:180px;">
+				<paragragh text="A replacement may not be in your best interest, or your decision could be a good one. You should make a careful comparison of the costs and benefits of your existing policy or contract and the proposed policy or contract. One way to do this is to ask the company or agent that sold you your existing policy or contract to provide you with information concerning your existing policy or contract. This may include an illustration of how your existing policy or contract is working now and how it would perform in the future based on certain assumptions. Illustrations should not, however, be used as a sole basis to compare policies or contracts. You should discuss the following with your agent to determine whether replacement or financing your purchase makes sense:"  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="height:10px;font-weight: bold">
+				<paragragh text="PREMIUMS:"  styleClass="groupParagraph"/>
+			</group>			
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-22px">
+				<paragragh  text="Are they affordable?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="Could they change?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="You're older -- are premiums higher for the proposed new policy?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="How long will you have to pay premiums on the new policy on the old policy?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="height:10px;font-weight: bold">
+				<paragragh text="POLICY VALUES:"  styleClass="groupParagraph"/>
+			</group>			
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-22px">
+				<paragragh  text="New policies usually take longer to build cash values and to pay dividends." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="Acquisition costs for the old policy may have been paid; you will incur costs for the new one." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="What surrender charges do the policies have?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="What expense and sales charges will you pay on the new policy?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="Does the new policy provide more insurance coverage?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="height:10px;font-weight: bold">
+				<paragragh text="INSURABILITY:"  styleClass="groupParagraph"/>
+			</group>			
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-22px">
+				<paragragh  text="If your health has changed since you bought your old policy, the new one could cost you more, or you could be turned down." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="You may need a medical exam for a new policy." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="Claims on most new policies for up to the first two years can be denied based on inaccurate statements." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="Suicide limitations may begin anew on the new coverage." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="height:10px;font-weight: bold">
+				<paragragh text="IF YOU ARE KEEPING THE OLD POLICY AS WELL AS THE NEW POLICY:"  styleClass="groupParagraph"/>
+			</group>			
+			<group labelWidth="300px"  style="margin-left:150px">
+				<paragragh  text="How are premiums for both policies being paid?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="How will the premiums on your existing policy be affected?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="Will a loan be deducted from death benefits?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="What values from the old policy are being used to pay premiums?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="height:10px;font-weight: bold">
+				<paragragh text="IF YOU ARE SURRENDERING AN ANNUITY OR INTEREST SENSITIVE LIFE PRODUCT:"  styleClass="groupParagraph"/>
+			</group>			
+			<group labelWidth="300px"  style="margin-left:150px">
+				<paragragh  text="Will you pay surrender charges on your old contract?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="What are the interest rate guarantees for the new contract?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="Have you compared the contract charges or other policy expenses?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="height:10px;font-weight: bold">
+				<paragragh text="OTHER ISSUES TO CONSIDER FOR ALL TRANSACTIONS:"  styleClass="groupParagraph"/>
+			</group>			
+			<group labelWidth="300px"  style="margin-left:150px">
+				<paragragh  text="What are the tax consequences of buying the new policy?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="Is this a tax-free exchange? (See your tax advisor.)" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="Is there a benefit from favorable 'grandfathered' treatment of the old policy under the federal tax code?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="Will the existing insurer be willing to modify the old policy?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:150px;margin-top:-12px">
+				<paragragh  text="How does the quality and financial stability of the new company compare with your existing company?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>
+		<section>	
+			<group style='font-weight: bold;margin-left:18px;margin-bottom:10px'>   
+				<footer>We want you to understand the effects of replacements before you make your purchase decision and ask that you answer the following questions and consider the questions on the bottom of this page.</footer>
+			</group>
+			<group>
+				<question id='confirmation1' text="1. Are you considering discontinuing making premium payments, surrendering, forfeiting, assigning to the insurer, or otherwise terminating your existing policy or contract?" name="Discontinue policy or contract" type='RADIO' required="true" answerSet="Y:Yes|N:No" labelWidth="360px" labelStyle='margin-left:8px' tabindex ='1'/>  				
+			</group>
+			<group>
+				<question id='confirmation2' text="2. Are you considering using funds from your existing policies or contracts to pay premiums due on the new policy or contract?" name="Using funds to pay premium" type='RADIO' required="true" answerSet="Y:Yes|N:No" labelWidth="360px" labelStyle='margin-left:8px' tabindex ='2'/>  				
+			</group>
+		</section>
+		<section>	
+			<group style='font-weight: bold;margin-left:18px;margin-bottom:10px'>   
+				<footer>If you answered "yes" to either of the above questions, list each existing policy or contract you are contemplating replacing (include the name of the insurer, the insured or annuitant, and the policy or contract number if available) and whether each policy or contract will be replaced or used as a source of financing:</footer>
+			</group>		
+			<group associated="True">
+				<question id='company_name' text="Insurer Name" type='TEXT' required="true" answerWidth="115px" labelWidth="115px" labelStyle='margin-left:8px' tabindex ='3'/>  
+				<question id='policy_number' text="Policy Number" type='TEXT' required="true" answerWidth="115px" labelWidth="115px" labelStyle='margin-left:150px' tabindex ='4'/>
+			</group>
+			<group associated="True">
+				<question id='insured_name' text="Insured Name" type='TEXT' required="true" answerWidth="115px" labelWidth="115px" labelStyle='margin-left:8px' tabindex ='5'/>  
+			</group>
+			<group style='margin-top:5px'>
+				<question id='replacement_financing1'  text="Will this policy or contract be replaced or used as a source of financing?" type='RADIO' required="true" answerSet="R:Replaced|F:Financing" labelWidth="300px" labelStyle='margin-left:8px' tabindex ='6'/>
+			</group>			
+		</section>
+		<section name="Existing Policy Information" repeating="True">						
+			<group associated="True">
+				<question id='company_name1' text="Insurer Name" type='TEXT' required="true" answerWidth="115px" labelWidth="115px" tabindex ='7'/>  
+				<question id='policy_number1' text="Policy Number" type='TEXT' required="true" answerWidth="115px" labelWidth="115px" tabindex ='8'/>
+			</group>
+			<group associated="True">
+				<question id='insured_name1' text="Insured Name" type='TEXT' required="true" answerWidth="115px" labelWidth="115px" tabindex ='9'/>  
+			</group>
+			<group associated="True" style='margin-top:5px'>
+				<question id='replacement_financing1'  text="Will this policy or contract be replaced or used as a source of financing?" name="Will Policy or Contract be replaced" type='RADIO' required="true" answerSet="R:Replaced|F:Financing" labelWidth="570px" tabindex ='10'/>
+			</group>			
+		</section>	
+		<section>	
+			<group style='font-weight: bold;margin-left:18px;margin-bottom:10px'>   
+				<footer>Make sure you know the facts. Contact your existing company or its agent or information about the old policy or contract. (If you request one, an in-force illustration, policy summary or available disclosure documents must be sent to you by the existing insurer.) Ask for and retain all sales material used by the agent in the sales presentation. Be sure that you are making an informed decision.</footer>
+			</group>	
+			<group style='margin-top:5px'>
+				<question id='replacement_confirmation'  text="Is the existing policy or contract being replaced?" name="Policy or Contract replaced" type='RADIO' required="true" answerSet="Y:Yes|N:No" labelWidth="360px" labelStyle='margin-left:8px' tabindex ='11'/>
+			</group>
+			<group style='margin-top:5px'>
+				<question id='replacement_reason'  text="If you answered “yes” above, the existing policy or contract is being replaced because" name="Policy or Contract replaced reason" type='MEMO' required="true"  labelWidth="120px" answerWidth="355px" labelStyle='margin-left:8px' tabindex ='12'/>
+			</group>			
+			<group style='font-weight: bold;margin-left:18px;margin-bottom:10px'>   
+				<footer>I certify that the responses herein are, to the best of my knowledge, accurate:</footer>
+			</group>
+			<group associated="True">
+				<question id='applicant_signature' text="Applicant's Signature" type='CHECKBOX' required="true" answerWidth="115px" labelWidth="115px" labelStyle='margin-left:8px' tabindex ='13'/>  
+				<question id='date_applicant_signature' text="Date" name="Applicant's Signature Date" type='DATEF' required="true" answerWidth="115px" labelWidth="115px" labelStyle='margin-left:150px' tabindex ='14'/>				
+			</group>
+			<group associated="True">
+				<question id='applicant_name' text="Applicant Name" type='TEXT' required="true" answerWidth="115px" labelWidth="115px" labelStyle='margin-left:8px' tabindex ='15'/> 				
+			</group>			
+			<group associated="True">
+				<question id='producer_signature' text="Producer's Signature" type='CHECKBOX' required="true" answerWidth="115px" labelWidth="115px" labelStyle='margin-left:8px' tabindex ='16'/>  
+				<question id='date_producer_signature' name="Producer's Signature Date" text="Date" type='DATEF' required="true" answerWidth="115px" labelWidth="115px" labelStyle='margin-left:150px' tabindex ='17'/>
+			</group>
+			<group associated="True">
+				<question id='producer_name' text="Producer's Name" type='TEXT' required="true" answerWidth="115px" labelWidth="115px" labelStyle='margin-left:8px' tabindex ='18'/> 				
+			</group>							
+		</section>				
+	</page>
+</form>

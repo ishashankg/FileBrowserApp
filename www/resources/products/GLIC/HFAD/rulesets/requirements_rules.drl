@@ -1,0 +1,671 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+
+rule "Standard requirements for this product #1"
+salience 200
+when
+		CaseData()
+		form:RequirementForm(code in ('APPPART1','APPPART3','APPPART4','FULLHIPAAPDF','FCRA','APPPART2','APPPART4'));
+then
+    	form.setRequired(true);
+    	if(form.getCode().equals("FCRA")) {
+    	    form.setDefaultStatus("RESOLVED");
+    	}
+end
+
+rule "set default status for APPPART4, FCRA and FULLHIPAAPDF"
+salience 190
+when
+		CaseData()
+		form:RequirementForm(code in ('FULLHIPAAPDF','FCRA','APPPART4'));
+then    	
+    	form.setDefaultStatus("RESOLVED");
+end
+
+
+
+rule "Add APPPART5 only for EXTERNAL or EPAPER agent and not going through UTS"
+salience 100
+activation-group "APPPART5"
+when
+		CaseData(caseSource in('EPAPER','EXTERNAL'), (StringUtils.isBlank(svcOwner)==true || paperCase==true))
+		form:RequirementForm(code =='APPPART5');
+    then
+    	form.setRequired(true);
+end
+
+rule "do not cancel APPPART5 in UTS"
+salience 90
+activation-group "APPPART5"
+when
+		CaseData(StringUtils.isBlank(svcOwner)==false )
+		form:RequirementForm(code =='APPPART5');
+    then
+    	form.setRequired(false);
+    	form.setCancelRequirementWhenNotRequired(false);
+end
+
+rule "Requirements for paper flow"
+	when
+		CaseData(paperCase==true)
+		form:RequirementForm(code in ('PAPERAPP'));
+    then
+    	form.setRequired(true);
+end
+
+rule "Other Owner Acknowledgment Eform data capture #2"
+	when
+		CaseData();
+		Question(id=="oth_owner_ind", answerAsBoolean==true);
+		form:RequirementForm(code=="OWNEREFORM");
+    then
+    	form.setRequired(true);
+end
+
+rule "PARA"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 51, faceAmount >= 100000, caseStatus=='SUBMITTED')
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 18, faceAmount > 300000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('PARA', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "LABB"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 51, faceAmount >= 100000, caseStatus=='SUBMITTED')
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 18, faceAmount > 300000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('LABB', 'BLOOD', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "LABU"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 51, faceAmount >= 100000, caseStatus=='SUBMITTED')
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 18, faceAmount > 300000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('LABU', 'HOS', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "EKG"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 61, faceAmount >= 100000, caseStatus=='SUBMITTED')
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 51, faceAmount >= 500000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('EKG', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "LABPSA"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 51, faceAmount >= 100000, gender=='M', caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('LABPSA', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "PROBNP"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 61, faceAmount >= 100000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('PROBNP', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "APS"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 61, faceAmount >= 500000, caseStatus=='SUBMITTED')
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 71, faceAmount >= 300000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('APS', 'APSMEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "COGNITIVE"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 71, faceAmount < 100000, caseStatus in ('SUBMITTED'))
+		form:RequirementForm(code=="COGNITIVE")
+    then
+    	form.setRequired(true);
+end
+
+rule "3rd party services except MVR and not NH state"
+	when
+		CaseData(caseStatus=='SUBMITTED');
+		not CaseExistingInsuranceData(productCode=='HFA');
+		not Question(id=='driv_lic_state', answer=='NH');
+		form:RequirementForm(code in ("ATTUS3RDPARTY", "RX3RDPARTY","MIB3RDPARTY"))
+	then
+		form.setRequired(true);
+		//System.out.println("!!!orderThirdPartyServices SUBMITTED, !NH triggered for "+form.getCode());
+end
+
+rule "3rd party services for MVR with valid driver license"
+	when
+		CaseData(caseStatus=='SUBMITTED');
+		not CaseExistingInsuranceData(productCode=='HFA');
+		not Question(id=='driv_lic_state', StringUtils.upperCase(answerAsString) in ( 'NH','NOT APPLICABLE','N_A', 'ZZ', 'UNKNOWN'));
+		not Question(id == "driv_lic_number", StringUtils.upperCase(answerAsString) in ('NA','NONE','UNKNOWN'));
+		form:RequirementForm(code == "IXX3RDPARTY")
+	then
+		form.setRequired(true);
+		//System.out.println("!!!orderThirdPartyServices MVR SUBMITTED, !NH|!N/A triggered for "+form.getCode());
+end
+
+rule "3rd party services for NH state"
+salience 90
+	when
+       	CaseData(caseStatus=='SUBMITTED')
+       	not CaseExistingInsuranceData(productCode=='HFA');
+       	Question(id=='driv_lic_state', answer=='NH')
+       	form:RequirementForm(code in ("ATTUS3RDPARTY","RX3RDPARTY","MIB3RDPARTY"))
+    then
+		form.setRequired(true);
+end
+
+rule "Alpha Search"
+	when
+		form:RequirementForm(code=='ALPHASRCH')
+		CaseData(caseSource not in ('INTERNET'))
+	then
+		form.setRequired(true);
+end
+
+rule "GLIC Telephone Replacement of any Policy requires a privacy state decline "
+	when 
+		CaseData(contactMethod=='PHONE', contractState in ('AZ','CA','CT','GA', 'IL','MN','MA','MN','MT','NJ','NV','NC','OH','OR','VA'), 
+				caseStatus=='AUTODECLINE', caseSource in ('CAPTIVE','IPAPER','INTERNET'))	
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code=="PSTDECLINE")
+	then
+		form.setRequired(true);
+end
+
+rule "GLIC Telephone Replacement of an Any Policy in Georgia"
+	when 
+		CaseData(contactMethod=='PHONE', contractState=='GA', caseStatus in ('SUBMITTED'), caseSource in ('CAPTIVE','IPAPER'))
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("BRELETTER1","DLVR1EX1","DLVR1APPCOPY","UWREPL"))
+	then
+		if (form.getCode().equals("DLVR1APPCOPY"))
+		{
+			form.setType("APPLICATION");
+		}
+		form.setRequired(true);
+end
+
+
+
+rule "External BRELETTER1"
+	when 
+		CaseData(contactMethod=='PHONE', contractState in ('MI','MN','OK','WY'), caseStatus in ('SUBMITTED'), caseSource in ('EXTERNAL','EPAPER'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("BRELETTER1","UWREPL"))
+	then
+		form.setRequired(true);
+end
+
+rule "External DLVR1EX1"
+	when 
+		CaseData(contactMethod=='PHONE', contractState in ('MI','MN','OK','WY'), caseStatus in ('SUBMITTED'), caseSource in ('EXTERNAL','EPAPER'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("DLVR1EX1","UWREPL"))
+	then
+		form.setRequired(true);
+end
+
+rule "External DLVR1EX2"
+	when 
+		CaseData(contactMethod=='PHONE', contractState in ('MI','MN','OK'), caseStatus in ('SUBMITTED'), caseSource in ('EXTERNAL','EPAPER'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("DLVR1EX2","UWREPL"))
+	then
+		form.setRequired(true);
+end
+
+rule "External DLVR1APPCOPY"
+	when 
+		CaseData(contactMethod=='PHONE', contractState in ('MI','MN','OK','WY'), caseStatus in ('INCOMPLETE','SUBMITTED'), caseSource in ('EXTERNAL','EPAPER'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("DLVR1APPCOPY","UWREPL"))
+	then
+		form.setType("APPLICATION");
+		form.setRequired(true);
+end
+
+rule "NOTICEV103"
+	when 
+		CaseData(contactMethod=='PHONE', contractState in ('AL','AK','AZ','CO','HI','IA','KY','LA','ME','MD','MN','MS','MT','NE','NH','NJ','NM','NC','OH','OK','OR','RI','SC','SD','TX','UT','VT','VA','WV','WI','WY'), 
+				 caseStatus in ('INCOMPLETE','SUBMITTED'), caseSource in ('EXTERNAL','INTERNET'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code=="NOTICEV103")
+	then
+		form.setRequired(true);
+end
+
+rule "FTFREPLNOTA"
+	when 
+		CaseData(contactMethod in ('FACE','INTERNET'), contractState in ('AL','AK','AZ','CO','IA','KY','LA','ME','MS','MT','NE','NH','NJ','NM','NC','OH','OR','RI','SC','TX','UT','VT','VA','WV','WI'), 
+				 caseStatus in ('INCOMPLETE','SUBMITTED'), caseSource in ('EXTERNAL'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code=="FTFREPLNOTA")
+	then
+		form.setRequired(true);
+end
+
+rule "FACE NOTICEV103"
+	when 
+		CaseData(contactMethod in ('FACE','INTERNET'), contractState in ('AL','AK','AZ','CO','HI','IA','KS','KY','LA','MD','ME','MN','MN','MS','MT','NE','NH','NJ','NM','NC','OH','OK','OR','RI','SC','SD','TX','UT','VT','VA','WV','WI','WY'), 
+				 caseStatus in ('INCOMPLETE','SUBMITTED'), caseSource in ('EXTERNAL','INTERNET'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code=="NOTICEV103")
+	then
+		form.setRequired(true);
+end
+
+rule "Face DLVR1EX1"
+	when 
+		CaseData(contactMethod in ('FACE','INTERNET'), contractState in ('AR','GA','HI','IN','KS','MD','MI','MN','NV','OK','PR','SD','WY'), caseStatus in ('SUBMITTED'), caseSource in ('EXTERNAL','EPAPER'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("DLVR1EX1","UWREPL"))
+	then
+		form.setRequired(true);
+end
+
+rule "Face DLVR1EX2"
+	when 
+		CaseData(contactMethod in ('FACE','INTERNET'), contractState in ('MI','OK'), caseStatus in ('SUBMITTED'), caseSource in ('EXTERNAL','EPAPER'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("DLVR1EX2","UWREPL"))
+	then
+		form.setRequired(true);
+end
+
+rule "set case status no driver's license INCOMPLETE"
+	when
+		CaseData(caseStatus in ('INCOMPLETE','SUBMITTED'))
+		Question(id == "driv_lic_number", StringUtils.upperCase(answerAsString) in ('NA','NONE','UNKNOWN')) 
+		and (Question(id == "driv_lic_state", StringUtils.upperCase(answerAsString) in ('NOT APPLICABLE','N_A', 'ZZ', 'UNKNOWN')) or
+		not Question(id == "driv_lic_state"))
+		form:RequirementForm(code=="DLICNONE")
+	then
+		form.setRequired(true);
+end
+
+rule "GLIC NOTICEV103 #47"
+	when
+		CaseData(caseStatus in ('INCOMPLETE','SUBMITTED'), caseSource in ('CAPTIVE','IPAPER','INTERNET'),
+		contractState in ('AL','AK','AZ','CO','HI','IA','KS','KY','LA','ME','MD','MN','MS','MT','NE','NH','NJ','NM','NC','OH','OR','RI','SC','TX','UT','VT','VA','WI','WV','WY'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code=="NOTICEV103")
+    then
+    	form.setRequired(true);
+end
+
+rule "GLIC Replacement of an External Policy"
+	when
+		CaseData(caseStatus in ('SUBMITTED'), caseSource in ('CAPTIVE','INTERNET'), contractState =='MI')
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("BRELETTER1","DLVR1EX1","DLVR1EX2","DLVR1APPCOPY","UWREPL"))
+    then
+		if (form.getCode().equals("DLVR1APPCOPY"))
+		{
+			form.setType("APPLICATION");
+		}    
+    	form.setRequired(true);
+end
+
+rule "GLIC Telephone Replacement of an External Policy"
+	when
+		CaseData(contactMethod=='PHONE', caseStatus in ('SUBMITTED'), caseSource in ('CAPTIVE'), contractState in ('OK','KS','MN','WY'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("BRELETTER1","DLVR1EX1","DLVR1APPCOPY","UWREPL"))
+    then
+		if (form.getCode().equals("DLVR1APPCOPY"))
+		{
+			form.setType("APPLICATION");
+		}     
+    	form.setRequired(true);
+end
+
+rule "GLIC Telephone Replacement of an Internal Policy #54"
+	when
+		CaseData(contactMethod=='PHONE', caseStatus in ('SUBMITTED'), caseSource in ('CAPTIVE','IPAPER'), contractState=='MA')
+		CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("BRELETTER1","DLVR1EX1","UWREPL"))
+    then
+    	form.setRequired(true);
+end
+
+
+rule "GLIC DLVR1EX1  No Internet #55"
+	when
+		CaseData(contactMethod=='PHONE', caseStatus in ('SUBMITTED'), caseSource in ('CAPTIVE'), contractState == 'OK')
+		CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("BRELETTER1","DLVR1EX1","DLVR1APPCOPY","UWREPL"))
+    then
+		if (form.getCode().equals("DLVR1APPCOPY"))
+		{
+			form.setType("APPLICATION");
+		}     
+    	form.setRequired(true);
+end
+
+rule "GLIC DLVR1EX2  No Internet #52"
+	when
+		CaseData(contactMethod=='PHONE', caseStatus in ('SUBMITTED'), caseSource in ('CAPTIVE'), contractState == 'OK')
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("DLVR1EX2","UWREPL2"))
+    then
+    	form.setRequired(true);
+end
+
+rule "GLIC Paper Replacement of an External Policy #56"
+	when
+		CaseData(caseStatus in ('SUBMITTED'), caseSource in ('INTERNET'), contractState == 'GA')
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("BRELETTER2","DLVR2EX2","DLVR1APPCOPY","UWREPL2"))
+    then
+		if (form.getCode().equals("DLVR1APPCOPY"))
+		{
+			form.setType("APPLICATION");
+		}     
+    	form.setRequired(true);
+end
+
+
+rule "GLIC Replaced Company FORMV103RPL #57"
+	when
+		CaseData(caseStatus == 'SUBMITTED', caseSource in ('CAPTIVE','IPAPER','INTERNET'), contractState in ('GA','IN','NV'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code=="FORMV103RPL")
+    then
+    	form.setRequired(true);
+end
+
+
+rule "Agent Replaced Company FORMV103RPL #58"
+	when
+		CaseData(caseStatus == 'SUBMITTED', caseSource in ('EXTERNAL','EPAPER'), contractState == 'MI')
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code=="FORMV103RPL")
+    then
+    	form.setRequired(true);
+end
+
+rule "GLIC Replaced Company BRELETTER2 No Captive #62"
+	when
+		CaseData(caseStatus in ('SUBMITTED'), caseSource in ('INTERNET'), contractState =='OK')
+		CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("BRELETTER2","UWREPL2"))
+    then
+    	form.setRequired(true);
+end
+
+rule "GLIC Replaced Company BRELETTER2 No Captive #65"
+	when
+		CaseData(caseStatus in ('SUBMITTED'), caseSource in ('INTERNET'), contractState in ('MI','OK'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("BRELETTER2","UWREPL2"))
+    then
+    	form.setRequired(true);
+end
+
+rule "GLIC Replaced Company DLVR1EX2 No Captive #60, #61"
+	when
+		CaseData(caseStatus in ('SUBMITTED'), caseSource in ('INTERNET'), contractState in ('IN','NV'))
+		CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("BRELETTER1","DLVR1EX2","UWREPL"))
+    then
+    	form.setRequired(true);
+end
+
+rule "GLIC Replaced Company DLVR1EX1 No Captive #62"
+	when
+		CaseData(caseStatus in ('SUBMITTED'), caseSource in ('INTERNET'), contractState in ('OK'))
+		CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("DLVR1EX1","DLVR2EX2","UWREPL"))
+    then
+    	form.setRequired(true);
+end
+
+rule "GLIC Replaced Company DLVR1APPCOPY No Captive #60-62"
+	when
+		CaseData(caseStatus in ('INCOMPLETE','SUBMITTED'), caseSource in ('IPAPER','INTERNET'), contractState in ('IN','NV','OK'))
+		CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code=="DLVR1APPCOPY")
+    then
+    	form.setType("APPLICATION");
+    	form.setRequired(true);
+end
+
+rule "NOTICEV103 No Captive"
+	when
+		CaseData(caseStatus in ('INCOMPLETE','SUBMITTED'), caseSource in ('INTERNET'), 
+		contractState in ('AL','AK','AZ','CO','HI','IA','KS','KY','LA','ME','MD','MS','MT','NE','NH','NJ','NM','NC','OH','OR','RI','SC','TX','UT','VT','VA','WV','WI','WY'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id == "app_replace_answ", answerAsBoolean == true)
+		form:RequirementForm(code=="NOTICEV103")
+    then
+    	form.setRequired(true);
+end
+
+rule "BRELETTER1 No Captive"
+	when
+		CaseData(caseStatus in ('SUBMITTED'), caseSource in ('INTERNET'), contractState in ('GA','IN','KS','NV','MI','OK','WY'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id == "app_replace_answ", answerAsBoolean == true)
+		form:RequirementForm(code in ("BRELETTER1","UWREPL"))
+    then
+    	form.setRequired(true);
+end
+
+rule "DLVR1EX1 No Captive"
+	when
+		CaseData(caseStatus in ('SUBMITTED'), caseSource in ('INTERNET'), contractState in ('MI','OK','WY'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id == "app_replace_answ", answerAsBoolean == true)
+		form:RequirementForm(code in ("DLVR1EX1","UWREPL"))
+    then
+    	form.setRequired(true);
+end
+
+rule "DLVR1EX2 No Captive"
+	when
+		CaseData(caseStatus in ('SUBMITTED'), caseSource in ('INTERNET'), contractState in ('GA','IN','KS','NV','MI','OK','WY'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id == "app_replace_answ", answerAsBoolean == true)
+		form:RequirementForm(code in ("DLVR1EX2","UWREPL"))
+    then
+    	form.setRequired(true);
+end
+
+rule "DLVR1APPCOPY No Captive"
+	when
+		CaseData(caseStatus in ('SUBMITTED'), caseSource in ('INTERNET'), contractState in ('GA','IN','KS','NV','MI','OK','WY'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id == "app_replace_answ", answerAsBoolean == true)
+		form:RequirementForm(code=="DLVR1APPCOPY")
+    then
+    	form.setType("APPLICATION");
+    	form.setRequired(true);
+end
+
+rule "FORMV103RPL No Captive #66, #67"
+	when
+		CaseData(caseStatus == 'SUBMITTED', caseSource in ('IPAPER','INTERNET'), contractState in ('GA','IN','NV','MI','OK'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id == "app_replace_answ", answerAsBoolean == true)
+		form:RequirementForm(code=="FORMV103RPL")
+    then
+    	form.setRequired(true);
+end
+
+
+rule "IV105 sent on AutoDecline"
+	when
+		CaseData(contactMethod=='PHONE', contractState in ('CA', 'DE', 'FL','ID', 'IL', 'IN','MA','MO', 'NY', 'PA', 'PR','SD', 'TN', 'WA'),	caseStatus=='AUTODECLINE')
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code=="NBCLOSEOUT")
+	then
+		form.setRequired(true);
+end
+
+rule "IV105B-Privacy sent on AutoDecline"
+	when
+		CaseData(caseStatus=='AUTODECLINE', caseSource in ('EXTERNAL','EPAPER'), contractState=='VA')
+		CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code=="NBPCLOSE")
+	then
+		form.setRequired(true);
+end
+
+rule "GLIC Paper Replacement External Policy AUTODECLINE" 
+	when
+		theCase:CaseData(contractState =='NY', caseSource in ('IPAPER','INTERNET'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code=="AUTODECLINE")
+	then
+		form.setRequired(true);
+end
+
+rule "1035 Exchange rule sent to Autodecline"
+	when
+		Question(id=="y_1035_exch_ind", answerAsBoolean==true)
+		form:RequirementForm(code=="AUTODECLINE")
+	then
+		form.setRequired(true);
+end
+
+rule "Add just in time Appointment License requirement"
+	when
+		theCase:CaseData(justInTimeAppointment=='true')
+		form:RequirementForm(code=="JITLICENSE")
+	then
+		form.setRequired(true);
+end
+
+
+
+rule "No Phone sales in Puerto Rico; decline #69"
+	when
+       	CaseData(caseStatus=='AUTODECLINE', contractState=='PR')
+       	form:RequirementForm(code=="NBCLOSEOUT")
+    then
+    	form.setRequired(true);
+    
+end
+
+rule "Agent Replacement of an Internal Policy #70"
+	when
+       	CaseData(caseSource in ('EXTERNAL','EPAPER'), caseStatus=='AUTODECLINE')
+       	CaseExistingInsuranceData(naicCompanyNumber=='70939')
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+       	form:RequirementForm(code=="AUTODECLINE")
+    then
+    	form.setRequired(true);
+end
+
+rule "No Replacement External Agent Policy #71"
+	when
+       	CaseData(contractState in ('CA','DE','FL','ID','IL','IN','MA','MO','NY','PA','SD','TN','WA'), 
+       			caseStatus=='AUTODECLINE',caseSource in ('EXTERNAL','EPAPER'))
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+       	form:RequirementForm(code=="AUTODECLINE")
+    then
+    	form.setRequired(true);
+end
+
+rule "No Replacement External Agent Policy Over Phone #72"
+	when
+       	CaseData(contactMethod=='PHONE', caseStatus=='AUTODECLINE',contractState in ('GA','KS','NV'), caseSource in ('EXTERNAL','EPAPER'))
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+       	form:RequirementForm(code=="NBCLOSEOUT")
+    then
+    	form.setRequired(true);
+end
+
+rule "GLIC Replacement Policy #73-5"
+	when
+       	CaseData(contactMethod in ('FACE','INTERNET'), caseStatus=='AUTODECLINE',contractState in ('FL','KS','NY','SD'), caseSource in('IPAPER', 'INTERNET'))
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+       	form:RequirementForm(code=="AUTODECLINE")
+    then
+    	form.setRequired(true);
+end
+
+rule "GLIC Replacement Policy by PHONE #73-5"
+	when
+       	CaseData(contactMethod=='PHONE', caseStatus=='AUTODECLINE',contractState in ('FL', 'KS','NY','SD'), caseSource in ('CAPTIVE','IPAPER'))
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+       	form:RequirementForm(code=="NBCLOSEOUT")
+    then
+    	form.setRequired(true);
+end
+
+rule "FCRA MVR LETTER for New Hampshire"
+	when 
+		CaseData(caseStatus in ('INCOMPLETE','SUBMITTED'))
+		Question(id=='driv_lic_state', answer=='NH')
+		form:RequirementForm(code in ("CORRMVR"))
+	then
+		form.setRequired(true);
+end
+
+rule "UW ORDER MVR for New Hampshire"
+	when 
+		CaseData(caseStatus in ('SUBMITTED'))
+		Question(id=='driv_lic_state', answer=='NH')
+		form:RequirementForm(code in ("ORDERMVR"))
+	then
+		form.setRequired(true);
+end
+
+rule "GLIC INTERNET Replacement of an External Policy"
+	when
+		CaseData(contactMethod=='INTERNET', caseStatus in ('SUBMITTED'), caseSource in ('INTERNET'), contractState in ('MN'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		form:RequirementForm(code in ("BRELETTER1","DLVR1EX1","UWREPL"))
+    then
+    	form.setRequired(true);
+end
+
+
+rule "set no valid address INCOMPLETE"
+	when
+		CaseData(caseStatus in ('INCOMPLETE','SUBMITTED'))
+		ApplicantData(type=='PRIMARY_INSURED', validAddress==false)
+		form:RequirementForm(code=="INVALIDADDR")
+	then
+		form.setRequired(true);
+end

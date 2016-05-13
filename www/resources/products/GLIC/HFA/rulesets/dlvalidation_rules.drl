@@ -1,0 +1,506 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.EformCode;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import org.apache.commons.lang.StringUtils;
+import rules.*;
+import java.util.*;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+function String getCode(RulesResponse rulesResponse) {
+	if(rulesResponse.getResourceCodeToRequirementCodeMap() != null)
+	{
+		return rulesResponse.getResourceCodeToRequirementCodeMap().get("DL_VALIDATION_RULES");
+	}
+    else
+    {
+    	return null;
+    }
+}
+
+function String errorMessage(String licNum, String state, String format) {
+    return "Drivers license number '"+ licNum + "' does not match '"+ state + "' format: " + format;
+}
+
+rule "AL drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{7}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "AL", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "7 Numeric"), getCode(rulesResponse));
+end
+
+rule "AK drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{1,7}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "AK", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1-7 Numeric"), getCode(rulesResponse));
+end
+
+rule "AZ drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z]{1}[\\d]{8}|[a-zA-Z]{2}\\d{3,6}$|[\\d]{9}", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "AZ", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 8 Numeric; or 2 Alphabetic, 3-6 Numeric; or 9 Numeric"), getCode(rulesResponse));
+end
+
+rule "AR drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "AR", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric"), getCode(rulesResponse));
+end
+
+rule "CA drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z]{1}[\\d]{7}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "CA", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 7 Numeric"), getCode(rulesResponse));
+end
+
+rule "CO drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "CO", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric"));
+end
+
+rule "CT drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "CT", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric, First two positions are month of birth in odd or even year"));
+end
+
+rule "DE drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{1,7}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "DE", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1-7 Numeric"), getCode(rulesResponse));
+end
+
+rule "DC drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{7}|\\d{9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "DC", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric or 7 Numeric"), getCode(rulesResponse));
+end
+
+rule "FL drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z]{1}[\\d]{12}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "FL", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 12 Numeric"), getCode(rulesResponse));
+end
+
+rule "GA drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{7,9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "GA", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "7-9 Numeric or SSN"), getCode(rulesResponse));
+end
+
+rule "HI drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}|[hH]\\d{8}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "HI", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric or \"H\" + 8 numeric"), getCode(rulesResponse));
+end
+
+rule "ID drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z]{2}[\\d]{6}[a-zA-Z]|\\d{9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "ID", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "2 Alphabetic, 6 Numeric, 1 alphabetic; or 9 Numeric"), getCode(rulesResponse));
+end
+
+rule "IL drivers license"
+activation-group "driversLicenseGroup"
+	when
+		$applicant:ApplicantData(type=="PRIMARY_INSURED")
+		Question(id=="driv_lic_number", StringUtils.upperCase(answerAsString) not matches "^"+StringUtils.left(StringUtils.upperCase($applicant.getLastName()),1)+"[\\d]{11}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "IL", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic (last name initial), 11 Numeric"), getCode(rulesResponse));
+end
+
+rule "IN drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{10}|\\d{9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "IN", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "10 Numeric or 9 Numeric"), getCode(rulesResponse));
+end
+
+rule "IA drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}|[\\d]{3}[a-zA-Z]{2}[\\d]{4}$",$licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "IA", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric; or 3 Numeric, 2 Alphabetic, 4 Numeric"), getCode(rulesResponse));
+end
+
+rule "KS drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z0-9][\\d]{8}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "KS", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric; or 1 Alphabetic (K), 8 Numeric"), getCode(rulesResponse));
+end
+
+rule "KY drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z0-9]{1}[\\d]{8}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString =="KY", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric; or 1 Alphabetic, 8 Numeric"), getCode(rulesResponse));
+end
+
+rule "LA drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[\\d]{9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "LA", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric"), getCode(rulesResponse));
+end
+
+rule "ME drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{7}|\\d{7}[x|X]$",$licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "ME", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "7 Numeric or if under 21, 7 Numeric followed by an \"X\""), getCode(rulesResponse));
+end
+
+rule "MD drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z]{1}[\\d]{12}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "MD", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 12 Numeric"), getCode(rulesResponse));
+end
+
+rule "MA drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z0-9][\\d]{8}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "MA", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 8 Numeric; or 9 Numeric"), getCode(rulesResponse));
+end
+
+rule "MI drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z][\\d]{12}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "MI", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 12 Numeric"), getCode(rulesResponse));
+end
+
+rule "MN drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z][\\d]{12}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "MN", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 12 Numeric"), getCode(rulesResponse));
+end
+
+rule "MS drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "MS", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric"), getCode(rulesResponse));
+end
+
+rule "MO drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[\\d]{9}|[a-zA-Z]\\d{5,9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "MO", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alpha - 5-9 Numeric; or 9 Numeric"), getCode(rulesResponse));
+end
+
+rule "MT drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}|[a-zA-Z]{1}[0-9]{1}[a-zA-Z0-9]{1}[0-9]{2}[a-zA-Z]{3}[0-9]{1}|\\d{13}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "MT", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric; or 1 Alphabetic, 1 Numeric, 1 Alpha numeric, 2 Numeric, 3 Alphabetic and 1 Numeric; or 13 Numeric"), getCode(rulesResponse));
+end
+
+rule "NE drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[abceghvABCEGHV]{1}[\\d]{3,8}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "NE", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic (A,B,C,E,G,H or V), 3-8 Numeric"), getCode(rulesResponse));
+end
+
+rule "NV drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{12}|\\d{10}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "NV", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "12 Numeric; or 10 numeric"), getCode(rulesResponse));
+end
+
+rule "NH drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[\\d]{2}[a-zA-Z]{3}[\\d]{5}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "NH", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "2 Numeric, 3 Alphabetic, 5 Numeric"), getCode(rulesResponse));
+end
+
+rule "NJ drivers license"
+activation-group "driversLicenseGroup"
+	when
+		ApplicantData($last:lastName)
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z]{1}[\\d]{14}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "NJ", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 14 Numeric,"), getCode(rulesResponse));
+end
+
+rule "NM drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "NM", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric"), getCode(rulesResponse));
+end
+
+rule "NY drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}|[a-zA-Z]\\d{18}$",$licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "NY", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (not SSN); or 1 Alphabetic, 18 Numeric (not being issued anymore)"), getCode(rulesResponse));
+end
+
+rule "NC drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{1,8}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "NC", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1-8 Numeric"), getCode(rulesResponse));
+end
+
+rule "ND drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}|[a-zA-Z]{3}\\d{6}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "ND", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric; or 9 Numeric for non-CDL beginning with #9; or 3 Alphabetic, 6 Numeric"), getCode(rulesResponse));
+end
+
+rule "OH drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}|[a-zA-Z]{2}[\\d]{6}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "OH", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric; or 2 Alphabetic, 6 Numeric"), getCode(rulesResponse));
+end
+
+rule "OK drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z][\\d]{9}|\\d{9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "OK", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric; or 1 Alphanumeric, 9 Numeric"), getCode(rulesResponse));
+end
+
+rule "OR drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[\\d]{1,7}|[a-zA-Z][\\d]{6}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "OR", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1-7 Numeric; or 1 Alphabetic, 6 Numeric"), getCode(rulesResponse));
+end
+
+rule "PA drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{8}$",$licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "PA", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "8 Numeric"), getCode(rulesResponse));
+end
+
+rule "RI drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{7}|[v|V][\\d]{6}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "RI", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "7 Numeric; or V and 6 Numeric (disabled veterans)"), getCode(rulesResponse));
+end
+
+rule "SC drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{6,9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "SC", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "6-9 Numeric"), getCode(rulesResponse));
+end
+
+rule "SD drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{8}|\\d{9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString =="SD", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "8 Numeric; or 9 Numeric"), getCode(rulesResponse));
+end
+
+rule "TN drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{7,9}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "TN", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "7-9 Numeric"), getCode(rulesResponse));
+end
+
+rule "TX drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[0123]{1}\\d{7}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "TX", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "8 Numeric beginning with \"0\", \"1\", \"2\", or \"3\""), getCode(rulesResponse));
+end
+
+rule "UT drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{4,10}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "UT", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "4-10 Numeric"), getCode(rulesResponse));
+end
+
+rule "VT drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{8}|\\d{7}[a|A]{1}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "VT", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "8 Numeric; or 7 Numeric, letter \"A\""), getCode(rulesResponse));
+end
+
+rule "VA drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z0-9][\\d]{8}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "VA", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric; or 1 Alphabetic, 8 Numeric"), getCode(rulesResponse));
+end
+
+rule "WA drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^([a-zA-Z*]{5}[a-zA-Z][a-zA-Z*][a-zA-Z0-9]{3}[a-zA-Z0-9]{2})$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "WA", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "5 Alphabetic (last name), 1 Alphabetic(first name), 1 Aphabetic (middle name), 3 Alphanumeric, 2 Alphanumeric (if last or middle name fields falls short, please fill with *)"), getCode(rulesResponse));
+end
+
+rule "WV drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z0-9]\\d{6}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "WV", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "7 Numeric; or 1 Alphabetic, 6 Numeric;"), getCode(rulesResponse));
+end
+
+rule "WI drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^[a-zA-Z]\\d{13}$",$licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "WI", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 13 Numeric"), getCode(rulesResponse));
+end
+
+rule "WY drivers license"
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", answerAsString not matches "^\\d{9}|\\d{10}$", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString == "WY", $state:answerAsString)
+	then
+		rulesResponse.addRequired(errorMessage($licNum, $state, "10 Numeric; or 9 Numeric"), getCode(rulesResponse));
+end
+
+rule "AS, FS, MH, MP, PW, PR, VI drivers license"
+salience 190
+activation-group "driversLicenseGroup"
+	when
+		Question(id=="driv_lic_number", $licNum:answerAsString)
+		Question(id=="driv_lic_state", answerAsString in ("AS", "FS", "MH", "MP", "PW", "PR", "VI"), $state:answerAsString)
+	then
+		rulesResponse.addRequired("'"+ $state + "' is not a valid drivers license state", getCode(rulesResponse));
+end
+
+rule "Invalid state"
+salience 200
+activation-group "driversLicenseGroup"
+	when
+		Question(id == "driv_lic_state", $state:answerAsString, StringUtils.upperCase(answerAsString) not in ("AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","ZZ", "N_A","NOT APPLICABLE","UNKNOWN")  )
+	then
+		rulesResponse.addRequired("'"+ $state + "' is not a valid drivers license state", getCode(rulesResponse));
+end
+
+

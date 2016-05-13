@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section style="margin-left:0px">
+			<group labelWidth="400px" title="THIS NOTICE IS FOR YOUR PROTECTION AND IS REQUIRED BY REGULATIONS OF THE
+MICHIGAN COMMISSIONER OF INSURANCE. PLEASE READ IT CAREFULLY.">
+				<paragragh
+          text="Dropping or changing your existing life insurance to replace it with a new life insurance policy may be disadvantageous
+because:
+A company can deny a claim during the first two years if it can be shown that you withheld information from your
+application which was important to the decision of whether to insure you. This is called the 'CONTESTABLE PERIOD.' If
+you drop or change policies, you may have to go through the two year period again.
+You may pay HIGHER RATES for identical coverage because of your age. Life insurance rates go up as you get older.">
+				</paragragh>
+			</group>     
+		</section> 
+
+		<section style="margin-left:0px">		
+			<group labelWidth="500px"
+        style="overflow:auto;">
+				<paragragh
+          text="1. Compare the policy BENEFITS and OPTIONS. The agent is required by law to provide you with all pertinent facts of
+the change and the insurance company you are considering must notify the company that issued your existing policy ."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+
+			<group labelWidth="500px"
+        style="overflow:auto;">
+				<paragragh
+          text="2. Be aware that you may be required to provide EVIDENCE OF INSURABILITY. If your health condition has changed
+since the application was taken on your present policy, you may be required to pay additional premiums under the
+new policy, or be denied coverage."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+
+			<group labelWidth="500px"
+        style="overflow:auto;">
+				<paragragh
+          text="3. Compare the LOAN INTEREST RATE. The interest rate for new policies is probably higher than for the existing
+policy. Therefore, you will pay more when you want to borrow the cash value. If you are considering borrowing against
+your existing policy to pay the premiums on the proposed policy, you should understand that in the event of your
+death, the amount of any unpaid loan, including unpaid interest, will be deducted from the benefits of your existing
+policy."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+
+			<group labelWidth="500px"
+        style="overflow:auto;">
+				<paragragh
+          text="4. Find out if the existing policy and/or the proposed policy offers DIVIDENDS OR EXCESS INTEREST. Dividends or
+excess interest can have a significant impact on net policy cost. Remember that no company can guarantee the
+amount of dividends it will pay in the future, nor can excess interest projections be presented as to imply a guarantee."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+
+			<group labelWidth="500px"
+        style="overflow:auto;">
+				<paragragh
+          text="5. CONTACT THE AGENT OF YOUR PRESENT COMPANY. Your present company can often make changes in your
+existing insurance on terms which are more favorable to you than can another company."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+
+			<group labelWidth="500px"
+        style="overflow:auto;">
+				<paragragh
+          text="6. Find out if there are income or estate tax consequences if you drop or change your present policy."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+
+
+		</section>
+
+		<section style="margin-left:0px">
+			<group style='margin-top:10px'>
+				<paragragh text="You should not drop or change your existing life insurance coverage until after you have been issued the new policy,
+examined it and found it to be acceptable to you. REMEMBER YOU HAVE TEN DAYS AFTER RECEIPT OF THE
+POLICY TO CANCEL AND OBTAIN A FULL REFUND.">
+				</paragragh>
+			</group>
+		</section>
+
+		<section style="margin-left:0px">
+			<group associated="True">
+				<question id='insured_name' text='Name of Insured'
+          required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='1'/> 
+				<question id='insurance_company' text='Insurance Company' type='TEXT' labelWidth="120px"
+          answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='2' />
+			</group>
+			<group associated="True">
+				<question id='applicant_address1' text="Applicant Address Line1" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='19'/>  
+				<question id='policy_number' text='Policy Number' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:20px' tabindex ='3'/>
+			</group>			
+			<group associated="True">
+				<question id='applicant_address2' text="Applicant Address Line2" type='TEXT'  answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='20'/>  
+				<question id='face_amount' text='Face Amount' type='TEXT' labelWidth="120px" answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='4' /> 
+			</group>
+			<group associated="True">
+				<question id='applicant_city' text="Applicant City" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='21'/>  
+				<question id='plan_name' text='Plan Name' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:20px' tabindex ='5'/>   
+			</group>			
+			<group associated="True">
+				<question id='applicant_state' text="Applicant State" type='LISTBOX' lookup="step:US_LOCALE_STATE" answerSet=":Please select..|Unknown:Not Applicable" answerWidth="210px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='22'/>  
+
+			</group>
+			<group associated="True">
+				<question id='applicant_zip' text="Applicant Zip" type='TEXT'  answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='23'/>  
+
+			</group>
+		</section>
+
+		<section style="margin-left:0px">
+			<group associated="true">
+				<paragragh text="I certify that this form and the 'Notice to Applicants Regarding Replacement of Life Insurance' were given to and signed by me prior to taking an application and that I am leaving a signed copy for the applicant.">
+				</paragragh>
+
+			</group>
+			<group associated="true">
+				<question id='applicant_signature' text='Applicant Signature' required="true" labelWidth="120px" type='CHECKBOX' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='6'/>
+				<question id='date_applicant_signed' text='Date' type='DATEF' labelWidth="120px" answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='7' />
+			</group>
+
+			<group associated="true">
+				<question id='agent_signature' text='Agent Signature' required="true" labelWidth="120px" type='CHECKBOX' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='8'/>
+				<question id='date_agent_signed' text='Date' type='DATEF' labelWidth="120px" answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='9' />           
+			</group>
+			<group associated="true">
+				<question id='agent_city' text="Agent City" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='27'/>
+			</group>
+			<group associated="true">
+				<question id='agent_state' text="Agent State" type='LISTBOX' lookup="step:US_LOCALE_STATE" answerSet=":Please select..|Unknown:Not Applicable" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='28'/>
+			</group>
+
+		</section>
+
+
+	</page>
+</form>

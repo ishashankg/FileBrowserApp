@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v2 https://demo.stepsolutions.com/schema/eforms.v2.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onSave>saveData</onSave>
+	<page title="Proposed Insured">
+		<section title="Part 1">
+			<group associated="true" labelWidth="80px" readonly="true">
+				<question id='ins_first_name' text='First Name: ' required='true'
+					type='TEXT' answerWidth="180px;" />
+				<question id='ins_middle_name' text='Middle Name: ' type='TEXT'
+					answerWidth="130px;" />
+				<question id='ins_last_name' text='Last Name: ' labelWidth="70px"
+					required='true' type='TEXT' answerWidth="180px;" />
+			</group>
+			<group associated="true" readonly="true">
+				<question id='ins_date_of_birth' text='Date of Birth: '
+					required='true' labelWidth="80px" type='DATEF' answerStyle="width:180px; color:#303030;" />
+				<question id='ins_gender' text='Gender: ' labelWidth="50px"
+					required='true' type='RADIO' answerWidth="50px;" answerSet="1:Male|0:Female" />
+			</group>
+			<group associated="true" readonly="true">
+				<question id='height_feet' text='Height: (ft.)' labelWidth="80px"
+					type='LISTBOX' required="true" answerSet=": |2|3|4|5|6|7" />
+				<question id='height_inches' text='(in.)' type='LISTBOX'
+					required="true" answerSet=": |0|1|2|3|4|5|6|7|8|9|10|11" />
+
+				<question id='weight_pounds' text='Weight: (lbs)' type='NUMBER'
+					required="true" answerWidth="50px;" />
+
+			</group>
+		</section>
+		<section title="Part 2">
+			<group associated="true">
+				<question id='place_of_birth_cntry' required="true" text='Place of Birth (Country):'
+					type='LISTBOX' lookup="step:LOCALE_COUNTRY" defaultValue="US"
+					answerSet=":Please select a country" labelWidth="100px" />
+				<question id='place_of_birth_st' required="true"
+					text='(State): ' type='LISTBOX' lookup="fla_US:LOCALE_STATE"
+					answerSet=":Please select a state|N_A:Not Applicable">
+					<displayWhen>#{EFORM.place_of_birth_cntry=='US'}</displayWhen>
+				</question>
+				<question id='place_of_birth_pv' required="true"
+					text='(Province): ' type='LISTBOX' lookup="fla_CA:LOCALE_STATE"
+					answerSet=":Please select a province|N_A:Not Applicable">
+					<displayWhen>#{EFORM.place_of_birth_cntry=='CA'}</displayWhen>
+				</question>
+				<question id='place_of_birth_na' required="true" 
+					text='(State): ' type='LISTBOX' readonly="true" 
+					answerSet="N_A:Not Applicable">
+					<displayWhen>#{EFORM.place_of_birth_cntry!='US' and EFORM.place_of_birth_cntry!='CA'}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="100px">
+				<question id='legal_residence_address' text='Address 1: '
+					type='TEXT' answerWidth="400px;" required='true' />
+				<question id='legal_residence_address_line2' text='Address 2:'
+					type='TEXT' answerWidth="400px;" />
+			</group>
+			<group associated="true">
+				<question id='city' text='City: ' type='TEXT' required='true'
+					labelWidth="100px" />
+				<question id='state' text='State: ' type='LISTBOX'
+					lookup="step:LOCALE_STATE" required="true"
+					answerSet=":Please select a state|N_A:Not Applicable" labelWidth="50px" />
+				<question id='zipcode' text='Zipcode: ' type='TEXT'
+					labelWidth="50px" required='true' />
+			</group>
+			<group associated="true">
+				<question id='preferred_phone' text='Preferred Phone: '
+					type='PHONE' labelWidth="100px" answerWidth="100px;" required='true' />
+				<question id='alternate_phone' text='Alternate Phone: '
+					labelWidth="100px" type='PHONE' answerWidth='100px;' />
+				<question id='best_time' text='Best Time to Call: ' type='TEXT'
+					answerWidth="155px" />
+			</group>
+			<group>
+				<question id='email_addr' text='Email Address: ' type='TEXT'
+					required='true' labelWidth="100px" answerWidth='365px' />
+			</group>
+			<group associated="true">
+				<question id='social_security' text='Social Security #: '
+					type='SSN' labelWidth="100px" answerWidth="100px" required='true' />
+				<question id='employer' text='Current Employer: ' required="true"
+					type='TEXT' answerWidth="100px" />
+				<question id='annual_earned_income' text='Current Income: '
+					labelWidth="100px" type='NUMBER' answerWidth="155px" required='true' />
+
+			</group>
+
+			<group associated='true'>
+				<question id='driv_lic_number' text='Driver License #:'
+					type='TEXT' required='true' labelWidth="100px" answerWidth="180px" />
+				<question id='driv_lic_state' text='State of Issue: ' type='LISTBOX'
+					lookup="step:LOCALE_STATE" required="true"
+					answerSet=":Please select a state|N_A:Not Applicable" labelWidth="100px" />
+			</group>
+
+			<group>
+				<question id='other_owner'
+					text='Will someone other than the insured own the policy being applied for?'
+					type='RADIO' labelWidth='390px' answerSet='Y:Yes|N:No' />
+				<question id='other_mailing_addr'
+					text='Do you want to use a different mailing address?' type='RADIO'
+					labelWidth="390px" answerSet='Y:Yes|N:No' />
+				<question id='secondary_addressee' text='Will there be a secondary addressee?'
+					type="RADIO" labelWidth="390px" answerSet='Y:Yes|N:No' />
+			</group>
+			<group>
+				<question id='policy_eff_date' text='Policy Effective Date:'
+					type='DATE' answerWidth="120px" labelWidth='120px' />
+			</group>
+		</section>
+		<section title="Primary Beneficiary Information">
+          <group associated="true">
+            <question id='bene_grouping' text='' type='RADIO' required="true" answerSet='I:Individual|O:Estate/Approved Designation' />
+          </group>
+          <group associated="true" answerWidth="150px;">
+            <question id='bene_first_name' text="First Name" type='TEXT' labelWidth="120px;" required="true">
+              <displayWhen>#{EFORM.bene_grouping=="I"}</displayWhen>
+            </question>
+            <question id='bene_middle_name' text="Middle Name" type='TEXT'>
+              <displayWhen>#{EFORM.bene_grouping=="I"}</displayWhen>
+            </question>
+            <question id='bene_last_name' text="Last Name" type='TEXT' required="true">
+              <displayWhen>#{EFORM.bene_grouping=="I"}</displayWhen>
+            </question>
+          </group>
+          <group associated="true">
+            <question id='bene_org_name' text="Organization Name" type='TEXT' labelWidth="150px;" answerWidth="400px;" required="true">
+              <displayWhen>#{EFORM.bene_grouping=="O"}</displayWhen>
+            </question>
+          </group>
+		</section>
+	</page>
+</form>
+

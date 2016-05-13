@@ -1,0 +1,63 @@
+package com.stepsoln.core
+
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.policy.PolicyConversionData;
+import com.stepsoln.core.db.enums.RECURRENCE;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+ 
+rule "YEARLY"        
+    when
+        policyConversionData:PolicyConversionData(paymentMode == RECURRENCE.ANNUAL);
+    then
+        policyConversionData.setDueDaysForPremium(30);
+        policyConversionData.setRemindersToBeSend(2);
+end
+
+rule "BI-YEARLY"        
+   when
+        policyConversionData:PolicyConversionData(paymentMode == RECURRENCE.SEMI_ANNUAL);
+    then
+        policyConversionData.setDueDaysForPremium(25);
+        policyConversionData.setRemindersToBeSend(2);
+end
+
+rule "QUARTERLY"        
+   when
+        policyConversionData:PolicyConversionData(paymentMode == RECURRENCE.QUARTERLY);
+    then
+        policyConversionData.setDueDaysForPremium(20);
+        policyConversionData.setRemindersToBeSend(2);
+end
+
+rule "BI-MONTHLY"        
+   when
+        policyConversionData:PolicyConversionData(paymentMode == RECURRENCE.BIMONTHLY);
+    then
+        policyConversionData.setDueDaysForPremium(15);
+        policyConversionData.setRemindersToBeSend(1);
+end
+
+rule "MONTHLY"
+    when
+        policyConversionData:PolicyConversionData(paymentMode == RECURRENCE.MONTHLY);
+    then
+        policyConversionData.setDueDaysForPremium(10);
+        policyConversionData.setRemindersToBeSend(1);
+end
+
+rule "BI-WEEKY"        
+    when
+        policyConversionData:PolicyConversionData(paymentMode == RECURRENCE.BIWEEKLY);
+    then
+        policyConversionData.setDueDaysForPremium(7);
+        policyConversionData.setRemindersToBeSend(1);
+end
+
+rule "WEEKY"        
+     when
+        policyConversionData:PolicyConversionData(paymentMode == RECURRENCE.WEEKLY);
+    then
+        policyConversionData.setDueDaysForPremium(1);
+        policyConversionData.setRemindersToBeSend(1);
+end

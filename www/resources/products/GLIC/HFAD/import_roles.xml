@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<roles>
+	<role>
+		<roleName>External Agent</roleName>
+		<roleCode>ext_agent</roleCode>
+		<roleOuCode>EXT1OU</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="agent_attestation" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="redo_signature_requirement"
+				accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="case_benes" accessType="CRW" />
+			<permission functionCode="igo_submission" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="create_case" accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_payment" accessType="CRW" />
+			<permission functionCode="send_case_to_applicant" accessType="CRW" />
+			<permission functionCode="uw_recalc_igo" accessType="CRW" />
+			<permission functionCode="disable_uw_class" accessType="R" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Internal Agent</roleName>
+		<roleCode>int_agent</roleCode>
+		<roleOuCode>CCSLS1</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="redo_signature_requirement"
+				accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="case_benes" accessType="R" />
+			<permission functionCode="igo_submission" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="create_case" accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="create_case" accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="case_payment" accessType="CRW" />
+			<permission functionCode="send_case_to_applicant" accessType="CRW" />
+			<permission functionCode="uw_recalc_igo" accessType="CRW" />
+			<permission functionCode="disable_uw_class" accessType="R" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>New Business Staff</roleName>
+		<roleCode>nb_staff</roleCode>
+		<roleOuCode>NB</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="paper_app" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Call Center Service</roleName>
+		<roleCode>cc_service</roleCode>
+		<roleOuCode>CCSVC</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="case_benes" accessType="R" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>UTS Leader </roleName>
+		<roleCode>uts_admin</roleCode>
+		<roleOuCode>UTS</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="paper_app" accessType="CRW" />
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="case_benes" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="igo_submission" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="redo_signature_requirement"
+				accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+			<permission functionCode="uw_notes" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="detailed_risk_assessment"
+				accessType="CRW" 
+				expression="#{CASE_STATUS=='SUBMITTED' or CASE_STATUS=='UWINCOMPLETE' or CASE_STATUS=='APPROVED' or CASE_STATUS=='DECLINED'}"/>
+			<permission functionCode="case_payment" accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>UTS Staff</roleName>
+		<roleCode>uts_staff</roleCode>
+		<roleOuCode>UTS</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="paper_app" accessType="CRW" />
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="case_benes" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="igo_submission" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="redo_signature_requirement"
+				accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+			<permission functionCode="uw_notes" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="detailed_risk_assessment"
+				accessType="CRW" 
+				expression="#{CASE_STATUS=='SUBMITTED' or CASE_STATUS=='UWINCOMPLETE' or CASE_STATUS=='APPROVED' or CASE_STATUS=='DECLINED'}"/>
+			<permission functionCode="case_payment" accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>UTS Supervisor</roleName>
+		<roleCode>uts_super</roleCode>
+		<roleOuCode>UTS</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="paper_app" accessType="CRW" />
+			<permission functionCode="case_benes" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="igo_submission" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="redo_signature_requirement"
+				accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+			<permission functionCode="uw_notes" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="detailed_risk_assessment"
+				accessType="CRW" 
+				expression="#{CASE_STATUS=='SUBMITTED' or CASE_STATUS=='UWINCOMPLETE' or CASE_STATUS=='APPROVED' or CASE_STATUS=='DECLINED'}"/>
+			<permission functionCode="case_payment" accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>UW Support Clerk</roleName>
+		<roleCode>uw_clerk</roleCode>
+		<roleOuCode>UWO</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="case_benes" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="phi_interview_requirements"
+				accessType="CRW" />
+			<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+			<permission functionCode="uw_notes" accessType="CRW" />
+			<permission functionCode="uw_tasks" accessType="CRW" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="risk_recalculate"
+				accessType="CRW" />
+			<permission functionCode="perform_final_action"
+				accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Assistant Underwriter</roleName>
+		<roleCode>uw_assist</roleCode>
+		<roleOuCode>UWO</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="case_benes" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="detailed_risk_assessment"
+				accessType="CRW" />
+			<permission functionCode="medical_underwriting_requirements"
+				accessType="CRW" />
+			<permission functionCode="phi_interview_requirements"
+				accessType="CRW" />
+			<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+			<permission functionCode="uw_decision" accessType="CRW" />
+			<permission functionCode="uw_notes" accessType="CRW" />
+			<permission functionCode="uw_recalc_igo" accessType="CRW" />
+			<permission functionCode="uw_tasks" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="assign_from_pool" accessType="CRW"
+				expression="#{CASE_FACE_AMOUNT &lt;= 99000 and CASE_STATUS != 'AUTODECLINE' and AUTO_DECISION_STATUS == 'NONE'}" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="risk_recalculate"
+				accessType="CRW" />
+			<permission functionCode="perform_final_action"
+				accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Underwriter</roleName>
+		<roleCode>uw_writer</roleCode>
+		<roleOuCode>UWO</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="case_benes" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="detailed_risk_assessment"
+				accessType="CRW" />
+			<permission functionCode="medical_underwriting_requirements"
+				accessType="CRW" />
+			<permission functionCode="phi_interview_requirements"
+				accessType="CRW" />
+			<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+			<permission functionCode="uw_decision" accessType="CRW" />
+			<permission functionCode="uw_notes" accessType="CRW" />
+			<permission functionCode="uw_recalc_igo" accessType="CRW" />
+			<permission functionCode="uw_tasks" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="assign_from_pool" accessType="CRW"
+				expression="#{CASE_FACE_AMOUNT &gt; 99000 and CASE_FACE_AMOUNT &lt;= 300000 and CASE_STATUS != 'AUTODECLINE' and AUTO_DECISION_STATUS  == 'NONE'}" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="risk_recalculate"
+				accessType="CRW" />
+			<permission functionCode="perform_final_action"
+				accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Senior Underwriter</roleName>
+		<roleCode>uw_senior</roleCode>
+		<roleOuCode>UWO</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="case_benes" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="detailed_risk_assessment"
+				accessType="CRW" />
+			<permission functionCode="medical_underwriting_requirements"
+				accessType="CRW" />
+			<permission functionCode="phi_interview_requirements"
+				accessType="CRW" />
+			<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+			<permission functionCode="uw_decision" accessType="CRW" />
+			<permission functionCode="uw_notes" accessType="CRW" />
+			<permission functionCode="uw_recalc_igo" accessType="CRW" />
+			<permission functionCode="uw_tasks" accessType="CRW" />
+			<permission functionCode="assign_from_pool" accessType="CRW"
+				expression="#{CASE_FACE_AMOUNT &gt; 300000 and CASE_FACE_AMOUNT &lt;= 1000000 and CASE_STATUS != 'AUTODECLINE' and AUTO_DECISION_STATUS == 'NONE'}" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="underwriter_status_report.rptdesign"
+				accessType="CRW" />
+			<permission functionCode="agency_agent_status_report.rptdesign"
+				accessType="CRW" />
+			<permission functionCode="underwriter_requirement_report.rptdesign"
+				accessType="CRW" />	
+			<permission functionCode="uts_report.rptdesign"
+				accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="risk_recalculate"
+				accessType="CRW" />
+			<permission functionCode="perform_final_action"
+				accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Underwriter Manager</roleName>
+		<roleCode>uw_manager</roleCode>
+		<roleOuCode>UWO</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="case_benes" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="detailed_risk_assessment"
+				accessType="CRW" />
+			<permission functionCode="medical_underwriting_requirements"
+				accessType="CRW" />
+			<permission functionCode="phi_interview_requirements"
+				accessType="CRW" />
+			<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+			<permission functionCode="uw_decision" accessType="CRW" />
+			<permission functionCode="uw_notes" accessType="CRW" />
+			<permission functionCode="uw_recalc_igo" accessType="CRW" />
+			<permission functionCode="uw_tasks" accessType="CRW" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="underwriter_status_report.rptdesign"
+				accessType="CRW" />
+			<permission functionCode="agency_agent_status_report.rptdesign"
+				accessType="CRW" />
+			<permission functionCode="uts_report.rptdesign"
+				accessType="CRW" />
+			<permission functionCode="underwriter_requirement_report.rptdesign"
+				accessType="CRW" />	
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="risk_recalculate"
+				accessType="CRW" />
+			<permission functionCode="perform_final_action"
+				accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Underwriter Director</roleName>
+		<roleCode>uw_director</roleCode>
+		<roleOuCode>UWO</roleOuCode>
+		<containerRole>carrier_admin</containerRole>
+		<permissions>
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="case_benes" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="detailed_risk_assessment"
+				accessType="CRW" />
+			<permission functionCode="medical_underwriting_requirements"
+				accessType="CRW" />
+			<permission functionCode="phi_interview_requirements"
+				accessType="CRW" />
+			<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+			<permission functionCode="uw_decision" accessType="CRW" />
+			<permission functionCode="uw_notes" accessType="CRW" />
+			<permission functionCode="uw_recalc_igo" accessType="CRW" />
+			<permission functionCode="uw_tasks" accessType="CRW" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="underwriter_status_report.rptdesign"
+				accessType="CRW" />
+			<permission functionCode="agency_agent_status_report.rptdesign"
+				accessType="CRW" />
+			<permission functionCode="uts_report.rptdesign"
+				accessType="CRW" />
+			<permission functionCode="underwriter_requirement_report.rptdesign"
+				accessType="CRW" />	
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="risk_recalculate"
+				accessType="CRW" />
+			<permission functionCode="perform_final_action"
+				accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Product Specialist</roleName>
+		<roleCode>prod_spec</roleCode>
+		<roleOuCode>GLADM</roleOuCode>
+		<containerRole>agency_admin</containerRole>
+		<permissions>
+			<permission functionCode="configurator" accessType="RW" />
+			<permission functionCode="user_management" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Document Specialist</roleName>
+		<roleCode>doc_spec</roleCode>
+		<roleOuCode>GLADM</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="configurator" accessType="RW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Carrier Administration</roleName>
+		<roleCode>carrier_admin</roleCode>
+		<roleOuCode>GLADM</roleOuCode>
+		<containerRole>carrier_admin</containerRole>
+		<permissions>
+			<permission functionCode="case_cover" accessType="R" />
+			<permission functionCode="case_requirements" accessType="R" />
+			<permission functionCode="case_notes" accessType="R" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="configurator" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="user_management" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Underwriter Merica</roleName>
+		<roleCode>uw_merica</roleCode>
+		<roleOuCode>MERICA</roleOuCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="assign_from_pool" accessType="CRW"
+				expression="#{CASE_STATUS == 'AUTODECLINE' or AUTO_DECISION_STATUS == 'ACCEPT' or AUTO_DECISION_STATUS == 'DECLINE'}" />
+		</permissions>
+	</role>
+	
+	<role>
+		<roleName>Carrier Finance Manager</roleName>
+		<roleCode>finance_manager</roleCode>
+		<roleOuCode>GLFINMAN</roleOuCode>
+		<containerRole>finance_manager</containerRole>
+		<permissions>
+		<!--  Accounting Functions  -->
+		    <permission functionCode="accounting" accessType="CRW" />
+			<permission functionCode="chart_of_accounts" accessType="CRW" />
+			<permission functionCode="account_summary" accessType="CRW" />
+			<permission functionCode="transaction_summary" accessType="CRW" />
+			<permission functionCode="policy_accounts" accessType="R" />
+		
+		<!--  Billing Functions  -->	
+			<permission functionCode="billing" accessType="CRW" />
+			<permission functionCode="create_list_bill" accessType="CRW" />
+			<permission functionCode="search_list_bill" accessType="CRW" />
+			<permission functionCode="search_payment" accessType="CRW" />
+			<permission functionCode="search_invoices" accessType="CRW" />
+			
+			
+			
+		<!--  Agent Payment Functions  -->
+			<permission functionCode="agent_payment" accessType="CRW" />
+			<permission functionCode="search_agent_payment" accessType="CRW" />
+			<permission functionCode="case_payment" accessType="CRW" />
+		</permissions>
+	</role>
+	
+	
+	
+
+	<role>
+		<roleName>Policy Service Representative</roleName>
+		<roleCode>PSR</roleCode>
+		<roleOuCode>GLPSR</roleOuCode>
+		<containerRole>representative</containerRole>
+		<permissions>
+		
+     	    <permission functionCode="change_address" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/> 
+		    <permission functionCode="change_address" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/> 
+		     		    
+			<permission functionCode="change_birthday" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			<permission functionCode="change_birthday" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			
+			<permission functionCode="change_beneficiaries" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			<permission functionCode="change_beneficiaries" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			
+			<permission functionCode="change_policyowner" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (MASTER_POLICY_TYPE=='INDIVIDUAL' or MASTER_POLICY_TYPE=='ASSOCIATION_GROUP') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			<permission functionCode="change_policyowner" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (MASTER_POLICY_TYPE=='INDIVIDUAL' or MASTER_POLICY_TYPE=='ASSOCIATION_GROUP') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			
+		    <permission functionCode="change_smoker_status" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    <permission functionCode="change_smoker_status" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		   
+		    <permission functionCode="change_payment_method" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    <permission functionCode="change_payment_method" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    
+		    <permission functionCode="change_settlement_options" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    <permission functionCode="change_settlement_options" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    
+		    <permission functionCode="change_payor" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (MASTER_POLICY_TYPE=='INDIVIDUAL' or MASTER_POLICY_TYPE=='ASSOCIATION_GROUP') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    <permission functionCode="change_payor" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (MASTER_POLICY_TYPE=='INDIVIDUAL' or MASTER_POLICY_TYPE=='ASSOCIATION_GROUP') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		 
+		    <permission functionCode="reinstatement" accessType="E" expression="#{POLICY_STATUS=='LAPSED' and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    <permission functionCode="reinstatement" accessType="" expression="#{POLICY_STATUS!='LAPSED' and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    
+		    <permission functionCode="change_coverages" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    <permission functionCode="change_coverages" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		   
+		    
+		    <permission functionCode="collateral_assignments" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    <permission functionCode="collateral_assignments" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		   
+		    <permission functionCode="renewals" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    <permission functionCode="renewals" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    
+		    
+		    <permission functionCode="rate_changes" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    <permission functionCode="rate_changes" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    
+		    <permission functionCode="policy_lapses" accessType="E" expression="#{POLICY_STATUS=='LAPSED' and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    <permission functionCode="policy_lapses" accessType="" expression="#{POLICY_STATUS!='LAPSED' and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		    
+		   	<permission functionCode="calculate_future_premium" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		   	<permission functionCode="calculate_future_premium" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		   	
+		   	
+	        <permission functionCode="tax_calculations" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+	        <permission functionCode="tax_calculations" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+	        
+	        
+	        <permission functionCode="policy_issuance" accessType="E" expression="#{(POLICY_STATUS=='ACCEPTED' or POLICY_STATUS=='ISSUED' or  POLICY_STATUS=='PENDING' )and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+	        <permission functionCode="policy_issuance" accessType="" expression="#{(POLICY_STATUS!='ACCEPTED' and POLICY_STATUS!='ISSUED' and POLICY_STATUS!='PENDING' ) and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+	        
+	   	   	<permission functionCode="deletion_of_errorneous_policy" accessType="E" expression="#{(POLICY_STATUS!='CREATED_IN_ERROR') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+	        <permission functionCode="deletion_of_errorneous_policy" accessType="" expression="#{POLICY_STATUS=='CREATED_IN_ERROR'}"/>
+  	
+	   	   	
+			<permission functionCode="policy_audit" accessType="E" expression="#{PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT'}"/>
+
+			
+			<permission functionCode="compilance_forms" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}" />
+			<permission functionCode="compilance_forms" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}" />
+			
+			<permission functionCode="individual_billing" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			<permission functionCode="individual_billing" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			
+			<permission functionCode="list_servicing" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			<permission functionCode="list_servicing" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			
+			<permission functionCode="disbursement" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			<permission functionCode="disbursement" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			
+			<permission functionCode="reversals_chargebacks" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			<permission functionCode="reversals_chargebacks" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+		
+		
+			<permission functionCode="reinsurance_integration" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			<permission functionCode="reinsurance_integration" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			
+			<permission functionCode="refund_premium" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}" />
+			<permission functionCode="refund_premium" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}" />
+			
+			
+			<permission functionCode="lost_contract_certificate" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}" />
+			<permission functionCode="lost_contract_certificate" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}" />
+			
+			
+			<permission functionCode="tax_reporting_to_policy_holder" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			<permission functionCode="tax_reporting_to_policy_holder" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL' or PRODUCT_TYPE=='SIT')}"/>
+			
+	   
+		   <!-- TL and WL functions -->
+		   
+		    <permission functionCode="face_amount_increase_decrease" accessType="E" expression="#{POLICY_STATUS == 'ACTIVE' and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL')}"/>
+		    <permission functionCode="face_amount_increase_decrease" accessType="" expression="#{POLICY_STATUS != 'ACTIVE' and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL')}"/>
+		  
+		         
+		    <permission functionCode="rider_decline_expiration" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL')}"/>
+		    <permission functionCode="rider_decline_expiration" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL')}"/>
+		    
+		    <permission functionCode="inforce_underwriting" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL')}"/>
+		    <permission functionCode="inforce_underwriting" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL')}"/>
+		     
+		     
+		    <permission functionCode="conversions" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL')}"/>
+		    <permission functionCode="conversions" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and (PRODUCT_TYPE=='WL' or PRODUCT_TYPE=='TL')}"/>
+		    
+		   <!-- End TL and WL functions -->
+		   
+		    <!-- WL Only  functions -->
+		   
+		    <permission functionCode="withdrawal_surrender" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    <permission functionCode="withdrawal_surrender" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    
+		    <permission functionCode="dividend_option_change" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    <permission functionCode="dividend_option_change" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    
+		    <permission functionCode="replacement_processing" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    <permission functionCode="replacement_processing" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    
+		    
+		    <permission functionCode="re_entries" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    <permission functionCode="re_entries" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    
+		   <permission functionCode="non_forfeiture_options" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		   <permission functionCode="non_forfeiture_options" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		  
+		    
+			<permission functionCode="exchanges" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+			<permission functionCode="exchanges" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+			
+		    <permission functionCode="annual_policy_statement" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    <permission functionCode="annual_policy_statement" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and PRODUCT_TYPE=='WL'}" />
+		    
+		    
+			<permission functionCode="benefit_management" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+			<permission functionCode="benefit_management" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+			
+			<permission functionCode="refunding_dividends" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+			<permission functionCode="refunding_dividends" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+			
+		    <permission functionCode="inforce_re_projection" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    <permission functionCode="inforce_re_projection" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    
+		   	<permission functionCode="value_calculation" accessType="E" expression="#{(POLICY_STATUS=='ACTIVE' or POLICY_STATUS=='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		   	<permission functionCode="value_calculation" accessType="" expression="#{(POLICY_STATUS!='ACTIVE' and  POLICY_STATUS!='REINSTATED') and PRODUCT_TYPE=='WL'}"/>
+		    <!-- End WL Only  functions -->
+		    <!-- Accounting Function -->
+		    <permission functionCode="chart_of_accounts" accessType="R" />
+		    <permission functionCode="accounting" accessType="CRW" />
+		    <permission functionCode="case_benes" accessType="CRW" />
+		    
+		    </permissions>
+	</role>
+	
+		<role>
+		<roleName>Carrier Claims Manager</roleName>
+		<roleCode>claims_manager</roleCode>
+		<roleOuCode>GLCLMMAN</roleOuCode>
+		<containerRole>claims_manager</containerRole>
+		<permissions>
+		<!--  Claim Functions  -->
+		    <permission functionCode="initiate_claim" accessType="CRW" />
+			<permission functionCode="search_claim" accessType="CRW" />
+		</permissions>
+	</role>
+	
+	
+	<role>
+		<roleName>Web Applicant</roleName>
+		<roleCode>glicWebUser</roleCode>
+		<roleOuCode>ALISS</roleOuCode>
+		<containerRole>policyholder</containerRole>
+		<permissions>			
+		</permissions>
+	</role>
+</roles>
+</stepImport >

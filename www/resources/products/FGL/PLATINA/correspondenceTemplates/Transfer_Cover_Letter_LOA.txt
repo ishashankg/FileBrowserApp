@@ -1,0 +1,26 @@
+$currentDate
+
+$companyName
+$companyAddressLines
+$companyCityStateZip
+
+Your Policy Number:						$companyPolicyNumberFidelity & Guaranty Life Policy Number:	$policyNumberOwner:									$correspondenceOwnerNameAnnuitant/Insured:						$annuitantFirstName $annuitantLastName
+
+Dear $companyName,
+
+Enclosed are the documents required to process the requested transfer for the above mentioned owner.
+
+Please make check(s) payable to:
+
+Fidelity & Guaranty Life Insurance Company
+Attn:  Annuity New Business
+P.O. BOX 81728
+LINCOLN, NE 68501
+
+Should you have any questions or if the paperwork is insufficient, please contact us at 800-445-6758.
+
+
+Sincerely,
+
+
+Annuity New Business 

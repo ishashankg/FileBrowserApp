@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<users>
+	<user>
+		<usUserName>JACKHARDY</usUserName>
+		<usPassword>P@ssword1</usPassword>
+		<usAgentCode>JAHA</usAgentCode>
+		<usAgencyCode>MedAg</usAgencyCode>
+		<usMemCode></usMemCode>
+		<usFirstName>Jack</usFirstName>
+		<usLastName>Hardy</usLastName>
+	</user>
+	<user>
+		<usUserName>JOHNSMITH</usUserName>
+		<usPassword>P@ssword1</usPassword>
+		<usAgentCode></usAgentCode>
+		<usAgencyCode></usAgencyCode>
+		<usMemCode></usMemCode>
+		<usFirstName>John</usFirstName>
+		<usLastName>Smith</usLastName>
+	</user>
+	<user>
+		<usUserName>DTC_GLIC</usUserName>
+		<usPassword>P@ssword1</usPassword>
+		<usAgentCode></usAgentCode>
+		<usFirstName>DTC_GLIC</usFirstName>
+		<usLastName>DTC_GLIC</usLastName>
+	</user>
+		<user>
+		<usUserName>DEF_GMED_UW</usUserName>
+		<usPassword>P@ssword1</usPassword>
+		<usAgentCode></usAgentCode>
+		<usFirstName>Default</usFirstName>
+		<usLastName>GMed_UW</usLastName>
+	</user>
+</users>
+</stepImport>

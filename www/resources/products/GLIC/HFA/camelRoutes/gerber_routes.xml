@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+ 
+<!-- 
+  <route id="glic_Unsent_Correpondence_Query" shortName="correspondenceQuery" >
+     <from uri="timer://kickoff?period=5000"/>
+     <setBody>
+       <constant>select correspondence_id from carrier_correspondence where delivery_date is null</constant>
+     </setBody>
+     <to uri="jdbc:dataSource"/>
+     <split>
+      <simple>${body}</simple>
+      <to uri="activemq://pdf_generation"/>
+     </split>
+  </route>
+ -->
+ <!-- 
+ 
+   <route id="partial_application_emails">
+     <from uri="timer://kickoff?period={{partial.application.polling.timeInMillis}}"/>
+     <to uri="partialApplicationProcessor"/>
+  </route>
+   -->
+ <!-- 
+ <route id="scripting_test">
+     <from uri="timer://kickoff?period=5000"/>
+     <setHeader headerName="carrierCode"><simple>glic</simple></setHeader>
+     <setHeader headerName="productCode"><simple>hfa</simple></setHeader>
+     <setHeader headerName="resourceCode"><simple>PARTIAL_APP_SCRIPT</simple></setHeader>
+     <to uri="stepScriptingProcessor"/>
+  </route>
+ -->
+  <route id="glic_pdf_index">
+    <from uri="activemq://pdf_generation?concurrentConsumers=5"/>
+    <to uri="correspondencePDFProcessor"/>
+    <setHeader headerName="generatedFileName"> 
+      <groovy>request.headers.documentType + request.headers.correspondenceId+'_'+'correspondence'</groovy>
+    </setHeader>
+    <to uri="file://{{rootOutputDirectory}}/GLIC/correspondence?fileName=${in.header.generatedFileName}_${date:now:yyyy-MM-dd}.pdf"/>
+    <setBody>
+        <groovy>request.headers.documentType+','+request.headers.policyNumber+','+request.headers.generatedFileName+'.pdf'</groovy>
+    </setBody>
+    <to uri="file://{{rootOutputDirectory}}/GLIC/correspondence?fileName=${in.header.generatedFileName}_${date:now:yyyy-MM-dd}.txt"/>
+  </route>
+
+
+<!-- Examone inbound processing starts -->  
+  <route id="glic_examone_ftp_pickup">
+  	<setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+  	<from uri="ftp://{{thirdparty.examone.ftp.user}}@{{thirdparty.examone.ftp.url}}{{thirdparty.examone.ftp.incomingdir}}/?password={{thirdparty.examone.ftp.password}}&amp;binary=true&amp;delete=true&amp;localWorkDirectory=c:/temp/&amp;consumer.delay={{thirdparty.examone.ftp.pollingDelay}}"/>
+    <to uri="file://{{rootOutputDirectory}}/thirdparty/inboundencrypted/examone/images/"/>
+   </route>
+   
+   <route id="glic_examone_images_decrypt">
+    <setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+  	<from uri="file://{{rootOutputDirectory}}/thirdparty/inboundencrypted/examone/images/?readLock=changed&amp;move=.done&amp;moveFailed=.error" /> 
+      <setHeader headerName="cryptoKeyFile"><simple>${properties:thirdparty.examone.ftp.incomingPGPKey}</simple></setHeader>
+      <setHeader headerName="cryptoKeyFilePassword"><simple>${properties:thirdparty.examone.ftp.incomingPGPKeyPassword}</simple></setHeader>
+      <to uri="bean:PGPDecryptProcessor"/>
+    <to uri="file://{{rootOutputDirectory}}/thirdparty/inbound/examone/images/"/>
+  </route>
+  
+   <route id="glic_examone_images_processing">
+      <setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+  	  <from uri="file://{{rootOutputDirectory}}/thirdparty/inbound/examone/images/?readLock=changed&amp;filter=#indexFileFilter&amp;move=.done&amp;moveFailed=.error"/>
+      	<setHeader headerName="resourceFolder"><simple>UW/EXAMONE</simple></setHeader>
+      <to uri="bean:examOneImageResultsProcessor"/>
+   </route>
+  
+   <route id="glic_examone_status_pickup">
+    <setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+  	<from uri="ftp://{{thirdparty.examone.ftp.user}}@{{thirdparty.examone.ftp.url}}{{thirdparty.examone.ftp.incomingdirStatusFile}}/?password={{thirdparty.examone.ftp.password}}&amp;binary=true&amp;delete=true&amp;localWorkDirectory=c:/temp/&amp;consumer.delay={{thirdparty.examone.ftp.pollingDelay}}"/>
+    <to uri="file://{{rootOutputDirectory}}/thirdparty/inboundencrypted/examone/status/"/>
+   </route>
+  
+   <route id="glic_examone_status_decrypt">
+      <setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+	  <from uri="file://{{rootOutputDirectory}}/thirdparty/inboundencrypted/examone/status/?readLock=changed&amp;move=.done&amp;moveFailed=.error" /> 
+      	<setHeader headerName="cryptoKeyFile"><simple>${properties:thirdparty.examone.ftp.incomingPGPKey}</simple></setHeader>
+      	<setHeader headerName="cryptoKeyFilePassword"><simple>${properties:thirdparty.examone.ftp.incomingPGPKeyPassword}</simple></setHeader>
+      <to uri="bean:PGPDecryptProcessor"/>
+    <to uri="file://{{rootOutputDirectory}}/thirdparty/inbound/examone/status/"/>
+  </route>
+  
+  <route id="glic_examone_status_processing">
+    <setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+  	<from uri="file://{{rootOutputDirectory}}/thirdparty/inbound/examone/status/?readLock=changed&amp;move=.done&amp;moveFailed=.error"/>
+  	<to uri="bean:examOneResultProcessor"/>
+  </route>  
+<!-- Examone inbound processing ends -->
+  
+  <!-- HooperHolmes processing. Start.  -->
+  <route id="glic_hooperholmes_result_pickup">
+    <from uri="ftp://{{thirdparty.hooperholmes.ftp.user}}@{{thirdparty.hooperholmes.ftp.url}}{{thirdparty.hooperholmes.ftp.incomingdir}}/?password={{thirdparty.hooperholmes.ftp.password}}&amp;binary=true&amp;delete=true&amp;localWorkDirectory=c:/temp/&amp;consumer.delay={{thirdparty.hooperholmes.ftp.pollingDelay}}"/>
+      <setHeader headerName="cryptoKeyFile"><simple>${properties:thirdparty.hooperholmes.ftp.incomingPGPKey}</simple></setHeader>
+      <setHeader headerName="cryptoKeyFilePassword"><simple>${properties:thirdparty.hooperholmes.ftp.incomingPGPKeyPassword}</simple></setHeader>
+      <to uri="bean:PGPDecryptProcessor"/>
+    <to uri="file://{{rootOutputDirectory}}/thirdparty/inbound/hooperholmes/zip/"/>
+  </route>
+  <route id="glic_hooperholmes_processing">
+      <from uri="file://{{rootOutputDirectory}}/thirdparty/inbound/hooperholmes/zip/?move=.done&amp;moveFailed=.error"/>
+      <setHeader headerName="resourceFolder"><simple>UW/HOOPERHOLMES</simple></setHeader>
+      <to uri="bean:hooperholmesResultsProcessor"/>
+      <to uri="bean:dbUpdateEappMultipleRequirementsProcessor"/>
+    </route>
+  <!-- HooperHolmes processing. End.    -->
+  
+  
+  <route id="glic_examone_drop">
+  	<setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+	<from uri="file://{{rootOutputDirectory}}/thirdparty/outbound/examone?readLock=rename&amp;delete=true&amp;moveFailed=.error"/>
+	<setHeader headerName="cryptoKeyFile">
+	<simple>${properties:thirdparty.examone.pgpkey}</simple>
+	</setHeader>
+	<to uri="bean:PGPEncryptProcessor"/>
+	<to uri="file://{{rootOutputDirectory}}/thirdparty/outbound/examone/encrypted"/>
+  </route>
+
+  <route id="glic_examone_ftp">
+  	<setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+  	<from uri="file://{{rootOutputDirectory}}/thirdparty/outbound/examone/encrypted/?readLock=rename&amp;move=.done&amp;moveFailed=.error&amp;consumer.delay={{ftp.consumerDelay}}"/>
+	<to uri="ftp://{{thirdparty.examone.ftp.user}}@{{thirdparty.examone.ftp.url}}{{thirdparty.examone.ftp.outgoingdir}}/?password={{thirdparty.examone.ftp.password}}&amp;binary=true"/>
+  </route>
+  
+  <route id="correspondnece_drop_route">
+  	<setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+  	<from uri="activemq://CORRESPONDENCE_DROP.QUEUE"/>
+    <to uri="bean:correspondencePacketProcessor"/>
+    <to uri="file://{{rootOutputDirectory}}/GLIC/outbound/correspondence/?fileName=${in.header.policyNo}_${in.header.fileName}_${in.header.timeStamp}.zip"/>
+  </route>
+  
+  <route id="glic_ftp_pickup">
+    <from uri="{{glic.ftp.protocol}}://{{glic.ftp.user}}@{{glic.ftp.address}}/{{glic.ftp.inbound.folder}}?password={{glic.ftp.password}}&amp;binary=true&amp;delete=true&amp;localWorkDirectory=c:/temp/&amp;consumer.delay={{glic.ftp.consumerDelay}}"/>
+    <to uri="file://{{rootOutputDirectory}}/GLIC/inboundencrypted"/>
+  </route>
+  
+  <route id="glic_inbox_decrypt">
+	  <from uri="file://{{rootOutputDirectory}}/GLIC/inboundencrypted?move=.done&amp;moveFailed=.error"/>
+      <setHeader headerName="cryptoKeyFile"><simple>${properties:glic.ftp.inbound.pgpkeyfile}</simple></setHeader>
+      <setHeader headerName="cryptoKeyFilePassword"><simple>${properties:glic.ftp.inbound.pgpkeyfilePassword}</simple></setHeader>
+      <to uri="bean:PGPDecryptProcessor"/>
+	  <to uri="file://{{rootOutputDirectory}}/GLIC/inbound"/>
+  </route>
+  
+  <route id="gerber_inbox">
+    <from uri="file://{{rootOutputDirectory}}/GLIC/inbound/?move=.done&amp;moveFailed=.error"/>
+    <to uri="bean:caseInboxProcessor"/>
+  </route>
+  
+  
+   <!-- to ftp correspondence files to Gerber -->
+  <route id="glic_outbox">
+    <setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+    <from uri="file://{{rootOutputDirectory}}/GLIC/outbound/correspondence/?move=.done&amp;moveFailed=.error&amp;consumer.delay={{glic.ftp.consumerDelay}}"/>
+	<setHeader headerName="cryptoKeyFile"><simple>${properties:glic.ftp.pgpkeyfile}</simple></setHeader>    
+    <to uri="bean:PGPEncryptProcessor"/>
+    <to uri="{{glic.ftp.protocol}}://{{glic.ftp.user}}@{{glic.ftp.address}}/{{glic.ftp.folder}}?password={{glic.ftp.password}}&amp;binary=true"/>
+  </route>
+
+   <route id="gerberAddressValidation">
+       <from uri="direct:gerberAddressValidation"/>
+       <to uri="bean:gerberAddressValidationProcessor"/>
+       <doTry>
+       <to uri="cxf:bean:gerberCallAddressValidationRequest"/>
+        <doCatch>
+            <exception>org.apache.cxf.transport.http.HTTPException</exception>
+            <exception>org.apache.camel.ExchangeTimedOutException</exception>
+            <to uri="bean:caseActivityLogProcessor"/>
+        </doCatch>       
+       </doTry>       
+       <to uri="bean:gerberAddressValidationResponseProcessor"/>
+   </route>
+   
+   <route id="gerberKeyInquiry">
+       <from uri="direct:gerberKeyInquiry"/>
+       <to uri="bean:gerberKeyInquiryProcessor"/>
+       <doTry>
+       <to uri="cxf:bean:gerberCallKeycodeInquiryRequest"/>
+        <doCatch>
+            <exception>org.apache.cxf.transport.http.HTTPException</exception>
+            <exception>org.apache.camel.ExchangeTimedOutException</exception>
+            <to uri="bean:caseActivityLogProcessor"/>
+        </doCatch>       
+       </doTry>
+       <to uri="bean:gerberKeyInquiryResponseProcessor"/>
+   </route>
+
+   <route id="gerberAlphaSearch">
+       <from uri="direct:gerberAlphaSearch"/>
+       <to uri="bean:gerberAlphaSearchProcessor"/>
+       <doTry>
+       <to uri="bean:gerberCallAlphaSearchProcessor"/>
+        <doCatch>
+            <exception>com.stepsoln.servicebus.camel.common.exception.ServiceBusUnRecoverableException</exception>
+       		<to uri="bean:caseActivityLogProcessor"/>
+        </doCatch>		
+       </doTry>
+       <to uri="bean:gerberAlphaSearchResponseProcessor"/>
+       <to uri="bean:internalAlphaSearchProcessor"/>  
+   </route>
+   
+<!-- PCI Routes start -->   
+
+    <route id="gerberPCIRequest">
+		<from uri="direct:gerberPCIRequest" />
+		<onException>
+             <exception>java.lang.Exception</exception>
+             <redeliveryPolicy maximumRedeliveries="{{glic.token.retry.attempts}}" delay="{{glic.token.retry.delay}}" />
+			<to uri="bean:gerberPCIRequestErrorProcessor" />
+        </onException>
+		<to uri="bean:gerberPCIRequestProcessor" />
+	</route>
+	
+	<route id="gerberPCIBatchRequest">
+		<from uri="quartz://pciBatchRequest?cron=0+15+6+*+*+?" />
+		<setBody>
+			<constant>
+				SELECT 
+				ec.external_case_no as external_case_no,
+				CONVERT(VARCHAR(8000), DecryptByCert(Cert_ID('STEP_ENCRYPTION_CERTIFICATE'), account_no)) as account_no,
+				CONVERT(VARCHAR(8000), DecryptByCert(Cert_ID('STEP_ENCRYPTION_CERTIFICATE'), cc_card_holder_name)) as cc_card_holder_name,
+				CONVERT(VARCHAR(8000), DecryptByCert(Cert_ID('STEP_ENCRYPTION_CERTIFICATE'), cc_expiry_date)) as cc_expiry_date
+			
+				FROM case_application_payment cap, eform_case ec, carrier c, carrier_product_preference cpp
+				
+				WHERE cap.cwap_payment_type='CC'
+				AND cap.pci_token is null
+				AND cap.case_id = ec.case_id
+				AND ec.carrier_id=c.carrier_id
+				AND c.carrier_code='GLIC'
+				AND c.carrier_id=cpp.carrier_id
+				AND ec.product_id=cpp.product_id
+				AND cpp.preference_category='CC_STORAGE'
+				AND cpp.preference_code='PARTIAL'
+				AND ec.external_case_no NOT IN (SELECT jp.param_name FROM job_param jp, job j WHERE j.job_id=jp.job_id
+													AND j.job_code='PTBRESP' AND j.route='PCI_TOKEN_BATCH_RESPONSE');
+			</constant>
+		</setBody>
+		<to uri="jdbc:stepDataSource" />
+		<to uri="bean:gerberPCIBatchRequestProcessor" />
+		<choice>
+			<when>
+				<xpath>$XML_CREATED = 'true'</xpath>
+				<to uri="file://{{rootOutputDirectory}}/GLIC/outbound/pciToken/?fileName=${in.header.fileName}.xml"/>
+			</when>
+		</choice>
+	</route>
+	
+	<route id="gerberPCIBatchRequestEncrypt">
+		<from uri="file://{{rootOutputDirectory}}/GLIC/outbound/pciToken/?consumer.delay={{ftp.consumerDelay}}&amp;delete=true&amp;moveFailed=.error" />
+		<setHeader headerName="cryptoKeyFile">
+			<simple>${properties:glic.ftp.pgpkeyfile}</simple>
+		</setHeader>
+		<to uri="bean:PGPEncryptProcessor" />
+		<to uri="file://{{rootOutputDirectory}}/GLIC/outbound/pciToken/encrypted/"/>
+	</route>
+	
+	<route id="gerberPCIBatchRequestFtpDrop">
+		<from uri="file://{{rootOutputDirectory}}/GLIC/outbound/pciToken/encrypted/?consumer.delay={{ftp.consumerDelay}}&amp;move=.done&amp;moveFailed=.error" />
+		<to uri="{{glic.ftp.protocol}}://{{glic.ftp.user}}@{{glic.ftp.address}}/{{glic.ftp.folder.pci.token.request}}?password={{glic.ftp.password}}&amp;binary=true" />
+	</route>
+	
+	<route id="gerberPCIBatchResponseFtpPickup">
+		<from uri="{{glic.ftp.protocol}}://{{glic.ftp.user}}@{{glic.ftp.address}}/{{glic.ftp.folder.pci.token.response}}?consumer.delay={{ftp.consumerDelay}}&amp;password={{glic.ftp.password}}&amp;binary=true&amp;localWorkDirectory=c:/temp/&amp;include=STEP_Token_Req_.*_resp.*.pgp&amp;move=Archive" />
+		<to uri="file://{{rootOutputDirectory}}/GLIC/inboundencrypted/pciToken" />
+	</route>
+
+	<route id="gerberPCIBatchResponseFtpPickupDecrypt">
+		<from uri="file://{{rootOutputDirectory}}/GLIC/inboundencrypted/pciToken?consumer.delay={{ftp.consumerDelay}}&amp;move=.done&amp;moveFailed=.error" />
+		<setHeader headerName="cryptoKeyFile">
+			<simple>${properties:glic.ftp.inbound.pgpkeyfile}</simple>
+		</setHeader>
+		<setHeader headerName="cryptoKeyFilePassword">
+			<simple>${properties:glic.ftp.inbound.pgpkeyfilePassword}</simple>
+		</setHeader>
+		<to uri="bean:PGPDecryptProcessor" />
+		<to uri="file://{{rootOutputDirectory}}/GLIC/inbound/pciToken" />
+	</route>
+
+	<route id="gerberPCIBatchResponse">
+		<from uri="file://{{rootOutputDirectory}}/GLIC/inbound/pciToken?readLock=fileLock&amp;delete=true" />
+		<to uri="bean:gerberPCIBatchResponseProcessor" />
+	</route>
+	
+<!-- PCI Routes End -->	
+   
+   <route id="gerberGenerateEmail">
+       <from uri="direct:gerberGenerateEmail"/>
+       <to uri="bean:gerberEmailProcessor"/>
+       <doTry>
+       <to uri="cxf:bean:gerberCallEmailGenerationRequest"/>
+        <doCatch>
+            <exception>org.apache.cxf.transport.http.HTTPException</exception>
+            <exception>org.apache.camel.ExchangeTimedOutException</exception>
+            <to uri="bean:caseActivityLogProcessor"/>
+        </doCatch>       
+       </doTry>       
+       <to uri="bean:gerberEmailResponseProcessor"/>
+   </route>
+   
+<!--START: Marketing Report Generation -->
+     <route id="marketingReportGeneration">
+		<from uri="quartz://marketingReportGeneration?cron=0+0+6+*+*+?" />
+		<setBody>
+			<el>
+			    SELECT 'CREATED ON' as CREATED_ON, 'MARKETING KEY' as MARKETING_KEY,'CASE SOURCE'
+			    as CASE_RESOURCE,'CONTACT METHOD' as CONTACT_METHOD, 'PRODUCT' as PRODUCT, 'AGENT CODE' as AGENT_CODE,
+				'APPLICATION COUNT' as APPLICATION_COUNT  UNION ALL  
+				SELECT  CONVERT(varchar(25), created_on ) CREATED_ON, marketing_key MARKETING_KEY,
+				case_source , contact_method , ISNULL(product,'TL') PRODUCT, display_code, CONVERT(varchar(15), COUNT(*)) acount 
+				FROM view_case_product_agent_key WHERE carrier_id =(SELECT carrier_id  FROM carrier WHERE carrier_code='GLIC')
+				AND created_on BETWEEN CONVERT(DATE,ISNULL((SELECT TOP 1 executed_on FROM dbo.job 
+				WHERE route='marketing_report' AND job_code='MARKREPO' AND status ='SUCCESS' AND 
+				carrier_id = (SELECT carrier_id  FROM carrier WHERE carrier_code='GLIC') ORDER BY executed_on DESC), CONVERT(DATE,'1800-01-01')))
+		 		AND GETDATE() -1 GROUP BY created_on, marketing_key, product, case_source, contact_method, display_code ;
+			</el>
+		</setBody>
+		<to uri="jdbc:stepDataSource" />
+		<marshal>
+			<csv delimiter="," />
+		</marshal>
+		<to
+			uri="file://{{rootOutputDirectory}}/GLIC/outbound/Report/marketing/?fileName=STEP_T_Svd_Apps_V1_D${date:now:yyyyMMdd}.csv" />
+	</route>
+<!--END: Marketing Report Generation -->
+
+<!--START: Case in UW with no activity in the last 45 days--> 
+    <route id="unwNoActivityReportGeneration">
+	  <from uri="quartz://unwNoActivityReportGeneration?cron=0+0+6+*+*+?" />
+		<setBody>
+			<el>
+				SELECT 'CASE ID' as CASE_ID, 'CREATED ON' as CREATED_ON,'MODIFIED ON' as MODIFIED_ON,'CASE NO' as CASE_NO,'CURRENT OU' as CURRENT_OU,
+				'USER NAME' as USER_NAME ,'STATUS' as STATUS,'CONTRACT LOCALE' as CONTRACT_LOCALE UNION ALL  
+                SELECT CONVERT(VARCHAR(15),case_id) CASE_ID, CONVERT(VARCHAR(25),created_on) CREATED_ON, CONVERT(VARCHAR(25), modified_on) MODIFIED_ON,
+                external_case_no as CASE_NO,(select ou_name from security_ou where ou_id= current_ou_id) CURRENT_OU,(select username from security_user 
+                where user_id= uw_owner_user_id) USER_NAME, STATUS, CONTRACT_LOCALE	FROM eform_case WHERE status='SUBMITTED' AND uw_case_status='SUBMITTED' 
+				AND (is_archived IS NULL OR is_archived =0) AND CAST(modified_on AS DATE) &lt; CAST(GETDATE()-45 AS DATE)
+			</el>
+		</setBody>
+		<to uri="jdbc:stepDataSource" />
+		<marshal>
+			<csv delimiter="," />
+		</marshal>
+		<to
+			uri="file://{{rootOutputDirectory}}/GLIC/outbound/Report/uw/?fileName=STEP_T_UNWNOACTIVITY_Apps_V1_D${date:now:yyyyMMdd}.csv" />
+	</route>
+<!--END: Case in UW with no activity in the last 45 days--> 
+
+<!--START: Cases submitted yesterday-->
+	<route id="caseSubmittedReportGeneration">
+	  <from uri="quartz://caseSubmittedReportGeneration?cron=0+2+6+*+*+?" />
+		<setBody>
+			<el>
+			select 'CASE ID' as CASE_ID, 'EXTERNAL CASE NO' as EXTERNAL_CASE_NO,'SUBMITTED ON' AS SUBMITTED_ON,'CURRENT OU' as CURRENT_OU,'USER NAME'
+			as USER_NAME UNION ALL	SELECT CONVERT(VARCHAR(15),c.case_id) CASE_ID,c.external_case_no EXTERNAL_CASE_NO,CONVERT(VARCHAR(25), CAST(submit_date AS DATE))
+			SUBMITTED_ON,(select ou_name from security_ou where	ou_id=c.current_ou_id) CURRENT_OU,	(select username from security_user where user_id=c.uw_owner_user_id) USER_NAME 
+			FROM eform_case c	WHERE CAST(c.submit_date AS DATE) BETWEEN	CONVERT	(DATE,ISNULL((SELECT TOP 1 executed_on FROM dbo.job WHERE route='uw_report' AND
+			job_code='SUBMITTEDREPO' AND status ='SUCCESS' AND	carrier_id = (SELECT carrier_id FROM carrier WHERE carrier_code='GLIC') ORDER BY executed_on DESC), 
+			CONVERT(DATE,'1800-01-01'))) AND GETDATE() -1
+			</el>
+		</setBody>
+		<to uri="jdbc:stepDataSource" />
+		<marshal>
+			<csv delimiter="," />
+		</marshal>
+		<to
+			uri="file://{{rootOutputDirectory}}/GLIC/outbound/Report/uw/?fileName=STEP_T_SUBMITTED_Apps_V1_D${date:now:yyyyMMdd}.csv" />
+	</route>
+<!--END: Cases submitted yesterday-->
+
+<!--START: Cases final actioned yesterday-->
+	<route id="caseFinalActionedReportGeneration">
+	  <from uri="quartz://caseFinalActionedReportGeneration?cron=0+4+6+*+*+?" />
+		<setBody>
+		<el>
+			select 'CASE ID' as CASE_ID, 'EXTERNAL CASE NO' as EXTERNAL_CASE_NO,'CURRENT OU' as CURRENT_OU,'USER NAME' as USER_NAME UNION ALL	
+			SELECT CONVERT(VARCHAR(15) ,a.case_id) CASE_ID,c.external_case_no EXTERNAL_CASE_NO,(select ou_name from security_ou where ou_id=c.current_ou_id)
+			CURRENT_OU,	(select username from security_user where user_id=c.uw_owner_user_id) USER_NAME FROM eform_case c, eform_case_activity a
+			WHERE a.case_id = c.case_id AND a.description LIKE 'final action%' AND a.activity_type='ACTIVITY' AND  CAST(a.created_on AS DATE) 
+			BETWEEN CONVERT (DATE,ISNULL((SELECT TOP 1 executed_on FROM dbo.job WHERE route='uw_report' AND job_code='FINALACTIONREPO' 
+			AND status ='SUCCESS' AND carrier_id = (SELECT carrier_id  FROM carrier WHERE carrier_code='GLIC') ORDER BY executed_on DESC), 
+			CONVERT(DATE,'1800-01-01'))) AND GETDATE() -1
+		</el>
+		</setBody>
+		<to uri="jdbc:stepDataSource" />
+		<marshal>
+			<csv delimiter="," />
+		</marshal>
+		<to
+			uri="file://{{rootOutputDirectory}}/GLIC/outbound/Report/uw/?fileName=STEP_T_FINALACTION_Apps_V1_D${date:now:yyyyMMdd}.csv" />
+	</route>
+<!--END: Cases final actioned yesterday-->
+
+<!--START: Cases with new incoming files yesterday-->
+	<route id="caseInboundFileReportGeneration">
+	  <from uri="quartz://caseInboundFileReportGeneration?cron=0+6+6+*+*+?" />
+		<setBody>
+		<el>
+			SELECT 'CASE NO' as CASE_NO,'RCVD_DATE' AS RCVD_DATE,'DESCRIPTION' AS DESCRIPTION,'ARCHIVED' AS ARCHIVED,'USER NAME' AS USER_NAME
+			UNION ALL  SELECT c.external_case_no CASE_NO, CONVERT(VARCHAR(25),CAST(a.created_on AS DATE)) AS RCVD_DATE, a.description DESCRIPTION,
+			CASE WHEN c.is_archived = 1 THEN 'Yes' ELSE 'No' END ARCHIVED, (SELECT username FROM security_user WHERE user_id=c.uw_owner_user_id)
+			USER_NAME   FROM dbo.eform_case_activity a, eform_case c WHERE a.carrier_activity_code='INBOUNDFILE' AND a.requires_attention =1
+			AND a.case_id = c.case_id  AND  CAST(a.created_on AS DATE)  BETWEEN CONVERT (DATE,ISNULL((SELECT TOP 1 executed_on FROM dbo.job 
+			WHERE route='uw_report' AND job_code='INBOUNDFILEREPO' AND status ='SUCCESS' 
+			AND carrier_id = (SELECT carrier_id  FROM carrier WHERE carrier_code='GLIC') ORDER BY executed_on DESC), 
+			CONVERT(DATE,'1800-01-01'))) AND GETDATE() -1				
+		</el>
+		</setBody>
+		<to uri="jdbc:stepDataSource" />
+		<marshal>
+			<csv delimiter="," />
+		</marshal>
+		<to
+			uri="file://{{rootOutputDirectory}}/GLIC/outbound/Report/uw/?fileName=STEP_T_INBOUNDFILE_Apps_V1_D${date:now:yyyyMMdd}.csv" />
+	</route>	
+<!--END: Cases with new incoming files yesterday-->
+		
+<!--START: route to drop marketing report files in ftp server -->	
+	<route id="marketingReportFtpDrop">
+		<from
+			uri="file://{{rootOutputDirectory}}/GLIC/outbound/Report/marketing/?move=.done&amp;moveFailed=.error&amp;consumer.delay={{ftp.consumerDelay}}" />
+		<setHeader headerName="cryptoKeyFile"><simple>${properties:glic.ftp.pgpkeyfile}</simple></setHeader>    
+		<to uri="bean:PGPEncryptProcessor"/>
+		<to	uri="{{glic.ftp.protocol}}://{{glic.ftp.user}}@{{glic.ftp.address}}/{{glic.ftp.folder}}?password={{glic.ftp.password}}&amp;binary=true?" />
+		<onException>
+			<exception>java.lang.Exception</exception>
+			<redeliveryPolicy maximumRedeliveries="0" />
+			<handled>
+				<constant>true</constant>
+			</handled>
+			<setProperty propertyName="ERR_MSG">
+				<constant>Unexpected exception while sending the data to GLIC
+					Server
+				</constant>
+			</setProperty>
+			<setHeader headerName="carrierCode">
+				<simple>GLIC</simple>
+			</setHeader>
+			<to uri="bean:routeJobStatusProcessor" />
+		</onException>
+		<setHeader headerName="carrierCode">
+			<simple>GLIC</simple>
+		</setHeader>
+		<to uri="bean:routeJobStatusProcessor" />
+	</route>
+<!--END: route to drop marketing report files in ftp server -->
+ 
+ <!--START: route to drop UW reports in ftp server -->	
+	<route id="uwReportFtpDrop">
+		<from
+			uri="file://{{rootOutputDirectory}}/GLIC/outbound/Report/uw/?move=.done&amp;moveFailed=.error&amp;consumer.delay={{ftp.consumerDelay}}" />
+		<setHeader headerName="cryptoKeyFile"><simple>${properties:glic.ftp.pgpkeyfile}</simple></setHeader>    
+		<to uri="bean:PGPEncryptProcessor"/>
+		<to	uri="{{glic.ftp.protocol}}://{{glic.ftp.user}}@{{glic.ftp.address}}/{{glic.ftp.folder}}?password={{glic.ftp.password}}&amp;binary=true?" />
+		<onException>
+			<exception>java.lang.Exception</exception>
+			<redeliveryPolicy maximumRedeliveries="0" />
+			<handled>
+				<constant>true</constant>
+			</handled>
+			<setProperty propertyName="ERR_MSG">
+				<constant>Unexpected exception while sending the data to GLIC
+					Server
+				</constant>
+			</setProperty>
+			<setHeader headerName="carrierCode">
+				<simple>GLIC</simple>
+			</setHeader>
+			<to uri="bean:routeJobStatusProcessor" />
+		</onException>
+		<setHeader headerName="carrierCode">
+			<simple>GLIC</simple>
+		</setHeader>
+		<to uri="bean:routeJobStatusProcessor" />
+	</route>
+ <!--END: route to drop UW reports in ftp server -->	
+   
+  <route id="glic_ftp_drop">
+  	<setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+  	<from uri="file://{{rootOutputDirectory}}/GLIC/outbound/nb/?move=.done&amp;moveFailed=.error&amp;consumer.delay={{glic.ftp.consumerDelay}}"/>
+    <setHeader headerName="cryptoKeyFile"><simple>${properties:glic.ftp.pgpkeyfile}</simple></setHeader>    
+    <to uri="bean:PGPEncryptProcessor"/>
+    <to uri="{{glic.ftp.protocol}}://{{glic.ftp.user}}@{{glic.ftp.address}}/{{glic.ftp.folder}}?password={{glic.ftp.password}}&amp;binary=true"/>
+  </route>
+ 
+  <route id="glic_uw_ftp_drop">
+  	<setHeader headerName="productCode"><simple>HFA</simple></setHeader>
+  	<from uri="file://{{rootOutputDirectory}}/GLIC/outbound/uw/?move=.done&amp;moveFailed=.error&amp;consumer.delay={{glic.ftp.consumerDelay}}"/>
+    <setHeader headerName="cryptoKeyFile"><simple>${properties:glic.ftp.pgpkeyfile}</simple></setHeader>    
+    <to uri="bean:PGPEncryptProcessor"/>
+    <to uri="{{glic.ftp.protocol}}://{{glic.ftp.user}}@{{glic.ftp.address}}/{{glic.ftp.folder}}?password={{glic.ftp.password}}&amp;binary=true"/>
+  </route>
+
+	<!-- Send inactive cases to UTS, run once every 3 min due to deadlock issues in activiti 
+		Criteria 1 selects all cases with status=NIGO and no activity within 24 hrs
+		Criteria 2 selects DTC cases with status=STARTED and no activity within 24 hrs-->
+	<route id="glic_inactive_case_to_uts">
+		<from uri="quartz://glicInactiveCase/timerName?cron=0+1,4,7,10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58+*+*+*+?" />
+		<setBody>
+			<el>
+				SELECT top 1 case_id
+				FROM eform_case 
+				WHERE ((status='NIGO' and is_locked=1 and last_user_activity_time &lt; (GETDATE()-1))
+				OR (status='STARTED' and (last_user_activity_time is null or last_user_activity_time &lt; (GETDATE()-1)) and case_source='INTERNET'))
+				AND (case_id NOT IN (SELECT case_id FROM eform_case_user where ou_class='SVC') )
+			</el>
+		</setBody>
+		<to uri="jdbc:stepDataSource" />
+		<to uri="gerberInactiveCaseProcessor"/>
+	</route>
+</routes>

@@ -1,0 +1,65 @@
+<chartOfAccounts>
+    <account>
+        <accountNumber>23011</accountNumber>
+        <category>LIABILITY</category>
+        <description>Cash Value</description>
+        <type>CASH_VALUE</type>
+    </account>
+    <account>
+        <accountNumber>17001</accountNumber>
+        <category>ASSET</category>
+        <description>Premium Income</description>
+        <type>PREMIUM_INCOME</type>
+    </account>
+    <account>
+        <accountNumber>22001</accountNumber>
+        <category>ASSET</category>
+        <description>Payment of Cash Into System</description>
+        <type>CASH</type>
+    </account>
+    <account>
+        <accountNumber>21011</accountNumber>
+        <category>LIABILITY</category>
+        <description>Tax to be paid to Federal /State Govt</description>
+        <type>COMMISSION</type>
+    </account>
+    <account>
+        <accountNumber>19001</accountNumber>
+        <category>ASSET</category>
+        <description>Advance paid for Policy</description>
+        <type>PREMIUM_SUSPENSE</type>
+    </account>
+    <account>
+        <accountNumber>20001</accountNumber>
+        <category>ASSET</category>
+        <description>Policy Reserve</description>
+        <type>RESERVE</type>
+    </account>
+    <account>
+        <accountNumber>18001</accountNumber>
+        <category>LIABILITY</category>
+        <description>Tax to be paid to Federal /State Govt</description>
+        <type>TAX</type>
+    </account>
+    <account>
+        <accountNumber>5611</accountNumber>
+        <category>EXPENSES</category>
+        <description>Maintenance Expenses</description>
+        <type>EXPENSE</type>
+    </account>
+	<account>
+        <accountNumber>5612</accountNumber>
+        <category>EXPENSES</category>
+        <description>Maintenance Expenses 2</description>
+        <type>EXPENSE</type>
+    </account>
+    <eventConfig type="PREMIUM_RECEIVED" name="PREMIUM_RECIEVED" handler="com.stepsoln.pa.accounting.DefaultHandler">
+        <debit targetAccount="TYPE=CASH" order="1" allocate="#{event.netAmount}"/>
+        <credit targetAccount="TYPE=PREMIUM_SUSPENSE" order="2" allocate="#{event.netAmount}"/>
+    </eventConfig>
+    <eventConfig type="PREMIUM_PAYMENT" name="PREMIUM_DUE"/>
+    <eventConfig type="PREMIUM_REFUND" name="PREMIUM_REFUND" handler="com.stepsoln.pa.accounting.DefaultHandler">
+    	<debit targetAccount="TYPE=PREMIUM_INCOME" order="1" allocate="#{event.netAmount}" />
+    	<credit targetAccount="TYPE=PREMIUM_SUSPENSE" order="2" allocate="#{event.netAmount}" />
+    </eventConfig>
+</chartOfAccounts>

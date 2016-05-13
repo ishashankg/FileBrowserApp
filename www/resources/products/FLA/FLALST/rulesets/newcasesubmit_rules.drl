@@ -1,0 +1,16 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import java.util.ArrayList;
+import com.stepsoln.core.db.Lookup;
+import com.stepsoln.core.rules.CaseRulesObject;
+
+
+rule "set case can be submitted"
+	when
+		theCase:CaseData()
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setOrderRequirements(true);
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setUwOuCode("FLIFE");
+	end

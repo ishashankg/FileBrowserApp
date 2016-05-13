@@ -1,0 +1,147 @@
+import com.stepsoln.core.rules.requirements.*;
+import com.stepsoln.core.rules.uw.*;
+import com.stepsoln.core.util.DateUtil;
+import org.apache.commons.lang.StringUtils;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+salience 110
+rule "0. Resolve FCRA if case created before 7/31/2013"
+when
+	    r:Requirement(status not in ("RESOLVED", "CANCELLED" ,"WAIVED"), code == "FCRA", $code:description, $s:status, group in ("NB", "UW", "SIGNATURE"))
+	    CaseData(createdDate < DateUtil.parseDate(DateUtil.FORMAT_YYYYMMDD, "20130731"))
+then
+		r.setStatus("RESOLVED");
+end
+
+salience 110
+rule "0. Require FCRA if case created after 7/31/2013 and case not auto DECLINED"
+when
+	    Requirement(status not in ("RESOLVED", "CANCELLED" ,"WAIVED"), code == "FCRA", $code:description, $s:status, group in ("NB", "UW", "SIGNATURE"))
+	    CaseData(createdDate >= DateUtil.parseDate(DateUtil.FORMAT_YYYYMMDD, "20130731"), "DECLINED" != caseStatus)
+	    CaseUwRiskCalcData(isOverridden==false)
+then
+		rulesResponse.addRequiredOnce("Requirement ("+$code+") is NOT resolved or waived (status: "+$s+")");
+		rulesResponse.addToRuleFiredList(0);
+end
+
+salience 100
+rule "1. All Requirements need to be resolved or waived for case not auto DECLINED"
+when		
+	    Requirement(status not in( "RESOLVED", "CANCELLED" ,"WAIVED"), code != "FCRA", $code:description, $s:status, group in ("NB", "UW", "SIGNATURE")) 	 
+	    CaseData("DECLINED" != caseStatus)
+	    CaseUwRiskCalcData(isOverridden==false)  
+then
+		rulesResponse.addRequiredOnce("Requirement ("+$code+") is NOT resolved or waived (status: "+$s+")");
+		rulesResponse.addToRuleFiredList(1);
+end
+
+salience 100
+rule "All 3rd party requirement orders need to be resolved or waived"
+when
+		Requirement(orderStatus in ('ORDER_PENDING', 'ERROR'), $code:description, $s:status, $os:orderStatus)
+		CaseData("DECLINED" != caseStatus)
+	    CaseUwRiskCalcData(isOverridden==false)
+then
+		rulesResponse.addRequiredOnce("Requirement (" + $code + ") has pending orders (order status: " + $os + ")");
+		rulesResponse.addToRuleFiredList(1);
+end
+
+salience 100
+rule "2. For APPROVED final action all Medical Conditions have to be reconciled"
+when
+	CaseData("APPROVED" == caseStatus)
+	Number(intValue > 0) from accumulate(CaseUwMedicalConditionGroupRulesFact("SUCCESSFUL" != autoreconciliatinoStatus),
+         init( int total = 0; ),
+         action( total += 1; ),
+         reverse( total -= 1; ),
+         result( new Integer( total ) ) )
+	
+then
+	rulesResponse.addRequiredOnce("All Medical Conditions have to be reconciled");
+	rulesResponse.addToRuleFiredList(2);
+end
+
+salience 100
+rule "3. For APPROVED final action all Medical Drugs have to be reconciled"
+when
+	CaseData("APPROVED" == caseStatus)
+	Number(intValue > 0) from accumulate(CaseUwMedicalDrugData("SUCCESSFUL" != currentStatus),
+         init( int total = 0; ),
+         action( total += 1; ),
+         reverse( total -= 1; ),
+         result( new Integer( total ) ) )
+then
+	rulesResponse.addRequiredOnce("All Medical Drug have to be reconciled");
+	rulesResponse.addToRuleFiredList(3);
+end
+
+//
+//salience 100
+//rule "4. For APPROVED final action all Demographic data have to be reconciled"
+//when
+//	CaseData("APPROVED" == caseStatus)
+//	Number(intValue > 0) from accumulate(CaseUwDemographicData("SUCCESSFUL" != currentStatus),
+//         init( int total = 0; ),
+//         action( total += 1; ),
+//         reverse( total -= 1; ),
+//         result( new Integer( total ) ) )
+//then
+//	rulesResponse.addRequiredOnce("All Demographic data have to be reconciled");
+//	rulesResponse.addToRuleFiredList(4);
+//end
+
+salience 100
+rule "5. For APPROVED final action all MIB data have to be reconciled"
+when
+	CaseData("APPROVED" == caseStatus)
+	Number(intValue > 0) from accumulate(CaseUwMibData("SUCCESSFUL" != currentStatus),
+         init( int total = 0; ),
+         action( total += 1; ),
+         reverse( total -= 1; ),
+         result( new Integer( total ) ) )
+then
+	rulesResponse.addRequiredOnce("All MIB reports have to be reconciled");
+	rulesResponse.addToRuleFiredList(5);
+end
+
+salience 100
+rule "6. For APPROVED final action final quote can not have a zero premium"
+when
+	CaseData("APPROVED" == caseStatus, premiumAmount <= 0.0)
+then
+	rulesResponse.addRequiredOnce("Final quote cannot have a zero premium amount");
+	rulesResponse.addToRuleFiredList(6);
+end
+
+salience 100
+rule "7. For APPROVED final action, not overridden, there needs to be a merica recommendation "
+when
+	CaseData("APPROVED" == caseStatus)
+	not CaseMericaRecommendationData()
+	CaseUwRiskCalcData(isOverridden==false)
+then
+	rulesResponse.addRequiredOnce("There needs to be a merica recommendation to approve a case");
+	rulesResponse.addToRuleFiredList(7);
+end
+
+salience 100
+rule "8. For APPROVED final action, not overridden, there needs to be a valid underwriting class "
+when
+	CaseData("APPROVED" == caseStatus)
+	CaseUwRiskCalcData(currentClassId==null, isOverridden==false)
+then
+	rulesResponse.addRequiredOnce("There needs to be a valid underwriting class to approve a case");
+	rulesResponse.addToRuleFiredList(8);
+end
+
+
+salience 100
+rule "9. For APPROVED final action, not overridden, there needs to be a valid risk calculation"
+when
+	CaseData("APPROVED" == caseStatus)
+	CaseUwRiskCalcData(isOverridden==false, isValid==false)
+then
+	rulesResponse.addRequiredOnce("The latest risk calculation has to be valid to approve a case");
+	rulesResponse.addToRuleFiredList(8);
+end

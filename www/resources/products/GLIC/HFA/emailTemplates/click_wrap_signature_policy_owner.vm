@@ -1,0 +1,20 @@
+<p>
+$recipientName,<br>
+Thank you for applying for $productDescription product.
+</p>
+<p>
+To complete the form(s) we need your electronic signature identifying you as the owner of the application. Please review your form(s) by clicking on the link below. You will be asked to acknowledge your acceptance of the form(s) prior to signing.
+</p>
+<p>
+<a href="$link">Click here</a> to be directed to your on-line application. 
+</p>
+<p>
+If you have any questions, please contact me.
+</p> 
+Sincerely,<br> 
+<p>
+$senderName
+</p>
+<p>
+Please do not reply to this email.
+</p>

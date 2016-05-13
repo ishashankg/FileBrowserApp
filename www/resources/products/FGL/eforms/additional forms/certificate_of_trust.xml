@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+    
+	<page title="Certificate of Trust">
+		<section title="Irrevocable Trust" style="labelWidth:100px; answerWidth:120px;" >    
+			<group associated="true" labelWidth="100px" answerWidth="120px">	
+                <question id='trust_relates'
+                  text='This relates to'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+				<question id='trust_date'
+                  text='Date'                       
+                  type='DATEF'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+			</group>
+			
+			<group associated="true" labelWidth="100px" answerWidth="120px">	
+                <question id='trust_irrevocable_date'
+                  text='If revocable, this trust became irrecovable on this date'                       
+                  type='DATEF'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+				<question id='trust_settlor_name'
+                  text='Name of Settlor/Grantor'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+			</group>
+			
+		</section>
+		
+		<section repeating="true" title="Trustee">
+		
+			<group associated="true" labelWidth="100px" answerWidth="120px">	
+                <question id='trustee_first'
+                  text='Trustee First Name'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+				<question id='trust_last'
+                  text='Trustee Last Name'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+			</group>
+		
+			<group associated="true" labelWidth="100px" answerWidth="120px">	
+                <question id='trustee_address'
+                  text='Trustee Address'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+				<question id='trust_city'
+                  text='Trustee State'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+			</group>
+			
+			<group labelWidth="100px" answerWidth="120px">	
+                <question id='trustee_state'
+                  text='Trustee State'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+			</group>
+		
+		
+		</section>
+		
+		<section>
+			<group>
+					<question id='trust_purpose'
+						  text='The purpose of the trust is'                       
+						  type='MEMO'   
+						  labelStyle='margin-left:8px'
+						  required="true"
+						  tabindex='1'/>
+					<question id='trust_annuity_meets'
+						  text='The annuity meets the purpose of the trust because' 
+						  type='MEMO'   
+						  labelStyle='margin-left:8px'
+						  required="true"
+						  tabindex='1'/>
+				
+		</group>
+		
+		</section>
+		
+		<section>
+			<group labelWidth="100px" answerWidth="120px">	
+					<question id='trust_dated'
+						  text='Date' 
+						  type='DATEF'   
+						  labelStyle='margin-left:8px'
+						  required="true"
+						  tabindex='1'/>
+
+			</group>
+			
+			<group associated="true" labelWidth="100px" answerWidth="120px">	
+                <question id='trustee_first_verify'
+                  text='Trustee First Name'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+				<question id='trust_last_verify'
+                  text='Trustee Last Name'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+			</group>
+			
+			<group associated="true" labelWidth="100px" answerWidth="120px">	
+                <question id='trustee_signed'
+                  text='Signed and Sworn On'                       
+                  type='DATEF'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+				<question id='trustee+name'
+                  text='By'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+			</group>
+			
+			<group labelWidth="100px" answerWidth="120px">	
+                <question id='notary_expires'
+                  text='Commission Expires'                       
+                  type='DATEF'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+
+			</group>
+		
+			<group associated="true" labelWidth="100px" answerWidth="120px">	
+                <question id='trustee_notary_sig'
+                  text='Notary Officer Signature'                       
+                  type='CHECKBOX'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+				<question id='notary_title_rank'
+                  text='Title and Rank'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+			</group>
+			
+			<group labelWidth="100px" answerWidth="120px">	
+                <question id='notary_expires'
+                  text='Commission Expires'                       
+                  type='DATEF'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+
+			</group>
+		</section>
+                
+	</page>
+</form>

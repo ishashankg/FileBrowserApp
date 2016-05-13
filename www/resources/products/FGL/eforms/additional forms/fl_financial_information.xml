@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<page title="Suitability Financial Information">
+		<section title="Financial Information – Owner's Household information">			
+			<group style='margin-top:10px;margin-bottom:10px;font-weight: bold'> 
+				<footer>15. Annual Income(in $)</footer>
+			</group> 
+			<group>
+				<question id='approx_annual_house_income_flsuit' text="Approximate Annual Household Income (Net After Taxes)" type='TEXT' labelWidth="400px" answerWidth="100px" mask="pnum" required="true" tabindex='1'/>
+				<question id='approx_annual_house_expenses_flsuit' text="Approximate Annual Household Expenses" type='TEXT' labelWidth="400px" answerWidth="100px" mask="pnum" required="true" tabindex='2'/>
+				<question id='annual_disposable_income_flsuit' text="Annual Disposable Household Income" labelStyle="font-weight:bold" type='TEXT' labelWidth="400px" answerWidth="100px" mask="pnum" required="true" tabindex='3'/>
+			</group>
+		</section>
+		<section>
+			<group style='border:1px solid black;margin-bottom:10px;'>
+			</group> 
+			<group style='margin-top:10px;margin-bottom:10px;font-weight: bold'> 
+				<footer>16. Sources of Income</footer>
+			</group> 
+			<group>
+				<question id='sources_of_income_flsuit' text="Sources of Income" type='CHECKBOX' labelWidth="120px" answerSet="Salary:Salary/Wages|Interest:Interest Income|Pension:Pension/IRA Payments|Trust:Trust Income|SocialSec:Social Security|Div:Dividends|OtherAnn:Other Annuities|Other:Other" tabindex='4'/>
+				<question id='sources_of_income_other_flsuit' text="Please Specify Other" labelWidth="120px" answerWidth="100px" type='TEXT' tabindex='5'>
+					<displayWhen> #{EFORMS.PERSON.sources_of_income_flsuit=="Other"} </displayWhen>
+				</question>
+			</group>
+		</section>
+		<section>
+			<group style='border:1px solid black;margin-bottom:10px;'>
+			</group> 
+			<group style='margin-top:10px;margin-bottom:10px;font-weight: bold'> 
+				<footer>17. Non-Liquid Assets(in $)</footer>
+			</group> 
+			<group>
+				<question id='home_value_flsuit' text="Value of Home" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='6'/>
+				<question id='other_real_estate_flsuit' text="Other Real Estate" type='TEXT' required="true" labelWidth="400px" answerWidth="100px"
+					mask="pnum" tabindex='7'/>
+				<question id='business_interest_flsuit' text="Business Interests" type='TEXT' required="true" labelWidth="400px" answerWidth="100px"
+					mask="pnum" tabindex='8'/>
+				<question id='qualified_plans_flsuit' text="Qualified Plans(if under 59.5)" type='TEXT' required="true" labelWidth="400px" answerWidth="100px"
+					mask="pnum" tabindex='9'/>
+				<question id='mutual_funds_penalty_flsuit' text="Mutual Funds/Brokerage Accounts not readily convertible to cash without penalty" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" name="Mutual Funds/Brokerage account (in Non-Liquid Assest section)" tabindex='10'/>
+				<question id='annuities_insurance_CV_flsuit' text="Annuities/Insurance cash values subject to surrender penalties" name="Annuities/Insurance cash values (in Non-Liquid Assest section)" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='11'/>
+				<question id='other_desc_non_liquid_flsuit' text="Other (description)" name="Other description (in Non-Liquid Assest section)" type='TEXT' required="true"  labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='12'/>
+				<question id='other_value_non_liquid_flsuit' text="Other" name="Other (in Non-Liquid Assest section)" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='13'/>
+				<question id='total_non_liquid_flsuit' text="Total Non-Liquid Assets" labelStyle="font-weight:bold" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='14'/>
+			</group>
+		</section>
+		<section>
+			<group style='border:1px solid black;margin-bottom:10px;'>
+			</group> 
+			<group style='margin-top:10px;margin-bottom:10px;font-weight: bold'> 
+				<footer>18. Liquid Assets(in $)</footer>
+			</group> 
+			<group>
+				<question id='cash_equiv_flsuit' text="Cash, Cash Equivalents" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='15'/>
+				<question id='mutual_funds_flsuit' text="Mutual Funds/Brokerage Accounts readily convertible to cash without penalty" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" name="Mutual Funds/Brokerage account (in Liquid Assest section)" tabindex='16'/>
+				<question id='short_cd_flsuit' text="Short Term CDs" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='17' />
+				<question id='bank_savings_flsuit' text="Bank/Savings Accounts" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" 			mask="pnum" tabindex='18' />
+				<question id='money_market_flsuit' text="Money Market" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='19'/>
+				<question id='annuities_insurance_no_penalty_flsuit' text="Annuities/Insurance cash values not subject to surrender penalties"
+					type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" name="Annuities/Insurance cash values (in Liquid Assest section)" tabindex='20'/>
+				<question id='other_desc_liquid_flsuit' text="Other (description)" name="Other description (liquid)" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='21'/>
+				<question id='other_value_liquid_flsuit' text="Other" type='TEXT' name="Other description (liquid)" required="true" labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='22'/>
+				<question id='total_liquid_flsuit' text="Total Liquid Assets" type='TEXT' required="true" labelWidth="400px" answerWidth="100px"
+					labelStyle="font-weight:bold" mask="pnum" tabindex='23'/>
+			</group>
+			<group style='border:1px solid black;margin-bottom:10px;'>
+			</group> 
+			<group>
+				<question id='existing_assets_flsuit' text="Existing Assets (total Non-Liquid Assets + Total Liquid Assets)" name="Existing Liquid Assets" 	labelStyle="font-weight:bold" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='24'/>
+				<question id='esiting_liquid_NW_flsuit' text="Existing Liquid Net Worth(Net assets that can readily be converted to cash equivalent, without loss of principal after all surrender charges or other deductions have been taken.)" labelStyle="font-weight:bold" labelWidth="400px" answerWidth="100px" type='TEXT' required="true" mask="pnum" name="Existing liquid assets net worth" tabindex='25'/>
+			</group>
+			<group style='border:1px solid black;margin-bottom:10px;'>
+			</group> 
+			<group>
+				<question id='total_purchase_amount_flsuit' text="19. What is the total amount of this annuity purchase?" name="What is the total amount of this annuity purchase?" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" labelStyle="font-weight:bold" mask="pnum" tabindex='26'/>
+				<question id='remaining_liquid_assets_flsuit' text="20. Remaining Liquid Assets of Owner: (after purchasing annuity)" name="Remaining Liquid Assets of Owner: (after purchasing annuity)" labelStyle="font-weight:bold" type='TEXT' required="true" labelWidth="400px" answerWidth="100px" mask="pnum" tabindex='27'/>
+			</group>
+		</section>
+		<section title="Owner Acknowledgement">
+			<group associated="true">
+				<question id='owner_sig3_flsuit' text="Owner Signature" required="true" type="CHECKBOX" labelWidth="120px" answerWidth="100px" tabindex='28'/>
+				<question id='owner_sig3_date_flsuit' text='Date Signed' required="true" type='DATEF' labelWidth="130px" answerWidth="100px" tabindex='29'/>
+			</group>
+		</section>
+	</page>
+</form>

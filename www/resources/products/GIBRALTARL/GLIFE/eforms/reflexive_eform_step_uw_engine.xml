@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>formLoad</onLoad>
+	<onSave>importData</onSave>
+	<page title='Part 3A - Beneficiary Election'>
+		<section title="1st Primary Beneficiary">
+			<group associated="true">
+				<question id='bene_first_name' text='Primary Beneficiary 1: First Name'
+					required="true" labelWidth="250px" type='TEXT' answerWidth="140px;" />
+				<question id='bene_middle_name' text='Middle' labelWidth="50px"
+					type='TEXT' answerWidth="50px;" />
+				<question id='bene_last_name' text='Last Name' labelWidth="80px"
+					required="true" type='TEXT' answerWidth="140px;" />
+			</group>
+			<group labelWidth="250px">
+				<question id='bene_relation' text='Relationship to the Insured'
+					required="true" type='LISTBOX' lookup="glic:RELATIONSHIP_TYPE"
+					answerSet="" />
+			</group>
+		</section>
+		<section title="Primary Beneficiary" repeating="true">
+			<group associated="true">
+				<question id='bene_first_name2' text='Primary Beneficiary 2: First Name'
+					labelWidth="250px" type='TEXT' answerWidth="150px;" />
+				<question id='bene_middle_name2' text='Middle' labelWidth="50px"
+					type='TEXT' answerWidth="50px;" />
+				<question id='bene_last_name2' text='Last Name' labelWidth="80px"
+					type='TEXT' answerWidth="150px;" />
+			</group>
+			<group labelWidth="250px">
+				<question id='bene_relation2' text='Relationship to the Insured'
+					type='LISTBOX' lookup="glic:RELATIONSHIP_TYPE" answerSet="" />
+			</group>
+		</section>
+		<section title="Contingent Beneficiary" repeating="true">
+			<group associated="true">
+				<question id='contingent_bene_first_name2' text='Contingent Beneficiary 2: First Name'
+					labelWidth="280px" type='TEXT' answerWidth="150px;" />
+				<question id='contingent_bene_middle_name2' text='Middle'
+					labelWidth="50px" type='TEXT' answerWidth="50px;" />
+				<question id='contingent_bene_last_name2' text='Last Name'
+					labelWidth="80px" type='TEXT' answerWidth="150px;" />
+			</group>
+			<group labelWidth="280px">
+				<question id='contingent_bene_relation2' text='Relationship to the Insured'
+					type='LISTBOX' lookup="glic:RELATIONSHIP_TYPE" answerSet="" />
+			</group>
+		</section>
+	</page>
+	<page title="Part 3B - Medical Questions of Proposed Insured">
+		<section>
+			<group labelWidth="500px">
+				<question id='weight_chg_ind'
+					text='Has your weight changed by more than 10 pounds in the past year?'
+					required="true" type='RADIO' answerSet='Y|N' />
+			</group>
+		</section>
+		<section title="Other Weight Change">
+			<displayWhen>#{EFORM.weightchg_reasons=="OTHER_WC"}</displayWhen>
+			<group labelWidth="400px">
+				<question id='otherwccompleter' text='Please provide explanation'
+					type='TEXT' answerWidth="350px;" required="true" />
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<header>1. To the best of your knowledge and belief, has the Proposed Insured been diagnosed, treated, hospitalized or prescribed medication by a medical professional for any of the following:</header>
+				<question id='m1a'
+					text='a. Heart disorder, including a heart attack (myocardial infarction), angina, irregular heart beat or abnormal heart rhythm (arrhythmia), chest pain, hypertension (high blood pressure), heart murmur, any blockage or narrowing of the arteries, any aneurysm, stroke or transient ischemic attack (TIA or mini-stroke) or rheumatic fever?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m1acompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m1a=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m1acompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="400px">
+			</group>
+
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m1a=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='m1acompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m1acompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="400px">
+			</group>
+		</section>
+
+		<section>
+			<group labelWidth="800px">
+				<question id='m1b'
+					text='b. Diabetes, high blood sugar or sugar in the urine, anemia, blood or platelet disorders (excluding HIV), elevated cholesterol, liver disease, hemophilia, kidney disease (other than kidney stones), protein or blood in the urine, Crohn&apos;s disease, ulcerative colitis, disease or disorder of the stomach, bladder or prostate, other intestinal or digestive tract disease or pancreatitis?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m1bcompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m1b=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m1bcompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m1b=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='m1bcompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m1bcompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m1c'
+					text='c. Internal cancer or tumor, cyst, melanoma, lymphoma, leukemia, disorder of lymph nodes?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m1ccompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m1c=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m1ccompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m1c=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='m1ccompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m1ccompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m1d'
+					text='d. Alzheimer&apos;s disease, dementia, memory loss, seizures, mental retardation, including Down&apos;s Syndrome, multiple sclerosis (MS), muscular dystrophy (MD), Parkinson&apos;s disease, amyotrophic lateral sclerosis (ALS), any brain or nervous system disorder, cerebral palsy or any form of muscular atrophy?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m1dcompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m1d=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m1dcompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="500px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m1d=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='m1dcompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m1dcompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m1e'
+					text='e. Sleep apnea, cystic fibrosis, emphysema or chronic obstructive lung disease (COPD), shortness of breath, asthma or other respiratory disorder, rheumatoid arthritis, paralysis or connective tissue disorder (including lupus or scleroderma)?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m1ecompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m1e=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m1ecompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m1e=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='m1ecompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m1ecompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m1f'
+					text='f. Dizziness, fainting spells, anxiety, depression or eating disorders?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="FL" and CASE.contractLocale!="AR" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="AZ" and CASE.contractLocale!="NY"}</displayWhen>
+				</question>
+				<question id='m1fCT'
+					text='f. Dizziness, fainting spells, anxiety, depression, eating disorders or any other psychological or emotional disorder?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="FL" or CASE.contractLocale=="AR" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="AZ" or CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="200px">
+				<question id='m1fcompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m1f=="Y" or EFORM.m1fCT=="Y"}</displayWhen>
+				</question>
+			</group>
+			
+			<group parentQuestionId="m1fcompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m1f=="Y" or EFORM.m1fCT=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='m1fcompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m1fcompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m1g'
+					text='g. Arthritis, rheumatism, or any disease or disorder of the back, spine, bones, joints or muscles?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m1gcompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m1g=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m1gcompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m1g=="Y"}</displayWhen>
+			<group labelWidth="800px">
+				<question id='m1gcompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m1gcompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m1h'
+					text='h. Varicose veins, varicose ulcer or phlebitis, syphilis or a hernia?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m1hcompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m1h=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m1hcompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m1h=="Y"}</displayWhen>
+			<group labelWidth="800px">
+				<question id='m1hcompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m1hcompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m1i'
+					text='i. Any disease or disorder of the eyes, ears, nose or throat?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m1icompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m1i=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m1icompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m1i=="Y"}</displayWhen>
+			<group labelWidth="800px">
+				<question id='m1icompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m1icompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m1j'
+					text='j. Been advised by a member of the medical profession to get specified medical care which was not completed, such as any hospitalization, surgery or diagnostic test, except those tests related to Human Immunodeficiency Virus (AIDS virus)?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="FL" and CASE.contractLocale!="AR" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="AZ" and CASE.contractLocale!="NY"}</displayWhen>
+				</question>
+				<question id='m1jCT'
+					text='j. Any other illness or injury requiring medical attention or blood transfusions?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="FL" or CASE.contractLocale=="AR" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="AZ" or CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="200px">
+				<question id='m1jcompleter' text='Please specify' type='TEXT'
+					answerWidth="350px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m1j=="Y" or EFORM.m1jCT=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m1jcompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m1j=="Y" or EFORM.m1jCT=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='m1jcompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m1jcompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+	</page>
+	<page title="Part 3C - Additional Questions">
+		<section>
+			<group labelWidth="800px">
+				<question id='m2'
+					text='2. To the best of your knowledge and belief, has the Proposed Insured had a natural parent or sibling who was diagnosed with or died of cancer, heart disease or diabetes prior to the age 60?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+		</section>
+		<section title="Family History" repeating="true">
+			<displayWhen>#{EFORM.m2=="Y"}</displayWhen>
+			<group labelWidth="230px">
+				<question id='family_disorder' text='Family member&apos;s disease'
+					type='RADIO' answerSet='Cancer|Diabetes|Heart Disease' required="true" />
+			</group>
+			<group labelWidth="230px">
+				<question id='family_relation' text='Relationship to the Insured'
+					type='RADIO' answerSet='Natural Parent|Sibling' required="true" />
+				<question id='family_age_of_death' text='Age diagnosed or Age at death'
+					type='TEXT' validation='number' required="true" />
+				<question id='family_status' text='Family member&apos;s status'
+					type='RADIO' answerSet='Living|Deceased' required="true" />
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m3'
+					text='3. To the best of your knowledge and belief, has the Proposed Insured ever been diagnosed or treated by a medical professional for acquired immune deficiency syndrome (AIDS), AIDS-related complex (ARC) or antibodies to human T-lymphotropic virus type III (HTLV)?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale!="FL"and CASE.contractLocale!="CA" and CASE.contractLocale!="CT" and CASE.contractLocale!="NY"}</displayWhen>
+				</question>
+				<question id='m3FL'
+					text='3. To the best of your knowledge and belief, has the Proposed Insured tested positive for exposure to the Human Immunodeficiency Virus (HIV) infection or been diagnosed as having AIDS Related Complex (ARC) or Acquired Immune Deficiency Syndrome (AIDS) caused by the HIV infection or other sickness or condition derived from such infection?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="FL"}</displayWhen>
+				</question>
+				<question id='m3CA'
+					text='3. To the best of your knowledge and belief, has the Proposed Insured ever been diagnosed or treated by a medical professional for acquired immune deficiency syndrome (AIDS), or AIDS-related complex (ARC)?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="CA"}</displayWhen>
+				</question>
+				<question id='m3CT'
+					text='3. To the best of your knowledge and belief, has the Proposed Insured ever been diagnosed or treated by a medical professional for acquired immune deficiency syndrome (AIDS), AIDS-related complex (ARC) or AIDS related conditions?.'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="CT"}</displayWhen>
+				</question>
+				<question id='m3NY'
+					text='3.  To the best of your knowledge and belief, has the Proposed Insured ever been diagnosed or treated by a licensed member of the medical profession for acquired immune deficiency syndrome (AIDS)?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="200px">
+				<question id='m3completer' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m3=="Y" or EFORM.m3FL=="Y" or EFORM.m3CA=="Y" or EFORM.m3CT=="Y" or EFORM.m3NY=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m3completer" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m3=="Y" or EFORM.m3FL=="Y" or EFORM.m3CA=="Y" or EFORM.m3CT=="Y" or EFORM.m3NY=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='m3completer1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m3completer1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<header>4. During the past 5 years, has the proposed insured:</header>
+				<question id='m4a'
+					text='a. Been a patient in any hospital, clinic, dependency program, halfway house or other medical facility?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m4acompleter'
+					text='Please enter the MEDICAL condition for which you were admitted'
+					type='TEXT' answerWidth="500px;" required="true"
+					autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m4a=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m4acompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m4a=="Y"}</displayWhen>
+			<group labelWidth="300px">
+				<question id='m4acompleter1'
+					text='Please enter the MEDICAL condition for which you were admitted'
+					type='TEXT' answerWidth="500px;" required="true"
+					autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m4acompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m4b'
+					text='b. Used controlled substances such as cocaine, heroin, amphetamines, barbiturates, hallucinogens, or any other controlled substance not prescribed by a physician?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m4bcompleter' text='Please enter the substance used'
+					type='TEXT' answerWidth="500px;" required="true">
+					<displayWhen>#{EFORM.m4b=="Y"}</displayWhen>
+				</question>
+			</group>
+
+			<group labelWidth="800px">
+				<question id='m4c'
+					text='c. Been treated by a physician or been advised by a physician to seek treatment for drug or alcohol use?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m4ccompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m4c=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m4ccompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m4c=="Y"}</displayWhen>
+			<group labelWidth="800px">
+				<question id='m4ccompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m4ccompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m4d'
+					text='d. Been advised to have any test (except HIV tests), treatment, surgery, hospitalization or consultation with a medical professional which has not been completed or for which results have not been received?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m4dcompleter'
+					text='Please enter the MEDICAL condition or test which has not been completed or for which results have not been received'
+					type='TEXT' answerWidth="500px;" required="true">
+					<displayWhen>#{EFORM.m4d=="Y" and CASE.contractLocale!="NY"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="400px">
+				<question id='m4d_treatment_details' text='Type of Treatment, Test, or Procedure:'
+					type='TEXT' required="true" answerWidth="350px;">
+					<displayWhen>#{EFORM.m4d=="Y" and CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+				<question id='m4d_date_of_treatment' text='Date of Treatment, Test, or Prodecure:'
+					type='DATEF' required="true">
+					<displayWhen>#{EFORM.m4d=="Y" and CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+				<question id='m4d_condition_treated'
+					text='For what condition is this test being performed?' type='TEXT'
+					required="true" answerWidth="350px;">
+					<displayWhen>#{EFORM.m4d=="Y" and CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="800px">
+				<question id='m4e'
+					text='e. Had any special examinations or laboratory tests such as X-rays, electrocardiograms, blood tests or urine tests (other than AIDS-related blood tests)?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m4ecompleter'
+					text='Please enter the examination or laboratory test' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m4e=="Y"}</displayWhen>
+				</question> 
+			</group>
+			
+			<group parentQuestionId="m4ecompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m4e=="Y"}</displayWhen>
+			<group labelWidth="400px">
+				<question id='m4ecompleter1'
+					text='Please enter the examination or laboratory test' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m4ecompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m4f'
+					text='f. Had a life, health or hospital expense insurance application postponed, rated up, ridered or declined or had insurance renewal or reinstatement refused?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="250px">
+ 				<question id='m4fcompleter' text='Please provide explanation'
+					type='TEXT' answerWidth="500px;" required="true">
+					<displayWhen>#{EFORM.m4f=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="800px">
+				<question id='m4g'
+					text='g. Received benefit payments for accident or sickness, or applied to any government or insurance organization for such benefits?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="250px">
+				<question id='m4gcompleter' text='Please provide explanation'
+					type='TEXT' answerWidth="500px;" required="true">
+					<displayWhen>#{EFORM.m4g=="Y" and CASE.contractLocale!="NY"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="500px">
+				<question id='m4g_type_of_policy' text='Type of Policy:'
+					type='TEXT' required="true">
+					<displayWhen>#{EFORM.m4g=="Y" and CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+				<question id='m4g_date_of_app_or_benefits' text='Date of application or receipt of benefits:'
+					type='DATEF' required="true">
+					<displayWhen>#{EFORM.m4g=="Y" and CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="800px">
+				<question id='m5a'
+					text='5. a. To the best of your knowledge and belief, has the Proposed Insured ever been diagnosed or treated by a member of the medical profession for any disorder of any genital or reproductive organ?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="AR" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="AZ" and CASE.contractLocale!="NY"}</displayWhen>
+				</question>
+				<question id='m5aCT'
+					text='5. a. To the best of your knowledge and belief, has the Proposed Insured ever had any disorder of any genital or reproductive organ?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="AR" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="AZ" or CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="250px">
+				<question id='m5acompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+					<displayWhen>#{EFORM.m5a=="Y" or EFORM.m5aCT=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m5acompleter" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.m5a=="Y" or EFORM.m5aCT=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='m5acompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:diagnosis">
+				</question>
+			</group>
+			<group parentQuestionId="m5acompleter1" dynamicQuestionContext="uw:diagnosis"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px" readonly="#{CASE.primaryApplicant.gender == 1}">
+				<question id='m5b'
+					text='   b. To the best of your knowledge and belief, is the proposed insured currently pregnant?'
+					type='RADIO' answerSet='Y|N'
+					defaultValue="#{CASE.primaryApplicant.gender==1 ? 'N' : ''}" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m5bcompleter' text='If YES, date child is expected (MM/DD/YYYY)'
+					type='DATEF' answerWidth='100px;'>
+					<displayWhen>#{EFORM.m5b=='Y'}</displayWhen>
+				</question>
+			</group>
+			
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m6a'
+					text='6. a. During the past 5 years, has the Proposed Insured had their driver&apos;s license suspended or revoked, been convicted of or pled "guilty" to driving under the influence (OWI/DUI/DWI) or to more than 3 moving violations?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="250px">
+				<question id='m6acompleter' text='Please provide explanation'
+					type='TEXT' answerWidth="500px;" required="true">
+					<displayWhen>#{EFORM.m6a=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="800px">
+				<question id='m6b'
+					text='   b. During the past 5 years, has the Proposed Insured been convicted of a felony, or been on probation/parole, or currently have charges pending?'
+					type='RADIO' answerSet='Y|N' required="true" >
+					<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="NY"}</displayWhen>
+				</question>
+				<question id='m6bCT'
+					text='   b. During the past 5 years, has the Proposed Insured been convicted of a felony, or been on probation/parole?'
+					type='RADIO' answerSet='Y|N' required="true" >
+					<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="250px">
+				<question id='m6bcompleter' text='Please provide explanation'
+					type='TEXT' answerWidth="500px;" required="true">
+					<displayWhen>#{EFORM.m6b=="Y" or EFORM.m6bCT=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="800px">
+				<question id='m7'
+					text='7. During the next 12 months, does the Proposed Insured contemplate residence or travel outside of the U.S.A.?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale!="CA" and CASE.contractLocale!="FL"}</displayWhen>
+				</question>
+				<question id='m7CA'
+					text='7. During the next 12 months, does the Proposed Insured contemplate residence outside of the U.S.A.?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="CA"}</displayWhen>
+				</question>
+				<question id='m7FL' type='HIDDEN' defaultValue="N" />
+			</group>
+			<group labelWidth="400px">
+				<question id='m7completer' text='Please specify the country'
+					type='TEXT' answerWidth="350px;" required="true"
+					autocompleteLookup="uw:COUNTRIES">
+					<displayWhen>#{EFORM.m7=="Y" or EFORM.m7CA=="Y"}</displayWhen>
+				</question>
+			</group>
+			
+		</section>
+		<section title="Additional Activities" repeating="true">
+			<displayWhen>#{EFORM.m7=="Y" or EFORM.m7CA=="Y"}</displayWhen>
+			<group labelWidth="500px">
+				<question id='m7completer1' text='Please specify the country'
+					type='TEXT' answerWidth="350px;" required="true"
+					autocompleteLookup="uw:COUNTRIES">
+				</question>
+				<question id='m7reason1' text='What is the reason for your travel?'
+					type='RADIO' answerSet='Business|Pleasure' required="true">
+				</question>
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m8'
+					text='8. Does the Proposed Insured belong to or has the Proposed Insured entered into a written agreement to become a member of the National Guard or Military?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="FL" and CASE.contractLocale!="AR" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="AZ" and CASE.contractLocale!="NY"}</displayWhen>
+				</question>
+				<question id='m8CT'
+					text='8. Does the Proposed Insured belong to or intend to join the National Guard or Military?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="AR" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="AZ" or CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+				<question id='m8FL'
+					text='7. Does the Proposed Insured belong to or intend to join the National Guard or Military?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="FL"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="400px">
+				<question id='military_status' text='Please specify your status'
+					type='RADIO' answerSet='Active|Reserve|Intend to join' required="true">
+					<displayWhen>#{EFORM.m8=="Y" or EFORM.m8CT=="Y" or EFORM.m8FL=="Y"}</displayWhen>
+				</question>
+				<question id='enrollment_date' text='(Anticipated or Actual) Enrollment Date:'
+					type='DATEF' answerWidth="350px;" required="true">
+					<displayWhen>#{EFORM.m8=="Y" or EFORM.m8CT=="Y" or EFORM.m8FL=="Y"}</displayWhen>
+				</question>
+				<question id='deployed_overseas'
+					text='Are you currently deployed overseas or will you be deployed overseas in the next 12 months?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{EFORM.m8=="Y" or EFORM.m8CT=="Y" or EFORM.m8FL=="Y"}</displayWhen>
+				</question>
+				<question id='military_branch' text='Please select Branch of Military Service'
+					type='LISTBOX' answerSet=':Please select a branch|Army|Navy|Marines|Air Force'
+					required="true">
+					<displayWhen>#{EFORM.m8=="Y" or EFORM.m8CT=="Y" or EFORM.m8FL=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="800px">
+				<question id='m9a'
+					text='9. a. Within the past 5 years has the Proposed Insured flown other than as a fare-paying passenger, or is the Proposed Insured contemplating or planning to fly, as a pilot, crew member or student within the next 2 years?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="FL" and CASE.contractLocale!="AR" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="AZ" and CASE.contractLocale!="NY"}</displayWhen>
+				</question>
+				<question id='m9aFL'
+					text='8. a. Within the past 2 years has the Proposed Insured flown other than as a fare-paying passenger, or, within the next 2 years is the Proposed Insured contemplating or planning to fly, as a pilot, crew member or student?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="FL"}</displayWhen>
+				</question>
+				<question id='m9aCT'
+					text='9. a. Within the past 5 years has the Proposed Insured flown other than as a fare-paying passenger, or is the Proposed Insured contemplating or planning to fly, as a pilot, crew member or student?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="AR" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="AZ" or CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='m9acompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:AVOCA">
+					<displayWhen>#{EFORM.m9a=="Y" or EFORM.m9aCT=="Y" or EFORM.m9aFL=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m9acompleter" dynamicQuestionContext="uw:AVOCA"
+				labelWidth="400px">
+			</group>
+		</section>
+		<section title="Additional Activities" repeating="true">
+			<displayWhen>#{EFORM.m9a=="Y" or EFORM.m9aCT=="Y" or EFORM.m9aFL=="Y"}</displayWhen>
+			<group>
+				<question id='m9acompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:AVOCA">
+				</question>
+			</group>
+			<group parentQuestionId="m9acompleter1" dynamicQuestionContext="uw:AVOCA"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section>
+			<group labelWidth="800px">
+				<question id='m9b'
+					text='   b. Within the past 5 years has the Proposed Insured participated in, or in the next 2 years contemplate or plan to participate in scuba diving, skin diving, sky diving/parachuting, hang gliding, ballooning, bungee jumping, motorcycle racing, mountain climbing or cave exploration?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="AR" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="AZ" and CASE.contractLocale!="NY"}</displayWhen>
+				</question>
+				<question id='m9bCT'
+					text='   b. Within the past 5 years has the Proposed Insured participated in, or contemplating or planning participation in any hazardous sport or activities?'
+					type='RADIO' answerSet='Y|N' required="true">
+					<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="AR" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="AZ" or CASE.contractLocale=="NY"}</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='m9bcompleter' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:AVOCA">
+					<displayWhen>#{EFORM.m9b=="Y" or EFORM.m9bCT=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m9bcompleter" dynamicQuestionContext="uw:AVOCA"
+				labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Activities" repeating="true">
+			<displayWhen>#{EFORM.m9b=="Y" or EFORM.m9bCT=="Y"}</displayWhen>
+			<group>
+				<question id='m9bcompleter1' text='Please specify' type='TEXT'
+					answerWidth="500px;" required="true" autocompleteLookup="uw:AVOCA">
+				</question>
+			</group>
+			<group parentQuestionId="m9bcompleter1" dynamicQuestionContext="uw:AVOCA"
+				labelWidth="400px">
+			</group>
+		</section>
+	</page>
+	<page title="Part 3D - Primary Physician Questions">
+		<displayWhen>#{EFORM.m1a=="Y" or EFORM.m1b=="Y" or EFORM.m1c=="Y" or EFORM.m1d=="Y" or 
+           EFORM.m1e=="Y" or EFORM.m1f=="Y" or EFORM.m1fCT=="Y" or EFORM.m1g=="Y" or EFORM.m1h=="Y" or 
+           EFORM.m1i=="Y" or EFORM.m1j=="Y" or EFORM.m1jCT=="Y" or EFORM.m2=="Y" or EFORM.m3=="Y" or EFORM.m3FL=="Y" or EFORM.m3CA=="Y" or EFORM.m3NY=="Y" or 
+           EFORM.m4a=="Y" or EFORM.m4b=="Y" or EFORM.m4c=="Y" or EFORM.m4d=="Y" or 
+           EFORM.m4e=="Y" or EFORM.m4f=="Y" or EFORM.m4g=="Y" or EFORM.m5a=="Y" or EFORM.m5aCT=="Y" or 
+           EFORM.m5b=="Y" or EFORM.m6a=="Y" or EFORM.m6b=="Y" or EFORM.m6bCT=="Y" or 
+           (EFORM.weight_chg_ind=="Y" and EFORM.weightchg_reasons=="MEDICAL_WC") or 
+           (EFORM.weight_chg_ind=="Y" and EFORM.weightchg_reasons=="PREGNANCY_WC" and EFORM.weight_gain_loss=="Gain") or (EFORMS.PERSON.age >= 51)}</displayWhen>
+		<section title="Primary Physician">
+			<group>
+				<facelet component="/pages/common/physicians_eform.xhtml" />
+			</group>
+		</section>
+		<section>
+		<displayWhen>#{EFORMS.PERSON.age >= 51}</displayWhen>
+			<group>
+				<question id='consultation_date' required='true'
+					text='DATE LAST CONSULTED' type='DATEF' labelWidth="170px;" answerWidth='100px;' />
+			</group>
+		</section>
+	</page>
+	<page title="Part 3E - Coverage Questions">
+		<section>
+			<group>
+				<header>ADDITIONAL INFORMATION</header>
+				<question id='additional_info' size="50" type='MEMO' />
+			</group>
+			<group labelWidth="800px">
+				<question id='app_pending_answ'
+					text='Do you have any life insurance or annuities in force or is any application for life insurance or reinstatement now pending?'
+					type='RADIO' answerSet='Y|N' required="false" />
+				<displayWhen>#{CASE.contractLocale!="AZ"}</displayWhen>
+			</group>
+			<group labelWidth="800px">
+				<question id='app_pending_answ_AZ'
+					text='Do you have any existing life insurance or annuities in force or is any application for life insurance or reinstatement now pending?...'
+					type='RADIO' answerSet='Y|N' required="false" />
+				<footer>If 'Yes,' please complete below.</footer>
+				<displayWhen>#{CASE.contractLocale=="AZ"}</displayWhen>
+			</group>
+			<group labelWidth="800px">
+				<question id='app_replace_answ' type='HIDDEN' />
+				<question id='app_replace_question'
+					text='If this policy is issued, will any other life, accident or health insurance or annuity be cancelled, terminated, lapsed or not renewed?'
+					type='RADIO' answerSet='Y|N' required="false">
+					<displayWhen>#{EFORM.app_pending_answ!="N" and EFORM.app_pending_answ_AZ!="N"}</displayWhen>
+				</question>
+				<question id='app_replace_answ_no'
+					text='If this policy is issued, will any other life, accident or health insurance or annuity be cancelled, terminated, lapsed or not renewed?'
+					type='RADIO' answerSet='Y|N' required="false" value="N" readonly="#{true}">
+					<displayWhen>#{EFORM.app_pending_answ=="N" or EFORM.app_pending_answ_AZ=="N"}</displayWhen>
+				</question>
+			</group>
+		</section>
+
+		<section title="Current Coverage">
+			<displayWhen>#{EFORM.app_pending_answ=="Y" or EFORM.app_pending_answ_AZ=="Y"}</displayWhen>
+			<header>Primary Insured's Current Insurance Coverage</header>
+			<group>
+				<question id='oth_ins_company'
+					externalId='oth_ins_naic;oth_ins_street;oth_ins_city;oth_ins_state;oth_ins_zip'
+					text='Company Name' type='TEXT' answerWidth="200px;" required="true"
+					autocompleteLookup="naic:carrier" />
+			</group>
+			<group associated="true">
+				<question id='oth_ins_city' text='City' type='TEXT' />
+				<question id='oth_ins_state' text='State' lookup="step:LOCALE_STATE"
+					answerSet=":Please select a state" type='LISTBOX' />
+			</group>
+			<group>
+				<question id='oth_ins_street' text='Street Address' type='TEXT'>
+					<displayWhen>#{false}</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='oth_ins_zip' text='Zip Code' type='TEXT'>
+					<displayWhen>#{false}</displayWhen>
+				</question>
+			</group>
+
+			<group>
+				<question id='oth_ins_face' text='Face Amount (e.g.50000 = $50,000)'
+					type='TEXT' answerWidth="100px;" required="true" validation='number'>
+				</question>
+			</group>
+			<group associated="true">
+				<question id='oth_ins_mm' text='Issued Month: ' required="true"
+					type='NUMBER' answerWidth="40px;">
+				</question>
+
+				<question id='oth_ins_yy' text='Year:' type='NUMBER'
+					required="true" labelWidth="120px" answerWidth="80px;">
+				</question>
+			</group>
+			<group>
+				<question id='oth_ins_naic' text='NAIC' type='TEXT'
+					validation='number'>
+				</question>
+			</group>
+			<group>
+				<question id='oth_ins_replace' text='Is Coverage to be Replaced?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+		</section>
+		<section title="Other Coverage" repeating="true">
+			<displayWhen>#{EFORM.app_pending_answ=="Y" or EFORM.app_pending_answ_AZ=="Y"}</displayWhen>
+			<header>Additional Insurance Coverage</header>
+			<group>
+				<question id='oth_ins_company2'
+					externalId='oth_ins_naic2;oth_ins_street2;oth_ins_city2;oth_ins_state2;oth_ins_zip2'
+					text='Company Name' type='TEXT' answerWidth="200px;" required="true"
+					autocompleteLookup="naic:carrier" />
+			</group>
+			<group associated="true">
+				<question id='oth_ins_city2' text='City' type='TEXT' />
+				<question id='oth_ins_state2' text='State' lookup="step:LOCALE_STATE"
+					answerSet=":Please select a state" type='LISTBOX' />
+			</group>
+			<group>
+				<question id='oth_ins_street2' text='Street Address' type='TEXT'>
+					<displayWhen>#{false}</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='oth_ins_zip2' text='Zip Code' type='TEXT'>
+					<displayWhen>#{false}</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='oth_ins_face2' text='Face Amount (e.g.50000 = $50,000)'
+					type='TEXT' required="true" validation='number' />
+			</group>
+
+			<group associated="true">
+
+				<question id='oth_ins_mm2' text='Issued Month:' type='NUMBER'
+					answerWidth="40px;" required="true" />
+				<question id='oth_ins_yy2' text='Year:' type='NUMBER'
+					labelWidth="120px" answerWidth="80px;" required="true" />
+			</group>
+			<group>
+				<question id='oth_ins_naic2' text='NAIC' type='TEXT'
+					validation='number' />
+			</group>
+			<group>
+				<question id='oth_ins_replace2' text='Is Coverage to be Replaced?'
+					type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+		</section>
+
+	</page>
+</form>

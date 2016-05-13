@@ -1,0 +1,5 @@
+Option Cd,Gender,tobacco use,min age,max age,class,min level,max level,rate,rate_usage,rate_type,rate_basis_id,rate_basis_value
+ULIFEPOLFEE,,,18,65,PF,0,1,90,,,,1
+ULIFEPOLFEE,,,18,65,ST,0,1,90,,,,1
+ULIFEPOLFEE,,,18,65,RD,0,1,90,,,,1
+ULIFEPOLFEE,,,18,65,RB,0,1,90,,,,1

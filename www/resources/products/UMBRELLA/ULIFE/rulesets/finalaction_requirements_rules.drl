@@ -1,0 +1,11 @@
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.uw.CaseUwRiskCalcData;
+
+rule "Standard Decline Letter"
+	when
+		CaseData(caseStatus in ('DECLINED','POSTPONED'))
+		form:RequirementForm(code=="CMPDECLINE")
+    then
+    	form.setRequired(true);
+end

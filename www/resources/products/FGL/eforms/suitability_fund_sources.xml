@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<page title="Suitability Fund Sources">
+		<section title="Source of Funds" >  
+			<group style='margin-left:2px'>   
+				<footer>18. What is the source of funds for this annuity? (If more than one source, check all that apply and indicate amounts. For any liquid IRA, 401k, 403b, or other qualified plan, please indicate underlying vehicle.)?</footer>
+			</group>     
+			<group style='margin-top:10px;' >
+				<question id='liquid_assets' text='From Liquid Assets:' name ='source of funds from liquid assets' type='CHECKBOX' labelStyle='margin-left:8px;font-weight: bold'  labelWidth="155px" answerSet="1:Cash or CDs|2:Checking, Savings, Money Market|3:Mutual Funds except class B|4:Stocks/Bonds|5:Fixed annuity not subject to surrender charges|6:Variable annuity not subject to surrender charges|7:Life Insurance cash value not subject to surrender charges "  answerWidth="430px" required="true"/>
+				<question id='other_sources' type='CHECKBOX' text='From Other Sources:' name ='other fund sources'  labelStyle='margin-left:4px;font-weight: bold'  labelWidth="155px" answerSet="1:Fixed annuity subject to surrender charges|2:Variable annuity subject to surrender charges|3:Life Insurance cash value subject to surrender charges|4:IRAs or other qualified plans (if under 59 ½)|5:Class B Mutual Funds subject to surrender charges|6:Lump Sum Pension distribution (defined benefit)|7:Reverse mortgage/home equity loan|8:Gift/Inheritance/Death claim proceeds"  answerWidth="430px" required="true"/>
+			</group>  
+			<group associated="true">
+				<question id='liquid_source_amount' text='Liquid source amount(in $)' type='TEXT'  labelWidth="100px" labelStyle='margin-left:8px' answerWidth="120px" required="true" tabindex='3' mask="pnum"/>
+				<question id='other_source_amount' text='Other source amount(in $)' type='TEXT'  labelWidth="100px" labelStyle='margin-left:20px' answerWidth="120px" required="true" tabindex='4' mask="pnum"/>
+			</group> 
+			<group style='margin-top:10px'>
+				<question id='annuity_life_exchange' labelWidth="400px" text='19. Is Source of Funds a life insurance or annuity policy (if Yes, please answer a. and b. below)?' name ='Type of source of fund' type='LISTBOX'  labelStyle='margin-left:8px' answerSet=" : |Y:Yes|N:No" required="true" tabindex='5'/>
+				<question id='annuity_replaced_exchanged' text='a. Have you replaced or exchanged any life or annuity contracts within the past 36 months (past 60 months if you reside in California or Minnesota)?' name ='Replacement or exchange details of contracts' type='LISTBOX' labelWidth="400px" labelStyle='margin-left:8px' required="true" answerSet=" : |Y:Yes|N:No" tabindex='6'>
+					<displayWhen>#{EFORM.annuity_life_exchange=="Y"}</displayWhen>
+				</question>  
+			</group>
+		</section>
+		<section>
+			<displayWhen>#{EFORM.annuity_replaced_exchanged=="Y" &amp;&amp; EFORM.annuity_life_exchange=="Y"}</displayWhen>
+			<group style='margin-top:10px'>								
+				<question id='details_past_replacement' text='Describe details of past replacements(e.g. how long ago, whether they involved the same agent, whether they involved the same funds):' name = 'Past replacement details' type='MEMO' labelWidth="400px" labelStyle='margin-left:0px' required="true" answerWidth="500px" tabindex='7'/>
+			</group>
+		</section>
+		<section>
+			<group style='margin-top:10px'>
+				<question id='recommendation_basis' text='b. Explain the basis for recommendation to replace or exchange an existing life or annuity policy and how this purchase – taking into account surrender costs and/or potential disadvantages – will result in a positive financial benefit for the applicant over the life of the annuity:' name='Explanation of basis of recommendation' type='MEMO' labelWidth="400px" labelStyle='margin-left:8px' required="true" answerWidth="500px" tabindex='8'>
+					<displayWhen>#{EFORM.annuity_life_exchange=="Y"}</displayWhen>
+				</question>
+			</group>  
+		</section>
+		<section>
+			<group style='margin-top:10px'>
+				<question id='surrender_charge_payment' labelWidth="400px" text='20. Will you have to pay any surrender charge or penalty to withdraw funds from your current financial product (i.e., the source of funds for this annuity purchase)?' name='Surrender charge payment' type='LISTBOX'  labelStyle='margin-left:8px' answerSet=" : |Y:Yes|N:No" required="true" tabindex='9'/>  
+			</group>  
+		</section>
+		<section>
+			<displayWhen>#{EFORM.surrender_charge_payment=="Y"}</displayWhen>
+			<group style='margin-top:5; font-weight: bold'>   
+				<footer>If yes, provide the name of company, product, year of purchase, account value prior to surrender, dollar amount of surrender charge or penalty, and percentage of surrender charge or penalty. Do not reduce amount or percentage by any bonus earned on the proposed annuity and do not reduce the penalty by offsets such as MVAs(makert value adjustments). If applicable provide MVA amount separately and indicate positive or negative</footer>
+			</group>
+		</section>
+		<section style="margin-left:0px">  
+			<displayWhen>#{EFORM.surrender_charge_payment=="Y"}</displayWhen>    
+			<group associated="true">    
+				<question id='surrender_company' labelWidth="100px" text='Company' type='TEXT'  labelStyle='margin-left:8px' answerWidth="120px" required="true" tabindex='10'/>  
+				<question id='surrender_product' labelWidth="100px" text='Product' type='TEXT'  labelStyle='margin-left:20px' answerWidth="120px" required="true" tabindex='11'/>
+			</group>
+			<group associated="true">    
+				<question id='surrender_purchase_year' labelWidth="100px" text='Year of Purchase' type='TEXT'  labelStyle='margin-left:8px' answerWidth="120px" required="true" tabindex='12' mask="pint"/>  
+				<question id='account_Value' labelWidth="100px" text='Account Value prior to surrender charge or MVA' type='TEXT' name='Account Value prior to surrender' labelStyle='margin-left:20px' answerWidth="120px" required="true" tabindex='13'/>
+			</group>
+			<group associated="true">    
+				<question id='surrender_amount' labelWidth="100px" text='Surrender Charge Amount(in $)' type='TEXT'  labelStyle='margin-left:8px' answerWidth="120px" required="true" tabindex='14' mask="pnum"/>  
+				<question id='surrender_percent' labelWidth="100px" text='Surrender Charge Amount(in %)' type='TEXT'  labelStyle='margin-left:20px' answerWidth="120px" required="true" tabindex='15' mask="pnum"/>
+			</group>
+			<group associated="true">    
+				<question id='mva_amount' labelWidth="100px" text='MVA Amount(in $) (+/-)' type='TEXT'  labelStyle='margin-left:8px' answerWidth="120px" required="true" tabindex='16' mask="pnum"/>  
+			</group>      
+		</section>
+		<section name="Surrender Details" repeating="true" style="margin-left:0px">  
+			<displayWhen>#{EFORM.surrender_charge_payment=="Y"}</displayWhen>    
+			<group associated="true">    
+				<question id='surrender_company_1' labelWidth="100px" text='Company' type='TEXT'  labelStyle='margin-left:8px' answerWidth="120px" required="true" tabindex='17'/>  
+				<question id='surrender_product_1' labelWidth="100px" text='Product' type='TEXT'  labelStyle='margin-left:20px' answerWidth="120px" required="true" tabindex='18'/>
+			</group>
+			<group associated="true">    
+				<question id='surrender_purchase_year_1' labelWidth="100px" text='Year of Purchase' type='TEXT'  labelStyle='margin-left:8px' answerWidth="120px" required="true" tabindex='19' mask="pint"/>  
+				<question id='account_Value_1' labelWidth="100px" text='Account Value prior to surrender charge or MVA' type='TEXT' name='Account Value prior to surrender' labelStyle='margin-left:20px' answerWidth="120px" required="true" tabindex='20'/>
+			</group>
+			<group associated="true">    
+				<question id='surrender_amount_1' labelWidth="100px" text='Surrender Charge Amount(in $)' type='TEXT'  labelStyle='margin-left:8px' answerWidth="120px" required="true" tabindex='21' mask="pnum"/>  
+				<question id='surrender_percent_1' labelWidth="100px" text='Surrender Charge Amount(in %)' type='TEXT'  labelStyle='margin-left:20px' answerWidth="120px" required="true" tabindex='22' mask="pnum"/>
+			</group>
+			<group associated="true">    
+				<question id='mva_amount_1' labelWidth="100px" text='MVA Amount(in $) (+/-)' type='TEXT'  labelStyle='margin-left:8px' answerWidth="120px" required="true" tabindex='23'/>  
+			</group>      
+		</section>
+		<section title="Acknowledgement" style='margin-top:10px'>
+			<group labelWidth="400px" style="overflow:auto;border:1px solid #dfdfdf;" >
+				<paragragh text=" - I understand an annuity is a long term contract that I should not plan to fully surrender before completion of the surrender charge period." styleClass="groupParagraph" >
+				</paragragh>
+				<paragragh text=" - I understand that my principal may be subject to a surrender charge if I surrender or partially surrender my contract before completion of the surrender charge period." styleClass="groupParagraph">
+				</paragragh>
+				<paragragh text=" - I understand surrender charges may apply to withdrawals, withdrawals may be taxable and when made before age 59½, may result in tax penalties." styleClass="groupParagraph">
+				</paragragh>
+				<paragragh text=" - I understand annuities that offer bonus features may have higher fees and charges, lower credited interest, and longer surrender charge periods than annuities that do not provide a bonus feature." styleClass="groupParagraph">
+				</paragragh>
+				<paragragh text=" - (if replacement) I understand the benefits and costs of this replacement, including but not limited to surrender charges, possible loss of benefits, tax consequences, product features and enhancements, fees, and expenses. My Agent has provided a comparison of the benefits and restrictions of both contracts." styleClass="groupParagraph">
+				</paragragh>
+				<paragragh text=" - I understand that I should contact my tax professional or attorney for any tax or legal advice." styleClass="groupParagraph">
+				</paragragh>        
+			</group>  
+			<group style='font-weight: bold'>   
+				<footer>*DO NOT SIGN THIS FORM IF ANY REQUIRED ITEM IS LEFT BLANK. PLEASE CAREFULLY REVIEW THE FORM AND SIGN ATTESTING THAT THE INFORMATION IS TRUE AND CORRECT TO THE BEST OF YOUR KNOWLEDGE.</footer>
+			</group>           
+		</section>    
+		<section>     
+			<group associated="true">
+				<question id='owner_signature' text='Signature of Owner' labelWidth="100px" required="true" type='CHECKBOX' answerSet='Y' answerWidth="100px" labelStyle='margin-left:8px' />
+				<question id='owner_signature_date' text='Date' type='DATEF' name="Owner Signature Date" labelWidth="100px" labelStyle='margin-left:20px' answerWidth="100px" required="true" tabindex='25'/>  
+			</group> 
+		</section> 
+		<section>			
+			<displayWhen> #{EFORMS.PERSON.joint_owner=="Y"} </displayWhen>
+			<group associated="true">
+				<question id='joint_owner_signature' text='Signature of Joint Owner' labelWidth="100px" required="true" type='CHECKBOX' answerSet='Y' answerWidth="130px" labelStyle='margin-left:8px'/>
+				<question id='joint_owner_signature_date' text='Date' name="Joint Owner Signature Date" type='DATEF'  labelWidth="100px" labelStyle='margin-left:20px' answerWidth="100px" required="true" tabindex='27'/>  
+			</group>     
+		</section>   
+		<section title="Agent’s Statement" style='margin-top:10px'>
+			<group labelWidth="400px" style="overflow:auto;border:1px solid #dfdfdf;" >
+				<paragragh text=" I believe the purchase of this annuity contract is suitable after carefully reviewing the suitability information provided to me by the Owner(s). If applicable, I have discussed the advantages and disadvantages of any replacement or exchange of another annuity contract or life policy. I have reasonably informed the owner(s) of all important features of the annuity and proposed transaction."  styleClass="groupParagraph" >
+				</paragragh>
+				<paragragh text="To the best of my knowledge, the questions on this form have been answered truthfully and I have complied with Fidelity &amp; Guaranty Life suitability requirements consistent with my contractual obligations." styleClass="groupParagraph">
+				</paragragh>				      
+			</group>  	
+			<group associated="true">
+				<question id='agent_signature' text='Signature of Agent' labelWidth="100px" required="true" type='CHECKBOX' answerSet='Y' answerWidth="100px" labelStyle='margin-left:8px'/>
+				<question id='agent_signature_date' text='Date' type='DATEF' name="Agent Signature Date" labelWidth="100px" labelStyle='margin-left:20px' answerWidth="100px" required="true" tabindex='29'/>  
+			</group>
+			<group associated="true">
+				<question id='agent_name' text='Name of Agent' labelWidth="100px" required="true" type='TEXT' answerWidth="100px" labelStyle='margin-left:8px'/>
+				<question id='agent_producer_number' text='Producer Number' type='TEXT' labelWidth="100px" labelStyle='margin-left:20px' answerWidth="100px" required="true" tabindex='31'/>  
+			</group>  			
+		</section>  		
+	</page>
+</form>

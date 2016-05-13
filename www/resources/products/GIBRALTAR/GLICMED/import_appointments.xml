@@ -1,0 +1,28 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+<appointments>
+
+    <appointment>
+    	<appointmentType>AGENT</appointmentType>
+    	<appointmentStatus>ACTIVE</appointmentStatus>
+    	<appointmentNumber>81001</appointmentNumber>
+        <licenseNumber>3100</licenseNumber>
+       	<lineOfBusiness>LIFE</lineOfBusiness>
+       	<productCode>GLICMED</productCode>
+       	<effectiveDate>01012012</effectiveDate>
+		<agentCode>JAHA</agentCode>
+		<agencyCode>MedAg</agencyCode>
+    </appointment>
+    <appointment>
+    	<appointmentType>AGENT</appointmentType>
+    	<appointmentStatus>ACTIVE</appointmentStatus>
+    	<appointmentNumber>81011</appointmentNumber>
+        <licenseNumber>3101</licenseNumber>
+       	<lineOfBusiness>LIFE</lineOfBusiness>
+       	<productCode>GLICMED</productCode>
+       	<effectiveDate>01012012</effectiveDate>
+		<agentCode>JOHNS</agentCode>
+		<agencyCode>MedAg</agencyCode>
+    </appointment>   
+</appointments>
+</stepImport>

@@ -1,0 +1,91 @@
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<preferences>
+	<preference>
+		<category>SIGNATURE_MODE</category>
+		<code>MOUSE_SIGNATURE</code>
+		<description>Mouse Signature</description>
+	</preference>
+	<preference>
+		<category>SIGNATURE_MODE</category>
+		<code>CLICK_WRAP_SIGNATURE</code>
+		<description>Email Signature</description>
+	</preference>
+	<preference>
+		<category>SIGNATURE_MODE</category>
+		<code>VOICE_MIC_SIGNATURE</code>
+		<description>Voice Signature of Applicant via Microphone</description>
+	</preference>
+	<preference>
+		<category>SIGNATURE_MODE</category>
+		<code>VOICE_PHONE_SIGNATURE</code>
+		<description>Voice Signature at Phone</description>
+	</preference>
+	<preference>
+		<category>SIGNATURE_MODE</category>
+		<code>PAD_SIGNATURE</code>
+		<description>Signature Pad</description>
+	</preference>
+	<preference>
+		<category>SIGNATURE_MODE</category>
+		<code>PAPER_SIGNATURE</code>
+		<description>Signature on File</description>
+	</preference>
+	<preference>
+		<category>COVERAGE_EFFECTIVE</category>
+		<code>NEXT_MONTHLY_OCCURRENCE</code>
+		<value>2</value>
+		<description>Next Monthly Occurrence</description>
+	</preference>
+	<preference>
+		<category>EARNED_RECURRENCE</category>
+		<code>MONTHLY</code>
+		<value>30</value>
+		<description>Monthly</description>
+	</preference>
+	<preference>
+		<category>REFUND_METHOD</category>
+		<code>MONTH</code>
+		<description>Calculate premium refund by month</description>
+	</preference>
+	<preference>
+		<category>COMMISSION_STRATEGY</category>
+		<code>BILLED</code>
+		<description>Billing commission strategy</description>
+	</preference>
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>ANNUAL</code>
+		<value>ANNUAL</value>
+		<description>Annual</description>
+	</preference>
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>SEMI_ANNUAL</code>
+		<value>SEMI_ANNUAL</value>
+		<description>Semi-Annual</description>
+	</preference>
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>QUARTERLY</code>
+		<value>QUARTERLY</value>
+		<description>Quarterly</description>
+	</preference>
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>MONTHLY</code>
+		<value>MONTHLY</value>
+		<description>Monthly</description>
+	</preference>
+	<preference>
+		<category>UW_ENGINE</category>
+		<code>MERICA</code>
+		<value>MERICA</value>
+		<description>Merica UW Engine</description>
+	</preference>
+	<preference>
+		<category>CC_STORAGE</category>
+		<code>PARTIAL</code>
+		<description>Save Partial CC information</description>
+	</preference>
+</preferences>
+</stepImport>

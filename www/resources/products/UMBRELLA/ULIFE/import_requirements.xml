@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<requirements>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>PT1</requirementCode>
+			<requirementDescription>Personal Information</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<materialChange>true</materialChange>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APPPART1</formCode>
+					<formDescription>Personal Information</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>PERSON</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>UBD</requirementCode>
+			<requirementDescription>Base Decline Notify</requirementDescription>
+			<securityFunction>uw_tasks</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>CMPDECLINE</formCode>
+					<formDescription>Compact-Base Decline Notify</formDescription>
+					<responseRequired>false</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>APPDELIVER</formWorkflow>
+					<formGroupType>UW</formGroupType>
+					<requirementType>CORRESPONDENCE</requirementType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>MED_REFLEXIVES</requirementCode>
+			<requirementDescription>MED_REFLEXIVES</requirementDescription>
+			<materialChange>true</materialChange>
+			<requirementForms>
+				<requirementForm>
+					<formCode>MED_REFLEXIVES</formCode>
+					<formDescription>MED_REFLEXIVES</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>MED_REFLEXIVES</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>PHYSICIAN</requirementCode>
+			<requirementDescription>Physician Info</requirementDescription>
+			<requirementForms>
+				<requirementForm>
+					<formCode>PHYSICIAN</formCode>
+					<formDescription>Physician Info</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>PHYSICIAN</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>OTHER_COVERAGE</requirementCode>
+			<requirementDescription>Other Coverage</requirementDescription>
+			<requirementForms>
+				<requirementForm>
+					<formCode>OTHER_COVERAGE</formCode>
+					<formDescription>Other Coverage</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>OTHER_COVERAGE</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>OTHER_OWNER</requirementCode>
+			<requirementDescription>Policy Owner</requirementDescription>
+			<requirementForms>
+				<requirementForm>
+					<formCode>OTHER_OWNER</formCode>
+					<formDescription>Policy Owner</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>OTHER_OWNER</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>BENEFICIARY</requirementCode>
+			<requirementDescription>Beneficiary</requirementDescription>
+			<requirementForms>
+				<requirementForm>
+					<formCode>BENEFICIARY</formCode>
+					<formDescription>Beneficiary</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>BENEFICIARY</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>ASR</requirementCode>
+			<requirementDescription>Applicant signature requirement
+			</requirementDescription>
+			<securityFunction>case_auth</securityFunction>
+			<requirementGroup>NB</requirementGroup>
+			<requirementForms>
+				<requirementForm>
+					<formCode>ASRRF</formCode>
+					<formDescription>Applicant signature</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>true</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode></formEformCode>
+					<formGroupType>SIGNATURE</formGroupType>
+					<requirementType>CORRESPONDENCE</requirementType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+	</requirements>
+</stepImport>

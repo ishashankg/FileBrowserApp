@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<agencies>
+		<agency>
+			<agCode>InstepLAg1</agCode>
+			<agName>Instep Life Agency</agName>
+			<agBusType>Independent</agBusType>
+			<agCaptive>false</agCaptive>
+			<agents>
+				<agent>
+					<agtCode>JNILE</agtCode>
+					<agtFirstName>John</agtFirstName>
+					<agtLastName>Nile</agtLastName>
+					<agtEmail>john.nile@stepsolutions.com</agtEmail>
+				</agent>
+			</agents>
+		</agency>
+	</agencies>
+</stepImport>

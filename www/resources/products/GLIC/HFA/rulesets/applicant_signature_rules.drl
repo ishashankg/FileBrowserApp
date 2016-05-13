@@ -1,0 +1,86 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.EformCode;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.db.services.util.EmployeeUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.Requirement;
+import rules.*;
+import java.util.*;
+import com.stepsoln.core.rules.requirements.BeneficiaryData;
+import com.stepsoln.core.rules.RuleFilter;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+// Rule generation RE:
+//(^[\w]+$)
+//rule "require \1"\r\n\twhen\r\n\t\teval(!allAnswers.containsKey("\1"))\r\n\tthen\r\n\t\trulesResponse.addRequired("\1");\r\nend
+
+
+//START - Applicant only rules
+rule "HIPAA form should be reviewed for online case"
+salience 101
+no-loop	
+	when
+		(RuleFilter(filter=='PRIMARY_INSURED') or not RuleFilter());
+		not EformCode(code == "AUTHORIZATION")	
+		CaseData(paperCase==false)	
+	then
+		rulesResponse.addRequiredOnce("HIPAA form should be reviewed");
+end
+
+rule "Full HIPAA Signature Required"
+salience 200
+when		
+		(RuleFilter(filter=='PRIMARY_INSURED') or not RuleFilter());
+	    Requirement(code == "FHP", target =="PRIMARY_INSURED", type=="ESIGNATURE", status == "OPEN", required == true) 	   	    
+	then
+		rulesResponse.addRequiredOnce("Full HIPAA Signature is required");
+end
+
+salience 220
+rule "Part 2 Signature Required"
+when
+		(RuleFilter(filter=='PRIMARY_INSURED') or not RuleFilter());
+	    Requirement(code == "HIP", target =="PRIMARY_INSURED", type=="ESIGNATURE", status == "OPEN", required == true)
+	then
+		rulesResponse.addRequiredOnce("Part 2 Signature is required");		
+end
+
+rule "Part 2 Signature Date City State Required"
+salience 221
+when
+		(RuleFilter(filter=='PRIMARY_INSURED') or not RuleFilter());
+	    Requirement(code == "HIP", target =="PRIMARY_INSURED", type=="ESIGNATURE", required == true, signatureDate == null || signatureCity == null || signatureState == null)
+	then
+		rulesResponse.addRequiredOnce("Part 2 Signature date, city and state are required");		
+end
+		
+rule "Part 4 ACK Signature Required"
+salience 230
+when
+		(RuleFilter(filter=='PRIMARY_INSURED') or not RuleFilter());
+	    Requirement(code == "ACK", target =="PRIMARY_INSURED", type=="ESIGNATURE", status == "OPEN", required == true)
+	then
+		rulesResponse.addRequiredOnce("Part 4 signature is required");		
+end	
+
+
+//END - Applicant only rules
+
+//START - Policy owner only rules
+rule "Policy Owner Unresolved Signatures"
+	when
+		(not RuleFilter(filter=='SIGNATURE') and CaseData(caseOutOfNb==true) and (not RuleFilter(filter=='PRIMARY_INSURED'))) or (RuleFilter(filter=='POLICY_OWNER'))
+		theRequirementList:ArrayList() from collect(Requirement(type=='ESIGNATURE', target=='POLICY_OWNER', status not in ('RESOLVED','WAIVED'), orderStatus not in ('SIGNED')));
+    then
+        if (theRequirementList.size() > 0)
+		{
+			rulesResponse.addRequiredOnce("Policy Owner Signature are still unresolved.");
+		}
+end
+//END - Policy owner only rules
+

@@ -1,0 +1,597 @@
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.RulesResponse;
+import java.util.*;
+import com.stepsoln.core.rules.uw.RiskCalculationRequirementData;
+import com.stepsoln.core.rules.uw.CaseMericaRecommendationData;
+import com.stepsoln.core.rules.coverages.CoverageChangeData;
+import com.stepsoln.core.rules.coverages.CoverageChangeItemData;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.CaseExistingInsuranceData
+import com.stepsoln.core.rules.requirements.Requirement;
+import com.stepsoln.core.util.FormatUtil;
+import com.stepsoln.core.util.DateUtil;
+import com.stepsoln.core.rules.uw.*;
+import com.stepsoln.core.rules.requirements.CaseExistingInsuranceData;
+import com.stepsoln.core.util.MathUtil;
+import com.stepsoln.core.rules.RuleUtil;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global com.stepsoln.core.rules.Counter numberOfMIBHits;
+
+rule "1. Underwriting will be on a simplified issue basis for face amounts up to $300,000 "
+salience 90
+	when
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, newCoverageAmount>300000, $amt:newCoverageAmount)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Underwriting on a simplified issue basis is only for face amounts up to $300,000. Face amount is ("+ FormatUtil.formatMoney($amt)+")");
+		rulesResponse.addToRuleFiredList(1);
+end
+
+rule "2. Underwriting will be on a simplified issue basis below age 51."
+salience 90
+	when
+		RiskCalculationRequirementData(age>50, $g:age)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Underwriting on a simplified issue basis is only for applicant age below 51. Age is ("+$g + ")");
+		rulesResponse.addToRuleFiredList(2);
+end
+
+rule "3. if Merica Decision is NOT =  ACCEPT or OFFER  or BORDERLINE or DECLINE; RTU"
+salience 90
+	when
+		CaseMericaRecommendationData( recommendation not in("BORDERLINE","ACCEPT","OFFER","DECLINE"), $rec: recommendation)
+	then
+		if (rulesResponse.getUwStatus()==null || !rulesResponse.getUwStatus().equals("DECLINE"))
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Merica Decision is NOT = ACCEPT or OFFER or BORDERLINE or DECLINE ("+ $rec +"); RTU");
+			rulesResponse.addToRuleFiredList(3);
+		}
+end
+
+rule "4. Family History: if more than 2 deaths reported prior to age 60- RTU"
+salience 90
+	when
+	    $deathCount : Number(intValue > 2) from accumulate(
+         CaseUwMedicalFamilyHistoryData( isDeceased==true, ageAtDiagnosis < 60),
+         init( int total = 0; ),
+         action( total += 1; ),
+         reverse( total -= 1; ),
+         result( new Integer( total ) ) )
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Family History: more than 2 deaths reported prior to age 60; RTU");
+		rulesResponse.addToRuleFiredList(4);
+end
+
+
+rule "5. If Merica Decision is BORDERLINE STANDARD and debits > 0; RTU"
+activation-group "borderlineStandardGroup"
+salience 90
+	when
+		CaseMericaRecommendationData( recommendationNotice=="BORDERLINE STANDARD", mortalityFactor>0, $m:mortalityFactor)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Merica Decision is BORDERLINE STANDARD and Extra Mortality > 0%. Extra Mortality of ("+$m+"); RTU");
+		rulesResponse.addToRuleFiredList(5);
+end
+
+rule "6. If Merica Decision is BORDERLINE STANDARD and Issue Age is < 51 and face amount is 100,000 to 300,000 (Band 2); RTU"
+activation-group "borderlineStandardGroup"
+salience 91
+	when
+		CaseMericaRecommendationData( recommendationNotice=="BORDERLINE STANDARD", mortalityFactor>0)
+		RiskCalculationRequirementData(age<51)
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount<=300000, oldCoverageAmount>=100000)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Merica Decision is BORDERLINE STANDARD and Issue Age is < 51 and face amount is 100,000 to 300,000 (Band 2); RTU");
+		rulesResponse.addToRuleFiredList(6);
+end
+
+/* rule "7. Beneficiary Relationship"
+*/
+
+rule "8. If weight change exceeds 40lbs = RTU"
+salience 90
+	when
+		RiskCalculationRequirementData(weightChange<-40 || weightChange>40, $w:weightChange )
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Weight change exceeds 40lbs. Weight Change of ("+$w+"); RTU");
+		rulesResponse.addToRuleFiredList(8);
+end
+
+rule "9. If Question  6a or 6b = Y; RTU"
+salience 90
+	when
+		Question(id in ("m6a"), answer == "Y", $id9:id);
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Question "+$id9+" = Y; RTU");
+		rulesResponse.addToRuleFiredList(9);
+end
+
+rule "10. If Question  4a, 4b, 4c, 4d, 4f, or 4g = Y; RTU"
+salience 90
+	when
+		Question(id in("m4a", "m4b", "m4c", "m4d", "m4f", "m4g"), answer == "Y", $id10:id);
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Question "+$id10+" = Y; RTU");
+		rulesResponse.addToRuleFiredList(10);
+end
+
+rule "11. If Question 3, 5b, or 8 = Y; RTU"
+salience 90
+	when
+		Question(id in("m3", "m5b", "m8"), answer == "Y", $id11:id);
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Question "+ $id11+" = Y; RTU");
+		rulesResponse.addToRuleFiredList(11);
+end
+
+rule "12. Student age >28; RTU"
+salience 90
+	when
+		Question(id == "occupation", answer in ( "STUDENT", "COLLEGE STUDENT", "LAW STUDENT", "UNIVERSITY STUDENT"), $aa:answer );
+		RiskCalculationRequirementData(age>28, $a12:age)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Proposed Insured occupation is "+ $aa +" and age is greater than 28. RTU");
+		rulesResponse.addToRuleFiredList(12);
+end
+
+rule "13. Retired  age <58 ; RTU"
+salience 90
+	when
+		Question(id == "occupation", answer in ( "RETIRED", "RETIREMENT") );
+		RiskCalculationRequirementData(age<58, $a13:age)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Proposed Insured occupation is Retired and the age is less than 58. Age is ("+ $a13 +"); RTU");
+		rulesResponse.addToRuleFiredList(13);
+end
+
+rule "14. Occupations on List force; RTU"
+salience 90
+	when
+		Question(id == "occupation", answer in ( "AIR FORCES", "AIRCRAFT PILOT", "AIRMAN", 
+				"AMBASSADOR","ARMED FORCES", "ARMED SECURITY GUARD", "ARMY", "AVIATOR", 
+				"BODYGUARD", "COMMERCIAL PILOT", "DIPLOMAT", "DISABILITY", "DISABLED", 
+				"FLIGHT INSTRUCTOR", "INTERROGATOR", "MARINE", "MARKSMAN",
+				"MILITARY PERSONNEL", "MINER BELOW GROUND", "MISSIONARY", "MONEY LENDER",
+				"NAVY", "PARATROOPER", "PILOT", "RANGER", "SHARPSHOOTER", 
+				"SNIPER", "SOLDIER", "SPELUNKER"), $a:answer );
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Final. Risk Calc. - Merica underwriting engine has returned the Refer to Expert rating due to occupational risk. Occupation of ("+ $a +"); RTU");
+		rulesResponse.addToRuleFiredList(14);
+end
+
+rule "15. Case will RTU if there are more than 3 IAI MIB hits in the past 12 months"
+salience 90
+	when
+		CaseUwMibData(category =="IAI", $d:mIBDate );
+		eval(DateUtil.calculateAge($d)<1)
+	then
+	    numberOfMIBHits.addCount();
+	    //System.out.println("current MIB count "+numberOfMIBHits.getCount());
+	    if(numberOfMIBHits.getCount()>3) {
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Case will RTU if there are more than 3 IAI MIB hits in the past 12 months");
+			rulesResponse.addToRuleFiredList(15);
+		}
+end
+
+/* rule "16. Alpha Flag forces RTU"
+*/
+
+rule "17,18. If case status = autodecline or Incomplete ; RTU"
+salience 90
+	when
+		$case:CaseData(caseStatus in ( "AUTODECLINE", "INCOMPLETE"), $s:caseStatus );
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Case status is "+ $s +" ; RTU");
+		rulesResponse.addToRuleFiredList(17);
+end
+
+rule "19. If Extra Mortality Factor > 200; RTU"
+salience 70
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor>200, $m:mortalityFactor )
+	then
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.addUserNotifcationInfo("Mortality Factor greater than 200 is a DECLINE");
+		rulesResponse.addToRuleFiredList(19);
+end
+
+
+rule "20. If last tobacco use date  => (policy date less 3 years ) and Rate class is Preferred Plus; RTU"
+salience 90
+	when
+		CaseData($policyDt:proposedEffectiveDate );
+		RiskCalculationRequirementData($lastUse:lastTobaccoUse)
+		$cvgChg:CoverageChangeData(newUnderwritingClassType=="PP")
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, newCoverageAmount<300000, newCoverageAmount>25000)
+		eval(DateUtil.calculateAge($lastUse, $policyDt)<3)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Last tobacco use date  => (policy date less 3 years ) and Rate class is Preferred Plus; RTU");
+		rulesResponse.addToRuleFiredList(20);
+end
+
+
+rule "21. If last tobacco use date  => (policy date less 1 year ) and Rate class is Preferred; RTU"
+salience 90
+	when
+		CaseData($policyDt:proposedEffectiveDate );
+		RiskCalculationRequirementData($lastUse:lastTobaccoUse, lastTobaccoUse != null)
+		$cvgChg:CoverageChangeData(newUnderwritingClassType=="PF")
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, newCoverageAmount<300000, newCoverageAmount>25000)
+		eval(DateUtil.calculateAge($lastUse, $policyDt)<1)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Last tobacco use date  => (policy date less 1 years ) and Rate class is Preferred; RTU");
+		rulesResponse.addToRuleFiredList(21);
+end
+
+
+rule "22. If no driver's license, RTU "
+salience 90
+	when
+		RiskCalculationRequirementData($d:driverLicense, driverLicense in ("NONE", "NA"))
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("No driver's license ("+$d+"); RTU");
+		rulesResponse.addToRuleFiredList(22);
+end
+
+rule "23. If just in time indicator is set; RTU"
+salience 90
+	when
+		CaseData(justInTimeAppointment == true );
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Just in time indicator is set; RTU");
+		rulesResponse.addToRuleFiredList(23);
+end
+
+rule "24. Unresolved Exam One requirements; RTU"
+salience 90
+	when
+		Requirement(code == "EXM", status!="RESOLVED", $c:description );
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Unresolved Exam One requirement("+ $c +"); RTU");
+		rulesResponse.addToRuleFiredList(24);
+end
+
+rule "25. If Business selected as reason under Foreign Travel;RTU"
+salience 90
+	when
+		Question(id == "m7reason", answer=="Business" );
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Business selected as reason under Foreign Travel; RTU");
+		rulesResponse.addToRuleFiredList(25);
+end
+
+rule "26. Faulted Medical Condition results from 3rd party" //a rule to indicate a problem not covered by reconciliation rules
+salience 90
+	when
+		$d:CaseUwMedicalConditionData(uwAction == "RTU", null==currentStatus || "FAILED" != currentStatus);
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Unreconciled Medical Condition results from 3rd party; RTU");
+		rulesResponse.addToRuleFiredList(26);
+end
+
+rule "32. Unreconciled Medical Drug results from 3rd party"
+salience 90
+	when
+		CaseUwMedicalDrugData(uwAction not in ("ACCEPT", "DECLINE") , currentStatus != "SUCCESSFUL" );
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Unreconciled Medical Drug results from 3rd party; RTU");
+		rulesResponse.addToRuleFiredList(32);
+end
+
+rule "27. ATTUS rules/flags"
+salience 90
+	when
+		CaseUwDemographicDetailData(source=="ATTUS", attributeValue in ("RED", "YELLOW") );
+		CaseUwDemographicData(source=="ATTUS", overridden==false, currentStatus != "SUCCESSFUL");
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("ATTUS returns YELLOW or RED demographic data; RTU");
+		rulesResponse.addToRuleFiredList(27);
+end
+
+rule "28. MVR ratings or MVR record not found ;RTU"
+salience 90
+	when
+		Requirement(code == "IIX", (orderStatus=="ERROR" || status=="OPEN"), $c:description );
+		not CaseUwMvrData(isOverridden==true, currentStatus == "SUCCESSFUL");
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("MVR ratings or MVR record not found by state. (REQ Code="+$c+"); RTU" );
+		rulesResponse.addToRuleFiredList(28);
+end
+
+rule "28.1 MVR ratings or MVR record not found by state; RTU"
+salience 120
+	when
+		CaseUwDemographicDetailData(source=="IIX", returnType=="NOHIT");
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("MVR ratings or MVR record not found by state; RTU");
+		rulesResponse.addToRuleFiredList(281);
+end
+
+rule "29. Driving License status is CANCELLED, SUSPENDED, DISQUAL, REVOKED, NOT LICENSED/ VAL, UNLICENSED, REGULAR ID, UNLICEN, INELIGIBLE ;RTU"
+salience 90
+	when
+		CaseUwMvrData((StringUtils.startsWith(originalStatus, "SUS") || StringUtils.startsWith(originalStatus, "EXP")  
+			|| StringUtils.startsWith(originalStatus, "INACT") || StringUtils.startsWith(originalStatus, "DIS")  
+			|| StringUtils.startsWith(originalStatus, "CAN") || StringUtils.startsWith(originalStatus, "DEC") 
+			|| StringUtils.startsWith(originalStatus, "DQ") || StringUtils.startsWith(originalStatus, "REV") 
+			|| StringUtils.startsWith(originalStatus, "TEMP") || StringUtils.startsWith(originalStatus, "NOT") 
+			|| StringUtils.startsWith(originalStatus, "UNLICEN") || StringUtils.startsWith(originalStatus, "INEL") 
+			|| StringUtils.startsWith(originalStatus, "REGULAR ID CARD")), $s:originalStatus);
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Driving License status is not current(DL Status="+$s+"); RTU" );
+		rulesResponse.addToRuleFiredList(29);
+end
+
+rule "29.1 Driving License status is unknown or not available; RTU"
+salience 90
+	when
+		CaseUwMvrData(StringUtils.isWhitespace(originalStatus));
+		CaseUwDemographicDetailData(source=="IIX", returnType != "NOHIT");
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Driving License status is unknown or not available; RTU");
+		rulesResponse.addToRuleFiredList(291);
+end
+
+rule "30. MIB Codes are not reconciled; RTU"
+salience 90
+	when
+		CaseUwMibHeaderData(currentStatus == "FAILED");
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("MIB Codes are not reconciled; RTU" );
+		rulesResponse.addToRuleFiredList(30);
+end
+
+rule "31. BMI computed in application differs from the MIB data by more than 15%"
+salience 90
+	when
+		CaseUwDemographicDetailData(source=="APPLICANT", category=="BMI", $a1:attributeValue );
+		CaseUwDemographicDetailData(source=="MIB", category=="BMI", $a2:attributeValue);
+		eval(MathUtil.getPercentageDifference($a2, $a1 ) >0.15)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("BMI returned by MIB differs from applicant data by more than 15%; RTU");
+		rulesResponse.addToRuleFiredList(31);
+end
+
+rule "33. There are 2 or more DUI from MVR"
+salience 90
+	when
+ 		$duiCount : Number(intValue >= 2) from accumulate(
+         CaseUwMvrDetailData( violationGroup in ("6", "7") ),
+         init( int total = 0; ),
+         action( total += 1; ),
+         reverse( total -= 1; ),
+         result( new Integer( total ) ) )
+		
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("There are 2 or more DUI from MVR ("+$duiCount +"); RTU");
+		rulesResponse.addToRuleFiredList(33);
+end
+
+rule "34. Driving violation results in flat fees, can not handle by Gerber"
+salience 90
+	when
+		CaseUwMvrData(uwAction not in("ACCEPT", "DECLINE"), rateAmount>0) 
+	then
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.addUserNotifcationInfo("Driving violation results in flat fees, cannot be handle by Gerber; DECLINE");
+		rulesResponse.addToRuleFiredList(34);
+end
+
+/*
+rule "35.1 DOB can not be verified by IIX"
+rule "35.2 DOB can not be verified by IIX" - removed per pjones req
+*/
+
+
+rule "36.0 Applicant name does not match the name returned from IIX"
+salience 90
+	when
+		CaseUwDemographicDetailData(source=="IIX", category=="FULLNAME", $a1:attributeValue );
+		CaseUwDemographicDetailData(source=="APPLICANT", category=="FULLNAME", $a2:attributeValue );
+		eval(!RuleUtil.isNameMatches($a2, $a1))
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Applicant name does not match the name returned from IIX; RTU");
+		rulesResponse.addToRuleFiredList(36);
+end
+
+rule "37.0 RTU case basing on MIB data"
+	when
+		data:CaseUwMibData(uwAction=='RTU')
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Unreconciled MIB data; RTU");
+		rulesResponse.addToRuleFiredList(37);
+end
+
+rule "38. Unreconciled Medical Condition results from 3rd party"
+salience 90
+	when
+		CaseUwMedicalConditionData(currentStatus != "SUCCESSFUL" );
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Unreconciled Medical Condition results from 3rd party; RTU");
+		rulesResponse.addToRuleFiredList(38);
+end
+
+rule "39. if STEP_UW Decision is DECLINE; so case will be DECLINE "
+salience 70
+	when
+		StepUWRecommendationData( recommendation in("KNOCKOUT"), $rec: recommendation)
+	then
+		rulesResponse.setUwStatus("DECLINE");
+end
+
+rule "40. Decline based on MVR report"
+salience 80
+	when
+		CaseUwMvrData(uwAction in("DECLINE")) 
+	then
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.addUserNotifcationInfo("Driving violation results in DECLINE");
+		rulesResponse.addToRuleFiredList(40);
+end
+
+rule "41. Decline based on Drug rules"
+salience 80
+	when
+		CaseUwMedicalDrugData(uwAction in("DECLINE")) 
+	then
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.addUserNotifcationInfo("Drugs' rules result in DECLINE");
+		rulesResponse.addToRuleFiredList(41);
+end
+
+rule "42. Privacy State Indicator"
+salience 90
+	when
+		CaseData(contractLocale in ("AZ","CA","CT","GA","IL","ME","MA","MN","MT","NJ","NV","NC","OH","OR","VA"));
+	then
+		rulesResponse.addUserNotifcationInfo("Privacy State");
+		rulesResponse.addToRuleFiredList(42);
+end
+
+rule "43. Decline based on Merica APS and Face Amount"
+salience 100
+	when
+		CaseMericaRecommendationData(recommendation=='APS')
+		CaseData(faceAmount<100000)
+	then
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.addUserNotifcationInfo("Merica APS with Face Amount < 100K result in DECLINE");
+		rulesResponse.addToRuleFiredList(43);
+end
+
+
+rule "44. zero premium amount RTU"
+salience 90
+	when
+		CaseData(premiumAmount <= 0.0);
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("The premium amount of the final quote cannot be zero; RTU");
+		rulesResponse.addToRuleFiredList(44);
+end
+
+
+rule "45. Alpha search returned existing insurance; RTU"
+salience 90
+	when
+		$policies: ArrayList() from accumulate(CaseExistingInsuranceData(!StringUtils.isEmpty(policyNo), $pNo:policyNo), 
+	  	init( ArrayList ids = new ArrayList(); ), 
+	  	action( ids.add($pNo); ),  
+	  	result( ids ))
+	  	eval($policies.size() > 0)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Internal Alpha search returned existing insurance: " + $policies + "; RTU");
+		rulesResponse.addToRuleFiredList(45);
+end
+
+rule "47.1 Set case status phone contact INCOMPLETE"
+salience 45
+activation-group "caseStatusUpdate"
+	when 
+		theCase:CaseData(contractState in ('MN','MI','OK','WY'), caseSource in ('EXTERNAL'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("External replacement of external policy; RTU");
+		rulesResponse.addToRuleFiredList(471);
+end
+
+rule "47.2 Set case status face contact INCOMPLETE"
+salience 40
+activation-group "caseStatusUpdate"
+	when 
+		theCase:CaseData(contactMethod in ('FACE','INTERNET'), contractState in ('AR','GA','IN','NV','HI','KS','MD','PR','SD'), caseSource in ('EXTERNAL'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("External FTF replacement of external policy; RTU");
+		rulesResponse.addToRuleFiredList(472);
+end
+
+rule "47.3 Agent Paper Replacement External Policy INCOMPLETE"
+salience 35
+activation-group "caseStatusUpdate"
+	when 
+		theCase:CaseData(contactMethod=='PHONE', contractState in ('MN','MI','OK','WY'), caseSource in ('EXTERNAL'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Phone replacement of external policy; RTU");
+		rulesResponse.addToRuleFiredList(473);
+end
+
+rule "47.4 GLIC Telephone Replacement External Policy INCOMPLETE"
+salience 30
+activation-group "caseStatusUpdate"
+	when 
+		theCase:CaseData(contactMethod=='PHONE', contractState in ('MI','GA','KS','MN','WY'), caseSource in ('CAPTIVE','INTERNET'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Internal replacement of external policy; RTU");
+		rulesResponse.addToRuleFiredList(474);
+end
+
+rule "47.5 GLIC Telephone Replacement External Policy (No Internet)"
+salience 25
+activation-group "caseStatusUpdate"
+	when 
+		theCase:CaseData(contactMethod=='PHONE', contractState == 'OK', caseSource in ('CAPTIVE'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo("Internal replacement of external OK policy; RTU");
+		rulesResponse.addToRuleFiredList(475);
+end
+
+rule "48. Rider is declined; RTU"
+salience 90
+	when
+		$rdd:CaseMericaRecommendationDetailData(productName in ('WOP'), productResult=='Decline')
+		$mericaRec:CaseMericaRecommendationData( caseMericaRecommendationId==$rdd.caseMericaRecommendationId )
+	then
+		rulesResponse.setUwStatus("EVALUATE");
+		rulesResponse.addUserNotifcationInfo($rdd.getProductName() + " product is declined; RTU");
+		rulesResponse.addToRuleFiredList(48);
+end

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<provisions>
+	<provision>
+		<code>GRACE_PERIOD</code>
+		<description>Grace Period Provision</description>
+		<productType>TL</productType>
+	</provision>
+	<provision>
+		<code>REINSTATEMENT</code>
+		<description>Reinstatement Provision</description>
+		<productType>TL</productType>
+	</provision>
+	<provision>
+		<code>NON_FORFEITURE</code>
+		<description>Non-Forfeiture Provision</description>
+		<productType>TL</productType>
+	</provision>
+	
+	<provision>
+		<code>GRACE_PERIOD</code>
+		<description>Grace Period Provision</description>
+		<productType>SIT</productType>
+	</provision>
+	<provision>
+		<code>REINSTATEMENT</code>
+		<description>Reinstatement Provision</description>
+		<productType>SIT</productType>
+	</provision>
+	<provision>
+		<code>NON_FORFEITURE</code>
+		<description>Non-Forfeiture Provision</description>
+		<productType>SIT</productType>
+	</provision>
+	
+	<provision>
+		<code>GRACE_PERIOD</code>
+		<description>Grace Period Provision</description>
+		<productType>WL</productType>
+	</provision>
+	<provision>
+		<code>REINSTATEMENT</code>
+		<description>Reinstatement Provision</description>
+		<productType>WL</productType>
+	</provision>
+	<provision>
+		<code>NON_FORFEITURE</code>
+		<description>Non-Forfeiture Provision</description>
+		<productType>WL</productType>
+	</provision>
+	<provision>
+		<code>SETTLEMENT_OPTIONS</code>
+		<description>Settlement Options Provision</description>
+		<productType>WL</productType>
+	</provision>
+	<provision>
+		<code>SETTLEMENT_OPTIONS</code>
+		<description>Settlement Options Provision</description>
+		<productType>TL</productType>
+	</provision>
+	<provision>
+		<code>COLLATERAL_ASSIGNMENT</code>
+		<description>Collateral Assignment Provision</description>
+		<productType>SIT</productType>
+	</provision>
+	<provision>
+		<code>COLLATERAL_ASSIGNMENT</code>
+		<description>Collateral Assignment Provision</description>
+		<productType>WL</productType>
+	</provision>
+	<provision>
+		<code>COLLATERAL_ASSIGNMENT</code>
+		<description>Collateral Assignment Provision</description>
+		<productType>TL</productType>
+	</provision>
+	<provision>
+		<code>OWNERSHIP</code>
+		<description>Ownership Provision</description>
+		<productType>TL</productType>
+	</provision>
+	<provision>
+		<code>OWNERSHIP</code>
+		<description>Ownership Provision</description>
+		<productType>SIT</productType>
+	</provision>
+	<provision>
+		<code>OWNERSHIP</code>
+		<description>Ownership Provision</description>
+		<productType>WL</productType>
+	</provision>
+</provisions>
+</stepImport>

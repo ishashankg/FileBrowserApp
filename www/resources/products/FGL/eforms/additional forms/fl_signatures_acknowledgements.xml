@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<page title="Acknowledgements for Florida">
+		<section title="Acknowledgements and Signatures">
+			<group style="font-weight:bold">
+				<paragragh
+					text="I understand that should I decline to provide the requested information or should I provide inaccurate information, I am limiting the protection afforded me by the Florida Statutes regarding the suitability of this purchase." />
+			</group>
+			<group>
+				<question id='aknowledgement1' labelWidth="450px"
+					text="I REFUSE to provide this information at this time. (IF THIS BOX IS CHECKED, THE COMPANY WILL BE UNABLE TO MAKE A SUITABILITY DETERMINATION AND YOUR APPLICATION WILL BE DECLINED.)"
+					type="CHECKBOX" />
+				<question id='aknowledgement2' labelWidth="450px"
+					text="I have chosen to provide LIMITED information at this time."
+					type="CHECKBOX" />
+				<question id='aknowledgement3' labelWidth="450px"
+					text="My annuity purchase IS NOT BASED on the recommendation of this agent or the insurer."
+					type="CHECKBOX" />
+				<question id='aknowledgement4' labelWidth="450px"
+					text="My annuity purchase IS BASED on the recommendation of this agent or the insurer."
+					type="CHECKBOX" />
+			</group>
+			<group
+				style="margin-left:0px !important; border:1px solid #dfdfdf; font-weight: bold">
+				<paragragh text="APPLICANT:" />
+				<paragragh
+					text="DO NOT SIGN THIS FORM IF ANY ITEM HAS BEEN LEFT BLANK, BEFORE CAREFULLY REVIEWING THE INFORMATION RECORDED, OR IF ANY OF THE INFORMATION RECORDED IS NOT TRUE AND CORRECT TO THE BEST OF YOURKNOWLEDGE." />
+				<paragragh
+					text="THE OWNER MAY SUBSTITUTE THEIR INITIALS FOR SIGNATURES ON ALL FORM PAGES WITH THEEXCEPTION OF THE SIGNATURES BELOW, WHICH ARE REQUIRED." />
+			</group>
+		</section>
+		<section title="Explanation of Terms">
+			<group style="margin-left:0px !important; border:1px solid #dfdfdf;">
+				<paragragh
+					text="'Age' is the natural person’s attained age on the day the form is completed" />
+				<paragragh
+					text="'Tax Status' is the owner’s Federal Income Tax filing status such as 'single' or 'married filing jointly'; if 'Exempt', so state." />
+				<paragragh
+					text="'Form of Ownership' is the type of entity, other than a natural person, including a corporation, trust, partnership, limited liability company, or other business or not-for-profit entity." />
+				<paragragh
+					text="'Supporting documents' are the documents that provide a basis for the relationship between the Proposed Annuitant, and the Owner as it may exist." />
+				<paragragh
+					text="'Annual income' is income received during a calendar year, whether earned or unearned." />
+				<paragragh
+					text="'Source of annual income' is the income-generating source, such as pension income, dividends, or earned income etc." />
+				<paragragh
+					text="'Annual household income' is the combined annual income received by all household members each calendar year." />
+				<paragragh
+					text="'Existing Assets' are financial assets including life insurance and annuities." />
+				<paragragh
+					text="'Existing Liquid Net Worth' is applicable to those net assets that can readily be converted into their cash equivalent, without loss of principal after all surrender charges or other deductions have been taken." />
+				<paragragh
+					text="'Financial Objectives' are the owner’s stated goals as described to the insurance agent or insurer, if no insurance agent is involved. These may include but are not limited to the following: (1) Income, (2) Growth (long term capital appreciation), (3) Safety of Principal and Income, (4) Safety of Principal and Growth, (5) To pass the investment to a beneficiary or beneficiaries at death." />
+				<paragragh
+					text="'Risk Tolerance' means the degree of uncertainty that an investor can reasonably tolerate with regard to a negative change in his or her investments. Examples of risk tolerance levels may include the following: (1) Conservative (prefer little or no risk), (2) Moderately conservative (some risk, reduced safety of principal), (3) Moderate (average risk with potential losses and potentially higher returns), (4) Moderately aggressive (above average risk with potential losses, risk of principal and potentially higher returns), (5) Aggressive (willing to sustain losses or loss of principal in pursuit of higher returns)." />
+				<paragragh
+					text="'Source of the funds' to be used to purchase the proposed annuity means from where the funds will come to purchase the annuity, and may include but are not limited to; (1) An existing annuity or life insurance contract, (2) Liquid Assets, including but not limited to, cash in banks, maturing certificates of deposit, and money market accounts, (3) Personal Loans, (4) Equity Loans, (5) Mortgages, Reverse Mortgages, (6) Death Benefit Proceeds, (7) Funds received upon retirement from employment, including but not limited to, 401(k) accounts, pensions, and other tax-sheltered funds, (8) Equities, mutual funds, or bonds, (9) Proceeds from real estate transactions." />
+			</group>
+			<group associated="true">
+				<question id='owner_sig_flsuit' text="Owner Signature"
+					required="true" type="CHECKBOX" labelWidth="120px" answerWidth="100px" />
+				<question id='owner_sig_date_flsuit' text='Date Signed'
+					required="true" type='DATEF' labelWidth="120px" answerWidth="100px" />
+			</group>
+		</section>
+	</page>
+</form>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillForm</onLoad>
+  <onSave>saveAddresses</onSave>
+  <page title="Additional Mailing Information Page">
+     <section title="Secondary Addressee">
+      <group associated="true" answerWidth="150px;">
+        <question id='addressee_first_name' text="First Name" type='TEXT' labelWidth="100px;" />
+        <question id='addressee_middle_name' text="Middle Name" type='TEXT' />
+        <question id='addressee_last_name' text="Last Name" type='TEXT'/>
+        </group>
+      <group labelWidth="100px;">
+        <question id='addressee_addl_address' text="Address Line 1" type='TEXT' answerWidth="400px"/>
+        <question id='addressee_addl_address2' text="Address Line 2" type='TEXT' answerWidth="400px"/>
+      </group>
+      <group associated="true">
+        <question id='addressee_addl_city' text="City" type='TEXT' labelWidth="100px;" />
+        <question id='addressee_addl_state' text="State" type='LISTBOX' lookup="step:LOCALE_STATE" answerSet=":Please select a state" />
+        <question id='addressee_addl_zip' text="Zip Code" type='TEXT' answerWidth="80px;"/>
+      </group>
+    </section>
+    <section title="Additional Mailing Address">
+      <group associated="true" answerWidth="150px;" readonly="true">
+        <question id='ins_first_name' text="First Name" type='TEXT' labelWidth="100px;" />
+        <question id='ins_middle_name' text="Middle Name" type='TEXT' />
+        <question id='ins_last_name' text="Last Name" type='TEXT'/>
+      </group>
+      <group labelWidth="100px;">
+        <question id='ins_addl_address' text="Address Line 1" type='TEXT' answerWidth="400px"/>
+        <question id='ins_addl_address2' text="Address Line 2" type='TEXT' answerWidth="400px"/>
+      </group>
+      <group associated="true">
+        <question id='ins_addl_city' text="City" type='TEXT' labelWidth="100px;" />
+        <question id='ins_addl_state' text="State" type='LISTBOX' lookup="step:LOCALE_STATE" answerSet=":Please select a state" />
+        <question id='ins_addl_zip' text="Zip Code" type='TEXT' answerWidth="80px;"/>
+      </group>
+    </section>
+  </page>
+</form>

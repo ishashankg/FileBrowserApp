@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onSave>importData</onSave>
+  <page title="Page 1 - Medical Questions">
+    <section>
+      <group labelWidth="560px">
+        <question id='proposed_insurer_completing_form'
+          text='1.  Is the Proposed Insured completing this application and paying the premium?'
+          type="RADIO" answerSet='Y:Yes|N:No' required='true' />
+        <question id='primary_care_physician'
+          text='2.  Do you have a Primary Care Physician?'
+          type="RADIO" answerSet='Y:Yes|N:No' required='true' />
+      </group>
+
+      <group labelWidth="560px">
+        <question id='weight_change' required='true'
+          text='3.  Has your weight changed in the past year?' type="RADIO"
+          answerSet='Y:Yes|N:No' />
+      </group>
+    </section>
+    <section title="Significant Weight Change">
+      <displayWhen>#{EFORM.weight_change=="Y"}</displayWhen>
+      <group labelWidth="200px">
+        <question id='weight_chg_pounds' text='(Weight change in pounds)'
+          type='TEXT' validation='number' required="true" />
+        <question id='weight_gain_loss' text='Was this change a gain or a loss?'
+          type='RADIO' answerSet='Gain|Loss' required="true" />
+        <question id='weightchg_reasons' text='Please specify a reason'
+          type='LISTBOX'  answerSet=":Please select a reason"
+          labelWidth="60px" required="true" />
+      </group>
+    </section>
+    <section title="Medical Weight Change">
+      <displayWhen>#{EFORM.weight_change=="Y" and EFORM.weightchg_reasons=="MEDICAL_WC"}</displayWhen>
+      <group labelWidth="400px">
+        <question id='medicalwccompleter' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true"
+           />
+      </group>
+      <group parentQuestionId="medicalwccompleter"
+         labelWidth="400px">
+      </group>
+    </section>
+    <section title="Other Weight Change">
+      <displayWhen>#{EFORM.weightchg_reasons=="OTHER_WC"}</displayWhen>
+      <group labelWidth="400px">
+        <question id='otherwccompleter' text='Please provide explanation'
+          type='TEXT' answerWidth="350px;" required="true" />
+      </group>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale!='CA'}</displayWhen>
+      <group labelWidth="560px">
+        <question id="med_q11" required='true'
+          text='4.  Have you ever received a positive result from a test administered by a member of the medical profession for Human Immunodeficiency Virus (HIV)?'
+          type="RADIO" answerSet='Y:Yes|N:No' />
+      </group>
+    	<group labelWidth="100px">
+				<question id='medq11completer' text='Please specify' type='TEXT'
+					answerWidth="350px;" required="true" >
+					<displayWhen>#{EFORM.med_q11=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="medq11completer"
+				 labelWidth="400px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>${CASE.contractLocale!='CA' and EFORM.med_q11=="Y"}</displayWhen>
+			<group labelWidth="100px">
+				<question id='medq11completer1' text='Please specify' type='TEXT'
+					answerWidth="350px;" required="true" >
+				</question>
+			</group>
+			<group parentQuestionId="medq11completer1"
+				 labelWidth="400px">
+			</group>
+		</section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='CA'}</displayWhen>
+      <group labelWidth="560px">
+        <question id="med_q11_CA" required='true'
+          text='4.  Have you ever been diagnosed by a member of the medical profession as having any other disorder of the immune system (except HIV), or have you ever tested positive for Human Immunodeficiency Virus (HIV) as part of a test for obtaining insurance?'
+          type="RADIO" answerSet='Y:Yes|N:No' />
+      </group>
+      <group labelWidth="100px">
+				<question id='medq11CAcompleter' text='Please specify'
+					type='TEXT' answerWidth="350px;" required="true"
+					>
+					<displayWhen>#{EFORM.med_q11_CA=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="medq11CAcompleter"
+				 labelWidth="400px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>${CASE.contractLocale=='CA' and EFORM.med_q11_CA=="Y"}</displayWhen>
+			<group labelWidth="100px">
+				<question id='medq11CAcompleter1' text='Please specify'
+					type='TEXT' answerWidth="350px;" required="true"
+					>
+				</question>
+			</group>
+			<group parentQuestionId="medq11CAcompleter1"
+				 labelWidth="400px">
+			</group>
+    </section>
+    <section>
+      <group labelWidth="560px">
+        <question id="med_q12" required='true'
+          text='5.  In  the past 10 years, have you received any treatment, medical advice or  consultation for; been diagnosed by a member of the medical profession  with or required follow-up for;  Irregular Heart Beat (Arrhythmia),  Blockage or Narrowing of the Arteries or Stroke, Atherosclerosis,  Coronary Artery Disease (CAD), Pancreatitis, Cerebral Palsy, OR any  disease or  disorder of the Kidney (other than kidney stones)? '
+          type="RADIO" answerSet='Y:Yes|N:No' />
+      </group>
+      <group labelWidth="100px">
+        <question id='medq12completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true"
+          >
+          <displayWhen>#{EFORM.med_q12=="Y"}</displayWhen>
+        </question>
+      </group>
+      <group parentQuestionId="medq12completer"
+         labelWidth="400px">
+      </group>
+    </section>
+    <section title="Additional Condition" repeating="true">
+      <displayWhen>#{EFORM.med_q12=="Y"}</displayWhen>
+      <group labelWidth="100px">
+        <question id='medq12completer1' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true"
+          >
+        </question>
+      </group>
+      <group parentQuestionId="medq12completer1"
+         labelWidth="400px">
+      </group>
+    </section>
+    <section>
+      <group labelWidth="560px">
+        <question id='med_q13' required='true'
+          text='6.  In  the  past 10 years, have you received any treatment, medical advice  or  consultation for; been diagnosed by a member of the medical  profession  with or required follow-up for;  Chest Pain, Heart Murmur,  Heart Attack  (Myocardial Infarction), Transient Ischemic Attack (TIA or  mini stroke),  Thrombosis, Rheumatoid Arthritis, Paralysis, or any  other Disease or  Disorder of the Coronary Arteries? '
+          type="RADIO" answerSet='Y:Yes|N:No' />
+      </group>
+      <group labelWidth="100px">
+        <question id='medq13completer' text='Please specify'
+          type='AUTOCOMPLETE'  required="true"
+          autocompleteLookup="uw:DIAGNOSIS"    reflexiveContext="uw:MEDIC:ATHEAR">
+          <displayWhen>#{EFORM.med_q13=="Y"}</displayWhen>
+        </question>
+      </group>
+      <group parentQuestionId="medq13completer" labelWidth="400px" dynamicQuestionContext="uw:MEDIC:ATHEAR"/>
+    </section>
+    <section title="Additional Condition" repeating="true">
+      <displayWhen>#{EFORM.med_q13=="Y"}</displayWhen>
+      <group labelWidth="100px">
+        <question id='medq13completer1' text='Please specify'
+          type='AUTOCOMPLETE'  required="true"
+          autocompleteLookup="uw:DIAGNOSIS"    reflexiveContext="uw:MEDIC:ATHEAR">
+        </question>
+      </group>
+      <group parentQuestionId="medq13completer1" labelWidth="400px"  dynamicQuestionContext="uw:MEDIC:ATHEAR"/>
+    </section>
+    <section>
+      <group labelWidth="560px">
+        <question id='med_q14' required='true'
+          text='7.  In  the  past 10 years, have you received any treatment, medical advice  or  consultation for; been diagnosed by a member of the medical  profession  with or required follow-up for;  Chronic Bronchitis, Chronic  Obstructive  Pulmonary Disease (COPD), Sleep Apnea, Emphysema, Asthma,  Learning  Disorders, Bipolar disease, major Depression or Anxiety that required  psychiatric  treatment, Drug or Alcohol abuse, or other Nervous  Disorder?'
+          type="RADIO" answerSet='Y:Yes|N:No' />
+      </group>
+      <group labelWidth="100px">
+        <question id='medq14completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true"
+          >
+          <displayWhen>#{EFORM.med_q14=="Y"}</displayWhen>
+        </question>
+      </group>
+      <group parentQuestionId="medq14completer"
+         labelWidth="400px">
+      </group>
+    </section>
+    <section title="Additional Condition" repeating="true">
+      <displayWhen>#{EFORM.med_q14=="Y"}</displayWhen>
+      <group labelWidth="100px">
+        <question id='medq14completer1' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true"
+          >
+        </question>
+      </group>
+      <group parentQuestionId="medq14completer1"
+         labelWidth="400px">
+      </group>
+    </section>
+    <section>
+      <group labelWidth="560px">
+        <question id='med_q15' required='true'
+          text='8.  In  the  past 10 years, have you received any treatment, medical advice  or  consultation for; been diagnosed by a member of the medical  profession  with or required follow-up for;  Diabetes or Elevated Blood  Sugar,  Elevated Cholesterol, Hypertension (High Blood Pressure),  Seizures,  Hepatitis, Crohns Disease, Colitis, Abnormal PAP Test,  Anemia, or any  Disorder of the Bladder, Stomach, or Prostate?'
+          type="RADIO" answerSet='Y:Yes|N:No' />
+      </group>
+      <group labelWidth="100px">
+        <question id='medq15completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true"
+          >
+          <displayWhen>#{EFORM.med_q15=="Y"}</displayWhen>
+        </question>
+      </group>
+      <group parentQuestionId="medq15completer"
+         labelWidth="400px">
+      </group>
+    </section>
+    <section title="Additional Condition" repeating="true">
+      <displayWhen>#{EFORM.med_q15=="Y"}</displayWhen>
+      <group labelWidth="100px">
+        <question id='medq15completer1' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true"
+          >
+        </question>
+      </group>
+      <group parentQuestionId="medq15completer1"
+         labelWidth="400px">
+      </group>
+    </section>
+</page>
+
+  <page title='Page 2 - Medical Questions'>
+    <section>
+      <group labelWidth='560px'>
+        <question id='med_q17' required='true'
+          text='9.  Do  you  currently take more than 2 prescription medications for pain; or  do  you consume, on average, more than 3 alcoholic beverages per day?'
+          type="RADIO" answerSet='Y:Yes|N:No' />
+      </group>
+      <group labelWidth="100px">
+        <question id='medq17completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true">
+          <displayWhen>#{EFORM.med_q17=="Y"}</displayWhen>
+        </question>
+      </group>
+    </section>
+    
+    
+      <section>
+      <group labelWidth="560px">
+        <question id='med_q18' required='true'
+          text='10.  Have  you,  within  the past 5 years, used Controlled Substances such as Narcotics, Cocaine, Heroin, Marijuana, Amphetamines,  Hallucinogens  or  Barbiturates not prescribed by a Physician or have  you abused over  the  counter Medications?'
+          type='RADIO' answerSet='Y:Yes|N:No' />
+      </group>
+        <group labelWidth="100px">
+        <question id='medq18completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true">
+          <displayWhen>#{EFORM.med_q18=="Y"}</displayWhen>
+        </question>
+      </group>
+    </section>  
+  <section>
+      <group labelWidth="560px">
+        <question id='med_q20' required='true'
+          text='11.  Have  you,  within the past 5 years, been admitted to an Emergency Room (ER)  or  Urgent Care Facility, or been a patient in any Hospital,  Clinic,  Nursing Home, Assisted Living Facility or other Medical  Facility?'
+          type='RADIO' answerSet='Y:Yes|N:No' />
+      </group>
+      <group labelWidth="100px">
+        <question id='medq20completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true">
+          <displayWhen>#{EFORM.med_q20=="Y"}</displayWhen>
+        </question>
+      </group>
+       </section>
+    <section>
+      <group labelWidth="560px">
+        <question id='med_q21' required='true'
+          text='12.  Have  you,  within the past 5 years, been advised by a member of the  medical  profession to have any Diagnostic Tests (except HIV tests),  Treatments,  Hospitalizations, Surgical Operations or medical or mental  evaluations  or consultations with any Medical Professionals, which have  yet to be  completed, or are you waiting for a diagnosis? '
+          type='RADIO' answerSet='Y:Yes|N:No' />
+      </group>
+      <group labelWidth="100px">
+        <question id='medq21completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true">
+          <displayWhen>#{EFORM.med_q21=="Y"}</displayWhen>
+        </question>
+      </group>
+    </section>
+    <section>
+      <group labelWidth="560px">
+        <question id='med_q22' required='true'
+          text='13.  Within  the  past 5 years, have you been prescribed any medication, suffered  from  any disease or received any Medical, Mental or Surgical  health  treatment for any condition that you have not previously  disclosed?'
+          type='RADIO' answerSet='Y:Yes|N:No' />
+      </group>      
+      <group labelWidth="100px">
+        <question id='medq22completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true">
+          <displayWhen>#{EFORM.med_q22=="Y"}</displayWhen>
+        </question>
+      </group>		
+    </section>
+    <section>
+      <group labelWidth="560px">
+        <question id='med_q23' required='true'
+          text='14.  Have  you,  within the past 5 years, had an Application for Life or  Health  Insurance Rated Up, Postponed, Declined or Denied  Reinstatement?'
+          type='RADIO' answerSet='Y:Yes|N:No' />
+      </group>      
+      <group labelWidth="100px">
+        <question id='medq23completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true">
+          <displayWhen>#{EFORM.med_q23=="Y"}</displayWhen>
+        </question>
+      </group>
+    </section>
+    <section>
+      <group labelWidth="560px">
+        <question id='med_q24' required='true'
+          text='15.  Have  you,  within the past 5 years, been convicted of or pled guilty to a  Felony  or misdemeanor or been incarcerated or served in a probation or  parole  program or do you have criminal charges pending?'
+          type='RADIO' answerSet='Y:Yes|N:No' />
+      </group>
+      <group labelWidth="100px">
+        <question id='medq24completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true">
+          <displayWhen>#{EFORM.med_q24=="Y"}</displayWhen>
+        </question>
+      </group>
+     </section>
+    <section>
+       <group labelWidth="560px">
+         <question id='med_q25' required='true'
+           text='16.  Have  you,  within  the past 5 years, had a Drivers License Denied,  Suspended,  Revoked or  been convicted of more than three Moving  Violations?'
+           type='RADIO' answerSet='Y:Yes|N:No' />
+       </group>
+       <group labelWidth="100px">
+        <question id='medq25completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true">
+          <displayWhen>#{EFORM.med_q25=="Y"}</displayWhen>
+        </question>
+      </group>
+      </section>
+     <section>
+       <group labelWidth="560px">
+         <question id='med_q26' required='true'
+           text='17.  Have  you,  within  the past 5 years, been convicted of or pled guilty  to  Reckless  Driving or Driving while Under the Influence of Alcohol  or  Drugs or  driving while intoxicated?'
+           type='RADIO' answerSet='Y:Yes|N:No' />
+       </group>
+       <group labelWidth="100px">
+        <question id='medq26completer' text='Please specify'
+          type='TEXT' answerWidth="350px;" required="true">
+          <displayWhen>#{EFORM.med_q26=="Y"}</displayWhen>
+        </question>
+      </group>
+     </section>
+ </page>
+  <page title='Page 3 - Medical Questions'>    
+     
+    <section>
+       <group labelWidth="560px">
+         <question id='med_q27' required='true'
+           text='18.  Have  you,  within  the past 2 years, engaged in, or do you plan within the  next 2  years  to engage in, any Aviation Activity other than as  a  Fare-Paying  Passenger on commercial airlines?'
+           type='RADIO' answerSet='Y:Yes|N:No' />
+       </group>
+       <group labelWidth="100px">
+         <question id='medq27completer' text='Please specify'
+           type='TEXT' answerWidth="350px;" required="true"
+           >
+           <displayWhen>#{EFORM.med_q27=="Y"}</displayWhen>
+         </question>
+       </group>
+       <group parentQuestionId="medq27completer"
+          labelWidth="400px">
+       </group>
+     </section>
+     <section title="Additional Activities" repeating="true">
+       <displayWhen>#{EFORM.med_q27=="Y"}</displayWhen>
+       <group labelWidth="100px">
+         <question id='medq27completer1' text='Please specify'
+           type='TEXT' answerWidth="350px;" required="true"
+           >
+         </question>
+       </group>
+       <group parentQuestionId="medq27completer1"
+          labelWidth="400px">
+       </group>
+     </section>
+     <section>
+       <group labelWidth="560px">
+         <question id='med_q28' required='true'
+           text='19.  Have  you,  within  the past 2 years, engaged in, or do you plan within the  next 2  years  to engage in, any form of, Skin or Scuba  Diving,  Hang-Gliding,  Ultralight Flying, Cave Exploration, Parachuting  or Sky  Diving,  Mountain, Rock or Ice Climbing, Rodeo, Bungee  Jumping,  Ballooning,  Competitive Skiing, Snowmobiling , Snowboarding  or Motor  Racing?'
+           type='RADIO' answerSet='Y:Yes|N:No' />
+       </group>
+       <group labelWidth="100px">
+         <question id='medq28completer' text='Please specify'
+           type='TEXT' answerWidth="350px;" required="true"
+           >
+           <displayWhen>#{EFORM.med_q28=="Y"}</displayWhen>
+         </question>
+       </group>
+       <group parentQuestionId="medq28completer"
+          labelWidth="400px">
+       </group>
+     </section>
+     <section title="Additional Activities" repeating="true">
+       <displayWhen>#{EFORM.med_q28=="Y"}</displayWhen>
+       <group labelWidth="100px">
+         <question id='medq28completer1' text='Please specify'
+           type='TEXT' answerWidth="350px;" required="true"
+           >
+         </question>
+       </group>
+       <group parentQuestionId="medq28completer1"
+          labelWidth="400px">
+       </group>
+     </section>
+         <section>
+       <group labelWidth="560px">
+         <question id='med_q29'
+           text='20.  To  the  best  of your knowledge or belief has any Natural Parent or  Sibling  died of  Diabetes, Cancer or Heart Disease prior to age 60?'
+           type='RADIO' answerSet='Y:Yes|N:No' required="true" />
+       </group>
+       </section>
+         <section title="Family History">
+       <displayWhen>#{EFORM.med_q29=="Y"}</displayWhen>
+       <group labelWidth="200px">
+         <question id='family_disorder1' text='Family member&apos;s disease'
+           type='RADIO' answerSet='Cancer|Diabetes|Heart Disease' required="true" />
+         <question id='family_relation1' text='Relationship to the Insured'
+           type='RADIO' answerSet='Natural Parent|Sibling' required="true" />
+         <question id='family_age_of_death1' text='Age diagnosed or Age at death'
+           type='TEXT' validation='number' required="true" />
+         <question id='family_status1' text='Family member&apos;s status'
+           type='RADIO' answerSet='Living|Deceased' required="true" />
+       </group>
+     </section>
+     <section title="Other Family History" repeating="true">
+       <displayWhen>#{EFORM.med_q29=="Y"}</displayWhen>
+       <group labelWidth="200px">
+         <question id='family_disorder' text='Family member&apos;s disease'
+           type='RADIO' answerSet='Cancer|Diabetes|Heart Disease' required="true" />
+         <question id='family_relation' text='Relationship to the Insured'
+           type='RADIO' answerSet='Natural Parent|Sibling' required="true" />
+         <question id='family_age_of_death' text='Age diagnosed or Age at death'
+           type='TEXT' validation='number' required="true" />
+         <question id='family_status' text='Family member&apos;s status'
+           type='RADIO' answerSet='Living|Deceased' required="true" />
+       </group>
+     </section>
+     <section>
+       <group labelWidth="560px">
+         <question id='med_q30' required='true'
+           text='21.  Do you intend to Travel, Live or Work outside the United States or Canada within the next 2 years?'
+           type='RADIO' answerSet='Y:Yes|N:No' />
+       </group>
+       <group labelWidth="150px">
+         <question id='medq30completer' text='Please specify the Country'
+           type='TEXT' answerWidth="350px;" required="true"
+           >
+           <displayWhen>#{EFORM.med_q30=="Y"}</displayWhen>
+         </question>
+       </group>
+       <group parentQuestionId="medq30completer"
+          labelWidth="400px">
+       </group>
+     </section>
+     <section title="Additional Country" repeating="true">
+       <displayWhen>#{EFORM.med_q30=="Y"}</displayWhen>
+       <group labelWidth="200px">
+         <question id='medq30completer1' text='Please specify additional Country'
+           type='TEXT' answerWidth="350px;" required="true"
+           >
+         </question>
+       </group>
+     </section>
+     <section>
+       <group>
+         <question id='med_q31' required='true'
+           text='22.  Have  you,  within  the last 12 months, been subject of any voluntary  or  involuntary  bankruptcy proceedings or are you currently in  bankruptcy?'
+           type='RADIO' answerSet='Y:Yes|N:No' labelWidth="560px" />
+          <question id='med_q31_details' text='Details' type='TEXT' answerWidth="350px;" >
+          <displayWhen>#{EFORM.med_q31=="Y"}</displayWhen>
+          </question>
+       </group>
+     </section>
+     <section>
+       <group labelWidth="560px">
+         <question id='med_q32' required='true'
+           text='23.  Are  you  a  member of the armed forces including the reserves and  are  you  currently or expecting to be Deployed outside of the US?'
+           type='RADIO' answerSet='Y:Yes|N:No' />
+       </group>
+     </section>
+   </page>
+     <page title="Primary Physician">
+   <displayWhen>#{EFORM.primary_care_physician=="Y"}</displayWhen>
+     <section title="Primary Physician">
+       <group>
+         <facelet component="/pages/common/physicians_eform.xhtml" />
+       </group>
+     </section>
+  </page>
+</form>
+ 

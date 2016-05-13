@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+    <onLoad>prefillData</onLoad>
+	<page>
+		<section title='MINNESOTA IMPORTANT NOTICE'>
+			<group>
+				<header>DEFINITION:</header>
+				<paragragh
+					text="REPLACEMENT is any transaction where, in connection with the purchase of New Insurance or a New Annuity, you LAPSE, SURRENDER, CONVERT to Paid-up Insurance, Place on Extended Term, or BORROW all or part of the loan values on an existing insurance policy or an annuity. (See reverse side for DEFINITIONS.)"
+					styleClass="groupParagraph" />
+			</group>
+			<group>
+				<header>IF YOU INTEND TO REPLACE COVERAGE</header>
+				<paragragh
+					text="In connection with the purchase of this insurance or annuity, if you have REPLACED or intend to REPLACE your present life insurance coverage or annuity(ies), you should be certain that you understand all the relevant factors involved."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="You should BE AWARE that you may be required to provide Evidence of Insurability and"
+					styleClass="groupParagraph" />
+				<paragragh
+					text="1. If your HEALTH condition has CHANGED since the application was taken on your present policies, you may be required to pay ADDITIONAL PREMIUMS under the NEW POLICY, or be DENIED coverage."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="2. Your present occupation or activities may not be covered or could require additional premiums."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="3. The INCONTESTABLE and SUICIDE CLAUSE will begin anew in a new policy. This could RESULT in a CLAIM under the new policy BEING DENIED that would otherwise have been paid."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="4. Current law DOES NOT REQUIRE your present insurer(s) to REFUND any premiums."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="5. It is to your advantage to OBTAIN INFORMATION regarding your existing policies from the insurer or agent from whom you purchased the policy or annuity contract."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="(If you are purchasing an annuity, clauses 1, 2 and 3 above would not apply to the new annuity contract.)"
+					styleClass="groupParagraph" />
+				<paragragh
+					text="THE INSURANCE OR ANNUITY I INTEND TO PURCHASE FROM THE COMPANY SHOWN ABOVE MAY REPLACE OR ALTER EXISTING LIFE INSURANCE POLICY(IES) OR ANNUITY CONTRACT(S)."
+					styleClass="groupParagraph" />
+			</group>
+		</section>
+		<section>
+			<group>
+				<paragragh
+					text="The following policy(ies) or annuity contract(s) may be replaced as a result of this transaction:"
+					styleClass="groupParagraph" />
+			</group>
+        </section>
+        <section title="Replaced Company" repeating="true">
+          <group associated="true">
+            <question id='replaced_carrier' text='Insurer as it appears on the policy or contract' type='TEXT' labelWidth="200px" answerWidth="200px;" />
+            <question id='replaced_insured' text='Insured as it appears on the policy or contract' type='TEXT' labelWidth="200px" answerWidth="200px;" />
+            <question id='replaced_policyno' text='Policy or Contract Number' labelWidth="100px" type='TEXT' answerWidth="100px;" />
+            <question id='insured_dob' text="Insured's Birthdate" labelWidth="150px" type='TEXT' answerWidth="150px;" />
+          </group>
+        </section>
+        <section>
+          <group associated="true" labelWidth="150px" >
+          	<paragragh text="The Proposed policy or contract is:" styleClass="groupParagraph" />
+          </group>
+          <group associated="true" labelWidth="150px" >
+          	<question id='policy_type' text="Type of policy or contract-generic name" type='TEXT' answerWidth="200px;"/>
+          	<question id='face_amount' text="Face Amount" type='TEXT'/>
+          </group>
+		</section>
+		<section title='DEFINITIONS'>
+			<group>
+				<paragragh
+					text="Premiums: Premiums are the payments you make in exchange for an insurance policy or annuity contract. They are unlike deposits in a savings or investment program, because if you drop the policy or contract, you might get back less than you paid in."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="Cash Surrender Value: This is the amount of money you can get in cash if you surrender your life insurance policy or annuity. If there is a policy loan, the cash surrender value is the difference between the cash value printed in the policy and the loan value. Not all policies have cash surrender values."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="Lapse: A life insurance policy may lapse when you do not pay the premium within the grace period. If you had a cash surrender value, the insurer might change your policy to as much extended term insurance or paid-up insurance as the cash surrender value will buy. Sometimes the policy lets the insurer borrow from the cash surrender value to pay the premiums."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="Surrender: You surrender a life insurance policy when you either let it lapse or tell the company you want to drop it. Whenever a policy has a cash surrender value, you can get it in cash if you return the policy to the company with a written request. Most insurers will also let you exchange the cash value of the policy for paid-up or extended term insurance."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="Convert to Paid-up Insurance: This means you use your cash surrender value to change your insurance to a paid-up policy with the same insurer. The death benefit generally will be lower than under the old policy, but you will not have to pay any more premiums."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="Place on Extended Term: This means you use your cash surrender value to change you insurance to term insurance with the same insurer. In this case, the net benefit will be the same as before. However, you will only be covered for a specified period of time stated in the policy."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="Borrow Policy Loan Values: If your life insurance policy has a cash surrender value, you can almost always borrow all or part of it from the insurer. Interest will be charged according to the terms of the policy, and if the loan with unpaid interest ever exceeds the cash surrender value, your policy will be surrendered. If you die, the amount of the loan and any unpaid interest due will be subtracted from the death benefits."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="Evidence of Insurability: This means proof that you are an acceptable risk. You have to meet the insurer's standards regarding health, occupation, etc., to be eligible for coverage."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="Incontestable Clause: This says that after two years, depending on the policy or insurer, the life insurer will not resist a claim because you made a false or incomplete statement when you applied for the policy. For the early years, though, if there are wrong answers on the application and the insurer finds out about them, it can deny a claim as if the policy had never existed."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="Suicide Clause: This says that if you commit suicide after being insured for less than two years, depending on the policy and insurer, your beneficiaries will receive only a refund of the premiums that were paid."
+					styleClass="groupParagraph" />
+			</group>
+		</section>
+	</page>
+</form>

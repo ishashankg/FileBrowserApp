@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<org-units>
+	<org-unit>
+		<ouName>ALISS</ouName>
+		<ouCode>ALISS</ouCode>
+		<ouClass>NB</ouClass>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Underwriting</ouName>
+		<ouCode>FLA_UW</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Efinancial</ouName>
+		<ouCode>EFINOU</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>EFIN</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>FidelityLife </ouName>
+		<ouCode>FLIFE</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Merica</ouName>
+		<ouCode>MERICA</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+</org-units>
+</stepImport>

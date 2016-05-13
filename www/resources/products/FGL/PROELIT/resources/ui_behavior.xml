@@ -1,0 +1,185 @@
+<behavior>
+	<function name="CaseList.resumeCaseFlow">
+		<actionType>FLOW</actionType>
+		<actionName>performanceProNewCaseFlow</actionName>
+		<description>Go to new case flow</description>
+		<param name="caseId" value="#{param['caseId']}"/>	
+		<param name="returnUrl" value="/pages/formTemplates/form_template_editor.xhtml?indirectFormId=#{param['formId']}"/>
+		<param name="randomNavigation" value="#{true}"/>		
+	</function>
+	
+	<function name="CaseList.gotoCaseDetails">
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/case_details</actionName>
+		<description>Go to case details page</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="taskId" value="#{param['taskId']}"/>	
+		<param name="ouId" value="#{param['ouId']}"/>			
+	</function>
+	<function name="CaseList.gotoCaseDetails">
+		<ouClass>UW</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/underwriter_workbench</actionName>
+		<description>Go to underwriter workbench</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="taskId" value="#{param['taskId']}"/>	
+		<param name="ouId" value="#{param['ouId']}"/>	
+	</function>
+	<function name="CaseList.gotoCaseDetails">
+		<ouClass>NB</ouClass>
+		<actionType>FLOW</actionType>
+		<actionName>performanceProNewCaseFlow</actionName>
+		<description>Go to new case flow</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="externalCaseNo" value="#{param['externalCaseNo']}"/>	
+		<param name="returnUrl" value="/pages/case/case_list.xhtml?ouId=#{caseListController.ouId}"/>
+	</function>
+	<function name="CaseList.gotoCaseActivityTab">
+		<ouClass>NB</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/case_details</actionName>
+		<description>Go to case notes</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="returnUrl" value="/pages/case/case_list.xhtml?ouId=#{caseListController.ouId}"/>
+	</function>
+	<function name="CaseList.gotoCaseActivityTab">
+		<ouClass>UW</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/underwriter_workbench</actionName>
+		<description>Go to activity tab</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+	</function>
+	<function name="CaseList.gotoCaseActivityTab">
+		<ouClass>SVC</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/case_details</actionName>
+		<description>Go to case notes</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="returnUrl" value="/pages/case/case_list.xhtml?ouId=#{caseListController.ouId}"/>
+	</function>
+	<function name="CaseList.createNewCase">
+		<actionType>FLOW</actionType>
+		<actionName>performanceProNewCaseFlow</actionName>
+		<description>Start New Case Flow</description>
+		<param name="returnUrl" value="/pages/case/case_list.xhtml?ouId=#{caseListController.ouId}"/>
+	</function>
+	<function group="CaseList.otherActions" name="CaseList.sendToService">
+		<actionType>WORKFLOW</actionType>
+		<actionName>sendToServiceWorkflow</actionName>			
+	</function>
+  
+    <function name="NewCase.createCaseNumber">
+      <actionType>GROOVY</actionType>
+      <actionName>GLIC_CARRIER_GROOVY_UTILS</actionName>
+      <actionMethod>getNextSequenceNumber</actionMethod>      
+    </function>
+   
+	<function name="CaseList.redirectAfterSendToService">
+		<ouClass>NB</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/case_list</actionName>
+		<description>Go to case_list after Send to Service</description>
+		<param name="ouId" value="#{param['ouId']}"/>
+		<param name="propagateFlow" value="false"/>
+	</function>
+	
+    
+    <function name="eformForcePageCompletion">
+      <actionType>GROOVY</actionType>
+      <actionName>FGL_CARRIER_GROOVY_UTILS</actionName>
+      <description>Determine if eform should be checked for page completion before proceed to the next page</description>
+      <actionMethod>eformForcePageCompletion</actionMethod>  
+      <returnClassName>java.lang.Boolean</returnClassName>    
+    </function>
+    <function name="CustomService.initNewCaseForFlow">
+      <actionType>JAVA</actionType>
+      <actionName>com.stepsoln.core.db.services.custom.FglCustomCaseService</actionName>
+      <actionMethod>initNewCaseForFlow</actionMethod>  
+      <param name="case" value="com.stepsoln.core.db.cases.Case"/>
+      <param name="user" value="com.stepsoln.core.db.util.UserIdentity"/>
+    </function>
+  
+    
+    <function name="CaseList.display">
+        <ouClass>SVC</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/task_list.xhtml</actionName>
+		<description>Go to case list</description>
+		<param name="ouId" value="#{param['ouId']}"/>			
+	</function>
+    <!-- FGL only -->
+   <function name="CaseList.display">
+        <ouClass>NB</ouClass>
+        <ouCode>DEP</ouCode>
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/inbox_file_list.xhtml</actionName>
+		<description>Go to case list</description>
+		<param name="ouId" value="#{param['ouId']}"/>			
+	</function>
+	<function name="CaseList.display">
+        <ouClass>NB</ouClass>
+        <ouCode>DEP_QC</ouCode>
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/inbox_file_list.xhtml</actionName>
+		<description>Go to case list</description>
+		<param name="ouId" value="#{param['ouId']}"/>			
+	</function>
+     <function name="CaseList.gotoCaseDetails">
+		<ouClass>NB</ouClass>
+		<ouCode>DEP</ouCode>
+		<actionType>FLOW</actionType>
+		<actionName>performanceProNewCaseFlow</actionName>
+		<description>Go to new case flow</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="externalCaseNo" value="#{param['externalCaseNo']}"/>	
+		<param name="returnUrl" value="/pages/case/inbox_file_list.xhtml?ouId=#{caseListController.ouId}"/>
+	</function>
+	<function name="CaseList.gotoCaseDetails">
+		<ouClass>NB</ouClass>
+		<ouCode>DEP_QC</ouCode>
+		<actionType>FLOW</actionType>
+		<actionName>performanceProNewCaseFlow</actionName>
+		<description>Go to new case flow</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="externalCaseNo" value="#{param['externalCaseNo']}"/>	
+		<param name="returnUrl" value="/pages/case/inbox_file_list.xhtml?ouId=#{caseListController.ouId}"/>
+	</function>
+	<function name="Tasks.claimTask">	 
+      <actionType>JAVA</actionType>
+      <actionName>com.stepsoln.core.db.services.custom.FglCustomCaseService</actionName>
+      <description>custom logic called after claiming a task</description>
+      <actionMethod>claimTask</actionMethod>  
+      <param name="case" value="com.stepsoln.core.db.cases.Case"/>
+      <param name="user" value="com.stepsoln.core.db.security.SecurityUser"/>
+      <param name="task" value="com.stepsoln.core.workflow.Task"/>
+    </function>
+   
+    <function name="Tasks.releaseTask">	 
+      <actionType>JAVA</actionType>
+      <actionName>com.stepsoln.core.db.services.custom.FglCustomCaseService</actionName>
+      <description>custom logic called after releasing a task</description>
+      <actionMethod>releaseTask</actionMethod>  
+      <param name="case" value="com.stepsoln.core.db.cases.Case"/>
+      <param name="user" value="com.stepsoln.core.db.security.SecurityUser"/>
+      <param name="task" value="com.stepsoln.core.workflow.Task"/>
+    </function>
+    
+    <function name="Tasks.completeTask">	 
+      <actionType>JAVA</actionType>
+      <actionName>com.stepsoln.core.db.services.custom.FglCustomCaseService</actionName>
+      <description>custom logic called after completing a task</description>
+      <actionMethod>completeTask</actionMethod>  
+      <param name="case" value="com.stepsoln.core.db.cases.Case"/>
+      <param name="user" value="com.stepsoln.core.db.security.SecurityUser"/>
+      <param name="task" value="com.stepsoln.core.workflow.Task"/>
+    </function>  
+    
+    <function name="CustomService.createNewCase">
+      <actionType>JAVA</actionType>
+      <actionName>com.stepsoln.core.db.services.custom.FglCustomCaseService</actionName>
+      <actionMethod>createNewCase</actionMethod>  
+      <param name="case" value="com.stepsoln.core.db.cases.Case"/>
+      <param name="ou" value="com.stepsoln.core.db.security.SecurityOu"/>
+      <param name="owner" value="com.stepsoln.core.db.security.SecurityUser"/>
+    </function>
+</behavior>

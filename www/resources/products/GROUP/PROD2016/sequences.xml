@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequences>
+  <sequence>
+    <sequenceCode>POLICY_NUMBER_IPAPER</sequenceCode>
+    <startSequence>13400000</startSequence>
+  </sequence>
+  <sequence>
+    <sequenceCode>POLICY_NUMBER_EPAPER</sequenceCode>
+    <startSequence>13500000</startSequence>
+  </sequence>
+  <sequence>
+    <sequenceCode>POLICY_NUMBER_EXTERNAL</sequenceCode>
+    <startSequence>13300000</startSequence>
+  </sequence>
+  <sequence>
+    <sequenceCode>POLICY_NUMBER_INTERNET</sequenceCode>
+    <startSequence>13200000</startSequence>
+  </sequence>
+  <sequence>
+    <sequenceCode>POLICY_NUMBER_CAPTIVE</sequenceCode>
+    <startSequence>13100000</startSequence>
+  </sequence>
+</sequences>

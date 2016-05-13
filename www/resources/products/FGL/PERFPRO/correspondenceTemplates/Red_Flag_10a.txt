@@ -1,0 +1,27 @@
+$currentDate
+
+$agentFirstName $agentLastName
+$agentAddressLines
+$agentCityStateZip 
+
+Re:  $policyNumber:
+     $annuitantFirstName $annuitantLastName 
+
+Dear $agentFirstName $agentLastName:
+
+We are in the process of reviewing the annuity application you recently submitted as referenced above. Before we can process this application further, we have questions that will need your attention based on information on the Suitability Acknowledgment Form (SAF). This is not meant to suggest there is anything wrong necessarily but clarification is needed in order to continue with our suitability review.
+
+Please attend to this as quickly as possible. Once you provide the requested information, we can then proceed with our suitability review and processing of the application. If we still need additional information based on your answers to our questions below, we may contact you again.
+
+Please note this application will remain in NIGO (Not in Good Order) status until this information is received from you. If we do not receive the information within ten days, the application will be declined.
+
+Please provide the following additional information:
+
+We notice that the Suitability Acknowledgement Form, question 19 subpart a, indicates your client replaced or exchanged a life insurance policy or annuity contract within the past 36 months (60 months for California or Minnesota applications) and seems to indicate the prior replacement involved the same funds and agent as the current replacement. If that is accurate, we cannot accept the application, and will need to decline the sale and return any premiums to the applicant. Please advise us right away if that is the case so we may take appropriate action.
+
+However, if this is inaccurate, we ask you to explain more fully the prior replacement or replacements to help us evaluate the suitability of the current replacement or exchange. This would include any information about what policies or annuities were previously replaced, whether you were the agent involved in those replacements, why the client is replacing any of those policies again if that is the case, and any other relevant facts. Be as specific as possible since this information will be reviewed as part of our escalation review process.
+
+As indicated above, we need you to provide this information as soon as possible, so we may proceed with review of this application. Please understand that there could be additional questions – even after we get your answers to these questions – but we are committed to moving as quickly as possible consistent with our obligation to perform a suitability review as required by law and dictated by good sales practices.
+
+If you have questions or concerns, you may call us $toll-freeat1-xxx-xxx-xxxx
+

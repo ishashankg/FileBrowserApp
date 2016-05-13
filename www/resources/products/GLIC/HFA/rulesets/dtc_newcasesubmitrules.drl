@@ -1,0 +1,26 @@
+import com.stepsoln.core.rules.*;
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+
+
+rule "Check for Product"
+	when 
+		xml:XMLDocFact()
+		eval(!xml.valueEquals("/TXLife/a:TXLifeRequest/a:OLifE/a:Holding/a:Policy/a:ProductCode","HFA"))
+	then
+		rulesResponse.addUserNotifcationInfo("expecting HFA for ProductCode but was: "+xml.elementValue("/TXLife/a:TXLifeRequest/a:OLifE/a:Holding/a:Policy/a:ProductCode"));
+end
+rule "Check for Carrier"
+	when 
+		xml:XMLDocFact()
+		eval(!xml.valueEquals("/TXLife/a:TXLifeRequest/a:OLifE/a:Holding/a:Policy/a:CarrierCode","GLIC"))
+	then
+		rulesResponse.addUserNotifcationInfo("expecting GLIC but was: "+xml.elementValue("/TXLife/a:TXLifeRequest/a:OLifE/a:Holding/a:Policy/a:CarrierCode"));
+end
+rule "TransSubTypes 103001 (ADD) Not Supported "
+	when 
+		xml:XMLDocFact()
+		eval(xml.valueEquals("/TXLife/a:TXLifeRequest/a:TransSubType/@tc","103001"))
+	then
+		rulesResponse.addUserNotifcationInfo("Unsupported TransSubType 103001");
+end

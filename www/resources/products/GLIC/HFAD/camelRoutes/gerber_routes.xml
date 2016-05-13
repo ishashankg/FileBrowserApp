@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+
+<!-- 
+  <route id="glic_Unsent_Correpondence_Query" shortName="correspondenceQuery" >
+     <from uri="timer://kickoff?period=5000"/>
+     <setBody>
+       <constant>select correspondence_id from carrier_correspondence where delivery_date is null</constant>
+     </setBody>
+     <to uri="jdbc:dataSource"/>
+     <split>
+      <simple>${body}</simple>
+      <to uri="activemq://pdf_generation"/>
+     </split>
+  </route>
+ -->
+ <!-- 
+ 
+   <route id="partial_application_emails">
+     <from uri="timer://kickoff?period={{partial.application.polling.timeInMillis}}"/>
+     <to uri="partialApplicationProcessor"/>
+  </route>
+   -->
+ <!-- 
+ <route id="scripting_test">
+     <from uri="timer://kickoff?period=5000"/>
+     <setHeader headerName="carrierCode"><simple>glic</simple></setHeader>
+     <setHeader headerName="productCode"><simple>hfa</simple></setHeader>
+     <setHeader headerName="resourceCode"><simple>PARTIAL_APP_SCRIPT</simple></setHeader>
+     <to uri="stepScriptingProcessor"/>
+  </route>
+ -->
+  <route id="glic_pdf_index">
+    <from uri="activemq://pdf_generation?concurrentConsumers=5"/>
+    <to uri="correspondencePDFProcessor"/>
+    <setHeader headerName="generatedFileName"> 
+      <groovy>request.headers.documentType + request.headers.correspondenceId+'_'+'correspondence'</groovy>
+    </setHeader>
+    <to uri="file://{{rootOutputDirectory}}/GLIC/correspondence?fileName=${in.header.generatedFileName}_${date:now:yyyy-MM-dd}.pdf"/>
+    <setBody>
+        <groovy>request.headers.documentType+','+request.headers.policyNumber+','+request.headers.generatedFileName+'.pdf'</groovy>
+    </setBody>
+    <to uri="file://{{rootOutputDirectory}}/GLIC/correspondence?fileName=${in.header.generatedFileName}_${date:now:yyyy-MM-dd}.txt"/>
+  </route>
+  <route id="glic_examone_pickup">
+    <from uri="ftp://{{thirdparty.examone.ftp.user}}@{{thirdparty.examone.ftp.url}}{{thirdparty.examone.ftp.incomingdir}}/?password={{thirdparty.examone.ftp.password}}&amp;binary=true&amp;delete=true&amp;localWorkDirectory=c:/temp/&amp;consumer.delay={{thirdparty.examone.ftp.pollingDelay}}"/>
+      <setHeader headerName="cryptoKeyFile"><simple>${properties:thirdparty.examone.ftp.incomingPGPKey}</simple></setHeader>
+      <setHeader headerName="cryptoKeyFilePassword"><simple>${properties:thirdparty.examone.ftp.incomingPGPKeyPassword}</simple></setHeader>
+      <to uri="bean:PGPDecryptProcessor"/>
+    <to uri="file://{{rootOutputDirectory}}/thirdparty/inbound/examone/images/"/>
+  </route>
+  
+  
+  
+  
+  
+  <!-- HooperHolmes processing. Start.  -->
+  <route id="glic_hooperholmes_result_pickup">
+    <from uri="ftp://{{thirdparty.hooperholmes.ftp.user}}@{{thirdparty.hooperholmes.ftp.url}}{{thirdparty.hooperholmes.ftp.incomingdir}}/?password={{thirdparty.hooperholmes.ftp.password}}&amp;binary=true&amp;delete=true&amp;localWorkDirectory=c:/temp/&amp;consumer.delay={{thirdparty.hooperholmes.ftp.pollingDelay}}"/>
+      <setHeader headerName="cryptoKeyFile"><simple>${properties:thirdparty.hooperholmes.ftp.incomingPGPKey}</simple></setHeader>
+      <setHeader headerName="cryptoKeyFilePassword"><simple>${properties:thirdparty.hooperholmes.ftp.incomingPGPKeyPassword}</simple></setHeader>
+      <to uri="bean:PGPDecryptProcessor"/>
+    <to uri="file://{{rootOutputDirectory}}/thirdparty/inbound/hooperholmes/zip/"/>
+  </route>
+  <route id="glic_hooperholmes_processing">
+      <from uri="file://{{rootOutputDirectory}}/thirdparty/inbound/hooperholmes/zip/?move=.done&amp;moveFailed=.error"/>
+      <setHeader headerName="resourceFolder"><simple>UW/HOOPERHOLMES</simple></setHeader>
+      <to uri="bean:hooperholmesResultsProcessor"/>
+      <to uri="bean:dbUpdateEappMultipleRequirementsProcessor"/>
+    </route>
+  <!-- HooperHolmes processing. End.    -->
+  
+  <route id="glic_examone_result_pickup">
+    <from uri="ftp://{{thirdparty.examone.ftp.user}}@{{thirdparty.examone.ftp.url}}{{thirdparty.examone.ftp.incomingdirStatusFile}}/?password={{thirdparty.examone.ftp.password}}&amp;binary=true&amp;delete=true&amp;localWorkDirectory=c:/temp/&amp;consumer.delay={{thirdparty.examone.ftp.pollingDelay}}"/>
+      <setHeader headerName="cryptoKeyFile"><simple>${properties:thirdparty.examone.ftp.incomingPGPKey}</simple></setHeader>
+      <setHeader headerName="cryptoKeyFilePassword"><simple>${properties:thirdparty.examone.ftp.incomingPGPKeyPassword}</simple></setHeader>
+      <to uri="bean:PGPDecryptProcessor"/>
+    <to uri="file://{{rootOutputDirectory}}/thirdparty/inbound/examone/status/"/>
+  </route>
+  <route id="glic_examone_processing">
+      <from uri="file://{{rootOutputDirectory}}/thirdparty/inbound/examone/images/?filter=#indexFileFilter&amp;move=.done&amp;moveFailed=.error"/>
+      <setHeader headerName="resourceFolder"><simple>UW/EXAMONE</simple></setHeader>
+      <to uri="bean:examOneImageResultsProcessor"/>
+    </route>
+  <route id="glic_examone_result_processing">
+  	<from uri="file://{{rootOutputDirectory}}/thirdparty/inbound/examone/status/?move=.done&amp;moveFailed=.error"/>
+  	<to uri="bean:examOneResultProcessor"/>
+  </route>  
+  <route id="glic_examone_drop">
+    <from uri="file://{{rootOutputDirectory}}/thirdparty/outbound/examone?move=.done&amp;moveFailed=.error"/>
+    <setHeader headerName="cryptoKeyFile"><simple>${properties:thirdparty.examone.pgpkey}</simple></setHeader> 
+    <to uri="bean:PGPEncryptProcessor"/>
+    <to uri="ftp://{{thirdparty.examone.ftp.user}}@{{thirdparty.examone.ftp.url}}{{thirdparty.examone.ftp.outgoingdir}}/?password={{thirdparty.examone.ftp.password}}&amp;binary=true"/>
+  </route>
+  <route id="glic_application_packet_route">
+    <from uri="activemq://GENERATE_APPLICATION_PACKET.QUEUE"/>
+    <to uri="bean:caseIdToAcordMessageProcessor"/>
+    <to uri="bean:applicationPacketProcessor"/>    
+   	<to uri="file://{{rootOutputDirectory}}/GLIC/outbound/nb/?fileName={{glic.ftp.prepend}}${in.header.policyNo}${date:now:yyyyMMddHHmmss}.zip"/>    
+  </route>
+  <route id="glic_application_packet_uw_route">
+    <from uri="activemq://GENERATE_APPLICATION_UW_PACKET.QUEUE"/>
+    <to uri="bean:caseIdUWToAcordMessageProcessor"/>
+    <to uri="bean:applicationPacketProcessor"/>
+    <to uri="file://{{rootOutputDirectory}}/GLIC/outbound/nb/?fileName={{glic.ftp.prepend}}${in.header.policyNo}${date:now:yyyyMMddHHmmss}.zip"/>
+  </route>
+  
+  <route id="correspondnece_drop_route">
+    <from uri="activemq://CORRESPONDENCE_DROP.QUEUE"/>
+    <to uri="bean:correspondencePacketProcessor"/>
+    <to uri="file://{{rootOutputDirectory}}/GLIC/outbound/correspondence/?fileName=${in.header.policyNo}_${in.header.fileName}_${in.header.timeStamp}.zip"/>
+  </route>
+
+  <route id="glic_application_edw_packet_route">
+    <from uri="activemq://GENERATE_APPLICATION_EDW_PACKET.QUEUE"/>
+    <to uri="bean:caseIdUWToAcordMessageProcessor"/>
+    <to uri="bean:applicationEDWPacketProcessor"/>
+    <to uri="file://{{rootOutputDirectory}}/GLIC/outbound/edw/?fileName={{glic.ftp.prepend}}${in.header.policyNo}${date:now:yyyyMMddHHmmss}.zip"/>
+  </route>
+  
+  <route id="glic_ftp_pickup">
+    <from uri="{{glic.ftp.protocol}}://{{glic.ftp.user}}@{{glic.ftp.address}}/{{glic.ftp.inbound.folder}}?password={{glic.ftp.password}}&amp;binary=true&amp;delete=true&amp;localWorkDirectory=c:/temp/&amp;consumer.delay={{glic.ftp.consumerDelay}}"/>
+    <to uri="file://{{rootOutputDirectory}}/GLIC/inboundencrypted"/>
+  </route>
+  
+  <route id="glic_inbox_decrypt">
+	  <from uri="file://{{rootOutputDirectory}}/GLIC/inboundencrypted?move=.done&amp;moveFailed=.error"/>
+      <setHeader headerName="cryptoKeyFile"><simple>${properties:glic.ftp.inbound.pgpkeyfile}</simple></setHeader>
+      <setHeader headerName="cryptoKeyFilePassword"><simple>${properties:glic.ftp.inbound.pgpkeyfilePassword}</simple></setHeader>
+      <to uri="bean:PGPDecryptProcessor"/>
+	  <to uri="file://{{rootOutputDirectory}}/GLIC/inbound"/>
+  </route>
+  
+  <route id="gerber_inbox">
+    <from uri="file://{{rootOutputDirectory}}/GLIC/inbound/?move=.done&amp;moveFailed=.error"/>
+    <to uri="bean:caseInboxProcessor"/>
+  </route>
+  
+  
+   <!-- to ftp correspondence files to Gerber -->
+  <route id="glic_outbox">
+    <from uri="file://{{rootOutputDirectory}}/GLIC/outbound/correspondence/?move=.done&amp;moveFailed=.error&amp;consumer.delay={{glic.ftp.consumerDelay}}"/>
+	<setHeader headerName="cryptoKeyFile"><simple>${properties:glic.ftp.pgpkeyfile}</simple></setHeader>    
+    <to uri="bean:PGPEncryptProcessor"/>
+    <to uri="{{glic.ftp.protocol}}://{{glic.ftp.user}}@{{glic.ftp.address}}/{{glic.ftp.folder}}?password={{glic.ftp.password}}&amp;binary=true"/>
+  </route>
+
+   <route id="gerberAddressValidation">
+       <from uri="direct:gerberAddressValidation"/>
+       <to uri="bean:gerberAddressValidationProcessor"/>
+       <doTry>
+       <to uri="cxf:bean:gerberCallAddressValidationRequest"/>
+        <doCatch>
+            <exception>org.apache.cxf.transport.http.HTTPException</exception>
+            <exception>org.apache.camel.ExchangeTimedOutException</exception>
+            <to uri="bean:caseActivityLogProcessor"/>
+        </doCatch>       
+       </doTry>       
+       <to uri="bean:gerberAddressValidationResponseProcessor"/>
+   </route>
+   
+   <route id="gerberKeyInquiry">
+       <from uri="direct:gerberKeyInquiry"/>
+       <to uri="bean:gerberKeyInquiryProcessor"/>
+       <doTry>
+       <to uri="cxf:bean:gerberCallKeycodeInquiryRequest"/>
+        <doCatch>
+            <exception>org.apache.cxf.transport.http.HTTPException</exception>
+            <exception>org.apache.camel.ExchangeTimedOutException</exception>
+            <to uri="bean:caseActivityLogProcessor"/>
+        </doCatch>       
+       </doTry>
+       <to uri="bean:gerberKeyInquiryResponseProcessor"/>
+   </route>
+
+   <route id="gerberAlphaSearch">
+       <from uri="direct:gerberAlphaSearch"/>
+       <to uri="bean:gerberAlphaSearchProcessor"/>
+       <doTry>
+       <to uri="bean:gerberCallAlphaSearchProcessor"/>
+        <doCatch>
+            <exception>com.stepsoln.servicebus.camel.common.exception.ServiceBusUnRecoverableException</exception>
+       		<to uri="bean:caseActivityLogProcessor"/>
+        </doCatch>		
+       </doTry>
+       <to uri="bean:gerberAlphaSearchResponseProcessor"/>
+       <to uri="bean:internalAlphaSearchProcessor"/>  
+   </route>
+   
+   <route id="gerberGenerateEmail">
+       <from uri="direct:gerberGenerateEmail"/>
+       <to uri="bean:gerberEmailProcessor"/>
+       <doTry>
+       <to uri="cxf:bean:gerberCallEmailGenerationRequest"/>
+        <doCatch>
+            <exception>org.apache.cxf.transport.http.HTTPException</exception>
+            <exception>org.apache.camel.ExchangeTimedOutException</exception>
+            <to uri="bean:caseActivityLogProcessor"/>
+        </doCatch>       
+       </doTry>       
+       <to uri="bean:gerberEmailResponseProcessor"/>
+   </route>
+    
+  <route id="glic_edw_ftp_drop">
+    <from uri="file://{{rootOutputDirectory}}/GLIC/outbound/edw/?move=.done&amp;moveFailed=.error&amp;consumer.delay={{glic.edw.ftp.consumerDelay}}"/>
+    <setHeader headerName="cryptoKeyFile"><simple>${properties:glic.edw.ftp.pgpkeyfile}</simple></setHeader>    
+    <to uri="bean:PGPEncryptProcessor"/>
+   <to uri="ftps://{{glic.edw.ftp.user}}@{{glic.edw.ftp.address}}:{{glic.edw.ftp.port}}{{glic.edw.ftp.folder}}?password={{glic.edw.ftp.password}}&amp;securityProtocol=SSL&amp;binary=true&amp;passiveMode=true&amp;isImplicit=true&amp;throwExceptionOnConnectFailed=true"/>
+  </route>
+ 
+  <route id="glic_ftp_drop">
+    <from uri="file://{{rootOutputDirectory}}/GLIC/outbound/nb/?move=.done&amp;moveFailed=.error&amp;consumer.delay={{glic.ftp.consumerDelay}}"/>
+    <setHeader headerName="cryptoKeyFile"><simple>${properties:glic.ftp.pgpkeyfile}</simple></setHeader>    
+    <to uri="bean:PGPEncryptProcessor"/>
+    <to uri="{{glic.ftp.protocol}}://{{glic.ftp.user}}@{{glic.ftp.address}}/{{glic.ftp.folder}}?password={{glic.ftp.password}}&amp;binary=true"/>
+  </route>
+               
+</routes>

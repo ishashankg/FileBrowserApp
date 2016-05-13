@@ -1,0 +1,11 @@
+.ace_editor  {
+  height : 800px;
+}
+
+#pdfViewer canvas{
+	border : 1px solid #000000;
+}
+
+.djs-container{
+	height: 600px !important;
+}

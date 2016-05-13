@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<ou-users>
+	<ou-user>
+		<ousOrguCode>MOO_MEDSUPP</ousOrguCode>
+		<ousUserName ousAdmin="Y">SAMJACKSON</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>MMED_UWO</ousOrguCode>
+		<ousUserName ousAdmin="Y">JACKANDER</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>DTC_MOO_OU</ousOrguCode>
+		<ousUserName ousAdmin="Y">DTC_MOO</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>DEF_MMED_UWO</ousOrguCode>
+		<ousUserName ousAdmin="Y">DEF_MMED_UW</ousUserName>
+	</ou-user>
+</ou-users>
+</stepImport>

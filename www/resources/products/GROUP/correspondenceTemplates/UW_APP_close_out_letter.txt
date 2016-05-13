@@ -1,0 +1,25 @@
+
+
+
+RE:  $policyNumber - $correspondenceAppName
+
+Dear $correspondenceOwnerName:
+
+Thank you for the application you recently submitted for our insurance plan.  We are sorry to learn you are no longer interested in obtaining this coverage.
+
+As you requested, processing of your application has been discontinued and the file closed.
+
+Should your needs change in the future, we do hope you will consider Gerber Life Insurance at that time.  Please call our Customer Service Center at 1-800-253-3074 if we can be of assistance in any way.
+
+$freeForm_RICHTEXT
+
+Sincerely,
+	<GRAPHIC_SIGNATURE>
+
+
+
+Luci Moore
+Underwriting Department
+
+
+

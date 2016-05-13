@@ -1,0 +1,22 @@
+<map>
+  <entry>
+  	<string>signatureName1</string>
+  	<string>President and CEO</string>
+  </entry>
+  <entry>
+  	<string>signatureName2</string>
+  	<string>Secretary</string>
+  </entry>
+  <entry>
+  	<string>SIGNATURE_IMAGES</string>
+  	<string>GERBER_SIGNATURE_PRESIDENT,GERBER_SIGNATURE_SECRETARY</string>
+  </entry>
+  <entry>
+  	<string>signature1</string>
+  	<string>$documentPartTemplate1.content</string>
+  </entry>
+  <entry>
+  	<string>signature2</string>
+  	<string>$documentPartTemplate2.content</string>
+  </entry>
+</map>

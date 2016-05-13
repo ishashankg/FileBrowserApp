@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:activiti="http://activiti.org/bpmn" targetNamespace="http://www.activiti.org/test">
+  <process id="helloworld" name="helloworld">
+    <startEvent id="startevent1" name="Start" />
+    <scriptTask id="script" name="Script Task" scriptFormat="groovy">    <script><![CDATA[println("hello")]]></script>
+</scriptTask>
+    <endEvent id="endevent1" name="End" />
+    <sequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="script" />
+    <sequenceFlow id="flow2" name="" sourceRef="script" targetRef="endevent1" />
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_helloworld">
+    <bpmndi:BPMNPlane id="BPMNPlane_helloworld" bpmnElement="helloworld">
+      <bpmndi:BPMNShape id="BPMNShape_startevent1" bpmnElement="startevent1">
+        <omgdc:Bounds x="320" y="270" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_script" bpmnElement="script">
+        <omgdc:Bounds x="480" y="260" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_endevent1" bpmnElement="endevent1">
+        <omgdc:Bounds x="700" y="270" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow1" bpmnElement="flow1">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="355" y="287" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="480" y="287" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow2" bpmnElement="flow2">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="585" y="287" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="700" y="287" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

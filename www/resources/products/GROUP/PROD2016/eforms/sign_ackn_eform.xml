@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onSave>saveData</onSave>
+  <page>
+ 
+    <section title="ACKNOWLEDGEMENT OF SIGNATURE PROVIDED">
+     
+     <group labelWidth="300px"
+        style="overflow:auto; height:180px;"  >
+        <paragragh
+          text="I acknowledge that I have received authorization of the member for the enrollment."
+          styleClass="groupParagraph">
+        </paragragh>
+     
+        <question id='ack_sig_insured' text='Signature of member received' required="true"
+          type='CHECKBOX' answerSet='Y' labelStyle='margin-left:8px'/>
+        <question id='ack_date_insured' text='Date (MM/DD/YYYY)' type='DATEF' labelStyle='margin-left:8px' answerWidth="150px;" required="true"/>
+      
+        <question id='ack_city' text='Signed at (City)' type='TEXT' answerWidth="150px;" labelStyle='margin-left:8px' required="true"/>
+        <question id='ack_state' text='Signed at (State)' type='LISTBOX' lookup="step:LOCALE_STATE" required="true"
+          answerSet=":Please select a state|N_A:Not Applicable" answerWidth="150px;"  labelStyle='margin-left:8px'/>
+      </group>
+    </section>
+   </page>
+</form>

@@ -1,0 +1,19 @@
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.requirements.*;
+import com.stepsoln.core.rules.annuity.AnnuityData;
+import rules.*;
+import java.util.*;
+import java.lang.*;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+
+rule "Set Deferred annuity"
+no-loop
+salience 1000
+	when
+		$annuity:AnnuityData()
+	then
+		$annuity.setAnnuityType("DEFERRED");
+		update($annuity); 
+end

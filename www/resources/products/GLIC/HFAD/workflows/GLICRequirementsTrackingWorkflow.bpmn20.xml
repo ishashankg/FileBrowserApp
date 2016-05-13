@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="glicRequirementsTrackingWorkflow" name="glicRequirementsTrackingWorkflow">
+    <startEvent id="create_requirement_task" name="Start Requirement Tracking Process"></startEvent>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <userTask id="requirement_task" name="Create Requirement Task" activiti:assignee="#{null}">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.stepsoln.core.workflow.activiti.RequirementWorkflowListener"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <boundaryEvent id="boundarytimer4" name="" cancelActivity="false" attachedToRef="requirement_task">
+      <timerEventDefinition>
+        <timeDuration>${timerDuration}</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <scriptTask id="reassign_script" name="Evaluete Requirement" scriptFormat="groovy">
+      <script><![CDATA[workflowService.evalueteRequirement(execution.getVariable("taskId"));
+]]></script>
+    </scriptTask>
+    <sequenceFlow id="flow1" name="" sourceRef="create_requirement_task" targetRef="set_timer"></sequenceFlow>
+    <sequenceFlow id="flow6" name="" sourceRef="boundarytimer4" targetRef="reassign_script"></sequenceFlow>
+    <sequenceFlow id="flow9" name="" sourceRef="reassign_script" targetRef="endevent1"></sequenceFlow>
+    <sequenceFlow id="flow10" name="" sourceRef="requirement_task" targetRef="endevent1"></sequenceFlow>
+    <scriptTask id="set_timer" name="Set Timer" scriptFormat="groovy">
+      <script><![CDATA[reqCode=execution.getVariable("requirementCode");
+timerDuration = "";
+if ("IIX".equals(reqCode))
+	timerDuration = "P10D";
+else if (reqCode in ["EXM","PARA","HOS","EKG","BLOOD","LABB","LABU","LABPSA","PROBNP","A1C"])
+	timerDuration = "P14D";
+else
+	timerDuration = "P21D";
+execution.setVariable("timerDuration", timerDuration);]]></script>
+    </scriptTask>
+    <sequenceFlow id="flow11" name="" sourceRef="set_timer" targetRef="requirement_task"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_glicRequirementsTrackingWorkflow">
+    <bpmndi:BPMNPlane bpmnElement="glicRequirementsTrackingWorkflow" id="BPMNPlane_glicRequirementsTrackingWorkflow">
+      <bpmndi:BPMNShape bpmnElement="create_requirement_task" id="BPMNShape_create_requirement_task">
+        <omgdc:Bounds height="35" width="35" x="220" y="130"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35" width="35" x="840" y="130"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="requirement_task" id="BPMNShape_requirement_task">
+        <omgdc:Bounds height="55" width="161" x="590" y="120"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="boundarytimer4" id="BPMNShape_boundarytimer4">
+        <omgdc:Bounds height="30" width="30" x="654" y="157"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="reassign_script" id="BPMNShape_reassign_script">
+        <omgdc:Bounds height="55" width="105" x="618" y="450"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="set_timer" id="BPMNShape_set_timer">
+        <omgdc:Bounds height="55" width="105" x="410" y="120"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="255" y="147"></omgdi:waypoint>
+        <omgdi:waypoint x="410" y="147"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="669" y="187"></omgdi:waypoint>
+        <omgdi:waypoint x="670" y="450"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="723" y="477"></omgdi:waypoint>
+        <omgdi:waypoint x="779" y="480"></omgdi:waypoint>
+        <omgdi:waypoint x="857" y="480"></omgdi:waypoint>
+        <omgdi:waypoint x="857" y="457"></omgdi:waypoint>
+        <omgdi:waypoint x="857" y="165"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16" width="100" x="10" y="0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
+        <omgdi:waypoint x="751" y="147"></omgdi:waypoint>
+        <omgdi:waypoint x="840" y="147"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="515" y="147"></omgdi:waypoint>
+        <omgdi:waypoint x="590" y="147"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

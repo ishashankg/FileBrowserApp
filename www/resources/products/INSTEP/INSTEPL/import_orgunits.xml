@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<org-units>
+		<org-unit>
+			<ouName>Instep CEU agent</ouName>
+			<ouCode>INSTEP_NB</ouCode>
+			<ouClass>NB</ouClass>
+			<ouGroup></ouGroup>
+		</org-unit>
+		<org-unit>
+			<ouName>Instep Underwriter</ouName>
+			<ouCode>INSTEP_UW</ouCode>
+			<ouClass>UW</ouClass>
+			<ouAgency></ouAgency>
+			<ouGroup></ouGroup>
+		</org-unit>
+		<org-unit>
+			<ouName>Default Instep Underwriter</ouName>
+			<ouCode>DEF_INSTEP_UW</ouCode>
+			<ouClass>UW</ouClass>
+			<ouAgency></ouAgency>
+			<ouGroup></ouGroup>
+		</org-unit>
+		<org-unit>
+			<ouName>Instep DTC OU</ouName>
+			<ouCode>DTC_INSTEP_OU</ouCode>
+			<ouClass>NB</ouClass>
+			<ouAgency></ouAgency>
+			<ouGroup></ouGroup>
+		</org-unit>
+		<org-unit>
+			<ouName>Applicant</ouName>
+			<ouCode>WEB_USER</ouCode>
+			<ouClass>NB</ouClass>
+			<ouAgency></ouAgency>
+			<ouGroup></ouGroup>
+		</org-unit>
+	</org-units>
+</stepImport>

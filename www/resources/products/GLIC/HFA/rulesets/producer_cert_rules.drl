@@ -1,0 +1,94 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.EformCode;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.db.services.util.EmployeeUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.Requirement;
+import rules.*;
+import java.util.*;
+import com.stepsoln.core.rules.requirements.BeneficiaryData;
+import com.stepsoln.core.rules.RuleFilter;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+//Producer certification (agent_attest_eform.xml)
+rule "require oth_pending_ind"
+	when
+	     not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER') )
+	     CaseData(StringUtils.isBlank(svcOwner)==true, caseSource=='EXTERNAL')
+		 (not Question(id == 'oth_pending_ind')
+		 or not Question(id == 'replacement_ind')
+		 or not Question(id == 'y_1035_exch_ind')
+		 or not Question(id == 'internal_term_conv_ind')
+		 or not Question(id == 'attest_ind'))
+	then	     
+		rulesResponse.addRequiredOnce("All Producer Certification questions have to be answered", "AAT");		 
+end
+
+rule "require agent"
+	when
+	     not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER') )
+	     CaseData(caseSource=='EXTERNAL', contractState!="FL")
+		 not Question(id == 'agent_id')
+	then	     
+		rulesResponse.addRequiredOnce("Agent Required", "AAT");
+end
+
+rule "Agent Certification Y required"
+	when
+	    not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER'))
+	    CaseData(StringUtils.isBlank(svcOwner)==true, caseSource=='EXTERNAL')
+		($question: Question(id == 'attest_ind'))
+	then
+		if ($question.getAnswer()!=null && StringUtils.equals($question.getAnswer().toString(),"N")) 
+		{
+			rulesResponse.addRequiredOnce("I certify question should be answered as 'Yes'.", "AAT");
+		}
+end
+
+rule "Agent Certification Y required, none selected"
+	when 
+		theCaseRuleObj:CaseRulesObject()
+		not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER'))
+		CaseData(StringUtils.isBlank(svcOwner)==true)
+		(not Question(id == 'attest_ind'))
+	then 
+		if (StringUtils.equals(theCaseRuleObj.getCaseSource(),'EXTERNAL')) 
+   	    {
+   	    	rulesResponse.addRequiredOnce("I certify question should be answered as 'Yes'.", "AAT");
+		}
+end
+
+rule "Agent Signature Required"
+salience 210
+when
+		not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER') )
+		theCaseData:CaseData(StringUtils.isBlank(svcOwner)==true)
+	    Requirement(code == "AAT", target =="AGENT", type=="ESIGNATURE", status == "OPEN", required == true)
+	then
+		rulesResponse.addRequiredOnce("Agent Signature is required");		
+end
+
+rule "Agent Signature Date City State Required"
+salience 211
+when
+		not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER'))
+		CaseData(StringUtils.isBlank(svcOwner)==true)
+	    Requirement(code == "AAT", target =="AGENT", type=="ESIGNATURE", required == true, signatureDate == null || StringUtils.isBlank(signatureCity) || StringUtils.isBlank(signatureState))
+	then
+		rulesResponse.addRequiredOnce("If signature, date, city and state are correct - Select Apply Signature");		
+end
+
+rule "Require Agent License ID for External Cases in FL"
+	when
+		not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER'))
+		CaseData(caseSource=="EXTERNAL", contractState=="FL")
+		(not Question(id=="agent_license_no"))
+	then
+		rulesResponse.addRequiredOnce("Agent License Number Required", "AAT");
+end
+

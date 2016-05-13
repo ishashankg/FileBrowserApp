@@ -1,0 +1,31 @@
+$currentDate
+
+$agentFirstName $agentLastName
+$agentAddressLines
+$agentCityStateZip 
+
+Re:  $policyNumber:
+     $annuitantFirstName $annuitantLastName 
+
+Dear $agentFirstName $agentLastName:
+
+We are in the process of reviewing the annuity application you recently submitted as referenced above.
+Before we can process this application further, we have questions that will need your attention based on information on the Suitability Acknowledgment Form (SAF). This is not meant to suggest there is anything wrong necessarily but clarification is needed in order to continue with our suitability review.
+
+Please attend to this as quickly as possible. Once you provide the requested information, we can then proceed with our suitability review and processing of the application. If we still need additional information based on your answers to our questions below, we may contact you again.
+
+Please note this application will remain in NIGO (Not in Good Order) status until this information is received from you. If we do not receive the information within ten days, the application will be declined.
+
+Please provide the following additional information:
+
+We notice that the Suitability Acknowledgement Form, question 14, indicates the applicant anticipates taking distributions from the annuity subject to surrender charges prior to the expiration of the surrender charge period.
+
+In general this is inadvisable and we would need to decline this application based on our suitability criteria. However, prior to taking action on this application, we would like to confirm that it is your client’s intent to take distributions from the annuity prior to expiration of the surrender charge period other than (a) Required Minimum Distributions (RMDs), (b) GMWB (guaranteed minimum withdrawal benefit rider) withdrawals, (c) surrender charge free withdrawal amounts (i.e., 10% of account value), or (d) annuitizations. We know sometimes agents and clients complete this question incorrectly so we want to verify your answer. If this question was completed in error, please have your client make the change on question 14 and initial and date the change. If the original answer is correct, we regret that we would not be able to issue the annuity as applied for. In that case, we would need to decline the application and return any premiums to your client.
+
+Please let us know how you and your client would like to proceed.
+
+As indicated above, we need you to provide this information as soon as possible, so we may proceed with review of this application. Please understand that there could be additional questions – even after we get your answers to these questions – but we are committed to moving as quickly as possible consistent with our obligation to perform a suitability review as required by law and dictated by good sales practices.
+
+
+If you have questions or concerns, you may call us $toll-freeat1-xxx-xxx-xxxx
+

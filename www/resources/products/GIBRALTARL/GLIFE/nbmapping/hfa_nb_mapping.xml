@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NBMap>
+	<mapelement>
+		<code>PolicyProductCode</code>
+		<type>DB_FIELD</type>
+		<source></source>
+		<value></value>
+		<convert>WL:HFA_WL,TERM10:HFA_TERM10,TERM15:HFA_TERM15,TERM20:HFA_TERM20,TERM30:HFA_TERM30,GIR:HFA_GIR,TERM30DWP:HFA_DWP:[/TXLife/TXLifeRequest/OLifE/Holding/Policy/Life/Coverage/DurationDesign=30;/TXLife/TXLifeRequest/OLifE/Holding/Policy/ProductType=TERM],TERMDWP:HFA_DWP:[/TXLife/TXLifeRequest/OLifE/Holding/Policy/ProductType=TERM],WLDWP:HFA_DWP:[/TXLife/TXLifeRequest/OLifE/Holding/Policy/ProductType=WL],ADB:HFA_ADB</convert>
+	</mapelement>
+</NBMap>

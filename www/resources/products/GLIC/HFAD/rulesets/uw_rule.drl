@@ -1,0 +1,97 @@
+import com.stepsoln.uw.services.rules.facts.UWData;  
+import com.stepsoln.uw.services.rules.facts.BuildChartData;  
+import com.stepsoln.uw.services.rules.facts.RiskEvaluationResponseData;
+import com.stepsoln.uw.services.rules.facts.CoverageData; 
+import com.stepsoln.uw.services.rules.facts.CoverageData;
+import com.stepsoln.uw.services.rules.facts.CoverageChangeItemData;
+import com.stepsoln.product.services.UnderwritingClassService;
+import com.stepsoln.uw.services.rules.facts.PersonData;
+
+global com.stepsoln.product.services.UnderwritingClassService underwritingClassService; 
+
+rule "rule1 : Diabetes with age between 30 & 40 pursuing a hazardous occupation"  
+when   
+	$category1 : UWData( category == "Medical Condition" , attribute == "HEART" , attributeValue =="Tuberculosis of heart")   
+	$category2 : UWData( category == "Occupation" , attribute == "Hazardous Occupation" , attributeValue =="Mining")    
+	$buildChartData:BuildChartData(age > 30, weight > 200 , height > 60)   
+	$riskEvaluationResponseData : RiskEvaluationResponseData()    
+then    
+	$riskEvaluationResponseData.setKo(true);    
+	System.out.println("rule1 :");   
+end     
+
+rule "rule2 : Diabetes with age less than 30 pursuing a hazardous avocation"  
+when   
+	$category1 : UWData( category == "MEDICAL_CONDITION" , attribute == "HEART_CONDITION" , attributeValue =="Congenital heart block")   
+	$category2 : UWData( category == "OCCUPATION" , attribute == "DRIVING" , attributeValue =="TRANSIT_DRIVER")   
+	$category3 : UWData( category == "AVOCATION" , attribute == "RACE" , attributeValue =="CAR_RACE")   
+	$buildChartData:BuildChartData( age < 30 , weight > 180 , height < 187)   
+	$riskEvaluationResponseData : RiskEvaluationResponseData()   
+then   
+	$riskEvaluationResponseData.setBestClassValue(underwritingClassService.creditedUnderwritingClassCode
+								($riskEvaluationResponseData.getProductCode(),$riskEvaluationResponseData.getBestClassValue()));
+	System.out.println("Reffered to RTU");   
+end    
+
+rule "rule3 : Diabetes with age between 20 & 40 pursuing a hazardous occupation but has a good score"  
+when   
+	$category1 : UWData( category == "MEDICAL_CONDITION" , attribute == "HEART_CONDITION" , attributeValue =="DIABETES")   
+	$category2 : UWData( category == "OCCUPATION" , attribute == "HAZARDOUS_OCCUPATION" , attributeValue =="MINING")    
+	$buildChartData:BuildChartData( age < 40 , weight == 170 , height == 177)   
+	$riskEvaluationResponseData : RiskEvaluationResponseData( score < 100)  
+then    
+	$riskEvaluationResponseData.setBestClassValue("SS");     
+	System.out.println("rule3");   
+end
+
+
+rule "rule4 : transit driver with tobacco usage as true applied for accidental rider"
+	when
+		$personData : PersonData(tobaccoUsage == true)
+		$category : UWData( category == "OCCUPATION" , attribute == "DRIVING" , attributeValue =="TRANSIT_DRIVER")
+		$adbCvgChgItem:CoverageChangeItemData(optionCode=="ADBD")
+		$riskEvaluationResponseData : RiskEvaluationResponseData() 
+	then
+		$riskEvaluationResponseData.addToDeclinedPlan($adbCvgChgItem.getOptionCode());
+		System.out.println("rule4");
+end
+
+rule "rule5 : Mine worker with tobacco usage as true applied for accidental rider"
+	when
+		$personData : PersonData(tobaccoUsage == true)
+		$category : UWData( category == "Occupation" , attribute == "Hazardous Occupation" , attributeValue =="Mining")
+		$adbCvgChgItem:CoverageChangeItemData(optionCode=="ADBD")
+		$riskEvaluationResponseData : RiskEvaluationResponseData() 
+	then
+		$riskEvaluationResponseData.addToDeclinedPlan($adbCvgChgItem.getOptionCode());
+		System.out.println("rule5");
+end
+
+rule "rule6 : Diabetes with age between 30 & 40 pursuing a hazardous occupation"  
+when   
+	$category1 : UWData( category == "Medical Condition" , attribute == "HEART" , attributeValue =="Tuberculosis of heart")   
+	$category2 : UWData( category == "Occupation" , attribute == "Hazardous Occupation" , attributeValue =="Mining")    
+	$buildChartData:BuildChartData(age < 30, weight > 200 , height > 60)   
+	$riskEvaluationResponseData : RiskEvaluationResponseData()    
+then    
+	$riskEvaluationResponseData.setBestClassValue(underwritingClassService.creditedUnderwritingClassCode
+								($riskEvaluationResponseData.getProductCode(),$riskEvaluationResponseData.getBestClassValue()));
+	System.out.println("rule6 :");   
+end   
+
+
+rule "Rule: When age less than 30 with heart condition & pursuing a hazardous avocation then Debit a UW class"  
+when   
+	$category1 : UWData( category == "Medical Condition" , attribute == "HEART" , attributeValue =="Congenital heart block")   
+	$category2 : UWData( category == "Occupation" , attribute == "Hazardous Occupation" , attributeValue =="Mining")   
+	$buildChartData:BuildChartData( age < 30 , weight > 180 , height < 187)   
+	$riskEvaluationResponseData : RiskEvaluationResponseData()   
+then   
+	$riskEvaluationResponseData.setBestClassValue(underwritingClassService.debitedUnderwritingClassCode
+								($riskEvaluationResponseData.getProductCode(),$riskEvaluationResponseData.getBestClassValue()));
+	System.out.println("Reffered to RTU");   
+end   
+
+
+
+

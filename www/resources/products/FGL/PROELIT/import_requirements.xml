@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<requirements>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT1</requirementCode>
+        <requirementDescription>Application Part 1</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART1</formCode>
+                <formDescription>Part 1 - Annuitant Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>ANNUITANT</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT2</requirementCode>
+        <requirementDescription>Application Part 2</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART2</formCode>
+                <formDescription>Part 2 - Owner Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>PERSON</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT3</requirementCode>
+        <requirementDescription>Application Part 3</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART3</formCode>
+                <formDescription>Part 3 - Beneficiary Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>BENEFICIARY</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT5</requirementCode>
+        <requirementDescription>Application Part 5</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART5</formCode>
+                <formDescription>Part 5 - Replacement</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPLACEMENT</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT6</requirementCode>
+        <requirementDescription>Application Part 6</requirementDescription>
+		<securityFunction>case_auth</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART6</formCode>
+                <formDescription>Part 6 - Authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>AUTHORIZATION</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+     <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT8</requirementCode>
+        <requirementDescription>Application Part 8</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART8</formCode>
+                <formDescription>Part 8 - Confirmation</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>CONFIRMATION</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+      
+</requirements>
+</stepImport>
+

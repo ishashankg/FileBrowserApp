@@ -1,0 +1,28 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+<appointments>
+
+    <appointment>
+    	<appointmentType>AGENT</appointmentType>
+    	<appointmentStatus>ACTIVE</appointmentStatus>
+    	<appointmentNumber>61001</appointmentNumber>
+        <licenseNumber>4100</licenseNumber>
+       	<lineOfBusiness>LIFE</lineOfBusiness>
+       	<productCode>MOOMED</productCode>
+       	<effectiveDate>01012012</effectiveDate>
+		<agentCode>SAMJ</agentCode>
+		<agencyCode>MedAg1</agencyCode>
+    </appointment>
+    <appointment>
+    	<appointmentType>AGENT</appointmentType>
+    	<appointmentStatus>ACTIVE</appointmentStatus>
+    	<appointmentNumber>61011</appointmentNumber>
+        <licenseNumber>4101</licenseNumber>
+       	<lineOfBusiness>LIFE</lineOfBusiness>
+       	<productCode>MOOMED</productCode>
+       	<effectiveDate>01012012</effectiveDate>
+		<agentCode>JANDER</agentCode>
+		<agencyCode>MedAg1</agencyCode>
+    </appointment>   
+</appointments>
+</stepImport>

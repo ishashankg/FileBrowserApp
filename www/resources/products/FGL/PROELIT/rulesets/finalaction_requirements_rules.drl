@@ -1,0 +1,117 @@
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.uw.CaseUwRiskCalcData;
+
+rule "Privacy State Decline Letter"
+	when
+		CaseData(caseStatus!='AUTODECLINE', uwCaseStatus in ('DECLINED','POSTPONED'), contractState in ('AZ','CA','CT','GA','IL','ME','MA','MN','MT','NJ','NV','NC','OH','OR','VA'))
+		not Requirement(code in ('UBD','NCO','ACO'))
+		form:RequirementForm(code=="PSTDECLINE")
+    then
+    	form.setRequired(true);
+end
+
+rule "Standard Decline Letter"
+	when
+		CaseData(caseStatus!='AUTODECLINE', uwCaseStatus in ('DECLINED','POSTPONED'), contractState not in ('AZ','CA','CT','GA','IL','ME','MA','MN','MT','NJ','NV','NC','OH','OR','VA'))
+		not Requirement(code in ('UBD','NCO','ACO'))
+		form:RequirementForm(code=="CMPDECLINE")
+    then
+    	form.setRequired(true);
+end
+
+rule "Privacy State UW Close out Letter"
+	when
+		theCaseData:CaseData(caseStatus!='AUTODECLINE', uwCaseStatus in ('CLOSED'), contractState in ('VA'))
+		riskCalcData:CaseUwRiskCalcData(riskCalcStatusReasonCode not in ('APS','PRIVACY_STATE','APS_AUTHORIZATION','ADDITIONAL_INFORMATION','APPLICANT_REQUEST','MEDICAL'))
+		form:RequirementForm(code=="UWPCLOSE")
+    then
+    	if (StringUtils.isNotEmpty(theCaseData.getUwOwner()))
+    	{
+    		form.setRequired(true);
+    	}
+end
+
+rule "Standard UW Close out Letter"
+	when
+		theCaseData:CaseData(caseStatus!='AUTODECLINE', uwCaseStatus in ('CLOSED'), contractState not in ('VA'))
+		riskCalcData:CaseUwRiskCalcData(riskCalcStatusReasonCode not in ('APS','PRIVACY_STATE','APS_AUTHORIZATION','ADDITIONAL_INFORMATION','APPLICANT_REQUEST','MEDICAL'))
+		form:RequirementForm(code=="UWCLOSEOUT")
+    then
+        if (StringUtils.isNotEmpty(theCaseData.getUwOwner()))
+    	{
+    		form.setRequired(true);
+    	}
+end
+
+rule "Privacy State UW Close out Letter Reason APS"
+	when
+		theCaseData:CaseData(caseStatus!='AUTODECLINE', uwCaseStatus in ('CLOSED'), contractState in ('VA'))
+		riskCalcData:CaseUwRiskCalcData(riskCalcStatusReasonCode in ('APS','PRIVACY_STATE','APS_AUTHORIZATION','ADDITIONAL_INFORMATION'))
+		form:RequirementForm(code=="UWPAPSCLOSE")
+    then
+    	if (StringUtils.isNotEmpty(theCaseData.getUwOwner()))
+    	{
+    		form.setRequired(true);
+    	}
+end
+
+rule "Standard UW Close out Letter Reason APS"
+	when
+		theCaseData:CaseData(caseStatus!='AUTODECLINE', uwCaseStatus in ('CLOSED'), contractState not in ('VA'))
+		riskCalcData:CaseUwRiskCalcData(riskCalcStatusReasonCode in ('APS','PRIVACY_STATE','APS_AUTHORIZATION','ADDITIONAL_INFORMATION'))
+		form:RequirementForm(code=="UWAPSCLOSEOUT")
+    then
+        if (StringUtils.isNotEmpty(theCaseData.getUwOwner()))
+    	{
+    		form.setRequired(true);
+    	}
+end
+
+rule "Privacy State UW Close out Letter Reason Applicant"
+	when
+		theCaseData:CaseData(caseStatus!='AUTODECLINE', uwCaseStatus in ('CLOSED'), contractState in ('VA'))
+		riskCalcData:CaseUwRiskCalcData(riskCalcStatusReasonCode in ('APPLICANT_REQUEST','MEDICAL'))
+		form:RequirementForm(code=="UWPAPPCLOSE")
+    then
+    	if (StringUtils.isNotEmpty(theCaseData.getUwOwner()))
+    	{
+    		form.setRequired(true);
+    	}
+end
+
+rule "Standard UW Close out Letter Reason Applicant"
+	when
+		theCaseData:CaseData(caseStatus!='AUTODECLINE', uwCaseStatus in ('CLOSED'), contractState not in ('VA'))
+		riskCalcData:CaseUwRiskCalcData(riskCalcStatusReasonCode in ('APPLICANT_REQUEST','MEDICAL'))
+		form:RequirementForm(code=="UWAPPCLOSEOUT")
+    then
+        if (StringUtils.isNotEmpty(theCaseData.getUwOwner()))
+    	{
+    		form.setRequired(true);
+    	}
+end
+
+rule "Privacy State UTS Close out Letter"
+	when
+		theCaseData:CaseData(caseStatus!='AUTODECLINE', uwCaseStatus in ('CLOSED'), contractState in ('VA'))
+		riskCalcData:CaseUwRiskCalcData(riskCalcStatusReasonCode not in ('APS','PRIVACY_STATE','APS_AUTHORIZATION','ADDITIONAL_INFORMATION','APPLICANT_REQUEST','MEDICAL'))
+		form:RequirementForm(code=="UTSPCLOSE")
+    then
+    	if ((StringUtils.isNotEmpty(theCaseData.getSvcOwner())) && (StringUtils.isEmpty(theCaseData.getUwOwner())))
+    	{
+    		form.setRequired(true);
+    	}
+end
+
+rule "Standard UTS Close out Letter"
+	when
+		theCaseData:CaseData(caseStatus!='AUTODECLINE', uwCaseStatus in ('CLOSED'), contractState not in ('VA'))
+		riskCalcData:CaseUwRiskCalcData(riskCalcStatusReasonCode not in ('APS','PRIVACY_STATE','APS_AUTHORIZATION','ADDITIONAL_INFORMATION','APPLICANT_REQUEST','MEDICAL'))
+		form:RequirementForm(code=="UTSCLOSEOUT")
+    then
+       	if ((StringUtils.isNotEmpty(theCaseData.getSvcOwner())) && (StringUtils.isEmpty(theCaseData.getUwOwner())))
+    	{
+    		form.setRequired(true);
+    	}
+end

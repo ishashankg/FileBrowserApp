@@ -1,0 +1,26 @@
+<behavior>
+	<function name="CaseList.createNewCase">
+		<actionType>FLOW</actionType>
+		<actionName>umbrellaNewCaseFlow</actionName>
+		<description>Start Umbrella Flow</description>
+		<param name="carrierId" value="#{param['carrierId']}" />
+		<param name="returnUrl"
+			value="#{String.format('/pages/case/case_list.xhtml?ouId=%s', caseListController.getOuId() )}" />
+	</function>
+	<function name="CaseList.gotoCaseDetails">
+		<ouClass>UW</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/underwriting/uw_workbench</actionName>
+		<description>Go to underwriter workbench</description>
+		<param name="caseId" value="#{param['caseId']}" />
+		<param name="taskId" value="#{param['taskId']}" />
+		<param name="ouId" value="#{param['ouId']}"/>
+	</function>
+	<function name="CustomService.processKnockout">
+		<actionType>JAVA</actionType>
+		<actionName>com.stepsoln.core.db.services.custom.GerberCustomCaseService</actionName>
+		<actionMethod>processKnockout</actionMethod>
+		<param name="case" value="com.stepsoln.core.db.cases.Case" />
+		<param name="knockOutReasonCode" value="java.lang.String" />
+	</function>
+</behavior>

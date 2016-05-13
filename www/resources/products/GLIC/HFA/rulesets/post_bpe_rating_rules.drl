@@ -1,0 +1,271 @@
+import com.stepsoln.core.rules.RulesResponse;
+import java.util.*;
+import com.stepsoln.core.rules.uw.RiskCalculationRequirementData;
+import com.stepsoln.core.rules.uw.CaseMericaRecommendationData;
+import com.stepsoln.core.rules.uw.CaseMericaRecommendationDetailData;
+import com.stepsoln.core.rules.uw.CaseUwMedicalConditionData;
+import com.stepsoln.core.rules.uw.CaseUwMedicalConditionDetailData;
+import com.stepsoln.core.rules.coverages.CoverageChangeData;
+import com.stepsoln.core.rules.coverages.CoverageChangeItemData;
+import com.stepsoln.core.util.DateUtil;
+import com.stepsoln.core.helper.enums.UNIT_SYSTEM;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "3. Band 1, MF >50 and < 76, then TC"
+salience 65
+activation-group "band1Group"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor>50, mortalityFactor<76)
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount<100000)
+	then
+		$cvgChg.setNewUnderwritingClassType("TC");
+		rulesResponse.addUserNotifcationInfo("Band 1 case with mortality factor between 50 and 75 get Substandard Table C");
+		rulesResponse.addToRuleFiredList(3);
+end
+
+rule "4. Band 1, MF > 75 and < 201, then TF"
+salience 65
+activation-group "band1Group"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor>75, mortalityFactor<201)
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount<100000)
+	then
+		$cvgChg.setNewUnderwritingClassType("TF");
+		rulesResponse.addUserNotifcationInfo("Band 1 case with mortality factor between 76 and 200 get Substandard Table F");
+		rulesResponse.addToRuleFiredList(4);
+end
+
+
+rule "5. Band 2, MF = 0, then PF"
+salience 90
+activation-group "band2Group"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor== 0, recommendationNotice!="BORDERLINE STANDARD")
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount>=100000, oldCoverageAmount<=300000)
+	then
+		$cvgChg.setNewUnderwritingClassType("PF");
+		rulesResponse.addUserNotifcationInfo("Band 2 case with mortality factor 0 get Preferred");
+		rulesResponse.addToRuleFiredList(5);
+end
+
+rule "6. Band 2, age 50 and below, MF < 51,  then ST"
+salience 90
+activation-group "band2Age50BelowGroup"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor > 0, mortalityFactor < 51)
+		RiskCalculationRequirementData(age<51)
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount>=100000, oldCoverageAmount<=300000)
+	then
+		$cvgChg.setNewUnderwritingClassType("ST");
+		rulesResponse.addUserNotifcationInfo("Band 2 case age 50 and below with mortality factor < 51 get Standard");
+		rulesResponse.addToRuleFiredList(6);
+end
+
+rule "7. Band 2, age 50 and below, MF > 50 and < 76,  then TC"
+salience 65
+activation-group "band2Age50BelowGroup"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor > 50, mortalityFactor < 76)
+		RiskCalculationRequirementData(age<51)
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount>=100000, oldCoverageAmount<=300000)
+	then
+		$cvgChg.setNewUnderwritingClassType("TC");
+		rulesResponse.addUserNotifcationInfo("Band 2 case age 50 and below with mortality factor > 50 and < 76  get Substandard Table C");
+		rulesResponse.addToRuleFiredList(7);
+end
+
+rule "8. Band 2, age 50 and below, MF > 75 and < 201,  then TF"
+salience 65
+activation-group "band2Age50BelowGroup"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor > 75, mortalityFactor < 201)
+		RiskCalculationRequirementData(age<51)
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount>=100000, oldCoverageAmount<=300000)
+	then
+		$cvgChg.setNewUnderwritingClassType("TF");
+		rulesResponse.addUserNotifcationInfo("Band 2 case age 50 and below with mortality factor > 75 and < 201  get Substandard Table F");
+		rulesResponse.addToRuleFiredList(8);
+end
+
+
+rule "9. Band 2, age 50 above, MF > 0 and < 26,  then ST"
+salience 90
+activation-group "band2Age50AboveGroup"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor > 0, mortalityFactor < 26)
+		RiskCalculationRequirementData(age>50)
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount>=100000, oldCoverageAmount<=300000)
+	then
+		$cvgChg.setNewUnderwritingClassType("ST");
+		rulesResponse.addUserNotifcationInfo("Band 2 case age 50 above with mortality factor > 0 and < 26  get Standard");
+		rulesResponse.addToRuleFiredList(9);
+end
+
+rule "10. Band 2, age 50 above, MF > 25 and < 76,  then TC"
+salience 65
+activation-group "band2Age50AboveGroup"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor > 25, mortalityFactor < 76)
+		RiskCalculationRequirementData(age>50)
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount>=100000, oldCoverageAmount<=300000)
+	then
+		$cvgChg.setNewUnderwritingClassType("TC");
+		rulesResponse.addUserNotifcationInfo("Band 2 case age 50 above with mortality factor > 25 and < 76  get Substandard Table C");
+		rulesResponse.addToRuleFiredList(10);
+end
+
+rule "11. Band 2, age 50 above, MF > 75 and < 201,  then TF"
+salience 65
+activation-group "band2Age50AboveGroup"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor > 75, mortalityFactor < 201)
+		RiskCalculationRequirementData(age>50)
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount>=100000, oldCoverageAmount<=300000)
+	then
+		$cvgChg.setNewUnderwritingClassType("TF");
+		rulesResponse.addUserNotifcationInfo("Band 2 case age 50 above with mortality factor > 75 and < 201  get Substandard Table F");
+		rulesResponse.addToRuleFiredList(11);
+end
+
+
+rule "12. Band 3,4 MF = 0,  then PF"
+salience 90
+activation-group "band3And4Group"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor == 0, recommendationNotice!="BORDERLINE STANDARD")
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount>300000)
+	then
+		$cvgChg.setNewUnderwritingClassType("PF");
+		rulesResponse.addUserNotifcationInfo("Band 3 or 4 case with mortality factor = 0 get Preferred");
+		rulesResponse.addToRuleFiredList(12);
+end
+
+rule "13. Band 3,4 MF > 0 and < 26,  then ST"
+salience 90
+activation-group "band3And4Group"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor > 0,  mortalityFactor < 26)
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount>300000)
+	then
+		$cvgChg.setNewUnderwritingClassType("ST");
+		rulesResponse.addUserNotifcationInfo("Band 3 or 4 case with mortality factor >0 and < 26 get Standard");
+		rulesResponse.addToRuleFiredList(13);
+end
+
+rule "14. Band 3,4 MF > 25 and < 76,  then TC"
+salience 65
+activation-group "band3And4Group"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor > 25,  mortalityFactor < 76)
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount>300000)
+	then
+		$cvgChg.setNewUnderwritingClassType("TC");
+		rulesResponse.addUserNotifcationInfo("Band 3 or 4 case with mortality factor > 25 and < 76 get Substandard Table C");
+		rulesResponse.addToRuleFiredList(14);
+end
+
+rule "15. Band 3,4 MF > 75 and < 201,  then TF"
+salience 65
+activation-group "band3And4Group"
+	when
+		$mericaRec:CaseMericaRecommendationData( mortalityFactor > 75,  mortalityFactor < 201)
+		$cvgChg:CoverageChangeData()
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount>300000)
+	then
+		$cvgChg.setNewUnderwritingClassType("TF");
+		rulesResponse.addUserNotifcationInfo("Band 3 or 4 case with mortality factor > 75 and < 201 get Substandard Table F");
+		rulesResponse.addToRuleFiredList(15);
+end
+
+rule "16. Family History: if more than 2 family members have medical condition - cannot qualify for best class"
+salience 80
+	when
+		RiskCalculationRequirementData(familyWithMedicalCondition>2)
+		$cvgChg:CoverageChangeData(underwritingClassType in ("PF", "PP"))
+		$baseCvgChgItem:CoverageChangeItemData(basePlan==true, oldCoverageAmount<301000)
+	then
+		$cvgChg.setNewUnderwritingClassType("ST");
+		rulesResponse.addUserNotifcationInfo("Family History: if more than 2 family members have medical condition - cannot qualify for best class");
+		rulesResponse.addToRuleFiredList(16);
+end
+
+rule "17. When a case is substandard Table C or Table F strip off riders; no riders allowed on substandard cases"
+salience 70
+	when
+		$cvgChg:CoverageChangeData(newUnderwritingClassType in ("TC", "TF"))
+		$baseCvgChgItem:CoverageChangeItemData(optionCode in ("GIR", "TERMDWP", "TERM30DWP", "WLDWP"))
+	then
+		$baseCvgChgItem.setAvailable(false);
+		rulesResponse.addUserNotifcationInfo("When a case is substandard Table C or Table F strip off riders; no riders allowed on substandard cases");
+		rulesResponse.addToRuleFiredList(17);
+end
+
+rule "21. Determine if tobacco rate needs to be used"
+salience 70
+	when
+	    RiskCalculationRequirementData(lastTobaccoUse != null, DateUtil.monthsInBetween(new Date(), lastTobaccoUse) <= 0 && DateUtil.monthsInBetween(new Date(), lastTobaccoUse) >= -36)
+	    $cvgChg:CoverageChangeData(newUnderwritingClassType not in ("TC", "TF"))
+	then
+		$cvgChg.setUseTobaccoRate(true);
+		$cvgChg.setNewUnderwritingClassType("ST");
+		rulesResponse.addUserNotifcationInfo("Tobacco rate will be used in the new quote due to last tobacco use date");
+		rulesResponse.addToRuleFiredList(21);
+end
+
+rule "22. Add 75% to Mortality Factor is applicant ever used tobacco and has certain medical conditions"
+salience 120
+//activation-group "extra-mortality-condition-adjust-mortality-factor"
+	when
+		$mericaRec:CaseMericaRecommendationData(mortalityFactorAdjusted == false)
+		$mc:CaseUwMedicalConditionData(diagnosisSource in ("APPLICANT","UW"), diagnosisValue in ("CAD","VASCULAR DISEASE PERIPHERAL","STROKE","TIA","COPD","CHRONIC BRONCHITIS","EMPHYSEMA","ASTHMA"))
+		RiskCalculationRequirementData(lastTobaccoUse != null)
+	then
+		//* used 'if' block here because 'then' part is applied to each medical condition data from the list above without checking 'when' clause again */
+		//* so the mortality factor gets as many 100 additions as there are matching medical conditions */
+		if (! $mericaRec.isMortalityFactorAdjusted())
+		{
+			int oldMf=$mericaRec.getMortalityFactor();
+			$mericaRec.setMortalityFactor($mericaRec.getMortalityFactor() + 75);//add 75%
+			$mericaRec.setMortalityFactoryAdjusted(true);//avoid double-adjusting by second run of the rules
+			String msg="Medical condition '" + $mc.getDiagnosisValue() + "' combined with tobacco use.";
+			rulesResponse.addUserNotifcationInfo(msg);
+			rulesResponse.addUserMessageInfo(msg);
+			rulesResponse.addToRuleFiredList(22);
+		}
+end
+
+rule "24. Borderline standard - set to Standard"
+salience 80
+	when
+		$mericaRec:CaseMericaRecommendationData( recommendationNotice=="BORDERLINE STANDARD")
+		$cvgChg:CoverageChangeData(underwritingClassType in ("PF", "PP"))
+	then
+		$cvgChg.setNewUnderwritingClassType("ST");
+		rulesResponse.addUserNotifcationInfo("Borderline Standard: Set class to STANDARD");
+		rulesResponse.addToRuleFiredList(24);
+end
+
+rule "25. Indicate to lookup build chart data with UW Class data"
+salience 100
+	when
+		$app:RiskCalculationRequirementData(weight != null, height != null)
+		$cvgChg:CoverageChangeData()	
+	then
+	    rulesResponse.setLookupBuildChart(true);
+		$app.setUnitSystem(UNIT_SYSTEM.IMPERIAL);
+		rulesResponse.addToRuleFiredList(25);
+end
+

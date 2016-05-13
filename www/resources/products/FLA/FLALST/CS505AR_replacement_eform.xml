@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillData</onLoad>
+  <page title='ARKANSAS COMPARATIVE INFORMATION FORM'>
+    <section>
+        <header>The following policy(ies)/contract(s) may be changed or replaced as a result of this transaction.</header>
+        <group/>
+    </section>
+    <section title="Replaced Company" repeating="true">
+      <group associated="true">
+        <question id='replaced_carrier' text='Insurer As It Appears On The Policy/Contract'  labelWidth="250px" type='TEXT' answerWidth="150px;" />
+        <question id='replaced_policyno' text='(*) Policy/Contract Number' labelWidth="150px" type='TEXT' answerWidth="100px;" />
+        <question id='replaced_faceamount' text='Face Amount/Contract Value' labelWidth="150px" type='TEXT' answerWidth="100px;" />
+      </group>
+    </section>
+    <section>
+      <group labelWidth="400px">
+      	<header>  </header>
+      </group>
+      <group labelWidth="400px">
+      	<header>The proposed policy/contract is:</header>
+      </group>
+      <group associated="true">
+        <question id='proposed_insurer' text='Insurer' labelWidth="250px" type='TEXT' answerWidth="150px;" />
+        <question id='proposed_policyno' text='(*) Policy/Contract Number' labelWidth="150px" type='TEXT' answerWidth="100px;" />
+        <question id='proposed_face_amount' text='Face Amount/Contract Value' labelWidth="150px" type='TEXT' answerWidth="100px;" />
+      </group>
+    </section>
+    <section>
+      <group labelWidth="400px">
+        <header>CAUTION: YOU ARE URGERD NOT TO TAKE ACTION TO TERMINATE, ASSIGN OR ALTER YOUR EXISTING LIFE INSURANCE COVERAGE OR ANNUITY CONTRACT UNTIL AFTER YOU HAVE BEEN ISSUED THE NEW POLICY/CONTRCAT, EXAMINED IT AND FOUND IT TO BE ACCEPTABLE TO YOU.</header>
+      </group>
+    </section>
+  </page>
+  <page title="Replacement Rule in Arkansas">
+  	<section>
+      <group>
+        <header>Applies if Existing is:</header>
+        <paragragh text="Non Model Definition of Replacement" 
+              styleClass="groupParagraph"></paragragh>
+        <paragragh text="Permanent life insurance or an Annuity, and an attempt is made to have the holder change or replace the existing insurance."
+              styleClass="groupParagraph"></paragragh>
+      </group>
+  	</section>
+  	<section>
+      <group>
+        <header>Exemptions:</header>
+        <paragragh
+              text="Replacement of: term life insurance, credit life insurance, group insurance, and policies issued in connection with pension, profit sharing, or other benefit plan."
+              styleClass="groupParagraph"></paragragh>
+        <paragragh
+              text="Bulletin No. 8A-2004"
+              styleClass="groupParagraph"></paragragh>
+      </group>
+  	</section>
+  	<section>
+      <group>
+        <header>Replacing Producer:</header>
+        <paragragh
+              text="1.  Present Comparative Form (not later than when taking application), complete it and leave a signed copy with applicant."
+              styleClass="groupParagraph"></paragragh>
+        <paragragh
+              text="2.  Submit copy of Comparative Form (completed and signed) with application."
+              styleClass="groupParagraph"></paragragh>
+        <paragragh
+              text="3.  Submit copy of Comparative Form (completed and signed) to existing insurer."
+              styleClass="groupParagraph"></paragragh>
+        <paragragh
+              text="Bulletin No. 8A-2004"
+              styleClass="groupParagraph"></paragragh>
+      </group>
+      <group>
+        <header>  </header>
+        <paragragh
+              text="Churning is an unfair method of competition or deceptive act or practice, wherein the licensee replaces an existing policy of life insurance or annuity contract and that replacement is not in accordance with section 23-66-307 or that replacement is without objective demonstration by the licensee of the purpose of replacing the policy for the benefit and betterment of the insured."
+              styleClass="groupParagraph"></paragragh>
+        <paragragh text="ARK Statutes 23-66-206"
+              styleClass="groupParagraph"></paragragh>
+      </group>
+      <group>
+        <header>  </header>
+        <paragragh text="Comparative Form: AR-COMP"
+              styleClass="groupParagraph"></paragragh>
+      </group>
+      <group>
+        <header>Replacing Insurer:</header>
+        <paragragh text="Retain copy of Comparative Form for 3 years."
+              styleClass="groupParagraph"></paragragh>
+      </group>
+      <group>
+        <header>Existing Insurer:</header>
+        <paragragh text="No duties under this statute and related bulletins."
+              styleClass="groupParagraph"></paragragh>
+      </group>
+      <group>
+        <header>Conservation</header>
+        <paragragh text="Not defined - no requirements under this statute and related bulletins."
+              styleClass="groupParagraph"></paragragh>
+      </group>
+  	</section>
+  </page>
+</form>

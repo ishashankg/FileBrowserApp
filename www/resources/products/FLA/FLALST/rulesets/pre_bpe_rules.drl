@@ -1,0 +1,13 @@
+import com.stepsoln.core.rules.RulesResponse;
+import java.util.*;
+import com.stepsoln.core.rules.uw.RiskCalculationRequirementData
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "weight loss between 10 and 40 pounds"
+salience 90
+	when
+		$riskCal:RiskCalculationRequirementData(weightChange < -10 && weightChange > -40 && weightChangeReason in ("LIFESTYLE_WC","EATING_WC", "PROGRAM_WC") )
+	then
+		$riskCal.setWeight($riskCal.getWeight() - $riskCal.getWeightChange() / 2.0);
+end

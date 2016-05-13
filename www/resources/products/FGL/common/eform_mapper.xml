@@ -1,0 +1,250 @@
+<?xml version="1.0" ?>
+<EformMapping xmlns="http://www.stepsolutions.com/2015/eform/">
+	<EformObject id="ANNUITANT">
+		<mapClass>com.stepsoln.core.db.cases.Applicant</mapClass>
+		<type typeClass="com.stepsoln.core.db.enums.APPLICANT_TYPE"	property="applicantType">ANNUITANT</type>
+		<repeated>false</repeated>
+		<propertyList>
+			<property name="prefix"><eformField>annuitant_title</eformField></property>
+			<property name="firstName"><eformField>annuitant_first_name</eformField></property>
+			<property name="middleName"><eformField>annuitant_middle_name</eformField></property>
+			<property name="lastName"><eformField>annuitant_last_name</eformField></property>
+			<property name="email"><eformField>annuitant_email_address</eformField></property>
+			<property name="gender"><eformField>annuitant_gender</eformField></property>
+			<property name="phone"><eformField>annuitant_phone</eformField></property>
+			<property name="governmentId"><eformField>annuitant_ssn</eformField></property>
+			<property name="birthdate"><eformField>annuitant_date_of_birth</eformField></property>
+			<property name="addresses">
+				<EformObject id="ANNUITANT_ADDRESS" childObject="true" eformObjectParent="ANNUITANT">
+						<mapClass>com.stepsoln.core.db.party.Address</mapClass>
+						<repeated>false</repeated>
+						<propertyList>
+							<property name="addressLine1"><eformField>annuitant_address1</eformField></property>
+							<property name="addressLine2"><eformField>annuitant_address2</eformField></property>
+							<property name="addressLine3"><eformField>annuitant_address3</eformField></property>
+							<property name="city"><eformField>annuitant_city</eformField></property>
+							<property name="state"><eformField>annuitant_state</eformField></property>
+							<property name="zip"><eformField>annuitant_zip</eformField></property>
+						</propertyList>
+				</EformObject>
+			</property>
+			<property name="isPrimary"><constant>true</constant></property>
+		</propertyList>
+	</EformObject>
+	<EformObject id="JOINT_ANNUITANT">
+		<mapClass>com.stepsoln.core.db.cases.Applicant</mapClass>
+		<type typeClass="com.stepsoln.core.db.enums.APPLICANT_TYPE"	property="applicantType">JOINT_ANNUITANT</type>
+		<repeated>false</repeated>
+		<propertyList>
+			<property name="prefix"><eformField>joint_annuitant_title</eformField></property>
+			<property name="firstName"><eformField>joint_annuitant_first_name</eformField></property>
+			<property name="middleName"><eformField>joint_annuitant_middle_name</eformField></property>
+			<property name="lastName"><eformField>joint_annuitant_last_name</eformField></property>
+			<property name="email"><eformField>joint_annuitant_email_address</eformField></property>
+			<property name="gender"><eformField>joint_annuitant_gender</eformField></property>
+			<property name="phone"><eformField>joint_annuitant_phone</eformField></property>
+			<property name="governmentId"><eformField>joint_annuitant_ssn</eformField></property>
+			<property name="birthdate"><eformField>joint_annuitant_date_of_birth</eformField></property>
+			<property name="addresses">
+				<EformObject id="JOINT_ANNUITANT_ADDRESS" childObject="true" eformObjectParent="JOINT_ANNUITANT">
+						<mapClass>com.stepsoln.core.db.party.Address</mapClass>
+						<repeated>false</repeated>
+						<propertyList>
+							<property name="addressLine1"><eformField>joint_annuitant_address1</eformField></property>
+							<property name="addressLine2"><eformField>joint_annuitant_address2</eformField></property>
+							<property name="addressLine3"><eformField>joint_annuitant_address3</eformField></property>
+							<property name="city"><eformField>joint_annuitant_city</eformField></property>
+							<property name="state"><eformField>joint_annuitant_state</eformField></property>
+							<property name="zip"><eformField>joint_annuitant_zip</eformField></property>
+						</propertyList>
+				</EformObject>
+			</property>
+			<property name="isPrimary"><constant>false</constant></property>
+		</propertyList>
+	</EformObject>
+	<EformObject id="OWNER">
+		<mapClass>com.stepsoln.core.db.cases.Applicant</mapClass>
+		<type typeClass="com.stepsoln.core.db.enums.APPLICANT_TYPE"	property="applicantType">POLICY_OWNER</type>
+		<repeated>false</repeated>
+		<propertyList>
+			<property name="prefix"><eformField>title</eformField></property>
+			<property name="firstName"><eformField>owner_first_name</eformField></property>
+			<property name="middleName"><eformField>owner_middle_name</eformField></property>
+			<property name="lastName"><eformField>owner_last_name</eformField></property>
+			<property name="email"><eformField>owner_email_address</eformField></property>
+			<property name="gender"><eformField>owner_gender</eformField></property>
+			<property name="phone"><eformField>owner_phone</eformField></property>
+			<property name="governmentId"><eformField>owner_ssn</eformField></property>
+			<property name="birthdate"><eformField>owner_date_of_birth</eformField></property>
+			<property name="addresses">
+				<EformObject id="OWNER_ADDRESS" childObject="true" eformObjectParent="OWNER">
+						<mapClass>com.stepsoln.core.db.party.Address</mapClass>
+						<repeated>false</repeated>
+						<propertyList>
+							<property name="addressLine1"><eformField>address1</eformField></property>
+							<property name="addressLine2"><eformField>address2</eformField></property>
+							<property name="addressLine3"><eformField>address3</eformField></property>
+							<property name="city"><eformField>city</eformField></property>
+							<property name="state"><eformField>state</eformField></property>
+							<property name="zip"><eformField>zip</eformField></property>
+						</propertyList>
+				</EformObject>
+			</property>
+			<property name="isPrimary"><constant>false</constant></property>
+		</propertyList>
+	</EformObject>
+	<EformObject id="JOINT_OWNER">
+		<mapClass>com.stepsoln.core.db.cases.Applicant</mapClass>
+		<type typeClass="com.stepsoln.core.db.enums.APPLICANT_TYPE"	property="applicantType">JOINT_OWNER</type>
+		<repeated>false</repeated>
+		<propertyList>
+			<property name="prefix"><eformField>joint_owner_title</eformField></property>
+			<property name="firstName"><eformField>joint_owner_first_name</eformField></property>
+			<property name="middleName"><eformField>joint_owner_middle_name</eformField></property>
+			<property name="lastName"><eformField>joint_owner_last_name</eformField></property>
+			<property name="email"><eformField>joint_owner_email_address</eformField></property>
+			<property name="gender"><eformField>joint_owner_gender</eformField></property>
+			<property name="phone"><eformField>joint_owner_phone</eformField></property>
+			<property name="governmentId"><eformField>joint_owner_ssn</eformField></property>
+			<property name="birthdate"><eformField>joint_owner_DOB</eformField></property>
+			<property name="addresses">
+				<EformObject id="JOINT_OWNER_ADDRESS" childObject="true" eformObjectParent="JOINT_OWNER">
+						<mapClass>com.stepsoln.core.db.party.Address</mapClass>
+						<repeated>false</repeated>
+						<propertyList>
+							<property name="addressLine1"><eformField>joint_owner_address1</eformField></property>
+							<property name="addressLine2"><eformField>joint_owner_address2</eformField></property>
+							<property name="addressLine3"><eformField>joint_owner_address3</eformField></property>
+							<property name="city"><eformField>joint_owner_city</eformField></property>
+							<property name="state"><eformField>joint_owner_state</eformField></property>
+							<property name="zip"><eformField>joint_owner_zip</eformField></property>
+						</propertyList>
+				</EformObject>
+			</property>
+			<property name="isPrimary"><constant>false</constant></property>
+		</propertyList>
+	</EformObject>
+	<EformObject id="BENEFICIARY">
+		<mapClass>com.stepsoln.core.db.cases.Beneficiary</mapClass>
+		<type typeClass="com.stepsoln.core.db.policy.AbstractDepBen$BENEFICIARY_TYPE" property="beneficiaryType">PRIMARY</type>
+		<repeated>false</repeated>
+		<propertyList>
+			<property name="firstName"><eformField>bene_first_name</eformField></property>
+			<property name="middleName"><eformField>bene_middle_name</eformField></property>
+			<property name="lastName"><eformField>bene_last_name</eformField></property>
+			<property name="governmentId"><eformField>ssn</eformField></property>
+			<property name="birthdate"><eformField>date_of_birth</eformField></property>
+			<property name="relationship"><eformField>bene_relation</eformField></property>
+			<property name="percentage"><eformField>share_percentage</eformField></property>
+		</propertyList>
+	</EformObject>
+	<EformObject id="PRIMARY_BENEFICIARY">
+		<mapClass>com.stepsoln.core.db.cases.Beneficiary</mapClass>
+		<type typeClass="com.stepsoln.core.db.policy.AbstractDepBen$BENEFICIARY_TYPE" property="beneficiaryType">PRIMARY</type>
+		<repeated>true</repeated>
+		<propertyList>
+			<property name="firstName"><eformField>other_bene_first_name</eformField></property>
+			<property name="middleName"><eformField>other_bene_middle_name</eformField></property>
+			<property name="lastName"><eformField>other_bene_last_name</eformField></property>
+			<property name="governmentId"><eformField>other_ssn</eformField></property>
+			<property name="birthdate"><eformField>other_date_of_birth</eformField></property>
+			<property name="relationship"><eformField>other_bene_relation</eformField></property>
+			<property name="percentage"><eformField>other_share_percentage</eformField></property>
+		</propertyList>
+	</EformObject>
+	<EformObject id="CONTIGENT_BENEFICIARY">
+		<mapClass>com.stepsoln.core.db.cases.Beneficiary</mapClass>
+		<type typeClass="com.stepsoln.core.db.policy.AbstractDepBen$BENEFICIARY_TYPE" property="beneficiaryType">CONTINGENT</type>
+		<repeated>true</repeated>
+		<propertyList>
+			<property name="firstName"><eformField>contingent_bene_first_name</eformField></property>
+			<property name="middleName"><eformField>contingent_bene_middle_name</eformField></property>
+			<property name="lastName"><eformField>contingent_bene_last_name</eformField></property>
+			<property name="governmentId"><eformField>contingent_ssn</eformField></property>
+			<property name="birthdate"><eformField>contingent_date_of_birth</eformField></property>
+			<property name="relationship"><eformField>contingent_bene_relation</eformField></property>
+			<property name="percentage"><eformField>contingent_share_percentage</eformField></property>
+		</propertyList>
+	</EformObject>
+	<EformObject id="REPLACEMENT">
+		<mapClass>com.stepsoln.core.db.cases.CaseExistingInsurance</mapClass>
+		<type typeClass="com.stepsoln.core.db.enums.INSURANCE_SOURCE" property="source">APPLICATION</type>
+		<repeated>false</repeated>
+		<propertyList>
+			<property name="type"><eformField>policy_type</eformField></property>
+			<property name="existingPolicyNo"><eformField>policy_no</eformField></property>
+			<property name="existingPolicyState"><eformField>current_policy_state</eformField></property>
+			<property name="naicCompanyNumber"><eformField>NAIC_company</eformField></property>
+			<property name="naicCompanyName"><eformField>insurance_company_name</eformField></property>
+			<property name="coverageAmount"><eformField>coverage_amount</eformField></property>
+			<property name="mailingCity"><eformField>current_policy_city</eformField></property>
+			<property name="mailingState"><eformField>current_policy_state</eformField></property>
+			<property name="issueMonthYear"><eformField>year_issued</eformField></property>
+			<property name="isReplacement"><eformField>exchange_1035</eformField></property>
+			<property name="replacementAmount"><eformField>coverage_amount</eformField></property>
+		</propertyList>
+	</EformObject>
+	<EformObject id="REPEATED_REPLACEMENT">
+		<mapClass>com.stepsoln.core.db.cases.CaseExistingInsurance</mapClass>
+		<type typeClass="com.stepsoln.core.db.enums.INSURANCE_SOURCE" property="source">APPLICATION</type>
+		<repeated>true</repeated>
+		<propertyList>
+			<property name="type"><eformField>policy_type</eformField></property>
+			<property name="existingPolicyNo"><eformField>policy_no</eformField></property>
+			<property name="existingPolicyState"><eformField>current_policy_state</eformField></property>
+			<property name="naicCompanyNumber"><eformField>NAIC_company</eformField></property>
+			<property name="naicCompanyName"><eformField>insurance_company_name</eformField></property>
+			<property name="coverageAmount"><eformField>coverage_amount</eformField></property>
+			<property name="mailingCity"><eformField>current_policy_city</eformField></property>
+			<property name="mailingState"><eformField>current_policy_state</eformField></property>
+			<property name="issueMonthYear"><eformField>year_issued</eformField></property>
+			<property name="isReplacement"><eformField>exchange_1035</eformField></property>
+			<property name="replacementAmount"><eformField>coverage_amount</eformField></property>
+		</propertyList>
+	</EformObject>
+	<EformObject id="CASE_AGENT">
+		<mapClass>com.stepsoln.core.db.cases.CaseAgent</mapClass>
+		<repeated>false</repeated>
+		<propertyList>
+			<property name="agent">
+				<EformObject id="AGENT">
+					<mapClass>com.stepsoln.core.db.party.Agent</mapClass>
+					<propertyList>
+						<property name="officePhone"><eformField>agent_phone_number</eformField></property>
+						<property name="fax"><eformField>agent_fax_number</eformField></property>
+						<property name="firstName"><eformField>agent_first_name</eformField></property>
+						<property name="lastName"><eformField>agent_last_name</eformField></property>
+						<property name="email"><eformField>agent_email</eformField></property>
+						<property name="agentCode"><eformField>agent_FG</eformField></property>
+					</propertyList>
+				</EformObject>
+			</property>
+			<property name="commissionSplit"><eformField>commission_split</eformField></property>
+			<property name="agentRole"><constant>37</constant></property>
+			<property name="isPrimary"><constant>true</constant></property>
+		</propertyList>
+	</EformObject>
+	<EformObject id="REPEATED_CASE_AGENT">
+		<mapClass>com.stepsoln.core.db.cases.CaseAgent</mapClass>
+		<repeated>true</repeated>
+		<propertyList>
+			<property name="agent">
+				<EformObject id="REPEATED_AGENT">
+					<mapClass>com.stepsoln.core.db.party.Agent</mapClass>
+					<repeated>true</repeated>
+					<propertyList>
+						<property name="officePhone"><eformField>agent_phone_number1</eformField></property>
+						<property name="fax"><eformField>agent_fax_number1</eformField></property>
+						<property name="firstName"><eformField>agent_first_name1</eformField></property>
+						<property name="lastName"><eformField>agent_last_name1</eformField></property>
+						<property name="email"><eformField>agent_email1</eformField></property>
+						<property name="agentCode"><eformField>agent_FG1</eformField></property>
+					</propertyList>
+				</EformObject>
+			</property>
+			<property name="commissionSplit"><eformField>commission_split1</eformField></property>
+			<property name="agentRole"><constant>52</constant></property>
+			<property name="isPrimary"><constant>false</constant></property>
+		</propertyList>
+	</EformObject>
+</EformMapping>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+    <onLoad>prefillData</onLoad>
+	<page title="SIDE A">
+        <header>Illinois Notice Regarding Replacement of Life Insurance or Annuities</header>
+		<section>
+			<group labelWidth="400px" height="120px" scrollable="true">
+				<paragragh
+					text="Are you thinking about buying a new life insurance policy or annuity and discontinuing or changing an existing one? If you are, your decision could be a good one - or a mistake. You will not know for sure unless you make a careful comparison of your existing benefits and the proposed benefits."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="Make sure you understand the facts. You should ask for the advice of the company or agent that sold you your existing policy to give you information concerning any proposed replacement."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="Hear both sides before you decide. That way you can be sure you are making a decision that is in your best interest."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="You have the right, within 20 days after delivery of a replacement policy, to return it to the company and to claim an unconditional refund of all premiums paid on it."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="We are required by law to notify your existing company that you may be replacing their policy."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+		</section>
+		<section>
+			<group>
+				<paragragh
+					text="List below the identification of policies which are involved in the replacement transaction."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+			<group associated="true" labelWidth="150px;">
+				<question id='contract1a' text="Contract Number:" type='TEXT' />
+				<question id='contract2a' text="Contract Number:" type='TEXT' />
+				<question id='contract3a' text="Contract Number:" type='TEXT' />
+			</group>
+		</section>
+	</page>
+	<page title="SIDE B">
+        <header>Illinois Notice Regarding Proposed Replacement of Life Insurance or Annuities</header>
+		<section title="Existing Company"  repeating="true">
+          <group associated="true" labelWidth="150px;" answerWidth="200px;">
+            <question id='replaced_carrier' text="Name of existing insurer:" type='TEXT' />
+            <question id='replaced_policyno' text="Contract Number:" type='TEXT' />
+          </group>
+          <group associated="true" labelWidth="150px;">
+            <question id='replaced_address' text="Address:" answerWidth="400px;" type='TEXT' />
+          </group>
+		</section>
+		<section>
+          <group associated="true" title="Identification" labelWidth="150px;">
+          	<question id='insured_name' text="Name of insured:" type='TEXT' />
+          </group>
+          <group labelWidth="150px;">
+            <question id='insured_address' text="Address:" answerWidth="400px;" type='TEXT' />
+          </group>
+          <group>
+          	<paragragh
+          		text="This notice is given pursuant to 50 Illinois Administrative Code 917.70(c)."
+          		styleClass="groupParagraph"></paragragh>
+          </group>
+		</section>
+	</page>
+</form>

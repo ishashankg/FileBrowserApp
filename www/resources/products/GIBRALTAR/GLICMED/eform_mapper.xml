@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<EformMapping xmlns="http://www.stepsolutions.com/2015/eform/">
+	<EformObject id="BENEFICIARY">
+		<mapClass>com.stepsoln.core.db.cases.Beneficiary</mapClass>
+		<type typeClass="com.stepsoln.core.db.policy.AbstractDepBen$BENEFICIARY_TYPE" property="beneficiaryType">PRIMARY</type>
+		<repeated>false</repeated>
+		<propertyList>
+			<property name="firstName"><eformField>BeneFName</eformField></property>
+			<property name="middleName"><eformField>BeneMiddleIni</eformField></property>
+			<property name="lastName"><eformField>BeneLName</eformField></property>
+			<property name="governmentId"><eformField>BeneSSN</eformField></property>
+			<property name="birthdate"><eformField>BeneDOB</eformField></property>
+			<property name="relationship"><eformField>BeneRel</eformField></property>
+			<property name="percentage"><eformField>BenePer</eformField></property>
+		</propertyList>
+	</EformObject>
+</EformMapping>

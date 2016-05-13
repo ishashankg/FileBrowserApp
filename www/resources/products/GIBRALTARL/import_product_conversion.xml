@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<productPlanConversions>
+		<productPlanConversion>
+			<from product="GLIFE" plan="TL" />
+			<to product="GLIFE" plan="WL" rules="" />
+		</productPlanConversion>
+	</productPlanConversions>
+</stepImport>

@@ -1,0 +1,247 @@
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.coverages.CoverageOption;
+import com.stepsoln.core.rules.requirements.*;
+import com.stepsoln.core.rules.uw.*;
+import com.stepsoln.core.util.MathUtil
+import java.util.ArrayList;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.helper.enums.UNIT_SYSTEM;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "1. Citizenship Kickout"
+salience 300
+activation-group "declineGroup"
+	when
+		Question(id == "citizenship_status", answer != null, answer != "Y")
+	then
+		rulesResponse.issueDecline("Citizenship Kickout", 91, "KNOCKOUT_RULE_CITIZENSHIP");
+		rulesResponse.addToRuleFiredList(1,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "Indicate to lookup build chart" 
+	when
+		$app:ApplicantData(type == 'PRIMARY_INSURED');
+		Question(id == "height_feet", $heightFeet:answerAsDecimal); 
+		Question(id == "height_inches", $heightInches:answerAsDecimal) ; 
+		Question(id == "weight_pounds",$weightPounds:answerAsDecimal);
+		eval($heightFeet!=null);
+		eval($heightInches!=null);
+		eval($weightPounds!=null)
+	then
+		$app.setLookupBuildChart(true);
+		$app.setHeight($heightFeet.multiply(MathUtil.INCHES_IN_FOOT).add($heightInches).intValue());
+		$app.setWeight($weightPounds.intValue());
+		$app.setUnitSystem(UNIT_SYSTEM.IMPERIAL);
+		rulesResponse.addToRuleFiredList(2,"USE_BUILD_CHART_SERVICE");
+end
+
+
+rule "2. Occupation Kickout"
+salience 290
+activation-group "declineGroup"
+	when
+		Question(id == "occupation", 
+		answer in ('BOUNCER', 'BOUNTY HUNTER', 'ESCORT', 'EXOTIC DANCER', 'GAMBLER', 'PROFESSIONAL GAMBLER', 'MERCENARY', 'PROSTITUTE', 'SEX WORKER', 'STRIPPER', 'TEST PILOT'))
+	then
+		rulesResponse.issueDecline("Occupation Kickout", 91, "KNOCKOUT_RULE_GENERIC");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+end
+
+
+rule "3. 10 Year Term Age"
+salience 280
+activation-group "declineGroup"
+	when
+		CoverageOption(optionCode in ("TERM10"), selected==true);
+		ApplicantData(age > 70 || age < 18);
+    then
+		rulesResponse.issueDecline("Applicant Age Kickout", 21, "KNOCKOUT_RULE_GENERIC");
+		rulesResponse.addToRuleFiredList(3,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "4. 15 Year Term Age"
+salience 270
+activation-group "declineGroup"
+	when
+		CoverageOption(optionCode in ("TERM15"), selected==true);
+		ApplicantData(age > 65 || age < 18);
+    then
+		rulesResponse.issueDecline("Applicant Age Kickout", 21, "KNOCKOUT_RULE_GENERIC");
+		rulesResponse.addToRuleFiredList(4,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "5. 20 Year Term Age"
+salience 260
+activation-group "declineGroup"
+	when
+		CoverageOption(optionCode in ("TERM20"), selected==true);
+		ApplicantData(age > 60 || age < 18);
+    then
+		rulesResponse.issueDecline("Applicant Age Kickout", 21, "KNOCKOUT_RULE_GENERIC");
+		rulesResponse.addToRuleFiredList(5,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "6. 30 Year Term Age"
+salience 250
+activation-group "declineGroup"
+	when
+		CoverageOption(optionCode in ("TERM30"), selected==true);
+		ApplicantData(age > 50 || age < 18);
+    then
+		rulesResponse.issueDecline("Applicant Age Kickout", 21, "KNOCKOUT_RULE_GENERIC");
+		rulesResponse.addToRuleFiredList(6,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "7. Whole Life Age"
+salience 240
+activation-group "declineGroup"
+	when
+       	//CoverageOption(optionCode in ("WL"), selected==true);
+		ApplicantData(age > 80 || age < 18);
+       	
+    then
+    	rulesResponse.issueDecline("Applicant Age Kickout", 21, "KNOCKOUT_RULE_GENERIC");
+    	rulesResponse.addToRuleFiredList(7,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "8. maximum face amount restricted by age and income"
+salience 230
+activation-group "declineGroup"
+	when
+		ApplicantData(type=="PRIMARY_INSURED", age >= 18, $incomeFactor:MathUtil.getEarnedIncomeFactorByAge(age))
+		Question(id=="occupation", StringUtils.isNotBlank((String)answer), answer not in ("DISABLED", "DISABILITY","UNEMPLOYED", "NOT EMPLOYED","RETIRED", "RETIREMENT", "STUDENT", "COLLEGE STUDENT", "LAW STUDENT", "UNIVERSITY STUDENT", "HOMEMAKER", "HOME MAKER", "HOME EXECUTIVE", "HOUSE HUSBAND", "STAY AT HOME MOM", "STAY AT HOME DAD", "AT HOME MOM", "HOUSEWIFE", "HOUSE WIFE"));
+		Question(id=="annual_earned_income", StringUtils.isNotBlank((String)answer), $income:answer)
+		eval(($incomeFactor * MathUtil.convertToNumber($income.toString()) / 1000) < 25)
+    then
+    	rulesResponse.issueDecline("Maximum face amount restricted by age and income Kickout", 71, "KNOCKOUT_RULE_GENERIC");
+	    rulesResponse.addToRuleFiredList(8,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "9. AUTODECLINE for Phone replacement of external policy"
+salience 220
+activation-group "declineGroup"
+	when
+		theCase:CaseData(contactMethod=='PHONE', contractState in ('DE', 'ID', 'IL', 'IN','MA','MO','PA', 'PR', 'TN'))
+		CaseExistingInsuranceData(naicCompanyNumber!='70939', isReplacement==true)
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+	then
+		rulesResponse.issueDecline("Phone replacement of external policy Kickout", 35, "KNOCKOUT_RULE_REPLACEMENT");
+		rulesResponse.addToRuleFiredList(9,"KNOCKOUT_RULE_REPLACEMENT");
+	end
+
+rule "10. AUTODECLINE for Phone replacement of external NV policy"
+salience 210
+activation-group "declineGroup"
+	when 
+		theCase:CaseData(contactMethod=='PHONE', contractState=='NV')
+		CaseExistingInsuranceData(naicCompanyNumber!='70939', isReplacement==true)
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+	then
+		rulesResponse.issueDecline("Phone replacement of external NV policy Kickout", 35, "KNOCKOUT_RULE_REPLACEMENT");
+		rulesResponse.addToRuleFiredList(10,"KNOCKOUT_RULE_REPLACEMENT");		
+end
+
+rule "11. Agent Replacement of an Internal Policy"
+salience 200
+activation-group "declineGroup"
+	when
+       	theCase:CaseData(caseSource in ('EXTERNAL'))
+       	CaseExistingInsuranceData(naicCompanyNumber=='70939', isReplacement==true)
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+    then
+    	rulesResponse.issueDecline("Agent Replacement of an Internal Policy", 35, "KNOCKOUT_RULE_REPLACEMENT");
+		rulesResponse.addToRuleFiredList(11,"KNOCKOUT_RULE_REPLACEMENT");
+end
+
+rule "12. No Replacement External Agent Policy"
+salience 190
+activation-group "declineGroup"
+	when
+       	theCase:CaseData(contractState in ('CA','DE','ID','IL','IN','MA','MO','PA','TN','WA'), caseSource in ('EXTERNAL'))
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+    then
+    	rulesResponse.issueDecline("No Replacement External Agent Policy", 35, "KNOCKOUT_RULE_REPLACEMENT");
+		rulesResponse.addToRuleFiredList(12,"KNOCKOUT_RULE_REPLACEMENT");
+end
+
+rule "13. No Replacement External Agent Policy Over Phone"
+salience 140
+activation-group "declineGroup"
+	when
+       	theCase:CaseData(contactMethod=='PHONE', contractState in ('GA','KS','NV'), caseSource in ('EXTERNAL'))
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+    then
+    	rulesResponse.issueDecline("No Replacement External Agent Policy Over Phone", 35, "KNOCKOUT_RULE_REPLACEMENT");
+		rulesResponse.addToRuleFiredList(13,"KNOCKOUT_RULE_REPLACEMENT");
+end
+
+rule "14. GLIC Replacement External Policy"
+salience 130
+activation-group "declineGroup"
+	when
+       	theCase:CaseData(contractState =='SD', caseSource in ('INTERNET'))
+       	CaseExistingInsuranceData(naicCompanyNumber!='70939', isReplacement==true)
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+    then
+    	rulesResponse.issueDecline("GLIC Replacement External Policy", 35, "KNOCKOUT_RULE_REPLACEMENT");
+		rulesResponse.addToRuleFiredList(14,"KNOCKOUT_RULE_REPLACEMENT");
+end
+
+rule "15. GLIC Replacement Policy by PHONE"
+salience 120
+activation-group "declineGroup"
+	when
+       	theCase:CaseData(contactMethod=='PHONE', contractState =='SD', caseSource in ('CAPTIVE'))
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+    then
+    	rulesResponse.issueDecline("GLIC Replacement Policy by PHONE", 35, "KNOCKOUT_RULE_REPLACEMENT");
+		rulesResponse.addToRuleFiredList(15,"KNOCKOUT_RULE_REPLACEMENT");
+end
+
+
+rule "16. GLIC Telephone Replacement External Policy AUTODECLINE"
+salience 110
+activation-group "declineGroup"
+	when 
+		theCase:CaseData(contactMethod=='PHONE', contractState == 'NV', caseSource in ('CAPTIVE','INTERNET'))
+		CaseExistingInsuranceData(naicCompanyNumber!='70939', isReplacement==true)
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+	then
+		rulesResponse.issueDecline("Internal replacement of external policy", 35, "KNOCKOUT_RULE_REPLACEMENT");
+		rulesResponse.addToRuleFiredList(16,"KNOCKOUT_RULE_REPLACEMENT");
+end
+
+rule "19. AUTODECLINE for merica recommendation DECLINE"
+salience 80
+activation-group "declineGroup"
+	when 
+		theCase:CaseData();
+		CaseMericaRecommendationData( recommendation in("DECLINE"), $rec: recommendation)
+	then
+		rulesResponse.issueDecline("Merica Recommendation DECLINE", 97, "KNOCKOUT_RULE_GENERIC");
+		rulesResponse.addToRuleFiredList(19,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "20. Replacement Policy for Florida, Kentucky, and New York"
+salience 120
+	when
+       	theCase:CaseData(contractState in ('FL','KY','NY'))
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+    then
+    	rulesResponse.issueDecline("Replacement Policy for "+theCase.getContractLocale(), 35, "KNOCKOUT_RULE_REPLACEMENT");
+		rulesResponse.addToRuleFiredList(20,"KNOCKOUT_RULE_REPLACEMENT");
+end
+
+rule "21. AUTODECLINE for Phone replacement of internal policy"
+salience 220
+activation-group "declineGroup"
+	when
+		theCase:CaseData(contactMethod=='PHONE', contractState in ('CA', 'WA'))
+		CaseExistingInsuranceData(naicCompanyNumber=='70939', isReplacement==true)
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+	then
+		rulesResponse.issueDecline("Phone replacement of internal policy Kickout", 35, "KNOCKOUT_RULE_REPLACEMENT");
+		rulesResponse.addToRuleFiredList(21,"KNOCKOUT_RULE_REPLACEMENT");
+	end

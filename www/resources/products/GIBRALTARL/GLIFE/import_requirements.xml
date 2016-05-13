@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<requirements>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>PT1</requirementCode>
+			<requirementDescription>Application Part 1</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<materialChange>true</materialChange>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APPPART1</formCode>
+					<formDescription>Part 1 - Personal Information</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>PERSON</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>HIP</requirementCode>
+			<requirementDescription>Authorization</requirementDescription>
+			<securityFunction>case_auth</securityFunction>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APPPART2</formCode>
+					<formDescription>Part 2 - Authorization</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>true</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>AUTHORIZATION</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>PT3</requirementCode>
+			<requirementDescription>Application Part 3</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<materialChange>true</materialChange>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APPPART3</formCode>
+					<formDescription>Part 3 - Medical-Replacement</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>REFLEXIVE</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>PT4</requirementCode>
+			<requirementDescription>Application Part 3</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<materialChange>true</materialChange>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APPPART4</formCode>
+					<formDescription>Part 3 - Medical-Replacement</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>REFLEXIVE_STEP_UW_ENGINE</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>AAT</requirementCode>
+			<requirementDescription>Producer Certification
+			</requirementDescription>
+			<securityFunction>agent_attestation</securityFunction>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APPPART5</formCode>
+					<formDescription>Part 5 - Producer Certification</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>true</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>AGENT_ATTESTATION</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>ASR</requirementCode>
+			<requirementDescription>Applicant signature requirement
+			</requirementDescription>
+			<securityFunction>case_auth</securityFunction>
+			<requirementGroup>NB</requirementGroup>
+			<requirementForms>
+				<requirementForm>
+					<formCode>ASRRF</formCode>
+					<formDescription>Applicant signature</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>true</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode></formEformCode>
+					<formGroupType>SIGNATURE</formGroupType>
+					<requirementType>CORRESPONDENCE</requirementType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>IIX</requirementCode>
+			<requirementDescription>MVR 3rd Party Call</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence
+			</securityFunction>
+			<requirementGroup>STEP_UW</requirementGroup>
+			<resolver>UW</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>IXX3RDPARTY</formCode>
+					<formDescription>Motor Vehicle Report</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>IIX3RDPARTY</formWorkflow>
+					<formGroupType>STEP_UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>RXD</requirementCode>
+			<requirementDescription>RXD 3rd Party Call</requirementDescription>
+			<securityFunction>medical_underwriting_requirements</securityFunction>
+			<requirementGroup>STEP_UW</requirementGroup>
+			<resolver>UW</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>RXD3RDPARTY</formCode>
+					<formDescription>RXD Report</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>RXD3RDPARTY</formWorkflow>
+					<formGroupType>STEP_UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>APS</requirementCode>
+			<requirementDescription>APS document</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence</securityFunction>
+			<requirementGroup>STEP_UW</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APS</formCode>
+					<formDescription>Attending Physician Statement</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>APS</formWorkflow>
+					<formGroupType>STEP_UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>EKG</requirementCode>
+			<requirementDescription>EKG at rest document</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence</securityFunction>
+			<requirementGroup>STEP_UW</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>EKG</formCode>
+					<formDescription>EKG at rest document</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>EKG</formWorkflow>
+					<formGroupType>STEP_UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>TEKG</requirementCode>
+			<requirementDescription>EKG on tread mill document</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence</securityFunction>
+			<requirementGroup>STEP_UW</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>TEKG</formCode>
+					<formDescription>EKG on tread mill document</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>TEKG</formWorkflow>
+					<formGroupType>STEP_UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>IR</requirementCode>
+			<requirementDescription>Inspection Report</requirementDescription>
+			<securityFunction>phi_interview_requirements</securityFunction>
+			<requirementGroup>STEP_UW</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>IR</formCode>
+					<formDescription>Inspection Report</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>OBTAINIIR</formWorkflow>
+					<formGroupType>NB</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>PHI</requirementCode>
+			<requirementDescription>Personal History</requirementDescription>
+			<securityFunction>phi_interview_requirements</securityFunction>
+			<requirementGroup>STEP_UW</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>PHI</formCode>
+					<formDescription>Personal History Report</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>OBTAINIIR</formWorkflow>
+					<formGroupType>NB</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>		
+	</requirements>
+</stepImport>

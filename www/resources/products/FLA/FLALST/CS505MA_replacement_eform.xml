@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillData</onLoad>
+  <page>
+    <section title='MASSACHUSETTS IMPORTANT NOTICE REQUIRED BY THE COMMISSIONER OF INSURANCE'>
+    	<header>READ CAREFULLY BEFORE PROCEEDING</header>
+    	<group labelWidth="400px" height="120px" scrollable="true">
+    		<paragragh
+    			text="This notice is required by the Commissioner of Insurance because you have indicated that you are buying a new life insurance policy or annuity and discontinuing or changing an existing one. Such a decision could be a good one, or a mistake. You will not know for sure until you make a careful comparison of your existing policy and the proposed replacement policy. Premiums alone are not determinative of low cost. Take the time to obtain and understand the facts."
+    			styleClass="groupParagraph" />
+    		<paragragh
+    			text="We are required by law to notify your existing company that you may be replacing their policy."
+    			styleClass="groupParagraph" />
+    		<paragragh
+    			text="Consider both sides before you decide. This way you can be sure you are making a decision that is in your best interest."
+    			styleClass="groupParagraph" />
+    		<paragragh
+    			text="Cash Value Insurance: To make a comparison of cash value policies (policies with loan or surrender values in addition to death protection), consideration must be given to each policy's cash values, premiums, coverage amounts and dividends, if any, over the life of the policy."
+    			styleClass="groupParagraph" />
+    		<paragragh
+    			text="To simplify this task, you may wish to request from your existing insurance company and the company issuing the replacement policy yield index figures for five, ten and twenty years. The yield index is a percentage that represents an estimate of the interest rate the insurer projects you will earn on the savings portion of the cash value policy. The policy with the higher yield index will generally be the better buy."
+    			styleClass="groupParagraph" />
+    		<paragragh
+    			text="The Yield Index Committee of the National Association of Insurance Commissioners in 1986 devised a method for calculating a yield index. In order to request this yield index information, merely check the box below and your request will be forwarded to both insurance companies."
+    			styleClass="groupParagraph" />
+    		<paragragh
+    			text="You can also compare the cash values and/or surrender values listed in the replacing company's policy summary for the first five policy years with those in your current policy for the next five years. Low cash values or surrender values in early policy years are often the result of high expenses associated with issuing a new policy. If the replacement policy has low values in its early years, it will usually take longer for it to provide you with benefits that equal or exceed the benefits of your existing policy. In some cases, the replacement policy may never provide benefits equal to those in your present policy."
+    			styleClass="groupParagraph" />
+    		<paragragh
+    			text="Term Insurance: If you are replacing your present insurance policy with term insurance (policies that provide death protection only), it makes sense to shop for a low cost policy. Costs for term insurance vary widely and substantial savings may be realized by comparison shopping. Premiums alone are not always determinative of low cost since some policies pay dividends and others do not. You may wish to request interest-adjusted cost indices for five, ten and twenty years from several insurance companies including your existing insurer to help you compare term insurance premiums. The policy with the lower index number is usually the better buy."
+    			styleClass="groupParagraph" />
+    		<paragragh
+    			text="Please list below the identification of the policies which are involved in the replacement. Your existing insurer will be notified that you may be replacing their policy."
+    			styleClass="groupParagraph" />
+    	</group>
+    	<group associated="true" labelWidth="250px;">
+    		<question id='policy_summary' text='Check box to request yield indices for cash value policies.'
+    			type='CHECKBOX' answerSet='Y:Yes' />
+    	</group>
+    </section>
+    <section title="Replaced Company" repeating="true">
+      <header>Policy Information</header>
+      <group associated="true">
+        <question id='replaced_carrier' text='Company:' labelWidth="100px" type='TEXT' answerWidth="200px;" />
+        <question id='replaced_policyno' text='Contract No.:' labelWidth="100px" type='TEXT' answerWidth="100px;" />
+      </group>
+    </section>
+  </page>
+</form>

@@ -1,0 +1,20 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import com.stepsoln.core.rules.uw.*;
+import java.util.ArrayList;
+import com.stepsoln.core.db.Lookup;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+
+
+
+rule "1. Set the current risk calc id to be the one from initial risk calculation"
+when
+		theCase:CaseData()		
+    then    	
+    	
+    	rulesResponse.addToRuleFiredList(1);
+end

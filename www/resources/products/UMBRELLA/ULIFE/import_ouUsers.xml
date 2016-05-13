@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<ou-users>
+		<ou-user>
+			<ousOrguCode>UMBRELLA_LIFE_Ou</ousOrguCode>
+			<ousUserName ousAdmin="Y">JohnKnaff</ousUserName>
+		</ou-user>
+		<ou-user>
+			<ousOrguCode>DTC_UMBRELLA_LIFE_OU</ousOrguCode>
+			<ousUserName ousAdmin="Y">UMBRELLA_AGENT</ousUserName>
+		</ou-user>
+		<ou-user>
+			<ousOrguCode>UMBRELLA_LIFE_UWO</ousOrguCode>
+			<ousUserName ousAdmin="Y">UMBRELLA_UW</ousUserName>
+		</ou-user>
+		<ou-user>
+			<ousOrguCode>DEF_UMBRELLA_LIFE_UWO</ousOrguCode>
+			<ousUserName ousAdmin="Y">UMBRELLA_DEF_UW</ousUserName>
+		</ou-user>
+	</ou-users>
+</stepImport>

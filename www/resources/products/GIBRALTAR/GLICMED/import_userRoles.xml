@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<userRoles>
+	<userRole>
+		<urolUserName>JACKHARDY</urolUserName>
+		<urolRoleCode>ext_agent</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>DTC_GLIC</urolUserName>
+		<urolRoleCode>ext_agent</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>JOHNSMITH</urolUserName>
+		<urolRoleCode>uw_senior</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>DEF_GMED_UW</urolUserName>
+		<urolRoleCode>default_uw</urolRoleCode>
+	</userRole>
+</userRoles>
+</stepImport>

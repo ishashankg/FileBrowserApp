@@ -1,0 +1,28 @@
+
+RE:  $policyNumber - $correspondenceAppName
+
+NOTICE UNDER FAIR CREDIT REPORTING ACT
+
+To make it possible for us to provide you the Gerber Life protection you have requested, an investigative consumer report must be completed.  This report may provide applicable information concerning your character, general reputation, personal characteristics and mode of living.  The information may be obtained through personal interviews with you, your friends, neighbors, and associates.  Upon receipt of your written request, we will inform you as to whether or not an investigative consumer report was requested.  If such a report was requested, we will provide you with the name and address of the Consumer Reporting Agency to whom the request was made.  You have the right to inspect and receive a copy of the report by contacting the consumer reporting agency.  
+
+Kindly sign the bottom half of this form authorizing the completing of the investigative consumer report and return it to our office in the envelope provided.  Retain the top portion for your records.
+
+Thank you.
+
+__________________________________________________________________________________________________________________________________
+
+Name:      $correspondenceAppName	                            Application Number:      $policyNumber
+
+I have read the notice explaining the content of the investigative consumer report, and I hereby authorize Gerber Life to obtain such a report.
+
+Signature: _________________________________________	Date: ___________________
+
+Telephone: (business hours) ___________________________
+
+
+
+FCRA N & A (10/03)
+
+Enclosure:  Y-BRE
+
+

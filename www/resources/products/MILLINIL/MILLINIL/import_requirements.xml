@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<requirements>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>PT1</requirementCode>
+			<requirementDescription>Application Part 1</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<materialChange>true</materialChange>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APPPART1</formCode>
+					<formDescription>Part 1 - Personal Information</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>PERSON_INFO</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>ASR</requirementCode>
+			<requirementDescription>Applicant signature requirement
+			</requirementDescription>
+			<securityFunction>case_auth</securityFunction>
+			<requirementGroup>NB</requirementGroup>
+			<requirementForms>
+				<requirementForm>
+					<formCode>ASRRF</formCode>
+					<formDescription>Applicant signature</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>true</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode></formEformCode>
+					<formGroupType>SIGNATURE</formGroupType>
+					<requirementType>CORRESPONDENCE</requirementType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>DMG</requirementCode>
+			<requirementDescription>Demographic Information
+			</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<materialChange>true</materialChange>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>DEMOG1</formCode>
+					<formDescription>Demographic Information</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>PERSON</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>PT3</requirementCode>
+			<requirementDescription>Application Part 3</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<materialChange>true</materialChange>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APPPART3</formCode>
+					<formDescription>Part 3 - Medical-Replacement</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>MEDICAL_QUESTIONS</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+	</requirements>
+</stepImport>

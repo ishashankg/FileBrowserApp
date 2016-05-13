@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<agencies>
+	<agency>
+		<agCode>MILLINI_LIFE_MedAg</agCode>
+		<agName>MILLINI_LIFE Agency</agName>
+		<agBusType>Independent</agBusType>
+		<agCaptive>false</agCaptive>
+		<agents>
+			<agent>
+				<agtCode>GEOM</agtCode>
+				<agtFirstName>George</agtFirstName>
+				<agtLastName>Martin</agtLastName>
+				<agtEmail>George.Martin@stepsolutions.com</agtEmail>				
+			</agent>
+			<agent>
+				<agtCode>STEVES</agtCode>
+				<agtFirstName>Steve</agtFirstName>
+				<agtLastName>Samuel</agtLastName>
+				<agtEmail>Steve.Samuel@stepsolutions.com</agtEmail>
+			</agent>
+		</agents>
+	</agency>
+</agencies>
+</stepImport>

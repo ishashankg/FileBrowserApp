@@ -1,0 +1,301 @@
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.*;
+import com.stepsoln.core.rules.annuity.AnnuityData;
+import com.stepsoln.core.rules.requirements.*;
+import rules.*;
+import java.util.*;
+import java.lang.*;
+import java.math.BigDecimal;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "1.Initial Premium"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="initial_premium")
+  then
+     rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "2.Owner Information"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="owner_name")
+     or not Question(id=="owner_age")
+     or not Question(id=="owner_work_status")
+     or not Question(id=="owner_residence")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "3.Work Status Other"
+activation-group 'Pre Suitability'
+  when
+      Question(id=="owner_work_status", answerAsString == "O")
+      and not Question(id=="owner_status_specify")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");   
+end
+
+rule "4.Federal Tax Rates"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="federal_tax_Rates")
+  then
+     rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");    
+end
+
+rule "5.Products Owned"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="product_list")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "6.Reverse Mortgage"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="reverse_mortgage")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "7.Risk Tolerance"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="risk_tolerance")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");   
+end
+
+rule "8.Reasons for annuity purchase "
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="reason" )
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "9. Annuity Purchase connected to establishment of a Trust "
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="fgl_purchase_agent_attorney")     
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "10. Sources of Income"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="income_source" )
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "11. Approximate Monthly Household Income"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="monthly_income")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "12. Approximate Monthly Household Expenses"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="monthly_expense")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "13. Monthly Disposable Household Income"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="disposable_income")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "14. Liquid assets in cash"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="cash")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "15.Mutual Funds for liquid assets"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="mutual_fund")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");   
+end
+
+rule "16.Checking/Savings/Money Market"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="savings")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "17.CDs for liquid assets"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="cd")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "18.Life Insurance cash value not subject to surrender penalties"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="life_insurance_without_surrender")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");   
+end
+
+rule "19.Stocks/Bonds"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="stock_bonds")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "20.Total Liquid Assets "
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="total_liquid_assets")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "21. Value of Home"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="home_value")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");   
+end
+
+rule "22. Gold, collectibles, or other valuable personal property"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="gold")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "23. Other Real Estate"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="other_real_estate")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "24.Total Non-Liquid Assets "
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="total_non_liquid_assets")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");   
+end
+
+rule "25.Total Short Term Liabilities"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="short_term_liabilities")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "26.Total Assets (Liquid and Non-Liquid)"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="total_assets")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "27.Anticipation of Annuity distribution"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="annuity_distribution")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");   
+end
+
+rule "28.Anticipated duration for annuity distribution"
+activation-group 'Pre Suitability'
+  when
+      Question(id=="annuity_distribution", answerAsString == "Y")
+      and not Question(id=="when_annuity_distribution")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "29.Decline Over the years"
+activation-group 'Pre Suitability'
+  when
+     Question(id=="surrender_charges_confirmation", answerAsString == "Y")
+     and not Question(id=="decline_years")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "30.Liquid assets after purchase of annuity"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="income_after_annuity_purchase")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "31.Anticipation of adverse changes in expenses"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="adverse_changes_expenses")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "32. Other fund sources"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="other_sources")
+     and not Question(id=="liquid_assets")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "33. Type of source of fund"
+activation-group 'Pre Suitability'
+  when
+     not Question(id=="annuity_life_exchange")
+  then
+      rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");   
+end
+
+rule "34. Replacement or exchange details of contracts"
+activation-group 'Pre Suitability'
+  when
+     Question(id=="annuity_life_exchange", answerAsString == "Y")
+     and not Question(id=="annuity_replaced_exchanged")
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end
+
+rule "35. Joint Owner Information"
+activation-group 'Pre Suitability'
+  when
+     Question(id=="joint_owner", answerAsString == "Y" )
+     and (not Question(id=="joint_owner_work_status")
+     or not Question(id=="joint_owner_residence"))
+  then
+       rulesResponse.addRequiredOnce("Suitability results are not available as suitability forms are incomplete", null, "PRE_SUITABILITY", "INVALID");  
+end

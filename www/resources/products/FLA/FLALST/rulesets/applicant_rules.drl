@@ -1,0 +1,675 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.EformCode;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.db.services.util.EmployeeUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.Requirement;
+import rules.*;
+import java.util.*;
+import com.stepsoln.core.rules.requirements.BeneficiaryData;
+import com.stepsoln.core.util.DateUtil;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+function String errorMessage(String licNum, String state, String format) {
+    return "Driver's License Number '"+ licNum + "' does not match '"+ state + "' format: " + format;
+}
+
+rule "AL drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="AL", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{7}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "7 Numeric"), "APPLICANT");
+		}
+end
+
+rule "AK drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="AK", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{1,7}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1-7 Numeric"), "APPLICANT");
+		}
+end
+
+rule "AZ drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="AZ", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^[a-zA-Z]{1}[\\d]{8}|[a-zA-Z]{2}\\d{3,6}$") && !$licNum.equalsIgnoreCase($ssn))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 8 Numeric; or 2 Alphabetic, 3-6 Numeric; or 9 numeric (SSN); or 9 Numeric"), "APPLICANT");
+		}
+end
+
+rule "AR drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="AR", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^\\d{9}$") && !$licNum.equalsIgnoreCase($ssn))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (SSN), if not SSN, will start with 9"), "APPLICANT");
+		}
+end
+
+rule "CA drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="CA", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[a-zA-Z]{1}[\\d]{7}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 7 Numeric"), "APPLICANT");
+		}
+end
+
+rule "CO drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="CO", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{9}$")) 
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric"), "APPLICANT");
+		}
+end
+
+rule "CT drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="CT", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{9}$")) 
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric, 1st two positions are month of birth in odd or even year"), "APPLICANT");
+		}
+end
+
+rule "DE drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="DE", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{1,7}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1-7 Numeric"), "APPLICANT");
+		}
+end
+
+rule "DC drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="DC", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^\\d{7}|\\d{9}$") && !$licNum.equalsIgnoreCase($ssn)) 
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (SSN) or 7 Numeric"), "APPLICANT");
+		}
+end
+
+rule "FL drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="FL", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[a-zA-Z]{1}[\\d]{12}$")) 
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 12 Numeric"), "APPLICANT");
+		}
+end
+
+rule "GA drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="GA", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED")
+	then
+		if (!$licNum.matches("^\\d{7,9}$")) 
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "7-9 Numeric or SSN"), "APPLICANT");
+		}
+end
+
+rule "HI drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="HI", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{9}$") && !$licNum.matches("^[hH][\\d]{8}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric or \"H\" + 8 numeric"), "APPLICANT");
+		}
+end
+
+rule "ID drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="ID", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^[a-zA-Z]{2}[\\d]{6}[a-zA-Z]$") && !$licNum.equalsIgnoreCase($ssn))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "2 Alphabetic, 6 Numeric; or 9 Numeric (SSN); or 9 Numeric"), "APPLICANT");
+		}
+end
+
+rule "IL drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="IL", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED")
+	then
+		String lastInit = StringUtils.left(applicant.getLastName(), 1).toUpperCase();
+		if (!$licNum.matches("^"+lastInit+"[\\d]{11}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic (last name initial), 11 Numeric"), "APPLICANT");
+		}
+end
+
+rule "IN drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="IN", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^\\d{10}$") && !$licNum.equalsIgnoreCase($ssn))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "10 Numeric or 9 Numeric (SSN)"), "APPLICANT");
+		}
+end
+
+rule "IA drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="IA", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{9}$") && !$licNum.matches("^[\\d]{3}[a-zA-Z]{2}[\\d]{4}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (SSN); or 3 Numeric, 2 Alphabetic, 4 Numeric"), "APPLICANT");
+		}
+end
+
+rule "KS drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="KS", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^[a-zA-Z][\\d]{8}$") && !$licNum.equalsIgnoreCase($ssn))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (SSN); or 1 Alphabetic (K), 8 Numeric"), "APPLICANT");
+		}
+end
+
+rule "KY drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="KY", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^[a-zA-Z0-9]{1}[\\d]{8}$") && !$licNum.equalsIgnoreCase($ssn))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (SSN); or 1 Alphabetic, 8 Numeric"), "APPLICANT");
+		}
+end
+
+rule "LA drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="LA", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[\\d]{9}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric"), "APPLICANT");
+		}
+end
+
+rule "ME drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="ME", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{7}$") && !$licNum.matches("^\\d{7}[x|X]$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "7 Numeric or if under 21, 7 Numeric followed by an \"X\""), "APPLICANT");
+		}
+end
+
+rule "MD drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="MD", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED")
+	then
+		String lastInit = StringUtils.left(applicant.getLastName(), 1).toUpperCase();
+		if (!$licNum.matches("^[a-zA-Z]{1}[\\d]{12}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 12 Numeric"), "APPLICANT");
+		}
+end
+
+rule "MA drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="MA", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^[a-zA-Z]{1}[\\d]{8}$") && !$licNum.equalsIgnoreCase($ssn))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 8 Numeric; or 9 Numeric (SSN)"), "APPLICANT");
+		}
+end
+
+rule "MI drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="MI", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED")
+	then
+		String lastInit = StringUtils.left(applicant.getLastName(), 1).toUpperCase();
+		if (!$licNum.matches("^"+lastInit+"[\\d]{12}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 12 Numeric"), "APPLICANT");
+		}
+end
+
+rule "MN drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="MN", $state:answerAsString)
+	then
+		if(!$licNum.matches("^[a-zA-Z0-9]{13}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 12 Numeric"), "APPLICANT");
+		}
+end
+
+rule "MS drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="MS", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{9}$")) 
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (usually SSN)"), "APPLICANT");
+		}
+end
+
+rule "MO drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "MO", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[\\d]{9}$") && !$licNum.matches("^[a-zA-Z]{1}[\\d]{5,9}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alpha - 5-9 Numeric; or 9 Numeric; or 9 Numeric (SSN)"), "APPLICANT");
+		}
+end
+
+rule "MT drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "MT", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[0-9]{9}|[a-zA-Z]{1}[0-9]{1}[a-zA-Z]{1}[0-9]{2}[a-zA-Z]{3}[0-9]{1}|[0-9]{13}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (SSN); or 1 Alphabetic, 1 Numeric, 1 Alphabetic, 2 Numeric, 3 Alphabetic and 1 Numeric; or 13 Numeric"), "APPLICANT");
+		}
+end
+
+rule "NE drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "NE", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[abceghvABCEGHV]{1}[\\d]{3,8}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic (A,B,C,E,G,H or V), 3-8 Numeric"), "APPLICANT");
+		}
+end
+
+rule "NV drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "NV", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{12}|\\d{10}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "12 Numeric; or 10 numeric"), "APPLICANT");
+		}
+end
+
+rule "NH drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "NH", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[\\d]{2}[a-zA-Z]{3}[\\d]{5}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "2 Numeric, 3 Alphabetic, 5 Numeric"), "APPLICANT");
+		}
+end
+
+rule "NJ drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "NJ", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED")
+	then
+		String lastInit = StringUtils.left(applicant.getLastName(), 1).toUpperCase();
+		if (!$licNum.matches("^"+lastInit+"[\\d]{14}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic (last name initial), 14 Numeric,"), "APPLICANT");
+		}
+end
+
+rule "NM drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="NM", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{9}$")) 
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric"), "APPLICANT");
+		}
+end
+
+rule "NY drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="NY", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{9}$") && !$licNum.matches("^[a-zA-Z]{1}\\d{18}$")) 
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (not SSN); or 1 Alphabetic, 18 Numeric (not being issued anymore)"), "APPLICANT");
+		}
+end
+
+rule "NC drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "NC", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{1,8}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1-8 Numeric"), "APPLICANT");
+		}
+end
+
+rule "ND drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="ND", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{9}$") && !$licNum.matches("^[a-zA-Z]{3}\\d{6}$")) 
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (SSN); or 9 Numeric for non-CDL beginning with #9; or 3 Alphabetic, 6 Numeric"), "APPLICANT");
+		}
+end
+
+rule "OH drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "OH", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^[a-zA-Z]{2}[\\d]{6}$") && !$licNum.equalsIgnoreCase($ssn))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (SSN); or 2 Alphabetic, 6 Numeric"), "APPLICANT");
+		}
+end
+
+rule "OK drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "OK", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^[A-Z]{1}[\\d]{9}|[\\d]{9}$") && !$licNum.equalsIgnoreCase($ssn))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric; or 1 Alphanumeric, 9 Numeric"), "APPLICANT");
+		}
+end
+
+rule "OR drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="OR", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{1,7}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1-7 Numeric"), "APPLICANT");
+		}
+end
+
+rule "PA drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "PA", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{8}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "8 Numeric"), "APPLICANT");
+		}
+end
+
+rule "RI drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "RI", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{7}$") && !$licNum.matches("^[v|V][\\d]{6}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "7 Numeric; or V and 6 Numeric (disabled veterans)"), "APPLICANT");
+		}
+end
+
+rule "SC drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "SC", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{6,9}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "6-9 Numeric"), "APPLICANT");
+		}
+end
+
+rule "SD drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString =="SD", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^\\d{8}$") && !$licNum.equalsIgnoreCase($ssn))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "8 Numeric; or 9 Numeric (SSN)"), "APPLICANT");
+		}
+end
+
+rule "TN drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "TN", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{7,9}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "7-9 Numeric"), "APPLICANT");
+		}
+end
+
+rule "TX drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "TX", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[0|1|2|3]{1}\\d{7}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "8 Numeric beginning with \"0\", \"1\", \"2\", or \"3\""), "APPLICANT");
+		}
+end
+
+rule "UT drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "UT", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{4,10}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "4-10 Numeric"), "APPLICANT");
+		}
+end
+
+rule "VT drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "VT", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[\\d]{7}[a|A]{1}$") && !$licNum.matches("^[\\d]{8}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "8 Numeric; or 7 Numeric, letter \"A\""), "APPLICANT");
+		}
+end
+
+rule "VA drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "VA", $state:answerAsString)
+		applicant:ApplicantData(type=="PRIMARY_INSURED", $ssn:SSN)
+	then
+		if (!$licNum.matches("^[A-Z]{1}[\\d]{8}$") && !$licNum.equalsIgnoreCase($ssn))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "9 Numeric (SSN); 1 Alphabetic, 8 Numeric"), "APPLICANT");
+		}
+end
+
+rule "WA drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "WA", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[*a-zA-Z]{7}[\\w&&[^_]]{1}[\\d]{1}[*0-9]{1}[\\w&&[^_]]{2}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "5 Alphabetic (last name), 1 Alphabetic(first name), 1 Aphabetic (middle name), 3 Numeric, 2 Alphanumeric (if last or middle name fields falls short, please fill with *)"), "APPLICANT");
+		}
+end
+
+rule "WV drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "WV", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[\\w&&[^_]]{1}[\\d]{6}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alpha must be either zero or A,B,C,D,E,F,S and 6 Numeric; or must be 1X and 5 Numeric; or letters XX and 5 Numeric"), "APPLICANT");
+		}
+end
+
+rule "WI drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "WI", $state:answerAsString)
+	then
+		if (!$licNum.matches("^[a-zA-Z]{1}[\\d]{13}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "1 Alphabetic, 13 Numeric"), "APPLICANT");
+		}
+end
+
+rule "WY drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "WY", $state:answerAsString)
+	then
+		if (!$licNum.matches("^\\d{9}|\\d{10}$"))
+		{
+			rulesResponse.addRequired(errorMessage($licNum, $state, "10 Numeric; or 9 Numeric"), "APPLICANT");
+		}
+end
+
+rule "AS, FS, MH, MP, PW, PR, VI drivers license"
+activation-group "driversLicenseGroup"
+	when 
+		drivLicNum:Question(id=="driv_lic_number", $licNum:answerAsString)
+		drivLicState:Question(id=="driv_lic_state", answerAsString == "AS" ||
+		                                            answerAsString == "FS" ||
+		                                            answerAsString == "MH" ||
+		                                            answerAsString == "MP" ||
+		                                            answerAsString == "PW" ||
+		                                            answerAsString == "PR" ||
+		                                            answerAsString == "VI", $state:answerAsString)
+	then
+		rulesResponse.addRequired("'"+ $state + "' is not a valid driver's license state");
+end
+
+rule "Policy effective date up to 30 days"
+	when
+		Question(id=="policy_eff_date", $effDate:answerAsDate && ((DateUtil.daysInBetween(new Date(), $effDate) > 60) || (DateUtil.daysInBetween(new Date(), $effDate) < -30)))
+	then
+		rulesResponse.addRequired("Policy effective date must be within 1 month before and 2 month after current date");
+end

@@ -1,0 +1,31 @@
+$currentDate
+
+$agentFirstName $agentLastName
+$agentAddressLines
+$agentCityStateZip 
+
+Re:  $policyNumber:
+     $annuitantFirstName $annuitantLastName
+
+Dear $agentFirstName $agentLastName:
+
+We are in the process of reviewing the annuity application you recently submitted as referenced above. Before we can process this application further, we have questions that will need your attention based on information on the Suitability Acknowledgment Form (SAF). This is not meant to suggest there is anything wrong necessarily but clarification is needed in order to continue with our suitability review.
+
+Please attend to this as quickly as possible. Once you provide the requested information, we can then proceed with our suitability review and processing of the application. If we still need additional information based on your answers to our questions below, we may contact you again.
+
+Please note this application will remain in NIGO (Not in Good Order) status until this information is received from you. If we do not receive the information within ten days, the application will be declined.
+
+Please provide the following additional information:
+
+The Suitability Acknowledgement Form indicates your client’s Federal Tax Rate is 0% but one of the primary reasons for purchase is Tax Deferral. Please explain why this annuity is suitable given the applicant’s tax rate of 0% and one of the primary reasons for purchase is listed as Tax Deferral. If the Federal Tax Rate or primary reasons for purchase were marked in error, please submit a corrected SAF with the amended section(s) initialed by the applicant. 
+
+As indicated above, we need you to provide this information as soon as possible, so we may proceed with review of this application. Please understand that there could be additional questions – even after we get your answers to these questions – but we are committed to moving as quickly as possible consistent with our obligation to perform a suitability review as required by law and dictated by good sales practices.
+
+If you have questions or concerns, you may call us toll-free at 1-800-445-6758.
+
+
+Sincerely,
+
+
+Annuity New Business Department
+

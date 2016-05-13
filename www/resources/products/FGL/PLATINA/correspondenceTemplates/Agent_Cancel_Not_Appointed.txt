@@ -1,0 +1,20 @@
+$currentDate
+
+$agentFirstName $agentLastName
+$agentAddressLines
+$agentCityStateZip 
+
+RE:	Application #:			$policyNumber	Annuitant/Insured:		$annuitantFirstName $annuitantLastName 	Date of Application:	$appSubmitDate
+
+Dear $agentFirstName $agentLastName,
+
+The annuity application submitted on behalf of the above referenced applicant has been rejected because you were not appointed with our company at the time this application was solicited.  
+A letter has been sent to the applicant advising that this application was not accepted, with a refund of any premium submitted with the application.
+Should you have any questions, you can find more information on Saleslink, or feel free to contact us at 1-800-445-6758. 
+
+Sincerely,
+
+Annuity New Business Department
+
+
+

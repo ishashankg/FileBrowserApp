@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section style="margin-left:0px; border:1px solid black">
+			<group labelWidth="400px">
+				<paragragh
+          text="It is in your best interest to get all the facts before making a decision. Make sure you fully understand both the proposed new policy and your existing insurance. New policies may contain provisions which limit benefits during the initial period of the contract, in particular, the suicide and incontestable clauses.">
+				</paragragh>
+			</group>    
+			<group labelWidth="400px">
+				<paragragh
+          text="To assist you in evaluating the proposed and the existing insurance, Delaware Insurance Regulations require that the insurer advising or recommending replacement:">
+				</paragragh>
+			</group> 
+			<group labelWidth="400px" style='margin-left:30px;margin-top:-10px'>
+				<paragragh
+          text=" - Provide the consumer with a concise summary of the policy it proposes to issue;">
+				</paragragh>
+			</group> 
+			<group labelWidth="400px" style='margin-left:30px;margin-top:-10px'>
+				<paragragh
+          text=" - Allow a twenty day period for the issue of the proposed policy during which time the consumer may surrender the new policy for a full refund;">
+				</paragragh>
+			</group> 	
+			<group labelWidth="400px" style='margin-left:30px;margin-top:-10px'>
+				<paragragh
+          text=" - Advise the present insurance company(ies) of the pending replacement.">
+				</paragragh>
+			</group>		
+			<group labelWidth="400px">
+				<paragragh
+          text="These same regulations require your present insurer to provide, on your request, a similar summary describing your present insurance. This information will be provided automatically if you request it using the form below.">
+				</paragragh>
+			</group> 			
+		</section>  
+		<section title="INFORMATION ON PRESENT POLICIES" style="margin-left:0px">  
+			<group associated="true">
+				<question id='company_name' text="Company Name" type='TEXT' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-left:8px' tabindex ='1'/>  
+				<question id='policy_number' text="Policy Number" type='TEXT' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-Left:20px' tabindex ='2'/>
+			</group>
+			<group associated="true">
+				<question id='insured_name' text="Name of Insured" type='TEXT' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-left:8px' tabindex ='3'/>  
+				<question id='summary_requested' text="Is Summary Requested?" type='RADIO' required="true" answerSet="Y:Yes|N:No" labelWidth="100px" labelStyle='margin-Left:20px' tabindex ='4'/>
+			</group>
+		</section> 
+		<section name="INFORMATION ON PRESENT POLICIES" repeating="true" style="margin-left:0px">  
+			<group associated="true">
+				<question id='company_name_1' text="Company Name" type='TEXT' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-left:8px' tabindex ='5'/>  
+				<question id='policy_number_1' text="Policy Number" type='TEXT' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-Left:20px' tabindex ='6'/>
+			</group>
+			<group associated="true">
+				<question id='insured_name_1' text="Name of Insured" type='TEXT' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-left:8px' tabindex ='7'/>  
+				<question id='summary_requested_1' text="Is Summary Requested?" type='RADIO' required="true" answerSet="Y:Yes|N:No" labelWidth="100px" labelStyle='margin-Left:20px' tabindex ='8'/>
+			</group>
+		</section>
+		<section style="margin-left:0px">
+			<group style='font-weight: bold'>   
+				<footer>It is seldom wise to terminate your existing policy until your new policy has been issued and you have examined it and found it to be acceptable.</footer>
+			</group>
+		</section> 		
+		<section title="Confirmation and Signatures" style="margin-left:0px">	
+			<group labelWidth="300px">
+				<paragragh text="I have read this notice and received a copy of it." styleClass="groupParagraph">
+				</paragragh>
+			</group>	
+		</section>
+		<section style="margin-left:0px">
+			<group associated="True">
+				<question id='applicant_signature' text="Applicant Signature" type='CHECKBOX' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-left:8px' tabindex ='9'/>  
+				<question id='applicant_signature_date' text="Date" type='DATEF' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-Left:20px' tabindex ='10'/>
+			</group>			
+			<group associated="True">
+				<question id='agent_signature' text="Agent Signature" type='CHECKBOX' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-left:8px' tabindex ='11'/>  
+				<question id='agent_signature_date' text="Date" type='DATEF' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-Left:20px' tabindex ='12'/>
+			</group>	
+			<group associated="True">
+				<question id='agent_name' text="Agent Name" type='TEXT' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-left:8px' tabindex ='13'/>  
+				<question id='insurance_agency' text="Company Name" type='TEXT' required="true" answerWidth="110px" labelWidth="100px" labelStyle='margin-Left:20px' tabindex ='14'/>
+			</group>
+		</section>
+	</page>
+</form>

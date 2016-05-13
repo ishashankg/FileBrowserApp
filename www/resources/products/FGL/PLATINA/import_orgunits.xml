@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+
+<org-units>
+	<org-unit>
+		<ouName>New Business</ouName>
+		<ouCode>DEP</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>NewBusiness</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>New Business QC</ouName>
+		<ouCode>DEP_QC</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>NewBusiness</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Case Manager</ouName>
+		<ouCode>CASE_MGR</ouCode>
+		<ouClass>SVC</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Issuer</ouName>
+		<ouCode>ISS</ouCode>
+		<ouClass>SVC</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Agency Services</ouName>
+		<ouCode>AGENCY_SVC</ouCode>
+		<ouClass>SVC</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit> 	
+	<org-unit>
+		<ouName>FGL Agency</ouName>
+		<ouCode>FGLAGENT</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>FGL</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Suitability Office</ouName>
+		<ouCode>SUITABILITY</ouCode>
+		<ouClass>SVC</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Auto Decisioned</ouName>
+		<ouCode>AUTO</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+</org-units>
+</stepImport>

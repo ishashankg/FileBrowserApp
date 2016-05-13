@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillData</onLoad>
+  <page title="SOUTH DAKOTA REPLACEMENT NOTICE">
+  	<header>This is notice of intention to replace the following EXISTING life insurance policy or annuity.</header>
+  	<section title="NAME OF INSURED:">
+  		<group associated="true" labelWidth="80px" readonly="true">
+  			<question id='ins_first_name' text='First Name: ' type='TEXT'
+  				answerWidth="180px;" />
+  			<question id='ins_middle_name' text='Middle Name: ' type='TEXT'
+  				answerWidth="130px;" />
+  			<question id='ins_last_name' text='Last Name: ' labelWidth="70px"
+  				type='TEXT' answerWidth="180px;" />
+  		</group>
+  	</section>
+  	<section title="ADDRESS OF INSURED:">
+  		<group labelWidth="70px" associated="true" readonly="true">
+  			<question id='legal_residence_address' text='Address' type='TEXT'
+  				answerWidth="400px;" />
+  			<question id='city' text='City: ' type='TEXT' labelWidth="70px" />
+  		</group>
+  		<group associated="true" readonly="true">
+  			<question id='state' text='State: ' type='LISTBOX'
+  				lookup="step:LOCALE_STATE" answerSet=":Please select a state|N_A:Not Applicable"
+  				labelWidth="70px" />
+  			<question id='zipcode' text='Zipcode: ' type='TEXT'
+  				labelWidth="50px" />
+  			<question id='preferred_phone' text='Preferred Phone: '
+  				type='PHONE' answerWidth="100px;" />
+  		</group>
+  	</section>
+  	<section title="EXISTING COVERAGE INFORMATION" repeating="true">
+  		<group associated="true" labelWidth="180px">
+  			<question id='replaced_carrier' text='NAME OF EXISTING INSURER:'
+  				type='TEXT' answerWidth="150px;" />
+  			<question id='replaced_policyno' text='EXISTING POLICY NUMBER:'
+  				type='TEXT' answerWidth="100px;" />
+  		</group>
+  		<group labelWidth="180px">
+  			<question id='replaced_agent' text='NAME OF EXISTING AGENT:'
+  				type='TEXT' answerWidth="150px;" />
+  			<question id='replaced_exchange_type' text='TYPE OF EXCHANGE OF EXISTING COVERAGE:'
+  				suffix="(Example: lapsed policy, loan, surrender)" type='TEXT'
+  				answerWidth="450px;" />
+  		</group>
+  	</section>
+  	<section title="REPLACEMENT COVERAGE INFORMATION">
+  		<group associated="true" labelWidth="200px" answerWidth="150px;">
+  			<header>The REPLACEMENT coverage is as follows:</header>
+  			<question id='prop_company' text='NAME OF REPLACING INSURER:'
+  				type='TEXT' />
+  			<question id='prop_agent' text='NAME OF REPLACING AGENT:'
+  				type='TEXT' />
+  		</group>
+  		<group labelWidth="200px">
+  			<question id='prop_policyno' text='REPLACEMENT POLICY NUMBER:'
+  				suffix="(or other indentifying number - i.e. application or receipt number)"
+  				type='TEXT' answerWidth="100px;" />
+  			<question id='prop_description' text='GENERIC DESCRIPTION OF REPLACEMENT POLICY:'
+  				type='TEXT' answerWidth="450px;" />
+  		</group>
+  	</section>
+  </page>
+
+</form>

@@ -1,0 +1,33 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.RulesResponse;
+import java.util.ArrayList;
+
+rule "3rd party services" 
+	when
+		form:RequirementForm(code in ("IXX3RDPARTY"))
+	then
+		form.setRequired(true);
+		form.setCancelRequirementWhenNotRequired(false);
+end
+
+rule "EKG, TEKG"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 61, faceAmount >= 100000)
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 51, faceAmount >= 500000)
+		form:RequirementForm(code in ('EKG', 'TEKG'))
+    then
+    	form.setRequired(true);
+    	form.setCancelRequirementWhenNotRequired(false);
+end
+
+rule "APS"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 61, faceAmount >= 500000)
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 71, faceAmount >= 300000)
+		form:RequirementForm(code in ('APS'))
+    then
+    	form.setRequired(true);
+    	form.setCancelRequirementWhenNotRequired(false);
+end

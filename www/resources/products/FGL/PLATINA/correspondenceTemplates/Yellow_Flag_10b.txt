@@ -1,0 +1,34 @@
+$currentDate
+
+$agentFirstName $agentLastName
+$agentAddressLines
+$agentCityStateZip 
+
+Re:  $policyNumber:
+     $annuitantFirstName $annuitantLastName
+
+Dear $agentFirstName $agentLastName:
+
+We are in the process of reviewing the annuity application you recently submitted as referenced above. Before we can process this application further, we have questions that will need your attention based on information on the Suitability Acknowledgment Form (SAF). This is not meant to suggest there is anything wrong necessarily but clarification is needed in order to continue with our suitability review.
+
+Please attend to this as quickly as possible. Once you provide the requested information, we can then proceed with our suitability review and processing of the application. If we still need additional information based on your answers to our questions below, we may contact you again.
+
+Please note this application will remain in NIGO (Not in Good Order) status until this information is received from you. If we do not receive the information within ten days, the application will be declined.
+
+Please provide the following additional information:
+
+The Suitability Acknowledgement Form indicates the annuity as applied for – though being purchased with non-liquid assets - represents a high percentage of your client’s total assets based on age and circumstances. This may require closer review from a liquidity standpoint. Please explain in more detail how the transaction meets the client’s financial objectives consistent with liquidity needs over the life of the annuity. Specifically please affirm the client understands using non-liquid funds to purchase the annuity means those funds will remain largely illiquid for a period of time. For example, funds from a qualified plan that might otherwise become liquid at age 59½ would remain mostly illiquid for the life of a newly purchased annuity. It is important that financial plans of the client take into account these funds may not be fully available at upcoming stages of life – such as retirement – if they occur during the life of the annuity.
+
+Please also provide any helpful details about the non-liquid asset being used to purchase the annuity – if those details are not apparent on the application or Suitability Acknowledgment Form. Helpful information includes: what kind of retirement plan or annuity are the funds currently held in; what is the amount or size of any applicable penalties to access the funds; at what point would the funds become available to the applicant without any fees or charges; and any other information that would help us evaluate the illiquid nature of these funds. Be specific as possible since this information will be reviewed as part of our escalation review process.
+
+As indicated above, we need you to provide this information as soon as possible, so we may proceed with review of this application. Please understand that there could be additional questions – even after we get your answers to these questions – but we are committed to moving as quickly as possible consistent with our obligation to perform a suitability review as required by law and dictated by good sales practices.
+
+If you have questions or concerns, you may call us toll-free at 1-800-445-6758.
+
+
+Sincerely,
+
+
+Annuity New Business Department
+
+

@@ -1,0 +1,62 @@
+<map>
+  <entry>
+    <string>r1a</string>
+    <string>${EFORMS.REPCS505N.r1a}</string>
+  </entry>
+  <entry>
+    <string>r2a</string>
+    <string>${EFORMS.REPCS505N.r2a}</string>
+  </entry>
+  <entry>
+    <string>replaced_carrier1</string>
+    <string>${EFORMS.REPCS505N.replaced_carrier___0?:""}</string>
+  </entry>
+  <entry>
+    <string>replaced_policyno1</string>
+    <string>${EFORMS.REPCS505N.replaced_policyno___0?:""}</string>
+  </entry>
+  <entry>
+    <string>replaced_insured1</string>
+    <string>${EFORMS.REPCS505N.replaced_insured___0?:""}</string>
+  </entry>
+  <entry>
+    <string>replaced_financing1</string>
+    <string>${EFORMS.REPCS505N.replaced_financing___0}</string>
+  </entry>
+  <entry>
+    <string>replaced_reason</string>
+    <string>${EFORMS.REPCS505N.replaced_reason?:""}</string>
+  </entry>
+  <entry>
+    <string>applicant_name</string>
+    <string>${EFORMS.APPLICANT.ins_first_name} ${EFORMS.APPLICANT.ins_middle_name?:""} ${EFORMS.APPLICANT.ins_last_name}</string>
+  </entry>
+  <entry>
+    <string>applicant_signature</string>
+    <string>${caseHelper.insertSignature("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED", "Electronically Signed By:%s")}</string>
+  </entry>
+  <entry>
+    <string>applicant_date</string>
+    <string>${caseHelper.getSignatureDate("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED")}</string>
+  </entry>
+  <entry>
+    <string>producer_date</string>
+    <string>${EFORMS.AG_ATTEST.ag_sig_date}</string>
+  </entry>
+  <entry>
+    <string>producer_name</string>
+    <string>${EFORMS.AG_ATTEST.ag_first_name?:""} ${EFORMS.AG_ATTEST.ag_last_name?:""}</string>
+  </entry>
+  <entry>
+    <string>producer_signature</string>
+    <string>Electronically Signed By: (${EFORMS.AG_ATTEST.ag_first_name?:""} ${EFORMS.AG_ATTEST.ag_last_name?:""})</string>
+  </entry>
+  <entry>
+    <string>read_aloud</string>
+    <string>${EFORMS.REPCS505N.read_aloud_txt ? EFORMS.REPCS505N.read_aloud_txt : EFORMS.REPCS505N.read_aloud}</string>
+  </entry>
+  <entry>
+    <string>was_read_aloud</string>
+    <string>${EFORMS.REPCS505N.was_read_aloud}</string>
+  </entry>
+</map>

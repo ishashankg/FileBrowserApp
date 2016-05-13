@@ -1,0 +1,449 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import com.stepsoln.core.rules.uw.*;
+import org.apache.commons.lang.StringUtils;
+import java.util.*;
+import java.math.BigDecimal;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Standard requirements for this product #1"
+when
+	CaseData()
+	form:RequirementForm(code in ('APPPART3','APPPART2','APPPART4','APPPART5','APPPART6','APPPART8','PAYMENT'));
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(1);
+end
+
+rule "Suitability Question required only for Florida"
+when
+	CaseData(contractLocale == "FL")
+	form:RequirementForm(code in('APPPART9_FL','APPPART10_FL','APPPART11_FL','APPPART13_FL','APPPART14_FL','APPPART15_FL'))
+then
+	form.setRequired(true);
+end	
+
+rule "Suitability Question required for non Florida"
+when
+	CaseData(contractLocale != "FL")
+	form:RequirementForm(code in('APPPART9','APPPART10','APPPART11','APPPART12'))
+then
+	form.setRequired(true);
+end	
+
+rule "APPPART1 annuitant eform is required only if annuitant other than owner"
+when
+	form:RequirementForm(code =='APPPART1')
+	Question(formCode == "PERSON", id == "owner_Annuitant", answerAsBoolean == true) 
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(2);
+end	
+
+rule "1035 Transfer"
+when
+	Question(formCode == "ANNUITY_PURPOSE", id == "annuity_purpose", answerAsString == 'N')
+	Question(formCode == "REPLACEMENT", id == "replace_policies", answerAsBoolean == true)
+	form:RequirementForm(code =='1035TRANSFER')
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(2);
+end	
+
+rule "Add replacement notice form for CA"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale == 'CA')
+	Question(formCode == "REPLACEMENT", id == "existing_policies", answerAsBoolean == true) 
+	and Question(formCode == "REPLACEMENT", id == "replace_policies", answerAsBoolean == true)
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	$exchangeTotalIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0))
+	$exchangeTrueIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0, answerAsBoolean == true))
+	eval($exchangeTotalIds.size() == $exchangeTrueIds.size())
+	form:RequirementForm(code == 'CA_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for WY"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale == 'WY')
+	Question(formCode == "REPLACEMENT", id == "existing_policies", answerAsBoolean == true) 
+	and Question(formCode == "REPLACEMENT", id == "replace_policies", answerAsBoolean == true)
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	$exchangeTotalIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0))
+	$exchangeTrueIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0, answerAsBoolean == true))
+	eval($exchangeTotalIds.size() == $exchangeTrueIds.size())
+	form:RequirementForm(code == 'WY_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for IL"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale == 'IL')
+	Question(formCode == "REPLACEMENT", id == "existing_policies", answerAsBoolean == true) 
+	and Question(formCode == "REPLACEMENT", id == "replace_policies", answerAsBoolean == true)
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	$exchangeTotalIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0))
+	$exchangeTrueIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0, answerAsBoolean == true))
+	eval($exchangeTotalIds.size() == $exchangeTrueIds.size())
+	form:RequirementForm(code == 'IL_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for DE"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale =='DE')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	and Question(formCode=="REPLACEMENT", id =="replace_policies", answerAsBoolean==true)
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	$exchangeTotalIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0))
+	$exchangeTrueIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0, answerAsBoolean == true))
+	eval($exchangeTotalIds.size() == $exchangeTrueIds.size())
+	form:RequirementForm(code=='DE_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for MO"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale =='MO')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	and Question(formCode=="REPLACEMENT", id =="replace_policies", answerAsBoolean==true)
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	$exchangeTotalIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0))
+	$exchangeTrueIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0, answerAsBoolean == true))
+	eval($exchangeTotalIds.size() == $exchangeTrueIds.size())
+	form:RequirementForm(code =='MO_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for OK"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale =='OK')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	and Question(formCode=="REPLACEMENT", id =="replace_policies", answerAsBoolean==true)
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	$exchangeTotalIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0))
+	$exchangeTrueIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0, answerAsBoolean == true))
+	eval($exchangeTotalIds.size() == $exchangeTrueIds.size())
+	form:RequirementForm(code =='OK_REP_NOTICE_APPLICANT');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for ID"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale =='ID')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	and Question(formCode=="REPLACEMENT", id =="replace_policies", answerAsBoolean==true)
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	$exchangeTotalIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0))
+	$exchangeTrueIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0, answerAsBoolean == true))
+	eval($exchangeTotalIds.size() == $exchangeTrueIds.size())
+	form:RequirementForm(code =='ID_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for TN"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale =='TN')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	and Question(formCode=="REPLACEMENT", id =="replace_policies", answerAsBoolean==true)
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	$exchangeTotalIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0))
+	$exchangeTrueIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0, answerAsBoolean == true))
+	eval($exchangeTotalIds.size() == $exchangeTrueIds.size())
+	form:RequirementForm(code =='TN_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for NV"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale =='NV')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	and Question(formCode=="REPLACEMENT", id =="replace_policies", answerAsBoolean==true)
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	$exchangeTotalIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0))
+	$exchangeTrueIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0, answerAsBoolean == true))
+	eval($exchangeTotalIds.size() == $exchangeTrueIds.size())
+	form:RequirementForm(code =='NV_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for IN"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale =='IN')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	and Question(formCode=="REPLACEMENT", id =="replace_policies", answerAsBoolean==true)
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	$exchangeTotalIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0))
+	$exchangeTrueIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0, answerAsBoolean == true))
+	eval($exchangeTotalIds.size() == $exchangeTrueIds.size())
+	form:RequirementForm(code =='IN_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for FL"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale =='FL')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	and Question(formCode=="REPLACEMENT", id =="replace_policies", answerAsBoolean==true)
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	$exchangeTotalIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0))
+	$exchangeTrueIds: ArrayList() from collect(Question(id.indexOf("exchange_1035") >= 0, answerAsBoolean == true))
+	eval($exchangeTotalIds.size() == $exchangeTrueIds.size())
+	form:RequirementForm(code =='FL_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for OR AND VT"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale in ('OR','VT'))
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	form:RequirementForm(code =='OR_VT_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for CT"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale == 'CT')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	form:RequirementForm(code =='CT_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for GA"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale == 'GA')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	form:RequirementForm(code =='GA_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for AZ"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale == 'AZ')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	form:RequirementForm(code =='AZ_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for AK"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale == 'AK')
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	)
+	form:RequirementForm(code =='AK_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add replacement notice form for remaining states"
+activation-group "replacementEformRule"
+when
+	CaseData(contractLocale in ('AL','CO','HI','IA','KY','LA','ME','MD','MS','MT','NE','NH','NJ','NM','NC','OH','RI','SC','TX','UT','VA','WV','WI','AR','KS','MA','MN','NY','PA','SD','WA'))
+	Question(formCode=="REPLACEMENT", id =="existing_policies", answerAsBoolean==true) 
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	and (
+	    Question(formCode=="PERSON", id=="state", answerAsString == $signedState)	
+		or Question(formCode=="PERSON", id=="joint_owner_state", answerAsString == $signedState)
+		or Question(formCode=="PERSON", id=="contract_state", answerAsString == $signedState)
+	) 
+	form:RequirementForm(code =='STANDARD_REP_NOTICE');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add Large Premium form if premium exceeds 600K"
+when
+	question:Question(formCode=="ANNUITY_PURPOSE", id =="initial_premium") 
+	form:RequirementForm(code =='LARGEPREMIUM');
+then
+	if (question.getAnswer() != null && StringUtils.isNotBlank(question.getAnswer().toString()) && 
+		StringUtils.containsOnly(question.getAnswer().toString(),'0123456789.') && 
+		(question.getAnswerAsDecimal().compareTo(new BigDecimal(600000.00)) > 0)) 		
+	{
+		form.setRequired(true);
+		rulesResponse.addToRuleFiredList(3);
+	}
+end
+
+rule "Add validate agent credential requirements"
+when
+	form:RequirementForm(code =='AGENT_CREDENTIAL');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(3);
+end
+
+rule "Add disclosure/annuity comparison correspondence for FL"
+when
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', answerAsString == 'FL')
+	Question(formCode == "REPLACEMENT", id == "existing_policies", answerAsBoolean == true) 
+	and Question(formCode == "REPLACEMENT", id == "replace_policies", answerAsBoolean == true)
+	form:RequirementForm(code == 'ADMIN5488');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(4);
+end
+
+rule "Add comparative info correspondence for FL"
+when
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', answerAsString == 'FL')
+	Question(formCode == "REPLACEMENT", id == "existing_policies", answerAsBoolean == true) 
+	and Question(formCode == "REPLACEMENT", id == "replace_policies", answerAsBoolean == true)
+	form:RequirementForm(code == 'ADMIN5526');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(5);
+end
+
+rule "Add cross border sales correspondence"
+when
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+	Question(formCode=='PERSON', id=='state', $ownerState:answerAsString)
+	not (eval($ownerState!=null && $ownerState.equals($signedState)))
+	form:RequirementForm(code == 'ADMIN5469');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(6);
+end
+
+rule "Add SPDA disclosure correspondence"
+when
+	Question(formCode=='AUTHORIZATION', id=='signed_at_state', answerAsString == 'OH')
+	form:RequirementForm(code == 'ADMIN5571');
+then
+	form.setRequired(true);
+	rulesResponse.addToRuleFiredList(7);
+end

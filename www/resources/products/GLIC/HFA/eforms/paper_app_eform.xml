@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onComplete>savePaperForm</onComplete>
+  <page title='APPLICATION FOR: INDIVIDUAL LIFE INSURANCE'>
+    <section>
+      <group associated="true">
+        <question id='first_name' text='First Name' type='TEXT' />
+        <question id='last_name' text='Last Name' type='TEXT' />
+        <question id='middle_initial' text='Middle Initial' type='TEXT' answerWidth="50px;" />
+      </group>
+      <group associated="true">
+        <question id='Male' text='Gender (Male)' type='CHECKBOX' answerSet='Y'/>
+        <question id='Female' text='(Female)' type='CHECKBOX' answerSet='Y'/>
+      </group>
+      <group>
+        <question id='date_of_birth' text='Date of Birth' type='TEXT' />
+      </group>
+      <group associated="true">
+        <question id='place_of_birth_state' text='Place of Birth (State)' type='TEXT' />
+        <question id='place_of_birth_country' text='(Country)' defaultValue="UNITED STATES" type='TEXT' />
+      </group>
+      <group>
+        <question id='social_security_number' text='Social Security Number' type='TEXT' />
+      </group>    
+      <group associated="true">
+        <question id='driv_lic_number' text='Driver&apos;s License Number' type='TEXT' />
+        <question id='driv_lic_state' text='DL State' type='TEXT' />
+      </group>
+      <group>
+         <question id='legal_residence_address' text='Legal Residence Address' type='TEXT' answerWidth="350px;"/>
+        </group>
+      <group associated="true">
+        <question id='legal_city' text='City' type='TEXT' />
+        <question id='legal_residence_state' text='State' type='TEXT' answerWidth="50px;" />
+        <question id='legal_zip' text='Zip' type='TEXT' answerWidth="50px;" />
+      </group>
+    <group>
+        <question id='email_address' text='Email Address' type='TEXT' />
+      </group>
+      <group associated="true">
+        <question id='phone1' text='Primary Phone' type='TEXT' />
+		<question id='phone1_business' text='Phone Type (BUSINESS)' type='CHECKBOX' answerSet='BUSINESS'/>
+		<question id='phone1_home' text='(HOME)' type='CHECKBOX' answerSet='HOME'/>
+		<question id='phone1_mobile' text='(MOBILE)' type='CHECKBOX' answerSet='MOBILE'/>
+      </group>
+      <group associated="true">
+        <question id='phone2' text='Secondary Phone' type='TEXT' />
+		<question id='phone2_business' text='Phone Type (BUSINESS)' type='CHECKBOX' answerSet='BUSINESS'/>
+		<question id='phone2_home' text='(HOME)' type='CHECKBOX' answerSet='HOME'/>
+		<question id='phone2_mobile' text='(MOBILE)' type='CHECKBOX' answerSet='MOBILE'/>
+      </group>
+      <group>
+        <question id='occupation_1' text='Occupation' type='TEXT' />
+        <question id='employer_name' text='Employer or Business Name' type='TEXT' />
+        <question id='annual_earned_income' text='Annual Earned Income' type='TEXT' />
+        <question id='type_of_curr_employ' text='Type of business where currently employed' type='TEXT' />
+      </group>
+      <group associated="true">
+        <question id='curr_employer_dur' text='How long with current employer?' suffix='(Years)' type='TEXT' answerWidth='50px;' />
+        <question id='curr_employer_dur_mo' suffix=' (Months) ' type='TEXT' answerWidth="50px;" />
+      </group>
+      <group associated="true">
+        <question id='CYes' text='Are you a United States citizen or do you have Permanent Legal Resident status?  Yes'  type='CHECKBOX' answerSet='Y' labelWidth="470px"/>
+        <question id='CNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="15px" />
+      </group>
+    </section>
+  </page>
+  <page title='COVERAGE APPLIED FOR:     OWNERSHIP:'>
+    <section>
+      <group>
+        <question id='whole_life' text='Whole Life' type='CHECKBOX' answerSet='Y' labelWidth="200px" />
+		<question id='level_term' text='Level Term' type='CHECKBOX' answerSet='Y' labelWidth="200px" />
+        </group>
+       <group associated= "true" >
+		<header>Level Term Period (select one):</header>
+        <question id='years_10' text='10 Years' type='CHECKBOX' answerSet='Y' labelWidth="60px" />
+        <question id='years_15' text='15 Years' type='CHECKBOX' answerSet='Y' labelWidth="60px" />
+		<question id='years_20' text='20 Years' type='CHECKBOX' answerSet='Y' labelWidth="60px" />
+        <question id='years_30' text='30 Years' type='CHECKBOX' answerSet='Y' labelWidth="60px" />
+         </group>
+       <group associated= "true" >
+        <question id='requested_face' text='Face Amount Applied For (must be from 25-1000 units)' type='TEXT' labelWidth="380px" suffix=",000"/>
+         </group>
+        <group associated="true">
+        <question id='OOYes' text='Will someone other than the insured own the policy being applied for?  Yes'  type='CHECKBOX' answerSet='Y' labelWidth="410px" />
+        <question id='OONo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+      </group>
+    </section>
+  </page>
+  <page title='BENEFICIARY INFORMATION'>
+    <section>
+    <group associated= "true" >
+        <question id='bene1_first_name' text='Primary Beneficiary 1: First Name' labelWidth="250px" type='TEXT' answerWidth="150px;" />
+        <question id='bene1_middle_name' text='Middle' labelWidth="50px" type='TEXT' answerWidth="50px;"  />
+        <question id='bene1_last_name' text='Last Name' labelWidth="80px" type='TEXT' answerWidth="150px;"  />
+    </group>
+    <group labelWidth="250px">
+        <question id='bene1_relation' text='Relationship to the Insured' type='TEXT' />
+    </group>
+       <group associated= "true" >
+        <question id='bene2_first_name' text='Primary Beneficiary 2: First Name' labelWidth="250px" type='TEXT' answerWidth="150px;" />
+        <question id='bene2_middle_name' text='Middle' labelWidth="50px" type='TEXT' answerWidth="50px;"  />
+        <question id='bene2_last_name' text='Last Name' labelWidth="80px" type='TEXT' answerWidth="150px;"  />
+    </group>
+    <group labelWidth="250px">
+        <question id='bene2_relation' text='Relationship to the Insured' type='TEXT' />
+    </group>
+    <group associated= "true" >
+        <question id='contingent_bene1_first_name' text='Contingent Beneficiary 1: First Name' labelWidth="280px" type='TEXT' answerWidth="150px;" />
+        <question id='contingent_bene1_middle_name' text='Middle' labelWidth="50px" type='TEXT' answerWidth="50px;"  />
+        <question id='contingent_bene1_last_name' text='Last Name' labelWidth="80px" type='TEXT' answerWidth="150px;"  />
+    </group>
+    <group labelWidth="280px">
+        <question id='contingent_bene1_relation' text='Relationship to the Insured' type='TEXT' />
+    </group>
+       <group associated= "true" >
+        <question id='contingent_bene2_first_name' text='Contingent Beneficiary 2: First Name' labelWidth="200px" type='TEXT' answerWidth="150px;" />
+        <question id='contingent_bene2_middle_name' text='Middle' labelWidth="50px" type='TEXT' answerWidth="50px;"  />
+        <question id='contingent_bene2_last_name' text='Last Name' labelWidth="80px" type='TEXT' answerWidth="150px;"  />
+    </group>
+    <group labelWidth="200px">
+        <question id='contingent_bene2_relation' text='Relationship to the Insured' type='TEXT' />
+    </group>
+    </section>
+  </page>
+  <page title="AUTHORIZATION TO OBTAIN INFORMATION">
+    <section>
+      <group labelWidth="400px">
+        <question id='hipaa_sig_insured' text='Signature of Proposed Insured' type='CHECKBOX' answerSet='Y' />
+				<question id='hipaa_date_insured' text='Date' type='DATEF' />
+        <question id='hipaa_sig_owner' text='Signature of Policyowner (if other than Proposed Insured or Applicant)' type='CHECKBOX' answerSet='Y' />
+				<question id='hipaa_date_owner' text='Date' type='DATEF' />
+      </group>
+      <group associated="true">
+        <question id='contract_city' text='Signed at (City)' type='TEXT' />
+        <question id='contract_state' text='(State)' type='TEXT' />
+      </group>
+    </section>
+  </page>
+  <page title="QUESTIONS OF THE PROPOSED INSURED">
+    <section>
+      <group associated="true">
+        <question id='height_feet' text='Height (feet)' type='TEXT' answerWidth="40px" labelWidth="200px" />
+        <question id='height_inches' text='(inches)' type='TEXT' answerWidth="40px" labelWidth="60px" />
+      </group>
+      <group labelWidth="200px">
+        <question id='weight_pounds' text='Weight (pounds)' type='TEXT' />
+      </group>
+        <group associated="true">
+        <question id='WCYes' text='Has your weight changed by more than 10 pounds in the past year?  Yes'  type='CHECKBOX' answerSet='Y' labelWidth="405px" />
+        <question id='WCNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+          </group>
+      <group labelWidth="200px">
+        <question id='weight_chg_pounds' text='(Changed pounds)' type='TEXT' />
+        </group>
+        <group associated="true">
+        <question id='SYes' text='In the past 36 months, have you smoked or used tobacco in any form?  Yes'  type='CHECKBOX' answerSet='Y' labelWidth="405px" />
+        <question id='SNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+      </group>
+      <group labelWidth="400px">
+        <header>1. To the best of your knowledge and belief, has the Proposed Insured been diagnosed, treated, hospitalized or prescribed medication by a medical professional for any of the following:</header>
+    </group>
+  <group associated="true">
+    <header>a. Heart disorder, including a heart attack (myocardial infarction), angina, irregular heart beat or abnormal heart rhythm (arrhythmia), chest pain, hypertension (high blood pressure), heart murmur, any blockage or narrowing of the arteries, any aneurysm, stroke or transient ischemic attack (TIA or mini-stroke) or rheumatic fever?</header>
+        <question id='m1aYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m1aNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group associated="true">
+  <header>b. Diabetes, high blood sugar or sugar in the urine, anemia, blood or platelet disorders (excluding HIV), elevated cholesterol, liver disease, hemophilia, kidney disease (other than kidney stones), protein or blood in the urine, Crohn&apos;s disease, ulcerative colitis, disease or disorder of the stomach, bladder or prostate, other intestinal or digestive tract disease or pancreatitis?</header>
+  <question id='m1bYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m1bNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group associated="true">
+  <header>c. Internal cancer or tumor, cyst, melanoma, lymphoma, leukemia, disorder of lymph nodes?</header>
+  <question id='m1cYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m1cNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group associated="true">
+  <header>d. Alzheimer&apos;s disease, dementia, memory loss, seizures, mental retardation, including Down&apos;s Syndrome, multiple sclerosis (MS), muscular dystrophy (MD), Parkinson&apos;s disease, amyotrophic lateral sclerosis (ALS), any brain or nervous system disorder, cerebral palsy or any form of muscular atrophy?</header>
+ <question id='m1dYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m1dNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+ </group>
+  <group associated="true">
+ <header>e. Sleep apnea, cystic fibrosis, emphysema or chronic obstructive lung disease (COPD), shortness of breath, asthma or other respiratory disorder, rheumatoid arthritis, paralysis or connective tissue disorder (including lupus or scleroderma)?</header>
+ <question id='m1eYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m1eNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+ </group>
+  <group>
+	<header>f. Dizziness, fainting spells, anxiety, depression or eating
+		disorders?</header>
+	<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="FL" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="NY"}</displayWhen>
+	</group>
+	<group>
+	<header>f. Dizziness, fainting spells, anxiety, depression, eating disorders or any other 
+	psychological or emotional disorder?</header>
+	<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="FL" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="NY"}</displayWhen>
+	</group>
+	<group associated="true">
+	<question id='m1fYes' text='Yes' type='CHECKBOX' answerSet='Y'
+		labelWidth="13px" labelStyle='margin-top:4px;' />
+	<question id='m1fNo' text='No' type='CHECKBOX' answerSet='Y'
+		labelWidth="13px" labelStyle='margin-top:4px;margin-left:10px;' />
+	</group>
+  <group associated="true">
+  <header>g. Arthritis, rheumatism, or any disease or disorder of the back, spine, bones, joints or muscles?</header>
+  <question id='m1gYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m1gNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group associated="true">
+  <header>h. Varicose veins, varicose ulcer or phlebitis, syphilis or a hernia?</header>
+  <question id='m1hYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m1hNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group associated="true">
+  <header>i. Any disease or disorder of the eyes, ears, nose or throat?</header>
+  <question id='m1iYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m1iNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group>
+		<header>j. Been advised by a member of the medical profession to get
+			specified medical care which was not completed, such as any
+			hospitalization, surgery or diagnostic test, except those tests
+			related to Human Immunodeficiency Virus (AIDS virus)?</header>
+		<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="FL" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="NY"}</displayWhen>
+	</group>
+	<group>
+		<header>j. Any other illness or injury requiring medical attention or blood transfusions?</header>
+		<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="FL" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="NY"}</displayWhen>
+	</group>
+	<group associated="true">		
+		<question id='m1jYes' text='Yes' type='CHECKBOX' answerSet='Y'
+			labelWidth="13px" labelStyle='margin-top:4px;' />
+		<question id='m1jNo' text='No' type='CHECKBOX' answerSet='Y'
+			labelWidth="13px" labelStyle='margin-top:4px;margin-left:10px;' />
+	</group>
+    </section>
+  </page>
+  <page title="MEDICAL AND BACKGROUND QUESTIONS">
+      <section>
+  <group associated="true">
+        <header>2. To the best of your knowledge and  belief,  has the Proposed Insured had a natural parent or sibling who was diagnosed with  or died of cancer, heart disease or diabetes prior to the  age 60? </header>
+        <question id='m2Yes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m2No' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group associated="true">
+        <header>3. To the best of your knowledge and belief, has the Proposed Insured ever been diagnosed or treated by a medical professional for acquired immune deficiency syndrome (AIDS), AIDS-related complex (ARC) or antibodies to human T-lymphotropic virus type III (HTLV)?  </header>
+        <question id='m3Yes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m3No' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group associated="true">
+        <header>4. During the past 5 years, has the proposed insured: a. Been a patient in any hospital, clinic, dependency program, halfway house or other medical facility? </header>
+        <question id='m4aYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m4aNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+      <group associated="true">
+        <header>b. Used controlled substances such as  cocaine, heroin, amphetamines, barbiturates, hallucinogens, or any other  controlled substance not prescribed by a physician?  </header>
+   <question id='m4bYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m4bNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+      <group associated="true">
+      <header>c. Been treated by a physician or been advised by a physician to seek treatment for drug or alcohol use?    </header>
+  <question id='m4cYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m4cNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group associated="true">
+    <header>d. Been advised to have any test (except HIV tests), treatment, surgery, hospitalization or consultation with a medical professional which has not been completed or for which restuls have not been received? </header>
+  <question id='m4dYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m4dNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group associated="true">
+  <header>e. Had any special examinations or laboratory tests such as X-rays, electrocardiograms, blood tests or urine tests (other than AIDS-related blood tests)? </header>
+  <question id='m4eYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m4eNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+    <group associated="true">
+  <header>f. Had a life, health or hospital expense insurance application postponed, rated up, ridered or declined or had insurance renewal or reinstatement refused? </header>
+   <question id='m4fYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m4fNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+   </group>
+  <group associated="true">
+   <header>g. Received benefit payments for accident or sickness, or applied to any government or insurance organization for such benefits? </header>
+  <question id='m4gYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m4gNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group>
+		<header>5. a. To the best of your knowledge and belief, has the
+			Proposed Insured ever been diagnosed or treated by a member of the
+			medical profession for any disorder of any genital or reproductive
+			organ?
+		</header>
+		<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="NY"}</displayWhen>
+	</group>
+	<group>
+		<header>5. a. To the best of your knowledge and belief, has the Proposed Insured ever had any disorder of any genital or reproductive organ?
+		</header>
+		<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="NY"}</displayWhen>
+	</group>
+	<group associated="true">
+		<question id='m5aYes' text='Yes' type='CHECKBOX' answerSet='Y'
+			labelWidth="13px" labelStyle='margin-top:4px;' />
+		<question id='m5aNo' text='No' type='CHECKBOX' answerSet='Y'
+			labelWidth="13px" labelStyle='margin-top:4px;margin-left:10px;' />
+	</group>
+  <group associated="true">
+    <header>b. To the best of your knowledge and belief, is the proposed insured currently pregnant?</header>
+     <question id='m5bYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m5bNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+     </group>
+  <group associated="true">
+      <header>6. a. During the past 5 years, has the Proposed Insured had their driver&apos;s license suspended or revoked, been convicted of or pled "guilty" to driving under the influence (OWI/DUI/DWI) or to more than 3 moving violations? </header>
+  <question id='m6aYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m6aNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+  </group>
+  <group associated="true">
+   <header>b. During the past 5 years, has the Proposed Insured been convicted of a felony, or been on probation/parole, or currently have charges pending? </header>
+     <question id='m6bYes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m6bNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+     </group>
+  <group associated="true">
+       <header>7. During the next 12 months, does the Proposed Insured contemplate residence or travel outside of the U.S.A.? </header>
+     <question id='m7Yes' text='Yes'  type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        <question id='m7No' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+     </group>
+  <group>
+		<header>8. Does the Proposed Insured belong to or has the Proposed
+			Insured entered into a written agreement to become a member of the
+			National Guard or Military?
+		</header>
+		<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="FL" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="NY"}</displayWhen>
+	</group>
+	<group>
+		<header>8. Does the Proposed Insured belong to or intend to join the National Guard or Military?
+		</header>
+		<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="NY"}</displayWhen>
+	</group>
+	<group>
+		<header>7. Does the Proposed Insured belong to or intend to join the National Guard or Military?
+		</header>
+		<displayWhen>#{CASE.contractLocale=="FL"}</displayWhen>
+	</group>
+	<group associated="true">
+		<question id='m8Yes' text='Yes' type='CHECKBOX' answerSet='Y'
+			labelWidth="20px" />
+		<question id='m8No' text='No' type='CHECKBOX' answerSet='Y'
+			labelWidth="20px" />
+	</group>
+  <group>
+		<header>9. a. Within the past 5 years has the Proposed Insured flown
+			other than as a fare-paying passenger, or is the Proposed Insured
+			contemplating or planning to fly, as a pilot, crew member or
+			student
+			within the next 2 years?
+		</header>
+		<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="FL" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="NY"}</displayWhen>	
+	</group>
+	<group>
+		<header>9. a. Within the past 5 years has the Proposed Insured flown
+		 other than as a fare-paying passenger, or is the Proposed Insured contemplating or planning to fly,
+		  as a pilot, crew member or student?
+		</header>
+		<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="NY"}</displayWhen>	
+	</group>
+	<group>
+		<header>8. a. Within the past 2 years has the Proposed Insured flown other than as a fare-paying passenger, or, within the next 2 years is the Proposed Insured contemplating or planning to fly, as a pilot, crew member or student?
+		</header>
+		<displayWhen>#{CASE.contractLocale=="FL"}</displayWhen> 	
+	</group>				
+	<group associated="true">
+		<question id='m9aYes' text='Yes' type='CHECKBOX' answerSet='Y'
+			labelWidth="20px" />
+		<question id='m9aNo' text='No' type='CHECKBOX' answerSet='Y'
+			labelWidth="20px" />
+	</group>
+  <group>
+		<header>b. Within the past 5 years has the Proposed Insured
+			participated in, or in the next 2 years contemplate or plan to
+			participate in scuba diving, skin diving, sky diving/parachuting,
+			hang gliding, ballooning, bungee jumping, motorcycle racing,
+			mountain climbing or cave exploration?
+		</header>
+		<displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="DE" and CASE.contractLocale!="MT" and CASE.contractLocale!="ND" and CASE.contractLocale!="SD" and CASE.contractLocale!="CA" and CASE.contractLocale!="DC" and CASE.contractLocale!="NY"}</displayWhen>
+	</group>
+	<group>
+		<header>b.Within the past 5 years has the Proposed Insured participated in, or contemplating or planning participation in any hazardous sport or activities?
+		</header>
+		<displayWhen>#{CASE.contractLocale=="CT" or CASE.contractLocale=="DE" or CASE.contractLocale=="MT" or CASE.contractLocale=="ND" or CASE.contractLocale=="SD" or CASE.contractLocale=="CA" or CASE.contractLocale=="DC" or CASE.contractLocale=="NY"}</displayWhen>
+	</group>				
+	<group associated="true">
+		<question id='m9bYes' text='Yes' type='CHECKBOX' answerSet='Y'
+			labelWidth="20px" />
+		<question id='m9bNo' text='No' type='CHECKBOX' answerSet='Y'
+			labelWidth="20px" />
+	</group>
+    </section>
+  </page>
+  <page title="OTHER COVERAGE">
+    <section>
+        <group>
+        <header>ADDITIONAL INFORMATION</header>
+    <question id='additional_info' size="50" type='MEMO' />
+      </group>
+        <group associated="true">
+          <header>Do you have any life insurance or annuities in force or is any </header>
+          <question id='IFYes' text=' application for life insurance or reinstatement now pending?  Yes'  type='CHECKBOX' answerSet='Y' labelWidth="360px" />
+          <question id='IFNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+         </group>
+      <group labelWidth="400px">
+        <question id='oth_ins1_company' text='Company Name' type='TEXT' />
+        <question id='oth_ins1_city' text='City' type='TEXT' />
+        <question id='oth_ins1_state' text='State' type='TEXT' />
+        <question id='oth_ins1_face' text='Face Amount' type='TEXT' />
+      </group>  
+      <group associated="true">  
+        <question id='oth_ins1_mm' text='Month/Year Issued' type='TEXT' answerWidth="50px;"/>
+        <question id='oth_ins1_yy' text='/' type='TEXT' answerWidth="50px;"/>
+       </group>
+      <group associated="true">
+         <question id='CREP1Yes' text='Is Coverage to be Replaced?  Yes'  type='CHECKBOX' answerSet='Y' labelWidth="185px" />
+         <question id='CREP1No' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+      </group>
+      <group labelWidth="400px">
+        <question id='oth_ins2_company' text='Company Name' type='TEXT' />
+        <question id='oth_ins2_city' text='City' type='TEXT' />
+        <question id='oth_ins2_state' text='State' type='TEXT' />
+        <question id='oth_ins2_face' text='Face Amount' type='TEXT' />
+      </group>
+      <group associated="true">  
+        <question id='oth_ins2_mm' text='Month/Year Issued' type='TEXT' answerWidth="50px;"/>
+        <question id='oth_ins2_yy' text='/' type='TEXT' answerWidth="50px;"/>
+      </group>
+      <group associated="true">
+         <question id='CREP2Yes' text='Is Coverage to be Replaced?  Yes'  type='CHECKBOX' answerSet='Y' labelWidth="185px" />
+         <question id='CREP2No' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+      </group>
+        <group associated="true">
+        <question id='CTLRYes' text='If this policy is issued, will any other  life, accident or health insurance or annuity be cancelled, terminated,  lapsed or not renewed?  Yes'  type='CHECKBOX' answerSet='Y' labelWidth="380px" />
+        <question id='CTLRNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+      </group>
+      <group associated="true">
+         <question id='WOPYes' text='Would you like to purchase Waiver of Premium rider?  Yes'  type='CHECKBOX' answerSet='Y' labelWidth="320px" />
+         <question id='WOPNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+      </group>
+        <group associated="true">
+        <question id='GIRYes' text='Would you like to purchase Guaranteed Insurability Benefit rider?  Yes'  type='CHECKBOX' answerSet='Y' labelWidth="380px" />
+        <question id='GIRNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+      </group>
+    </section>
+  </page>
+  <page title="ACKNOWLEDGEMENT OF INFORMATION PROVIDED">
+    <section>
+      <group labelWidth="400px">
+        <question id='ack_sig_insured' text='Signature of Proposed Insured' type='CHECKBOX' answerSet='Y' />
+        <question id='ack_date_insured' text='Date' type='DATEF' />
+        <question id='ack_sig_owner' text='Signature of Policyowner (if other than Proposed Insured or Applicant)' type='CHECKBOX' answerSet='Y' />
+        <question id='ack_date_owner' text='Date' type='DATEF' />
+      </group>
+      <group associated="true">
+        <question id='ack_city' text='Signed at (City)' type='TEXT' />
+        <question id='ack_state' text='(State)' type='TEXT' />
+      </group>
+    </section>
+  </page>
+  <page title="PRODUCER CERTIFICATION">
+  <displayWhen>#{CASE.caseSource=="EPAPER" or CASE.caseSource=="EXTERNAL"}</displayWhen>
+    <section>
+        <group associated="true">
+        <header>1. Does the Proposed Insured have any life insurance or annuities in force or</header>
+        <question id='OPYes' text='is any application for life insurance or reinstatement now pending? Yes'  type='CHECKBOX' answerSet='Y' labelWidth="397px" />
+        <question id='OPNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        </group>
+        <group associated="true">
+        <header>2. Will the coverage applied for replace any life insurance or annuity coverage </header>
+        <question id='REYes' text='now in force or pending on the life of the Proposed Insured?  Yes'  type='CHECKBOX' answerSet='Y' labelWidth="361px" />
+        <question id='RENo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        </group>
+        <group associated="true">
+        <question id='EXCHYes' text='Is this a 1035 Exchange? Yes'  type='CHECKBOX' answerSet='Y' labelWidth="172px" />
+        <question id='EXCHNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        </group>
+        <group associated="true">
+        <question id='CONVYes' text='Is this an internal term conversion? Yes'  type='CHECKBOX' answerSet='Y' labelWidth="231px" />
+        <question id='CONVNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        </group>
+        <group associated="true">
+        <header>I certify that I have no knowledge of anything which might affect the insurability </header>
+       <question id='ATTYes' text='of any person proposed for insurance which is not fully set forth herein: Yes'  type='CHECKBOX' answerSet='Y' labelWidth="418px" />
+        <question id='ATTNo' text='No' type='CHECKBOX' answerSet='Y' labelWidth="20px" />
+        </group>
+       <group associated="true">
+        <question id='agent_id' text='Agent ID' type='TEXT' />
+		<question id='agent_license_state' text='Agent License State' type='TEXT' labelWidth="100px" />
+	   </group>
+	   <group associated="true">
+			<question id='agent_date' text='Date' type='DATEF' />
+			<question id='agent_sig' text='Signature of Licensed Agent' type='CHECKBOX' answerSet='Y' labelWidth="100px" />
+	   </group>
+		<group labelWidth="100px">
+        <question id='printed_name' text='Printed Name of Licensed Agent' type='TEXT' answerWidth="300px;"/>
+      </group>
+	  <group labelWidth="100px">
+        <question id='agent_present' type='HIDDEN' answerWidth="300px;"/>
+      </group>
+	  <group labelWidth="100px">
+        <question id='agent_name_mismatch' type='HIDDEN' answerWidth="300px;"/>
+      </group>
+	  <group labelWidth="100px">
+        <question id='state_present' type='HIDDEN' answerWidth="300px;"/>
+      </group>
+	  <group labelWidth="100px">
+        <question id='agent_lic_state_valid' type='HIDDEN' answerWidth="300px;"/>
+      </group>
+ 	  <group labelWidth="100px">
+        <question id='agent_lic_state_valid_non_compact' type='HIDDEN' answerWidth="300px;"/>
+      </group>
+    </section>
+  </page>
+</form>

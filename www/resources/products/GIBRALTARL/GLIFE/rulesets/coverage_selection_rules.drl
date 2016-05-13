@@ -1,0 +1,229 @@
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.UserData;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.coverages.*;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import com.stepsoln.core.db.group.*;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.util.*;
+import java.math.BigDecimal;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import com.stepsoln.core.helper.enums.UNIT_SYSTEM;
+import java.lang.*;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global com.stepsoln.core.util.MathUtil math;
+
+rule "Indicate to lookup build chart data with UW Class data"
+salience 1000
+activation-group "buildChartLookup"
+	when
+		$app:ApplicantData(type=='PRIMARY_INSURED')
+		Question(id == "height_feet", $heightFeet:answerAsDecimal) ;
+		Question(id == "height_inches", $heightInches:answerAsDecimal) ;
+		Question(id == "weight_pounds",$weightPounds:answerAsDecimal) ;
+		Question(id == "smoker_ind", $smokeInd:answerAsBoolean);
+		$uwClassData:UnderWritingClassData()
+	then
+		rulesResponse.setUwClassType($uwClassData.getType());
+		$app.setLookupBuildChart(true);
+		$app.setHeight($heightFeet.multiply(MathUtil.INCHES_IN_FOOT).add($heightInches).intValue());
+		$app.setWeight($weightPounds.intValue());
+		$app.setUnitSystem(UNIT_SYSTEM.IMPERIAL);
+		$app.setTobaccoUsage($smokeInd);
+		rulesResponse.addToRuleFiredList(100,"USE_BUILD_CHART_SERVICE");
+end
+
+rule "set options to face amount"
+salience  150
+	when
+		   faOption:CoverageOption(optionCode=="FA");
+		   selectedOption:CoverageOption(selected==true, optionCode in ("GIBRALTAR_L_TERM30","GIBRALTAR_L_TERM20","GIBRALTAR_L_TERM15","GIBRALTAR_L_TERM10","GIBRALTAR_L_WL"));
+	then
+		   selectedOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())*1000+"");
+end
+
+rule "set description and remove decimal and trailing zeroes for FAD option"
+salience  150
+	when
+		   	faOption:CoverageOption(optionCode=="FA");
+	then
+			faOption.setOptionDescription("Coverage Units");
+			faOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())+"");
+end
+
+rule "Face Amount Plan Required"
+salience 100
+	when
+		   faPlan:CoveragePlan(planCode in ("FA"));
+	then
+		faPlan.setOptional(false);
+end
+
+rule "Max FAD Amount Rule"
+salience 99
+	when
+		   faOption:CoverageOption(faOption.optionCode in ("FA"), MathUtil.convertToNumber(faOption.getSelectedValue())*1000 > 1000000);
+	then
+		modify(faOption){
+			setOptionNotes("(Max $1,000,000)"),
+			setSelectedValue(MathUtil.minNumber("1000", faOption.getSelectedValue()))
+		}
+		rulesResponse.addUserNotifcationInfo("There is a maximum of $1,000,000 limit");
+end
+
+rule "Min FAD Amount Rule"
+salience 100
+	when
+		   faOption:CoverageOption(faOption.optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue())*1000 < 25000, MathUtil.convertToNumber(faOption.getSelectedValue())>0);
+	then
+		modify(faOption){
+			setOptionNotes("(Min $25,000)"),
+			setSelectedValue("25")
+		}
+		rulesResponse.addUserNotifcationInfo("Minimum face amount needs to be 25");
+end
+
+rule "FAD Amount should be greater than 0 message"
+salience 100
+	when
+		   faOption:CoverageOption(faOption.optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue())==0);
+	then
+		rulesResponse.addUserNotifcationInfo("Face Amount has to be greater than 0");
+end
+
+rule "Face Amount Option Required"
+salience 100
+	when
+		   	fa:CoverageOption(optionCode in ("FA"));
+	then
+			fa.setSelected(true);
+			fa.setRequired(true);
+			fa.setTextEntry(true);
+			fa.setSelectable(false);
+end
+
+rule "GIRD availability ends when FAD Amount greater than 800,000"
+salience 100
+	when
+		   faOption:CoverageOption(selected==true, optionCode in ("FA"), MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 800000);
+		   girOption:CoverageOption(optionCode in ("GIBRALTAR_L_GIR"), selected==true);
+	then
+			girOption.setSelectable(false);
+			girOption.setSelected(false);
+			rulesResponse.addUserNotifcationInfo("Maximum GIRD Option Value is 800000");
+end
+
+rule "Base Coverage Selection"
+	when
+		CoverageOption(optionCode in ("GIBRALTAR_L_TERM30"),selected==false);
+		and CoverageOption(optionCode in ("GIBRALTAR_L_WL"),selected==false);
+		and CoverageOption(optionCode in ("GIBRALTAR_L_TERM20"),selected==false);
+		and CoverageOption(optionCode in ("GIBRALTAR_L_TERM15"),selected==false);
+		and CoverageOption(optionCode in ("GIBRALTAR_L_TERM10"),selected==false);
+	then
+		rulesResponse.addUserNotifcationInfo("At-least one Base Coverage must be selected");
+end
+
+rule "Guaranteed Insurability rider is only offered on whole life"
+salience 120
+	when
+		   nonWhole:CoverageOption(optionCode in ("GIBRALTAR_L_WL"), selected==true);
+		   option:CoverageOption(optionCode in ("GIBRALTAR_L_GIR"));
+		   applicant:ApplicantData(type=='PRIMARY_INSURED', age > 17 && age < 40);
+	then
+		option.setSelectable(true);
+end
+
+rule "TERM20D Level Mutex"
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("GIBRALTAR_L_TERM20"),selected==true);
+		   notAllowed:CoverageOption(optionCode in ("GIBRALTAR_L_TERM30","GIBRALTAR_L_TERM15","GIBRALTAR_L_TERM10"));
+	then
+		notAllowed.setSelectable(false);
+end
+
+rule "Whole Term Mutex"
+salience 100
+	when
+		tloptions:CoverageOption(optionCode in ("GIBRALTAR_L_TERM30","GIBRALTAR_L_TERM20","GIBRALTAR_L_TERM15","GIBRALTAR_L_TERM10"),selected==true);
+		wl:CoverageOption(optionCode in ("GIBRALTAR_L_WL","GIBRALTAR_L_WLDWP"));
+	then
+		wl.setSelectable(false);
+		wl.setAvailable(false);
+end
+
+
+rule "Set options' coverage amount to face amount if no levels defined"
+salience  150
+	when
+		   faOption:CoverageOption(optionCode=="FA");
+		   selectedOption:CoverageOption(hasLevels==false, selected==true);
+	then
+		   selectedOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())*1000+"");
+end
+
+rule "Disable already selected base plan's options"
+when
+	selectedCoverageOptionWithNoValue:CoverageOption(optionCode in ("GIBRALTAR_L_TERM30","GIBRALTAR_L_TERM20","GIBRALTAR_L_TERM15","GIBRALTAR_L_TERM10","GIBRALTAR_L_WL"),selected==true);
+then
+	selectedCoverageOptionWithNoValue.setSelectable(false);
+	selectedCoverageOptionWithNoValue.setEditable(false);
+end
+
+rule "Make nonselected options as unavailable as would be selected in pre-application flow."
+salience 250
+when
+	selectedCoverageOptionWithNoValue:CoverageOption(optionCode in ("GIBRALTAR_L_TERM30","GIBRALTAR_L_TERM20","GIBRALTAR_L_TERM15","GIBRALTAR_L_TERM10","GIBRALTAR_L_WL"),selected==false);
+then
+	selectedCoverageOptionWithNoValue.setAvailable(false);
+	selectedCoverageOptionWithNoValue.setSelectable(false);
+	selectedCoverageOptionWithNoValue.setEditable(false);
+end
+
+rule "Whole Life Selected"
+salience 100
+	when
+		   nonWhole:CoverageOption(optionCode in ("GIBRALTAR_L_WL"), selected==true);
+		   notAllowedOptions:CoverageOption(optionCode in ("GL_TERM30DWP","GIBRALTAR_L_TERMDWP","GIBRALTAR_L_TERM10","GIBRALTAR_L_TERM15","GIBRALTAR_L_TERM20","GIBRALTAR_L_TERM30"));
+		   notAllowedPlans:CoveragePlan(planCode in ("GIBRALTAR_L_TL"));
+		   allowed:CoverageOption(optionCode in ("GIBRALTAR_L_WLDWP","GIBRALTAR_L_ADB"));
+	then
+		notAllowedOptions.setAvailable(false);
+		notAllowedPlans.setAvailable(false);
+		allowed.setSelectable(true);
+end
+
+rule "Term Life Selected"
+salience 260
+	when
+	   termSelected:CoverageOption(optionCode in ("GIBRALTAR_L_TERM10","GIBRALTAR_L_TERM15","GIBRALTAR_L_TERM20","GIBRALTAR_L_TERM30"), selected==true);
+	   notAllowedOptions:CoverageOption(optionCode in ("GIBRALTAR_L_WL","GIBRALTAR_L_WLDWP","GIBRALTAR_L_GIR"));
+	   notAllowedPlans:CoveragePlan(planCode in("GIBRALTAR_L_WL","GIBRALTAR_L_GIR"));
+	   allowed:CoverageOption(optionCode in ("GIBRALTAR_L_ADB"));
+	then
+		notAllowedOptions.setAvailable(false);
+		notAllowedPlans.setAvailable(false);
+		allowed.setSelectable(true);
+end
+
+rule "TERM30D Level Mutex"
+	when
+		 tlplan:CoverageOption(optionCode in ("GIBRALTAR_L_TERM30"),selected==true);
+		 allowed:CoverageOption(optionCode in ("GL_TERM30DWP"));
+		 notAllowed:CoverageOption(optionCode in ("GIBRALTAR_L_TERMDWP"));
+	then
+		allowed.setSelectable(true);
+		notAllowed.setAvailable(false);
+end
+
+rule "TERM30 Level unselected"
+when
+	   tlplan:CoverageOption(optionCode in ("GIBRALTAR_L_TERM30"),selected==false);
+	   allowed:CoverageOption(optionCode in ("GIBRALTAR_L_TERMDWP"));
+	   notAllowed:CoverageOption(optionCode in ("GL_TERM30DWP"));
+then
+		notAllowed.setAvailable(false);
+		allowed.setSelectable(true);
+end

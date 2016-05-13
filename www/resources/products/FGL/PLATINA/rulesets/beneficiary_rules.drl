@@ -1,0 +1,89 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.RuleResult;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.rules.requirements.CaseData;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+import rules.*;
+import java.util.*;
+import com.stepsoln.core.rules.RuleResult;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "8. Numeric beneficiary share percent"
+salience 100
+activation-group "numericCheck"
+	when
+		$nonNumericResponse: ArrayList() from collect(Question((id.indexOf("other_share_percentage") >= 0 
+			|| id.indexOf("contingent_share_percentage") >= 0 || id.equals("share_percentage")), NumberUtils.isNumber(answerAsString) == false))
+		eval($nonNumericResponse.size() > 0)
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Share Percentage should be numeric")
+			   .setRuleNumber(8)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Numeric beneficiary share percent")
+			   .setOverridable(true);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(8);
+end
+
+rule "9. Non negative beneficiary share percent"
+salience 90
+activation-group "numericCheck"
+	when
+		$negResponse: ArrayList() from collect(Question((id.indexOf("other_share_percentage") >= 0 
+			|| id.indexOf("contingent_share_percentage") >= 0 || id.equals("share_percentage")), NumberUtils.isNumber(answerAsString) == true, answerAsDecimal < 0))
+		eval($negResponse.size() > 0)
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Share percent can not be negative")
+			   .setRuleNumber(9)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Non negative beneficiary share percent")
+			   .setOverridable(true);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(9);
+end
+
+rule "10. 100% Primary beneficiaries share percent sum "
+salience 80
+	when
+		Question((id.indexOf("other_share_percentage") >= 0 || id.equals("share_percentage")), StringUtils.isNotEmpty(answerAsString))
+ 		$totalPercentage : Number() from accumulate(Question((id.indexOf("other_share_percentage") >= 0 || id.equals("share_percentage")), 
+ 			NumberUtils.isNumber(answerAsString) == true, $answer: answerAsDecimal)
+         init( double total = 0; ),
+         action( total += $answer.doubleValue(); ),
+         result( new Double( total ) ) )
+        eval($totalPercentage.doubleValue() != 100.00)
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Primary beneficiary share percent must add to 100")
+			   .setRuleNumber(10)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("100% Primary beneficiaries share percent sum")
+			   .setOverridable(true);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(10);
+end
+
+rule "11. 100% Contingent beneficiaries share percent sum"
+salience 70
+	when
+		Question(id.indexOf("contingent_share_percentage") >= 0, StringUtils.isNotEmpty(answerAsString))
+ 		$totalPercentage: Number() from accumulate(Question(id.indexOf("contingent_share_percentage") >= 0, NumberUtils.isNumber(answerAsString) == true, $answer: answerAsDecimal)
+         init( double total = 0; ),
+         action( total += $answer.doubleValue(); ),
+         result( new Double( total ) ) )
+        eval($totalPercentage.doubleValue() != 100.00)
+	then 
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Contingent beneficiary share percent must add to 100")
+			   .setRuleNumber(11)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("100% Contingent beneficiaries share percent sum")
+			   .setOverridable(true);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(11);
+end

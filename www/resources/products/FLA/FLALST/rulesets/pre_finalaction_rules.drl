@@ -1,0 +1,94 @@
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.uw.*;
+import com.stepsoln.core.rules.requirements.*;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+salience 100
+rule "All Requirements need to be resolved or waived"
+when		
+	    Requirement(status not in( "RESOLVED", "CANCELLED"), $code:description, $s:status)
+	    CaseUwRiskCalcData(isValid==true, isOverridden==false, uwStatus not in ("DECLINE"))	   
+then
+		rulesResponse.addRequiredOnce("Requirement ("+$code+") is NOT resolved or waived (status: "+$s+")");
+		rulesResponse.addToRuleFiredList(1);
+end
+
+salience 100
+rule "2. For APPROVED final action all Medical Conditions have to be reconciled"
+when
+	CaseData("APPROVED"==uwCaseStatus)
+	Number(intValue > 0) from accumulate(CaseUwMedicalConditionGroupRulesFact("SUCCESSFUL" != autoreconciliatinoStatus),
+         init( int total = 0; ),
+         action( total += 1; ),
+         reverse( total -= 1; ),
+         result( new Integer( total ) ) )
+	
+then
+	rulesResponse.addRequiredOnce("All Medical Conditions have to be reconciled");
+	rulesResponse.addToRuleFiredList(2);
+end
+
+salience 100
+rule "3. For APPROVED final action all Medical Drugs have to be reconciled"
+when
+	CaseData("APPROVED"==uwCaseStatus)
+	Number(intValue > 0) from accumulate(CaseUwMedicalDrugData("SUCCESSFUL" != currentStatus),
+         init( int total = 0; ),
+         action( total += 1; ),
+         reverse( total -= 1; ),
+         result( new Integer( total ) ) )
+then
+	rulesResponse.addRequiredOnce("All Medical Drug have to be reconciled");
+	rulesResponse.addToRuleFiredList(3);
+end
+
+//
+//salience 100
+//rule "4. For APPROVED final action all Demographic data have to be reconciled"
+//when
+//	CaseData("APPROVED"==uwCaseStatus)
+//	Number(intValue > 0) from accumulate(CaseUwDemographicData("SUCCESSFUL" != currentStatus),
+//         init( int total = 0; ),
+//         action( total += 1; ),
+//         reverse( total -= 1; ),
+//         result( new Integer( total ) ) )
+//then
+//	rulesResponse.addRequiredOnce("All Demographic data have to be reconciled");
+//	rulesResponse.addToRuleFiredList(4);
+//end
+
+salience 100
+rule "5. For APPROVED final action all MIB data have to be reconciled"
+when
+	CaseData("APPROVED"==uwCaseStatus)
+	Number(intValue > 0) from accumulate(CaseUwMibData("SUCCESSFUL" != currentStatus),
+         init( int total = 0; ),
+         action( total += 1; ),
+         reverse( total -= 1; ),
+         result( new Integer( total ) ) )
+then
+	rulesResponse.addRequiredOnce("All MIB reports have to be reconciled");
+	rulesResponse.addToRuleFiredList(5);
+end
+
+rule "FinalAction 1"
+salience 100
+	when
+		CaseUwRiskCalcData(isValid==false, isOverridden==false )
+    then
+    	rulesResponse.addRequiredOnce("Not a valid risk calculation and not overwritten by UW");
+    	rulesResponse.addToRuleFiredList(6);
+end
+
+//rule "FinalAction 2"
+//salience 100
+//activation-group "autoFinalAction"
+//	when
+//		CaseUwRiskCalcData(isValid==true, isOverridden==false, uwStatus not in ("ACCEPT", "DECLINE")) 
+//    then
+//    	rulesResponse.addRequiredOnce("valid risk calculation but attempt to auto final action without ACCEPT or DECLINE merica recommendation");
+//    	rulesResponse.addToRuleFiredList(7);
+//end
+

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<eforms>
+		<eform>
+			<file>eforms/demographic_eform.xml</file>
+			<description>Demographic information</description>
+			<code>PERSON</code>
+		</eform>
+		<eform>
+			<file>eforms/physician_eform.xml</file>
+			<description>Physician Info</description>
+			<code>PHYSICIAN</code>
+		</eform>
+		<eform>
+			<file>eforms/other_coverage_eform.xml</file>
+			<description>Other Coverage eform</description>
+			<code>OTHER_COVERAGE</code>
+			<script>
+				<description>EFORM Scripting events for other_coverage_eform.xml
+				</description>
+				<file>eforms/other_coverage_script.groovy</file>
+				<type>FORM_SCRIPTS</type>
+			</script>
+		</eform>
+		<eform>
+			<file>eforms/beneficiary_eform.xml</file>
+			<description>Beneficiary eform</description>
+			<code>BENEFICIARY</code>
+			<script>
+				<description>EFORM Scripting events for beneficiary_eform.xml
+				</description>
+				<file>eforms/beneficiary_script.groovy</file>
+				<type>FORM_SCRIPTS</type>
+			</script>
+		</eform>
+		<eform>
+			<file>eforms/other_owner_eform.xml</file>
+			<description>Policy Owner Info</description>
+			<code>OTHER_OWNER</code>
+			<script>
+				<description>EFORM Scripting events for other_owner_eform.xml
+				</description>
+				<file>eforms/other_owner_script.groovy</file>
+				<type>FORM_SCRIPTS</type>
+			</script>
+		</eform>
+		<eform>
+			<file>eforms/med_reflexives_eform.xml</file>
+			<description>Medical Reflexives eform</description>
+			<code>MED_REFLEXIVES</code>
+		</eform>
+	</eforms>
+</stepImport>

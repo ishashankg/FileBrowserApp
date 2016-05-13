@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<carrierType xmlns="http://www.stepsolutions.com/document/1.0">
+	<carrierCode>FGL</carrierCode>
+	<productTypes>
+		<productType>
+			<productCode>PLATINA</productCode>
+			<documentFlowMappings>
+				<documentFlowMapping key="PERSON" keyType="eform">
+					<documentType>APPLICATION</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="ANNUITANT" keyType="eform">
+					<documentType>APPLICATION</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="BENEFICIARY" keyType="eform">
+					<documentType>APPLICATION</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="ANNUITY_PURPOSE"
+					keyType="eform">
+					<documentType>APPLICATION</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="REPLACEMENT" keyType="eform">
+					<documentType>APPLICATION</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="AUTHORIZATION"
+					keyType="eform">
+					<documentType>APPLICATION</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="CONFIRMATION" keyType="eform">
+					<documentType>APPLICATION</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="SUITABILITY_PERSON"
+					keyType="eform">
+					<documentType>SUITABILITY FORM</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="SUITABILITY_FINANCE"
+					keyType="eform">
+					<documentType>SUITABILITY FORM</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="SUITABILITY_CONSIDERATIONS"
+					keyType="eform">
+					<documentType>SUITABILITY FORM</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="SUITABILITY_FUND"
+					keyType="eform">
+					<documentType>SUITABILITY FORM</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="FL_SUITABILITY_PERSON"
+					keyType="eform">
+					<documentType>SUITABILITY FORM</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="FL_ADDITIONAL_INFO"
+					keyType="eform">
+					<documentType>SUITABILITY FORM</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="FL_SUITABILITY_FINANCE"
+					keyType="eform">
+					<documentType>SUITABILITY FORM</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="FL_SUITABILITY_CONSIDERATIONS"
+					keyType="eform">
+					<documentType>SUITABILITY FORM</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="FL_SUITABILITY_SIG_ACK"
+					keyType="eform">
+					<documentType>SUITABILITY FORM</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="FL_SUITABILITY_SUPPLEMENT"
+					keyType="eform">
+					<documentType>SUITABILITY FORM</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="LARGEPREMIUM" keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="CA_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="WY_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="IL_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="IL_REP_NOTICE_B"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="REP_NOTICE" keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="DE_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="MO_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="OK_REP_NOTICE_APPLICANT"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="ID_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="TN_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="OK_REP_NOTICE_APPLICANT"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="NV_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="IN_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="FL_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="GA_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="OR_VT_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="CT_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="STANDARD_REP_NOTICE"
+					keyType="eform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="NAIC_REGULATION_REP_NOTICE"
+					keyType="nonEform">
+					<documentType>OTHER</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="1035TRANSFER" keyType="eform">
+					<documentType>1035 EXCHG FM</documentType>
+				</documentFlowMapping>
+				<documentFlowMapping key="Payment" keyType="nonEform">
+					<documentType>INITIAL PAYMENT</documentType>
+				</documentFlowMapping>
+			</documentFlowMappings>
+		</productType>
+	</productTypes>
+</carrierType>

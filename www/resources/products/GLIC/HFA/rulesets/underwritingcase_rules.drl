@@ -1,0 +1,115 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.RulesResponse;
+import java.util.ArrayList;
+
+rule "3rd party services" 
+	when
+		theCase:CaseData(caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ("ATTUS3RDPARTY","RX3RDPARTY","MIB3RDPARTY"))
+	then
+		form.setRequired(true);
+end
+
+rule "IIX 3rd party services only if DL Number present" 
+	when
+		theCase:CaseData(caseStatus=='SUBMITTED')
+		theApplicant:ApplicantData(drivLicNum.toUpperCase() not in ("NA","NONE"))
+		form:RequirementForm(code in ("IXX3RDPARTY"))
+	then
+		System.out.println("IIX Requirement " + " " + theCase.getCaseStatus() + " " + theApplicant.getDrivLicNum());
+		form.setRequired(true);
+end
+
+rule "PARA"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 51, faceAmount >= 100000, caseStatus=='SUBMITTED')
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 18, faceAmount > 300000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('PARA', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "LABB"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 51, faceAmount >= 100000, caseStatus=='SUBMITTED')
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 18, faceAmount > 300000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('LABB', 'BLOOD', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "LABU"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 51, faceAmount >= 100000, caseStatus=='SUBMITTED')
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 18, faceAmount > 300000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('LABU', 'HOS', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "EKG"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 61, faceAmount >= 100000, caseStatus=='SUBMITTED')
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 51, faceAmount >= 500000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('EKG', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "LABPSA"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 51, faceAmount >= 100000, gender=='M', caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('LABPSA', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "PROBNP"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 61, faceAmount >= 100000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('PROBNP', 'I102MEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "APS"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 61, faceAmount >= 500000, caseStatus=='SUBMITTED')
+		or CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 71, faceAmount > 300000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ('APS', 'APSMEMO'))
+    then
+    	form.setRequired(true);
+end
+
+rule "COGNITIVE"
+	when
+		CaseData(primaryApplicantAge <= 80, primaryApplicantAge >= 71, faceAmount < 100000, caseStatus=='SUBMITTED')
+		form:RequirementForm(code=="COGNITIVE")
+    then
+    	form.setRequired(true);
+end
+
+rule "Policy Owner Unresolved Signatures"
+	when
+		theCase:CaseData(caseSource in ('CAPTIVE', 'EXTERNAL'), caseStatus=='INCOMPLETE', caseStatus=='INCOMPLETE');
+		theRequirementList:ArrayList() from collect(Requirement(type=='ESIGNATURE', target=='POLICY_OWNER', status not in ('RESOLVED'), orderStatus not in ('SIGNED')));
+    then
+    	if (theRequirementList.size() <= 0)
+		{
+    		theCase.setCaseStatus("SUBMITTED");
+    	}
+end
+
+rule "FULLHIPAAPDF PAPER"
+	when
+		theCase:CaseData(caseSource in ('CAPTIVE', 'EXTERNAL'), caseStatus=='INCOMPLETE', caseStatus=='INCOMPLETE');
+		theRequirementList:ArrayList() from collect(Requirement(type=='ESIGNATURE', description=='HIPAA - Primary Insured', status not in ('RESOLVED'), orderStatus not in ('SIGNED')));
+		Requirement(type=='Paper Application');
+    then
+        if (theRequirementList.size() <= 0)
+		{
+    		theCase.setCaseStatus("SUBMITTED");
+    	}
+end

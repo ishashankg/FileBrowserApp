@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+  <route id="find_new_jobs" shortName="findNewJobs" >
+     <from uri="timer://kickoff?period=10000"/>
+     <setBody>
+       <constant>
+       	select job_id,carrier_id,product_id from job where status = 'NEW' and (execute_after is null or execute_after &lt; GETDATE())
+       </constant>
+     </setBody>
+     <to uri="jdbc:stepDataSource"/>
+     <split>
+      <simple>${body}</simple>
+      <to uri="jobMonitorProcessor"/>
+      <to uri="activemq://job_process_queue"/>
+     </split>
+    
+  </route>
+  
+  
+</routes>

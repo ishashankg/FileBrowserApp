@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<?Tab indexes are not necessary for this form ?>
+	<page title="Suitability Personal Information">
+		<section title="Information about the owners">
+			<group>
+				<question id='multiple_application'
+					text='Please check this box if submitting multiple applications for the same household'
+					type='CHECKBOX' labelWidth="470px" labelStyle='font-weight:bold;' />
+			</group>
+			<group associated="true">
+				<question id='owner_name' text="Owner's Name" type='TEXT'
+					required="true" answerWidth="100px" labelWidth="120px" />
+				<question id='owner_age' text="Owner's Age" type='TEXT'
+					mask="pint" required="true" answerWidth="100px" labelWidth="120px" />
+			</group>
+			<group associated="true">
+				<question id='joint_owner_name' text="Joint Owner's Name"
+					type='TEXT' answerWidth="100px" labelWidth="120px" required="true">
+					<displayWhen> #{EFORMS.PERSON.joint_owner=="Y"} </displayWhen>
+				</question>
+				<question id='joint_owner_age' text="Joint Owner's Age"
+					type='TEXT' mask="pint" answerWidth="100px" labelWidth="120px"
+					required="true">
+					<displayWhen> #{EFORMS.PERSON.joint_owner=="Y"} </displayWhen>
+				</question>
+			</group>
+		</section>
+		<section>
+			<group associated="true">
+				<question id='owner_work_status' text="1. Owner Work Status"
+					name="Owner Work Status" type='LISTBOX' required="true"
+					answerSet=" : |R:Retired|E:Employed|U:Unemployed|O:Other"
+					answerWidth="100px" labelWidth="120px" />
+				<question id='owner_status_specify' text="Please Specify"
+					name="Please Specify Owner Work Status" type='TEXT' required="true"
+					answerWidth="100px" labelWidth="120px">
+					<displayWhen>#{EFORM.owner_work_status=="O"}</displayWhen>
+				</question>
+			</group>
+			<group associated="true">
+				<question id='joint_owner_work_status' text="Joint Owner Work Status"
+					type='LISTBOX' labelWidth="120px"
+					answerSet=" : |R:Retired|E:Employed|U:Unemployed|O:Other"
+					answerWidth="100px">
+					<displayWhen> #{EFORMS.PERSON.joint_owner=="Y"} </displayWhen>
+				</question>
+				<question id='joint_owner_status_specify' text="Please Specify"
+					name="Please Specify Joint Owner Work Status" type='TEXT'
+					answerWidth="100px" labelWidth="120px">
+					<displayWhen>#{EFORM.joint_owner_work_status=="O"}</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='owner_residence' text="2. Owner Residence"
+					name="Owner Residence" type='LISTBOX' required="true" answerWidth="100px"
+					labelWidth="120px"
+					answerSet=" : |L:Living at home|A:Assisted Living Facility|N:Nursing Home" />
+			</group>
+			<group>
+				<question id='joint_owner_residence' text="Joint Owner Residence"
+					name="Joint Owner Residence" type='LISTBOX' answerWidth="100px"
+					labelWidth="120px"
+					answerSet=" : |L:Living at home|A:Assisted Living Facility|N:Nursing Home">
+					<displayWhen> #{EFORMS.PERSON.joint_owner=="Y"} </displayWhen>
+				</question>
+			</group>
+			<group associated="true">
+				<question id='federal_tax_Rates' text="3. Federal Tax Rates"
+					name="Federal Tax Rates" type='LISTBOX' required="true" labelWidth="120px"
+					answerWidth="100px" answerSet=" : |1: 0%|2: 10%|3: 15%|4: 25-28%|5: 33% +" />
+			</group>
+		</section>
+		<section>
+			<group>
+				<footer>4. Do you currently own or have you previously owned any of
+					the products listed below?
+				</footer>
+			</group>
+			<group>
+				<question id='product_list'
+					name="Have you previously owned any of these products" type='CHECKBOX'
+					labelWidth="120px" required="true"
+					answerSet="1:Stocks and Bonds|2:Mutual Funds|3:Variable Insurance/Annuities|4:Certificates of Deposit|5:Savings Bonds and other Government Securities|6:Fixed Annuities|7:Fixed Cash Value Life Insurance|8:I have not owned any of these products" />
+			</group>
+			<group>
+				<question id='reverse_mortgage' text="5. Do you have a reverse mortgage?"
+					name="Do you have a reverse mortgage?" type='LISTBOX' required="true"
+					answerWidth="100px" labelWidth="385px" answerSet=" : |Y:Yes|N:No" />
+			</group>
+			<group>
+				<question id='risk_tolerance' text="6. What is your risk tolerance?"
+					name="What is your risk tolerance?" type='LISTBOX' answerWidth="100px"
+					required="true" labelWidth="385px"
+					answerSet=" : |C:Conservative|M:Moderate|A:Aggressive" />
+			</group>
+		</section>
+		<section>
+			<group>
+				<footer>7. What are the primary reasons for purchasing this annuity?
+				</footer>
+			</group>
+			<group>
+				<question id='reason' type='CHECKBOX' labelWidth="120px"
+					name="What are the primary reasons for purchasing this annuity?"
+					required="true" tabindex='17'
+					answerSet="1: Tax Deferral|2: Potential for better rate|3: Protection from Market Risk| 4: Retirement Income|5: Wealth Accumulations|6: Death Benefit|7: Qualify for Government Programs|8: Immediate Income|9: Estate Planning|10: Other" />
+			</group>
+			<group>
+				<question id='purchase_reason_specify' text="Please Specify (if other is selected):"
+					type='TEXT' answerWidth="100px" labelWidth="120px">
+					<displayWhen>#{EFORM.reason=="10"}</displayWhen>
+				</question>
+			</group>
+			<group style='font-weight: bold'>
+				<footer>
+					*Annuities purchased in a tax qualified account offer no
+					additional tax deferral benefit over other tax qualified products
+					or accounts.
+				</footer>
+			</group>
+		</section>
+		<section>
+			<group>
+				<question id='fgl_purchase_agent_attorney'
+					text="8. Is the purchase of this annuity in any way connected to or based on information provided during the establishment of a trust sold to you by (i) your Fidelity &amp; Guaranty Life (FGL) agent or affiliate of your FGL agent or (ii) an attorney provided to you through your FGL agent or affiliate of your FGL agent?"
+					name='Purchase of annuity by FGL agent' type='LISTBOX' required="true"
+					labelWidth="385px" answerSet=" : |Y:Yes|N:No" answerWidth="100px;" />
+			</group>
+		</section>
+	</page>
+</form>

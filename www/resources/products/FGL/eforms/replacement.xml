@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onSave>saveReplacements</onSave>
+	<page title="Other coverage and replacement details">
+		<section style="margin-left:0px">
+			<group>
+				<question id='existing_policies' text='Do you have an existing life insurance or annuity policy?' name='Do you have an existing life insurance' required="true" type='LISTBOX' answerSet=' : |Y:Yes|N:No' labelStyle='margin-left:0px;' labelWidth="445px" />
+				<question id='replace_policies' text='Will the annuity applied for replace or change an existing life insurance or annuity policy?' name='Will the annuity applied for replace any policy' required="true" type='LISTBOX' answerSet=' : |Y:Yes|N:No' labelStyle='margin-left:0px;' labelWidth="445px" />
+			</group>
+			<group>			
+				<question id='additional_info' size="50" text='Special Instructions' type='MEMO' labelStyle='margin-left:-50px' answerStyle="margin-left:0px; margin-right:0px;"/>
+			</group>
+		</section>
+		<section title="Current Coverage" style="margin-left:0px">
+			<displayWhen>#{EFORM.existing_policies=="Y"}</displayWhen>
+			<group title="Annuitant Current Insurance Coverage">
+				<question id='insurance_company_name' text='Company Name' answerStyle="margin-left:0px; margin-right:0px;" answerWidth="150px" 
+          labelWidth="150px" required="true" type='TEXT' labelStyle='margin-left:8px;' autocompleteLookup="naic:carrier" externalId='NAIC_company;;current_policy_city;current_policy_state;' />
+				<question id='policy_type' text='Policy Type' labelWidth="150px" required="true" type='LISTBOX' answerSet=' : |INTERNAL:Internal|EXTERNAL:External' answerWidth="150px;" labelStyle='margin-left:8px;' />
+			</group>
+			<group >
+				<question id='current_policy_city' text='City' labelWidth="150px" required="true" type='TEXT' answerWidth="150px;" labelStyle='margin-left:8px;' /> 
+				<question id='policy_no' text='Policy Number' labelWidth="150px" required="true" type='TEXT' answerWidth="150px;" labelStyle='margin-left:8px;' />
+			</group> 
+			<group >
+				<question id='current_policy_state' text='State' labelWidth="150px" lookup="step:US_LOCALE_STATE" required="true" answerSet=" : "
+        type='LISTBOX' answerWidth="150px;" labelStyle='margin-left:8px' />
+				<question id='year_issued' text='Year Issued' labelWidth="150px" required="true" type='TEXT' answerWidth="150px" labelStyle='margin-left:8px' mask="pint"/>
+			</group>
+			<group >
+				<question id='NAIC_company' text='NAIC'  labelWidth="150px" required="true" type='TEXT' answerWidth="150px" labelStyle='margin-left:8px;'
+                  answerStyle="margin-left:0px; margin-right:0px;"/>
+				<question id='exchange_1035' text='Is this a 1035 exchange transfer?' labelWidth="150px" answerWidth="150px" required="true" type='LISTBOX' answerSet=' : |Y:Yes|N:No' labelStyle='margin-left:8px' />
+			</group>
+			<group>
+				<question id="coverage_amount" text="Amount $" labelWidth="150px" required="true" type='TEXT' answerWidth="150px" labelStyle='margin-left:8px' mask="pnum"/>
+			</group>
+		</section>
+		<section repeating="true" title="Other Coverage" styleClass="repeatingSectionContainer" style="margin-left:0px">
+			<displayWhen>#{EFORM.existing_policies=="Y"}</displayWhen>
+			<group>
+				<question id='insurance_company_name' text='Company Name' labelWidth="150px" required="true" type='TEXT' answerWidth="150px" labelStyle='margin-left:8px;' autocompleteLookup="naic:carrier" externalId='NAIC_company;;current_policy_city;current_policy_state;' />
+				<question id='policy_type' text='Policy Type' labelWidth="150px" required="true" type='LISTBOX' answerSet=' : |INTERNAL:Internal|EXTERNAL:External' answerWidth="150px" labelStyle='margin-left:8px;' />
+			</group>
+			<group>
+				<question id='current_policy_city' text='City' labelWidth="150px" required="true" type='TEXT' answerWidth="150px;" labelStyle='margin-left:8px' />
+				<question id='policy_no' text='Policy Number' labelWidth="150px" required="true" type='TEXT' answerWidth="150px;" labelStyle='margin-left:8px' />
+			</group> 
+			<group>			
+				<question id='current_policy_state' text='State' labelWidth="150px" lookup="step:US_LOCALE_STATE" required="true" answerSet=" : "
+        type='LISTBOX' answerWidth="150px;" labelStyle='margin-left:8px' />
+				<question id='year_issued' text='Year Issued' labelWidth="150px" required="true" type='TEXT' answerWidth="150px" labelStyle='margin-left:8px' mask="pint"/>
+			</group>
+			<group>
+				<question id='NAIC_company' text='NAIC' labelWidth="150px" required="true" type='TEXT' answerWidth="150px" labelStyle='margin-left:8px'
+                  answerStyle="margin-left:0px; margin-right:0px;"/>
+				<question id='exchange_1035' text='Is this a 1035 exchange transfer?' labelWidth="150px" answerWidth="150px" required="true" type='LISTBOX' answerSet=' : |Y:Yes|N:No' labelStyle='margin-left:8px' />
+			</group>
+			<group>
+				<question id="coverage_amount" text="Amount $" labelWidth="150px" required="true" type='TEXT' answerWidth="150px" labelStyle='margin-left:8px' mask="pnum"/>
+			</group>
+		</section>
+	</page>
+</form>

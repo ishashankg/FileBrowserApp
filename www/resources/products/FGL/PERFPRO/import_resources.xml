@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<resources>
+		<resource>
+			<description>Requirements Rules</description>
+			<file>rulesets/requirements_rules.drl</file>
+			<type>REQ_RULES</type>
+			<resourceCode>REQ_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>IGO Rules</description>
+			<file>rulesets/igo_rules.drl</file>
+			<type>IGO_RULES</type>
+			<resourceCode>IGO_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Igo Non Overridable Rules</description>
+			<file>rulesets/igo_non_overridable_rules.drl</file>
+			<type>IGO_RULES</type>
+			<resourceCode>IGO_NON_OVERRIDABLE_RULES</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Suitability Rules</description>
+			<file>../common/rulesets/suitability_rules.drl</file>
+			<type>SUITABILITY_RULE</type>
+			<resourceCode>SUITABILITY_RULES</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Pre Suitability Rules</description>
+			<file>../common/rulesets/pre_suitability_rules.drl</file>
+			<type>PRE_SUITABILITY_RULE</type>
+			<resourceCode>PRE_SUITABILITY_RULES</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Suitability Rules</description>
+			<file>rulesets/suitability_product_rules.drl</file>
+			<type>SUITABILITY_RULE</type>
+			<resourceCode>SUITABILITY_PRODUCT_RULES</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Eform access Rules</description>
+			<file>../common/rulesets/eform_access_rules.drl</file>
+			<type>EFORM_ACCESS</type>
+			<resourceCode>EFORM_ACCESS</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Case Rules</description>
+			<file>rulesets/case_rules.drl</file>
+			<type>CASE_RULES</type>
+			<resourceCode>CASE_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Auto Decision Rules</description>
+			<file>rulesets/auto_decision_rules.drl</file>
+			<type>AUTO_DECISION_RULES</type>
+			<resourceCode>AUTO_DECISION_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Beneficiary Rules</description>
+			<file>rulesets/beneficiary_rules.drl</file>
+			<type>IGO_RULES</type>
+			<resourceCode>BENE_RULES</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>fgl additional functionality support </description>
+			<file>scripts/fgl_perfpro_functionality.groovy</file>
+			<type>FUNCTIONALITY_SCRIPT</type>
+			<resourceCode>FGL_CARRIER_GROOVY_UTILS</resourceCode>
+			<formatType>GROOVY</formatType>
+		</resource>
+
+		<resource>
+			<description>FGL Branding</description>
+			<resourceCode>fgl_css</resourceCode>
+			<file>../common/css/branding.css</file>
+			<type>CUSTOM_CSS</type>
+			<formatType>CSS</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>Gerber Customized User Messages</description>
+			<resourceCode>CUSTOM_MESSAGES1</resourceCode>
+			<file>resources/messages.properties</file>
+			<type>CUSTOM_MESSAGES</type>
+			<formatType>PROPERTIES</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>UI behavior </description>
+			<file>resources/ui_behavior.xml</file>
+			<type>UI_BEHAVIOR</type>
+			<resourceCode>UI_BEHAVIOR</resourceCode>
+			<formatType>XML</formatType>
+		</resource>
+		<resource>
+			<description>FGL Performance Pro Custom Properties</description>
+			<resourceCode>FGL_PERFPRO_PROPERTIES1</resourceCode>
+			<file>resources/product.properties</file>
+			<type>PRODUCT_PROPERTIES</type>
+			<formatType>PROPERTIES</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>Sequences</description>
+			<file>../common/sequences.xml</file>
+			<type>SEQUENCE</type>
+			<resourceCode>sequence</resourceCode>
+			<formatType>XML</formatType>
+		</resource>
+		<resource>
+			<description>FGL Correspondence Template</description>
+			<resourceCode>fgl_birtTemplate</resourceCode>
+			<file>birtTemplates/fgl_correspondence.rptdesign</file>
+			<type>BIRT_TEMPLATE</type>
+			<formatType>RPTDESIGN</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>FGL Correspondence CC Template</description>
+			<resourceCode>fgl_cc_birtTemplate</resourceCode>
+			<file>birtTemplates/fgl_correspondence_cc.rptdesign</file>
+			<type>BIRT_TEMPLATE</type>
+			<formatType>CCRPTDESIGN</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>FGL Correspondence Library</description>
+			<resourceCode>fgl_birtLibrary</resourceCode>
+			<file>birtTemplates/fgl_correspondence.rptlibrary</file>
+			<type>BIRT_TEMPLATE</type>
+			<formatType>RPTLIBRARY</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>FGL JavaScript</description>
+			<resourceCode>fgl_birtScript</resourceCode>
+			<file>birtTemplates/fgl_scripts.js</file>
+			<type>BIRT_TEMPLATE</type>
+			<formatType>JAVASCRIPT</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>FGL Report JavaScript</description>
+			<resourceCode>fgl_birtReportScript</resourceCode>
+			<file>birtTemplates/fgl_report.js</file>
+			<type>BIRT_TEMPLATE</type>
+			<formatType>JAVASCRIPT</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>New business mapping rules</description>
+			<file>nbmapping/nb_mapping.xml</file>
+			<type>NB_MAPPING</type>
+			<resourceCode>NB_MAPPING</resourceCode>
+			<formatType>XML</formatType>
+		</resource>
+		<resource>
+			<description>Amendment Correspondence Template</description>
+			<resourceCode>amendment_birtTemplate</resourceCode>
+			<file>birtTemplates/amendment_correspondence.rptdesign</file>
+			<type>BIRT_TEMPLATE</type>
+			<formatType>RPTDESIGN</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+	</resources>
+</stepImport>

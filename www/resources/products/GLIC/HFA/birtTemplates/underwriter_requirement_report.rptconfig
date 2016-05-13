@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__carrier_id_14_0</property>
+            <property name="value">2</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__product_id_15_1</property>
+            <property name="value">1</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__role_19_2</property>
+            <property name="value">Assistant Underwriter</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__role_19_3</property>
+            <property name="value">Senior Underwriter</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__role_19_4</property>
+            <property name="value">UW Support Clerk</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__role_19_5</property>
+            <property name="value">Underwriter</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__role_19_6</property>
+            <property name="value">Underwriter Director</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__role_19_7</property>
+            <property name="value">Underwriter Manager</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__from_date_16_8</property>
+            <property name="value">06/2012</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__to_date_52_9</property>
+            <property name="value">07/2012</property>
+        </structure>
+        <structure>
+            <property name="name">product_id_15_10</property>
+            <property name="value">1</property>
+        </structure>
+        <structure>
+            <property name="name">product_id_15_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">role_19_11</property>
+            <property name="value">11</property>
+        </structure>
+        <structure>
+            <property name="name">role_19_12</property>
+            <property name="value">13</property>
+        </structure>
+        <structure>
+            <property name="name">role_19_13</property>
+            <property name="value">10</property>
+        </structure>
+        <structure>
+            <property name="name">role_19_14</property>
+            <property name="value">12</property>
+        </structure>
+        <structure>
+            <property name="name">role_19_15</property>
+            <property name="value">15</property>
+        </structure>
+        <structure>
+            <property name="name">role_19_16</property>
+            <property name="value">14</property>
+        </structure>
+        <structure>
+            <property name="name">role_19_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">role_19_expr_</property>
+            <property name="value">dataSetRow["roleId"]</property>
+        </structure>
+        <structure>
+            <property name="name">to_date_52_17</property>
+            <property name="value">07/2012</property>
+        </structure>
+        <structure>
+            <property name="name">to_date_52_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">from_date_16_18</property>
+            <property name="value">06/2012</property>
+        </structure>
+        <structure>
+            <property name="name">from_date_16_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">carrier_id_14_19</property>
+            <property name="value">2</property>
+        </structure>
+        <structure>
+            <property name="name">carrier_id_14_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

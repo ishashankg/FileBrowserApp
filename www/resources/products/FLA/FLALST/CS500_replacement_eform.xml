@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page>
+		<section>
+			<displayWhen>#{EFORM.oth_ins_naic!="63290"}</displayWhen>
+			<header>EXHIBIT A</header>
+			<group>
+				<paragragh
+					text="To be used where the existing and proposed policies are written by different companies."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+		</section>
+		<section>
+			<displayWhen>#{EFORM.oth_ins_naic=="63290"}</displayWhen>
+			<header>EXHIBIT B</header>
+			<group>
+				<paragragh
+					text="To be used where the existing and proposed policies are written by the same company."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+		</section>
+		<section>
+			<header>IMPORTANT NOTICE REGARDING REPLACEMENT OF LIFE INSURANCE</header>
+			<group/>
+		</section>
+		<section>
+			<group labelWidth="400px">
+				<paragragh
+					text="Our agent is recommending to you that you purchase a life insurance policy from us. In connection with this purchase, you have indicated either as a result of his recommendation or at your own initiative, that you may terminate or change your existing policy issued by another insurance company or that you may obtain a loan from that company against your policy to pay premiums on the proposed policy. Any of these actions is a replacement of life insurance. This notice must be given to you. Please read this notice carefully."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{EFORM.oth_ins_naic!="63290"}</displayWhen>
+			</group>
+			<group labelWidth="400px">
+				<paragragh
+					text="Our agent is recommending that you purchase a life insurance policy from us. In connection with this purchase, you have indicated either as a result of his recommendation or at your own initiative, that you may terminate or change your existing policy issued by our company or that you may obtain a loan from our company against your existing policy to pay premiums on the proposed policy. Any of these actions is a replacement of life insurance. This notice must be given to you. Please read this notice carefully."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{EFORM.oth_ins_naic=="63290"}</displayWhen>
+			</group>
+			<group labelWidth="400px">
+				<paragragh
+					text="Whether it is to your advantage to replace your existing insurance coverage, only you can decide. It is in your best interest, however, to have adequate information before a decision to replace your present coverage becomes final so that you may understand the essential features of the proposed policy and of your existing insurance coverage."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+			<group labelWidth="400px">
+				<paragragh
+					text="To this end, we are required to give you a Policy Summary including complete information on the proposed policy no later than when the policy is delivered to you. In addition, we are required to notify the insurance company that issued your existing policy. That company may then furnish you with additional information concerning your existing policy. You may want to contact that company or its agent for further information and advice or discuss your purchase with other advisors. The information you receive will be of value to you in reaching a final decision."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{EFORM.oth_ins_naic!="63290"}</displayWhen>
+			</group>
+			<group labelWidth="400px">
+				<paragragh
+					text="To this end, we are required to give you a Policy Summary including complete information on the proposed policy no later than when the policy is delivered to you. In addition, we will, at your request, furnish you additional information concerning your existing policy. You may want to discuss your purchase with other advisors. The information you receive will be of value to you in reaching a final decision."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{EFORM.oth_ins_naic=="63290"}</displayWhen>
+			</group>
+			<group labelWidth="400px">
+				<paragragh
+					text="If either the proposed policy or the existing insurance you intend to replace is a participating policy you should be aware that dividends may materially reduce the cost of insurance and are an important factor to consider. Dividends, however, are not guaranteed."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+			<group labelWidth="400px">
+				<paragragh
+					text="You should also recognize that a policy which has been in existence for a period of time may have certain advantages to you over a new policy. If the policy coverages are basically similar, the premiums for a new policy may be higher because rates increase as your age increases. Under your existing policy, the period of time during which the issuing company could contest the policy because of a material misstatement or omission on your application, or deny coverage for death caused by suicide, may have expired or may expire earlier than it will under the proposed policy. Your existing policy may have options which are not available under the policy being proposed to you or may not come into effect under the proposed policy until a later time during your life. Also, your proposed policy's cash values and dividends, if any, may grow slower initially because the company will incur the cost of issuing your new policy. On the other hand, the proposed policy may offer advantages which are more important to you."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{EFORM.oth_ins_naic!="63290"}</displayWhen>
+			</group>
+			<group labelWidth="400px">
+				<paragragh
+					text="You should also recognize that a policy which has been in existence for a period of time may have certain advantages to you over a new policy. If the policy coverages are basically similar, the premiums for a new policy may be higher because rates increase as your age increases. Under your existing policy, the period of time during which our company could contest the policy because of a material misstatement or omission on your application, or deny coverage for death caused by suicide, may have expired or may expire earlier than it will under the proposed policy. Your existing policy may have options which are not available under the policy being proposed to you or may not come into effect under the proposed policy until a later time during your life. Also, your proposed policy's cash values and dividends, if any, may grow slower initially because the company will incur the cost of issuing your new policy. On the other hand, the proposed policy may offer advantages which are more important to you."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{EFORM.oth_ins_naic=="63290"}</displayWhen>
+			</group>
+			<group labelWidth="400px">
+				<paragragh
+					text="If you are considering borrowing against your existing policy to pay the premiums on the proposed policy, you should understand that in the event of your death the amount of the unpaid loan, including unpaid interest, will be deducted from the benefits of your existing policy thereby reducing your total insurance coverage."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+			<group labelWidth="400px">
+				<paragragh
+					text="After we have received your application and notified the other insurance company, you will have twenty days from the date the proposed policy is delivered to you to cancel the policy issued on your application and receive back all payments you made to us."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{EFORM.oth_ins_naic!="63290"}</displayWhen>
+			</group>
+			<group labelWidth="400px">
+				<paragragh
+					text="After we have issued your policy, you will have twenty days from the date the new policy is delivered to you to cancel the policy issued on your application and receive back all payments you made to us."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{EFORM.oth_ins_naic=="63290"}</displayWhen>
+			</group>
+		</section>
+		<section>
+			<header>CAUTION</header>
+			<group/>
+		</section>
+		<section>
+			<group labelWidth="400px">
+				<paragragh
+					text="If after studying the information made available to you, you decide to replace the existing life insurance with our life insurance policy, you are urged not to take action to terminate or alter your existing life insurance coverage until after you have been issued the new policy, examined it and have found it to be acceptable to you. If you should terminate or otherwise materially alter your existing coverage and fail to qualify for the life insurance for which you have applied, you may find yourself unable to purchase other life insurance or able to purchase it only at substantially higher rates."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+		</section>
+	</page>
+</form>

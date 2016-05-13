@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onSave>prefillData</onSave>
+	<page title='IMPORTANT NOTICE:  REPLACEMENT OF LIFE INSURANCE OR ANNUITIES'>
+		<section>
+			<displayWhen>${CASE.contractLocale == 'PA'}</displayWhen>
+			<group>
+				<header>PENNSYLVANIA</header>
+			</group>
+			<group>
+				<header>NOTICE REGARDING REPLACEMENT OF LIFE INSURANCE AND ANNUITIES</header>
+			</group>
+			<group labelWidth="400px" height="120px" scrollable="true">
+				<paragragh
+					text="You have indicated that you intend to replace existing life insurance or annuity coverage in connection with the purchase of our life insurance or annuity policy. As a result, we are required to send you this notice. Please read it carefully."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="Whether it is to your advantage to replace your existing insurance or annuity coverage, only you can decide. It is in your best interest however, to have adequate information before a decision to replace your present coverage becomes final so that you may understand the essential features of the proposed policy and of your existing insurance or annuity coverage."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="You may want to contact your existing life insurance or annuity company or its agent for additional information and advice or discuss your purchase with other advisors. Your existing company will provide this information to you. The information you receive should be of value to you in reaching a final decision."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="If either the proposed policy or the existing insurance you intend to replace is a participating policy you should be aware that dividends may materially reduce the cost of insurance and are an important factor to consider. Dividends, however, are not guaranteed."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="You should also recognize that a policy which has been in existence for a period of time may have certain advantages to you over a new policy. If the policy coverages are basically similar, the premiums for a new policy may be higher because rates increase as your age increases. Under your existing policy, the period of time during which the issuing company could contest the policy because of a material misrepresentation or omissions concerning the medical information requested in your application, or deny coverage for death caused by suicide, may have expired or may expire earlier than it will under the proposed policy. Your existing policy may have options which are not available under the policy being proposed to you or may not come into effect under the proposed policy until a later time during your life. Also, your proposed policy's cash values and dividends, if any, may grow slower initially because the company will incur the cost of issuing your new policy. On the other hand, the proposed policy may offer advantages which are more important to you."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="If you are considering borrowing against your existing policy to pay the premiums on the proposed policy, you should understand that in the event of your death the amount of the unpaid loan, including unpaid interest, will be deducted from the benefits of your existing policy thereby reducing your total insurance coverage."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="After we have issued your policy, you will have 20 days from the date the new policy is received by you to notify us you are cancelling the policy issued on your application and you will receive back all payments you made to us."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="You are urged not to take action to terminate or alter your existing life insurance or annuity coverage until you have been issued the new policy, examined it and have found it acceptable to you."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+		</section>
+		<section>
+			<header>Replacement Disclosure</header>
+			<group labelWidth="400px">
+				<paragragh
+					text="Completion of this disclosure form is required when replacement of an existing policy is anticipated."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+		</section>
+		<section>
+			<header>Replacement Defined:</header>
+			<group labelWidth="400px">
+				<paragragh
+					text="A transaction in which a new policy or contract is to be purchases, and it is known or should be known to the proposing agent or insurer, that by reason of the transaction, an existing policy or contract has been or is to be: lapsed, forfeited, surrendered or partially surrendered, annuitized, assigned to the replacing insurer or otherwise reduced in value by the use of non-forfeiture benefits or other policy values; amended so as to effect either a reduction in benefits or in the term for which coverage would otherwise remain in force or for which benefits would be paid; reissued with any reduction in cash value; or used in a 'financed purchase.' 'Financed Purchase' means the purchase of a new policy or contract involving the actual or intended use of funds obtained by the withdrawal, surrender of or borrowing from an existing policy or contract to pay all or part of any premium or consideration due to the new policy or contract."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="Fidelity Life Association's definition of internal and external replacements are as follows: An internal replacement is when an existing Fidelity Life Association policy or contract is converted or exchanged for a new Fidelity Life Association policy or contract. An external replacement is when a Fidelity Life Association policy or contract is replaced by another insurer; or a Fidelity Life Association policy or contract replaces a policy or contract of another insurer."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+		</section>
+        <section title="Replaced Policy" repeating="true">
+          <group associated="true">
+            <question id='replaced_policyno' text='Replaced Policy #' labelWidth="150px" type='TEXT' answerWidth="100px;" />
+            <question id='replaced_carrier' text='Insurer' labelWidth="150px" type='TEXT' answerWidth="200px;" />
+            <question id='replaced_date' text='Date' labelWidth="150px" type='TEXT' answerWidth="150px;" />
+          </group>
+        </section>
+		<section>
+			<group labelWidth="400px">
+				<paragragh
+					text="Replacement of an existing policy without comparing the differences in policy provisions is not in the best interest of the applicant."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="The following policy features should be compared before you replace an existing policy(ies):"
+					styleClass="groupParagraph"></paragragh>
+			</group>
+			<group>
+				<paragragh text='
+				* Annual Premium
+				* Duration of guaranteed premium rates
+				* Guaranteed maximum premium rates
+				* Face amounts
+				* Guaranteed death benefit
+				* Guaranteed interest rate 
+				* Conversion features
+				* Guaranteed cash values
+				* Loan provision and loan interest rates
+				* Withdrawal provision
+				* Expense charges
+				* Surrender charges
+				* Tax treatment
+				* Eligibility for exchange or rollover treatment under the Internal Revenue Code
+				* Underwriting classification
+				* Contestability provision
+				* Suicide limitation provision'
+				styleClass="groupParagraph"></paragragh>
+			</group>
+			<group>
+				<paragragh
+					text="Since each replacement transaction involves a different set of facts and issues, no listing of policy provisions will pertain to all situations. The policy provisions listed above are intended to assist in identification of pertinent factors. Any additional factors should be described in the following Producer's Statement section, and discussed with the Applicant."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+		</section>
+		<section title="PRODUCER'S STATEMENT">
+			<group>
+				<paragragh
+					text="I have provided a comparison of policy features to the applicant and recommend replacement. The new policy is more suitable to the customer's needs for the following reasons:"
+					styleClass="groupParagraph"></paragragh>
+				<question id='producer_statement' 
+					labelWidth="450px" type='TEXT' answerWidth="450px;" />
+			</group>
+		</section>
+	</page>
+</form>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<page title="Suitability Important Consideration">
+		<section title="Other Important Considerations">
+			<group>
+				<question id='annuity_years_flsuit' text="12. Approximate number of years you plan to keep this annuity?" type='LISTBOX' answerSet=' : |1|2|3|4|5|6|7|8|9|10+' required="true" labelWidth="400px" answerWidth="100px" tabindex='1'/>
+				<question id='annuity_distributions_flsuit' text="13. Do you anticipate taking Distributions from this annuity? " type='LISTBOX' answerSet=' : |Y:Yes|N:No' required="true" labelWidth="400px" answerWidth="100px" tabindex='2'/>
+				<question id='annuity_distribution_type_flsuit' text="Please check applicable box below" type='CHECKBOX' labelWidth="240px" answerSet='S:Surrender Charge Free|A:Annuitization|P:Partial Withdrawals|G:Guaranteed Lifetime Income Rider|SYS:Systematic Withdrawals|O:Other' tabindex='3'>
+					<displayWhen> #{EFORM.annuity_distributions_flsuit=="Y"} </displayWhen>
+				</question>
+				<question id='annuity_distribution_type_other_flsuit' text="Please Specify Other" type='TEXT' labelWidth="120px" answerWidth="100px" tabindex='4'>
+					<displayWhen> #{EFORM.annuity_distribution_type_flsuit=="O"} </displayWhen>
+				</question>
+				<question id="years_fund_access_flsuit" text="14. How many years from today will you need access to your funds without a penalty?" type="LISTBOX" labelWidth="400px" answerWidth="100px" answerSet=' : |05:0-5 Years from now|67:6-7 Years from now|810:8-10 Years from now|1114:11-14 Years from now|15:15 or more years|No:Do not plan to take distributions' tabindex='5'/>
+			</group>
+		</section>
+		<section title="Owner Acknowledgement">
+			<group associated="true">
+				<question id='owner_sig2_flsuit' text="Owner Signature" type="CHECKBOX" labelWidth="120px" answerWidth="100px" tabindex='6'/>
+				<question id='owner_sig2_date_flsuit' text='Date Signed' type='DATEF' labelWidth="130px" answerWidth="100px" tabindex='7'/>
+			</group>
+		</section>
+	</page>
+</form>

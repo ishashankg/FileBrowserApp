@@ -1,0 +1,25 @@
+
+
+
+RE:  $policyNumber - $correspondenceAppName
+
+Dear $correspondenceOwnerName:
+
+Thank you for selecting Gerber Life for your insurance needs.  We appreciate the opportunity to serve you.
+
+Unfortunately, all the necessary requirements or information needed has not been received. We are therefore closing your application at this time.
+
+Thank you for giving us the opportunity to serve your insurance needs.  If we can be of further assistance, please call us Toll Free at 1-855-265-1979.
+
+$freeForm_RICHTEXT
+
+Sincerely,
+	<GRAPHIC_SIGNATURE>
+
+
+
+Luci Moore
+Underwriting Department
+
+
+

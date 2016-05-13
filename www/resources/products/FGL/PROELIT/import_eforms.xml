@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<eforms>
+	<eform>
+		<file>../eforms/annuitant_info.xml</file>
+		<description>annuitant information</description>
+		<code>ANNUITANT</code>
+		<script>
+			<description>EFORM Scripting Events</description>
+			<file>scripts/PersonScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>../eforms/person_info.xml</file>
+		<description>owner information</description>
+		<code>PERSON</code>
+		<script>
+			<description>EFORM Scripting Events</description>
+			<file>scripts/PersonScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>../eforms/beneficiary_info.xml</file>
+		<description>beneficiary information</description>
+		<code>BENEFICIARY</code>
+		<script>
+			<description>EFORM Scripting Events</description>
+			<file>scripts/BeneficiaryScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>../eforms/authorizations_and_signatures.xml</file>
+		<description>authorization and signatures</description>
+		<code>AUTHORIZATION</code>
+	</eform>
+	<eform>
+		<file>../eforms/replacement.xml</file>
+		<description>Coverage Replacement</description>
+		<code>REPLACEMENT</code>
+	</eform>
+	<eform>
+		<file>../eforms/confirmation_application.xml</file>
+		<description>Application Confirmation</description>
+		<code>CONFIRMATION</code>
+	</eform>
+	<eform>
+		<file>../eforms/suitability_pesron_info.xml</file>
+		<description>Suitability Person Information</description>
+		<code>SUITABILITY_PERSON</code>
+	</eform>
+	<eform>
+		<file>../eforms/suitability_financial_info.xml</file>
+		<description>Suitability Financial Information</description>
+		<code>SUITABILITY_FINANCE</code>
+	</eform>
+	<eform>
+		<file>../eforms/suitability_important_considerations.xml</file>
+		<description>Suitability Important Consideration</description>
+		<code>SUITABILITY_CONSIDERATIONS</code>
+	</eform>
+</eforms>
+</stepImport>

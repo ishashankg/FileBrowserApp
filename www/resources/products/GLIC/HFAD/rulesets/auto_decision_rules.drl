@@ -1,0 +1,24 @@
+import com.stepsoln.core.rules.uw.CaseUwRiskCalcData;
+import com.stepsoln.core.db.enums.AUTO_DECISION_STATUS;
+import com.stepsoln.core.rules.uw.*;
+import com.stepsoln.core.rules.requirements.*;
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Auto Decision ACCEPT"
+	salience 50
+	when
+		CaseUwRiskCalcData(uwStatus in ("ACCEPT","OFFER"),currentUnderwritingClassType not in("TF"))
+		not Requirement(status in( "OPEN", "ERROR"))
+	then
+		rulesResponse.getAutoDecisionResultData().setDecisionResult(AUTO_DECISION_STATUS.ACCEPT);
+		rulesResponse.getAutoDecisionResultData().setTakeFinalAction(true);
+end
+
+rule "Auto Decision DECLINE"
+	when
+		CaseUwRiskCalcData(uwStatus=="DECLINE") or
+		CaseData(caseStatus=="DECLINED")
+	then
+		rulesResponse.getAutoDecisionResultData().setDecisionResult(AUTO_DECISION_STATUS.DECLINE);
+		rulesResponse.getAutoDecisionResultData().setTakeFinalAction(true);
+end

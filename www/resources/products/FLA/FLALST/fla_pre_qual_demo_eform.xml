@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onSave>saveData</onSave>
+	<page title="Pre-Qualification Demographics">
+		<section title="Applicant">
+			<group labelWidth="600px">
+				<question id='ins_citizen'
+					text='Are you a legal U.S. resident and have you resided in the U.S. for more than 2 years?'
+					required='true' type='RADIO' answerSet='Y:Yes|N:No' />
+				<question id='ins_employed' text='Are you currently employed?'
+					required='true' type='RADIO' answerSet='Y:Yes|N:No' />
+			</group>
+			<group>
+				<question id='occupation' size="30" text='Please enter an Occupation: ' type='TEXT'
+					labelWidth="150px" answerWidth="350px;" required="true"
+					autocompleteLookup="merica:occupation">
+				<displayWhen>#{EFORM.ins_employed=="Y"}</displayWhen>
+				</question>
+				<question id='place_of_employment_country'  
+					text='Place of Employment (Country): ' type='LISTBOX' 
+					lookup="step:LOCALE_COUNTRY" defaultValue="US" 
+					answerSet=":Please select a country" labelWidth="150px">
+				<displayWhen>#{EFORM.ins_employed=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="600px">
+				<question id='smoker_ind'
+					text='Have you, within the last 24 months, used any form of Tobacco, Nicotine or Nicotine Products of any kind?'
+					type='RADIO' answerSet='Y:Yes|N:No' required='true' />
+			</group>
+			<group associated="true">
+				<question id='last_tobacco_state' text='What was the last state in which you used: '
+					type='LISTBOX' lookup="step:LOCALE_STATE" answerSet=":Please select a state"
+					labelWidth="150px">
+					<displayWhen>#{EFORM.ins_nicotine=="Y"}</displayWhen>
+				</question>			
+				<question id="last_tobacco_mm" text='When was the last time you used tobacco? Month:' 
+					type='NUMBER' labelWidth="280px;" answerWidth="40px;" required="true" >
+					<displayWhen>#{EFORM.smoker_ind=="Y"}</displayWhen>
+				</question>
+				<question id="last_tobacco_yy" text='Year:' type='NUMBER' answerWidth="70px;" required="true" >
+					<displayWhen>#{EFORM.smoker_ind=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="600px">
+				<question id='ins_physician'
+					text='Have you seen a Physician within the past 5 years?' type='RADIO'
+					answerSet='Y:Yes|N:No' required='true' />
+			</group>
+		</section>
+	</page>
+</form>

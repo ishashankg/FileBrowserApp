@@ -1,0 +1,555 @@
+<map>
+  <entry>
+  	<string>Face Amount</string>
+  	<string>${COVERAGE_OPTIONS.LSTFA?:""}</string>
+  </entry>
+    <entry>
+  	<string>death_benefit</string>
+  	<string>${COVERAGE_OPTIONS.LSTADB1?:""}</string>
+  </entry>
+    <entry>
+  	<string>child_rider_amt</string>
+  	<string>${COVERAGE_OPTIONS.LSTCTR1?: ""}</string>
+  </entry>
+  <entry>
+  	<string>term_period</string>
+  	<string>${COVERAGE_OPTIONS.LSTTERM10 ? '10' : COVERAGE_OPTIONS.LSTTERM15 ? '15' : COVERAGE_OPTIONS.LSTTERM20 ? '20' : COVERAGE_OPTIONS.LSTTERM30 ? '30' : '0'}</string>
+  </entry>
+  <entry>
+	<string>accidental_death</string>
+	<string>${COVERAGE_OPTIONS.LSTADB1 ? '1' : '0'}</string>
+  </entry>
+  <entry>
+	<string>dependent_child</string>
+	<string>${COVERAGE_OPTIONS.LSTCTR1 ? '1' : '0'}</string>
+  </entry>
+  <entry>
+	<string>accelerated_death</string>
+	<string>${COVERAGE_OPTIONS.LSTACD1 ? '1' : '0'}</string>
+  </entry>
+  
+  <entry>
+	<string>existing_coverage</string>
+	<string>${EFORMS.OTHER_COVERAGE.existing_coverage}</string>
+  </entry>
+  <entry>
+	<string>coverage_cancelled</string>
+	<string>${EFORMS.OTHER_COVERAGE.coverage_cancelled}</string>
+  </entry>
+  <entry>
+	<string>oth_ins_company</string>
+	<string>${EFORMS.OTHER_COVERAGE.oth_ins_company}</string>
+  </entry>
+  <entry>
+	<string>oth_ins_face</string>
+	<string>${EFORMS.OTHER_COVERAGE.oth_ins_face}</string>
+  </entry>
+  <entry>
+	<string>oth_ins_year</string>
+	<string>${EFORMS.OTHER_COVERAGE.oth_ins_year}</string>
+  </entry>
+  <entry>
+	<string>other_ins_replace</string>
+	<string>${EFORMS.OTHER_COVERAGE.oth_ins_replace}</string>
+  </entry>
+  <entry>
+	<string>oth_ins_company1</string>
+	<string>${EFORMS.OTHER_COVERAGE.oth_ins_company2___0}</string>
+  </entry>
+  <entry>
+	<string>oth_ins_face1</string>
+	<string>${EFORMS.OTHER_COVERAGE.oth_ins_face2___0}</string>
+  </entry>
+  <entry>
+	<string>oth_ins_year1</string>
+	<string>${EFORMS.OTHER_COVERAGE.oth_ins_year2___0}</string>
+  </entry>
+  <entry>
+	<string>other_ins_replace1</string>
+	<string>${EFORMS.OTHER_COVERAGE.oth_ins_replace2___0}</string>
+  </entry>
+  <entry>
+    <string>oth_ins_company2</string>
+    <string>${EFORMS.OTHER_COVERAGE.oth_ins_company2___1}</string>
+  </entry>
+  <entry>
+    <string>oth_ins_face2</string>
+    <string>${EFORMS.OTHER_COVERAGE.oth_ins_face2___1}</string>
+  </entry>
+  <entry>
+    <string>oth_ins_year2</string>
+    <string>${EFORMS.OTHER_COVERAGE.oth_ins_year2___1}</string>
+  </entry>
+  <entry>
+    <string>other_ins_replace2</string>
+    <string>${EFORMS.OTHER_COVERAGE.oth_ins_replace2___1}</string>
+  </entry>
+  
+  <entry>
+    <string>Full Name</string>
+    <string>${EFORMS.APPLICANT.ins_first_name} ${EFORMS.APPLICANT.ins_middle_name?:""} ${EFORMS.APPLICANT.ins_last_name}</string>
+  </entry>
+  <entry>
+	<string>ins_gender</string>
+	<string>${EFORMS.APPLICANT.ins_gender == '0'? 'FEMALE' : 'MALE'}</string>
+  </entry>
+
+<entry>
+<string>legal_residence_address</string>
+<string>${EFORMS.APPLICANT.legal_residence_address} ${EFORMS.APPLICANT.legal_residence_address_line2?:""} ${EFORMS.APPLICANT.city?:""} ${lookupService.getLookupCode("LOCALE_STATE", EFORMS.APPLICANT.state)} ${EFORMS.APPLICANT.zipcode} </string>
+</entry>
+
+<entry>
+<string>Best_time</string>
+<string>${EFORMS.APPLICANT.best_time?:""} </string>
+</entry>
+
+<entry>
+<string>preffered_phone</string>
+<string>${EFORMS.APPLICANT.preferred_phone}</string>
+</entry>
+
+<entry>
+<string>Alternate_phone</string>
+<string>${EFORMS.APPLICANT.alternate_phone}</string>
+</entry>
+
+<entry>
+<string>ins_email</string>
+<string>${EFORMS.APPLICANT.email_addr}</string>
+</entry>
+	
+<entry>
+<string>ins_date_of_birth</string>
+<string>${EFORMS.APPLICANT.ins_date_of_birth}</string>
+</entry>
+
+
+<entry>
+<string>DL_number</string>
+<string>${EFORMS.APPLICANT.driv_lic_number}</string>
+</entry>
+
+<entry>
+<string>driv_lic_state</string>
+<string>${EFORMS.APPLICANT.driv_lic_state}</string>
+</entry>
+<entry>
+<string>birth_country</string>
+<string>${EFORMS.APPLICANT.place_of_birth_cntry}</string>
+</entry>
+
+<entry>
+<string>Social_security</string>
+<string>${EFORMS.APPLICANT.social_security}</string>
+</entry>
+
+<entry>
+<string>other_owner</string>
+<string>${EFORMS.APPLICANT.other_owner}</string>
+</entry>
+<entry>
+<string>other_mailing_addr</string>
+<string>${EFORMS.APPLICANT.other_mailing_addr}</string>
+</entry>
+<entry>
+<string>secondary_addressee</string>
+<string>${EFORMS.APPLICANT.secondary_addressee}</string>
+</entry>
+
+<entry>
+  <string>Name</string>
+  <string>${EFORMS.OTHER_OWNER.owner_first_name?:""} ${EFORMS.OTHER_OWNER.owner_middle_name?:""} ${EFORMS.OTHER_OWNER.owner_last_name?:""}</string>
+</entry>
+<entry>
+  <string>owner_relation</string>
+  <string>${EFORMS.OTHER_OWNER.null?:""}${lookupService.getLookupDescription("fla,fla_organization", "RELATIONSHIP_TYPE", EFORMS.OTHER_OWNER.owner_relation)}</string>
+</entry>
+<entry>
+  <string>owner_ssn</string>
+  <string>${EFORMS.OTHER_OWNER.owner_ssn}</string>
+</entry>
+<entry>
+  <string>Address</string>
+  <string>${EFORMS.OTHER_OWNER.owner_address} ${EFORMS.OTHER_OWNER.owner_city} ${lookupService.getLookupCode("LOCALE_STATE", EFORMS.OTHER_OWNER.owner_state)} ${EFORMS.OTHER_OWNER.owner_zip} </string>
+</entry>
+<entry>
+  <string>Trust Name</string>
+  <string>${EFORMS.OTHER_OWNER.trust_name} </string>
+</entry>
+
+<entry>
+<string>Secondary_Addressee_Name1</string>
+<string>${EFORMS.ADDITIONAL_MAILING.addressee_first_name?:""} ${EFORMS.ADDITIONAL_MAILING.addressee_middle_name?:""} ${EFORMS.ADDITIONAL_MAILING.addressee_last_name?:""} </string>
+</entry>
+<entry>
+<string>addl_address1</string>
+<string>${EFORMS.ADDITIONAL_MAILING.addressee_addl_address?:""} ${EFORMS.ADDITIONAL_MAILING.addressee_addl_address2?:""} ${EFORMS.ADDITIONAL_MAILING.addressee_addl_city?:""} ${lookupService.getLookupCode("LOCALE_STATE", EFORMS.ADDITIONAL_MAILING.addressee_addl_state?:"")} ${EFORMS.ADDITIONAL_MAILING.addressee_addl_zip?:""} </string>
+</entry>
+<entry>
+<string>Secondary_Addressee_Name2</string>
+<string>${EFORMS.ADDITIONAL_MAILING.ins_first_name?:""} ${EFORMS.ADDITIONAL_MAILING.ins_middle_name?:""} ${EFORMS.ADDITIONAL_MAILING.ins_last_name?:""} </string>
+</entry>
+<entry>
+<string>addl_address2</string>
+<string>${EFORMS.ADDITIONAL_MAILING.ins_addl_address?:""} ${EFORMS.ADDITIONAL_MAILING.ins_addl_address2?:""} ${EFORMS.ADDITIONAL_MAILING.ins_addl_city?:""} ${lookupService.getLookupCode("LOCALE_STATE", EFORMS.ADDITIONAL_MAILING.ins_addl_state?:"")} ${EFORMS.ADDITIONAL_MAILING.ins_addl_zip?:""} </string>
+</entry>
+
+<entry>
+	<string>Primary</string>
+	<string>${caseHelper.getPrimaryBeneficiaries()[0]?.getFullName()}</string>
+</entry>
+<entry>
+	<string>bene_percent</string>
+	<string>${caseHelper.getPrimaryBeneficiaries()[0]?.getPercentage()}</string>
+</entry>
+<entry>
+	<string>bene_relation</string>
+    <string>${lookupService.getLookupDescription("fla,fla_organization", "RELATIONSHIP_TYPE", caseHelper.getPrimaryBeneficiaries()[0]?.getRelationship())}</string>
+</entry>
+<entry>
+	<string>bene_ssn</string>
+	<string>${caseHelper.getPrimaryBeneficiaries()[0]?.getGovernmentId()}</string>
+</entry>
+
+<entry>
+	<string>Primary_2</string>
+	<string>${caseHelper.getPrimaryBeneficiaries()[1] ? caseHelper.getPrimaryBeneficiaries()[1].getFullName() : ''}</string>
+</entry>
+<entry>
+	<string>bene_percent1</string>
+	<string>${caseHelper.getPrimaryBeneficiaries()[1] ? caseHelper.getPrimaryBeneficiaries()[1].getPercentage() : ''}</string>
+</entry>
+<entry>
+	<string>bene_relation1</string>
+	<string>${caseHelper.getPrimaryBeneficiaries()[1] ? lookupService.getLookupDescription("fla,fla_organization", "RELATIONSHIP_TYPE", caseHelper.getPrimaryBeneficiaries()[1]?.getRelationship()) : ''}</string>
+</entry>
+<entry>
+	<string>bene_ssn1</string>
+	<string>${caseHelper.getPrimaryBeneficiaries()[1] ? caseHelper.getPrimaryBeneficiaries()[1].getGovernmentId() : ''}</string>
+</entry>
+
+<entry>
+	<string>Cont</string>
+	<string>${caseHelper.getContingentBeneficiaries()[0] ? caseHelper.getContingentBeneficiaries()[0].getFullName() : ''}</string>
+</entry>
+<entry>
+	<string>bene_percent2</string>
+	<string>${caseHelper.getContingentBeneficiaries()[0] ? caseHelper.getContingentBeneficiaries()[0].getPercentage() : ''}</string>
+</entry>
+<entry>
+	<string>bene_relation2</string>
+	<string>${caseHelper.getContingentBeneficiaries()[0] ? lookupService.getLookupDescription("fla,fla_organization", "RELATIONSHIP_TYPE", caseHelper.getContingentBeneficiaries()[0]?.getRelationship()) : ''}</string>
+</entry>
+<entry>
+	<string>bene_ssn2</string>
+	<string>${caseHelper.getContingentBeneficiaries()[0] ? caseHelper.getContingentBeneficiaries()[0].getGovernmentId() : ''}</string>
+</entry>
+
+<entry>
+<string>proposed_insurer_completing_form</string>
+<string>$EFORMS.MED_REFLEXIVES.proposed_insurer_completing_form</string>
+</entry>
+<entry>
+<string>ins_citizen</string>
+<string>$EFORMS.PRE_QUAL_DEMO.ins_citizen</string>
+</entry>
+<entry>
+<string>ins_employed</string>
+<string>$EFORMS.PRE_QUAL_DEMO.ins_employed</string>
+</entry>
+<entry>
+<string>primary_care_physician</string>
+<string>$EFORMS.MED_REFLEXIVES.primary_care_physician</string>
+</entry>
+<entry>
+<string>ins_physician</string>
+<string>$EFORMS.PRE_QUAL_DEMO.ins_physician</string>
+</entry>
+<entry>
+<string>height_feet</string>
+<string>$EFORMS.APPLICANT.height_feet</string>
+</entry>
+<entry>
+<string>height_inches</string>
+<string>$EFORMS.APPLICANT.height_inches</string>
+</entry>
+<entry>
+<string>weight_pounds</string>
+<string>$EFORMS.APPLICANT.weight_pounds</string>
+</entry>
+<entry>
+<string>weight_change</string>
+<string>$EFORMS.MED_REFLEXIVES.weight_change</string>
+</entry>
+<entry>
+<string>med_q9</string>
+<string>$EFORMS.PRE_QUAL_MED.med_q9</string>
+</entry>
+<entry>
+<string>med_q10</string>
+<string>$EFORMS.PRE_QUAL_MED.med_q10</string>
+</entry>
+<entry>
+<string>med_q11</string>
+<string>${EFORMS.MED_REFLEXIVES.med_q11?:EFORMS.MED_REFLEXIVES.med_q11_CA}</string>
+</entry>
+<entry>
+<string>med_q12</string>
+<string>$EFORMS.PRE_QUAL_MED.med_q9</string>
+</entry>
+<entry>
+<string>med_q13</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q12</string>
+</entry>
+<entry>
+<string>med_q14</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q13</string>
+</entry>
+<entry>
+<string>med_q15</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q14</string>
+</entry>
+<entry>
+<string>med_q16</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q15</string>
+</entry>
+
+<entry>
+<string>med_q17</string>
+<string>$EFORMS.PRE_QUAL_MED.med_q16</string>
+</entry>
+<entry>
+<string>med_q18</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q17</string>
+</entry>
+<entry>
+<string>med_q19</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q18</string>
+</entry>
+<entry>
+<string>med_q20</string>
+<string>$EFORMS.PRE_QUAL_DEMO.smoker_ind</string>
+</entry>
+<entry>
+<string>med_q21</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q20</string>
+</entry>
+<entry>
+<string>med_q22</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q21</string>
+</entry>
+<entry>
+<string>med_q23</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q22</string>
+</entry>
+<entry>
+<string>med_q24</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q23</string>
+</entry>
+<entry>
+<string>med_q25</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q24</string>
+</entry>
+<entry>
+<string>med_q26</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q25</string>
+</entry>
+<entry>
+<string>med_q27</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q26</string>
+</entry>
+<entry>
+<string>med_q28</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q27</string>
+</entry>
+<entry>
+<string>med_q29</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q28</string>
+</entry>
+<entry>
+<string>med_q30</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q29</string>
+</entry>
+<entry>
+<string>med_q31</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q30</string>
+</entry>
+<entry>
+<string>med_q32</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q31</string>
+</entry>
+<entry>
+<string>med_q33</string>
+<string>$EFORMS.MED_REFLEXIVES.med_q32</string>
+</entry>
+<entry>
+<string>med_q34</string>
+<string>$EFORMS.PRE_QUAL_MED.med_q33</string>
+</entry>
+
+<entry>
+	<string>child_full_name1</string>
+	<string>${EFORMS.DEPENDENT.child_first_name1?:""} ${EFORMS.DEPENDENT.child_middle_name1?:""} ${EFORMS.DEPENDENT.child_last_name1?:""}</string>
+</entry>
+<entry>
+	<string>child_gender1</string>
+	<string>${EFORMS.DEPENDENT.child_gender1 == '0' ? 'FEMALE' : 'MALE'}</string>
+</entry>
+<entry>
+	<string>child_date_of_birth1</string>
+	<string>${EFORMS.DEPENDENT.child_date_of_birth1}</string>
+</entry>
+<entry>
+	<string>cMedQ1</string>
+	<string>${EFORMS.DEPENDENT.cMedQ1}</string>
+</entry>
+<entry>
+	<string>cMedQ2</string>
+	<string>${EFORMS.DEPENDENT.cMedQ2}</string>
+</entry>
+<entry>
+	<string>child_full_name2</string>
+	<string>${EFORMS.DEPENDENT.child_first_name2___0?:""} ${EFORMS.DEPENDENT.child_middle_name2___0?:""} ${EFORMS.DEPENDENT.child_last_name2___0?:""}</string>
+</entry>
+<entry>
+	<string>child_gender2</string>
+	<string>${EFORMS.DEPENDENT.child_gender2___0 ? (EFORMS.DEPENDENT.child_gender2___0 == '0' ? 'FEMALE' : 'MALE') : ""}</string>
+</entry>
+<entry>
+	<string>child_date_of_birth2</string>
+	<string>${EFORMS.DEPENDENT.child_date_of_birth2___0}</string>
+</entry>
+<entry>
+	<string>child_full_name3</string>
+	<string>${EFORMS.DEPENDENT.child_first_name2___1?:""} ${EFORMS.DEPENDENT.child_middle_name2___1?:""} ${EFORMS.DEPENDENT.child_last_name2___1?:""}</string>
+</entry>
+<entry>
+	<string>child_gender3</string>
+	<string>${EFORMS.DEPENDENT.child_gender2___1 ? (EFORMS.DEPENDENT.child_gender2___1 == '0' ? 'FEMALE' : 'MALE') : ""}</string>
+</entry>
+<entry>
+	<string>child_date_of_birth3</string>
+	<string>${EFORMS.DEPENDENT.child_date_of_birth2___1}</string>
+</entry>
+ 
+<entry>
+<string>agQues1</string>
+<string>${EFORMS.AG_ATTEST.ag_ques1}</string>
+</entry>
+
+<entry>
+<string>agQues2</string>
+<string>${EFORMS.AG_ATTEST.ag_ques2}</string>
+</entry>
+
+<entry>
+<string>ag_full_name</string>
+<string>${EFORMS.AG_ATTEST.ag_first_name?:""} ${EFORMS.AG_ATTEST.ag_last_name?:""}</string>
+</entry>
+
+<entry>
+<string>ag_ID</string>
+<string>${EFORMS.AG_ATTEST.ag_id}</string>
+</entry>
+
+<entry>
+<string>ga_ID</string>
+<string>${EFORMS.AG_ATTEST.ga_id}</string>
+</entry>
+
+<entry>
+<string>st_License_Num</string>
+<string>${EFORMS.AG_ATTEST.st_license_num}</string>
+</entry>
+<entry>
+<string>ag_Email</string>
+<string>${EFORMS.AG_ATTEST.ag_email}</string>
+</entry>
+<entry>
+<string>ag_Contact</string>
+<string>${EFORMS.AG_ATTEST.ag_contact}</string>
+</entry>
+<entry>
+<string>agent_signature</string>
+<string>Electronically Signed By: ${EFORMS.AG_ATTEST.ag_first_name?:""} ${EFORMS.AG_ATTEST.ag_last_name?:""}</string>
+</entry>
+
+<entry>
+	<string>insuredname</string>
+	<string>${EFORMS.APPLICANT.ins_first_name} ${EFORMS.APPLICANT.ins_middle_name?:""} ${EFORMS.APPLICANT.ins_last_name}</string>
+</entry>
+<entry>
+	<string>dateofbirth</string>
+	<string>${EFORMS.APPLICANT.ins_date_of_birth}</string>
+</entry>
+
+<entry>
+	<string>payment_mode</string>
+	<string>${PAYMENT.PMTMODE}</string>
+</entry>
+<entry>
+	<string>payment_method</string>
+	<string>${PAYMENT.PMTMETHOD}</string>
+</entry>
+<entry>
+	<string>amount_paid</string>
+	<string>${PAYMENT.PMTAMOUNT}</string>
+</entry>
+<entry>
+	<string>bank_name</string>
+	<string>${PAYMENT.PMTBANKNAME}</string>
+</entry>
+<entry>
+	<string>routing_no</string>
+	<string>${PAYMENT.PMTROUTINGNO}</string>
+</entry>
+<entry>
+	<string>account_no</string>
+	<string>${PAYMENT.PMTACCOUNTNO}</string>
+</entry>
+<entry>
+	<string>cc_type</string>
+	<string>${PAYMENT.PMTCCTYPE}</string>
+</entry>
+<entry>
+	<string>cc_no</string>
+	<string>${caseHelper.getMaskedCCNumber(PAYMENT.PMTCCNO)}</string>
+</entry>
+<entry>
+	<string>cc_date</string>
+	<string>${PAYMENT.PMTCCEXPDATE}</string>
+</entry>
+<entry>
+	<string>payor_name</string>
+	<string>${PAYMENT.PMTPAYORNAME}</string>
+</entry>
+<entry>
+  <string>signed_at</string>
+  <string>${caseHelper.getSignatureCity("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED")?:''}, ${caseHelper.getSignatureState("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED")?:''}</string>
+</entry> 
+<entry>
+  <string>signed_by</string>
+  <string>${caseHelper.insertSignature("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED", "%s")}</string>
+</entry> 
+<entry>
+  <string>insuredsignature</string>
+  <string>${caseHelper.insertSignature("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED", "Electronically Signed By:%s")}</string>
+</entry> 
+<entry>
+  <string>dated</string>
+  <string>${caseHelper.getSignatureDate("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED")}</string>
+</entry>
+	<entry>
+		<string>a-1</string>
+		<string>${EFORMS.APPLICANT.ins_first_name} ${EFORMS.APPLICANT.ins_middle_name?:""} ${EFORMS.APPLICANT.ins_last_name}</string>
+	</entry>
+	<entry>
+		<string>a-2</string>
+		<string>${CASE.policyNo?CASE.policyNo:"Not available"}</string>
+	</entry>
+	<entry>
+		<string>a-3</string>
+		<string>${caseHelper.getMericaStatementsTextBlock(STATEMENTS['PRIMARY_INSURED'])}</string>
+	</entry>
+</map>

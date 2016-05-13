@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="sendToOu" name="Send To OU" isExecutable="true">
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <scriptTask id="scripttask1" name="Load Task" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>execution.setVariable("timerDuration",
+				com.stepsoln.core.util.DateUtil.daysFromNowMidnightAsISODuration(5));
+				execution.setVariable("PRC_CASE_ID", execution.getVariable("caseId"));
+				execution.setVariable("PRC_CARRIER_ID", execution.getVariable("carrierId"));
+                            execution.setVariable("PRC_PRODUCT_ID", execution.getVariable("productId"));
+				
+
+caseNumber = execution.getVariable("caseNo");    
+			if(null == caseNumber){
+				caseNumber = stepWorkflowServices.getCurrentCase(execution).getExternalCaseNumber();
+				execution.setVariable('caseNo',caseNumber );
+			} 
+</script>
+    </scriptTask>
+    <userTask id="usertask1" name="Review Task">
+    <extensionElements>
+        <activiti:taskListener event="create" expression="#{stepWorkflowServices.selectOUUserRoundRobin(execution, 'SUITABILITY')}"></activiti:taskListener>
+        <activiti:taskListener event="create" expression="#{stepWorkflowServices.ensureCaseId(execution)}"></activiti:taskListener>
+        <activiti:taskListener event="create" class="com.stepsoln.core.workflow.activiti.AssignCaseToOUTaskListener"></activiti:taskListener>
+        <activiti:taskListener event="create" expression="#{stepWorkflowServices.logCaseActivity(execution, 'Suitability Officer task started', 'suitability_started', 'SVC')}"></activiti:taskListener>
+        <activiti:taskListener event="assignment" expression="#{stepWorkflowServices.logCaseActivity(execution, 'Suitability Officer task assigned', 'suitability_assigned', 'SVC')}"></activiti:taskListener>
+        <activiti:taskListener event="complete" expression="#{stepWorkflowServices.logCaseActivity(execution, 'Suitability Officer task completed', 'suitability_complete', 'SVC')}"></activiti:taskListener>
+      </extensionElements>
+      </userTask>
+    <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="scripttask1"></sequenceFlow>
+    <sequenceFlow id="flow2" sourceRef="scripttask1" targetRef="usertask1"></sequenceFlow>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <sequenceFlow id="flow3" sourceRef="usertask1" targetRef="endevent1"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_sendToOu">
+    <bpmndi:BPMNPlane bpmnElement="sendToOu" id="BPMNPlane_sendToOu">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="70.0" y="160.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask1" id="BPMNShape_scripttask1">
+        <omgdc:Bounds height="55.0" width="105.0" x="170.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask1" id="BPMNShape_usertask1">
+        <omgdc:Bounds height="55.0" width="105.0" x="320.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="470.0" y="160.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="105.0" y="177.0"></omgdi:waypoint>
+        <omgdi:waypoint x="170.0" y="177.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="275.0" y="177.0"></omgdi:waypoint>
+        <omgdi:waypoint x="320.0" y="177.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="425.0" y="177.0"></omgdi:waypoint>
+        <omgdi:waypoint x="470.0" y="177.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

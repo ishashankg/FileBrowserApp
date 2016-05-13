@@ -1,0 +1,102 @@
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<chartOfAccounts>
+    <account>
+        <accountNumber>130111</accountNumber>
+        <category>LIABILITY</category>
+        <description>Cash Value</description>
+        <type>CASH_VALUE</type>
+    </account>
+    <account>
+        <accountNumber>90011</accountNumber>
+        <category>ASSET</category>
+        <description>Premium Income</description>
+        <type>PREMIUM_INCOME</type>
+    </account>
+    <account>
+        <accountNumber>150011</accountNumber>
+        <category>ASSET</category>
+        <description>Payment of Cash Into System</description>
+        <type>CASH</type>
+    </account>
+    <account>
+        <accountNumber>120111</accountNumber>
+        <category>LIABILITY</category>
+        <description>Tax to be paid to Federal /State Govt</description>
+        <type>COMMISSION</type>
+    </account>
+    <account>
+        <accountNumber>110011</accountNumber>
+        <category>ASSET</category>
+        <description>Premium Suspense</description>
+        <type>PREMIUM_SUSPENSE</type>
+    </account>
+    <account>
+        <accountNumber>140011</accountNumber>
+        <category>ASSET</category>
+        <description>Policy Reserve</description>
+        <type>RESERVE</type>
+    </account>
+    <account>
+        <accountNumber>160011</accountNumber>
+        <category>LIABILITY</category>
+        <description>Tax to be paid to Federal /State Govt</description>
+        <type>TAX</type>
+    </account>
+    <account>
+        <accountNumber>46111</accountNumber>
+        <category>EXPENSES</category>
+        <description>Maintenance Expenses</description>
+        <type>EXPENSE</type>
+    </account>
+	<account>
+        <accountNumber>46121</accountNumber>
+        <category>EXPENSES</category>
+        <description>Maintenance Expenses 2</description>
+        <type>EXPENSE</type>
+    </account>
+    <account>
+        <accountNumber>46131</accountNumber>
+        <category>ASSET</category>
+        <description>Premium Unearned</description>
+        <type>PREMIUM_UNEARNED</type>
+    </account>
+    <account>
+        <accountNumber>46141</accountNumber>
+        <category>ASSET</category>
+        <description>Premium Earned</description>
+        <type>PREMIUM_EARNED</type>
+    </account>
+    <account>
+        <accountNumber>46151</accountNumber>
+        <category>ASSET</category>
+        <description>Cash Suspense</description>
+        <type>CASH_SUSPENSE</type>
+    </account>
+    <account>
+        <accountNumber>46161</accountNumber>
+        <category>ASSET</category>
+        <description>Admin</description>
+        <type>ADMIN</type>
+    </account>
+    
+ 	<account>
+        <accountNumber>46171</accountNumber>
+        <category>ASSET</category>
+        <description>Advance Commission</description>
+        <type>ADVANCE_COMMISSION</type>
+    </account>
+     <account>
+        <accountNumber>46181</accountNumber>
+        <category>ASSET</category>
+        <description>Commission Earned</description>
+        <type>COMMISSION_EARNED</type>
+    </account>
+     <account>
+        <accountNumber>46191</accountNumber>
+        <category>ASSET</category>
+        <description>Agent</description>
+        <type>AGENT</type>
+    </account>
+    
+</chartOfAccounts>
+</stepImport>

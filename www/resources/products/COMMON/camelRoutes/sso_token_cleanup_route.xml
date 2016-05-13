@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+	<route id="ssoTokenCleanup" shortName="ssoCleanup">
+		<from uri="quartz://ssoCleanupTimer?cron=0+0+5+1/1+*+?+*" />
+		<to uri="direct://cleanUpSsoTokens" />
+	</route>
+
+	<route id="cleanUpSsoTokens">
+		<from uri="direct://cleanUpSsoTokens" />
+		<to uri="bean:ssoTokenCleanupProcessor" />
+	</route>
+</routes>

@@ -1,0 +1,70 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.EformCode;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.db.services.util.EmployeeUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.Requirement
+import rules.*;
+import java.util.*;
+import com.stepsoln.core.rules.requirements.BeneficiaryData
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+
+rule "Accept and agree to the terms and conditions"
+	when
+		not Question(id=="accept_terms");
+	then		
+		rulesResponse.addRequired("Accept and agree to the terms and conditions is required. ", "FULL_HIPAA");
+end
+
+rule "Electronically signed by"
+	when
+		not Question(id=="ins_sign")
+	then		
+		rulesResponse.addRequired("Signature of the proposed Insured is required. ", "FULL_HIPAA");
+end
+
+rule "Signed at City"
+	when 
+		not Question(id=="ins_city")
+	then		
+		rulesResponse.addRequired("Signed at City is required. ", "FULL_HIPAA");
+end
+
+rule "Signed at State"
+	when
+		not Question(id=="ins_state")
+	then		
+		rulesResponse.addRequired("Signed at State is required. ", "FULL_HIPAA");
+end
+
+rule "Signed date"
+	when
+		not Question(id=="ins_date")
+	then		
+		rulesResponse.addRequired("Signed date is required. ", "FULL_HIPAA");
+end
+
+rule "Case cannot be under agent revision"
+	when
+		a:CaseData(caseStatus in ('STARTED'))
+	then
+		rulesResponse.addRequired("Application cannot be signed at this time. Contact your agent for more information. ", "FULL_HIPAA");
+end
+
+rule "Electronic signature matches name"
+	when
+		Question(id=="ins_sign", $signature:answerAsString)
+		Question(id=="ins_first_name", $first:answerAsString) 
+		Question(id=="ins_last_name", $last:answerAsString)
+	then
+		if (!$signature.equalsIgnoreCase($first + " " + $last))
+		{
+			rulesResponse.addRequiredOnce("Electronic signature must match the first name and last name of insured. ", "FULL_HIPAA");
+		}
+end

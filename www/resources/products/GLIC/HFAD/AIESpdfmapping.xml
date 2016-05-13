@@ -1,0 +1,42 @@
+<map>
+  <entry>
+    <string>AIES First Name</string>
+    <string>${CASE.otherOwnerApplicant.firstName}</string>
+  </entry>
+  <entry>
+    <string>AIES Last Name</string>
+    <string>${CASE.otherOwnerApplicant.lastName}</string>
+  </entry>
+  <entry>
+    <string>AIES Middle Init</string>
+    <string>${CASE.otherOwnerApplicant.middleName ? CASE.otherOwnerApplicant.middleName.substring(0,1) : ""}</string>
+  </entry>
+  <entry>
+  	<string>AIES Relation to Insured</string>
+  	<string>${EFORMS.OWNER_AUTH.owner_relationship ? lookupService.getLookupDescription("glic", "RELATIONSHIP_TYPE", EFORMS.OWNER_AUTH.owner_relationship) : ""}</string>
+  </entry>
+  <entry>
+    <string>AIES Address</string>
+    <string>${CASE.otherOwnerApplicant.primaryAddress.addressLine1} ${CASE.otherOwnerApplicant.primaryAddress.addressLine2 ?: ""} ${CASE.otherOwnerApplicant.primaryAddress.addressLine3 ?: ""}</string>
+  </entry>
+  <entry>
+    <string>AIES City</string>
+    <string>${EFORMS.OWNER_AUTH.owner_city}</string>
+  </entry>
+  <entry>
+    <string>AIES State</string>
+    <string>${EFORMS.OWNER_AUTH.owner_residence_state}</string>
+  </entry>
+  <entry>
+    <string>AIES Zip</string>
+    <string>${EFORMS.OWNER_AUTH.owner_zip}</string>
+  </entry>
+  <entry>
+    <string>AIES Future Owner</string>
+    <string>${EFORMS.OWNER_AUTH.future_owner}</string>
+  </entry>
+  <entry>
+    <string>AIES Future Owner Info</string>
+    <string>${EFORMS.OWNER_AUTH.future_owner_info}</string>
+  </entry>
+</map>

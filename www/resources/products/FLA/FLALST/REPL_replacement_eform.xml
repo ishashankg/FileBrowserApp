@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillData</onLoad>
+  <page>
+    <section>
+      <displayWhen>${CASE.contractLocale == 'WY'}</displayWhen>
+      <header>WYOMING NOTICE</header>
+      <group/>
+    </section>    
+    <section>
+      <displayWhen>${CASE.contractLocale == 'WY'}</displayWhen>
+      <header>ASK QUESTIONS - IT'S YOUR MONEY - GET THE FACTS</header>
+      <group/>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale == 'UT'}</displayWhen>
+      <group>
+        <header>UTAH NOTICE</header>
+      </group>
+    </section>
+    <section>
+      <group>
+        <paragragh
+            text="Whether it is to your advantage to replace or change your existing insurance or annuity program, only you can decide. It is in your best interest to obtain adequate information in order to compare relatively short and long range costs and benefits before a final decision is made."
+            styleClass="groupParagraph" />
+        <paragragh
+            text="The agent or insurance company assisting you with this new purchase must notify your existing agent or company so that they may prepare a detailed, current statement concerning your existing program for your comparison."
+            styleClass="groupParagraph" />
+      </group>
+    </section>
+    <section title='Existing Insurance' repeating='true'>
+      <header>EXISTING INSURANCE WHICH MAY BE REPLACED OR CHANGED</header>
+      <group associated="true" labelWidth="250px" >
+        <question id='replaced_carrier' text="Full Name of Insurance Company Including Home Office Location" type='TEXT' answerWidth="200px;"/>
+        <question id='replaced_policyno' text="Policy or Contract Number*" type='TEXT' answerWidth="200px;"/>
+        <question id='replaced_insured' text="Insured" type='TEXT' answerWidth="200px;"/>
+      </group>
+      <group>
+        <paragragh
+            text="* If a number has not been assigned by the existing insurer, indicate alternative identification, such as an application or receipt number."
+            styleClass="groupParagraph" />
+      </group>
+    </section>
+    <section title='ITEMS TO CONSIDER'>
+      <group>
+        <paragragh
+            text="1. Due to a possible change in insurability status (health, occupation or high risk recreational activities) you might be denied new coverage, or the premium may be higher than a standard premium."
+            styleClass="groupParagraph" />
+        <paragragh
+            text="2. The Incontestability and Suicide Clause time periods would probably begin anew in a new policy. This could possibly result in a claim being denied that might otherwise have been paid under an existing policy or contract."
+            styleClass="groupParagraph" />
+        <paragragh
+            text="3. Your present insurance company may be able to modify your existing plan on terms which may be more favorable for you than replacing it with a new policy or contract."
+            styleClass="groupParagraph" />
+        <paragragh
+            text="4. Don't terminate or alter your existing policy until after the new policy has been delivered to you and accepted by you."
+            styleClass="groupParagraph" />
+        <paragragh
+            text="5. REMEMBER: Following receipt of a new life insurance policy or annuity contract you should immediately examine its contents. If you are not satisfied with it for any reason, you have the right to return it within the twenty (20) day &quot;examination period&quot; to the insurer at its home office or branch office or to the agent through whom it was purchased, for a full refund of premium. If you do not return the policy or contract, you should request a dated receipt indicating that it was returned."
+            styleClass="groupParagraph" />
+      </group>
+    </section>
+  </page>
+</form>

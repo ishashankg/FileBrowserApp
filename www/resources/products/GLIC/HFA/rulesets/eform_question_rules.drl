@@ -1,0 +1,11 @@
+import com.stepsoln.core.eform.Question;
+
+rule "Aviation Exclusion Question"
+	when
+		q:Question(externalId=="52000")
+	then
+		//q.setDefaultValue("52002");
+		//q.setReadonly("true");
+		q.setAnswerSet(":Please Choose...|52002:No");
+		
+end

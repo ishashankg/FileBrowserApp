@@ -1,0 +1,82 @@
+<style>
+h2 { 
+	color:#0e3166 
+}
+.returnLink {
+	color: #0e3166;
+}
+.breadcrumb a{
+	color:#0e3166;
+}
+.ui-steps.mainflow-custom .ui-steps-item .ui-menuitem-link {
+	height: 15px !important;
+}
+.ui-steps.subflow-custom .ui-steps-item .ui-menuitem-link {
+ 	height: 10px !important;
+}
+.ui-steps.mainflow-custom .ui-state-highlight {
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #ffffff #ffffff !important;
+}
+.ui-steps.subflow-custom .ui-state-highlight {
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #ffffff #ffffff !important;
+}
+.ui-steps.mainflow-custom .ui-state-disabled {
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #ffffff #ffffff !important;
+	opacity:1 !important;
+}
+.ui-steps.subflow-custom .ui-state-disabled {
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #ffffff #ffffff !important;
+	opacity:1 !important;
+}
+.ui-steps.mainflow-custom .ui-state-default {
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #ffffff #ffffff !important;
+	opacity:1 !important;
+}
+.ui-steps.subflow-custom .ui-state-default {
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #ffffff #ffffff !important;
+	opacity:1 !important;
+}
+.ui-steps-title {
+	font-style: normal;
+	font-size: 16px;
+	font-weight: bold;
+	color: #6092B4;
+	text-align: center;
+	word-wrap: normal;
+	text-wrap: normal;
+}
+.ui-steps-number {
+	display:none !important;
+}
+.ui-datatable-tablewrapper th {
+	background: #003F7E !important;
+	border-right-color : #003F7E !important;
+}
+.ui-button, .ui-tabs-nav li.ui-tabs-selected, .ui-paginator-first, .ui-paginator-last, .ui-paginator-prev, 
+.ui-paginator-next, .ui-datepicker-header, 
+.ui-paginator-page, .ui-paginator-rpp-options {
+	background: #003F7E !important;	
+}
+
+.ui-tabs-nav li.ui-state-hover, button.ui-state-hover, .ui-paginator .ui-state-active, .ui-paginator .ui-state-hover,
+th.ui-state-default.ui-sortable-column.ui-state-active{
+	background: #14ADA4 !important;	
+}
+
+.ui-autocomplete-panel .ui-autocomplete-group{
+	background: #003F7E !important;
+	color: normal white !important;
+} 
+</style>

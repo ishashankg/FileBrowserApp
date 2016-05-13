@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Merica>
+	<Map>
+		<!-- Term Level Life -->
+		<Item>
+			<StepPlanCode>LSTTL</StepPlanCode>
+			<MericaProduct>
+				<Id>Lifestory</Id>
+				<Name>Lifestory</Name>
+				<Rider></Rider>
+			</MericaProduct>
+		</Item>
+		
+		<!-- LifeStory Policy Fee -->
+		<Item>
+			<StepPlanCode>LSTPOLFEE</StepPlanCode>
+			<MericaProduct>
+				<Id>Lifestory</Id>
+				<Name>Lifestory</Name>
+				<Rider></Rider>
+			</MericaProduct>
+		</Item>
+		
+		<!-- LifeStory Premium Increase -->
+		<Item>
+			<StepPlanCode>LSTPREMIUM</StepPlanCode>
+			<MericaProduct>
+				<Id>Lifestory</Id>
+				<Name>Lifestory</Name>
+				<Rider></Rider>
+			</MericaProduct>
+		</Item>
+
+		<!-- Dependent Child Rider -->
+		<Item>
+			<StepPlanCode>LSTCTR1</StepPlanCode>
+			<MericaProduct>
+				<Id>CB</Id>
+				<Name>Child Benefit</Name>
+				<Rider>Lifestory</Rider>
+			</MericaProduct>
+		</Item>
+
+		<!-- Accidental Death Benefit Rider -->
+		<Item>
+			<StepPlanCode>LSTADB1</StepPlanCode>
+			<MericaProduct>
+				<Id>ADB</Id>
+				<Name>ADB</Name>
+				<Rider>Lifestory</Rider>
+			</MericaProduct>
+		</Item>
+
+	</Map>
+</Merica>

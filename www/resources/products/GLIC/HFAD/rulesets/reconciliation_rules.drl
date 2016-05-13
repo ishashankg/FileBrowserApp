@@ -1,0 +1,105 @@
+import com.stepsoln.core.rules.uw.CaseUwMedicalConditionGroupRulesFact
+import com.stepsoln.core.rules.uw.CaseUwMibData
+import com.stepsoln.core.rules.uw.ReconciliationRulesResponse
+import com.stepsoln.core.rules.RulesResponse;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.ArrayUtils;
+import rules.*;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "1 Auto-reconcile MIFs less than 4"
+salience 100
+	when
+		data:CaseUwMedicalConditionGroupRulesFact(null!=mif && mif<4)
+		response:ReconciliationRulesResponse()
+	then
+		response.getMedicalConditionIdsToBeAutoReconciled().addAll(data.getCaseUwMedicalConditionIds());
+		//response.getMedicalConditionsRemarks().put(data, "Low MIF.");
+		response.recordInvocation(1, data);
+end
+
+rule "2 RTU if MIFs are 4 or 5 for newer than 3 years conditions and there is no matching admitted or UW medical condition"
+salience 80
+	when
+		data:CaseUwMedicalConditionGroupRulesFact( null!=mif &&(mif in (4,5)) && autoreconciliatinoStatus!="SUCCESSFUL" && null!=periodSinceSubmitDate && periodSinceSubmitDate.getYears()<3 && !ICD10CodeEmpty)
+		response:ReconciliationRulesResponse()
+	then
+		response.getMedicalConditionsUwAction().put(data, "RTU");
+		//response.getMedicalConditionsRemarks().put(data, "MIF is 4 or 5 for newer than 3 years not reconciled Medical Condition(s)");
+		response.setCaseUnderwriterAction("RTU");
+		response.recordInvocation(2, data);
+end
+
+rule "3.1 Remark if MIFs 4 and 5 for  3 years or older conditions"
+salience 120
+	when
+		$response:ReconciliationRulesResponse()
+		data:CaseUwMedicalConditionGroupRulesFact( null!=mif && (mif in (4,5)) && null!=periodSinceSubmitDate && periodSinceSubmitDate.getYears()>=3 && periodSinceSubmitDate.getMillis()>=0 
+			&& !ICD10CodeEmpty)
+	then
+		//$response.getMedicalConditionsRemarks().put(data, "Medium MIF. Duration exceeded.");
+		$response.recordInvocation(31,data);
+end
+
+rule "3.2 Auto-reconcile if MIFs 4 and 5 for  3 years or older conditions"
+salience 110
+	when
+		$response:ReconciliationRulesResponse()
+		data:CaseUwMedicalConditionGroupRulesFact( null!=mif && (mif in (4,5)) && null!=periodSinceSubmitDate && periodSinceSubmitDate.getYears()>=3 && periodSinceSubmitDate.getMillis()>=0 
+			&& !ICD10CodeEmpty && !CollectionUtils.containsAny($response.getMedicalConditionIdsToBeNotReconciled(), caseUwMedicalConditionIds) )
+	then
+		$response.getMedicalConditionIdsToBeAutoReconciled().addAll(data.getCaseUwMedicalConditionIds());
+		$response.recordInvocation(32,data);
+end
+
+rule "4 RTU if MIFs are > 5 for Medical Condition and there is no matching admitted or UW medical condition"
+salience 130
+	when
+		response:ReconciliationRulesResponse()
+		data:CaseUwMedicalConditionGroupRulesFact( null!=mif && mif>5 && autoreconciliatinoStatus!="SUCCESSFUL" && !ICD10CodeEmpty)
+	then
+		response.getMedicalConditionsUwAction().put(data, "RTU");
+		//response.getMedicalConditionsRemarks().put(data, "MIF is > 5 for not reconciled Medical Condition(s)");
+		response.getMedicalConditionIdsToBeNotReconciled().addAll(data.getCaseUwMedicalConditionIds());
+		response.setCaseUnderwriterAction("RTU");
+		response.recordInvocation(4,data);
+end
+
+rule "5 RTU Medical Condition when it has empty ICD10"
+salience 100
+	when
+		data:CaseUwMedicalConditionGroupRulesFact(ICD10CodeEmpty)
+		response:ReconciliationRulesResponse()
+	then
+		response.getMedicalConditionsUwAction().put(data,"RTU");
+		if (null!=data.getMif() && data.getMif()>3)
+			response.getMedicalConditionIdsToBeNotReconciled().addAll(data.getCaseUwMedicalConditionIds());
+		response.setCaseUnderwriterAction("RTU");
+		response.recordInvocation(5,data);
+end
+
+//NON-MEDICAL CONDITION RULES
+
+//comment out this rule because it is default behavior implemented, i.e. mib condition is auto-reconciled by default,disregarding of code value or mif
+//rule "6 Auto-reconcile MIF<=10 and MIB code starts with 0"
+//	when
+//		data:CaseUwMibData( (null!=mif && mif<=10) && null!=MIBCode && MIBCode.startsWith("0"))
+//		response:ReconciliationRulesResponse()
+//	then
+//		response.recordInvocation(6,data);
+//end
+
+rule "7 RTU case when MIF>10 and MIB code starts with 0"
+salience 100
+	when
+		data:CaseUwMibData(null!=mif && mif>10 && null!=MIBCode && MIBCode.startsWith("0"))
+		response:ReconciliationRulesResponse()
+	then
+		response.getMibReportDetailIdsToBeNotReconciled().add(data.getCaseUwMibDetailId());
+		response.getMibReportsUwAction().put(data.getCaseUwMibId(),"RTU");
+		//response.getMibReportsRemarks().put(data, "MIF>10 for 0-MIB code");
+		response.setCaseUnderwriterAction("RTU");
+		response.recordInvocation(7,data);
+end

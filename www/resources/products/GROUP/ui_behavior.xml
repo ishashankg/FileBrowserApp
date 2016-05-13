@@ -1,0 +1,39 @@
+<behavior>
+	<function name="GET_OCCUPATION">
+      <actionType>GROOVY</actionType>
+      <actionName>IAC_CARRIER_GROOVY_UTILS</actionName>
+      <description>getOccupation</description>
+      <actionMethod>getOccupation</actionMethod>  
+      <returnClassName>java.lang.String</returnClassName>    
+    </function>
+    <function name="GET_MARITAL_STATUS">
+      <actionType>GROOVY</actionType>
+      <actionName>IAC_CARRIER_GROOVY_UTILS</actionName>
+      <description>getMaritalStatus</description>
+      <actionMethod>getMaritalStatus</actionMethod>  
+      <returnClassName>java.lang.String</returnClassName>    
+    </function>
+     <function name="GET_GENDER">
+      <actionType>GROOVY</actionType>
+      <actionName>IAC_CARRIER_GROOVY_UTILS</actionName>
+      <description>getGender</description>
+      <actionMethod>getGender</actionMethod>  
+      <returnClassName>java.lang.String</returnClassName>    
+    </function>
+    <function name="CaseList.gotoCaseDetails">
+		<ouClass>UW</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/underwriting/uw_workbench</actionName>
+		<description>Go to underwriter workbench</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="taskId" value="#{param['taskId']}"/>	
+		<param name="ouId" value="#{param['ouId']}"/>	
+	</function>
+	<function name="CustomService.processKnockout">
+      <actionType>JAVA</actionType>
+      <actionName>com.stepsoln.core.db.services.custom.GerberCustomCaseService</actionName>
+      <actionMethod>processKnockout</actionMethod>  
+      <param name="case" value="com.stepsoln.core.db.cases.Case"/>
+      <param name="knockOutReasonCode" value="java.lang.String"/>
+    </function>
+</behavior>

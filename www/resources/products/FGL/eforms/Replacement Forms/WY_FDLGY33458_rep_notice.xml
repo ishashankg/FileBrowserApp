@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section style="margin-left:0px">
+			<group labelWidth="400px">
+				<paragragh
+          text="Whether it is to your advantage to replace or change your existing insurance or annuity program, only you can decide. It
+is in your best interest to obtain adequate information in order to compare relatively short and long range costs and benefits before a final decision is made. The producer or insurance company assisting you with this new purchase must notify your existing producer or company
+so that they may prepare a detailed, current statement concerning your existing program for your cooperation. Statements and illustrations should not, however, be used as the sole basis to compare policies or contracts. We want you to understand the effects of replacements before you make your purchase decision, and ask that you review the statements listed under “Items to Consider.”">
+				</paragragh>
+			</group>     
+		</section>  
+		<section style="margin-left:0px">
+			<group associated="true">
+				<question id='insurance_company' text='Insurance Company' type='TEXT' labelWidth="120px"
+          answerWidth="110px" required="true" labelStyle='margin-left:8px' tabindex ='1' />  
+				<question id='policy_number' text='Policy Number (*)'
+          required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:20px' tabindex ='4'/>
+
+			</group>
+			<group associated="true">
+				<question id='insurance_company_address1' text='Address Line1' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='2'/>
+				<question id='insured_name' text='Name of Insured' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:20px' tabindex ='5'/>
+			</group>
+			<group associated="true">
+				<question id='insurance_company_address2' text='Address Line2' labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='3'/>         
+			</group>
+			<group style='font-weight: bold'>   
+				<footer>*If a number has not been assigned by the existing insurer, indicate alternative identification, such as an application or receipt number.</footer>
+			</group>
+			<group associated="true" style='margin-top:15px'>
+				<question id='surrender_charge_percent' text='Surrender charge of Policy being replaced (in%)' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='6'/>
+				<question id='surrender_charge_amount' text='(in $)' type='TEXT' labelWidth="120px" answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='7' />        
+			</group>
+			<group associated="true">
+				<question id='sales_charge' text='Sales Charges (in $)' labelWidth="120px" type='TEXT' answerWidth="100px" labelStyle='margin-left:8px' tabindex ='8'/>				           
+			</group>			
+		</section>		
+		<section title="New Surrender Period and Surrender Charges of Policy Being Purchased" style="margin-left:0px">
+			<group associated="true">
+				<question id='year' text='Year' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='9'/>
+				<question id='percentage' text='% Charge' type='TEXT' labelWidth="120px" answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='10' />
+			</group>
+		</section>
+		<section name="Years and Charges" repeating="true" style="margin-left:0px">
+			<group associated="true">
+				<question id='year1' text='Year' required="true" labelWidth="120px" type='TEXT' answerWidth="100px" labelStyle='margin-left:8px' tabindex ='11'/>
+				<question id='percentage1' text='% Charge' type='TEXT' labelWidth="120px" answerWidth="100px" required="true" labelStyle='margin-left:20px' tabindex ='12' />        
+			</group>
+		</section>		
+		<section title="Items to Consider" style="border:1px solid black margin-left:0px">		
+			<group labelWidth="500px">
+				<paragragh
+          text="1. Due to a possible change is insurability status (health, occupation or high risk recreational activities), you might be
+denied new coverage, or the premium may be higher than a standard premium."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="500px">
+				<paragragh
+          text="2. The Incontestability and Suicide Clause time periods would probably begin anew in a new policy. This could possibly
+result in a claim being denied that might otherwise have been paid under an existing policy or contract."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="500px">
+				<paragragh
+          text="3. Your present insurance company may be able to modify your existing plan on terms which may be more favorable for
+you than completely replacing it with a new policy or contract."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="500px">
+				<paragragh
+          text="4. Don’t terminate or alter your existing policy until after the new policy has been delivered to you and accepted by you."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="500px">
+				<paragragh
+          text="5. If you terminate your existing policy, you may incur surrender charges and/or penalties. The new policy you are
+purchasing may have a new surrender charge period and/or sales charges."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="500px">
+				<paragragh
+          text="6. There may be tax consequences in replacing an existing policy. Is there a benefit from favourable “grandfathered”
+treatment of the old policy under the federal tax code? Is this transaction as “tax free” exchange? See your tax
+advisor or specific tax advice regarding the proposed transaction."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="500px">
+				<paragragh
+          text="7. Take your time in making your decision about purchasing the new policy. Gather all information about the new policy
+and compare it to your old policy. Remember, you do not have to make a decision during the first meeting with your
+sales person."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="500px">
+				<paragragh
+          text="8. Remember: Following receipt of a new life insurance policy or annuity contract, you should immediately examine its
+contents. If you are not satisfied with it for any reason, you have the right to return it within the thirty (30) day
+“examination period” to the insurer at its home office or branch office or to the producer through whom it was
+purchased, for a full refund of premium. If you do return the policy or contract, you should request a dated receipt
+indicating that it was returned."
+          styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>
+		
+		<section style="margin-left:0px">
+			<group style='margin-top:5px'>
+				<question id='items_to_consider_confirmation' text="Did you read the “Items to Consider”?" type='RADIO'
+          required="true"  labelWidth="260px" labelStyle='margin-left:8px' answerSet="Y:Yes|N:No" tabindex ='13'/>  
+			</group>  
+		</section>
+		<section style="margin-left:0px">
+			<displayWhen>#{EFORM.items_to_consider_confirmation=="Y"}</displayWhen>
+			<group style='margin-top:5px' associated="True">
+				<question id='applicant_signature' text="Applicant Signature" type='CHECKBOX' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='14'/>  
+				<question id='applicant_signature_date' text="Date" type='DATEF' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='15'/>
+			</group> 
+			<group associated="True">
+				<question id='producer_signature' text="Producer Signature" type='CHECKBOX' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='16'/>  
+				<question id='producer_signature_date' text="Date" type='DATEF' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='17'/>
+			</group> 				
+			<group associated="True">
+				<question id='applicant_name' text="Applicant Name" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='18'/>  
+				<question id='producer_name' text="Producer Name" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='24'/>
+			</group>
+			<group associated="True">
+				<question id='applicant_address1' text="Applicant Address Line1" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='19'/>  
+				<question id='producer_address1' text="Producer Address Line1" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='25'/>
+			</group>			
+			<group associated="True">
+				<question id='applicant_address2' text="Applicant Address Line2" type='TEXT'  answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='20'/>  
+				<question id='producer_address2' text="Producer Address Line2" type='TEXT'  answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='26'/>
+			</group>
+			<group associated="True">
+				<question id='applicant_city' text="Applicant City" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='21'/>  
+				<question id='producer_city' text="Producer City" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='27'/>
+			</group>			
+			<group associated="True">
+				<question id='applicant_state' text="Applicant State" type='LISTBOX' lookup="step:US_LOCALE_STATE" answerSet=":Please select..|Unknown:Not Applicable" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='22'/>  
+				<question id='producer_state' text="Producer State" type='LISTBOX' lookup="step:US_LOCALE_STATE" answerSet=":Please select..|Unknown:Not Applicable" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='28'/>
+			</group>
+			<group associated="True">
+				<question id='applicant_zip' text="Applicant Zip" type='TEXT'  answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='23'/>  
+				<question id='producer_zip' text="Producer Zip" type='TEXT'  answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='29'/>
+			</group>
+		</section>
+	</page>
+</form>

@@ -1,0 +1,33 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import com.stepsoln.core.rules.uw.*;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.coverages.*;
+import java.math.BigDecimal;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Standard requirements for this product #1"
+when
+		CaseData()
+		form:RequirementForm(code in ('APPPART1','MED_REFLEXIVES','OTHER_COVERAGE','BENEFICIARY','ASRRF'));
+then
+    	form.setRequired(true);
+    	rulesResponse.addToRuleFiredList(1);
+end
+
+rule "Add DEPENDENT if coverage option ULIFECTR1 is selected"
+	when
+		CoverageOption(selected==true, optionCode=="ULIFECTR1")
+		form:RequirementForm(code=='DEPENDENT');
+    then
+       	form.setRequired(true);
+end
+
+rule "Keep DEPENDENT requirement when there are no CoverageOption data in rulefacts"
+	when
+		not CoverageOption()
+		form:RequirementForm(code=='DEPENDENT');
+    then
+       	form.setCancelRequirementWhenNotRequired(false);
+end

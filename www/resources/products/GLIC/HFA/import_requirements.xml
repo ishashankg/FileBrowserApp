@@ -1,0 +1,1850 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<requirements>
+    <requirement>
+        <requirementCode>EXM</requirementCode>
+        <requirementType>EXT_SERVICE</requirementType>
+        <requirementGroup>UW</requirementGroup>
+        <resolver>ORDER_REQ</resolver>
+        <requirementDescription>Exam</requirementDescription>
+		<securityFunction>lab_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+				<requirementLocale></requirementLocale>
+                <formCode>PARA</formCode>
+                <formDescription>Paramedic Exam  </formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+			</requirementForm>
+			<requirementForm>
+				<requirementLocale></requirementLocale>
+                <formCode>I102MEMO</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>I102 Paramed Memo </formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+			</requirementForm>
+			<requirementForm>
+                <formCode>HOS</formCode>
+                <formDescription>Collect Urine Sample</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+            </requirementForm>
+            <requirementForm>
+                <formCode>LABU</formCode>
+                <formDescription>Urinalysis</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+            </requirementForm>
+			<requirementForm>
+				<requirementLocale></requirementLocale>
+                <formCode>A1C</formCode>
+                <formDescription>A1C Blood Test </formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+				<requirementLocale></requirementLocale>
+                <formCode>BLOOD</formCode>
+                <formDescription>Regular Blood Draw </formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+				<requirementLocale></requirementLocale>
+                <formCode>LABB</formCode>
+                <formDescription>Blood Labwork </formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+				<requirementLocale></requirementLocale>
+                <formCode>LABPSA</formCode>
+                <formDescription>PSA Blood Test </formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+				<requirementLocale></requirementLocale>
+                <formCode>PROBNP</formCode>
+                <formDescription>NTProBNP Blood Test </formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+				<requirementLocale></requirementLocale>
+                <formCode>EKG</formCode>
+                <formDescription>EKG</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+            <requirementForm>
+                <formCode>APS</formCode>
+                <formDescription>Attending Physician Statement</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+            </requirementForm>
+			<requirementForm>
+                <formCode>APSMEMO</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>APS/PIL Memo</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+            </requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>IIR</requirementCode>
+		<requirementGroup>UW</requirementGroup>
+		<requirementDescription>Inspection Report     </requirementDescription>
+		<securityFunction>phi_interview_requirements</securityFunction>
+		<requirementForms>
+			<requirementForm>
+				<formCode>AM</formCode>
+				<formDescription>Inspection Report</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>OBTAINIIR</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>BGC</formCode>
+				<formDescription>Background Check</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>CRM</formCode>
+				<formDescription>Criminal Activity Report Recvd</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>PIL</requirementCode>
+		<requirementGroup>UW</requirementGroup>
+		<requirementDescription>MAAS Report PIL</requirementDescription>
+		<securityFunction>phi_interview_requirements</securityFunction>
+		<requirementForms>
+			<requirementForm>
+				<formCode>2157</formCode>
+				<formDescription>ADHD PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2156</formCode>
+				<formDescription>Albinism PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2147</formCode>
+				<formDescription>Amniofluid PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2155</formCode>
+				<formDescription>Anemia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2154</formCode>
+				<formDescription>Aniridia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2153</formCode>
+				<formDescription>Aortic Stenosis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2152</formCode>
+				<formDescription>Aortic Valve Defect PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2151</formCode>
+				<formDescription>Arrhythmia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2150</formCode>
+				<formDescription>Arthritis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2149</formCode>
+				<formDescription>Arthrogryposis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2148</formCode>
+				<formDescription>ASD PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2146</formCode>
+				<formDescription>Asthma PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2145</formCode>
+				<formDescription>Autism PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2144</formCode>
+				<formDescription>Avascular Necrosis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2143</formCode>
+				<formDescription>Back/Neck/Shoulder PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2141</formCode>
+				<formDescription>Bicuspid Aortic Valve PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2140</formCode>
+				<formDescription>Blood Clot PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2189</formCode>
+				<formDescription>Cholesterol PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2219</formCode>
+				<formDescription>Diet PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2202</formCode>
+				<formDescription>Disability PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2215</formCode>
+				<formDescription>Exostosis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2184</formCode>
+				<formDescription>Hemangioma PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2185</formCode>
+				<formDescription>Hemoglobin Disorder PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2186</formCode>
+				<formDescription>Hemolytic Anemia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2187</formCode>
+				<formDescription>Hemophilia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2188</formCode>
+				<formDescription>Hernia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2190</formCode>
+				<formDescription>Hirschsprung's PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2192</formCode>
+				<formDescription>Hydronephrosis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2191</formCode>
+				<formDescription>Hypertension PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2193</formCode>
+				<formDescription>Hypoglycemia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2240</formCode>
+				<formDescription>Hyperthyroidism PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2194</formCode>
+				<formDescription>Ichthyosis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2195</formCode>
+				<formDescription>Irregular Heartbeat PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2197</formCode>
+				<formDescription>Juvenile Arthritis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2198</formCode>
+				<formDescription>Kidney Disorder PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2199</formCode>
+				<formDescription>Kidney Reflux PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2200</formCode>
+				<formDescription>Laryngomalacia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2201</formCode>
+				<formDescription>Lead Poisoning PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2203</formCode>
+				<formDescription>Lyme Disease PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2204</formCode>
+				<formDescription>Lymphedema PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2183</formCode>
+				<formDescription>Medical Records Fee</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2205</formCode>
+				<formDescription>Meningitis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2206</formCode>
+				<formDescription>Mental Retardation PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2207</formCode>
+				<formDescription>Migraine PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2211</formCode>
+				<formDescription>Mitral Valve Prolapse PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2208</formCode>
+				<formDescription>Multicystic Kidney PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2209</formCode>
+				<formDescription>Multiple Sclerosis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2210</formCode>
+				<formDescription>Muscular Dystrophy PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2212</formCode>
+				<formDescription>Neurofibromatosis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2213</formCode>
+				<formDescription>Ocular Motor Apraxia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2214</formCode>
+				<formDescription>One Kidney PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2216</formCode>
+				<formDescription>Osteogenesis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2217</formCode>
+				<formDescription>Parkinson's Disease PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2218</formCode>
+				<formDescription>PDA PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2220</formCode>
+				<formDescription>Platelet Disorder PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2221</formCode>
+				<formDescription>Pneumothorax PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2222</formCode>
+				<formDescription>Premature PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2223</formCode>
+				<formDescription>Proctitis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2142</formCode>
+				<formDescription>Prostate PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2224</formCode>
+				<formDescription>Pulmonary Stenosis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2225</formCode>
+				<formDescription>QT Syndrome PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2226</formCode>
+				<formDescription>Reactive Airway Disease PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2227</formCode>
+				<formDescription>Respiratory Disorder PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2228</formCode>
+				<formDescription>Rheumatoid Arthritis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2229</formCode>
+				<formDescription>Scoliosis PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2230</formCode>
+				<formDescription>Seizure PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2231</formCode>
+				<formDescription>Septicemia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2139</formCode>
+				<formDescription>Sickle Cell PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2232</formCode>
+				<formDescription>Sickle Cell PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2233</formCode>
+				<formDescription>Sleep Apnea PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2234</formCode>
+				<formDescription>Speech Language Delay PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2235</formCode>
+				<formDescription>SVT PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2236</formCode>
+				<formDescription>Tachycardia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2238</formCode>
+				<formDescription>Thalassemia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2196</formCode>
+				<formDescription>Thrombocytopenia PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2239</formCode>
+				<formDescription>Thyroid PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2241</formCode>
+				<formDescription>Tourette's Syndrome PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2237</formCode>
+				<formDescription>Tracheo-Esophageal Fistula PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2242</formCode>
+				<formDescription>Treacher Collins PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2243</formCode>
+				<formDescription>Tricuspid Valve Regurgitation PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2244</formCode>
+				<formDescription>Tumor/Polyp/Cancer PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2245</formCode>
+				<formDescription>Ulcer PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2246</formCode>
+				<formDescription>Urinary Reflux PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2247</formCode>
+				<formDescription>Vascular Disease PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2248</formCode>
+				<formDescription>Von Willebrand's PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2249</formCode>
+				<formDescription>VSD PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2250</formCode>
+				<formDescription>Water on Kidneys PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>2251</formCode>
+				<formDescription>Wolf Parkinson White PIL</formDescription>
+				
+			</requirementForm>
+			<requirementForm>
+				<formCode>PILMEMO</formCode>
+				<formDescription>APS PIL Memo</formDescription>
+				
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>FRE</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>File Review after Final Action</requirementDescription>
+		<securityFunction>document_upload</securityFunction>
+		<requirementForms>
+			<requirementForm>
+                <formCode>REVIEWREQ</formCode>
+                <formDescription>File Review after Final Action</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>NDL</requirementCode>
+		<requirementType>OTHER</requirementType>
+		<requirementGroup>NB</requirementGroup>
+		<requirementDescription>No Driver License</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+		<requirementForms>
+			<requirementForm>
+				<formCode>DLICNONE</formCode>
+				<formDescription>No Driver License</formDescription>
+				<responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>AAT</requirementCode>
+        <requirementGroup>APPLICATION</requirementGroup>
+        <requirementDescription>Producer Certification</requirementDescription>
+		<securityFunction>agent_attestation</securityFunction>
+        <requirementForms>
+			<requirementForm>
+                <formCode>APPPART5</formCode>
+                <formDescription>Part 5 - Producer Certification</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>AGENT_ATTESTATION</formEformCode>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>APP</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementDescription>Application   </requirementDescription>
+		<securityFunction>application_pdf</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>FILLAPPPDF</formCode>
+                <formDescription>Viewable Final Application</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>FILLAPPPDF</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>ACK</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementDescription>Acknowledgement</requirementDescription>
+		<securityFunction>acknowledgements</securityFunction>
+        <requirementForms>
+			<requirementForm>
+                <formCode>APPPART4</formCode>
+                <formDescription>Part 4 - Acknowledgement</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>APPLICANT_AUTHORIZATION</formEformCode>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>OWN</requirementCode>
+        <requirementGroup>APPLICATION</requirementGroup>
+        <requirementDescription>Owner Authorization  </requirementDescription>
+		<securityFunction>acknowledgements</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+			<requirementForm>
+                <formCode>OWNEREFORM</formCode>
+                <formDescription>Owner Authorization  </formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>OWNEFORM</formWorkflow>
+				<formEformCode>OWNER_AUTH</formEformCode>
+				
+			</requirementForm>	
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>FHP</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementDescription>HIPAA</requirementDescription>
+		<securityFunction>case_auth</securityFunction>
+        <requirementForms>
+			<requirementForm>
+                <formCode>FULLHIPAAPDF</formCode>
+                <formDescription>Full HIPAA authorization   </formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>FULL_HIPAA</formEformCode>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIP</requirementCode>
+        <requirementGroup>APPLICATION</requirementGroup>
+        <requirementDescription>Authorization</requirementDescription>
+		<securityFunction>case_auth</securityFunction>
+        <requirementForms>
+			<requirementForm>
+                <formCode>APPPART2</formCode>
+                <formDescription>Part 2 - Authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>AUTHORIZATION</formEformCode>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>FCRA</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementDescription>Fair Credit Reporting Act</requirementDescription>
+		<securityFunction>case_auth</securityFunction>
+        <requirementForms>
+			<requirementForm>
+                <formCode>FCRA</formCode>
+                <formDescription>Fair Credit Reporting Act</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>FCRA</formEformCode>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale>NY</requirementLocale>
+        <requirementCode>R60</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementDescription>Regulations 60-NY Replace</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPREG60</formCode>
+                <formDescription>Regulations 60-NY Replace</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>FTPDROP</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>AUT</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Medical Authorization</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+			     <formCode>APPLICANTAUT</formCode>
+			     <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Medical Authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>SIG</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementDescription>Redo Signature </requirementDescription>
+		<securityFunction>redo_signature_requirement</securityFunction>
+        <requirementForms>
+            <requirementForm>
+			     <formCode>REDOSIGINSURE</formCode>
+                <formDescription>Redo Signature - Insured</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>ESIGINSURE</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+			     <formCode>REDOSIGOWNER</formCode>
+                <formDescription>Redo Signature - Owner</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>ESIGOWNER</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>REC</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementDescription>Replacement Forms to Carrier  </requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>REPLACE</formCode>
+                <formDescription>Replacement Forms to Carrier</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>FTPDROP</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>REP</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementDescription>Replacement Notice Received  </requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>REPLACERCVD</formCode>
+                <formDescription>Replacement Notice Received</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>REPLACERCVD</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>UBD</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementType>CORRESPONDENCE</requirementType>
+        <requirementDescription>Base Decline Notify</requirementDescription>
+		<securityFunction>uw_tasks</securityFunction>
+        <requirementForms>
+		<requirementForm>
+                <formCode>PSTDECLINE</formCode>
+                
+                <formDescription>Privacy-Base Decline Notify</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+            <requirementForm>
+                <formCode>MIBPDECLINE</formCode>             
+                <formDescription>Privacy-Decline Notify-MIB</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>CMPDECLINE</formCode>
+                <formDescription>Compact-Base Decline Notify  </formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+            <requirementForm>
+                <formCode>MIBDECLINE</formCode>
+                <formDescription>Base Decline Notify - MIB</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>UCO</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementType>CORRESPONDENCE</requirementType>
+        <requirementDescription>Close-out Notification</requirementDescription>
+		<securityFunction>uw_tasks</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>UWCLOSEOUT</formCode>
+                <formDescription>Close-out Notification</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>UWPCLOSE</formCode>
+                <formDescription>Privacy-Close-out Notification</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>UTSCLOSEOUT</formCode>
+                <formDescription>UTS Close-out Notify</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>UTSPCLOSE</formCode>
+                <formDescription>UTS Privacy-Close-out Notify</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>UWAPSCLOSEOUT</formCode>
+                <formDescription>Close-out Notification for APS</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>UWPAPSCLOSE</formCode>
+                <formDescription>Privacy Close-out Notification for APS</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>UWAPPCLOSEOUT</formCode>
+                <formDescription>Close-out Notification for Applicant</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>UWPAPPCLOSE</formCode>
+                <formDescription>Privacy Close-out Notification for Applicant</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>UDW</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Privacy-Base Decrease Notify</requirementDescription>
+		<securityFunction>uw_tasks</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>UWDECREASE</formCode>
+                <formDescription>Privacy-Base Decrease Notify</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>URD</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Privacy-Rider Decline Notify</requirementDescription>
+		<securityFunction>uw_tasks</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>UWRDECLINE</formCode>
+                <formDescription>Privacy-Rider Decline Notify</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>USS</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementType>CORRESPONDENCE</requirementType>
+        <requirementDescription>Base Rated-Sub Notify</requirementDescription>
+		<securityFunction>uw_tasks</securityFunction>
+        <requirementForms>
+			<requirementForm>
+                <formCode>UWRATED</formCode>
+                <requirementType>OTHER</requirementType>  <!-- This is overwritten to OTHER because it has no correspondence templates -->
+                <formDescription>Base Rated-Sub Notify</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+            <requirementForm>
+                <formCode>UWPRATED</formCode>
+                <formDescription>Privacy-Base Rated-Sub Notify</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>MIBRATED</formCode>
+                <formDescription>Base Rated-Sub Notify-MIB</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>MIBPRATED</formCode>
+                <formDescription>Privacy Rated-Sub Notify-MIB</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+        <requirementLocale></requirementLocale>
+        <requirementCode>CRR</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Credit Bureau Report</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>ORDERCRR</formCode>
+                <formDescription>Credit Bureau Report</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>OBTAINCRR</formWorkflow>
+				
+            </requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>CKP</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Copy of Check</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>GETCHECKIMG</formCode>
+                <formDescription>Copy of Check </formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>GETCHECKIMG</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PAI</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Phone Applicant Interview</requirementDescription>
+		<securityFunction>phi_interview_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>PHONEAPP</formCode>
+                <formDescription>Phone Applicant Interview</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>PHONEAPP</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>FRD</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Suspected Fraud</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>FRAUDNOTE</formCode>
+                <formDescription>suspected Fraud Discovered</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>FRAUDNOTE</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>FTF</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Face to Face Applicant Intervw</requirementDescription>
+		<securityFunction>phi_interview_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPFTFREQ</formCode>
+                <formDescription>Face to Face Applicant Intervw</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPFTFREQ</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>UNW</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Phone Message Received</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>PHONERECVD</formCode>
+                <formDescription>Underwriting</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>PHONERECVD</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>IUW</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Increase Prior to Final Action</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>INCRSREQ</formCode>
+                <formDescription>Increase Prior to Final Action</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>INCRSREQ</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>QU2</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Additional Follow-up Questions</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>ADDTNLQU</formCode>
+                <formDescription>Additional Follow-up Questions</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>ADDTNLQU</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>MSD</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementDescription>Missing Data-Incomplete App</requirementDescription>
+		<securityFunction>paper_app</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>MISSINGD</formCode>
+                <formDescription>Missing Data-Incomplete App</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>MISSINGD</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>UTSMISSINGD</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>UTS Missing Data-Incmplete App</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>MISSINGD</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>RML</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Return Mail-Undeliverable</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>RETRNDUSPS</formCode>
+                <formDescription>Return Mail-Undeliverable</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>RETRNDUSPS</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>SIU</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Special Investigation Notice</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>SIUNOTE</formCode>
+                <formDescription>Special Investigation Notice</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>SIUNOTE</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>SPC</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Special Handling-Underwriting</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>SPECUW</formCode>
+                <formDescription>Special Handling-Underwriting</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>SPECUW</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>SUM</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>APS Summary</requirementDescription>
+		<securityFunction>medical_underwriting_requirements</securityFunction>
+		<requirementForms>
+            <requirementForm>
+                <formCode>APSSUMUW</formCode>
+                <formDescription>APS Summary</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APSSUMUW</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>AMD</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Amendment</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+		<requirementForms>
+            <requirementForm>
+                <formCode>AMENDAPP</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Amendment to Insured</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>AMENDOWN</formCode>
+                <formDescription>Amendment to Owner</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>ICCAMENDAPP</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>ICC09 Amendment to Insured</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>ICCAMENDOWN</formCode>
+                <formDescription>ICC09 Amendment to Owner</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>AMI</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Additional Medical Info</requirementDescription>
+		<securityFunction>medical_underwriting_requirements</securityFunction>
+		<requirementForms>
+            <requirementForm>
+                <formCode>ADDTNLMED</formCode>
+                <formDescription>Additional Medical Info-USPS</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>ADDTNLMED</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>CNF</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Confidential Lab Results</requirementDescription>
+		<securityFunction>lab_requirements</securityFunction>
+		<requirementForms>
+            <requirementForm>
+                <formCode>CNFDLAB</formCode>
+                <formDescription>Confidential Lab Results</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>CNFDLAB</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>WDC</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Applicant Asking Why Decline</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+		<requirementForms>
+            <requirementForm>
+                <formCode>WDCSUMUW</formCode>
+                <formDescription>Applicant Asking Why Decline</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>WDCSUMUW</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>MWS</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementType>EXT_SERVICE</requirementType>
+        <resolver>ORDER_REQ</resolver>
+        <requirementDescription>MIB 3rd Party Call</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>MIB3RDPARTY</formCode>
+                <formDescription>MIB 3rd Party Call</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>MIB3RDPARTY</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>MIB</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>MIB Disclosure</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>MIBREPORT</formCode>
+                <formDescription>MIB Disclosure</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>MIBDISCLOS</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>RXD</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementType>EXT_SERVICE</requirementType>
+        <resolver>ORDER_REQ</resolver>
+        <requirementDescription>Rx Database</requirementDescription>
+		<securityFunction>medical_underwriting_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>RX3RDPARTY</formCode>
+                <formDescription>Ingenix 3rd Party Call</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>RX3RDPARTY</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>IIX</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementType>EXT_SERVICE</requirementType>
+        <resolver>ORDER_REQ</resolver>
+        <requirementDescription>MVR 3rd Party Call</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>IXX3RDPARTY</formCode>
+                <formDescription>Motor Vehicle Report</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>IIX3RDPARTY</formWorkflow>
+				
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>MVR</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementType>EXT_SERVICE</requirementType>       
+        <requirementDescription>Motor Vehicle Report</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>CORRMVR</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Motor Vehicle Report</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>MVREPORT</formWorkflow>
+				
+			</requirementForm>
+			<requirementForm>
+                <formCode>ORDERMVR</formCode>
+                <formDescription>Order Motor Vehicle Report</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>UW</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>ATT</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementType>EXT_SERVICE</requirementType>
+        <resolver>ORDER_REQ</resolver>
+        <requirementDescription>Attus Report</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>ATTUS3RDPARTY</formCode>
+                <formDescription>ATTUS 3rd Party Call</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>ATTUS3RDPARTY</formWorkflow>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT1</requirementCode>
+        <requirementGroup>APPLICATION</requirementGroup>
+        <requirementDescription>Application Part 1</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART1</formCode>
+                <formDescription>Part 1 - Personal Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>PERSON</formEformCode>
+								
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT3</requirementCode>
+        <requirementGroup>APPLICATION</requirementGroup>
+        <requirementDescription>Application Part 3</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART3</formCode>
+                <formDescription>Part 3 - Medical-Replacement</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REFLEXIVE</formEformCode>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PAPERAPP</requirementCode>
+        <requirementGroup>PAPER</requirementGroup>
+        <requirementDescription>Paper Application</requirementDescription>
+		<securityFunction>paper_app</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>PAPERAPP</formCode>
+                <formDescription>Paper Application</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>HFA_PAPER_APP</formEformCode>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PAPERAUTH</requirementCode>
+        <requirementGroup>APPLICATION</requirementGroup>
+        <requirementDescription>Paper Auth Ack</requirementDescription>
+		<securityFunction>paper_app</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>PAPERAUTH</formCode>
+                <formDescription>Paper Auth Ack</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>HFA_PAPER_AUTH</formEformCode>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>BRE</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementDescription>Replacement Correspondence(1)</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>BRELETTER1</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Replacement</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+			</requirementForm>
+			<requirementForm>
+                <formCode>DLVR1EX1</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Replacement</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+			</requirementForm>
+			<requirementForm>
+                <formCode>DLVR1EX2</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Replacement</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+			</requirementForm>
+			<requirementForm>
+                <formCode>DLVR1APPCOPY</formCode>
+                <formDescription>Replacement</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+			</requirementForm>
+			<requirementForm>
+                <formCode>UWREPL</formCode>
+                <formDescription>Replacement - UW</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>UW</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>BR2</requirementCode>
+		<requirementGroup>NB</requirementGroup>
+		<requirementDescription>Replacement Correspondence(2)</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+		<requirementForms>
+			<requirementForm>
+				<formCode>BRELETTER2</formCode>
+				<requirementType>CORRESPONDENCE</requirementType>
+				<formDescription>Replacement</formDescription>
+				<responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+			</requirementForm>
+			<requirementForm>
+				<formCode>DLVR2EX1</formCode>
+				<requirementType>CORRESPONDENCE</requirementType>
+				<formDescription>Replacement</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+			</requirementForm>
+			<requirementForm>
+				<formCode>DLVR2EX2</formCode>
+				<requirementType>CORRESPONDENCE</requirementType>
+				<formDescription>Replacement</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+			</requirementForm>
+			<requirementForm>
+				<formCode>DLVR2APPCOPY</formCode>
+				<formDescription>Replacement</formDescription>
+				<responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+			</requirementForm>
+			<requirementForm>
+                <formCode>UWREPL2</formCode>
+                <formDescription>Replacement - UW</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>UW</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>R03</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+        <requirementDescription>Replacement V103</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>NOTICEV103</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Notice to Carrier</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+			</requirementForm>
+			<requirementForm>
+                <formCode>FORMV103RPL</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Replacement Form to Carrier</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>RNA</requirementCode>
+		<requirementGroup>NB</requirementGroup>
+		<requirementDescription>Agent FTF Replacement</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+		<requirementForms>
+			<requirementForm>
+				<formCode>FTFREPLNOTA</formCode>
+				<requirementType>CORRESPONDENCE</requirementType>
+				<formDescription>External Agent FTF Replace</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>NCO</requirementCode>
+		<requirementGroup>NB</requirementGroup>
+		<requirementType>CORRESPONDENCE</requirementType>
+		<requirementDescription>Close-out on AutoDecline</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+		<requirementForms>
+			<requirementForm>
+				<formCode>NBCLOSEOUT</formCode>			
+				<formDescription>Close on AutoDecline</formDescription>
+				<responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+			</requirementForm>
+			<requirementForm>
+				<formCode>NBPCLOSE</formCode>
+				<formDescription>Privacy-Close on AutoDecline</formDescription>
+				<responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+			</requirementForm>
+		</requirementForms>
+	</requirement>					
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>ACO</requirementCode>
+		<requirementGroup>NB</requirementGroup>
+		<requirementDescription>Compliance AutoDecline</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+		<requirementForms>			
+			<requirementForm>	
+				<formCode>AUTODECLINE</formCode>
+				<requirementType>CORRESPONDENCE</requirementType>
+				<formDescription>Compliance AutoDecline</formDescription>
+				<responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>APPDELIVER</formWorkflow>
+			</requirementForm>		
+		</requirementForms>
+	</requirement>	
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>ALF</requirementCode>
+		<requirementGroup>NB</requirementGroup>
+		<requirementType>INT_SERVICE</requirementType>
+		<resolver>ALPHA_SEARCH</resolver>
+		<requirementDescription>Alpha Search Web Service</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+		<requirementForms>			
+            <requirementForm>
+				<requirementLocale></requirementLocale>
+                <formCode>ALPHASRCH</formCode>
+                <formDescription>Alpha Search Web Service</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+			</requirementForm>            
+		</requirementForms>
+	</requirement>	
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>COG</requirementCode>
+        <requirementGroup>UW</requirementGroup>
+        <requirementDescription>Cognitive Interview</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>COGNITIVE</formCode>
+                <formDescription>Cognitive Interview</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement> 
+    	<requirementLocale></requirementLocale>
+		<requirementCode>JIT</requirementCode>
+		<requirementGroup>NB</requirementGroup>
+		<requirementType>OTHER</requirementType>
+		<requirementDescription>Just in Time License</requirementDescription>
+		<securityFunction>case_requirements</securityFunction> 
+		<requirementForms> 
+			<requirementForm> 
+				<formCode>JITLICENSE</formCode> 
+				<formDescription>Just in Time License</formDescription> 
+				<responseRequired>false</responseRequired> 
+				<signatureRequired>false</signatureRequired> 
+				<formWorkflow></formWorkflow> 
+			</requirementForm> 
+		</requirementForms> 
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>DSC</requirementCode>
+		<requirementGroup>UW</requirementGroup>
+		<requirementDescription>Applicant Disclosure</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+		<requirementForms>			
+            <requirementForm>
+				<requirementLocale></requirementLocale>
+                <formCode>DSCONAPP</formCode>
+                <formDescription>Disclose on Application</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+			</requirementForm>            
+		</requirementForms>
+	</requirement>	
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>NVA</requirementCode>
+		<requirementGroup>NB</requirementGroup>
+		<requirementType>OTHER</requirementType>
+		<requirementDescription>No Valid Address</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+		<requirementForms>
+			<requirementForm>
+				<formCode>INVALIDADDR</formCode>
+				<formDescription>No Valid Address</formDescription>
+				<responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+</requirements>
+
+
+</stepImport>

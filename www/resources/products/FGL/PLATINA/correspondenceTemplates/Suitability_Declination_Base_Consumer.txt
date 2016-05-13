@@ -1,0 +1,24 @@
+$currentDate
+
+$agentFirstName $agentLastName
+$agentAddressLines
+$agentCityStateZip 
+
+RE:	Application #:			$policyNumber
+	Annuitant/Insured:		$annuitantFirstName $annuitantLastName 
+	Date of Application:	$appSubmitDate
+
+
+Dear $agentFirstName $agentLastName,
+
+We regret to inform you that the annuity application for the above referenced applicant is being declined.  We are refunding the applicant’s money, or if applicable, we have cancelled the 1035 exchange and/or returning funds to the replaced insurance company.
+We regret this action is necessary. The information provided on the applicant’s Suitability Acknowledgement Form, including any additional information we may have obtained from you in doing our suitability evaluation, does not appear to establish a reasonable basis for determining that this annuity is suitable for the applicant.  This doesn’t mean the annuity is necessarily unsuitable but only that the information on the Suitability Acknowledgement Form and other information presented with this application is not sufficient for our company to establish there are reasonable grounds for determining this annuity is suitable.
+We encourage you to contact your client to discuss whether another Fidelity & Guaranty Life annuity may be appropriate.  Or consider whether reducing the size of this annuity may be appropriate based on your client’s financial situation and insurance needs.  
+Please feel free to contact our Service Center at 800-445-6758 with any questions.
+
+Sincerely,
+
+Annuity New Business Department
+
+
+Cc:  $agentFirstName $agentLastName

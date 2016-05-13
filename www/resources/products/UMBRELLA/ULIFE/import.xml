@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude" 
+   xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<carrier>
+		<carrierCode>UMBRELLA</carrierCode>
+		<carrierName>Umbrella Life Association</carrierName>
+		<carrierNAICCode>63291</carrierNAICCode>	
+		<docTypes>
+			<docType>
+				<docTypeCode>NB</docTypeCode>
+				<docTypeName>New Business</docTypeName>
+			</docType>
+			<docType>
+				<docTypeCode>UW</docTypeCode>
+				<docTypeName>Underwriting</docTypeName>
+			</docType>
+		</docTypes>
+		
+	<product>
+		<code>ULIFE</code>
+		<name>LifeStory Term</name>
+		<lineOfBusiness>LIFE</lineOfBusiness>
+		<ageCalculationMethod>LAST_BIRTHDAY</ageCalculationMethod>
+		<type>TL</type>
+		<defaultPaymentMode>ANNUAL</defaultPaymentMode>
+		<defaultPaymentMethod>PAC</defaultPaymentMethod>
+		<productGroup>LIFE</productGroup>
+		<rateFactors>
+			<rateFactor>
+				<ratePaymentMethod>PAC</ratePaymentMethod>
+				<rateOnetimeFactor></rateOnetimeFactor>
+				<rateAnnualFactor>1</rateAnnualFactor>
+				<rateSemiannualFactor>.520</rateSemiannualFactor>
+				<rateQuarterlyFactor>.28</rateQuarterlyFactor>
+				<rateMonthlyFactor>.087</rateMonthlyFactor>
+				<rateSemimonthlyFactor></rateSemimonthlyFactor>
+				<rateBiweeklyFactor></rateBiweeklyFactor>
+				<rateBimonthlyFactor></rateBimonthlyFactor>
+			</rateFactor>
+			<rateFactor>
+				<ratePaymentMethod>BILL</ratePaymentMethod>
+				<rateOnetimeFactor></rateOnetimeFactor>
+				<rateAnnualFactor>1</rateAnnualFactor>
+				<rateSemiannualFactor>.620</rateSemiannualFactor>
+				<rateQuarterlyFactor>.18</rateQuarterlyFactor>
+				<rateMonthlyFactor>.037</rateMonthlyFactor>
+				<rateSemimonthlyFactor></rateSemimonthlyFactor>
+				<rateBiweeklyFactor></rateBiweeklyFactor>
+				<rateBimonthlyFactor></rateBimonthlyFactor>
+			</rateFactor>
+			<rateFactor>
+					<ratePaymentMethod>CC</ratePaymentMethod>
+					<rateOnetimeFactor/>
+					<rateAnnualFactor>1</rateAnnualFactor>
+					<rateSemiannualFactor>.54</rateSemiannualFactor>
+					<rateQuarterlyFactor>.28</rateQuarterlyFactor>
+					<rateMonthlyFactor>.1</rateMonthlyFactor>
+					<rateSemimonthlyFactor/>
+					<rateBiweeklyFactor/>
+					<rateBimonthlyFactor>.2</rateBimonthlyFactor>
+			</rateFactor>
+		</rateFactors>
+		<rateClasses>
+			<rateClass>
+				<rateClassCode>PF</rateClassCode>
+				<isDefault>true</isDefault>
+				<name>Preferred LifeStory</name>
+				<sequence>1</sequence>
+			</rateClass>
+			<rateClass>
+				<rateClassCode>ST</rateClassCode>
+				<isDefault>false</isDefault>
+				<name>Standard LifeStory</name>
+					<minScore>11</minScore>
+					<maxScore>20</maxScore>
+				<sequence>2</sequence>
+			</rateClass>
+			<rateClass>
+				<rateClassCode>RB</rateClassCode>
+				<isDefault>false</isDefault>
+				<name>Rated B</name>
+					<minScore>21</minScore>
+					<maxScore>30</maxScore>
+				<sequence>3</sequence>
+			</rateClass>
+			<rateClass>
+				<rateClassCode>RD</rateClassCode>
+				<isDefault>false</isDefault>
+				<name>Rated D</name>
+				<minScore>31</minScore>
+				<maxScore>40</maxScore>
+				<sequence>4</sequence>
+			</rateClass>
+		</rateClasses>
+		<plans>
+			<plan>
+				<code>FA</code>
+				<name>Face Amount</name>
+				<planType>BASE</planType>
+				<services>
+					<service>
+						<name>Face Amount</name>
+						<options>
+							<option>
+								<code>FA</code>
+								<name>Face Amount</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>FACE_AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>100000</value>
+										<max>200000</max>
+										<increment>1000</increment>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+			<plan>
+				<code>ULIFETL</code>
+				<name>Term Level Life Insurance</name>
+				<planType>BASE</planType>
+				<services>
+					<service>
+						<name>Term Life</name>
+						<options>
+							<option>
+								<code>ULIFETERM30</code>
+								<name>30-Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>30</value>
+									</level>
+								</levels>
+							</option>
+							<option>
+								<code>ULIFETERM20</code>
+								<name>20-Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>20</value>
+									</level>
+								</levels>
+							</option>
+							<option>
+								<code>ULIFETERM15</code>
+								<name>15-Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>15</value>
+									</level>
+								</levels>
+							</option>
+							<option>
+								<code>ULIFETERM10</code>
+								<name>10-Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>10</value>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+			<plan>
+				<code>ULIFECTR1</code>
+				<name>Dependent Child Rider</name>
+				<planType>RIDER</planType>
+				<applicantType>DEPENDANT</applicantType>
+				<services>
+					<service>
+						<name>DEC Service</name>
+						<options>
+							<option>
+								<code>ULIFECTR1</code>
+								<name>Dependent Child Rider</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+										<max>40000</max>
+										<increment>10000</increment>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+			<plan>
+				<code>ULIFEADB1</code>
+				<name>Accidental Death Benefit</name>
+				<planType>RIDER</planType>
+				<services>
+					<service>
+						<name>ADB Service</name>
+						<options>
+							<option>
+								<code>ULIFEADB1</code>
+								<name>Accidental Death Benefit</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+										<max>100000</max>
+										<increment>20000</increment>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+			<plan>
+				<code>ULIFEPOLFEE</code>
+				<name>Policy Fee</name>
+				<planType>RIDER</planType>
+				<services>
+					<service>
+						<name>Fee Service</name>
+						<options>
+							<option>
+								<code>ULIFEPOLFEE</code>
+								<name>LifeStory Policy Fee</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>	
+			<plan>
+				<code>ULIFEPREMIUM</code>
+				<name>Premium Increase</name>
+				<planType>RIDER</planType>
+				<services>
+					<service>
+						<name>Premium Increase</name>
+						<options>
+							<option>
+								<code>ULIFEPREMIUM</code>
+								<name>LifeStory Premium Increase</name>
+								<showOnQuote>false</showOnQuote>
+								<optionValueType>PREMIUM</optionValueType>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+
+			</plans>
+			<file uri="import_agencies.xml" />
+		    <file uri="import_users.xml" />
+			<file uri="import_orgunits.xml" />
+			<file uri="import_ouUsers.xml" />
+			<file uri="import_roles.xml" />
+			<file uri="import_userRoles.xml" />
+			<file uri="import_resources.xml" />
+			<file uri="import_eforms.xml" />
+			<file uri="import_requirements.xml" />
+			<file uri="import_correspondence.xml" />
+			<file uri="import_licenses.xml" />
+		 	<file uri="import_rates.xml" />
+			<file uri="import_appointments.xml" />	 
+			<file uri="import_preferences.xml" />  
+			<file uri="import_buildchart.xml" />
+	</product>
+	</carrier>
+</stepImport>

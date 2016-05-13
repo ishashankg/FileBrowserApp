@@ -1,0 +1,26 @@
+$currentDate
+
+$agentFirstName $agentLastName
+$agentAddressLines
+$agentCityStateZip 
+
+RE:	Application #:			$policyNumber
+	Annuitant/Insured:		$annuitantFirstName $annuitantLastName 
+	Date of Application:	$appSubmitDate
+
+
+Dear $agentFirstName $agentLastName,
+
+We received your request to withdraw the above mentioned application.  In accordance with this request, this annuity application has been closed.
+
+If you have any questions regarding this action, please contact our New Business Department at 
+(844) 800-9146.
+
+
+
+Sincerely,
+
+Annuity New Business Department
+
+
+Cc:  $agentFirstName $agentLastName

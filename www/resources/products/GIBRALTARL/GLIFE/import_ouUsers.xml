@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<ou-users>
+	<ou-user>
+		<ousOrguCode>GLIFE_OU</ousOrguCode>
+		<ousUserName ousAdmin="Y">JACKHARDYG</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>GIBRALTAR_LIFE_UWO</ousOrguCode>
+		<ousUserName ousAdmin="Y">UWhimG</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>DTC_GLIFE_OU</ousOrguCode>
+		<ousUserName ousAdmin="Y">DTC_GLIFE</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>DEF_GLIFE_UWO</ousOrguCode>
+		<ousUserName ousAdmin="Y">DEF_GLIFE_UW</ousUserName>
+	</ou-user>
+</ou-users>
+</stepImport>

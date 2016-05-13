@@ -1,0 +1,20 @@
+	<stepImport xmlns:xi="http://www.w3.org/2001/XInclude" 
+   xmlns="http://www.stepsolutions.com/2013/configuration/">
+<licenses>
+    <license>
+        <licenseType>LIFE_PRODUCER</licenseType>
+        <licenseClass>AGENT</licenseClass>
+        <licenseStatus>ACTIVE</licenseStatus>
+		<licenseNumber>1000</licenseNumber>
+		<effectiveDate>01012012</effectiveDate>
+		<expirationDate></expirationDate>
+		<initialFee>50</initialFee>
+		<renewalFee>100</renewalFee>
+		<licenseState>CA</licenseState>
+		<resident>true</resident>
+		<agentCode>GROUPAGENT15</agentCode>
+		<agencyCode>GROUPAGENCY15</agencyCode>
+    </license>
+
+</licenses>    
+</stepImport>

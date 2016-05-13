@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>formLoad</onLoad>
+	<onSave>importData</onSave>
+	<page title="Medical Condition">
+		<section title="Diagnosis Details">
+			<group>
+				<paragragh text="In the past 10 years has any person to be insured ever been diagnosed, tested positive or been treated by a
+member of the medical profession, including office visits or had any disorder of:" styleClass="groupParagraph" />
+			</group>
+			<group>
+				<question id="lungsRespiratorySystem" text="a) the lungs or respiratory system including: allergies, asthma, bronchitis, tuberculosis, emphysema, pleurisy or pneumonia?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+			</group>
+			<group>
+				<question id="heartCirculatorySystem" text="b) the heart or circulatory system including: high blood pressure,heart attack,heart 
+				murmur,chest pain,coronary artery disease,irregular heartbeat or palpitations,elevated cholesterol, varicose veins, phlebitis, stroke or rheumatic fever?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+			</group>
+			<group labelWidth="100px">
+				<question id='heartCirculatorySystemcompleter' text='Please specify' type='AUTOCOMPLETE'  required="true"
+						autocompleteLookup="uw:DIAGNOSIS"    reflexiveContext="uw:MEDIC:ATHEAR" labelStyle="margin-left:50px">
+					<displayWhen>#{EFORM.heartCirculatorySystem=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="heartCirculatorySystemcompleter" labelWidth="400px" dynamicQuestionContext="uw:MEDIC:ATHEAR" labelStyle="margin-left:50px"/>
+		</section>
+		<section title="Additional Condition" repeating="true" styleClass="display:none">
+			<displayWhen>#{EFORM.heartCirculatorySystem=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='heartCirculatorySystemcompleter1' text='Please specify' type='AUTOCOMPLETE'    required="true" autocompleteLookup="uw:DIAGNOSIS"       reflexiveContext="uw:MEDIC:ATHEAR"/>
+			</group>
+			<group parentQuestionId="heartCirculatorySystemcompleter1"      dynamicQuestionContext="uw:MEDIC:ATHEAR" labelWidth="400px"/>
+		</section>
+		<section>
+			<group>
+				<question id="digestiveSystem" text="c) the digestive system including: ulcer, gastritis, intestinal disorder, colitis, crohn’s disease, gall bladder, hemorrhoids, hernia, disorder of the pancreas, spleen or liver (such as hepatitis)?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />		
+				<question id="nervousSystem" text="d)the nervous system including: grand mal or petit mal epilepsy, convulsions, seizures, multiple sclerosis, headaches, paralysis, mental or emotional disorders, psychiatric treatment or professional counselling, depression, fainting or dizziness?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="genitourinarySystem" text="e) the genitourinary system including: kidney disorder, kidney stones, cystitis or bladder infections?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="endocrineSystem" text="f) the endocrine system and glands such as: breast, thyroid, diabetes, elevated blood sugar or sugar in the urine?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="eyesEars" text="g) eyes or ears including: impaired sight or hearing?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="cancer" text="h) cancer, leukemia, tumor, cyst or growth of any kind?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="muscularSkeletalSystem" text="i) the muscular or skeletal system including but not limited to: arthritis, gout, rheumatism, back or spine, knee, foot or jaw, spinal manipulations or adjustments, bursitis or amputation?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="reproductiveSystem" text="j) the male or female reproductive organs including: prostate problems, irregular menstruation, abnormal pap test, or pregnancy complications?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="sexuallyTransmittedDiseases" text="k) sexually transmitted diseases including: syphilis, gonorrhea, herpes, chlamydia, or condyloma acuminatum (anal or genital warts)?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="bloodDisorder" text="l) any blood disorder including: anemia, thrombocytopenia, polycythemia vera, or hemophilia?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="lupusErythematosus" text="m) lupus erythematosus, collagen disease, or any connective tissue disorder?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="chronicCough" text="n) had a chronic cough, significant weight loss or gain, chronic fatigue, diarrhea, or enlarged glands within the last 12 months?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="pregnant" text="o) Is any person to be insured pregnant?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+			</group>
+		</section>
+		<section title="Additional Medical Information">	
+			<group>
+				<paragragh text="Has any person to be insured:" styleClass="groupParagraph" />
+			</group>
+			<group>
+				<question id="alcoholConsumption" text="a) Used or currently consumes alcohol?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="sedativesNarcoticDrugs" text="b) Used sedatives, hallucinogenic or narcotic drugs, amphetamines, barbiturates, cocaine, opiates, tranquillizers, morphine or is currently using other stimulants or depressants except as medication prescribed by a physician?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="narcoticDependency" text="c) Received or been recommended for professional treatment or counseling for an alcohol or narcotic dependency" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />		
+				<question id="prescriptionDrugsLast90Days" text="d)Taking or used any prescription drugs within the last 90 days?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="last2YearsMedicalTreatment" text="e) Within the last 2 years, had medical treatment or been advised by a member of the medical profession to have any diagnostic test, hospitalization or surgery which was not completed?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="electrocardiogram" text="f) Had an electrocardiogram, chest x-ray or blood study of any kind in the past 2 years?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="aidsTreatment" text="g) Within the past 10 years been diagnosed by or received treatment from a member of the medical profession for Acquired Immune Deficiency Syndrome (AIDS) or AIDS related complex (ARC) or AIDS related conditions or tested positive for HIV?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />
+				<question id="anyMedicalTreatmentInPast3Years" text="h) Been under medical observation or receiving treatment by a member of the medical profession, had a check-up or surgery during the past 3 years not reported in the above questions?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="850px" labelStyle="margin-left:50px" />	
+			</group>				
+		</section>
+	</page>
+</form>

@@ -1,0 +1,24 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+
+rule "Standard requirements for this product #1"
+salience 200
+when
+		CaseData()
+		form:RequirementForm(code in ('APPPART1','APPPART3','APPPART4','FULLHIPAAPDF','FCRA','APPPART2','APPPART4','ASRRF','DEMOG1'));
+then
+    	form.setRequired(true);
+    	if(form.getCode().equals("FCRA")) {
+    	    form.setDefaultStatus("RESOLVED");
+    	}
+end
+
+rule "set default status for APPPART4, FCRA and FULLHIPAAPDF"
+salience 190
+when
+		CaseData()
+		form:RequirementForm(code in ('FULLHIPAAPDF','FCRA','APPPART4'));
+then    	
+    	form.setDefaultStatus("RESOLVED");
+end

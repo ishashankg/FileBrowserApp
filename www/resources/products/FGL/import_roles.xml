@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<roles>
+	<role>
+		<roleName>External Agent</roleName>
+		<roleCode>ext_agent</roleCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="agent_attestation" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="redo_signature_requirement"
+				accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="igo_submission" accessType="CRW" />
+			<permission functionCode="application_pdf" accessType="CRW" />
+			<permission functionCode="create_case" accessType="CRW" />
+			<permission functionCode="case_payment" accessType="CRW" />
+			<permission functionCode="send_case_to_applicant" accessType="CRW" />
+			<permission functionCode="disable_uw_class" accessType="R" />
+			<permission functionCode="clone_case" accessType="CRW" />
+			<permission functionCode="unlock_case" accessType="CRW" />
+			<permission functionCode="resend_invite" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail" accessType="CRW" />
+			<permission functionCode="document_viewer" accessType="R" />
+		</permissions>
+	</role>
+	
+	<role>
+		<roleName>Data Entry Person</roleName>
+		<roleCode>data_entry</roleCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail" accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level" accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="disable_uw_class" accessType="R" />
+			<permission functionCode="igo_submission" accessType="R" />
+			<permission functionCode="validation_failure_item" accessType="CRW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="document_viewer" accessType="R" />
+			<permission functionCode="receive_notifications" accessType="CRW" />
+			<permission functionCode="add_payment" accessType="CRW" />
+		</permissions>
+	</role>
+	<role>
+		<roleName>Data Entry QC Person</roleName>
+		<roleCode>data_entry_qc</roleCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail" accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="quick_quote" accessType="CRW" />
+			<permission functionCode="full_quote" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level" accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="disable_uw_class" accessType="R" />
+			<permission functionCode="igo_submission" accessType="R" />
+			<permission functionCode="validation_failure_item_with_resolve_tracking" accessType="CRW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="document_viewer" accessType="R" />
+			<permission functionCode="receive_notifications" accessType="CRW" />
+			<permission functionCode="analytics_report" accessType="CRW"/>
+			<permission functionCode="add_payment" accessType="CRW" />
+		</permissions>
+	</role>
+	
+	<role>
+		<roleName>Case Manager</roleName>
+		<roleCode>case_manager</roleCode>
+		<containerRole>agent</containerRole>
+		<permissions>			
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="igo_submission" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+			<permission functionCode="uw_notes" accessType="CRW" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="document_download" accessType="R" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="case_all_task" accessType="CRW" />
+			<permission functionCode="all_open_task" accessType="CRW" />
+			<permission functionCode="manage_task" accessType="CRW" />
+			<permission functionCode="assign_from_pool" accessType="CRW"
+				expression="#{AUTO_DECISION_STATUS == 'NONE'}" />
+			<permission functionCode="perform_final_action"
+				accessType="CRW" />
+			<permission functionCode="view_final_action"
+				accessType="CRW" />	
+			<permission functionCode="validation_failure_item_with_resolve_tracking" accessType="CRW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="receive_notifications" accessType="CRW" />
+			<permission functionCode="task_view" accessType="CRW" />
+			<permission functionCode="document_viewer" accessType="R" />
+			<permission functionCode="igo_check" accessType="CRW" />
+			<permission functionCode="override_validation_failure_item" accessType="CRW" />
+			<permission functionCode="carrier_correspondence" accessType="CRW" />
+			<permission functionCode="archive_case" accessType="CRW" />
+			<permission functionCode="check_suitability" accessType="CRW" />
+			<permission functionCode="suitability_recommendation" accessType="R" />
+			<permission functionCode="requirement_summary" accessType="R" />
+			<permission functionCode="task_summary" accessType="R" />
+			<permission functionCode="IGO_summary" accessType="R" />
+			<permission functionCode="suitability_summary" accessType="R" />
+			<permission functionCode="additional_action" accessType="CRW" />
+			<permission functionCode="analytics_report" accessType="CRW"/>
+			<permission functionCode="analytics_widget" accessType="CRW"/>
+			<permission functionCode="add_payment" accessType="CRW" />
+			<permission functionCode="agent_commission_adjustment" accessType="CRW" />
+		</permissions>
+	</role>
+	
+	<role>
+		<roleName>Issuer</roleName>
+		<roleCode>issuer</roleCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="acknowledgements" accessType="CRW" />
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="igo_submission" accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+			<permission functionCode="uw_notes" accessType="CRW" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="document_download" accessType="R" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="case_all_task" accessType="CRW" />
+			<permission functionCode="perform_final_action"
+				accessType="CRW" />
+			<permission functionCode="assign_from_pool" accessType="CRW"
+				expression="#{AUTO_DECISION_STATUS == 'NONE'}" />
+			<permission functionCode="view_final_action"
+				accessType="CRW" />	
+			<permission functionCode="validation_failure_item_with_resolve_tracking" accessType="CRW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="requirement_summary" accessType="R" />
+			<permission functionCode="task_summary" accessType="R" />
+			<permission functionCode="add_payment" accessType="CRW" />
+		</permissions>
+	</role>
+	
+	<role>
+		<roleName>Agency Services</roleName>
+		<roleCode>agency_services</roleCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+		</permissions>
+	</role>
+	
+	<role>
+		<roleName>Suitability Officer</roleName>
+		<roleCode>suitability_officer</roleCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="case_auth" accessType="CRW" />
+			<permission functionCode="case_cover" accessType="CRW" />
+			<permission functionCode="case_notes" accessType="CRW" />
+			<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+			<permission functionCode="personal_information"
+				accessType="CRW" />
+			<permission functionCode="case_requirements" accessType="CRW" />
+			<permission functionCode="document_management" accessType="CRW" />
+			<permission functionCode="product_reflexive" accessType="CRW" />
+			<permission functionCode="case_reassign" accessType="CRW" />
+			<permission functionCode="sales_notes" accessType="CRW" />
+			<permission functionCode="service_notes" accessType="CRW" />
+			<permission functionCode="system_log" accessType="CRW" />
+			<permission functionCode="search_case_at_carrier_level"
+				accessType="CRW" />
+			<permission functionCode="document_upload" accessType="CRW" />
+			<permission functionCode="document_download" accessType="R" />
+			<permission functionCode="case_closeout" accessType="CRW" />
+			<permission functionCode="case_search" accessType="CRW" />
+			<permission functionCode="case_all_task" accessType="CRW" />
+			<permission functionCode="manage_task" accessType="CRW" />
+			<permission functionCode="check_suitability" accessType="CRW" />
+			<permission functionCode="suitability_recommendation" accessType="CRW" />
+			<permission functionCode="assign_from_pool" accessType="CRW"
+				expression="#{AUTO_DECISION_STATUS == 'NONE'}" />
+			<permission functionCode="view_final_action"
+				accessType="CRW" />		
+			<permission functionCode="validation_failure_item_with_resolve_tracking" accessType="CRW" />
+			<permission functionCode="receive_notifications" accessType="CRW" />
+			<permission functionCode="task_view" accessType="CRW" />
+			<permission functionCode="document_viewer" accessType="R" />
+			<permission functionCode="carrier_correspondence" accessType="CRW" />
+			<permission functionCode="task_summary" accessType="R" />
+			<permission functionCode="IGO_summary" accessType="R" />
+			<permission functionCode="suitability_summary" accessType="R" />
+		</permissions>
+	</role>
+	
+	<role>
+		<roleName>Auto Decision Role</roleName>
+		<roleCode>auto_decision</roleCode>
+		<containerRole>agent</containerRole>
+		<permissions>
+			<permission functionCode="assign_from_pool" accessType="CRW"
+				expression="#{AUTO_DECISION_STATUS  != 'NONE'}" />
+		</permissions>
+	</role>
+	
+</roles>
+</stepImport>

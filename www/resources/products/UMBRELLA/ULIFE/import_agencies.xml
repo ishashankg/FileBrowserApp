@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<agencies>
+	<agency>
+		<agCode>UMBRELLA_LIFE_MedAg</agCode>
+		<agName>UMBRELLA LIFE Agency</agName>
+		<agBusType>Independent</agBusType>
+		<agCaptive>false</agCaptive>
+		<agents>
+			<agent>
+				<agtCode>JOHKN</agtCode>
+				<agtFirstName>John</agtFirstName>
+				<agtLastName>Knaff</agtLastName>
+				<agtEmail>John.Knaff@stepsolutions.com</agtEmail>				
+			</agent>
+			<agent>
+				<agtCode>MICBAC</agtCode>
+				<agtFirstName>Michele</agtFirstName>
+				<agtLastName>Bachmann</agtLastName>
+				<agtEmail>Michele.Bachmann@stepsolutions.com</agtEmail>
+			</agent>
+		</agents>
+	</agency>
+</agencies>
+</stepImport>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<agencies>
+	<agency>
+		<agCode>MedAg</agCode>
+		<agName>GLIC MedSupp Agency</agName>
+		<agBusType>Independent</agBusType>
+		<agCaptive>false</agCaptive>
+		<agents>
+			<agent>
+				<agtCode>JAHA</agtCode>
+				<agtFirstName>Jack</agtFirstName>
+				<agtLastName>Hardy</agtLastName>
+				<agtEmail>Jack.Hardy@stepsolutions.com</agtEmail>
+			</agent>
+			<agent>
+				<agtCode>JOHNS</agtCode>
+				<agtFirstName>JOHN</agtFirstName>
+				<agtLastName>SMITH</agtLastName>
+				<agtEmail>John.Smith@stepsolutions.com</agtEmail>
+			</agent>
+		</agents>
+	</agency>
+</agencies>
+</stepImport>

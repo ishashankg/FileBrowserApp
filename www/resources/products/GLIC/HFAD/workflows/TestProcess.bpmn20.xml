@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="helloworld" name="helloworld">
+    <startEvent id="create_uts_task" name="Start Create UTS Task"></startEvent>
+    <scriptTask id="load_variables" name="Load Task Variables" scriptFormat="groovy">
+      <script><![CDATA[println("hello")
+execution.setVariable("timerDuration", com.stepsoln.core.util.DateUtil.daysFromNowMidnightAsISODuration(1));
+]]></script>
+    </scriptTask>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <userTask id="uts_task" name="Create UTS Task" activiti:assignee="#{null}">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.stepsoln.core.workflow.activiti.AssignCaseToOUTaskListener"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <boundaryEvent id="boundarytimer4" name="" cancelActivity="false" attachedToRef="uts_task">
+      <timerEventDefinition>
+        <timeDuration>${timerDuration}</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <scriptTask id="scripttask1" name="Re-Assign Task" scriptFormat="groovy">
+      <script><![CDATA[println("Re-Assign Task");
+workflowService.processExpiredTask(execution.getVariable("taskId"));
+execution.removeVariable("timerDuration");
+execution.removeVariable("taskId");]]></script>
+    </scriptTask>
+    <sequenceFlow id="flow1" name="" sourceRef="create_uts_task" targetRef="load_variables"></sequenceFlow>
+    <sequenceFlow id="flow2" name="" sourceRef="load_variables" targetRef="uts_task"></sequenceFlow>
+    <sequenceFlow id="flow5" name="" sourceRef="scripttask1" targetRef="exclusivegateway1"></sequenceFlow>
+    <sequenceFlow id="flow6" name="" sourceRef="boundarytimer4" targetRef="scripttask1"></sequenceFlow>
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow7" name="" sourceRef="exclusivegateway1" targetRef="endevent1">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${false}]]></conditionExpression>
+    </sequenceFlow>
+    <scriptTask id="scripttask2" name="Script Task" scriptFormat="groovy">
+      <script><![CDATA[println("Finished re-assignment");]]></script>
+    </scriptTask>
+    <sequenceFlow id="flow8" name="" sourceRef="exclusivegateway1" targetRef="scripttask2">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${true}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_helloworld">
+    <bpmndi:BPMNPlane bpmnElement="helloworld" id="BPMNPlane_helloworld">
+      <bpmndi:BPMNShape bpmnElement="create_uts_task" id="BPMNShape_create_uts_task">
+        <omgdc:Bounds height="35" width="35" x="220" y="130"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="load_variables" id="BPMNShape_load_variables">
+        <omgdc:Bounds height="55" width="105" x="476" y="120"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35" width="35" x="700" y="120"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="uts_task" id="BPMNShape_uts_task">
+        <omgdc:Bounds height="55" width="105" x="476" y="230"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="boundarytimer4" id="BPMNShape_boundarytimer4">
+        <omgdc:Bounds height="30" width="30" x="514" y="267"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask1" id="BPMNShape_scripttask1">
+        <omgdc:Bounds height="55" width="105" x="476" y="430"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40" width="40" x="697" y="437"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask2" id="BPMNShape_scripttask2">
+        <omgdc:Bounds height="55" width="105" x="665" y="520"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="255" y="147"></omgdi:waypoint>
+        <omgdi:waypoint x="476" y="147"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="528" y="175"></omgdi:waypoint>
+        <omgdi:waypoint x="528" y="230"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="581" y="457"></omgdi:waypoint>
+        <omgdi:waypoint x="697" y="457"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="529" y="297"></omgdi:waypoint>
+        <omgdi:waypoint x="528" y="430"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="717" y="437"></omgdi:waypoint>
+        <omgdi:waypoint x="717" y="155"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="717" y="477"></omgdi:waypoint>
+        <omgdi:waypoint x="717" y="520"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

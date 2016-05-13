@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<agencies>
+	<agency>
+		<agCode>FGL</agCode>
+		<agName>FGL Agency</agName>
+		<agBusType>Independent</agBusType>
+		<agCaptive>false</agCaptive>
+		<agents>
+			<agent>
+				<agtCode>TARAWI</agtCode>
+				<agtFirstName>Tara</agtFirstName>
+				<agtLastName>Wilson</agtLastName>
+			</agent>			
+		</agents>
+	</agency>
+	<agency>
+		<agCode>NewBusiness</agCode>
+		<agName>Fidelity Life Insurance New Business</agName>
+		<agBusType>Captive</agBusType>
+		<agCaptive>true</agCaptive>
+		<agents>
+			<agent>
+				<agtCode>SARAHC</agtCode>
+				<agtFirstName>Sarah</agtFirstName>
+				<agtLastName>Conner</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>MICHAS</agtCode>
+				<agtFirstName>Michael</agtFirstName>
+				<agtLastName>Smith</agtLastName>
+			</agent>		
+				
+		</agents>
+	</agency>
+	
+</agencies>
+</stepImport>

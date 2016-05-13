@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+<page>
+	<section>
+	<header>IMPORTANT NOTICE: REPLACEMENT OF LIFE INSURANCE OR ANNUITIES</header>
+		<group labelWidth="400px" height="120px" title="Replacement of Life Insurance or Annuities">
+			<paragragh
+				text="You are contemplating the purchase of a life insurance policy or annuity contract. In some cases this purchase may involve discontinuing or changing an existing policy or contract. If so, a replacement is occuring. Financed purchases are also considered replacements."
+				styleClass="groupParagraph"
+			/>
+			<paragragh
+				text="A replacement occurs when a new policy or contract is purchased and, in connetion with the sale, you discontinue making premium payments on the existing policy or contract, or an existing policy or contract is surrendered, forfeited, assigned to the replacing insurer, or otherwise terminated or used in a finances purchase."
+				styleClass="groupParagraph"
+			/>
+			<paragragh
+				text="A financed purchase occurs when the purchase of a new life insurance policy involves the use of funds obtained by the withdrawal or surrender of or by borrowing some or all of the policy values, including accumulated dividends, of an existing policy to pay all or part of ay premium or payment due in the new policy. A financed purchase is a replacement."
+				styleClass="groupParagraph"
+			/>
+			<paragragh
+				text="You should carefully consider whether a replacement is in your best interests. You will pay acquisition costs and there may be surrender costs deducted from your policy or contract. You may be able to make changes to your existing policy or contract to meet your insurance needs at less cost. A financed purchase will reduce the value of your existing policy and may reduce the amount paid upon the death of the insured."
+				styleClass="groupParagraph"
+			/>
+			<paragragh
+				text="We want you to understand the effects of replacements before you make your purchase decision and ask that you answer the following questions and consider the questions on the back of this form."
+				styleClass="groupParagraph"
+			/>
+		</group>
+		<group labelWidth="700px;">
+			<question id='coverage_cancelled' text="Are you considering discontinuing making premum payments, surrendering, forfeiting, assigning to the insurer, or otherwise terminating your existing policy or contract?"
+				type='RADIO' answerSet="Yes|No" readonly="true"/>
+			<question id='existing_funds' text="Are you considering using funds from your existing policies or contracts to pay premiums due on the new policy or contract?"
+				type='RADIO' answerSet="Yes|No" />
+		</group>
+		<group>
+			<paragragh 
+				text="If you answered 'yes' to either of the above questions, list each existing policy or contract you are contemplating replacing (including the name of the insurer, the insured or annuitant, and the policy or contract number if available) and whether each policy or contract will be replaced or used as a source of financing:"
+				styleClass="groupParagraph"
+			/>
+		</group>
+	</section>
+	<section repeating="true" title="Replacement Company">
+		<group associated="true">
+			<question id='replace_ins_name' text="Insurer Name" type='TEXT' />
+			<question id='replace_policy_no' text="Contract or Policy #" type='NUMBER' />
+			<question id='insured_annuitant' text="Please Choose one" type='RADIO' answerSet="Insured|Annuitant" />
+			<question id='replaced_financing' text="Please Choose one" type='RADIO' answerSet="Replaced|Financing" />
+		</group>
+	</section>
+	<section>
+		<group>
+			<paragragh
+				text="Make sure you know the facts. Contact your existing company or its agent for information about the old policy or contract. If you reques one, an in force illustration, policy summary or available disclosure documents must be sent to you by the existing insurer. Ask for and retain all sales material used by the agent in the sales presentation. Be sure that you are making an informed decision."
+				styleClass="groupParagraph"
+			/>
+			<question id='replacement_reason' text='The existing policy or contract is being replaced because:' labelWidth="350px;" answerWidth="400px;" />
+		</group>
+		<group>
+			<paragragh
+				text="You have the right to return the policy or contact within 30 days of delivery and receive an unconditional full refund of all premiums or considerations paid on it including any policy fees or charges or in the case of a variable or market value adjustment policy or contract, a payment of the cash surrender value provided under the policy or contract plus the fees and other charges deducted from the gross premiums or considerations or imposed under such policy or contract."
+				styleClass="groupParagraph"
+			/>
+			<question id='read_aloud' text='I do not want this notice read aloud to me'	type='CHECKBOX' labelWidth="250px;" />
+		</group>
+	</section>
+</page>
+</form>

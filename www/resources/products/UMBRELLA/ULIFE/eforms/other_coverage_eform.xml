@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://stepsolns.com/eform/v2 https://demo.stepsolutions.com/schema/eforms.v2.xsd">
+  	<onSave>saveData</onSave>
+    <page title ="Other Coverage Page">
+    <section title ="Existing Coverage">
+      <group labelWidth="500px;">
+        <question id='existing_coverage' required = "true"
+          text='Do you have any existing life insurance or annuity contracts in force or is any application for life insurance or reinstatement, now pending with Umbrella Life or any other company?'
+          type='RADIO' answerSet='Y:Yes|N:No'/>
+      </group>
+      <group labelWidth="500px;">
+        <question id='coverage_cancelled' required = "true"
+          text='If this policy is issued, will any other existing life insurance or annuity with Umbrella Life or any other company be cancelled, terminated, lapsed or not renewed?'
+          type='RADIO' answerSet='Y:Yes|N:No' />
+      </group>
+    </section>
+    <section title="Coverage"><displayWhen>#{EFORM.existing_coverage=="Y" or EFORM.coverage_cancelled=="Y"}</displayWhen>
+      <header>Current Insurance Coverage</header>
+      <group associated="true">
+        <question id='oth_ins_company' required="true" text='Name of Company' type='TEXT' labelWidth="120px;" answerStyle="width:200px; color:#303030;"
+        	autocompleteLookup="naic:carrier" externalId='oth_ins_naic;oth_ins_street;oth_ins_city;oth_ins_state;oth_ins_zip'/>
+      </group>
+      <group>
+      	<question id='oth_ins_naic' text='NAIC' type='TEXT' labelWidth="120px;" answerWidth="80px;" validation='number'/>	
+      </group>
+      <group associated="true">
+      	<question id='oth_ins_street' text='Street Address' type='TEXT' labelWidth="120px;" answerWidth="180px;" />
+      	<question id='oth_ins_city' text='City' type='TEXT' labelWidth="40px;" answerWidth="120px;"/>
+      	<question id='oth_ins_state' text='State' lookup="step:LOCALE_STATE" answerSet=":Please select a state" type='LISTBOX' labelWidth="40px;" answerWidth="100px;"/>
+      	<question id='oth_ins_zip' text='Zip Code' type='TEXT' labelWidth="60px;" answerWidth="80px;"/>
+      </group>
+      <group  associated="true">
+        <question id='oth_ins_face' required="true" text="Face Amount" type='NUMBER' labelWidth="120px;" answerWidth="80px;"/>
+        <question id='oth_ins_year' required="true" text="Year Issued" type='NUMBER' labelWidth="100px;" answerWidth="80px;"/>
+      </group>
+      <group>
+        <question id='oth_ins_replace' required="true" text="Is Coverage to be Replaced?" type='RADIO' answerSet='Y|N' labelWidth="300px;" />
+      </group>
+    </section>
+    <section title="Additional Coverage" repeating="true"><displayWhen>#{EFORM.existing_coverage=="Y" or EFORM.coverage_cancelled=="Y"}</displayWhen>
+      <header>Additional Insurance Coverage</header>
+      <group>
+        <question id='oth_ins_company2' required="true" text='Name of Company' type='TEXT' labelWidth="120px;" answerStyle="width:200px; color:#303030;"
+        	autocompleteLookup="naic:carrier" externalId='oth_ins_naic2;oth_ins_street2;oth_ins_city2;oth_ins_state2;oth_ins_zip2'/>
+      </group>
+      <group>
+      	<question id='oth_ins_naic2' text='NAIC' type='TEXT' labelWidth="120px;" answerWidth="80px;" validation='number'/>
+      </group>
+      <group associated="true">
+      	<question id='oth_ins_street2' text='Street Address' type='TEXT' labelWidth="120px;" answerWidth="180px;" />
+      	<question id='oth_ins_city2' text='City' type='TEXT' labelWidth="40px;" answerWidth="120px;"/>
+      	<question id='oth_ins_state2' text='State' lookup="step:LOCALE_STATE" answerSet=":Please select a state" type='LISTBOX' labelWidth="40px;" answerWidth="100px;"/>
+      	<question id='oth_ins_zip2' text='Zip Code' type='TEXT' labelWidth="60px;" answerWidth="80px;"/>
+      </group>
+      <group  associated="true">
+        <question id='oth_ins_face2' required="true" text="Face Amount" type='NUMBER' labelWidth="120px;" answerWidth="80px;"/>
+        <question id='oth_ins_year2' required="true" text="Year Issued" type='NUMBER' labelWidth="100px;" answerWidth="80px;"/>
+      </group>
+      <group>
+        <question id='oth_ins_replace2' required="true" text="Is Coverage to be Replaced?" type='RADIO' answerSet='Y|N' labelWidth="300px;" />
+      </group>
+    </section>
+  </page>  
+</form>

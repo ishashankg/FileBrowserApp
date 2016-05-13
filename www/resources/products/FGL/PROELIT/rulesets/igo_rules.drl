@@ -1,0 +1,13 @@
+
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.*;
+import rules.*;
+import java.util.*;
+
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+// Rule generation RE:
+//(^[\w]+$)
+//rule "require \1"\r\n\twhen\r\n\t\teval(!allAnswers.containsKey("\1"))\r\n\tthen\r\n\t\trulesResponse.addRequired("\1");\r\nend
+

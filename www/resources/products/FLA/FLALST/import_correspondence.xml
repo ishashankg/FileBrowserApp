@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<correspondences>
+	<correspondence>
+        <correspondenceCode>FreeFrmLtr</correspondenceCode>
+        <correspondenceName>Free Form Letter</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode></correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Freeform_letter.txt</correspondenceFileName>
+    </correspondence>
+</correspondences>
+</stepImport>

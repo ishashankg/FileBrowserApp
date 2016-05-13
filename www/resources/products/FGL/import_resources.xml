@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<resources>
+		<resource>
+			<description>Main FGL Camel Routes</description>
+			<file>common/fgl_routes.xml</file>
+			<type>CAMEL_ROUTE</type>
+			<formatType>CAMEL_XML_DSL</formatType>
+		</resource>
+		<resource>
+			<description>FGL Customized User Messages</description>
+			<resourceCode>CUSTOM_MESSAGES1</resourceCode>
+			<file>common/messages.properties</file>
+			<type>CUSTOM_MESSAGES</type>
+			<formatType>PROPERTIES</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>Sequences</description>
+			<file>common/sequences.xml</file>
+			<type>SEQUENCE</type>
+			<resourceCode>sequence</resourceCode>
+			<formatType>XML</formatType>
+		</resource>
+		<resource>
+			<description>FGL Performance Pro Custom Properties</description>
+			<resourceCode>FGL_PROPERTIES1</resourceCode>
+			<file>common/carrier.properties</file>
+			<type>PRODUCT_PROPERTIES</type>
+			<formatType>PROPERTIES</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>Eform Converter</description>
+			<resourceCode>EFORM_CONVERTER1</resourceCode>
+			<file>common/eform_mapper.xml</file>
+			<type>EFORM_CONVERTER</type>
+			<formatType>XML</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>Document Type</description>
+			<resourceCode>DOCUMENT_TYPE</resourceCode>
+			<file>common/document_type.xml</file>
+			<type>DOCUMENT_TYPE</type>
+			<formatType>XML</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>Document Flow Mappings</description>
+			<resourceCode>DOCUMENT_FLOW_MAPPINGS</resourceCode>
+			<file>common/document_flow_mappings.xml</file>
+			<type>DOCUMENT_TYPE</type>
+			<formatType>XML</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<file>common/resources/logo.png</file>
+			<description>Logo</description>
+			<resourceCode>LOGO_IMAGE</resourceCode>
+			<type>HEADER_LOGO_IMAGE</type>
+			<formatType>image/png</formatType>
+			<name>HEADER_LOGO_IMAGE</name>
+			<mimeType>application/octet-stream</mimeType>
+		</resource>
+	</resources>
+</stepImport>

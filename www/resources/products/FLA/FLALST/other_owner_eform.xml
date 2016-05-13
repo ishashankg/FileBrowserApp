@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onSave>saveData</onSave>
+  <page title="Policy Owner Information"><displayWhen>#{true}</displayWhen>
+    <section>
+      <group associated="true" answerWidth="150px;">
+        <question id='owner_first_name' text="First Name" type='TEXT' labelWidth="80px;" required='true' />
+        <question id='owner_middle_name' text="Middle Name" type='TEXT' />
+        <question id='owner_last_name' text="Last Name" type='TEXT' required='true' />
+      </group>
+      <group>
+        <question id='trust_name' text="Trust Name" type='TEXT' labelWidth="80px;" answerWidth="400px;" />
+      </group>
+    </section>
+    <section>
+      <group>
+        <question id='owner_address' text="Address" type='TEXT' labelWidth="80px;" answerWidth="400px;" />
+      </group>
+      <group associated="true">
+        <question id='owner_city' text="City" type='TEXT' labelWidth="80px;" />
+        <question id='owner_state' text="State" type='LISTBOX' lookup="step:LOCALE_STATE" answerSet=":Please select a state" required='true'/>
+        <question id='owner_zip' text="Zip Code" type='TEXT' answerWidth="80px;"/>
+      </group>
+      <group labelWidth="200px;">
+        <question id='owner_relation' text='Relationship to the Insured' type='LISTBOX' lookup="step:RELATIONSHIP_TYPE" answerSet="" />
+        <question id='owner_ssn' text="Social Security or Tax ID Number" type='SSN' answerWidth="80px;" />
+      </group>
+    </section>
+  </page>
+</form>

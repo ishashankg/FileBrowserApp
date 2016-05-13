@@ -1,0 +1,143 @@
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<chartOfAccounts>
+    <account>
+        <accountNumber>13011</accountNumber>
+        <category>LIABILITY</category>
+        <description>Cash Value</description>
+        <type>CASH_VALUE</type>
+    </account>
+    <account>
+        <accountNumber>9001</accountNumber>
+        <category>ASSET</category>
+        <description>Premium Income</description>
+        <type>PREMIUM_INCOME</type>
+    </account>
+    <account>
+        <accountNumber>15001</accountNumber>
+        <category>ASSET</category>
+        <description>Payment of Cash Into System</description>
+        <type>CASH</type>
+    </account>
+    <account>
+        <accountNumber>12011</accountNumber>
+        <category>LIABILITY</category>
+        <description>Tax to be paid to Federal /State Govt</description>
+        <type>COMMISSION</type>
+    </account>
+    <account>
+        <accountNumber>11001</accountNumber>
+        <category>ASSET</category>
+        <description>Premium Suspense</description>
+        <type>PREMIUM_SUSPENSE</type>
+    </account>
+    <account>
+        <accountNumber>14001</accountNumber>
+        <category>ASSET</category>
+        <description>Policy Reserve</description>
+        <type>RESERVE</type>
+    </account>
+    <account>
+        <accountNumber>16001</accountNumber>
+        <category>LIABILITY</category>
+        <description>Tax to be paid to Federal /State Govt</description>
+        <type>TAX</type>
+    </account>
+    <account>
+        <accountNumber>4611</accountNumber>
+        <category>EXPENSES</category>
+        <description>Maintenance Expenses</description>
+        <type>EXPENSE</type>
+    </account>
+	<account>
+        <accountNumber>4612</accountNumber>
+        <category>EXPENSES</category>
+        <description>Maintenance Expenses 2</description>
+        <type>EXPENSE</type>
+    </account>
+    <account>
+        <accountNumber>4613</accountNumber>
+        <category>ASSET</category>
+        <description>Premium Unearned</description>
+        <type>PREMIUM_UNEARNED</type>
+    </account>
+    <account>
+        <accountNumber>4614</accountNumber>
+        <category>ASSET</category>
+        <description>Premium Earned</description>
+        <type>PREMIUM_EARNED</type>
+    </account>
+    <account>
+        <accountNumber>4615</accountNumber>
+        <category>ASSET</category>
+        <description>Cash Suspense</description>
+        <type>CASH_SUSPENSE</type>
+    </account>
+    <account>
+        <accountNumber>4616</accountNumber>
+        <category>ASSET</category>
+        <description>Admin</description>
+        <type>ADMIN</type>
+    </account>
+     <account>
+        <accountNumber>4617</accountNumber>
+        <category>ASSET</category>
+        <description>Advance Commission</description>
+        <type>ADVANCE_COMMISSION</type>
+    </account>
+     <account>
+        <accountNumber>4618</accountNumber>
+        <category>ASSET</category>
+        <description>Commission Earned</description>
+        <type>COMMISSION_EARNED</type>
+    </account>
+     <account>
+        <accountNumber>4619</accountNumber>
+        <category>ASSET</category>
+        <description>Agent</description>
+        <type>AGENT</type>
+    </account>
+    <eventConfig type="PREMIUM_RECEIVED" name="PREMIUM_RECIEVED" handler="com.stepsoln.pa.services.accounting.AllocateELExpressionHandler">
+        <debit targetAccount="TYPE=CASH" order="1" allocate="#{event.netAmount}"/>
+        <credit targetAccount="TYPE=PREMIUM_UNEARNED" order="2" allocate="#{event.netAmount}"/>
+    </eventConfig>
+    <eventConfig type="PREMIUM_EARNED" name="PREMIUM_EARNED" handler="com.stepsoln.pa.services.accounting.AllocateELExpressionHandler">
+        <debit targetAccount="TYPE=PREMIUM_UNEARNED" order="1" allocate="#{event.netAmount}"/>
+        <credit targetAccount="TYPE=PREMIUM_EARNED" order="2" allocate="#{event.netAmount}"/>
+    </eventConfig>
+    <eventConfig type="PREMIUM_PAYMENT" name="PREMIUM_DUE"/>
+    <eventConfig type="PREMIUM_REFUND" name="PREMIUM_REFUND" handler="com.stepsoln.pa.services.accounting.AllocateELExpressionHandler">
+    	<debit targetAccount="TYPE=PREMIUM_INCOME" order="1" allocate="#{event.netAmount}" />
+    	<credit targetAccount="TYPE=PREMIUM_SUSPENSE" order="2" allocate="#{event.netAmount}" />
+    </eventConfig>
+    <eventConfig type="REINSTATE_PAYMENT" name="REINSTATE_PAYMENT" handler="com.stepsoln.pa.services.accounting.ReinstatePaymentHandler">
+    	<debit targetAccount="TYPE=CASH" order="1" allocate="#{event.netAmount}"/>
+    	<credit targetAccount="TYPE=CASH_SUSPENSE" order="2" allocate="#{event.netAmount}" />
+    	<credit targetAccount="TYPE=ADMIN" order="3" allocate="#{event.netAmount}"  />
+    </eventConfig>
+    <eventConfig type="REINSTATE_PAYMENT_EARNED" name="REINSTATE_PAYMENT_EARNED" handler="com.stepsoln.pa.services.accounting.ReinstateEarnedHandler">
+    	<debit targetAccount="TYPE=CASH_SUSPENSE" order="1" allocate="#{event.netAmount}" />
+    	<debit targetAccount="TYPE=ADMIN" order="2" allocate="#{event.netAmount}"  />
+    	<credit targetAccount="TYPE=PREMIUM_EARNED" order="3" allocate="#{event.netAmount}" />
+    </eventConfig>
+     <eventConfig type="CONVERSION_REFUND" name="CONVERSION_REFUND" handler="com.stepsoln.pa.services.accounting.AllocateELExpressionHandler">
+    	 <debit targetAccount="TYPE=PREMIUM_UNEARNED" order="1" allocate="#{event.netAmount}"/>
+        <credit targetAccount="TYPE=PREMIUM_SUSPENSE" order="2" allocate="#{event.netAmount}"/>
+    </eventConfig> 
+         <eventConfig type="CONVERSION_PAYMENT" name="CONVERSION_PAYMENT" handler="com.stepsoln.pa.services.accounting.AllocateELExpressionHandler">
+    	 <debit targetAccount="TYPE=PREMIUM_SUSPENSE" order="1" allocate="#{event.netAmount}"/>
+        <credit targetAccount="TYPE=PREMIUM_UNEARNED" order="2" allocate="#{event.netAmount}"/>
+    </eventConfig> 
+    <eventConfig type="COMMISSION_GENERATED" name="COMMISSION_GENERATED" handler="com.stepsoln.pa.services.accounting.AllocateELExpressionHandler">
+    	 <debit targetAccount="TYPE=PREMIUM_EARNED" order="1" allocate="#{event.netAmount}"/>
+        <credit targetAccount="TYPE=ADVANCE_COMMISSION" order="2" allocate="#{event.netAmount}"/>
+    </eventConfig>
+    <eventConfig type="COMMISSION_EARNED" name="COMMISSION_EARNED" handler="com.stepsoln.pa.services.accounting.AllocateELExpressionHandler">
+    	 <debit targetAccount="TYPE=ADVANCE_COMMISSION" order="1" allocate="#{event.netAmount}"/>
+        <credit targetAccount="TYPE=COMMISSION_EARNED" order="2" allocate="#{event.netAmount}"/>
+    </eventConfig>
+    <eventConfig type="COMMISSION_PAYMENT" name="COMMISSION_PAYMENT" handler="com.stepsoln.pa.services.accounting.AllocateELExpressionHandler">
+    	 <debit targetAccount="TYPE=COMMISSION_EARNED" order="1" allocate="#{event.netAmount}"/>
+        <credit targetAccount="TYPE=AGENT" order="2" allocate="#{event.netAmount}"/>
+    </eventConfig>
+</chartOfAccounts>
+</stepImport>

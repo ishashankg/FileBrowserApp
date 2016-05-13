@@ -1,0 +1,293 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import com.stepsoln.core.rules.uw.*;
+import java.util.ArrayList;
+import com.stepsoln.core.db.Lookup;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "1. AUTODECLINE for Phone replacement of external policy"
+salience 200
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData(contactMethod=='PHONE', contractState in ('CA', 'DE', 'FL','ID', 'IL', 'IN','MA','MO', 'NY', 'PA', 'PR', 'TN', 'WA'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		riskCalcData:CaseUwRiskCalcData()
+	then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("Phone replacement of external policy");
+		rulesResponse.addToRuleFiredList(1);
+	end
+
+rule "2. AUTODECLINE for Phone replacement of external NV policy"
+salience 190
+activation-group "caseStatusUpdate"
+	when 
+		theCase:CaseData(contactMethod=='PHONE', contractState=='NV')
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		riskCalcData:CaseUwRiskCalcData()
+	then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("Phone replacement of external NV policy");
+		rulesResponse.addToRuleFiredList(2);
+end
+
+rule "3. AUTODECLINE for merica recommendation DECLINE"
+salience 180
+activation-group "caseStatusUpdate"
+	when 
+		theCase:CaseData();
+		riskCalcData:CaseUwRiskCalcData();
+		CaseMericaRecommendationData( recommendation in("DECLINE"), $rec: recommendation)
+	then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("merica recommendation DECLINE");
+		rulesResponse.addToRuleFiredList(3);
+end
+
+rule "4. AUTODECLINE based on Merica APS and Face Amount"
+salience 175
+activation-group "caseStatusUpdate"
+	when
+		CaseMericaRecommendationData(recommendation=='APS');
+		theCase:CaseData($f:faceAmount<100000);
+		riskCalcData:CaseUwRiskCalcData()
+	then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("AUTODECLINE based on Merica APS and Face Amount<100000 ($"+$f+")");
+		rulesResponse.addToRuleFiredList(4);
+end
+
+rule "Contract State Over Phone Kickout"
+salience 170
+activation-group "caseStatusUpdate"
+	when
+       	theCase:CaseData(contactMethod=='PHONE', contractState=='PR')
+       	riskCalcData:CaseUwRiskCalcData()
+    then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("Contract State Over Phone Kickout");
+    
+end
+
+rule "Agent Replacement of an Internal Policy"
+salience 160
+activation-group "caseStatusUpdate"
+	when
+       	theCase:CaseData(caseSource in ('EXTERNAL','EPAPER'))
+       	CaseExistingInsuranceData(naicCompanyNumber=='70939', isReplacement==true)
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+       	riskCalcData:CaseUwRiskCalcData()
+    then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("Agent Replacement of an Internal Policy");
+end
+
+rule "No Replacement External Agent Policy"
+salience 150
+activation-group "caseStatusUpdate"
+	when
+       	theCase:CaseData(contractState in ('CA','DE','FL','ID','IL','IN','MA','MO','NY','PA','TN','WA'), caseSource in ('EXTERNAL','EPAPER'))
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+       	riskCalcData:CaseUwRiskCalcData()
+    then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("No Replacement External Agent Policy");
+end
+
+rule "No Replacement External Agent Policy Over Phone"
+salience 140
+activation-group "caseStatusUpdate"
+	when
+       	theCase:CaseData(contactMethod=='PHONE', contractState in ('GA','KS','NV'), caseSource in ('EXTERNAL','EPAPER'))
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+       	riskCalcData:CaseUwRiskCalcData()
+    then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("No Replacement External Agent Policy Over Phone");
+end
+
+rule "GLIC Replacement Internal Policy"
+salience 160
+activation-group "caseStatusUpdate"
+	when
+       	theCase:CaseData(caseSource in ('CAPTIVE','INTERNET','IPAPER'))
+       	CaseExistingInsuranceData(naicCompanyNumber=='70939', isReplacement==true)
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+       	riskCalcData:CaseUwRiskCalcData()
+    then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("GLIC Replacement of an Internal Policy");
+end
+
+rule "GLIC Replacement External Policy"
+salience 120
+activation-group "caseStatusUpdate"
+	when
+       	theCase:CaseData(contractState in ('FL','NY','SD'), caseSource in ('INTERNET','IPAPER'))
+       	not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+       	riskCalcData:CaseUwRiskCalcData()
+    then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("GLIC Replacement External Policy");
+end
+
+rule "GLIC Replacement Policy by PHONE"
+salience 110
+activation-group "caseStatusUpdate"
+	when
+       	theCase:CaseData(contactMethod=='PHONE', contractState in ('FL','NY','SD'), caseSource in ('CAPTIVE','IPAPER'))
+       	Question(id=="app_replace_answ", answerAsBoolean==true)
+       	riskCalcData:CaseUwRiskCalcData()
+    then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("GLIC Replacement Policy by PHONE");
+end
+
+rule "Maximum Insurance Amount"
+salience 105
+activation-group "caseStatusUpdate"
+	when
+       	theCase:CaseData(maxInsuranceAmount < 25000)
+       	riskCalcData:CaseUwRiskCalcData()
+    then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("Exceeds Maximum Insurance Amount");
+end
+
+rule "GLIC Telephone Replacement External Policy AUTODECLINE"
+salience 100
+activation-group "caseStatusUpdate"
+	when 
+		theCase:CaseData(contactMethod=='PHONE', contractState == 'NV', caseSource in ('CAPTIVE','IPAPER','INTERNET'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		riskCalcData:CaseUwRiskCalcData()
+	then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("Internal replacement of external policy");
+end
+
+rule "GLIC Paper Replacement External Policy AUTODECLINE"
+salience 95
+activation-group "caseStatusUpdate"
+	when 
+		theCase:CaseData(contractState == 'NY', caseSource in ('IPAPER','INTERNET'))
+		not CaseExistingInsuranceData(naicCompanyNumber=='70939')
+		Question(id=="app_replace_answ", answerAsBoolean==true)
+		riskCalcData:CaseUwRiskCalcData()
+	then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("Internal replacement of external NY policy");
+end
+
+rule "9. If Question 6b = Y; AUTODECLINE"
+salience 90
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData()
+		Question(id in ("m6b"), answer == "Y");
+		riskCalcData:CaseUwRiskCalcData()
+	then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("Felony");
+end
+
+rule "1035 Exchange rule"
+salience 85
+activation-group "caseStatusUpdate"
+	when 
+		theCase:CaseData()
+		Question(id=="y_1035_exch_ind", answerAsBoolean==true)
+		riskCalcData:CaseUwRiskCalcData()
+	then
+		theCase.setCaseStatus("AUTODECLINE");
+		riskCalcData.setUwStatus("DECLINE");
+		theCase.setSubmitTaskDescription("1035 Exchange was answered YES");
+end
+
+rule "set case status no driver's license INCOMPLETE"
+salience 10
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData()
+		Question(id == "driv_lic_number", answerAsString.toUpperCase() in ('NA','NONE', 'UNKNOWN')) 
+		and (Question(id == "driv_lic_state", answerAsString.toUpperCase() in ('N_A','NOT APPLICABLE','ZZ','', 'UNKNOWN'))
+			or not Question(id == "driv_lic_state"))
+		and (not Requirement(code=="NDL", status in( "RESOLVED", "CANCELLED")))
+	then
+		theCase.setCaseStatus("INCOMPLETE");
+		theCase.setSubmitTaskDescription("Complete Driver's License Information");
+end
+
+rule "Policy Owner Unresolved Signatures"
+salience 10
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData(caseSource in ('CAPTIVE', 'EXTERNAL'));
+		Requirement(type=='ESIGNATURE', target=='POLICY_OWNER', status not in ('RESOLVED'), orderStatus not in ('SIGNED'));
+		Question(id=="oth_owner_ind", answerAsBoolean==true);
+    then
+    	theCase.setCaseStatus("INCOMPLETE");
+    	theCase.setSubmitTaskDescription("Policy Owner Unresolved Signatures");
+end
+
+rule "FULLHIPAAPDF PAPER"
+salience 10
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData(caseSource in ('CAPTIVE', 'EXTERNAL'));
+		Requirement(type=='ESIGNATURE', description=='HIPAA - Primary Insured', status not in ('RESOLVED'), orderStatus not in ('SIGNED'));
+		Requirement(type=='Paper Application');
+    then
+    	theCase.setCaseStatus("INCOMPLETE");
+    	theCase.setSubmitTaskDescription("FULLHIPAAPDF PAPER unresolved signature");
+end
+
+rule "set case status no valid address INCOMPLETE"
+salience 10
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData()
+		ApplicantData(type=='PRIMARY_INSURED', validAddress==false)
+		and (not Requirement(code=="NVA", status in( "RESOLVED", "CANCELLED")))
+	then
+		theCase.setCaseStatus("INCOMPLETE");
+		theCase.setSubmitTaskDescription("Verify primary applicant address");
+end
+
+rule "just In Time Appointment agent appointment check rule"
+salience 1
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData(justInTimeAppointment=='true')
+		jitRequirement:Requirement(code=='JIT', status not in ('RESOLVED'))
+		theLookup:Lookup((code == theCase.getContractLocale().toString().toUpperCase() ||
+			description.toString().toUpperCase() == theCase.getContractLocale().toString().toUpperCase()) && 
+			name == "LOCALE_STATE")
+       	theLicenseDataList:ArrayList() from collect(LicenseData(agentId == theCase.getAgentId(), licenseStatus == 'ACTIVE', licenseState == theLookup.getCode().toUpperCase()));
+    	eval(theLicenseDataList.size() <= 0)
+    then    	
+    	theCase.setCaseStatus("INCOMPLETE");
+    	theCase.setSubmitTaskDescription("Just In Time Appointment license");        	
+end

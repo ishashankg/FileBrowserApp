@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+  
+  
+<route id="masterpolicy_change" shortName="masterPolicyChange" >
+  	 <from uri="activemq://job_process_queue?selector=routeId%3D%27masterpolicy_change%27"/>
+  	 <to uri="masterPolicyChangeProcessor"/>
+  </route>
+  
+  
+</routes>

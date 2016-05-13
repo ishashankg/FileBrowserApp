@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+ 
+
+  <route id="fgl_test">
+ 	<setHeader headerName="defaultOuCode"><simple>DEP</simple></setHeader>
+ 	<setHeader headerName="defaultCarrierCode"><simple>FGL</simple></setHeader>
+ 	<setHeader headerName="defaultProductCode"><simple>PROELIT</simple></setHeader>
+    <from uri="file://{{rootOutputDirectory}}/FGL/inbound/?move=.done&amp;moveFailed=.error"/>
+    <to uri="bean:intakeCaseProcessor"/>
+  </route>
+ 
+</routes>

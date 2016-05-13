@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<package>
+		<carrierCode>GC</carrierCode>
+		<productCode>PROD2015</productCode>
+		<eforms>
+			<file>import_eforms.xml</file>
+		</eforms>
+
+		<import>
+			<file>import.xml</file>
+		</import>
+		<preferences>
+			<file>import_preferences.xml</file>
+		</preferences>
+		<requirements>
+			<file>import_requirements.xml</file>
+		</requirements>
+		<!-- product provisions -->
+		<provisions>
+			<file>import_provisions.xml</file>
+		</provisions>
+		<processRequirements>
+			<file>import_process_requirements.xml</file>
+		</processRequirements>
+		<licenses>
+			<file>import_licenses.xml</file>
+		</licenses>
+		<resources>
+			<file>import_resources.xml</file>
+		</resources>
+		<agencies>
+			<file>import_agencies.xml</file>
+		</agencies>
+		<rates>
+			<file>import_rates.xml</file>
+		</rates>
+		<carrier>
+			<org-units>
+				<file>import_orgunits.xml</file>
+			</org-units>
+			<roles>
+				<file>import_roles.xml</file>
+			</roles>
+			<userRoles>
+				<file>import_userRoles.xml</file>
+			</userRoles>
+		</carrier>
+
+		<users>
+			<file>import_users.xml</file>
+		</users>
+	<ou-users>
+    	<file>import_ouUsers.xml</file>
+  	</ou-users>
+	</package>

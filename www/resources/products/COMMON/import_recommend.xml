@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<recommend>
+		<decisionTables>
+			<resource>
+				<description>Product recommendation rules</description>
+				<file>recommend/StepExchangeProductSellingRules.xls</file>
+				<type>RECOMMENDATION_RULES</type>
+				<resourceCode>LIFE_RECOMMENDATION_RULES</resourceCode>
+				<formatType>XLS</formatType>
+				<mimeType>application/octet-stream</mimeType>
+			</resource>	
+		</decisionTables>
+		
+		<characteristics>
+			<characteristic>
+				<code>core_benefits</code>
+				<name>Core benefits</name>
+				<description>Core benefits</description>
+			</characteristic>
+			<characteristic>
+				<code>skilled_nursing</code>
+				<name>Skilled Nursing Facility Coinsurance</name>
+				<description>Consider a policy with this benefit if you may go to a skilled nursing facility and stay there for more than 20 days. Consider a policy with this benefit if you may go to a skilled nursing facility and stay there for more than 20 days. Benefit pays up to $152 (in 2014) per day for days 21-100 in a skilled nursing facility.</description>
+			</characteristic>
+			<characteristic>
+				<code>hospital_deductible_a</code>
+				<name>Medicare Part A Hospital Deductible</name>
+				<description>Consider a ProCare policy with this benefit if you may stay in the hospital multiple times. Benefit pays $1,216 (in 2014) Medicare Part A Hospital Deductible for days 1-60 of a hospital stay.</description>
+			</characteristic>
+			<characteristic>
+				<code>hospital_deductible_b</code>
+				<name>Medicare Part B Hospital Deductible</name>
+				<description>If you have Medicare Part B, you must pay this deductible before Medicare starts to pay its share. Benefit pays $147 (in 2014) Medicare Part B deductible.</description>
+			</characteristic>
+			<characteristic>
+				<code>excess_charges_b</code>
+				<name>Medicare Part B Excess Charges</name>
+				<description>Consider a policy with this benefit if your doctor doesn''t accept Medicare assignment, or if during a hospital stay you cannot choose your doctors. Benefit pays the difference between your doctor''s actual charge and Medicare''s approved amount.</description>
+			</characteristic>
+			<characteristic>
+				<code>foreign_travel_emergency</code>
+				<name>A Foreign-Travel Emergency</name>
+				<description>Consider a ProCare policy with this benefit if you travel outside the U.S. and may need emergency healthcare. Benefit covers emergency healthcare you receive outside the U.S.</description>
+			</characteristic>
+		</characteristics>
+		
+	</recommend>
+</stepImport>

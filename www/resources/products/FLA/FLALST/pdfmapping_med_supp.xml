@@ -1,0 +1,14 @@
+<map>
+	<entry>
+		<string>a-1</string>
+		<string>${EFORMS.APPLICANT.ins_first_name} ${EFORMS.APPLICANT.ins_middle_name?:""} ${EFORMS.APPLICANT.ins_last_name}</string>
+	</entry>
+	<entry>
+		<string>a-2</string>
+		<string>${CASE.policyNo?CASE.policyNo:"Not available"}</string>
+	</entry>
+	<entry>
+		<string>a-3</string>
+		<string>${caseHelper.getMericaStatementsTextBlock(STATEMENTS['PRIMARY_INSURED'])}</string>
+	</entry>
+</map>

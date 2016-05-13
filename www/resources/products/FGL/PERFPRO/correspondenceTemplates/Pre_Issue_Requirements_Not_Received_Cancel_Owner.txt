@@ -1,0 +1,26 @@
+$currentDate
+
+$correspondenceOwnerName
+$ownerAddressLines
+$ownerCityStateZip
+
+RE:	Application #:			$policyNumber
+	Annuitant/Insured:		$annuitantFirstName $annuitantLastName 
+	Date of Application:	$appSubmitDate
+
+
+Dear $correspondenceOwnerName,
+
+Thank you for your recent application for a Fidelity & Guaranty Life annuity.  Unfortunately, we are unable to process your application at this time because we have not received the administrative requirements needed to issue your annuity contract.    
+
+If you paid us by check, a refund check in the amount of «Funds», representing the amount submitted with your application, will be mailed to you.  If the purchase funds were being transferred from another insurance company through a 1035 exchange, we have cancelled the exchange and/or returned the money to the other insurance company.   
+
+If you need any additional assistance or assistance contacting your agent, please contact Policyholder Services at 1-800-445-6758.  Our service professionals are ready to assist you Monday through Friday from 7:00 am to 6:00 pm CST.
+
+
+Sincerely,
+
+Annuity New Business Department
+
+
+Cc:  $agentFirstName $agentLastName

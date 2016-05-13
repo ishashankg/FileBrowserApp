@@ -1,0 +1,1579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.3.2.v20140211-1400 Build &lt;4.3.2.v20140218-1056></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="carrier_id" id="226">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="product_id" id="227">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="from_date" id="228">
+            <text-property name="helpText">Begin Time Period</text-property>
+            <text-property name="promptText">Begin Time Period</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">dateTime</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="javascript">var date = new Date();&#13;
+date.setMonth(date.getMonth() - 6);&#13;
+date;</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Custom</property>
+                <property name="pattern">MM/dd/yyyy</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="to_date" id="229">
+            <text-property name="helpText">End Time Period</text-property>
+            <text-property name="promptText">End Time Period</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">dateTime</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="javascript">new Date();</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Custom</property>
+                <property name="pattern">MM/dd/yyyy</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="ou_id" id="230">
+            <text-property name="helpText">Select Underwriter</text-property>
+            <text-property name="promptText">Select Underwriter</text-property>
+            <property name="valueType">static</property>
+            <expression name="sortByColumn">dataSetRow["fullName"]</expression>
+            <property name="sortDirection">asc</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="uw_status" id="232">
+            <text-property name="helpText">Select UW Status</text-property>
+            <text-property name="promptText">Select UW Status</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="USER_LIST" id="8">
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">fullName</property>
+                    <expression name="expression">row["firstName"].substr(0,1).toUpperCase() + row["firstName"].substr(1).toLowerCase() + " " + &#13;
+row["lastName"].substr(0,1).toUpperCase() + row["lastName"].substr(1).toLowerCase()</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">phone</property>
+                    <expression name="expression">if (row["primaryPhone"].substr(0,1) == '(')&#13;
+{&#13;
+row["primaryPhone"];&#13;
+}&#13;
+else &#13;
+{&#13;
+"(" + row["primaryPhone"].substr(0,3) + ")" + row["primaryPhone"].substr(3,6) + "-" +row["primaryPhone"].substr(6);&#13;
+}</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">userFullName</property>
+                    <expression name="expression">row["userFirstName"] + " " + row["userLastName"];</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">policyNumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">createdDate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">firstName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">lastName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">birthDate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">primaryPhone</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">contract_locale</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">status</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">submitDate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">archived</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">userFirstName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">userLastName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">fullName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">phone</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">userFullName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[var fromDate = Formatter.format(params["from_date"].value, "dd/MM/yyyy");
+var toDate = Formatter.format(addADay(params["to_date"].value, 1), "dd/MM/yyyy");
+var uwStatus = params["uw_status"].value;
+var underwriterId = params["ou_id"].value.split(";");
+
+this.queryText = "select a.external_case_no as policyNumber, CONVERT(varchar(10), a.created_on, 101) as createdDate, p.first_name as firstName, p.last_name as lastName, " +
+"convert(varchar(10), DATEADD(MILLISECOND, (convert(numeric, convert(varchar(100), DecryptByCert(Cert_ID('STEP_ENCRYPTION_CERTIFICATE'), p.applicant_birthdate))) % 1000), " + 
+"DATEADD(SECOND, (convert(numeric, convert(varchar(100), DecryptByCert(Cert_ID('STEP_ENCRYPTION_CERTIFICATE'), p.applicant_birthdate))) / 1000), '19700101')), 101) as birthDate, " +
+"p.primary_phone as primaryPhone, a.contract_locale as contract_locale, a.status as status, " +
+"CONVERT(varchar(10), a.submit_date, 101) as submitDate, a.is_archived as archived, b.first_name as userFirstName, b.last_name as userLastName " +
+"from eform_case a, security_user b, applicant p " +
+"where a.uw_ou_id is not null and a.uw_owner_user_id = b.user_id " +
+"and a.case_id = p.case_id and (p.applicant_type='PRIMARY_INSURED' or p.applicant_type is null) " +
+"and a.uw_case_status is not null and a.uw_case_status = '" + uwStatus + "'" +
+"and a.carrier_id = '" +  params["carrier_id"].value + "' " +
+"and a.product_id = '" + params["product_id"].value + "' " +
+"and a.modified_on between convert(datetime, '" + fromDate + "', 103) ";
+
+if (underwriterId.length > 1)
+{
+	this.queryText = this.queryText + "and convert(datetime, '" + toDate + "', 103) and a.uw_owner_user_id in ('" + underwriterId[0] + "')";
+}
+else
+{
+	this.queryText = this.queryText + "and convert(datetime, '" + toDate + "', 103) and a.uw_owner_user_id in ('" + params["ou_id"].value + "')";
+}
+
+]]></method>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">policyNumber</property>
+                    <property name="nativeName">policyNumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">createdDate</property>
+                    <property name="nativeName">createdDate</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">firstName</property>
+                    <property name="nativeName">firstName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">lastName</property>
+                    <property name="nativeName">lastName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">birthDate</property>
+                    <property name="nativeName">birthDate</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">primaryPhone</property>
+                    <property name="nativeName">primaryPhone</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">contract_locale</property>
+                    <property name="nativeName">contract_locale</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">status</property>
+                    <property name="nativeName">status</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">submitDate</property>
+                    <property name="nativeName">submitDate</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">archived</property>
+                    <property name="nativeName">archived</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">userFirstName</property>
+                    <property name="nativeName">userFirstName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">userLastName</property>
+                    <property name="nativeName">userLastName</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select 
+from ]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="UNDERWRITER_LIST" id="231">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">fullName</property>
+                    <expression name="expression">row["firstName"] + " " + row["lastName"];</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">ouId</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">ouId</text-property>
+                    <text-property name="heading">ouId</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">class</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">class</text-property>
+                    <text-property name="heading">class</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">code</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">code</text-property>
+                    <text-property name="heading">code</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">name</text-property>
+                    <text-property name="heading">name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">userId</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">userId</text-property>
+                    <text-property name="heading">userId</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">firstName</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">firstName</text-property>
+                    <text-property name="heading">firstName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">lastName</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">lastName</text-property>
+                    <text-property name="heading">lastName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">userName</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">userName</text-property>
+                    <text-property name="heading">userName</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">carrier_param_1</property>
+                    <property name="paramName">carrier_id</property>
+                    <property name="dataType">string</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">carrier_param_2</property>
+                    <property name="paramName">carrier_id</property>
+                    <property name="dataType">string</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">ouId</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">class</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">userId</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">firstName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">lastName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">userName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">fullName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">ouId</property>
+                    <property name="nativeName">ouId</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">class</property>
+                    <property name="nativeName">class</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">code</property>
+                    <property name="nativeName">code</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">userId</property>
+                    <property name="nativeName">userId</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">firstName</property>
+                    <property name="nativeName">firstName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">lastName</property>
+                    <property name="nativeName">lastName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">userName</property>
+                    <property name="nativeName">userName</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select
+		this_.ou_id as ouId,
+        this_.ou_class as class,
+        this_.ou_code as code,
+        this_.ou_name as name,
+        users1_.user_id as userId,
+        users1_.first_name as firstName,
+        users1_.last_name as lastName,
+        users1_.username as userName
+    from
+        security_ou this_ 
+    inner join
+        security_user_ou securityus3_ 
+            on this_.ou_name='Underwriting' and this_.ou_id=securityus3_.ou_id 
+            and this_.carrier_id = ?
+    inner join
+        security_user users1_ 
+            on securityus3_.user_id=users1_.user_id 
+            and users1_.carrier_id = ? and users1_.in_use = 1]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <image name="NewImage" id="178">
+            <property name="marginTop">-0.75in</property>
+            <property name="marginLeft">0.05in</property>
+            <property name="marginBottom">0in</property>
+            <property name="marginRight">0in</property>
+            <property name="masterPage">Simple MasterPage</property>
+            <property name="height">0.75in</property>
+            <property name="width">7.697916666666667in</property>
+            <structure name="toc"/>
+        </image>
+        <label name="Report Header" id="11">
+            <property name="fontSize">14pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="marginTop">0.25in</property>
+            <property name="marginLeft">0.5in</property>
+            <property name="marginBottom">0.25in</property>
+            <property name="marginRight">0.5in</property>
+            <property name="paddingTop">0in</property>
+            <property name="paddingLeft">0in</property>
+            <property name="paddingBottom">0in</property>
+            <property name="paddingRight">0in</property>
+            <property name="textAlign">center</property>
+            <structure name="toc"/>
+            <method name="onRender"><![CDATA[var fromDateStr = Formatter.format(params["from_date"].value, "MM/dd/yyyy");
+var toDateStr = Formatter.format(params["to_date"].value, "MM/dd/yyyy");
+
+var fromDate = new Date(fromDateStr);
+var toDate = new Date(toDateStr);
+
+var fromMonth = fromDate.getMonth();
+var toMonth = toDate.getMonth();
+
+var fromYear = fromDate.getFullYear();
+var toYear = toDate.getFullYear();
+
+var names = params["ou_id"].value.split(";");
+var uwStatus = params["uw_status"].value
+
+if (uwStatus == 'Submitted')
+{
+	this.text = "In Progress";
+}
+else 
+{
+	this.text = uwStatus;
+}
+
+if (names.length > 1)
+{
+	this.text = this.text +	" Cases by " + names[1];
+}
+else
+{
+	this.text = this.text +	" Cases";
+}
+
+if ((fromMonth == toMonth) &amp;&amp; (fromYear == toYear))
+{
+	if (fromMonth == '00')
+	{
+		this.text = this.text + " for the month of January " + fromYear;
+	}
+	if (fromMonth == '01')
+	{
+		this.text = this.text + " for the month of February " + fromYear;
+	}
+	if (fromMonth == '02')
+	{
+		this.text = this.text + " for the month of March " + fromYear;
+	}
+	if (fromMonth == '03')
+	{
+		this.text = this.text + " for the month of April " + fromYear;
+	}
+	if (fromMonth == '04')
+	{
+		this.text = this.text + " for the month of May " + fromYear;
+	}
+	if (fromMonth == '05')
+	{
+		this.text = this.text + " for the month of June " + fromYear;
+	}
+	if (fromMonth == '06')
+	{
+		this.text = this.text + " for the month of July " + fromYear;
+	}
+	if (fromMonth == '07')
+	{
+		this.text = this.text + " for the month of August " + fromYear;
+	}
+	if (fromMonth == '08')
+	{
+		this.text = this.text + " for the month of September " + fromYear;
+	}
+	if (fromMonth == '09')
+	{
+		this.text = this.text + " for the month of October " + fromYear;
+	}
+	if (fromMonth == '10')
+	{
+		this.text = this.text + " for the month of November " + fromYear;
+	}
+	if (fromMonth == '11')
+	{
+		this.text = this.text + " for the month of December " + fromYear;
+	}
+}
+else
+{
+	this.text = this.text + " beginning from: " + fromDateStr + " and ending on: " + toDateStr;
+}
+]]></method>
+            <text-property name="text"></text-property>
+        </label>
+        <grid id="290">
+            <property name="numberAlign">center</property>
+            <property name="textAlign">center</property>
+            <property name="verticalAlign">middle</property>
+            <property name="bidiTextDirection">ltr</property>
+            <property name="height">1.1979166666666667in</property>
+            <list-property name="visibility">
+                <structure>
+                    <property name="format">all</property>
+                    <expression name="valueExpr" type="javascript">var names = params["ou_id"].value.split("','");&#13;
+if (names.length > 1)&#13;
+{&#13;
+true;&#13;
+}</expression>
+                </structure>
+            </list-property>
+            <column id="291"/>
+            <row id="292">
+                <property name="verticalAlign">middle</property>
+                <property name="height">1.1979166666666667in</property>
+                <cell id="293">
+                    <table id="233">
+                        <property name="backgroundPositionX">50%</property>
+                        <property name="backgroundPositionY">50%</property>
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">double</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderLeftStyle">double</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="borderRightStyle">double</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">double</property>
+                        <property name="borderTopWidth">medium</property>
+                        <property name="numberAlign">center</property>
+                        <property name="textAlign">center</property>
+                        <property name="verticalAlign">middle</property>
+                        <property name="whiteSpace">nowrap</property>
+                        <property name="pageBreakAfter">auto</property>
+                        <property name="pageBreakBefore">auto</property>
+                        <property name="width">7.90625in</property>
+                        <property name="dataSet">USER_LIST</property>
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">all</property>
+                                <expression name="valueExpr" type="javascript">var names = params["ou_id"].value.split("','");&#13;
+if (names.length > 1)&#13;
+{&#13;
+true;&#13;
+}</expression>
+                            </structure>
+                        </list-property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">policyNumber</property>
+                                <text-property name="displayName">policyNumber</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["policyNumber"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">createdDate</property>
+                                <text-property name="displayName">createdDate</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["createdDate"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">birthDate</property>
+                                <text-property name="displayName">birthDate</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["birthDate"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">primaryPhone</property>
+                                <text-property name="displayName">primaryPhone</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["primaryPhone"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">contract_locale</property>
+                                <text-property name="displayName">contract_locale</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["contract_locale"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">status</property>
+                                <text-property name="displayName">status</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["status"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">submitDate</property>
+                                <text-property name="displayName">submitDate</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["submitDate"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">archived</property>
+                                <text-property name="displayName">archived</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["archived"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">fullName</property>
+                                <text-property name="displayName">fullName</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["fullName"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">policyNum</property>
+                                <expression name="expression" type="javascript">row["policyNumber"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">created</property>
+                                <expression name="expression" type="javascript">row["createdDate"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">appName</property>
+                                <expression name="expression" type="javascript">row["fullName"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">dob</property>
+                                <expression name="expression" type="javascript">row["birthDate"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">phone</property>
+                                <expression name="expression" type="javascript">row["primaryPhone"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">state</property>
+                                <expression name="expression" type="javascript">row["contract_locale"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">finalStatus</property>
+                                <expression name="expression" type="javascript">row["status"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">submitted</property>
+                                <expression name="expression" type="javascript">row["submitDate"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">appPhone</property>
+                                <expression name="expression" type="javascript">if (row["phone"].substr(0,1) == '(')&#13;
+{&#13;
+row["phone"];&#13;
+}&#13;
+else &#13;
+{&#13;
+"(" + row["phone"].substr(0,3) + ") " + row["phone"].substr(3,3) + "-" + row["phone"].substr(6);&#13;
+}</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                        <list-property name="sort">
+                            <structure>
+                                <expression name="key" type="javascript">row["created"]</expression>
+                                <property name="direction">asc</property>
+                                <property name="strength">2</property>
+                            </structure>
+                        </list-property>
+                        <column id="264">
+                            <property name="width">0.20833333333333334in</property>
+                        </column>
+                        <column id="265">
+                            <property name="width">0.8333333333333334in</property>
+                        </column>
+                        <column id="266">
+                            <property name="width">0.8333333333333334in</property>
+                        </column>
+                        <column id="267">
+                            <property name="width">2.1666666666666665in</property>
+                        </column>
+                        <column id="268">
+                            <property name="width">0.4895833333333333in</property>
+                        </column>
+                        <column id="269">
+                            <property name="width">1.2083333333333333in</property>
+                        </column>
+                        <column id="270">
+                            <property name="width">0.53125in</property>
+                        </column>
+                        <column id="271">
+                            <property name="width">0.8333333333333334in</property>
+                        </column>
+                        <column id="272">
+                            <property name="width">0.8020833333333334in</property>
+                        </column>
+                        <header>
+                            <row id="234">
+                                <cell id="235">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                </cell>
+                                <cell id="236">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="273">
+                                        <text-property name="text">Policy #</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="237">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="274">
+                                        <text-property name="text">Created</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="238">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="275">
+                                        <text-property name="text">Applicant Name</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="239">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="276">
+                                        <text-property name="text">DOB</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="240">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="277">
+                                        <text-property name="text">Phone</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="241">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="278">
+                                        <text-property name="text">State</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="242">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="279">
+                                        <text-property name="text">Status</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="243">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="280">
+                                        <text-property name="text">Submitted</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <detail>
+                            <row id="244">
+                                <cell id="245">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                </cell>
+                                <cell id="246">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="281">
+                                        <property name="resultSetColumn">policyNum</property>
+                                    </data>
+                                </cell>
+                                <cell id="247">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="282">
+                                        <property name="resultSetColumn">created</property>
+                                    </data>
+                                </cell>
+                                <cell id="248">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="283">
+                                        <property name="resultSetColumn">appName</property>
+                                    </data>
+                                </cell>
+                                <cell id="249">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="284">
+                                        <property name="resultSetColumn">dob</property>
+                                    </data>
+                                </cell>
+                                <cell id="250">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="285">
+                                        <structure name="numberFormat">
+                                            <property name="category">Custom</property>
+                                        </structure>
+                                        <structure name="stringFormat">
+                                            <property name="category">Unformatted</property>
+                                        </structure>
+                                        <property name="resultSetColumn">appPhone</property>
+                                    </data>
+                                </cell>
+                                <cell id="251">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="287">
+                                        <property name="resultSetColumn">state</property>
+                                    </data>
+                                </cell>
+                                <cell id="252">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="288">
+                                        <property name="resultSetColumn">finalStatus</property>
+                                    </data>
+                                </cell>
+                                <cell id="253">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="289">
+                                        <property name="resultSetColumn">submitted</property>
+                                    </data>
+                                </cell>
+                            </row>
+                        </detail>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+        <grid id="294">
+            <property name="numberAlign">center</property>
+            <property name="textAlign">center</property>
+            <property name="verticalAlign">middle</property>
+            <property name="bidiTextDirection">ltr</property>
+            <property name="height">1.3229166666666667in</property>
+            <list-property name="visibility">
+                <structure>
+                    <property name="format">all</property>
+                    <expression name="valueExpr" type="javascript">var names = params["ou_id"].value.split("','");&#13;
+if (names.length == 1)&#13;
+{&#13;
+true;&#13;
+}</expression>
+                </structure>
+            </list-property>
+            <column id="295"/>
+            <row id="296">
+                <property name="verticalAlign">middle</property>
+                <property name="height">1.3229166666666667in</property>
+                <cell id="297">
+                    <table id="298">
+                        <property name="backgroundPositionX">50%</property>
+                        <property name="backgroundPositionY">50%</property>
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">double</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderLeftStyle">double</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="borderRightStyle">double</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">double</property>
+                        <property name="borderTopWidth">medium</property>
+                        <property name="numberAlign">center</property>
+                        <property name="textAlign">center</property>
+                        <property name="verticalAlign">middle</property>
+                        <property name="whiteSpace">nowrap</property>
+                        <property name="pageBreakAfter">auto</property>
+                        <property name="pageBreakBefore">auto</property>
+                        <property name="width">7.90625in</property>
+                        <property name="dataSet">USER_LIST</property>
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">all</property>
+                                <expression name="valueExpr" type="javascript">var names = params["ou_id"].value.split("','");&#13;
+if (names.length == 1)&#13;
+{&#13;
+true;&#13;
+}</expression>
+                            </structure>
+                        </list-property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">policyNumber</property>
+                                <text-property name="displayName">policyNumber</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["policyNumber"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">createdDate</property>
+                                <text-property name="displayName">createdDate</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["createdDate"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">birthDate</property>
+                                <text-property name="displayName">birthDate</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["birthDate"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">primaryPhone</property>
+                                <text-property name="displayName">primaryPhone</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["primaryPhone"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">contract_locale</property>
+                                <text-property name="displayName">contract_locale</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["contract_locale"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">status</property>
+                                <text-property name="displayName">status</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["status"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">submitDate</property>
+                                <text-property name="displayName">submitDate</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["submitDate"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">archived</property>
+                                <text-property name="displayName">archived</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["archived"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">fullName</property>
+                                <text-property name="displayName">fullName</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["fullName"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">policyNum</property>
+                                <expression name="expression" type="javascript">row["policyNumber"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">created</property>
+                                <expression name="expression" type="javascript">row["createdDate"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">appName</property>
+                                <expression name="expression" type="javascript">row["fullName"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">dob</property>
+                                <expression name="expression" type="javascript">row["birthDate"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">phone</property>
+                                <expression name="expression" type="javascript">row["primaryPhone"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">state</property>
+                                <expression name="expression" type="javascript">row["contract_locale"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">underwriterName</property>
+                                <expression name="expression" type="javascript">dataSetRow["userFullName"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">submitted</property>
+                                <expression name="expression" type="javascript">row["submitDate"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">appPhone</property>
+                                <expression name="expression" type="javascript">if (row["phone"].substr(0,1) == '(')&#13;
+{&#13;
+row["phone"];&#13;
+}&#13;
+else &#13;
+{&#13;
+"(" + row["phone"].substr(0,3) + ") " + row["phone"].substr(3,3) + "-" + row["phone"].substr(6);&#13;
+}</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                        <list-property name="sort">
+                            <structure>
+                                <expression name="key" type="javascript">row["created"]</expression>
+                                <property name="direction">asc</property>
+                                <property name="strength">2</property>
+                            </structure>
+                        </list-property>
+                        <column id="335">
+                            <property name="width">0.20833333333333334in</property>
+                        </column>
+                        <column id="336">
+                            <property name="width">0.8333333333333334in</property>
+                        </column>
+                        <column id="337">
+                            <property name="width">0.8333333333333334in</property>
+                        </column>
+                        <column id="338">
+                            <property name="width">1.9270833333333333in</property>
+                        </column>
+                        <column id="339">
+                            <property name="width">0.59375in</property>
+                        </column>
+                        <column id="340">
+                            <property name="width">0.875in</property>
+                        </column>
+                        <column id="341">
+                            <property name="width">0.5208333333333334in</property>
+                        </column>
+                        <column id="342">
+                            <property name="width">1.3125in</property>
+                        </column>
+                        <column id="343">
+                            <property name="width">0.8020833333333334in</property>
+                        </column>
+                        <header>
+                            <row id="299">
+                                <cell id="300">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                </cell>
+                                <cell id="301">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="302">
+                                        <text-property name="text">Policy #</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="303">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="304">
+                                        <text-property name="text">Created</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="305">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="306">
+                                        <text-property name="text">Applicant Name</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="307">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="308">
+                                        <text-property name="text">DOB</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="309">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="310">
+                                        <text-property name="text">Phone</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="311">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="312">
+                                        <text-property name="text">State</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="313">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="314">
+                                        <text-property name="text">Underwriter Name</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="315">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <label id="316">
+                                        <text-property name="text">Submitted</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <detail>
+                            <row id="317">
+                                <cell id="318">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                </cell>
+                                <cell id="319">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="320">
+                                        <property name="resultSetColumn">policyNum</property>
+                                    </data>
+                                </cell>
+                                <cell id="321">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="322">
+                                        <property name="resultSetColumn">created</property>
+                                    </data>
+                                </cell>
+                                <cell id="323">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="324">
+                                        <property name="resultSetColumn">appName</property>
+                                    </data>
+                                </cell>
+                                <cell id="325">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="326">
+                                        <property name="resultSetColumn">dob</property>
+                                    </data>
+                                </cell>
+                                <cell id="327">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="328">
+                                        <structure name="numberFormat">
+                                            <property name="category">Custom</property>
+                                        </structure>
+                                        <structure name="stringFormat">
+                                            <property name="category">Unformatted</property>
+                                        </structure>
+                                        <property name="resultSetColumn">appPhone</property>
+                                    </data>
+                                </cell>
+                                <cell id="329">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="330">
+                                        <property name="resultSetColumn">state</property>
+                                    </data>
+                                </cell>
+                                <cell id="331">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="332">
+                                        <property name="resultSetColumn">underwriterName</property>
+                                    </data>
+                                </cell>
+                                <cell id="333">
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">medium</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">medium</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">medium</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">medium</property>
+                                    <data id="334">
+                                        <property name="resultSetColumn">submitted</property>
+                                    </data>
+                                </cell>
+                            </row>
+                        </detail>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

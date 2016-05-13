@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v2 https://demo.stepsolutions.com/schema/eforms.v2.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onSave>saveData</onSave>
+	<page title="Applicant Details">
+		<section title="Part 1">
+			<group associated="true" labelWidth="80px">
+				<question id='ins_first_name' text='First Name: ' required='true'
+					type='TEXT' answerWidth="180px;" />
+				<question id='ins_middle_name' text='Middle Name: ' type='TEXT'
+					answerWidth="130px;" />
+				<question id='ins_last_name' text='Last Name: ' labelWidth="70px"
+					required='true' type='TEXT' answerWidth="180px;" />
+			</group>
+			<group associated="false">
+				<question id='ins_date_of_birth' text='Date of Birth: '
+					required='true' labelWidth="80px" type='DATEF' answerStyle="width:180px; color:#303030;" />
+				<question id='ins_gender' text='Gender: ' labelWidth="78px"
+					required='true' type='RADIO' answerWidth="50px;" answerSet="1:Male|0:Female" />
+			</group>
+			<group associated="true">
+				<question id='height_feet' text='Height: (ft.)' labelWidth="80px"
+					type='LISTBOX' required="true" answerSet=": |2|3|4|5|6|7" />
+				<question id='height_inches' text='(in.)' type='LISTBOX'
+					required="true" answerSet=": |0|1|2|3|4|5|6|7|8|9|10|11" />
+
+				<question id='weight_pounds' text='Weight: (lbs)' type='NUMBER'
+					required="true" answerWidth="50px;" />
+
+			</group>
+		</section>
+	</page>
+</form>
+

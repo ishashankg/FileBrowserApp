@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<org-units>
+	<org-unit>
+		<ouName>Ulife Agency</ouName>
+		<ouCode>UMBRELLA_LIFE_Ou</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>UMBRELLA_LIFE_MedAg</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Applicant</ouName>
+		<ouCode>WEB_USER</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Ulife Underwriting</ouName>
+		<ouCode>UMBRELLA_LIFE_UWO</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>DTC UMBRELLA_LIFE OU</ouName>
+		<ouCode>DTC_UMBRELLA_LIFE_OU</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Default Ulife Underwriting</ouName>
+		<ouCode>DEF_UMBRELLA_LIFE_UWO</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+</org-units>
+</stepImport>

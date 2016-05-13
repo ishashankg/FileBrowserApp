@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package>
+
+	<carrierCode>FLA</carrierCode>
+	<productCode>FLALST</productCode>
+	<eforms>
+		<file>import_eforms.xml</file>	
+	</eforms>
+	<import>
+		<file>import.xml</file>
+	</import>
+	<requirements>
+		<file>import_requirements.xml</file>
+	</requirements>
+	<correspondences>
+		<file>import_correspondence.xml</file>
+	</correspondences>
+	<licenses>
+		<file>import_licenses.xml</file>
+	</licenses>
+	<appointments>
+		<file>import_appointments.xml</file>
+	</appointments>
+	<pdfs>
+		<file>import_pdfs.xml</file>
+	</pdfs>
+	<preferences>
+		<file>import_preferences.xml</file>
+	</preferences>
+	<resources>
+  	  <file>import_resources.xml</file>
+    </resources>
+  
+	<rates>
+		<file>import_rates.xml</file>
+	</rates>
+	<carrier>
+		<agencies>
+			<file>import_agencies.xml</file>
+	   	</agencies>
+		<org-units>
+			<file>import_orgunits.xml</file>
+		</org-units>
+		<roles>
+			<file>import_roles.xml</file>
+		</roles>
+		<userRoles>
+	      <file>import_userRoles.xml</file>
+	    </userRoles>
+	</carrier>
+	<users>
+	    <file>import_users.xml</file>
+	</users>
+	<ou-users>
+    	<file>import_ouUsers.xml</file>
+  	</ou-users>
+  	<buildcharts>
+    	<file>import_buildchart.xml</file>
+  	</buildcharts>
+</package>

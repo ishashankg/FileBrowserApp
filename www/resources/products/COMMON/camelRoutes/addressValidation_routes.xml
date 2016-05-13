@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+  
+   <route id="smartyAddressValidation">
+       <from uri="direct:smartyAddressValidation"/>
+       <to uri="bean:smartyStreetAddressValidationProcessor"/>
+       <doTry>
+       <to uri="{{smartyStreetAPI.URL}}/?auth-token={{smartyStreetAPI.AUTHTOKEN}}"/>
+        <doCatch>
+            <exception>org.apache.cxf.transport.http.HTTPException</exception>
+            <exception>org.apache.camel.ExchangeTimedOutException</exception>
+            <to uri="bean:caseActivityLogProcessor"/>
+        </doCatch>       
+       </doTry>       
+       <to uri="bean:smartyStreetAddressValidationResponseProcessor"/>
+   </route>
+  
+</routes>

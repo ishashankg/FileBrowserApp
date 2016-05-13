@@ -1,0 +1,194 @@
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.RulesResponse;
+import java.util.*;
+import com.stepsoln.core.rules.uw.RiskCalculationRequirementData;
+import com.stepsoln.core.rules.uw.CaseMericaRecommendationData;
+import com.stepsoln.core.rules.uw.CaseMericaRecommendationDetailData;
+import com.stepsoln.core.rules.uw.CaseUwMedicalConditionData;
+import com.stepsoln.core.rules.uw.CaseUwMedicalConditionDetailData;
+import com.stepsoln.core.rules.uw.*;
+import com.stepsoln.core.rules.coverages.CoverageChangeData;
+import com.stepsoln.core.rules.coverages.CoverageChangeItemData;
+import com.stepsoln.core.rules.requirements.Requirement;
+import com.stepsoln.core.util.DateUtil;
+import com.stepsoln.core.helper.enums.UNIT_SYSTEM;
+
+function int compareUwClass(String cls1, String cls2)
+{
+	if (StringUtils.isBlank(cls1) || StringUtils.isBlank(cls2))
+	{
+		return 0;
+	}
+	Object[] UWCLASSORDER = new Object []{"TF","TC","RD","RB","ST","PF","PP"};//the order matters!
+	return Integer.valueOf(ArrayUtils.indexOf(UWCLASSORDER, cls1)).compareTo(Integer.valueOf(ArrayUtils.indexOf(UWCLASSORDER, cls2)));
+}
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+
+rule "1. Accept = Preferred LifeStory"
+salience 10
+activation-group "underwritingClassAdjustment"
+	when
+		$mericaRec:CaseMericaRecommendationData( recommendation=="ACCEPT" )
+		$cvgChg:CoverageChangeData()
+	then
+		$cvgChg.setNewUnderwritingClassType("PF");
+		$cvgChg.setPremiumRateIncreasePercent($mericaRec.getMortalityFactor());
+		if($mericaRec.getMortalityFactor() > 0)
+		  rulesResponse.addUserNotifcationInfo("Extra Mortality or Flat rate is applied. ");
+		rulesResponse.addToRuleFiredList(1);
+end
+
+
+rule "2. Borderline Standard or Mortality factor <= 25% Merica Recommendation = Standard LifeStory"
+salience 90
+activation-group "underwritingClassAdjustment"
+	when
+		$mericaRec:CaseMericaRecommendationData(recommendation == "OFFER", mortalityFactor <= 25);
+		$cvgChg:CoverageChangeData()
+	then
+	    $cvgChg.setNewUnderwritingClassType("ST");
+	    $cvgChg.setPremiumRateIncreasePercent($mericaRec.getMortalityFactor());
+		rulesResponse.addUserNotifcationInfo("The underwriting class is set to Standard. ");
+		if($mericaRec.getMortalityFactor() > 0)
+		  rulesResponse.addUserNotifcationInfo("Extra Mortality or Flat rate is applied. ");
+		rulesResponse.addToRuleFiredList(2);
+end
+
+rule "3. Mortality factor <= 50% Merica Recommendation = Rated B"
+salience 120
+activation-group "underwritingClassAdjustment"
+	when
+		$mericaRec:CaseMericaRecommendationData(recommendation == "OFFER", mortalityFactor > 25 && mortalityFactor <= 50);
+		$cvgChg:CoverageChangeData()
+	then
+	    $cvgChg.setNewUnderwritingClassType("RB");
+	    $cvgChg.setPremiumRateIncreasePercent($mericaRec.getMortalityFactor());
+		rulesResponse.addUserNotifcationInfo("The underwriting class is set to Rated B. ");
+		if($mericaRec.getMortalityFactor() > 0)
+		  rulesResponse.addUserNotifcationInfo("Extra Mortality or Flat rate is applied. ");
+		rulesResponse.addToRuleFiredList(3);
+end
+
+rule "4. Mortality factor > 50% Merica Recommendation = Rated D"
+salience 150
+activation-group "underwritingClassAdjustment"
+	when
+		$mericaRec:CaseMericaRecommendationData(recommendation == "OFFER", mortalityFactor > 50 && mortalityFactor <= 100);
+		$cvgChg:CoverageChangeData()
+	then
+	    $cvgChg.setNewUnderwritingClassType("RD");
+	    $cvgChg.setPremiumRateIncreasePercent($mericaRec.getMortalityFactor());
+		rulesResponse.addUserNotifcationInfo("The underwriting class is set to Rated D. ");
+		if($mericaRec.getMortalityFactor() > 0)
+		  rulesResponse.addUserNotifcationInfo("Extra Mortality or Flat rate is applied. ");
+		rulesResponse.addToRuleFiredList(4);
+end
+
+rule "5. Mortality factor > 100"
+salience 200
+activation-group "underwritingClassAdjustment"
+	when
+		$mericaRec:CaseMericaRecommendationData(recommendation != "ACCEPT", mortalityFactor > 100, mortalityFactorAdjusted == false)
+	then
+		$mericaRec.setMortalityFactoryAdjusted(true);
+		$mericaRec.setRecommendation("DECLINE");
+		rulesResponse.addToRuleFiredList(5);
+end
+
+rule "6. Add 75% to Mortality Factor is applicant ever used tobacco and has certain medical conditions"
+salience 100
+	when
+		$mericaRec:CaseMericaRecommendationData(mortalityFactorAdjusted == false)
+		$mc:CaseUwMedicalConditionData(diagnosisSource in ("APPLICANT","UW"), diagnosisValue in ("CAD","VASCULAR DISEASE PERIPHERAL","STROKE","TIA","COPD","CHRONIC BRONCHITIS","EMPHYSEMA","ASTHMA"))
+		RiskCalculationRequirementData(lastTobaccoUse != null)
+	then
+		int oldMf=$mericaRec.getMortalityFactor();
+		$mericaRec.setMortalityFactor($mericaRec.getMortalityFactor() + 75); //add 75%
+		$mericaRec.setMortalityFactoryAdjusted(true); //avoid double-adjusting by second run of the rules
+		String msg="Mortality factor adjusted by adding 75% due to medical condition '" + $mc.getDiagnosisValue() + "' combined with tobacco use. Old value: " + oldMf + ", new value: " + $mericaRec.getMortalityFactor();
+		rulesResponse.addUserNotifcationInfo(msg);
+		rulesResponse.addUserMessageInfo(msg);
+		rulesResponse.addToRuleFiredList(6);
+end
+
+rule "7. Decline if applicant has certain medical conditions"
+salience 100
+	when
+		$mericaRec:CaseMericaRecommendationData()
+		$mc:CaseUwMedicalConditionData(diagnosisSource in ("APPLICANT","UW"), diagnosisValue in ("BLADDER CANCER","ESOPHAGEAL CANCER","LARYNGEAL CANCER","CANCER RENAL","CANCER MOUTH","PANCREATIC CANCER","CANCER LUNG"))
+	then
+		$mericaRec.setRecommendation("DECLINE");
+		$mericaRec.setUwAction("DECLINE");
+		String msg="Decline due to medical condition '" + $mc.getDiagnosisValue() + "' presence";
+		rulesResponse.addUserNotifcationInfo(msg);
+		rulesResponse.addUserMessageInfo(msg);
+		rulesResponse.addToRuleFiredList(7);
+end
+
+rule "8. Valid RX report has no data, downgrade from PP/PF class to ST"
+salience 110
+	when
+		Requirement(code == "RXD", status in ("RESOLVED"))
+		$cvgChg:CoverageChangeData(underwritingClassType in ("PF", "PP"))
+		Number(intValue < 1) from accumulate(
+			CaseUwMedicalDrugData(),
+			init( int total = 0; ),
+			action( total += 1; ),
+			reverse( total -= 1; ),
+			result( new Integer( total ) )
+		)
+	then
+		$cvgChg.setNewUnderwritingClassType("ST");
+		rulesResponse.addUserNotifcationInfo("The underwriting class is reduced to ST because no RX record found.");
+		rulesResponse.addToRuleFiredList(8);
+end
+
+rule "11. if merica response is anything other than accept, decline, or offer then set UW Class to Preferred"
+salience 180
+activation-group "underwritingClassAdjustment"
+	when
+		$mericaRec:CaseMericaRecommendationData(recommendation not in ("ACCEPT","DECLINE","OFFER"))
+		$cvgChg:CoverageChangeData()
+	then
+		$cvgChg.setNewUnderwritingClassType("PF");
+		rulesResponse.addUserNotifcationInfo("The underwriting class is PF because of the Merica Recommendation");
+		rulesResponse.addToRuleFiredList(11);
+end
+
+rule "21. Determine if tobacco rate needs to be used"
+salience 70
+	when
+	    RiskCalculationRequirementData(lastTobaccoUse != null, DateUtil.monthsInBetween(new Date(), lastTobaccoUse) <= 0 && DateUtil.monthsInBetween(new Date(), lastTobaccoUse) >= -12)
+	    $cvgChg:CoverageChangeData(newUnderwritingClassType not in ("PF"))
+	then
+		$cvgChg.setUseTobaccoRate(true);
+		rulesResponse.addUserNotifcationInfo("Tobacco rate will be used in the new quote due to last tobacco use date");
+		rulesResponse.addToRuleFiredList(21);
+end
+
+rule "22. if Ingenix response status is 3 then class ST"
+salience 110
+activation-group "underwritingClassAdjustment"
+	when
+		Requirement(code == "RXD", status in ("RESOLVED"))
+		CaseUwDemographicDetailData(source=="INGENIX", category=="RX_STATUS", attributeValue=="3");
+		$cvgChg:CoverageChangeData(compareUwClass(StringUtils.isBlank(newUnderwritingClassType)?underwritingClassType:newUnderwritingClassType, "ST")>0 || StringUtils.isBlank(newUnderwritingClassType)&&StringUtils.isBlank(underwritingClassType))
+	then		
+		$cvgChg.setNewUnderwritingClassType("ST");
+		rulesResponse.addUserNotifcationInfo("The underwriting class is ST because of Ingenix Response status is 3.");
+		rulesResponse.addToRuleFiredList(22);
+end
+
+rule "23. Indicate to lookup build chart data with UW Class data"
+salience 100
+	when
+		$app:RiskCalculationRequirementData(weight != null, height != null)
+		$cvgChg:CoverageChangeData()	
+	then
+	    rulesResponse.setLookupBuildChart(true);
+		$app.setUnitSystem(UNIT_SYSTEM.IMPERIAL);
+		rulesResponse.addToRuleFiredList(23);
+end

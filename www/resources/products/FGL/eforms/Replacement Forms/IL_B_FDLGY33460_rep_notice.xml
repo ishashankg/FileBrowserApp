@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section title="Details of Existing Insurer" style="margin-left:0px">      
+			<group associated="true">
+				<question id='insurance_company' text='Insurance Company' type='TEXT' labelWidth="120px"
+          answerWidth="110px" required="true" labelStyle='margin-left:8px' tabindex ='1' />  
+				<question id='policy_number' text='Policy Number'
+          required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-Left:20px' tabindex ='2'/>
+			</group>
+			<group associated="true">
+				<question id='insurance_company_address1' text='Address Line1' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='3'/>
+				<question id='insurance_company_address2' text='Address Line2' labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-Left:20px' tabindex ='4'/> 
+			</group>			
+		</section>
+		<section style="margin-left:0px">
+			<group labelWidth="400px">
+				<paragragh text="Gentlemen: You are herewith given notice that we are in receipt of application(s) for life insurance or annuity(ies) for an individual presently insured with your company.">
+				</paragragh>
+			</group>     
+		</section>  		
+		<section title="Insured Identification" style="margin-left:0px">
+			<group associated="true">
+				<question id='insured_name' text='Insured Name' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='5'/>
+				<question id='insured_phone_no' text='Insured Phone No.' labelWidth="120px" type='PHONE' answerWidth="110px" labelStyle='margin-Left:20px' tabindex ='6'/> 
+			</group>  
+			<group associated="true">
+				<question id='insured_address1' text='Address Line1' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='7'/>
+				<question id='insured_address2' text='Address Line2' labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-Left:20px' tabindex ='8'/> 
+			</group>	
+			<group associated="true" style='margin-top:20px'>
+				<question id='applicant_signature' text='Applicant Signature' required="true" labelWidth="120px" type='CHECKBOX' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='9'/>
+				<question id='date_applicant_signed' text='Date' type='DATEF' labelWidth="120px" answerWidth="110px" required="true" labelStyle='margin-Left:20px' tabindex ='10' />        
+			</group>
+			<group associated="true">
+				<question id='agent_signature' text='Agent Signature' required="true" labelWidth="120px" type='CHECKBOX' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='11'/>
+				<question id='date_agent_signed' text='Date' type='DATEF' labelWidth="120px" answerWidth="110px" required="true" labelStyle='margin-Left:20px' tabindex ='12' />           
+			</group>			
+		</section> 
+	</page>
+</form>

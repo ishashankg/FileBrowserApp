@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<resources>
+		<resource>
+			<description>Product Coverage Selection Rules</description>
+			<file>rulesets/coverage_selection_rules.drl</file>
+			<type>CVG_RULES</type>
+			<resourceCode>CVG_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Requirements Rules</description>
+			<file>rulesets/requirements_rules.drl</file>
+			<type>REQ_RULES</type>
+			<resourceCode>REQ_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Final Action Requirements Rules</description>
+			<file>rulesets/finalaction_requirements_rules.drl</file>
+			<type>FIN_ACT_REQ_RULES</type>
+			<resourceCode>FIN_ACT_REQ_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Specific New business mapping rules</description>
+			<file>nbmapping/hfa_nb_mapping.xml</file>
+			<type>HFA_NB_MAPPING</type>
+			<resourceCode>HFA_NB_MAPPING</resourceCode>
+			<formatType>XML</formatType>
+		</resource>
+
+		<resource>
+			<description>Requirements Signatures Rules</description>
+			<file>rulesets/requirements_signatures_rules.drl</file>
+			<type>REQ_SIG_RULES</type>
+			<resourceCode>REQ_SIG_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Case Rules</description>
+			<file>rulesets/case_rules.drl</file>
+			<type>CASE_RULES</type>
+			<resourceCode>CASE_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Auto Decision Rules</description>
+			<file>rulesets/auto_decision_rules.drl</file>
+			<type>AUTO_DECISION_RULES</type>
+			<resourceCode>AUTO_DECISION_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+
+		<resource>
+			<description>New Case Submit Rules</description>
+			<file>rulesets/newcasesubmit_rules.drl</file>
+			<type>NEWCASE_SUBMIT_RULES</type>
+			<resourceCode>NEWCASE_SUBMIT_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>New business mapping rules</description>
+			<file>nbmapping/nb_mapping.xml</file>
+			<type>NB_MAPPING</type>
+			<resourceCode>NB_MAPPING</resourceCode>
+			<formatType>XML</formatType>
+		</resource>
+		<resource>
+			<description>Gerber Customized Properties</description>
+			<resourceCode>HFA_PROPERTIES</resourceCode>
+			<file>product.properties</file>
+			<type>PRODUCT_PROPERTIES</type>
+			<formatType>PROPERTIES</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<file>eforms/person_eform.xml</file>
+			<description>Part 1</description>
+			<type>EFORM_TEMPLATE</type>
+			<resourceCode>PERSON</resourceCode>
+			<formatType>XML</formatType>
+			<name>PERSON</name>
+		</resource>
+		<resource>
+			<file>eforms/authorization_eform.xml</file>
+			<description>Part 2</description>
+			<resourceCode>AUTHORIZATION</resourceCode>
+			<type>EFORM_TEMPLATE</type>
+			<formatType>XML</formatType>
+			<name>AUTHORIZATION</name>
+		</resource>
+		<resource>
+			<file>eforms/owner_authorization_eform.xml</file>
+			<description>Owner Authorization</description>
+			<resourceCode>OWNER_AUTH</resourceCode>
+			<type>EFORM_TEMPLATE</type>
+			<formatType>XML</formatType>
+			<name>OWNER_AUTH</name>
+		</resource>
+		<resource>
+			<file>eforms/full_hipaa_eform.xml</file>
+			<description>Full HIPAA</description>
+			<resourceCode>FULL_HIPAA</resourceCode>
+			<type>EFORM_TEMPLATE</type>
+			<formatType>XML</formatType>
+			<name>FULL_HIPAA</name>
+		</resource>
+
+		<resource>
+			<file>eforms/reflexive_eform.xml</file>
+			<description>Part 3</description>
+			<resourceCode>REFLEXIVE</resourceCode>
+			<type>EFORM_TEMPLATE</type>
+			<formatType>XML</formatType>
+			<name>REFLEXIVE</name>
+			<resource>
+				<description>EFORM Scripting Events</description>
+				<file>scripts/ReflexiveScripts.groovy</file>
+				<type>FORM_SCRIPTS</type>
+				<resourceCode>ReflexiveScripts</resourceCode>
+				<formatType>GROOVY</formatType>
+			</resource>
+		</resource>
+		<resource>
+			<file>eforms/app_ack_eform.xml</file>
+			<description>Part 4</description>
+			<resourceCode>APPLICANT_AUTHORIZATION</resourceCode>
+			<type>EFORM_TEMPLATE</type>
+			<formatType>XML</formatType>
+			<name>APPLICANT_AUTHORIZATION</name>
+		</resource>
+		<resource>
+			<file>eforms/agent_attest_eform.xml</file>
+			<description>Part 5</description>
+			<resourceCode>AGENT_ATTESTATION</resourceCode>
+			<type>EFORM_TEMPLATE</type>
+			<formatType>XML</formatType>
+			<name>AGENT_ATTESTATION</name>
+		</resource>
+		<resource>
+			<file>eforms/paper_app_eform.xml</file>
+			<description>Paper Application Entry Screen</description>
+			<resourceCode>HFA_PAPER_APP</resourceCode>
+			<type>EFORM_TEMPLATE</type>
+			<formatType>XML</formatType>
+			<name>HFA_PAPER_APP</name>
+		</resource>
+		<resource>
+			<file>logo.png</file>
+			<description>Logo</description>
+			<resourceCode>LOGO_IMAGE</resourceCode>
+			<type>HEADER_LOGO_IMAGE</type>
+			<formatType>image/png</formatType>
+			<name>HEADER_LOGO_IMAGE</name>
+			<mimeType>application/octet-stream</mimeType>
+		</resource>
+
+		<resource>
+			<description>UI behavior </description>
+			<file>ui_behavior.xml</file>
+			<type>UI_BEHAVIOR</type>
+			<resourceCode>UI_BEHAVIOR</resourceCode>
+			<formatType>XML</formatType>
+		</resource>
+
+		<resource>
+			<description>Sequences</description>
+			<file>sequences.xml</file>
+			<type>SEQUENCE</type>
+			<resourceCode>sequence</resourceCode>
+			<formatType>XML</formatType>
+		</resource>
+
+		<resource>
+			<description>HFA Custom Properties</description>
+			<resourceCode>HFA_PROPERTIES1</resourceCode>
+			<file>product.properties</file>
+			<type>PRODUCT_PROPERTIES</type>
+			<formatType>PROPERTIES</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>GibraltarL additional functionality support</description>
+			<file>scripts/gibraltarL_functionality.groovy</file>
+			<type>FUNCTIONALITY_SCRIPT</type>
+			<resourceCode>GIBRALTARL_CARRIER_GROOVY_UTILS</resourceCode>
+			<formatType>GROOVY</formatType>
+		</resource>
+		<resource>
+			<description>Eform Converter</description>
+			<resourceCode>EFORM_CONVERTER1</resourceCode>
+			<file>eform_mapper.xml</file>
+			<type>EFORM_CONVERTER</type>
+			<formatType>XML</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+	</resources>
+</stepImport>

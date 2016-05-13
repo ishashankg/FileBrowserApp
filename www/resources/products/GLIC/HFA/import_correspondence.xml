@@ -1,0 +1,1299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<correspondences>
+	<correspondence>
+        <correspondenceCode>BRELtrAREX1</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 1 AR</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>AR</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_AR-EX1__IN-EX1__KS-EX1__MA-EX1__MD-EX1__NV-EX1__WY-EX2.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>AREX1</correspondenceCode>
+        <correspondenceName>Exhibit 1 AR</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>AR</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_AR_9-27-10.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrGAEX1</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 1 GA</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>GA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_GA-EX1__GA-EX2__IN-EX2__OK-EX1_Agent___No_Agent__WY-EX1.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>GAEX1</correspondenceCode>
+        <correspondenceName>Exhibit 1 GA</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>GA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_GA_12-3-09.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrGAEX2</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 2 GA</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>GA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_GA-EX1__GA-EX2__IN-EX2__OK-EX1_Agent___No_Agent__WY-EX1.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>GAEX2</correspondenceCode>
+        <correspondenceName>Exhibit 2 GA</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>GA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR2EX2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX2_GA_9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrHIEX1</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 1 HI</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>HI</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_HI-EX1.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>HIEX1</correspondenceCode>
+        <correspondenceName>Exhibit 1 HI</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>HI</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_HI_5-12-11.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrINEX1</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 1 IN</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>IN</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_AR-EX1__IN-EX1__KS-EX1__MA-EX1__MD-EX1__NV-EX1__WY-EX2.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>INEX1</correspondenceCode>
+        <correspondenceName>Exhibit 1 IN</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>IN</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_IN_9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrINEX2</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 2 IN</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>IN</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_GA-EX1__GA-EX2__IN-EX2__OK-EX1_Agent___No_Agent__WY-EX1.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>INEX2</correspondenceCode>
+        <correspondenceName>Exhibit 2 IN</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>IN</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR2EX2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX2_IN_9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrKSEX1</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 1 KS</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>KS</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_AR-EX1__IN-EX1__KS-EX1__MA-EX1__MD-EX1__NV-EX1__WY-EX2.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>KSEX1</correspondenceCode>
+        <correspondenceName>Exhibit 1 KS</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>KS</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_KS_10-1-10.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>	
+	<correspondence>
+        <correspondenceCode>BRELtrKSEX2</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 2 KS</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>KS</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_KS-EX2.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>KSEX2</correspondenceCode>
+        <correspondenceName>Exhibit 2 KS</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>KS</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX2_KS_10-4-10.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>	
+	<correspondence>
+        <correspondenceCode>BRELtrMDEX1</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 1 MD</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MD</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_AR-EX1__IN-EX1__KS-EX1__MA-EX1__MD-EX1__NV-EX1__WY-EX2.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MDEX1</correspondenceCode>
+        <correspondenceName>Exhibit 1 MD</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MD</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_MD_9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrMAEX1</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 1 MA</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_AR-EX1__IN-EX1__KS-EX1__MA-EX1__MD-EX1__NV-EX1__WY-EX2.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MAEX1</correspondenceCode>
+        <correspondenceName>Exhibit 1 MA</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_MA_9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+		<correspondence>
+        <correspondenceCode>BRELtrMIEXAgnt</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibits MI-Agent</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MI</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_MI-EX1___EX2_-_Agent___No_Agent.txt</correspondenceFileName>
+    </correspondence>	
+	<correspondence>
+        <correspondenceCode>MIEX1Agnt</correspondenceCode>
+        <correspondenceName>Exhibit 1 MI-Agent</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MI</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_MI_9-8-08.txt</correspondenceFileName>
+		<correspondenceCopies>2</correspondenceCopies>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>	
+	<correspondence>
+        <correspondenceCode>MIEX2Agnt</correspondenceCode>
+        <correspondenceName>Exhibit 2 MI-Agent</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MI</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX2_MI_9-8-08.txt</correspondenceFileName>
+		<correspondenceCopies>2</correspondenceCopies>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>MIEX2NOAgnt</correspondenceCode>
+        <correspondenceName>Exhibit 2 MI-Agent</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MI</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR2EX2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX2_MI_9-8-08.txt</correspondenceFileName>
+		<correspondenceCopies>2</correspondenceCopies>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrMIEXNoAgnt</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibits MI-No Agent</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MI</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_MI-EX1___EX2_-_Agent___No_Agent.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrMNEX1</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 1 MN</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MN</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_MN-EX1.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MNEX1</correspondenceCode>
+        <correspondenceName>Exhibit 1 MN</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MN</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_MN_9-8-08.txt</correspondenceFileName>
+		<correspondenceCopies>2</correspondenceCopies>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrNVEX1</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 1 NV</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>NV</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_AR-EX1__IN-EX1__KS-EX1__MA-EX1__MD-EX1__NV-EX1__WY-EX2.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>NVEX1</correspondenceCode>
+        <correspondenceName>Exhibit 1 NV</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>NV</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_NV_9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrNVEX2</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 2 NV</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>NV</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_NV-EX2.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>NVEX2</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 2 NV</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>NV</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR2EX2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX2_NV_9-8-08.txt</correspondenceFileName>
+		<correspondenceCopies>3</correspondenceCopies>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrOKEXAgntDv1</correspondenceCode>
+        <correspondenceName>BRE Letter Delivery 1-Exhibits-OK-Agent</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>OK</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_OK-EX1___EX2_-_Agent___No_Agent.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>OKEX1AgntDv1</correspondenceCode>
+        <correspondenceName>Delivery 1-Exhibit 1-OK-Agent</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>OK</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_OK_AGENT 9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>OKEX2AgntDv1</correspondenceCode>
+        <correspondenceName>Delivery 1-Exhibit 2-OK-Agent</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>OK</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX2_OK_AGENT 9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrOKEXNoAgntDv1</correspondenceCode>
+        <correspondenceName>BRE Letter Delivery 2-Exhibits-OK-No Agent</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>OK</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_OK-EX1___EX2_-_Agent___No_Agent.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>OKEX1NoAgntDv1</correspondenceCode>
+        <correspondenceName>Delivery 2-Exhibit 1-OK-None</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>OK</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR2EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_OK_NOAGENT9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>OKEX2NoAgntDv1</correspondenceCode>
+        <correspondenceName>Delivery 2-Exhibit 2-OK-None</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>OK</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR2EX2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX2_OK_NOAGENT9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>BRELtrWYEX1</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 1 WY</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>WY</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_GA-EX1__GA-EX2__IN-EX2__OK-EX1_Agent___No_Agent__WY-EX1.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>WYEX1</correspondenceCode>
+        <correspondenceName>Exhibit 1 WY</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>WY</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_WY_9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>	
+	<correspondence>
+        <correspondenceCode>BRELtrWYEX2</correspondenceCode>
+        <correspondenceName>BRE Letter Exhibit 2 WY</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>WY</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>BRELETTER2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/BRE_LTR_-_AR-EX1__IN-EX1__KS-EX1__MA-EX1__MD-EX1__NV-EX1__WY-EX2.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>WYEX2</correspondenceCode>
+        <correspondenceName>Exhibit 2 WY</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>WY</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR2EX2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX2_WY_9-8-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>	
+    <correspondence>
+        <correspondenceCode>APSMemo</correspondenceCode>
+        <correspondenceName>APS/PIL Memo</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>APSMEMO</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/APS-PIL_Memo.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>FreeFrmLtr</correspondenceCode>
+        <correspondenceName>Free Form Letter</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode></correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Freeform_letter.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>CloseoutNotice1</correspondenceCode>
+        <correspondenceName>Default Close-out Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>UWCLOSEOUT</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_close_out_letter.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>CloseoutNotice2</correspondenceCode>
+        <correspondenceName>Privacy-Close-out Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>VA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>UWPCLOSE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_close_out_letter_VA.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>UTSCloseoutNotice</correspondenceCode>
+        <correspondenceName>UTS Default Close-out Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>UTSCLOSEOUT</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/UTS_close_out_letter.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>UTSCloseoutNoticePv</correspondenceCode>
+        <correspondenceName>UTS Privacy Close-out Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>VA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>UTSPCLOSE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/UTS_close_out_letter_VA.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>APSCloseoutNotice</correspondenceCode>
+        <correspondenceName>APS Default Close-out Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>UWAPSCLOSEOUT</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/UW_APS_close_out_letter.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>APSCloseoutNoticePv</correspondenceCode>
+        <correspondenceName>APS Privacy Close-out Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>VA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>UWPAPSCLOSE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/UW_APS_close_out_letter_VA.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>AppCloseoutNotice</correspondenceCode>
+        <correspondenceName>Applicant Default Close-out Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>UWAPPCLOSEOUT</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/UW_APP_close_out_letter.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>AppCloseoutNoticePv</correspondenceCode>
+        <correspondenceName>Applicant Privacy Close-out Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>VA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>UWPAPPCLOSE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/UW_APP_close_out_letter_VA.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>PrivRateSubNotice</correspondenceCode>
+        <correspondenceName>Privacy-Base Rated-Sub Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>UWPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Privacy_Base_Rated_Sub_Notify.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>MIBRateChangeNotice</correspondenceCode>
+        <correspondenceName>MIB Change in Rate Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeAZ</correspondenceCode>
+        <correspondenceName>MIB AZ Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>AZ</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeCA</correspondenceCode>
+        <correspondenceName>MIB CA Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>CA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeCT</correspondenceCode>
+        <correspondenceName>MIB CT Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>CT</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeGA</correspondenceCode>
+        <correspondenceName>MIB GA Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>GA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeIL</correspondenceCode>
+        <correspondenceName>MIB IL Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>IL</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeME</correspondenceCode>
+        <correspondenceName>MIB ME Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>ME</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeMA</correspondenceCode>
+        <correspondenceName>MIB MA Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>MA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeMN</correspondenceCode>
+        <correspondenceName>MIB MN Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>MN</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeMT</correspondenceCode>
+        <correspondenceName>MIB MT Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>MT</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeNJ</correspondenceCode>
+        <correspondenceName>MIB NJ Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NJ</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>MIBRateChngeNoticeNV</correspondenceCode>
+        <correspondenceName>MIB NV Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NV</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeNC</correspondenceCode>
+        <correspondenceName>MIB NC Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NC</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeOH</correspondenceCode>
+        <correspondenceName>MIB OH Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>OH</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeOR</correspondenceCode>
+        <correspondenceName>MIB OR Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>OR</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBRateChngeNoticeVA</correspondenceCode>
+        <correspondenceName>MIB VA Privacy Rate Change Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>VA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPRATED</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Change_in_rate_privacy_states.txt</correspondenceFileName>
+    </correspondence>	
+	<correspondence>
+        <correspondenceCode>MIBDeclineNotice</correspondenceCode>
+        <correspondenceName>Default MIB Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeAZ</correspondenceCode>
+        <correspondenceName>MIB AZ Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>AZ</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeCA</correspondenceCode>
+        <correspondenceName>MIB CA Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>CA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeCT</correspondenceCode>
+        <correspondenceName>MIB CT Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>CT</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeGA</correspondenceCode>
+        <correspondenceName>MIB GA Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>GA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeIL</correspondenceCode>
+        <correspondenceName>MIB IL Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>IL</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeME</correspondenceCode>
+        <correspondenceName>MIB ME Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>ME</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeMA</correspondenceCode>
+        <correspondenceName>MIB MA Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>MA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeMN</correspondenceCode>
+        <correspondenceName>MIB MN Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>MN</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeMT</correspondenceCode>
+        <correspondenceName>MIB MT Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>MT</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeNJ</correspondenceCode>
+        <correspondenceName>MIB NJ Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NJ</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>MIBDeclineNoticeNV</correspondenceCode>
+        <correspondenceName>MIB NV Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NV</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeNC</correspondenceCode>
+        <correspondenceName>MIB NC Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NC</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeOH</correspondenceCode>
+        <correspondenceName>MIB OH Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>OH</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeOR</correspondenceCode>
+        <correspondenceName>MIB OR Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>OR</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MIBDeclineNoticeVA</correspondenceCode>
+        <correspondenceName>MIB VA Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>VA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>MIBPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/MIB_Post_Notice-Decline_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNotice</correspondenceCode>
+        <correspondenceName>Default Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>CMPDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeAZ</correspondenceCode>
+        <correspondenceName>AZ Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>AZ</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeCA</correspondenceCode>
+        <correspondenceName>CA Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>CA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeCT</correspondenceCode>
+        <correspondenceName>CT Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>CT</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeGA</correspondenceCode>
+        <correspondenceName>GA Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>GA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeIL</correspondenceCode>
+        <correspondenceName>IL Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>IL</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeME</correspondenceCode>
+        <correspondenceName>ME Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>ME</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeMA</correspondenceCode>
+        <correspondenceName>MA Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>MA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeMN</correspondenceCode>
+        <correspondenceName>MN Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>MN</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeMT</correspondenceCode>
+        <correspondenceName>MT Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>MT</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeNJ</correspondenceCode>
+        <correspondenceName>NJ Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NJ</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>DeclineNoticeNV</correspondenceCode>
+        <correspondenceName>NV Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NV</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeNC</correspondenceCode>
+        <correspondenceName>NC Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NC</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeOH</correspondenceCode>
+        <correspondenceName>OH Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>OH</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeOR</correspondenceCode>
+        <correspondenceName>OR Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>OR</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DeclineNoticeVA</correspondenceCode>
+        <correspondenceName>VA Privacy Decline Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>VA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>PSTDECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Base_Decline_letter_privacy_states.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>AmendtoInsured</correspondenceCode>
+        <correspondenceName>USPS Default Amendment to Insured</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>AMENDAPP</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Amend-04_Non_compact_states.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>2</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>AmendtoInsuredCT</correspondenceCode>
+        <correspondenceName>USPS CT Amendment to Insured</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>CT</correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>AMENDAPP</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Amend-04-CT.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>2</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>AmendtoInsuredFL</correspondenceCode>
+        <correspondenceName>USPS FA Amendment to Insured</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>FL</correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>AMENDAPP</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Amend-04-FL.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>2</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>AmendtoInsuredNY</correspondenceCode>
+        <correspondenceName>USPS NY Amendment to Insured</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NY</correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>AMENDAPP</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Amend-04-NY.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>2</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>AmendtoInsuredICC09</correspondenceCode>
+        <correspondenceName>ICC09 Amendment to Insured</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>ICCAMENDAPP</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/ICC09-Amend-Compact_states.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>2</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>I102Ltr</correspondenceCode>
+        <correspondenceName>I102 Letter for Medical Exam</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>I102MEMO</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/I102.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>UTSVIII101Ltr</correspondenceCode>
+        <correspondenceName>UTS Missing Data Letter</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>UTSMISSINGD</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/UTS_VIII_101.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+		<correspondenceCode>REPLNOTA</correspondenceCode>
+		<correspondenceName>External Agent FTF Replacement</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>FTFREPLNOTA</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/REPLNOTA 9-08-08.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+	</correspondence>
+	<correspondence>
+        <correspondenceCode>V103Ltr</correspondenceCode>
+        <correspondenceName>V103 Letter-No Replacement Form</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>CARRIER</correspondenceTarget>
+		<correspondenceFormCode>NOTICEV103</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/V103.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>V103RplLtr</correspondenceCode>
+        <correspondenceName>V103 Letter-With Replacement Form</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>CARRIER</correspondenceTarget>
+		<correspondenceFormCode>FORMV103RPL</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/V103_RPL.txt</correspondenceFileName>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>DefaultFCRALtr</correspondenceCode>
+        <correspondenceName>Default FCRA Notification</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>APPLICANTAUT</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/VIII-112.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>2</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>FCRALtrNY</correspondenceCode>
+        <correspondenceName>FCRA Notification NY</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NY</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>APPLICANTAUT</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/VIII-110_NY_FCRA.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>	
+	<correspondence>
+        <correspondenceCode>FCRALtrAZ</correspondenceCode>
+        <correspondenceName>FCRA Notification AZ</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>AZ</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>APPLICANTAUT</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/VIII-113_AZ_FCRA.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>2</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>FCRALtrMA</correspondenceCode>
+        <correspondenceName>FCRA Notification MA</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>MA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>APPLICANTAUT</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/VIII-113_MA_FCRA.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+	<correspondence>
+        <correspondenceCode>MVRLtrNH</correspondenceCode>
+        <correspondenceName>NH Motor Vehicle Record Authorization</correspondenceName>
+		<correspondenceCategory>Underwriting</correspondenceCategory>
+		<correspondenceLocale>NH</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>CORRMVR</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/VIII-114_NH_FCRA-MVR.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>2</pageNumber>
+    </correspondence>
+	<correspondence>
+		<correspondenceCode>CloseoutAuto1</correspondenceCode>
+		<correspondenceName>Default Autodecline Notification</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>NBCLOSEOUT</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/IV105B.txt</correspondenceFileName>
+	</correspondence>
+	<correspondence>
+		<correspondenceCode>CloseoutAuto2</correspondenceCode>
+		<correspondenceName>Privacy-Close-out Notification</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>VA</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>NBPCLOSE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/IV105B_-_Privacy.txt</correspondenceFileName>
+	</correspondence>
+	<correspondence>
+		<correspondenceCode>CloseoutAuto3</correspondenceCode>
+		<correspondenceName>No Enclosure Autodecline</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>AUTODECLINE</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/IV105.txt</correspondenceFileName>
+	</correspondence>  	    
+	<correspondence>
+        <correspondenceCode>SDEX1</correspondenceCode>
+        <correspondenceName>Exhibit 1 SD</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>SD</correspondenceLocale>
+		<correspondenceFreeForm>false</correspondenceFreeForm>
+		<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+		<correspondenceFormCode>DLVR1EX1</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/EX1_SD_4-18-13.txt</correspondenceFileName>
+		<barCodeType>CODE39</barCodeType>
+		<barCodeData>PolicyNumber</barCodeData>
+		<pageNumber>1</pageNumber>
+    </correspondence>
+</correspondences>
+</stepImport>

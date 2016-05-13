@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+    
+	<page title="Indexed and Traditional Large Premium Form">
+		<section title="Large Premium Form">    
+			<group associated="true">	
+                <question id='largePrem_date'
+                  text='Date'
+                  type='DATEF' labelWidth="120px" 
+						  answerWidth="100px"   
+                  required="true"
+				  tabindex='1'/>
+                <question id='agent_MGA' 
+                  text='Agent/MGA'                       
+                  type='TEXT' labelWidth="120px" 				 
+				  answerWidth="100px"  
+                  required="true"
+				  tabindex='1'/>
+			</group>
+            <group associated="true">	
+                <question id='largePrem_policyholder_name' 
+                  text='Policyholder Name'                       
+                  type='TEXT' 
+				  labelWidth="120px" 				  
+				  answerWidth="100px"   
+				  tabindex='2'
+                  required="true"/>
+                <question id='largePrem_product' 
+                  text='Product Selected'                       
+                  type='TEXT' labelWidth="120px" 				  
+				  answerWidth="100px"   
+				  tabindex='17'
+                  required="true"/>
+			</group>
+            <group associated="true">	
+                <question id='largePrem_rider' 
+                  text='Rider Elections'                       
+                  type='TEXT' labelWidth="120px" 				  
+						  answerWidth="100px"   
+						  tabindex='3'
+                  required="true"/>
+                <question id='largePrem_amount' 
+                  text='Premium Amount'                       
+                  type='TEXT' labelWidth="120px" 				  
+						  answerWidth="100px"  
+						  tabindex='18'
+                  required="true"/>
+			</group>
+            <group associated="true">	
+                <question id='largePrem_Type' 
+                  text='Plan Type'                       
+                  type= 'LISTBOX' labelWidth="120px"  answerWidth="100px" 
+                  answerSet=" : |qualified: Qualified| nonqualified:Non-Qualified"
+                  labelStyle='margin-left:8px'
+						  tabindex='4'
+                  required="true"/>
+				<question id='largePrem_allocations' 
+                  text='Requested Allocations'                    
+                  type='TEXT' labelWidth="120px" 				  
+						  answerWidth="100px"   
+                  labelStyle='margin-left:8px'
+						  tabindex='6'
+                  required="true"/>
+				</group>
+				<group>
+                <question id='largePrem_RMD_source' 
+                  text='If Qualified, will this contract be the source for RMDs?'                    
+                  type= 'LISTBOX' labelWidth="120px"  answerWidth="100px" 
+                  answerSet=" : |Y: Yes| N:No"   
+                  labelStyle='margin-left:8px'
+						  tabindex='5'
+                  required="true">
+                    <displayWhen>#{EFORM.largePrem_Type=="qualified"}</displayWhen>
+                </question>
+			</group>
+
+            <group associated="true">
+                <question id='largePrem_owner_age' 
+                  text='Owner Age'                    
+                  type='TEXT' labelWidth="120px" 				  
+						  answerWidth="100px"   
+                  labelStyle='margin-left:8px'
+						  tabindex='8'
+                  required="true"/>
+                <question id='largePrem_owner_gender' 
+                  text='Gender'                    
+                  type= 'LISTBOX' labelWidth="120px"  answerWidth="100px" 
+                  answerSet=" : |M:Male|F:Female"
+                  labelStyle='margin-left:8px'
+						  tabindex='19'
+                  required="true"/>
+			</group>
+            <group associated="true">
+                <question id='largePrem_owner_state' 
+                  text='State'                    
+                  type= 'LISTBOX' labelWidth="120px"  answerWidth="100px" 
+                  lookup="step:US_LOCALE_STATE"
+				  answerSet=" : |Unknown:Not Applicable"
+						  tabindex='9'
+                  required="true"/>
+				<question id='largePrem_owner_pension_type' 
+                  text='If Pension, please list type'                    
+                  type='TEXT' labelWidth="120px" answerWidth="100px"
+        		  tabindex='9'
+                  required="true"/>
+            </group>
+            <group associated="true">
+                <question id='largePrem_owner_quote_date' 
+                  text='Quote Requested by (Date)'                    
+                  type='DATEF' labelWidth="120px" answerWidth="100px" 
+				  tabindex='20'
+                  required="true"/>
+			</group>
+            <group>
+                <question id='largePrem_competition' 
+                  text='Is there competition for this?'                    
+                  type= 'LISTBOX' labelWidth="400px"  answerWidth="100px" 
+                  answerSet=' : |Y:Yes|N:No'
+                  labelStyle='margin-left:8px'
+						  tabindex='10'
+                  required="true"/>
+                <question id='largePrem_compensation' 
+                  text='What are the compensation offers? Please provide details'                    
+                  type='MEMO' labelWidth="400px"   
+                  labelStyle='margin-left:8px'
+						  tabindex='11'
+                  required="true"><displayWhen>#{EFORM.largePrem_competition=="Y"}</displayWhen>
+                </question>
+				<question id='largePrem_special_requests' 
+                  text='Special policy requests, MGSV/MGIR, Bonus, Indexing Options, Cap/Par Rate'
+                  type='MEMO' labelWidth="400px"
+				  tabindex='12'
+                  required="true"/>
+			</group>
+            <group >
+                <question id='largePrem_fund_source' 
+                  text='Describe the source of funds for the premium'                    
+                  type='MEMO'  
+                  labelWidth="400px"
+						  tabindex='13'
+                  required="true"/>
+			</group>
+            <group>
+                <question id='largePrem_Signature' 
+                  text='Signature'
+                  type='CHECKBOX'
+                  labelWidth="120px"
+						  tabindex='14'
+                  required="true"/>
+			</group>
+            <group associated="true">
+            <question id='largePrem_home_office' 
+                  text='Home Office Approval'                    
+                  type='TEXT' labelWidth="120px" answerWidth="100px"   
+					  tabindex='15'
+                  required="true"/>
+                <question id='largePrem_home_office_date' 
+                  text='Date'                    
+                  type='DATEF'  
+						  labelWidth="120px"  answerWidth="100px" 
+						  tabindex='16'
+                  required="true"/>
+            </group>
+        </section>
+	</page>
+</form>

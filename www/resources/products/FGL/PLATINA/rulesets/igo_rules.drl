@@ -1,0 +1,128 @@
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.*;
+import rules.*;
+import java.util.*;
+import com.stepsoln.core.util.DateUtil;
+import com.stepsoln.core.rules.RuleResult;
+import com.stepsoln.core.rules.requirements.Requirement;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "1. Owner Signed State and Resident state"
+	when
+		Question(formCode=='AUTHORIZATION', id=='signed_at_state', $signedState:answerAsString)
+		Question(formCode=='PERSON', id=='state', $ownerState:answerAsString)
+		not (eval($ownerState!=null && $ownerState.equals($signedState))
+		|| Question(formCode=='PERSON', id=='joint_owner_state', answerAsString==$signedState)
+		|| Question(formCode=='PERSON', id=='contract_state', answerAsString==$signedState))
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Signed State must match an Owner Resident State or the Contract State")
+		       .setTargetRequirementCode("AUTHORIZATION") 
+			   .setRuleNumber(1)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Owner Signed State and Resident state")
+			   .setOverridable(true);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(1);
+end
+
+rule "2. Non-Payment Requirement Open"
+	when
+		Requirement(code != "PMT", type !="EFORM", status == "OPEN")
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Requirements other than Payment are open")
+			   .setRuleNumber(2)
+			   .setRuleName("Non-Payment Requirement Open")
+			   .excludeFromValidationFailure();
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(2);
+end
+
+rule "3. Agent Commissions must be between 0 and 100% combined"
+	when
+		Question(formCode=='AUTHORIZATION', (id.indexOf("commission_split") >= 0 || id.equals("commission_split")), StringUtils.isNotEmpty(answerAsString))
+		$totalPercentage : Number(intValue > 100 || intValue <= 0) from accumulate(Question(id.indexOf("commission_split") >= 0, $answer: answerAsNumber >= 0)
+         init(int total = 0;),
+         action(total += $answer;),
+         result(Integer.valueOf(total)))
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("The total Commission Split should be more than 0 and less than 100% for all agents combined, but is " + $totalPercentage )
+			   .setTargetRequirementCode("AUTHORIZATION") 
+			   .setRuleNumber(3)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Agent Commissions must be between 0 and 100% combined")
+			   .setOverridable(true);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(3);
+end
+
+rule "4. Beneficiary and Owner cannot be same person"
+	when
+		Question(formCode=='BENEFICIARY', $firstNameId:id, id.indexOf("bene_first_name") >= 0, $beneFirstName:answerAsString, StringUtils.isNotEmpty(answerAsString))
+		Question(formCode=='BENEFICIARY', id.equals($firstNameId.replace("bene_first_name", "bene_last_name")), $beneLastName:answerAsString, StringUtils.isNotEmpty(answerAsString))
+		Question(formCode=='PERSON', id.equals("owner_first_name"), $ownerFirstName:answerAsString)
+		Question(formCode=='PERSON', id.equals("owner_last_name"), $ownerLastName:answerAsString)
+		
+		eval($beneFirstName.equals($ownerFirstName) && $beneLastName.equals($ownerLastName))
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Beneficiary and Owner cannot be same person")
+			   .setRuleNumber(4)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Beneficiary and Owner cannot be same person")
+			   .setOverridable(true);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(4);
+end
+
+rule "5. Beneficiary and Annuitant cannot be same person"
+	when
+		Question(formCode=='BENEFICIARY', $firstNameId:id, id.indexOf("bene_first_name") >= 0, $beneFirstName:answerAsString, StringUtils.isNotEmpty(answerAsString))
+		Question(formCode=='BENEFICIARY', id.equals($firstNameId.replace("bene_first_name", "bene_last_name")), $beneLastName:answerAsString, StringUtils.isNotEmpty(answerAsString))
+		Question(formCode=='ANNUITANT', id.equals("annuitant_first_name"), $annuitantFirstName:answerAsString)
+		Question(formCode=='ANNUITANT', id.equals("annuitant_last_name"), $annuitantLastName:answerAsString)
+		
+		eval($beneFirstName.equals($annuitantFirstName) && $beneLastName.equals($annuitantLastName))
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Beneficiary and Annuitant cannot be same person")
+			   .setRuleNumber(5)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Beneficiary and Annuitant cannot be same person")
+			   .setOverridable(true);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(5);
+end
+
+rule "6. Owner Address cannot contain a PO Box"
+	when
+		Question(formCode=='PERSON', id.equals("address1") || id.equals("address2"), answerAsString matches "^.*[pP]\\.?\\s*?[oO]\\.?\\s*?[bB][oO]?[xX].*")
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Owner Address cannot contain a PO Box")
+			   .setRuleNumber(6)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Owner Address cannot contain a PO Box")
+			   .setOverridable(true);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(6);
+end
+
+rule "7. Annuitant Address cannot contain a PO Box"
+	when
+		Question(formCode=='ANNUITANT', id.equals("annuitant_address1") || id.equals("annuitant_address2"), answerAsString matches "^.*[pP]\\.?\\s*?[oO]\\.?\\s*?[bB][oO]?[xX].*")
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Annuitant Address cannot contain a PO Box")
+			   .setRuleNumber(7)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Annuitant Address cannot contain a PO Box")
+			   .setOverridable(true);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(7);
+end
+		
+		

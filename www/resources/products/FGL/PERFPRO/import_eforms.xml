@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<eforms>
+		<eform>
+			<file>../eforms/annuitant_info.xml</file>
+			<description>annuitant information</description>
+			<code>ANNUITANT</code>
+			<formOrder>2</formOrder>
+			<script>
+				<description>EFORM Scripting Events</description>
+				<file>scripts/PersonScripts.groovy</file>
+				<type>FORM_SCRIPTS</type>
+			</script>
+		</eform>
+		<eform>
+			<file>../eforms/person_info.xml</file>
+			<description>owner information</description>
+			<code>PERSON</code>
+			<formOrder>1</formOrder>
+			<script>
+				<description>EFORM Scripting Events</description>
+				<file>scripts/PersonScripts.groovy</file>
+				<type>FORM_SCRIPTS</type>
+			</script>
+		</eform>
+		<eform>
+			<file>../eforms/beneficiary_info.xml</file>
+			<description>beneficiary information</description>
+			<code>BENEFICIARY</code>
+			<formOrder>3</formOrder>
+			<script>
+				<description>EFORM Scripting Events</description>
+				<file>scripts/BeneficiaryScripts.groovy</file>
+				<type>FORM_SCRIPTS</type>
+			</script>
+		</eform>
+		<eform>
+			<file>../eforms/authorizations_and_signatures.xml</file>
+			<description>authorization and signatures</description>
+			<code>AUTHORIZATION</code>
+			<formOrder>6</formOrder>
+			<script>
+				<description>EFORM Scripting Events</description>
+				<file>scripts/AuthorizationScripts.groovy</file>
+				<type>FORM_SCRIPTS</type>
+			</script>
+		</eform>
+		<eform>
+			<file>../eforms/replacement.xml</file>
+			<description>Coverage Replacement</description>
+			<code>REPLACEMENT</code>
+			<formOrder>5</formOrder>
+			<script>
+				<description>EFORM Scripting Events</description>
+				<file>scripts/ReplacementScripts.groovy</file>
+				<type>FORM_SCRIPTS</type>
+			</script>
+		</eform>
+		<eform>
+			<file>../eforms/confirmation_application.xml</file>
+			<description>Application Confirmation</description>
+			<code>CONFIRMATION</code>
+			<formOrder>7</formOrder>
+		</eform>
+		<eform>
+			<file>../eforms/suitability_pesron_info.xml</file>
+			<description>Suitability Person Information</description>
+			<code>SUITABILITY_PERSON</code>
+			<formOrder>8</formOrder>
+		</eform>
+		<eform>
+			<file>../eforms/additional forms/fl_suitability_personal.xml</file>
+			<description>Florida Suitability Person Information</description>
+			<code>FL_SUITABILITY_PERSON</code>
+			<formOrder>8</formOrder>
+		</eform>
+		<eform>
+			<file>../eforms/additional forms/fl_additional_info.xml</file>
+			<description>Florida Suitability Additional Information</description>
+			<code>FL_ADDITIONAL_INFO</code>
+			<formOrder>12</formOrder>
+		</eform>
+		<eform>
+			<file>../eforms/additional forms/fl_financial_information.xml</file>
+			<description>Florida Suitability Financial Information</description>
+			<code>FL_SUITABILITY_FINANCE</code>
+			<formOrder>9</formOrder>
+		</eform>
+		<eform>
+			<file>../eforms/additional forms/fl_important_considerations.xml</file>
+			<description>Florida Suitability Important Consideration</description>
+			<code>FL_SUITABILITY_CONSIDERATIONS</code>
+			<formOrder>10</formOrder>
+		</eform>
+		<eform>
+			<file>../eforms/additional forms/fl_signatures_acknowledgements.xml</file>
+			<description>Florida Suitability Signature Acknowledgement</description>
+			<code>FL_SUITABILITY_SIG_ACK</code>
+			<formOrder>13</formOrder>
+		</eform>
+		<eform>
+			<file>../eforms/suitability_financial_info.xml</file>
+			<description>Suitability Financial Information</description>
+			<code>SUITABILITY_FINANCE</code>
+			<formOrder>9</formOrder>
+		</eform>
+		<eform>
+			<file>../eforms/suitability_important_considerations.xml</file>
+			<description>Suitability Important Consideration</description>
+			<code>SUITABILITY_CONSIDERATIONS</code>
+			<formOrder>10</formOrder>
+		</eform>
+		<eform>
+			<file>../eforms/suitability_fund_sources.xml</file>
+			<description>Suitability Fund Sources</description>
+			<code>SUITABILITY_FUND</code>
+			<formOrder>11</formOrder>
+		</eform>
+		<eform>
+			<file>../eforms/annuity_purpose_premium.xml</file>
+			<description>Purpose of Annuity and Premium</description>
+			<code>ANNUITY_PURPOSE</code>
+			<formOrder>4</formOrder>
+		</eform>
+
+		<eform>
+			<file>../eforms/additional forms/large_premium.xml</file>
+			<description>Large Premiums form</description>
+			<code>LARGEPREMIUM</code>
+		</eform>
+		<eform>
+			<file>../eforms/additional forms/nonnatural_owner.xml</file>
+			<description>Non-Natural Owner Form</description>
+			<code>NONNATURALOWNER</code>
+		</eform>
+		<eform>
+			<file>../eforms/additional forms/1035transfer.xml</file>
+			<description>1035 Transfer</description>
+			<code>1035TRANSFER</code>
+			<formOrder>6</formOrder>
+		</eform>
+		
+		<eform>
+			<file>../eforms/additional forms/fl_supplement.xml</file>
+			<description>Florida Suitability supplement</description>
+			<code>FL_SUITABILITY_SUPPLEMENT</code>
+			<formOrder>14</formOrder>
+		</eform>
+		
+		<eform>
+			<file>../eforms/additional forms/certificate_of_trust.xml</file>
+			<description>certificate_of_trust</description>
+			<code>certificate_of_trust</code>
+			
+		</eform>
+		
+		<eform>
+			<file>../eforms/additional forms/verification_of_trust.xml</file>
+			<description>1035 Transfer</description>
+			<code>verification_of_trust</code>
+			
+		</eform>
+		
+		<eform>
+			<file>../eforms/Replacement Forms/CA_FDLGY33457_rep_notice.xml</file>
+			<description>Replacement Notice form for CA</description>
+			<code>CA_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/WY_FDLGY33458_rep_notice.xml</file>
+			<description>Replacement Notice form for WY</description>
+			<code>WY_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/IL_B_FDLGY33460_rep_notice.xml</file>
+			<description>Replacement Notice exhibit B form for IL</description>
+			<code>IL_REP_NOTICE_B</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/IL_FDLGY33461_rep_notice.xml</file>
+			<description>Replacement Notice form for IL</description>
+			<code>IL_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/BASIC_FDLGY33462_rep_notice.xml</file>
+			<description>Replacement Notice form for </description>
+			<code>REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/DE_FDLGY33463_rep_notice.xml</file>
+			<description>Replacement Notice form for DE</description>
+			<code>DE_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/MO_FDLGY33464_rep_notice.xml</file>
+			<description>Replacement Notice form for MO</description>
+			<code>MO_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/OK_A_FDLGY33465_rep_notice.xml</file>
+			<description>Replacement Notice form by applicant for OK</description>
+			<code>OK_REP_NOTICE_APPLICANT</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/OK_B_FDLGY33466_rep_notice.xml</file>
+			<description>Replacement Notice form by application for OK</description>
+			<code>OK_REP_NOTICE_APPLICATION</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/ID_FDLGY33467_rep_notice.xml</file>
+			<description>Replacement Notice form for ID</description>
+			<code>ID_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/IN_FDLGY33468_rep_notice.xml</file>
+			<description>Replacement Notice form for IN</description>
+			<code>IN_REP_NOTICE</code>
+		</eform>	
+		<eform>
+			<file>../eforms/Replacement Forms/FL_FDLGY33469_rep_notice.xml</file>
+			<description>Replacement Notice form for FL</description>
+			<code>FL_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/TN_FDLGY33470_rep_notice.xml</file>
+			<description>Replacement Notice form for TN</description>
+			<code>TN_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/GA_FDLGY33471_rep_notice.xml</file>
+			<description>Replacement Notice form for GA</description>
+			<code>GA_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/NV_FDLGY33472_rep_notice.xml</file>
+			<description>Replacement Notice form for NV</description>
+			<code>NV_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/OR_VT_FDLGY33477_rep_notice.xml</file>
+			<description>Replacement Notice form for OR/VT</description>
+			<code>OR_VT_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/Multi2_FDLGY33478_rep_notice.xml</file>
+			<description>Standard Replacement Notice</description>
+			<code>STANDARD_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/Multi_FDLGY33480_rep_notice.xml</file>
+			<description>NAIC Model Regulation Replacement Notice</description>
+			<code>NAIC_REGULATION_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/CT_FDLGY35817_rep_notice.xml</file>
+			<description>Replacement Notice form for CT</description>
+			<code>CT_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/AK_FDLGY33474_rep_notice.xml</file>
+			<description>Replacement Notice form for AK</description>
+			<code>AK_REP_NOTICE</code>
+		</eform>
+		<eform>
+			<file>../eforms/Replacement Forms/AZ_FDLGY33475_rep_notice.xml</file>
+			<description>Replacement Notice form for AZ</description>
+			<code>AZ_REP_NOTICE</code>
+		</eform>
+	</eforms>
+</stepImport>

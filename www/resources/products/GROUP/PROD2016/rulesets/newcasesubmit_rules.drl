@@ -1,0 +1,24 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import java.util.ArrayList;
+import com.stepsoln.core.db.Lookup;
+import com.stepsoln.core.rules.CaseRulesObject;
+
+rule "set case can be submitted"
+	when
+		theCase:CaseData(caseForAutoApproval == false)
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setOrderRequirements(true);
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setUwOuCode("FLIFE");
+	end
+	
+rule "set case is approved"
+	when
+		theCase:CaseData(caseForAutoApproval == true);
+	then	
+		theCase.setCaseStatus("APPROVED");
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setSubmitTaskDescription("No suppliment plan selected, Case auto approved");
+end

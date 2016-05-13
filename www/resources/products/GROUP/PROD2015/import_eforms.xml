@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<eforms>
+		<eform>
+			<file>eforms/precoveragetemplate.xml</file>
+			<description>Group - Term Life</description>
+			<code>PRECOVERAGE</code>
+		</eform>
+		<eform>
+			<file>eforms/postcoveragetemplate.xml</file>
+			<description>Group - Term Life</description>
+			<code>POSTCOVERAGE</code>
+			<type>PART2</type>
+		</eform>
+		<eform>
+			<file>eforms/otherinfo.xml</file>
+			<description>Group - Term Life</description>
+			<code>OTHERINFO</code>
+		</eform>
+		<eform>
+			<file>eforms/sign_ackn_eform.xml</file>
+			<description>Signature Acknowledgement</description>
+			<code>SIGN_ACKN</code>
+			<script>
+				<description>Groovy script for handling signature acknowledgement
+				</description>
+				<file>scripts/signAckn.groovy</file>
+				<type>FORM_SCRIPTS</type>
+			</script>
+		</eform>
+	</eforms>
+</stepImport>

@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<resources>
+<resource>
+		<description>Product Coverage Selection Rules</description>
+		<file>rulesets/coverage_selection_rules.drl</file>
+		<type>CVG_RULES</type>
+		<resourceCode>CVG_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Requirements Rules</description>
+		<file>rulesets/requirements_rules.drl</file>
+		<type>REQ_RULES</type>
+		<resourceCode>REQ_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Final Action Requirements Rules</description>
+		<file>rulesets/finalaction_requirements_rules.drl</file>
+		<type>FIN_ACT_REQ_RULES</type>
+		<resourceCode>FIN_ACT_REQ_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Specific New business mapping rules</description>
+		<file>nbmapping/hfa_nb_mapping.xml</file>
+		<type>HFA_NB_MAPPING</type>
+		<resourceCode>HFA_NB_MAPPING</resourceCode>
+		<formatType>XML</formatType>
+	</resource>
+	
+	<resource>
+		<description>Pre Final Action Rules</description>
+		<file>rulesets/pre_finalaction_rules.drl</file>
+		<type>PRE_FIN_ACT_RULES</type>
+		<resourceCode>PRE_FIN_ACT_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>UW Risk Calculation Rules</description>
+		<file>rulesets/uw_risk_calc_rules.drl</file>
+		<type>UW_RISK_CALC_RULE</type>
+		<resourceCode>UW_RISK_CALC_RULE1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>UW Rules</description>
+		<file>rulesets/uw_rule.drl</file>
+		<type>UW_RULE</type>
+		<resourceCode>UW_RULE1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+	  <description>Requirements Signatures Rules</description>
+	  <file>rulesets/requirements_signatures_rules.drl</file>
+	  <type>REQ_SIG_RULES</type>
+	  <resourceCode>REQ_SIG_RULES1</resourceCode>
+	  <formatType>DRL</formatType>  
+	</resource>
+	<resource>
+		<description>Knockout Rules</description>
+		<file>rulesets/knockout_rules.drl</file>
+		<type>KNOCKOUT_RULES</type>
+		<resourceCode>KNOCKOUT_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>IGO Rules</description>
+		<file>rulesets/igo_rules.drl</file>
+		<type>IGO_RULES</type>
+		<resourceCode>IGO_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Primary Applicant Page Rules</description>
+		<file>rulesets/primary_applicant_page_rules.drl</file>
+		<type>IGO_RULES</type>
+		<resourceCode>PRIMARY_APPLICANT_RULES</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>	
+	<resource>
+		<description>Person Rules</description>
+		<file>rulesets/person_rules.drl</file>
+		<type>IGO_RULES</type>
+		<resourceCode>PERSON_RULES</resourceCode>
+		<formatType>DRL</formatType>
+		<requirementCode>PT1</requirementCode>
+	</resource>
+	<resource>
+		<description>Driver License Rules</description>
+		<file>rulesets/dlvalidation_rules.drl</file>
+		<type>IGO_RULES</type>
+		<resourceCode>DL_VALIDATION_RULES</resourceCode>
+		<formatType>DRL</formatType>
+		<requirementCode>PT1</requirementCode>
+	</resource>
+	<resource>
+		<description>Applicant Signature Rules</description>
+		<file>rulesets/applicant_signature_rules.drl</file>
+		<type>IGO_RULES</type>
+		<resourceCode>APPLICANT_SIG_RULES</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Paper case Signature Rules</description>
+		<file>rulesets/papercase_signature_rules.drl</file>
+		<type>IGO_RULES</type>
+		<resourceCode>PAPER_CASE_SIG_RULES</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Producer Certificate Rules</description>
+		<file>rulesets/producer_cert_rules.drl</file>
+		<type>IGO_RULES</type>
+		<resourceCode>PRODUCER_CERT_RULES</resourceCode>
+		<formatType>DRL</formatType>
+		<requirementCode>AAT</requirementCode>
+	</resource>
+	<resource>
+		<description>Owner Rules</description>
+		<file>rulesets/owner_rules.drl</file>
+		<type>IGO_RULES</type>
+		<resourceCode>OWNER_RULES</resourceCode>
+		<formatType>DRL</formatType>
+		<requirementCode>OWN</requirementCode>
+	</resource>
+	<resource>
+		<description>IGO UW Rules</description>
+		<file>rulesets/igo_uw_rules.drl</file>
+		<type>IGO_UW_RULES</type>
+		<resourceCode>IGO_UW_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>IGO Paper Rules</description>
+		<file>rulesets/igo_paper_rules.drl</file>
+		<type>IGO_PAPER_RULES</type>
+		<resourceCode>IGO_PAPER_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Case Rules</description>
+		<file>rulesets/case_rules.drl</file>
+		<type>CASE_RULES</type>
+		<resourceCode>CASE_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Pre BPE Rules</description>
+		<file>rulesets/pre_bpe_rules.drl</file>
+		<type>PRE_BPE_RULES</type>
+		<resourceCode>PRE_BPE_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Post BPE Rating Rules</description>
+		<file>rulesets/post_bpe_rating_rules.drl</file>
+		<type>POST_BPE_RATING_RULE</type>
+		<resourceCode>POST_BPE_RATING_RULE1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Post BPE Autoclass Rules</description>
+		<file>rulesets/post_bpe_autoclass_rules.drl</file>
+		<type>POST_BPE_AUTOCLASS_RULE</type>
+		<resourceCode>POST_BPE_AUTOCLASS_RULE1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>	
+	<resource>
+		<description>Auto Decision Rules</description>
+		<file>rulesets/auto_decision_rules.drl</file>
+		<type>AUTO_DECISION_RULES</type>
+		<resourceCode>AUTO_DECISION_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	
+	<resource>
+		<description>Document Rules</description>
+		<file>rulesets/document_rules.drl</file>
+		<type>DOCUMENT_RULES</type>
+		<resourceCode>DOCUMENT_RULES</resourceCode>
+		<formatType>DRL</formatType>
+	 </resource>	
+	 
+	 <resource>
+		<description>Policy Conversion Rules</description>
+		<file>rulesets/policy_conversion_rules.drl</file>
+		<type>POLICY_CONVERSION_RULES</type>
+		<resourceCode>POLICY_CONVERSION_RULES</resourceCode>
+		<formatType>DRL</formatType>
+	 </resource>	
+
+	<resource>
+		<description>Collateral assignment Rules</description>
+		<file>rulesets/collateral_assignment_rules.drl</file>
+		<type>ASSIGNMENT_RULES</type>
+		<resourceCode>ASSIGNMENT_RULES</resourceCode>
+		<formatType>DRL</formatType>
+	 </resource>
+	  <resource>
+		<description>Requirement Rules</description>
+		<file>rulesets/requirement_target_party_rules.drl</file>
+		<type>TARGET_PARTY_RULES</type>
+		<resourceCode>TARGET_PARTY_REQUIREMENT_RULE</resourceCode>
+		<formatType>DRL</formatType>
+	 </resource>
+	<resource>
+		<description>Main Gerber Camel Routes</description>
+		<file>camelRoutes/gerber_routes.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>GERBER_CAMEL_ROUTES</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>	
+	<resource>
+		<description>New Case Submit Rules</description>
+		<file>rulesets/newcasesubmit_rules.drl</file>
+		<type>NEWCASE_SUBMIT_RULES</type>
+		<resourceCode>NEWCASE_SUBMIT_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Underwriting Case Submit Rules</description>
+		<file>rulesets/underwritingcase_rules.drl</file>
+		<type>UNDERWRITINGCASE_SUBMIT_RULES</type>
+		<resourceCode>UNDERWRITINGCASE_SUBMIT_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+  <resource>
+    <description>New Case Rules from DTC</description>
+    <file>rulesets/dtc_newcasesubmitrules.drl</file>
+    <type>CASE_RULES</type>
+    <resourceCode>DTC_NEW_CASE_RULES</resourceCode>
+    <formatType>DRL</formatType>
+  </resource>    
+  <resource>
+    <description>EForm Question Rules</description>
+    <file>rulesets/eform_question_rules.drl</file>
+    <type>EFORM_QUESTION_RULES</type>
+    <resourceCode>EFORM_QUESTION_RULES</resourceCode>
+    <formatType>DRL</formatType>
+  </resource>    
+
+  <resource>
+    <description>Reconciliation Rules</description>
+    <file>rulesets/reconciliation_rules.drl</file>
+    <type>RECON_RULES</type>
+    <resourceCode>DTC_NEW_CASE_RULES</resourceCode>
+    <formatType>DRL</formatType>
+  </resource>    
+	<resource>
+		<description>New business mapping rules</description>
+		<file>nbmapping/nb_mapping.xml</file>
+		<type>NB_MAPPING</type>
+		<resourceCode>NB_MAPPING</resourceCode>
+		<formatType>XML</formatType>
+	</resource>
+	<resource>
+		<description>Merica products mapping.</description>
+		<file>nbmapping/merica_mapping.xml</file>
+		<type>MERICA_MAPPING</type>
+		<resourceCode>MERICA_MAPPING</resourceCode>
+		<formatType>XML</formatType>
+	</resource>  
+	<resource>
+		<description>Transformation of Paper Application</description>
+		<file>scripts/transformPaperApplication.groovy</file>
+		<type>EFORM_SCRIPT</type>
+		<resourceCode>TRANS_PAPER_APP</resourceCode>
+		<formatType>GROOVY</formatType>
+	</resource>
+	<resource>
+		<description>Gerber additional functionality support </description>
+		<file>scripts/gerber_functionality.groovy</file>
+		<type>FUNCTIONALITY_SCRIPT</type>
+		<resourceCode>GLIC_CARRIER_GROOVY_UTILS</resourceCode>
+		<formatType>GROOVY</formatType>
+	</resource>	
+	<resource>
+		<description>Reportable MIB Codes Generation</description>
+		<file>scripts/reportable_mib_codes.groovy</file>
+		<type>RMIB_SCRIPT</type>
+		<resourceCode>GLIC_RMIB_GROOVY_UTILS</resourceCode>
+		<formatType>GROOVY</formatType>
+	</resource>	
+	
+
+	<resource>
+		<description>Gerber Master Email Template</description>
+		<resourceCode>glic_template1</resourceCode>
+		<file>emailTemplates/gerber_email_layout_generic.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+    <resource>
+      <description>Gerber Partial Application Email Template</description>
+      <resourceCode>glic_partial_application_email</resourceCode>
+      <file>emailTemplates/partial_application_email.ftl</file>
+      <type>EMAIL_TEMPLATE</type>
+      <formatType>VELOCITY_TEMPLATE</formatType>
+      <mimeType>text/plain</mimeType>
+    </resource>
+    <resource>
+      <description>Gerber Auto Decision Email Template Notification</description>
+      <resourceCode>glic_decision_notification_email</resourceCode>
+      <file>emailTemplates/decision_notification_email.ftl</file>
+      <type>EMAIL_TEMPLATE</type>
+      <formatType>VELOCITY_TEMPLATE</formatType>
+      <mimeType>text/plain</mimeType>
+    </resource>
+
+    <resource>
+      <description>Partial Application Processing</description>
+      <file>scripts/partial_application_processing.groovy</file>
+      <type>FUNCTIONALITY_SCRIPT</type>
+      <resourceCode>PARTIAL_APP_SCRIPT</resourceCode>
+      <formatType>GROOVY</formatType>
+    </resource>      
+	<resource>
+		<description>Gerber Branding</description>
+		<resourceCode>glic_css</resourceCode>
+		<file>branding.css</file>
+		<type>CUSTOM_CSS</type>
+		<formatType>CSS</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Customized User Messages</description>
+		<resourceCode>CUSTOM_MESSAGES1</resourceCode>
+		<file>messages.properties</file>
+		<type>CUSTOM_MESSAGES</type>
+		<formatType>PROPERTIES</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Correspondence Template</description>
+		<resourceCode>glic_birtTemplate</resourceCode>
+		<file>birtTemplates/gerber_correspondence.rptdesign</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>RPTDESIGN</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Correspondence CC Template</description>
+		<resourceCode>glic_cc_birtTemplate</resourceCode>
+		<file>birtTemplates/gerber_correspondence_cc.rptdesign</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>CCRPTDESIGN</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Correspondence Library</description>
+		<resourceCode>glic_birtLibrary</resourceCode>
+		<file>birtTemplates/gerber_correspondence.rptlibrary</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>RPTLIBRARY</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Image</description>
+		<resourceCode>glic_birtImage</resourceCode>
+		<file>birtTemplates/gerber-letterhead.png</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>IMAGE</formatType>
+		<mimeType>image</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Signature Image</description>
+		<resourceCode>glic_birtSignatureImage</resourceCode>
+		<file>birtTemplates/correspondenceGraphicSignature.png</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>SIGNATUREIMAGE</formatType>
+		<mimeType>image</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber JavaScript</description>
+		<resourceCode>glic_birtScript</resourceCode>
+		<file>birtTemplates/gerber_scripts.js</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>JAVASCRIPT</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Report JavaScript</description>
+		<resourceCode>glic_birtReportScript</resourceCode>
+		<file>birtTemplates/gerber_report.js</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>JAVASCRIPT</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Underwriter Status Report Template</description>
+		<resourceCode>underwriter_status_report.rptdesign</resourceCode>
+		<file>birtTemplates/underwriter_status_report.rptdesign</file>
+		<type>VOLUME_TEMPLATE</type>
+		<formatType>RPTDESIGN</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Agency Agent Status Report Template</description>
+		<resourceCode>agency_agent_status_report.rptdesign</resourceCode>
+		<file>birtTemplates/agency_agent_status_report.rptdesign</file>
+		<type>VOLUME_TEMPLATE</type>
+		<formatType>RPTDESIGN</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber UTS Report Template</description>
+		<resourceCode>uts_report.rptdesign</resourceCode>
+		<file>birtTemplates/uts_report.rptdesign</file>
+		<type>VOLUME_TEMPLATE</type>
+		<formatType>RPTDESIGN</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Underwriter Requirement Status Report Template</description>
+		<resourceCode>underwriter_requirement_report.rptdesign</resourceCode>
+		<file>birtTemplates/underwriter_requirement_report.rptdesign</file>
+		<type>VOLUME_TEMPLATE</type>
+		<formatType>RPTDESIGN</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Underwriter Report Template</description>
+		<resourceCode>underwriter_report.rptdesign</resourceCode>
+		<file>birtTemplates/underwriter_report.rptdesign</file>
+		<type>VOLUME_TEMPLATE</type>
+		<formatType>RPTDESIGN</formatType>
+		<mimeType>text/plain</mimeType>
+		<resource>
+			<description>Gerber Underwriter Detail Report Template</description>
+			<resourceCode>underwriter_detail_report.rptdesign</resourceCode>
+			<file>birtTemplates/underwriter_detail_report.rptdesign</file>
+			<type>VOLUME_TEMPLATE</type>
+			<formatType>RPTDESIGN</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>Gerber Underwriter Requirement Detail Report Template</description>
+			<resourceCode>underwriter_requirement_detail_report.rptdesign</resourceCode>
+			<file>birtTemplates/underwriter_requirement_detail_report.rptdesign</file>
+			<type>VOLUME_TEMPLATE</type>
+			<formatType>RPTDESIGN</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+	</resource>
+	<resource>
+		<file>eforms/person_eform.xml</file>
+		<description>Part 1</description>
+		<type>EFORM_TEMPLATE</type>
+		<resourceCode>PERSON</resourceCode>
+		<formatType>XML</formatType>
+		<name>PERSON</name>
+		<resource>
+			<file>gerber_hfa.pdf</file>
+			<mappingFile>pdfmapping.xml</mappingFile>
+			<type>PRIMARY_APPLICATION_PDF</type>
+			<resourceCode>gerber_hfa_1</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+	</resource>
+	<resource>
+		<file>eforms/authorization_eform.xml</file>
+		<description>Part 2</description>
+		<resourceCode>AUTHORIZATION</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>AUTHORIZATION</name>
+		<resource>
+			<file>gerber_hfa.pdf</file>
+			<mappingFile>pdfmapping.xml</mappingFile>
+			<type>PRIMARY_APPLICATION_PDF</type>
+			<resourceCode>gerber_hfa_2</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+	</resource>
+	<resource>
+		<file>eforms/owner_authorization_eform.xml</file>
+		<description>Owner Authorization</description>
+		<resourceCode>OWNER_AUTH</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>OWNER_AUTH</name>
+		<resource>
+			<description>EFORM Scripting Events</description>
+			<file>scripts/OwnerAuthScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+			<resourceCode>OwnerAuthScripts</resourceCode>
+			<formatType>GROOVY</formatType>
+		</resource>
+		<resource>
+			<file>AIESUPP-09.pdf</file>
+			<mappingFile>AIESpdfmapping.xml</mappingFile>
+			<type>PRIMARY_APPLICATION_PDF</type>
+			<resourceCode>AIESUPP-09</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+	</resource>
+	<resource>
+		<file>eforms/full_hipaa_eform.xml</file>
+		<description>Full HIPAA</description>
+		<resourceCode>FULL_HIPAA</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>FULL_HIPAA</name>
+		<resource>
+			<file>GLIC_PI-Release_Full_HIPAA.pdf</file>
+			<mappingFile>PRFHpdfmapping.xml</mappingFile>
+			<type>PRIMARY_APPLICATION_PDF</type>
+			<resourceCode>GLIC_PI-Release_Full_HIPAA</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+	</resource>
+	<resource>
+		<file>eforms/fcra_eform.xml</file>
+		<description>Fair Credit Reporting Act</description>
+		<resourceCode>FCRA</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>FCRA</name>
+		<resource>
+			<file>FCRA.pdf</file>
+			<mappingFile>FCRApdfmapping.xml</mappingFile>
+			<type>PRIMARY_APPLICATION_PDF</type>
+			<resourceCode>FCRA</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+	</resource>
+	<resource>
+		<file>eforms/reflexive_eform.xml</file>
+		<description>Part 3</description>
+		<resourceCode>REFLEXIVE</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>REFLEXIVE</name>
+		<resource>
+			<description>EFORM Scripting Events</description>
+			<file>scripts/ReflexiveScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+			<resourceCode>ReflexiveScripts</resourceCode>
+			<formatType>GROOVY</formatType>
+		</resource>
+		<resource>
+			<file>gerber_hfa.pdf</file>
+			<mappingFile>pdfmapping.xml</mappingFile>
+			<type>PRIMARY_APPLICATION_PDF</type>
+			<resourceCode>gerber_hfa_3</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+	</resource>
+	<resource>
+		<file>eforms/app_ack_eform.xml</file>
+		<description>Part 4</description>
+		<resourceCode>APPLICANT_AUTHORIZATION</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>APPLICANT_AUTHORIZATION</name>
+		<resource>
+			<file>gerber_hfa.pdf</file>
+			<mappingFile>pdfmapping.xml</mappingFile>
+			<type>PRIMARY_APPLICATION_PDF</type>
+			<resourceCode>gerber_hfa_4</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+	</resource>
+	<resource>
+		<file>eforms/agent_attest_eform.xml</file>
+		<description>Part 5</description>
+		<resourceCode>AGENT_ATTESTATION</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>AGENT_ATTESTATION</name>
+		<resource>
+			<file>gerber_hfa.pdf</file>
+			<mappingFile>pdfmapping.xml</mappingFile>
+			<type>PRIMARY_APPLICATION_PDF</type>
+			<resourceCode>gerber_hfa_5</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+	</resource>
+	<resource>
+		<file>eforms/paper_app_eform.xml</file>
+		<description>Paper Application Entry Screen</description>
+		<resourceCode>HFA_PAPER_APP</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>HFA_PAPER_APP</name>
+		<resource>
+			<description>EFORM Scripting Events(PaperApp)</description>
+			<file>scripts/PaperApplicationScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+			<resourceCode>PaperApplicationScripts</resourceCode>
+			<formatType>GROOVY</formatType>
+		</resource>
+	</resource>	
+	<resource>
+		<file>eforms/paper_auth_ack_eform.xml</file>
+		<description>Paper Application Auth Ack Eform</description>
+		<resourceCode>HFA_PAPER_AUTH</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>HFA_PAPER_AUTH</name>
+	</resource>	
+	<resource>
+		<file>tempfakeSignature.png</file>
+		<description>Fake Signature file</description>
+		<resourceCode>FAKE_SIGNATURE_IMAGE</resourceCode>
+		<type>CAPTURED_SIGNATURE_IMAGE</type>
+		<formatType>PNG</formatType>
+		<name>FAKE_SIGNATURE_IMAGE</name>
+		<mimeType>application/octet-stream</mimeType>
+	</resource>
+	<resource>
+		<file>logo.png</file>
+		<description>Logo</description>
+		<resourceCode>LOGO_IMAGE</resourceCode>
+		<type>HEADER_LOGO_IMAGE</type>
+		<formatType>image/png</formatType>
+		<name>HEADER_LOGO_IMAGE</name>
+		<mimeType>application/octet-stream</mimeType>
+	</resource>
+    <resource>
+      <description>Electronic Terms of Use - Applicant</description>
+      <resourceCode>glic_electronic_terms_of_use_applicant</resourceCode>
+      <file>text/terms_of_use_applicant.html</file>
+      <type>TERMS_OF_USE_APPLICANT</type>
+      <formatType>TEXT</formatType>
+      <mimeType>text/plain</mimeType>
+    </resource>  
+    <resource>
+      <description>Electronic Terms of Use - Agent</description>
+      <resourceCode>glic_electronic_terms_of_use_agent</resourceCode>
+      <file>text/terms_of_use_agent.html</file>
+      <type>TERMS_OF_USE_AGENT</type>
+      <formatType>TEXT</formatType>
+      <mimeType>text/plain</mimeType>
+    </resource>
+
+    <resource>
+      <description>ClickWrap e-mail template - PRIMARY_INSURED</description>
+      <resourceCode>glic_click_wrap_signature_primary_insured</resourceCode>
+      <file>emailTemplates/click_wrap_signature_primary_insured.vm</file>
+      <type>PRIMARY_INSURED_CLICKWRAP_TEMPLATE</type>
+      <formatType>TEXT</formatType>
+      <mimeType>text/plain</mimeType>
+    </resource>  
+    <resource>
+      <description>ClickWrap e-mail template - AGENT</description>
+      <resourceCode>glic_click_wrap_signature_agent</resourceCode>
+      <file>emailTemplates/click_wrap_signature_agent.vm</file>
+      <type>AGENT_CLICKWRAP_TEMPLATE</type>
+      <formatType>TEXT</formatType>
+      <mimeType>text/plain</mimeType>
+    </resource>  
+    <resource>
+      <description>ClickWrap e-mail template - OTHER_INSURED</description>
+      <resourceCode>glic_click_wrap_signature_other_insured</resourceCode>
+      <file>emailTemplates/click_wrap_signature_other_insured.vm</file>
+      <type>OTHER_INSURED_CLICKWRAP_TEMPLATE</type>
+      <formatType>TEXT</formatType>
+      <mimeType>text/plain</mimeType>
+    </resource>
+    <resource>
+      <description>ClickWrap e-mail template - POLICY_OWNER</description>
+      <resourceCode>glic_click_wrap_signature_policy_owner</resourceCode>
+      <file>emailTemplates/click_wrap_signature_policy_owner.vm</file>
+      <type>POLICY_OWNER_CLICKWRAP_TEMPLATE</type>
+      <formatType>TEXT</formatType>
+      <mimeType>text/plain</mimeType>
+    </resource>
+	<resource>
+		<description>UI behavior </description>
+		<file>ui_behavior.xml</file>
+		<type>UI_BEHAVIOR</type>
+		<resourceCode>UI_BEHAVIOR</resourceCode>
+		<formatType>XML</formatType>
+	</resource>
+  
+  <resource>
+    <description>Sequences</description>
+    <file>sequences.xml</file>
+    <type>SEQUENCE</type>
+    <resourceCode>sequence</resourceCode>
+    <formatType>XML</formatType>
+  </resource>
+   
+  	<resource>
+		<description>HFA Custom Properties</description>
+		<resourceCode>HFA_PROPERTIES1</resourceCode>
+		<file>product.properties</file>
+		<type>PRODUCT_PROPERTIES</type>
+		<formatType>PROPERTIES</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Premium Reminder Rules</description>
+		<file>rulesets/premium_reminder.drl</file>
+		<type>PREMIUM_REMINDER</type>
+		<resourceCode>PREMIUM_REMINDER_RULES</resourceCode>
+		<formatType>DRL</formatType>  
+	</resource>
+	<resource>
+		<description>Grace Reminder Rules</description>
+		<file>rulesets/grace_period_reminder.drl</file>
+		<type>GRACE_REMINDER</type>
+		<resourceCode>GRACE_REMINDER_RULES</resourceCode>
+		<formatType>DRL</formatType>  
+	</resource>
+	<resource>
+		<description>Requirement Rules</description>
+		<file>rulesets/process_requirement.drl</file>
+		<type>PROCESS_REQUIREMENT</type>
+		<resourceCode>PROCESS_REQUIREMENT_RULE</resourceCode>
+		<formatType>DRL</formatType>
+	 </resource>
+	 <resource>
+	  <description>HFA Endorsement Image</description>
+    <resourceCode>endorsement_hfa_Image</resourceCode>
+    <file>logo.png</file>
+    <type>ENDORSEMENT_BIRT_TEMPLATE</type>
+    <formatType>IMAGE</formatType>
+    <mimeType>image</mimeType>
+  </resource>
+   <resource>
+    <description>HFA Collateral assignment Template DESIGN</description>
+    <resourceCode>hfa_collateral_assignment_template</resourceCode>
+    <file>assignment/collateral_assignment.rptdesign</file>
+    <type>COLLATERAL_BIRT_TEMPLATE</type>
+    <formatType>RPTDESIGN</formatType>
+    <mimeType>text/plain</mimeType>
+  </resource>
+  
+    <resource>
+    <description>HFA Terminate assignment Template DESIGN</description>
+    <resourceCode>hfa_terminate_assignment_template</resourceCode>
+    <file>assignment/terminate_assignment.rptdesign</file>
+    <type>COLLATERAL_BIRT_TEMPLATE</type>
+    <formatType>RPTDESIGN</formatType>
+    <mimeType>text/plain</mimeType>
+  </resource>
+  
+  <resource>
+		<description>Email Template</description>
+		<resourceCode>premiumReminder</resourceCode>
+		<file>emailTemplates/premium_reminder_email_template.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Email Template</description>
+		<resourceCode>policyInGrace</resourceCode>
+		<file>emailTemplates/policy_in_grace_email_template.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Email Template</description>
+		<resourceCode>policyLapsed</resourceCode>
+		<file>emailTemplates/policy_lapse_email_template.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Email Template</description>
+		<resourceCode>policyTerminated</resourceCode>
+		<file>emailTemplates/policy_terminated_email_template.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+    <resource>
+		<description>Gerber Send Case To Applicant For Review</description>
+		<resourceCode>glic_agent_send_case_to_applicant_for_review</resourceCode>
+		<file>emailTemplates/agent_send_case_to_applicant_for_review.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Gerber Applicant Request Changes for Review</description>
+		<resourceCode>glic_applicant_request_change_for_case</resourceCode>
+		<file>emailTemplates/applicant_request_change_for_case.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	
+	<resource>
+		<description>Coverage Change Rules</description>
+		<file>rulesets/coverage_change_rules.drl</file>
+		<type>CVG_CHANGE_RULES</type>
+		<resourceCode>CVG_CHANGE_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Policy Conversion Coverage Rules</description>
+		<file>rulesets/policy_conversion_coverage_change.drl</file>
+		<type>POLICY_CVG_CHANGE_RULES</type>
+		<resourceCode>POLICY_CVG_CHANGE_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Inforce mapping rules</description>
+		<file>inforcemapping/inforce_mapping.xml</file>
+		<type>INFORCE_MAPPING</type>
+		<resourceCode>INFORCE_MAPPING</resourceCode>
+		<formatType>XML</formatType>
+	</resource>
+	<resource>
+		<description>Conversion Premium due date Rules</description>
+		<file>rulesets/policy_conversion_duedate_rules.drl</file>
+		<type>CONVERSION_DUEDATE</type>
+		<resourceCode>CONVERSION_DUEDATE_RULES</resourceCode>
+		<formatType>DRL</formatType>  
+	</resource>
+	<resource>
+		<description>Post Reinstatement Bill due date</description>
+		<file>rulesets/post_reinstatement_bill_duedate.drl</file>
+		<type>POST_REINSTATEMENT_DUEDATE</type>
+		<resourceCode>POST_REINSTATEMENT_DUEDATE_RULES</resourceCode>
+		<formatType>DRL</formatType>  
+	</resource>
+	<resource>
+		<description>Reinstatement Premium due date Rules</description>
+		<file>rulesets/reinstatement_bill_duedate.drl</file>
+		<type>REINSTATEMENT_DUEDATE</type>
+		<resourceCode>REINSTATEMENT_DUEDATE_RULES</resourceCode>
+		<formatType>DRL</formatType>  
+	</resource>
+	
+	<!-- The following are for FGL -->
+	<!--
+	<resource>
+		<description>Main FGL Camel Routes</description>
+		<file>camelRoutes/fgl_routes.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>FGL_CAMEL_ROUTES</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	-->
+	
+	
+</resources>
+</stepImport>

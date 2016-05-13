@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<ou-users>
+	<ou-user>
+		<ousOrguCode>DTC</ousOrguCode>
+		<ousUserName ousAdmin="Y">PAPERDTC</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>EXT1OU</ousOrguCode>
+		<ousUserName ousAdmin="Y">ABCann2</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>EXT2OU</ousOrguCode>
+		<ousUserName ousAdmin="Y">DEFinn2</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>CCSL1</ousOrguCode>
+		<ousUserName ousAdmin="Y">Cal</ousUserName>
+		<ousUserName>Cara</ousUserName>
+		<ousUserName>Cathy</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>CCSVC</ousOrguCode>
+		<ousUserName ousAdmin="Y">Carl</ousUserName>
+		<ousUserName>Cami</ousUserName>
+		<ousUserName>Cane</ousUserName>
+		<ousUserName ousAdmin="Y">Connie</ousUserName>
+		<ousUserName>Cob</ousUserName>
+		<ousUserName>Cris</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>NBO</ousOrguCode>
+		<ousUserName ousAdmin="Y">Nan</ousUserName>
+		<ousUserName>Neal</ousUserName>
+		<ousUserName>Noe</ousUserName>
+	</ou-user>	
+	<ou-user>
+		<ousOrguCode>UTS</ousOrguCode>
+		<ousUserName ousAdmin="Y">Sara</ousUserName>
+		<ousUserName>Sam</ousUserName>
+		<ousUserName ousAdmin="Y">Sally</ousUserName>
+		<ousUserName>Sue</ousUserName>
+		<ousUserName>Sean</ousUserName>
+		<ousUserName>Scott</ousUserName>
+	</ou-user>	
+	<ou-user>
+		<ousOrguCode>UWO</ousOrguCode>
+		<ousUserName ousAdmin="Y">UWitt</ousUserName>
+		<ousUserName>UWar</ousUserName>
+		<ousUserName ousAdmin="Y">UWhim</ousUserName>
+		<ousUserName>URite</ousUserName>
+		<ousUserName>UWill</ousUserName>
+		<ousUserName>HWait</ousUserName>
+		<ousUserName>HWagg</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>GLADM</ousOrguCode>
+		<ousUserName ousAdmin="Y">GLICADMin</ousUserName>
+		<ousUserName>Doc</ousUserName>
+		<ousUserName>Pro</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>MERICA</ousOrguCode>
+		<ousUserName ousAdmin="Y">UWitt</ousUserName>
+		<ousUserName ousAdmin="Y">UWar</ousUserName>
+		<ousUserName ousAdmin="Y">UWhim</ousUserName>
+		<ousUserName ousAdmin="Y">URite</ousUserName>
+		<ousUserName ousAdmin="Y">UWill</ousUserName>
+		<ousUserName ousAdmin="Y">HWait</ousUserName>
+		<ousUserName ousAdmin="Y">HWagg</ousUserName>
+		<ousUserName >glic_merica</ousUserName>
+	</ou-user>
+	
+</ou-users>
+</stepImport>

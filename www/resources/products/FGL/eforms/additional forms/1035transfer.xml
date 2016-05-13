@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<page title="Transfer/1035 Exchange">
+		<section title="Current Contact Information">
+			<group associated="true">
+				<question id='transfer_current_company' text='Current Company/Financial Institution'
+					type='TEXT' tabindex='1' required="true" labelWidth="120px"
+					answerWidth="100px" />
+				<question id='transfer_phone' text='Phone Number' type='TEXT'
+					tabindex='8' required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+
+			<group associated="true">
+				<question id='policy_number_exchanged'
+					text='Contract/Policy Number Being Exchanged/Transferred' type='TEXT'
+					tabindex='2' required="true" labelWidth="120px" answerWidth="100px" />
+				<question id='current_policy_address' text='Policy Address'
+					type='TEXT' tabindex='9' required="true" labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='transfer_city' text='City' type='TEXT'
+					tabindex='3' required="true" labelWidth="120px" answerWidth="100px" />
+				<question id='transfer_state' text='State' type='LISTBOX'
+					lookup="step:US_LOCALE_STATE" answerSet=":Please select..|Unknown:Not Applicable"
+					tabindex='10' required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group>
+				<question id='transfer_zip' text='Zip' type='TEXT'
+					tabindex='5' required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='transfer_owner' text='Owner Name' type='TEXT'
+					tabindex='6' required="true" labelWidth="120px" answerWidth="100px" />
+				<question id='transfer_ownerSSN' text='Social Security/Tax ID Number'
+					type='TEXT' tabindex='12' required="true" labelWidth="120px"
+					answerWidth="100px" />
+
+			</group>
+			<group associated="true">
+				<question id='transfer_joint_owner' text='Joint Owner'
+					type='TEXT' tabindex='7' required="true" labelWidth="120px"
+					answerWidth="100px" />
+				<question id='transfer_joint_ownerSSN' text='Social Security/Tax ID Number'
+					type='TEXT' tabindex='13' required="true" labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+		</section>
+		<section title="1035 Exchange">
+			<group associated="true">
+				<question id='transfer_exchange' text='Type of Exchange'
+					type='LISTBOX' answerSet=" : |complete: Complete Exchange|partial: Partial Exchange"
+					tabindex='14' required="true" labelWidth="120px" answerWidth="100px" />
+				<question id='transfer_partial_exchange_amount' text='Partial Exchange Amount $'
+					type='TEXT' tabindex='15' required="true" labelWidth="120px"
+					answerWidth="100px">
+					<displayWhen>#{EFORM.transfer_exchange=="partial"}</displayWhen>
+				</question>
+			</group>
+		</section>
+
+		<section title="Transfer/Rollover">
+			<group>
+				<question id='RMD_processed'
+					text='If you are 70 ½, please check the circle if you have processed your RMD prior to this transfer.'
+					type='CHECKBOX' tabindex='17' required="true" labelWidth="400px"
+					answerWidth="100px" />
+
+				<question id='transfer_account_funds' text='Type of account Funds coming from:'
+					type='LISTBOX'
+					answerSet=" : |TSA403:TSA 403(b)|TIRA:Traditional IRA|RIRA: Roth IRA|O: Other"
+					tabindex='18' required="true" labelWidth="400px" answerWidth="100px" />
+
+				<question id='transfer_account_funds_other' text='Type of account Funds coming from:'
+					type='TEXT' tabindex='19' required="true" labelWidth="400px"
+					answerWidth="100px">
+					<displayWhen>#{EFORM.transfer_account_funds=="O"}</displayWhen>
+				</question>
+
+				<question id='transfer_investment_vehicle' text='Type of account Funds coming from:'
+					type='LISTBOX'
+					answerSet=" : |CD:Certificate of Deposit|MF:Mutual Fund|ANN: Annuity (Qualified Only)|O: Other"
+					tabindex='20' required="true" labelWidth="400px" answerWidth="100px" />
+
+				<question id='transfer_investment_vehicle_other' text='Type of account Funds coming from:'
+					type='TEXT' tabindex='21' required="true" labelWidth="400px"
+					answerWidth="100px">
+					<displayWhen>#{EFORM.transfer_investment_vehicle=="O"}
+					</displayWhen>
+				</question>
+
+				<question id='transfer_authorization_liquidate'
+					text='This will serve as authorization to liquidate and transfer:'
+					type='LISTBOX' answerSet=" : |all:All|money:Dollars|percent:Percent"
+					tabindex='22' required="true" labelWidth="400px" answerWidth="100px" />
+				<question id='transfer_liquidation_dollars' text='dollar'
+					type='TEXT' tabindex='23' required="true" labelWidth="400px"
+					answerWidth="100px">
+					<displayWhen>#{EFORM.transfer_authorization_liquidate=="money"}
+					</displayWhen>
+				</question>
+				<question id='transfer_liquidation_percent' text='percent'
+					type='TEXT' tabindex='24' required="true" labelWidth="400px"
+					answerWidth="100px">
+					<displayWhen>#{EFORM.transfer_authorization_liquidate=="percent"}
+					</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='transfer_withdraw_maturity' text='Funds are to be transferred to a:'
+					type='LISTBOX' answerSet=" : |immediately: Immediately|date: Upon Maturity Date"
+					tabindex='25' required="true" labelWidth="400px" answerWidth="100px" />
+				<question id='transfer_withdraw_maturity_date' text='Specify Maturity Date'
+					type='DATEF' tabindex='26' required="true" labelWidth="400px"
+					answerWidth="100px" />
+				<question id='transfer_transfer_account_type' text='Funds are to be transferred to a:'
+					type='LISTBOX'
+					answerSet=" : |TSA403:TSA 403(b)|TIRA:Traditional IRA|RIRA: Roth IRA|NQA: Non-Qualified Annuity"
+					tabindex='27' required="true" labelWidth="400px" answerWidth="100px" />
+			</group>
+
+		</section>
+
+		<section title="Return of Contract/Policy - Signatures and Authorizations">
+			<group associated="true">
+				<question id='transfer_witness' text='Witness Signature'
+					type='CHECKBOX' tabindex='29' required="true" labelWidth="120px"
+					answerWidth="100px" />
+				<question id='transfer_ownersig' text='Owner Signature'
+					type='CHECKBOX' tabindex='33' required="true" labelWidth="120px"
+					answerWidth="100px" />
+
+			</group>
+			<group associated="true">
+				<question id='transfer_joint_ownersig' text='Joint Owner Signature'
+					type='CHECKBOX' tabindex='30' required="true" labelWidth="120px"
+					answerWidth="100px" />
+				<question id='transfer_joint_owner_date' text='DATE' type='DATEF'
+					tabindex='34' required="true" labelWidth="120px" answerWidth="100px" />
+
+			</group>
+
+			<group associated="true">
+				<question id='transfer_annuitantsig' text='Annuitant Signature'
+					type='CHECKBOX' tabindex='31' required="true" labelWidth="120px"
+					answerWidth="100px" />
+				<question id='transfer_joint_cont_annuitantsig' text='Joint/Contingent Annuitant Signature'
+					type='CHECKBOX' tabindex='35' required="true" labelWidth="120px"
+					answerWidth="100px" />
+
+			</group>
+
+			<group associated="true">
+				<question id='transfer_signature_guarantee_stamp' text='Signature Guarantee Stamp name'
+					type='TEXT' tabindex='32' required="true" labelWidth="120px"
+					answerWidth="100px" />
+				<question id='transfer_guarantee_stamp_date' text='Date'
+					type='DATEF' tabindex='36' required="true" labelWidth="120px"
+					answerWidth="100px" />
+
+			</group>
+		</section>
+
+		<section title="TSA Employer's Acknowledgement">
+			<displayWhen>#{EFORM.transfer_transfer_account_type=="TSA403"}
+			</displayWhen>
+			<group associated="true">
+				<question id='transfer_employer_plan_admin' text='Name of Employer/Plan Administrator'
+					type='TEXT' tabindex='37' required="true" labelWidth="120px"
+					answerWidth="100px" />
+				<question id='transfer_print_title' text='Print Title'
+					type='TEXT' tabindex='43' required="true" labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+
+			<group associated="true">
+				<question id='transfer_signature_planadmin' text='Signature of Employer/Plan Administrator'
+					type='CHECKBOX' tabindex='38' required="true" labelWidth="120px"
+					answerWidth="100px" />
+				<question id='transfer_planadmin_date' text='Date' type='DATEF'
+					tabindex='44' required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+
+			<group associated="true">
+				<question id='transfer_planadmin_phone' text='Phone' type='PHONE'
+					tabindex='39' required="true" labelWidth="120px" answerWidth="100px" />
+				<question id='transfer_fax' text='Fax' type='TEXT'
+					tabindex='45' required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+
+			<group associated="true">
+				<question id='transfer_planadmin_address' text='Address of Employer/Plan Administrator'
+					type='TEXT' tabindex='40' required="true" labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+
+			<group associated="true">
+				<question id='transfer_planadmin_city' text='City' type='TEXT'
+					tabindex='41' required="true" labelWidth="120px" answerWidth="100px" />
+				<question id='transfer_planadmin_state' text='STATE' type='LISTBOX'
+					lookup="step:US_LOCALE_STATE" answerSet=":Please select..|Unknown:Not Applicable"
+					tabindex='47' required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+
+			<group associated="true">
+				<question id='transfer_planadmin_zip' text='Zip' type='TEXT'
+					tabindex='42' required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+		</section>
+	</page>
+</form>

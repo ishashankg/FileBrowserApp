@@ -1,0 +1,13 @@
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.policy.PolicyConversionData;
+
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Policy Conversion Requirement"
+	when
+       	policyConversion:PolicyConversionData(policyStatus=="ACTIVE",insuredAge <= 68,policyAge <=7);
+    then
+    	policyConversion.setValid(true);
+end
+

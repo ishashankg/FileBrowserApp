@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.22" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__product_id_64_0</property>
+            <property name="value">FSM Term Life(FSM)</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__period_65_1</property>
+            <property name="value">90</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__dburl_106_2</property>
+            <property name="value">step_3</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__dbuser_110_3</property>
+            <property name="value">sa</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__dbpasswd_111_4</property>
+            <property name="value">p@ssw0rd</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__dbjndi_112_5</property>
+            <property name="value">java:comp/env/jdbc/step</property>
+        </structure>
+        <structure>
+            <property name="name">dbjndi_112_6</property>
+            <property name="value">java:comp/env/jdbc/step</property>
+        </structure>
+        <structure>
+            <property name="name">dbjndi_112_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">product_id_64_7</property>
+            <property name="value">1</property>
+        </structure>
+        <structure>
+            <property name="name">product_id_64_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">product_id_64_expr_</property>
+            <property name="value">dataSetRow["product_id"]</property>
+        </structure>
+        <structure>
+            <property name="name">dbpasswd_111_8</property>
+            <property name="value">p@ssw0rd</property>
+        </structure>
+        <structure>
+            <property name="name">dbpasswd_111_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">period_65_9</property>
+            <property name="value">90</property>
+        </structure>
+        <structure>
+            <property name="name">period_65_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">dbuser_110_10</property>
+            <property name="value">sa</property>
+        </structure>
+        <structure>
+            <property name="name">dbuser_110_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">dburl_106_11</property>
+            <property name="value">step_3</property>
+        </structure>
+        <structure>
+            <property name="name">dburl_106_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

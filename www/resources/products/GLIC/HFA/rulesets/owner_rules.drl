@@ -1,0 +1,14 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import org.apache.commons.lang.StringUtils;
+
+global RulesResponse rulesResponse;
+
+
+rule "Other Owner Age greater 18"
+	when
+	    Question(id=="owner_date_of_birth" , (StringUtils.isNotEmpty((String)answer) && answerAsAge<18))
+	then
+		rulesResponse.addRequired("Policy Owner is a minor", "OWN");
+end

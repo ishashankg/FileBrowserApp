@@ -1,0 +1,26 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude" 
+   xmlns="http://www.stepsolutions.com/2013/configuration/"><preferences>
+	<preference>
+		<category>OLI_LU_ROUNDMETH</category>
+		<code>OLI_ROUNDMETH_ROUND</code>
+		<value>1</value>
+		<description>Round</description>
+	</preference>
+	<preference>
+		<category>RoundingPrecision</category>
+		<code>FOUR_PLACES</code>
+		<value>4</value>
+		<description>Four</description>
+	</preference>
+	<preference>
+		<category>SIGNATURE_MODE</category>
+		<code>MOUSE_SIGNATURE</code>
+		<description>Mouse Signature</description>
+	</preference>
+	<preference>
+		<category>UW_ENGINE</category>
+		<code>STEP_UW_ENGINE</code>
+		<value>STEP_UW_ENGINE</value>
+		<description>Step UW Engine</description>
+	</preference>
+</preferences></stepImport>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<resources>
+	
+	
+	
+	<resource>
+		<description>Common Purage error_log table Routes</description>
+		<file>camelRoutes/error_log_purge_route.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>COMMON_PURGE_ERROR_LOG_ROUTES1</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Common Email Related Routes</description>
+		<file>camelRoutes/email_routes.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>COMMON_EMAIL_CAMEL_ROUTES1</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Common Camel Routes</description>
+		<file>camelRoutes/job_routes.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>COMMON_CAMEL_ROUTES1</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Common Chat Transcript Camel Routes</description>
+		<file>camelRoutes/chat_transcript_retrieval_route.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>COMMON_CHAT_TRANSCRIPT_CAMEL_ROUTES</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Common SSO Token Cleanup Camel Routes</description>
+		<file>camelRoutes/sso_token_cleanup_route.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>COMMON_SSO_TOKEN_CLEANUP_CAMEL_ROUTE</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	
+	<!-- Address Validation -->
+	<resource>
+		<description>Common Address Validation Route</description>
+		<file>camelRoutes/addressValidation_routes.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>ADDRESS_VALIDATION_ROUTE</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<!-- Address Validation -->
+	
+	<resource>
+		<description>Coverage Change Camel Routes</description>
+		<file>camelRoutes/coverage_change_routes.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>COVERAGE_CHG_CAMEL_ROUTES1</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Policy Change Camel Routes</description>
+		<file>camelRoutes/policy_change_routes.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>POLICY_CHG_CAMEL_ROUTES1</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Application Packet Camel Route</description>
+		<file>camelRoutes/application_packet_route.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>APP_PACKET_CAMEL_ROUTE</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<!--
+	<resource>
+		<description>Case Submission Route</description>
+		<file>camelRoutes/case_submission_routes.xml</file>
+		<type>EAPP_CAMEL_ROUTE</type>
+		<resourceCode>CASE_SUBMIT_CAMEL_ROUTE</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	-->
+	<resource>
+		<description>Premium Due Reports</description>
+		<resourceCode>premium_due_2.rptdesign</resourceCode>
+		<file>birtReports/premium_due_2.rptdesign</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>RPTDESIGN</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Test Reports</description>
+		<resourceCode>test.rptdesign</resourceCode>
+		<file>birtReports/test.rptdesign</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>RPTDESIGN</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<file>logo.png</file>
+		<description>Logo</description>
+		<resourceCode>COMMON_LOGO_IMAGE</resourceCode>
+		<type>COMMON_HEADER_LOGO_IMAGE</type>
+		<formatType>image/png</formatType>
+		<name>COMMON_HEADER_LOGO_IMAGE</name>
+		<mimeType>application/octet-stream</mimeType>
+	</resource>
+	<resource>
+		<description>Global Custom Messages</description>
+		<resourceCode>CUSTOM_MESSAGES1</resourceCode>
+		<file>messages.properties</file>
+		<type>CUSTOM_MESSAGES</type>
+		<formatType>PROPERTIES</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Global Custom Properties</description>
+		<resourceCode>CUSTOM_PROPERTIES1</resourceCode>
+		<file>product.properties</file>
+		<type>PRODUCT_PROPERTIES</type>
+		<formatType>PROPERTIES</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	
+		<resource>
+		<description>Email Template</description>
+		<resourceCode>premiumReminder</resourceCode>
+		<file>emailTemplates/premium_reminder_email_template.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Email Template</description>
+		<resourceCode>policyInGrace</resourceCode>
+		<file>emailTemplates/policy_in_grace_email_template.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Email Template</description>
+		<resourceCode>policyLapsed</resourceCode>
+		<file>emailTemplates/policy_lapse_email_template.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>Email Template</description>
+		<resourceCode>policyTerminated</resourceCode>
+		<file>emailTemplates/policy_terminated_email_template.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>DL number validation rules</description>
+		<file>rulesets/dlvalidation_rules.drl</file>
+		<type>DL_VALIDATION_RULES</type>
+		<resourceCode>DL_VALIDATION_RULES</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	 <resource>
+		<description>New business mapping rules</description>
+		<file>nbmapping/nb_mapping.xml</file>
+		<type>NB_MAPPING</type>
+		<resourceCode>NB_MAPPING</resourceCode>
+		<formatType>XML</formatType>
+	</resource>
+</resources>
+</stepImport>

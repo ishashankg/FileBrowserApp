@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<org-units>
+	<org-unit>
+		<ouName>MedSupp Agency</ouName>
+		<ouCode>MOO_MEDSUPP</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>MedAg1</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Applicant</ouName>
+		<ouCode>WEB_USER</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>MMed Underwriting</ouName>
+		<ouCode>MMED_UWO</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>DTC_MOO_OU</ouName>
+		<ouCode>DTC_MOO_OU</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Default MMED Underwriting</ouName>
+		<ouCode>DEF_MMED_UWO</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+</org-units>
+</stepImport>

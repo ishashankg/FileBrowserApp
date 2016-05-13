@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<correspondences>
+	<correspondence>
+        <correspondenceCode>SUITRED8</correspondenceCode>
+        <correspondenceName>Suitability - Red Flag 8</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITRED8</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Red_Flag_8.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITRED10A</correspondenceCode>
+        <correspondenceName>Suitability - Red Flag 10a</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITRED10A</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Red_Flag_10a.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITRED10B</correspondenceCode>
+        <correspondenceName>Suitability - Red Flag 10b</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITRED10B</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Red_Flag_10b.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL1A</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 1a</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL1A</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_1a.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL1B</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 1b</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL1B</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_1b.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL2</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 2</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL2</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_2.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL3</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 3</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL3</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_3.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL4</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 4</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL4</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_4.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL5</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 5</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL5</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_5.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL6</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 6</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL6</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_6.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL7</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 7</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL7</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_7.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL8</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 8</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL8</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_8.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL9A</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 9a</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL9A</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_9a.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL9B</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 9b</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL9B</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_9b.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL10A</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 10a</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL10A</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_10a.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL10B</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 10b</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL10B</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_10b.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL11</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 11</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL11</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_11.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL12</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 12</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL12</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_12.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL13</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 13</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL13</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_13.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL14</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 14</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL14</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_14.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL15</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 15</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL15</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_15.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL16A</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 16a</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL16A</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_16a.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITYEL16B</correspondenceCode>
+        <correspondenceName>Suitability - Yellow Flag 16b</correspondenceName>
+		<correspondenceCategory>Suitability</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITYEL16B</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Yellow_Flag_16b.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>ADMIN5488</correspondenceCode>
+        <correspondenceName>Disclosure and Comparison of Annuity Contract</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>FL</correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>CARRIER</correspondenceTarget>
+		<correspondenceFormCode>ADMIN5488</correspondenceFormCode>
+		<resource>
+			<file>pdfs/Disclosure_and_Comparison.pdf</file>
+			<mappingFile></mappingFile>
+			<type>CORRESPONDENCE_PDF</type>
+			<resourceCode>ADMIN5488</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>ADMIN5526</correspondenceCode>
+        <correspondenceName>Comparative Info Form</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>FL</correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>CARRIER</correspondenceTarget>
+		<correspondenceFormCode>ADMIN5526</correspondenceFormCode>
+		<resource>
+			<file>pdfs/Exhibit_B_Comparative_info_form.pdf</file>
+			<mappingFile></mappingFile>
+			<type>CORRESPONDENCE_PDF</type>
+			<resourceCode>ADMIN5526</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>ADMIN5469</correspondenceCode>
+        <correspondenceName>Non Resident Sales Acknowledgement Form</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>POLICY_OWNER</correspondenceTarget>
+		<correspondenceFormCode>ADMIN5469</correspondenceFormCode>
+		<resource>
+			<file>pdfs/Non_Resident.pdf</file>
+			<mappingFile></mappingFile>
+			<type>CORRESPONDENCE_PDF</type>
+			<resourceCode>ADMIN5469</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>ADMIN5571</correspondenceCode>
+        <correspondenceName>SPDA Disclosure</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale>OH</correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>POLICY_OWNER</correspondenceTarget>
+		<correspondenceFormCode>ADMIN5571</correspondenceFormCode>
+		<resource>
+			<file>pdfs/SPDA_Disclosure_form.pdf</file>
+			<mappingFile></mappingFile>
+			<type>CORRESPONDENCE_PDF</type>
+			<resourceCode>ADMIN5571</resourceCode>
+			<mimeType>application/octet-stream</mimeType>
+			<formatType>PDF</formatType>
+		</resource>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>AMENDMENT</correspondenceCode>
+        <correspondenceName>Amendment Correspondence</correspondenceName>
+		<correspondenceCategory>Amendment</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm>true</correspondenceFreeForm>
+		<correspondenceTarget></correspondenceTarget>
+		<correspondenceFormCode>AMENDMENT</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Amendment_Correspondence.txt</correspondenceFileName>
+    </correspondence>
+     <correspondence>
+        <correspondenceCode>ANNUITANT_NAME</correspondenceCode>
+        <correspondenceName>Annuitant name</correspondenceName>
+		<correspondenceCategory>Amendment</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget></correspondenceTarget>
+		<correspondenceFormCode></correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/snippets/Annuitant_name_snippet.txt</correspondenceFileName>
+    </correspondence>
+     <correspondence>
+        <correspondenceCode>OWNER_DOB</correspondenceCode>
+        <correspondenceName>Owner DOB</correspondenceName>
+		<correspondenceCategory>Amendment</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget></correspondenceTarget>
+		<correspondenceFormCode></correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/snippets/Owner_dob_snippet.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>AGENTCNCL</correspondenceCode>
+        <correspondenceName>Agent Cancel - Not Appointed</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>AGENTCNCL</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Agent_Cancel_Not_Appointed.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>PREISSUECNCL</correspondenceCode>
+        <correspondenceName>Pre Issue Requirements Not Received - Cancel</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>PREISSUECNCL</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Pre_Issue_Requirements_Not_Received_Cancel.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>TRAINCNCL</correspondenceCode>
+        <correspondenceName>Product Training - Cancel</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>TRAINCNCL</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Product_Training_Cancel.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITDECLCONS</correspondenceCode>
+        <correspondenceName>Suitability Declination Base - Consumer</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITDECLCONS</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Suitability_Declination_Base_Consumer.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>SUITDECLAGENT</correspondenceCode>
+        <correspondenceName>Suitability Decline Base - Agent</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>SUITDECLAGENT</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Suitability_Letters_Decline_Base_Agent.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>WTHDRWNAPP</correspondenceCode>
+        <correspondenceName>Withdrawn App Letter</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>AGENT</correspondenceTarget>
+		<correspondenceFormCode>WTHDRWNAPP</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Withdrawn_App_Letter.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>OWNAGENTCNCL</correspondenceCode>
+        <correspondenceName>Agent Cancel - Not Appointed - Owner</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>POLICY_OWNER</correspondenceTarget>
+		<correspondenceFormCode>OWNAGENTCNCL</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Agent_Cancel_Not_Appointed_Owner.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>OWNPREISSUECNCL</correspondenceCode>
+        <correspondenceName>No Pre Issue Requirements Cancel - Owner</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>POLICY_OWNER</correspondenceTarget>
+		<correspondenceFormCode>OWNPREISSUECNCL</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Pre_Issue_Requirements_Not_Received_Cancel_Owner.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>OWNTRAINCNCL</correspondenceCode>
+        <correspondenceName>Product Training - Cancel - Owner</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>POLICY_OWNER</correspondenceTarget>
+		<correspondenceFormCode>OWNTRAINCNCL</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Product_Training_Cancel_Owner.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>POADECLSIG</correspondenceCode>
+        <correspondenceName>Decline Power of Attorny - No Signature - Owner</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>POLICY_OWNER</correspondenceTarget>
+		<correspondenceFormCode>POADECLSIG</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Decline_POA_No_Sign_Owner.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>TRANSCVRLTR</correspondenceCode>
+        <correspondenceName>Transfer Cover Letter LOA</correspondenceName>
+		<correspondenceCategory>New Business</correspondenceCategory>
+		<correspondenceLocale></correspondenceLocale>
+		<correspondenceFreeForm></correspondenceFreeForm>
+		<correspondenceTarget>CARRIER</correspondenceTarget>
+		<correspondenceFormCode>TRANSCVRLTR</correspondenceFormCode>
+		<correspondenceFileName>correspondenceTemplates/Transfer_Cover_Letter_LOA.txt</correspondenceFileName>
+    </correspondence>
+     <correspondence>
+        <correspondenceCode>OWNER_NAME</correspondenceCode>
+        <correspondenceName>Owner Name</correspondenceName>
+		<correspondenceCategory>Amendment</correspondenceCategory>
+		<correspondenceFileName>correspondenceTemplates/snippets/Owner_name_snippet.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>BENE_NAME</correspondenceCode>
+        <correspondenceName>Primary Beneficiary Name</correspondenceName>
+		<correspondenceCategory>Amendment</correspondenceCategory>
+		<correspondenceFileName>correspondenceTemplates/snippets/Primary_beneficiary_name_snippet.txt</correspondenceFileName>
+    </correspondence>
+    <correspondence>
+        <correspondenceCode>BENE_PERCENTAGE</correspondenceCode>
+        <correspondenceName>Primary Beneficiary Percentage</correspondenceName>
+		<correspondenceCategory>Amendment</correspondenceCategory>
+		<correspondenceFileName>correspondenceTemplates/snippets/Primary_beneficiary_percentage_snippet.txt</correspondenceFileName>
+    </correspondence>
+</correspondences>
+</stepImport>

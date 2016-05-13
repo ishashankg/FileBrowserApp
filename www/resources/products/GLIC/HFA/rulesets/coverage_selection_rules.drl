@@ -1,0 +1,627 @@
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.UserData;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.coverages.*;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import com.stepsoln.core.rules.uw.CaseUwRiskCalcData;
+import com.stepsoln.core.db.group.*;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.util.*;
+import java.math.BigDecimal;
+import com.stepsoln.core.helper.enums.UNIT_SYSTEM;
+import java.lang.*;
+
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global com.stepsoln.core.util.MathUtil math;
+
+
+function String faceAmountChangeMessage(String msg, String orgFaceAmount) {
+    return String.format("Face amount changed due to: %s; Requested Face Amount: %s,000.", msg,  orgFaceAmount);
+}
+
+
+rule "Disable Rider"
+salience  160
+             when
+             options:CoverageOption(optionCode in ("GIR","TERM30DWP","TERMDWP","WLDWP"));
+             plans:CoveragePlan(planCode in ("GIR","TERM30DWP","TERMDWP","WLDWP"));
+    then
+             options.setAvailable(true);
+             options.setSelectable(false);
+             plans.setAvailable(true);
+             plans.setSelectable(false);
+             rulesResponse.addToRuleFiredList(1);
+end
+
+
+rule "Waiver of Premium Rider is not available for CA"
+salience 60
+             when
+             CaseData(contractLocale=="CA");
+             options:CoverageOption(optionCode in ("TERM30DWP","TERMDWP","WLDWP"));
+    then
+             options.setSelectable(false);
+             rulesResponse.addToRuleFiredList(2);
+end
+
+
+rule "GIR Max limit"
+salience  99
+             when
+             faOption:CoverageOption(selected==true, optionCode=="FA", MathUtil.convertToNumber(faOption.getSelectedValue()) > 200);
+             girWOP:CoverageOption(optionCode=="GIR", selected==true);
+    then
+             girWOP.setSelectedValue("200000");
+             rulesResponse.addUserMessageInfo("Maximum GIR is 200000");
+             rulesResponse.addToRuleFiredList(3);
+end
+
+rule "set options to face amount"
+salience  150
+             when
+             faOption:CoverageOption(optionCode=="FA");
+             selectedOption:CoverageOption(selected==true, optionCode!="FA");
+    then
+             selectedOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())*1000+"");
+             rulesResponse.addToRuleFiredList(4);
+             
+end
+
+rule "set description and remove decimal and trailing zeroes for FA option"
+salience  150
+             when
+             faOption:CoverageOption(optionCode=="FA");
+    then
+             faOption.setOptionDescription("Coverage Units");
+             faOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())+"");
+             rulesResponse.addToRuleFiredList(5);
+end
+
+rule "Face Amount Plan Required"
+salience 140
+             when
+             faPlan:CoveragePlan(planCode in ("FA"));
+    then
+             faPlan.setOptional(false);
+             rulesResponse.addToRuleFiredList(6);
+end
+
+rule "Max FA Amount Rule"
+salience 130
+    when
+            faOption:CoverageOption(faOption.optionCode in ("FA"), MathUtil.convertToNumber(faOption.getSelectedValue())*1000 > 1000000);
+    then
+    		rulesResponse.addUserNotifcationInfo(faceAmountChangeMessage("There is a maximum of $1,000,000 limit", faOption.getSelectedValue()));
+            modify(faOption){
+                           setOptionNotes("(Max $1,000,000)"),
+                           setSelectedValue(MathUtil.minNumber("1000", faOption.getSelectedValue()))
+            }                        
+            rulesResponse.addToRuleFiredList(7);
+end
+
+rule "Min FA Amount Rule"
+salience 130
+             when
+             faOption:CoverageOption(faOption.optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue())*1000 < 25000, MathUtil.convertToNumber(faOption.getSelectedValue())>0);
+    then
+    		 rulesResponse.addUserNotifcationInfo(faceAmountChangeMessage("Minimum face amount needs to be 25,000", faOption.getSelectedValue()));
+             modify(faOption){
+                           setOptionNotes("(Min $25,000)"),
+                           setSelectedValue("25")
+             }            
+             
+             rulesResponse.addToRuleFiredList(8);
+end
+
+rule "FA Amount should be greater than 0 message"
+salience 135
+             when
+             faOption:CoverageOption(faOption.optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue())==0);
+    then
+             rulesResponse.addUserNotifcationInfo("Face Amount has to be greater than 0");
+             rulesResponse.addToRuleFiredList(9);
+end
+
+rule "Face Amount Option Required"
+salience 135
+             when
+             fa:CoverageOption(optionCode in ("FA")); 
+    then
+             fa.setSelected(true);
+             fa.setRequired(true);
+             fa.setTextEntry(true);
+             rulesResponse.addToRuleFiredList(10);
+end
+
+rule "GIR availability ends when FA Amount greater than 800,000"
+salience 50
+             when
+             faOption:CoverageOption(selected==true, optionCode in ("FA"), MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 800000);
+             girOption:CoverageOption(optionCode in ("GIR"));
+    then
+             girOption.setSelectable(false);
+             if(girOption.isSelected())
+             {
+                 girOption.setSelected(false);
+                 rulesResponse.addUserNotifcationInfo("Maximum GIR Option Value is 800000");
+             }           
+             rulesResponse.addToRuleFiredList(11);
+end
+
+
+
+rule "Applicant is outside the age limits of the product"
+salience 155
+             when
+             ap:ApplicantData(type=="PRIMARY_INSURED", age < 18 || age > 80)
+    then
+             rulesResponse.addUserNotifcationInfo("Applicant is outside the age limits of the product");
+             rulesResponse.addToRuleFiredList(12);
+end
+
+rule "30 Year Term"
+salience 80
+             when
+                           pa:ApplicantData(type=="PRIMARY_INSURED", age > 50);
+                           option:CoverageOption(optionCode in ("TERM30"));
+    then
+             option.setSelected(false);
+                           option.setSelectable(false);
+                           rulesResponse.addToRuleFiredList(13);
+end
+
+rule "20 Year Term"
+salience 80
+             when
+                           pa:ApplicantData(type=='PRIMARY_INSURED', age > 60);
+                           option:CoverageOption(optionCode in ("TERM20"));
+    then
+             option.setSelected(false);
+                           option.setSelectable(false);
+                           rulesResponse.addToRuleFiredList(14);
+end
+
+rule "15 Year Term"
+salience 80
+             when
+                           pa:ApplicantData(type=='PRIMARY_INSURED', age > 65);
+                           option:CoverageOption(optionCode in ("TERM15"));
+    then
+             option.setSelected(false);
+                           option.setSelectable(false);
+                           rulesResponse.addToRuleFiredList(15);
+end
+
+rule "10 Year Term"
+salience 80
+             when
+                           pa:ApplicantData(type=='PRIMARY_INSURED', age > 70);
+                           option:CoverageOption(optionCode in ("TERM10"));
+    then
+             option.setSelected(false);
+                           option.setSelectable(false);
+                           rulesResponse.addToRuleFiredList(16);
+end
+
+rule "Base Coverage Selection"
+salience 125
+     when
+           CoverageOption(optionCode in ("TERM30"),selected==false);
+           and CoverageOption(optionCode in ("WL"),selected==false);
+           and CoverageOption(optionCode in ("TERM20"),selected==false);
+           and CoverageOption(optionCode in ("TERM15"),selected==false);
+           and CoverageOption(optionCode in ("TERM10"),selected==false);
+           allowed:CoverageOption(optionCode in ("TERM10","TERM15","TERM20","TERM30","WL"));
+           notAllowed:CoverageOption(optionCode in ("TERMDWP","TERM30DWP","WLDWP","GIR"));
+    then
+         allowed.setSelected(false);
+         allowed.setSelectable(true);
+         notAllowed.setSelected(false);
+         notAllowed.setSelectable(false);
+         rulesResponse.addUserNotifcationInfo("At-least one Base Coverage must be selected");
+         rulesResponse.addToRuleFiredList(17);
+end
+
+rule "Guaranteed Insurability rider is only offered on whole life"
+salience 60
+    when
+             nonWhole:CoverageOption(optionCode in ("WL"), selected==true);
+             option:CoverageOption(optionCode in ("GIR"));
+             applicant:ApplicantData(type=='PRIMARY_INSURED', age > 17 && age < 40);
+    then 
+             option.setSelectable(true);
+             rulesResponse.addToRuleFiredList(18);
+end
+rule "Guaranteed Insurability rider is not offered on whole life for specific age"
+salience 70
+    when
+             nonWhole:CoverageOption(optionCode in ("WL"), selected==true);
+             option:CoverageOption(optionCode in ("GIR"));
+             applicant:ApplicantData(type=='PRIMARY_INSURED', age < 18 || age > 39);
+    then                    
+             option.setSelectable(false);
+             if(option.isSelected())
+             {
+                rulesResponse.addUserNotifcationInfo("Guaranteed Insurability rider is only offered between age 18 and 39");
+             	option.setSelected(false); 
+             }           
+             rulesResponse.addToRuleFiredList(19);
+end
+
+rule "Waiver of Premium rider is only offered thru age 59"
+salience 90
+             when
+             option:CoverageOption(optionCode in ("TERM30DWP","TERMDWP","WLDWP"), selected==true);
+             applicant:ApplicantData(type=='PRIMARY_INSURED', age < 18 || age > 59);
+    then 
+             option.setSelected(false);        
+             option.setSelectable(false);
+             rulesResponse.addUserNotifcationInfo("WOP is offered only thru age 59");
+             rulesResponse.addToRuleFiredList(20);
+end
+
+rule "TERM30 Level Mutex"
+salience 109
+             when
+             basePlan:CoverageOption(optionCode in ("TERM30"),selected==true);
+             notAllowed:CoverageOption(optionCode in ("TERM20","TERM15","TERM10","WL"));
+    then
+             notAllowed.setSelected(false);
+             notAllowed.setSelectable(false);
+             rulesResponse.addToRuleFiredList(21);
+end
+
+rule "TERM20 Level Mutex"
+salience 108
+             when
+             basePlan:CoverageOption(optionCode in ("TERM20"),selected==true);
+             notAllowed:CoverageOption(optionCode in ("TERM30","TERM15","TERM10","WL"));
+    then
+             notAllowed.setSelected(false);
+             notAllowed.setSelectable(false);
+             rulesResponse.addToRuleFiredList(21);
+end
+
+rule "TERM15 Level Mutex"
+salience 107
+             when
+             basePlan:CoverageOption(optionCode in ("TERM15"),selected==true);
+             notAllowed:CoverageOption(optionCode in ("TERM30","TERM20","TERM10","WL"));
+    then
+             notAllowed.setSelected(false);
+             notAllowed.setSelectable(false);
+             rulesResponse.addToRuleFiredList(21);
+end
+
+rule "TERM10 Level Mutex"
+salience 106
+             when
+             basePlan:CoverageOption(optionCode in ("TERM10"),selected==true);
+             notAllowed:CoverageOption(optionCode in ("TERM30","TERM20","TERM15","WL"));
+    then
+             notAllowed.setSelected(false);
+             notAllowed.setSelectable(false);
+             rulesResponse.addToRuleFiredList(21);
+end
+
+rule "Whole Life Selected"
+salience 105
+             when
+             basePlan:CoverageOption(optionCode in ("WL"), selected==true);
+             notAllowed:CoverageOption(optionCode in ("TERM10","TERM15","TERM20","TERM30"));
+    then
+             notAllowed.setSelected(false);
+             notAllowed.setSelectable(false);
+             rulesResponse.addToRuleFiredList(32);
+end
+
+
+rule "30 Year WOP only availble on TERM30"
+salience 100
+activation-group "rider-select"
+             when
+             basePlan:CoverageOption(optionCode in ("TERM30"), selected==true);
+             allowed:CoverageOption(optionCode in ("TERM30DWP"));
+             notAllowed:CoverageOption(optionCode in ("TERMDWP","WLDWP","GIR"));
+    then
+             allowed.setSelectable(true);
+             notAllowed.setSelected(false);
+             notAllowed.setSelectable(false);
+             rulesResponse.addToRuleFiredList(23);
+end
+
+
+
+rule "Term WOP only available on TERM10,TERM15,TERM20"
+salience 100
+activation-group "rider-select"
+             when
+             basePlan:CoverageOption(optionCode in ("TERM10","TERM15","TERM20"), selected==true);
+             allowed:CoverageOption(optionCode in ("TERMDWP"));
+             notAllowed:CoverageOption(optionCode in ("TERM30DWP","WLDWP","GIR"));
+    then
+             allowed.setSelectable(true);
+             notAllowed.setSelected(false);
+             notAllowed.setSelectable(false);
+             rulesResponse.addToRuleFiredList(30);
+end
+
+
+rule "Whole Life Riders"
+salience 100
+activation-group "rider-select"
+    when
+           basePlan:CoverageOption(optionCode in ("WL"),selected==true);
+           allowed:CoverageOption(optionCode in ("GIR","WLDWP"));
+           notAllowed:CoverageOption(optionCode in ("TERM30DWP","TERMDWP"));
+    then
+         allowed.setSelectable(true);
+         notAllowed.setSelected(false);
+         notAllowed.setSelectable(false);
+         rulesResponse.addToRuleFiredList(31);
+end
+
+
+rule "Calculate FA coverage amount"
+salience 100
+             when
+             faOption:CoverageOption(optionCode in ("FA"));
+    then
+             faOption.setSelectedValueCoverageAmount(new BigDecimal(MathUtil.convertToNumber(faOption.getSelectedValue())*1000));
+             faOption.setSkipProcessCoverageAmount(true);
+             rulesResponse.addToRuleFiredList(35);
+end
+
+rule "Indicate to lookup build chart data with UW Class data"
+salience 180
+activation-group "buildChartLookup"
+	when
+		$app:ApplicantData(type=='PRIMARY_INSURED')
+		Question(id == "height_feet", $heightFeet:answerAsDecimal) ;
+		Question(id == "height_inches", $heightInches:answerAsDecimal) ; 
+		Question(id == "weight_pounds",$weightPounds:answerAsDecimal) ; 
+		Question(id == "smoker_ind", $smokeInd:answerAsBoolean);	
+		$uwClassData:UnderWritingClassData()
+	then
+	    rulesResponse.setUwClassType($uwClassData.getType());
+	    $app.setLookupBuildChart(true);
+		$app.setHeight($heightFeet.multiply(MathUtil.INCHES_IN_FOOT).add($heightInches).intValue());
+		$app.setWeight($weightPounds.intValue());
+		$app.setUnitSystem(UNIT_SYSTEM.IMPERIAL);
+		$app.setTobaccoUsage($smokeInd);
+		rulesResponse.addToRuleFiredList(100,"USE_BUILD_CHART_SERVICE");
+end
+
+
+rule "Band 1 has only standard UW Class Rates"
+salience  99
+activation-group "uwClassUpdate"
+             when
+              faOption:CoverageOption(optionCode=="FA", MathUtil.convertToNumber(faOption.getSelectedValue()) > 24, MathUtil.convertToNumber(faOption.getSelectedValue()) < 100);
+              UnderWritingClassData(type=="PF");
+			  not UserData() or (userData:UserData() and eval(!userData.hasPermission("uw_recalc_igo","W", "UW")))
+    then
+             rulesResponse.setUwClassType("ST");
+             rulesResponse.addToRuleFiredList(36);
+end
+
+rule "Band 2 has no preferred plus UW Class Rates "
+salience  98
+activation-group "uwClassUpdate"
+             when
+                           faOption:CoverageOption(optionCode=="FA", MathUtil.convertToNumber(faOption.getSelectedValue()) > 24, MathUtil.convertToNumber(faOption.getSelectedValue()) < 301);
+                           UnderWritingClassData(type=="PP");
+						   not UserData() or (userData:UserData() and eval(!userData.hasPermission("uw_recalc_igo","W", "UW")))
+    then
+       rulesResponse.setUwClassType("ST");
+       rulesResponse.addToRuleFiredList(37);
+end
+
+rule "Band 2 has no tobacco rates for preferred"
+salience  97
+activation-group "uwClassUpdate"
+             when
+                           faOption:CoverageOption(optionCode=="FA", MathUtil.convertToNumber(faOption.getSelectedValue()) > 99, MathUtil.convertToNumber(faOption.getSelectedValue()) < 301);
+                           UnderWritingClassData(type=="PF");
+                           not UserData() or (userData:UserData() and eval(!userData.hasPermission("uw_recalc_igo","W", "UW")))
+                           ApplicantData(tobaccoUsage=="true");
+    then
+             rulesResponse.setUwClassType("ST");
+             rulesResponse.addToRuleFiredList(38);
+end
+
+rule "Band 3 and 4 have no tobacco rates for preferred plus"
+salience  96
+activation-group "uwClassUpdate"
+             when
+                           faOption:CoverageOption(optionCode=="FA", MathUtil.convertToNumber(faOption.getSelectedValue()) > 300, MathUtil.convertToNumber(faOption.getSelectedValue()) < 1001);
+                           UnderWritingClassData(type=="PP");
+						   not UserData() or (userData:UserData() and eval(!userData.hasPermission("uw_recalc_igo","W", "UW")))
+                           ApplicantData(tobaccoUsage=="true")
+    then
+       rulesResponse.setUwClassType("ST");
+       rulesResponse.addToRuleFiredList(39);
+end
+
+rule "Band 2 has no preferred plus UW Class Rates - with required Permission"
+salience  94
+activation-group "uwClassUpdate"
+             when
+                           faOption:CoverageOption(optionCode=="FA", MathUtil.convertToNumber(faOption.getSelectedValue()) > 24, MathUtil.convertToNumber(faOption.getSelectedValue()) < 301);
+                           UnderWritingClassData(type=="PP");
+						   not UserData() or (userData:UserData() and eval(!userData.hasPermission("uw_recalc_igo","W", "UW")))
+    then
+             rulesResponse.addUserNotifcationInfo("Band 2 has no preferred plus UW Class Rates");
+             rulesResponse.addToRuleFiredList(41);
+end
+
+rule "Band 2 has no tobacco rates for preferred - with required Permission"
+salience  93
+activation-group "uwClassUpdate"
+             when
+                           faOption:CoverageOption(optionCode=="FA", MathUtil.convertToNumber(faOption.getSelectedValue()) > 99, MathUtil.convertToNumber(faOption.getSelectedValue()) < 301);
+                           UnderWritingClassData(type=="PF");
+						   not UserData() or (userData:UserData() and eval(!userData.hasPermission("uw_recalc_igo","W", "UW")))
+                           ApplicantData(tobaccoUsage=="true");
+    then
+             rulesResponse.addUserNotifcationInfo("Band 2 has no tobacco rates for preferred");
+             rulesResponse.addToRuleFiredList(42);
+end
+
+rule "Band 3 and 4 have no tobacco rates for preferred plus - with required Permission"
+salience  92
+activation-group "uwClassUpdate"
+             when
+                           faOption:CoverageOption(optionCode=="FA", MathUtil.convertToNumber(faOption.getSelectedValue()) > 300, MathUtil.convertToNumber(faOption.getSelectedValue()) < 1001);
+                           UnderWritingClassData(type=="PP");
+						   not UserData() or (userData:UserData() and eval(!userData.hasPermission("uw_recalc_igo","W", "UW")))
+                           ApplicantData(tobaccoUsage=="true")
+    then
+             rulesResponse.addUserNotifcationInfo("Band 3 and 4 have no tobacco rates for preferred plus");
+             rulesResponse.addToRuleFiredList(43);
+end
+
+rule "maximum face of 50000 for student"
+salience 100
+             when
+                           q:Question(id=="occupation", answer in ("STUDENT", "COLLEGE STUDENT", "LAW STUDENT", "UNIVERSITY STUDENT"));
+                           faOption:CoverageOption(optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 50000);
+                           otherOption:CoverageOption(optionCode not in ("FA"), selected==true);
+                           
+    then
+    		rulesResponse.addUserNotifcationInfo(faceAmountChangeMessage("Student has a maximum face amount of $50,000",  faOption.getSelectedValue()));
+             modify(faOption){
+                           setOptionNotes("(Max $50,000)"),
+                           setSelectedValue(MathUtil.minNumber("50", faOption.getSelectedValue()))
+             }            
+             modify(otherOption){setSelectedValue("50000")}
+             
+             rulesResponse.addToRuleFiredList(45);
+end
+
+rule "maximum face of 50000 for retired"
+salience 100
+             when
+                           (Question(id=="annual_earned_income", answerAsNumber==0) or not Question(id=="annual_earned_income")) 
+                           q:Question(id=="occupation", answer in ("RETIRED", "RETIREMENT"));
+                           faOption:CoverageOption(optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 50000);
+                           otherOption:CoverageOption(optionCode not in ("FA"), selected==true);
+    then
+    		rulesResponse.addUserNotifcationInfo(faceAmountChangeMessage("Retired has a maximum face amount of $50,000", faOption.getSelectedValue()));
+             modify(faOption){
+                           setOptionNotes("(Max $50,000)"),
+                           setSelectedValue(MathUtil.minNumber("50", faOption.getSelectedValue()))
+             }            
+             modify(otherOption){setSelectedValue("50000")}
+             
+             rulesResponse.addToRuleFiredList(46);
+end
+rule "maximum face of 50000 for unemployed"
+salience 100
+             when
+                           Question(id=="occupation", answer in ("UNEMPLOYED", "NOT EMPLOYED"));
+                           faOption:CoverageOption(optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 50000);
+                           otherOption:CoverageOption(optionCode not in ("FA"), selected==true);
+    then
+    		rulesResponse.addUserNotifcationInfo(faceAmountChangeMessage("Unemployed has a maximum face amount of $50,000", faOption.getSelectedValue()));
+             modify(faOption){
+                           setOptionNotes("(Max $50,000)"),
+                           setSelectedValue(MathUtil.minNumber("50", faOption.getSelectedValue()))
+             }            
+             modify(otherOption){setSelectedValue("50000")}
+             
+             rulesResponse.addToRuleFiredList(47);
+end
+
+rule "maximum face of 50000 for disabled"
+salience 100
+             when
+                           Question(id=="occupation", answer in ("DISABLED", "DISABILITY"));
+                           faOption:CoverageOption(optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 50000);
+                           otherOption:CoverageOption(optionCode not in ("FA"), selected==true);
+    then
+    		 rulesResponse.addUserNotifcationInfo(faceAmountChangeMessage("Disabled has a maximum face amount of $50,000", faOption.getSelectedValue()));
+             modify(faOption){
+                           setOptionNotes("(Max $50,000)"),
+                           setSelectedValue(MathUtil.minNumber("50", faOption.getSelectedValue()))
+             }            
+             modify(otherOption){setSelectedValue("50000")}
+             
+             rulesResponse.addToRuleFiredList(48);
+end
+
+rule "maximum face of 300000 for non-med occupations without income"
+salience 100
+             when
+                           Question(id=="occupation", answer in ("HOMEMAKER", "HOME MAKER", "HOME EXECUTIVE", "HOUSE HUSBAND", "STAY AT HOME MOM", "STAY AT HOME DAD", "AT HOME MOM", "HOUSEWIFE", "HOUSE WIFE"));
+                           faOption:CoverageOption(optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 300000);
+                           otherOption:CoverageOption(optionCode not in ("FA"), selected==true);
+    then
+    		 rulesResponse.addUserNotifcationInfo(faceAmountChangeMessage("Due to your occupation, you have a maximum face amount of $300,000", faOption.getSelectedValue()));
+             modify(faOption){
+                           setOptionNotes("(Max $300,000)"),
+                           setSelectedValue(MathUtil.minNumber("300", faOption.getSelectedValue()))
+             }            
+             modify(otherOption){setSelectedValue("300000")}
+             rulesResponse.addToRuleFiredList(49);
+end
+
+rule "maximum face of 300000 for RETIRED with income"
+salience 95
+             when
+                           Question(id=="annual_earned_income", $income:answer)
+                           Question(id=="occupation", answer in ("RETIRED", "RETIREMENT"));
+                           faOption:CoverageOption(optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 300000);
+                           otherOption:CoverageOption(optionCode not in ("FA"), selected==true);
+    then
+            if (MathUtil.convertToNumber($income.toString())>0)
+             {
+             			  rulesResponse.addUserNotifcationInfo(faceAmountChangeMessage("Due to your occupation, you have a maximum face amount of $300,000", faOption.getSelectedValue()));
+                          modify(faOption){
+                                        setOptionNotes("(Max $300,000)"),
+                                        setSelectedValue(MathUtil.minNumber("300", faOption.getSelectedValue()))
+                          }            
+                          modify(otherOption){setSelectedValue("300000")}
+                          rulesResponse.addToRuleFiredList(50);
+                 }
+end
+
+rule "maximum face amount restricted by age and income"
+salience 90
+             when
+                           Question(id=="annual_earned_income", $income:answer)
+                           Question(id=="occupation", answer not in ("DISABLED", "DISABILITY","UNEMPLOYED", "NOT EMPLOYED","RETIRED", "RETIREMENT", "STUDENT", "COLLEGE STUDENT", "LAW STUDENT", "UNIVERSITY STUDENT", "HOMEMAKER", "HOME MAKER", "HOME EXECUTIVE", "HOUSE HUSBAND", "STAY AT HOME MOM", "STAY AT HOME DAD", "AT HOME MOM", "HOUSEWIFE", "HOUSE WIFE"));
+                           ApplicantData(type=="PRIMARY_INSURED", age>=18, $age:age )
+                           $faOption:CoverageOption(optionCode in ("FA"), $origValue:selectedValue);
+                           otherOption:CoverageOption(optionCode not in ("FA"), selected==true);
+    then
+             
+             $faOption.setSelectedValue(new Integer(Math.min(MathUtil.getEarnedIncomeFactorByAge($age) * MathUtil.convertToNumber($income.toString()) /1000, MathUtil.convertToNumber($faOption.getSelectedValue()))).toString());
+             if(MathUtil.convertToNumber($origValue) > MathUtil.convertToNumber($faOption.getSelectedValue())) {
+                          rulesResponse.addUserNotifcationInfo(faceAmountChangeMessage("Due to your age and income, you have a maximum face amount of "+FormatUtil.formatMoney(MathUtil.convertToNumber($faOption.getSelectedValue()) * 1000), $origValue));
+                          otherOption.setSelectedValue($faOption.getSelectedValue()+"000");
+                          $faOption.setOptionNotes("(Max "+ FormatUtil.formatMoney(MathUtil.convertToNumber($faOption.getSelectedValue()) * 1000) +")");
+             }
+             rulesResponse.addToRuleFiredList(52);
+end
+
+rule "When a case is substandard Table C or Table F strip off riders; no riders allowed on substandard cases"
+salience 90
+             when
+                           UnderWritingClassData(type in("TC", "TF"))
+                           $faOption:CoverageOption(optionCode in ("GIR", "TERMDWP", "TERM30DWP", "WLDWP"), (selected==true) )
+             then
+                           $faOption.setSelectable(false);
+                           $faOption.setSelected(false);
+                           if($faOption.isSelected())
+                           {
+                           		rulesResponse.addUserNotifcationInfo("When a case is substandard Table C or Table F strip off riders; no riders allowed on substandard cases");
+                           }
+                           rulesResponse.addToRuleFiredList(51);
+end                     
+             
+                         
+
+                           

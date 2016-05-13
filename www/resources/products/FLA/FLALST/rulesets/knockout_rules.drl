@@ -1,0 +1,177 @@
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.coverages.CoverageOption;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.eform.EFormAnswers;
+import com.stepsoln.core.util.MathUtil;
+import com.stepsoln.core.util.DateUtil;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+import java.math.BigDecimal;
+import com.stepsoln.core.rules.uw.CaseUwRiskCalcData;
+import com.stepsoln.core.helper.enums.UNIT_SYSTEM;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Age Kickout"
+//	Applicant is checked if he/she is between 18 and 65 years old
+	when
+		Question(id == "ins_date_of_birth", DateUtil.calculateAge(DateUtil.convertDate(answer)) < 18 || DateUtil.calculateAge(DateUtil.convertDate(answer)) > 65)
+	then
+		rulesResponse.issueKickout("Age Kickout");
+		rulesResponse.addUserNotifcationInfo("Applicant must be between 18 and 65 years old");
+		rulesResponse.addToRuleFiredList(1,"KNOCKOUT_RULE_AGE");
+end
+
+rule "Indicate to lookup build chart" 
+	when
+		$app:ApplicantData(type == 'PRIMARY_INSURED');
+		Question(id == "height_feet", $heightFeet:answerAsDecimal); 
+		Question(id == "height_inches", $heightInches:answerAsDecimal) ; 
+		Question(id == "weight_pounds",$weightPounds:answerAsDecimal);
+		eval($heightFeet!=null);
+		eval($heightInches!=null);
+		eval($weightPounds!=null)
+	then
+		rulesResponse.setLookupBuildChart(true);
+		$app.setHeight($heightFeet.multiply(MathUtil.INCHES_IN_FOOT).add($heightInches).intValue());
+		$app.setWeight($weightPounds.intValue());
+		$app.setUnitSystem(UNIT_SYSTEM.IMPERIAL);
+		rulesResponse.addToRuleFiredList(2,"USE_BUILD_CHART_SERVICE");
+end
+
+rule "Citizenship Kickout"
+//	Applicant is checked if he/she is an American citizen or has a valid green card
+
+	when
+		Question(id == "ins_citizen", answerAsBoolean == false)
+	then
+		rulesResponse.issueKickout("Citizenship Kickout");
+		rulesResponse.addUserNotifcationInfo("Not a legal U.S. resident for more than 2 years");
+		rulesResponse.addToRuleFiredList(1,"KNOCKOUT_RULE_CITIZENSHIP");
+end
+
+rule "Occupation Kickout"
+//	Knockout if one of the following occupations are selected: Bouncer, bounty, hunter, escort, 
+//	exotic dancer, gambler, mercenary, professional gambler, prostitute, sex worker, stripper and test pilot
+
+	when
+		Question(id == "occupation", 
+		answer in ('BOUNCER', 'BOUNTY', 'HUNTER', 'ESCORT', 'EXOTIC DANCER', 'GAMBLER', 'MERCENARY', 'PROFESSIONAL GAMBLER', 'PROSTITUTE', 'SEX WORKER', 'STRIPPER', 'TEST PILOT'))
+	then
+		rulesResponse.issueKickout("Occupation Kickout");
+		rulesResponse.addUserNotifcationInfo("Occupation is not eligible");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "Occupation is not provided."
+	when
+		Question(id == "ins_employed",answer == "N")
+	then
+		rulesResponse.issueKickout("Occupation Kickout");
+		rulesResponse.addUserNotifcationInfo("Not currently employed");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "Place of employment country"
+	when
+		Question(id == "place_of_employment_country", answer not in ('US'))
+	then
+		rulesResponse.issueKickout("Occupation Kickout");
+		rulesResponse.addUserNotifcationInfo("Must be employed with in the U.S.");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "Physician Check"
+//	If applicant age is > 55 and have not seen a physician within the past 5 years
+	when
+		ApplicantData(age > 55)
+		and Question(id == "ins_physician", answer != "Y")
+		
+    then
+		rulesResponse.issueKickout("Applicant Age/Physician Kickout");
+		rulesResponse.addUserNotifcationInfo("Applicant age is greater than 55 and have not seen physician in past 5 years.");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+
+end
+
+rule "Medical condition check. Drug / Alcohol."
+//	Knockout if drug/alcohol use within the last 24 months.   
+	when
+		Question(id == "med_q16", answer == "Y")
+	then
+		rulesResponse.issueKickout("Drug/Alcohol use within the last 24 months Kickout");
+		rulesResponse.addUserNotifcationInfo("Drug or Alcohol Abuse");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+
+end
+
+rule "Medical condition check. AIDS / HIV."
+//	Applicant answers "Yes" to Have you ever been diagnosed by a member of the medical profession as 
+//	having Acquired Immune Deficiency Syndrome (AIDS) or AIDS Related Complex (ARC), or received a positive 
+//	result from a test administered by a member of the medical profession for Human Immunodeficiency Virus (HIV)?
+	when
+		Question(id == "med_q10", answer == "Y")
+	then
+		rulesResponse.issueKickout("AIDS / ARC or HIV Kickout.");
+		rulesResponse.addUserNotifcationInfo("Medical conditions not eligible (AIDS / ARC or HIV)");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+
+end
+
+rule "Medical condition check. Gauchers Disease."
+//	Knockout if treated for or diagnosed with Gauchers Disease in past 5 years   
+	when
+		Question(id == "med_q33", answer == "Y")
+	then
+		rulesResponse.issueKickout("Gauchers Disease in the last 5 years Kickout");
+		rulesResponse.addUserNotifcationInfo("Medical conditions not eligible (Gauchers Disease)");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+
+end
+
+rule "Combined medical condition check"
+//	Applicant is checked if he/she received any treatment, medical advice or consultation in the past 24 months for Heart Attack (Myocardial Infarction)
+//	If applicant has received treatment in the past 10 years for any of the following conditions (from list..).  
+	when
+		Question(id == "med_q9", answer == "Y")
+	then
+		rulesResponse.issueKickout("Knockout he/she received any treatment, medical advice or consultation in the past 24 months.");
+		rulesResponse.addUserNotifcationInfo("Received any treatment, medical advice, consultation or been diagnosed with ineligible conditions in the past 10 years.");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+
+end
+
+rule "Positive HIV test check"
+//	Applicant is checked if he/she received a positive result from a test administered by a member of the medical profession for Human Immunodeficiency Virus (HIV)
+	when
+		Question(id == "med_q11", answer == "Y")
+	then
+		rulesResponse.issueKickout("Knockout he/she received a positive result from a test administered by a member of the medical profession for Human Immunodeficiency Virus (HIV).");
+		rulesResponse.addUserNotifcationInfo("Received a positive result from a test administered by a member of the medical profession for Human Immunodeficiency Virus (HIV).");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+
+end
+
+rule "Payment medical question" 
+	when
+		Question(id == "proposed_insurer_completing_form", answer == "N")
+	then
+		rulesResponse.issueKickout("Payment Kickout");
+		rulesResponse.addUserNotifcationInfo("The proposed insured must be the payor to complete the application. Would you like to proceed ?");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "5. Mortality factor > 100% Knockout"
+salience 90
+activation-group "underwritingClassAdjustment"
+	when
+		caseRiskCalc:CaseUwRiskCalcData(calcPctLoad > 100)
+	then
+	    rulesResponse.issueKickout("Mortality Factor Kickout");
+	    rulesResponse.setRenderKnockoutReturn(false);
+		rulesResponse.addUserNotifcationInfo("Mortality Factor greater than 100. Applicant cannot be issued coverage.");
+		rulesResponse.addToRuleFiredList(2);
+end

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onSave>saveDependents</onSave>
+	<page title="Dependent Child Rider">
+		<section title="Dependent Children to be Insured:">
+			<group associated="true">
+				<question id='child_first_name1' text='First Name' required="true"
+					labelWidth="100px" type='TEXT' answerWidth="150px;" />
+				<question id='child_middle_name1' text='Middle' labelWidth="50px"
+					type='TEXT' answerWidth="50px;" />
+				<question id='child_last_name1' text='Last Name' required="true"
+					labelWidth="80px" type='TEXT' answerWidth="150px;" />
+			</group>
+			<group>
+				<question id='child_gender1' text='Gender' type='RADIO'
+					answerSet="1:Male|0:Female" />
+				<question id='child_date_of_birth1' text='Date of Birth'
+					type='DATE' required="true" />
+			</group>
+			<group labelWidth="550px">
+				<question id='cMedQ1'
+					text='Has any Child to be insured have been diagnosed with, or treated by a Physician for any Physical Disability, Mental Retardation or Special Need?'
+					type='RADIO' answerSet='Y:Yes|N:No' required="true" />
+				<question id='cMedQ2'
+					text='Has any Child to be insured been diagnosed with, or treated by a Physician for any Disorder of the Heart, or has any Surgeries or Hospitalization been suggested, which has yet to be completed?'
+					type='RADIO' answerSet='Y:Yes|N:No' required="true" />
+			</group>
+		</section>
+		<section title="Other Dependents:" repeating="true">
+			<group associated="true">
+				<question id='child_first_name2' text='First Name' required="true"
+					labelWidth="100px" type='TEXT' answerWidth="150px;" />
+				<question id='child_middle_name2' text='Middle' labelWidth="50px"
+					type='TEXT' answerWidth="50px;" />
+				<question id='child_last_name2' text='Last Name' required="true"
+					labelWidth="80px" type='TEXT' answerWidth="150px;" />
+			</group>
+			<group>
+				<question id='child_gender2' text='Gender' type='RADIO'
+					answerSet='1:Male|0:Female' />
+				<question id='child_date_of_birth2' text='Date of Birth'
+					type='DATE' required="true" />
+			</group>
+			<group labelWidth="550px">
+				<question id='cMedQ12'
+					text='Has any Child to be insured have been diagnosed with, or treated by a Physician for any Physical Disability, Mental Retardationof Special Need?'
+					type='RADIO' answerSet='Y:Yes|N:No' required="true" />
+				<question id='cMedQ22'
+					text='Has any Child to be insured been diagnosed with, or treated by a Physician for any Disorder of the Heart, or has any Surgeries or Hospitalization been suggested, which has yet to be completed?'
+					type='RADIO' answerSet='Y:Yes|N:No' required="true" />
+			</group>
+		</section>
+	</page>
+</form>

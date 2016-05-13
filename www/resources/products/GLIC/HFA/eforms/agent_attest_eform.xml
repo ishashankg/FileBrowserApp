@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillForm</onLoad>
+  <onSave>saveData</onSave>
+  <page title="Producer Certification">
+    <section>
+      <group labelWidth="760px">
+        <header>To the best of your knowledge,</header>
+        <question id='oth_pending_ind'
+          text='1. Does the Proposed Insured have any life insurance or annuities in force or is any application for life insurance or reinstatement now pending? (If Yes, complete appropriate replacement forms)'
+          type='RADIO' answerSet='Y|N' required="true" />
+ 	  </group>
+      <group labelWidth="760px">
+        <question id='replacement_ind'
+          text='2. Will the coverage applied for replace any life insurance or annuity coverage now in force or pending on the life of the Proposed Insured? (If Yes, complete appropriate replacement forms)'
+          type='RADIO' answerSet='Y|N' required="true" />
+        <question id='y_1035_exch_ind' text='Is this a 1035 Exchange?'
+          type='RADIO' answerSet='Y|N' required="true" />
+        <question id='internal_term_conv_ind' text='Is this an internal term conversion?'
+          type='RADIO' answerSet='Y|N' required="true" />
+ 	  </group>
+ 	</section>
+ 	<section title="">
+      <group labelWidth="760px">
+        <question id='attest_ind' labelStyle='font-weight: bold;'
+          text='I certify that I have no knowledge of anything which might affect the insurability of any person proposed for insurance which is not fully set forth herein'
+          type='RADIO' answerSet='Y|N' required="true" />
+      </group>
+      <group>
+      	<question id='agent_id_lookup' externalId='agent_id_db;agent_id;printed_name' text='Agent ID Lookup' type='TEXT' required="true" autocompleteLookup='agent'>
+      		<displayWhen>#{CASE.isPaperCase}</displayWhen>
+        </question>
+        <question id='agent_id_db' type='HIDDEN' />
+      </group>
+      <group associated="true">
+        <question id='agent_id' text='Agent ID' type='TEXT' required="true" readonly="true">
+      		<displayWhen>#{CASE.contractLocale!="FL"}</displayWhen>  
+        </question>
+        <question id='agent_license_no' text='Agent License Number'
+          type='TEXT' required="true">
+          <displayWhen>#{!CASE.isPaperCase and CASE.contractLocale=="FL"}</displayWhen>
+        </question>
+        <question id='printed_name' text='Printed Name of Licensed Agent'
+          type='TEXT' labelStyle='margin-left:8px;' required="true" readonly="true"/>
+      </group>
+      <group associated="true">
+			<question id='agent_sig' text='Signature of Licensed Agent' type='CHECKBOX' answerSet='Y' />
+			<question id='agent_sig_date' text='Signature Date' type='DATEF' labelStyle='margin-left:8px;' />
+      		<displayWhen>#{CASE.isPaperCase}</displayWhen>
+	   </group>
+    </section>
+  </page>
+</form>

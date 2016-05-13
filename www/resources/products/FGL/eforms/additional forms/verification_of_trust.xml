@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+    
+	<page title="Certificate of Trust">
+		<section title="Irrevocable Trust" style="labelWidth:100px; answerWidth:120px;" >    
+			<group associated="true" labelWidth="100px" answerWidth="120px">	
+                <question id='verify_trust_relates'
+                  text='This verification of trust relates to'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+				<question id='trust_date'
+                  text='Date of Execution'                       
+                  type='DATEF'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+			</group>
+			
+			<group associated="true" labelWidth="100px" answerWidth="120px">	
+				<question id='verify_trust_settlor_name'
+                  text='Name of Settlor/Grantor'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+			</group>
+			
+		</section>
+		
+		<section>
+		
+			<group associated="true" labelWidth="100px" answerWidth="120px">	
+                <question id='verify_trustee_first'
+                  text='Trustee First Name'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+				<question id='verify_trust_last'
+                  text='Trustee Last Name'                       
+                  type='TEXT'   
+                  labelStyle='margin-left:8px'
+                  required="true"
+				  tabindex='1'/>
+			</group>
+			
+			<group labelWidth="100px" answerWidth="120px">	
+					<question id='verify_trust_dated'
+						  text='Date' 
+						  type='DATEF'   
+						  labelStyle='margin-left:8px'
+						  required="true"
+						  tabindex='1'/>
+
+			</group>
+		
+	
+		</section>
+                
+	</page>
+</form>

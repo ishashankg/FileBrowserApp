@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<requirements>
+		
+		<requirement>
+		    <requirementLocale></requirementLocale>
+	        <requirementCode>MPQA</requirementCode>
+	        <requirementDescription>MOOMED_PRE_QUAL_APPLICANT</requirementDescription>
+			<materialChange>true</materialChange>
+	        <requirementForms>
+	            <requirementForm>
+	                <formCode>PERSON</formCode>
+	                <formDescription>MOOMED_PRE_QUAL_APPLICANT</formDescription>
+	                <responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>PERSON</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+	        </requirementForms>
+	    </requirement>
+		
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>MED</requirementCode>
+			<requirementDescription>Medical Questions</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<materialChange>true</materialChange>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>MEDF</formCode>
+					<formDescription>Medical Questions</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>MEDICAL_QUESTIONS</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>GUAR_ISSUE</requirementCode>
+			<requirementDescription>Guaranteed Questions</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<materialChange>true</materialChange>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>GUAR_ISSUE</formCode>
+					<formDescription>Guaranteed Issue Questions</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>GUARANTEED_ISSUE_ELIGIBILITY</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>PT1</requirementCode>
+			<requirementDescription>Personal Information</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<materialChange>true</materialChange>
+			<requirementGroup>NB</requirementGroup>
+			<resolver>NB</resolver>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APPPART1</formCode>
+					<formDescription>Personal Information</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>PERSON</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+		    <requirementLocale></requirementLocale>
+	        <requirementCode>ASR</requirementCode>
+	        <requirementDescription>Applicant signature requirement</requirementDescription>
+			<securityFunction>case_auth</securityFunction>
+			<requirementGroup>NB</requirementGroup>
+	        <requirementForms>
+				<requirementForm>
+	                <formCode>ASRRF</formCode>
+	                <formDescription>Applicant signature</formDescription>
+	                <responseRequired>true</responseRequired>
+					<signatureRequired>true</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode></formEformCode>
+					<formGroupType>SIGNATURE</formGroupType>
+					<requirementType>ESIGNATURE</requirementType>
+				</requirementForm>
+	        </requirementForms>
+	    </requirement>
+	    
+	    <requirement>
+		    <requirementLocale></requirementLocale>
+	        <requirementCode>UBD</requirementCode>
+	        <requirementDescription>Base Decline Notify</requirementDescription>
+			<securityFunction>uw_tasks</securityFunction>
+	        <requirementForms>
+	        	<requirementForm>
+	                <formCode>CMPDECLINE</formCode>
+	                <formDescription>Compact-Base Decline Notify</formDescription>
+	                <responseRequired>false</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>APPDELIVER</formWorkflow>
+					<formGroupType>UW</formGroupType>
+					<requirementType>CORRESPONDENCE</requirementType>
+				</requirementForm>
+	        </requirementForms>
+	    </requirement>
+	    
+	    	<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>MVR</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>Motor Vehicle Report</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence
+			</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>MVR</formCode>
+					<formDescription>Motor Vehicle Report</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>MVREPORT</formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>MWS</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>MIB Disclosure</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence
+			</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>MIB3RDPARTY</formCode>
+					<formDescription>MIB 3rd Party Call</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>MIB3RDPARTY</formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>RXD</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>RXD Disclosure</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence
+			</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>RXD3RDPARTY</formCode>
+					<formDescription>RXD 3rd Party Call</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>RXD3RDPARTY</formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>IIX</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>IIX Disclosure</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence
+			</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>IIX3RDPARTY</formCode>
+					<formDescription>IIX 3rd Party Call</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>IIX3RDPARTY</formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>ATT</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>ATT Disclosure</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence
+			</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>ATT3RDPARTY</formCode>
+					<formDescription>ATT 3rd Party Call</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>ATT3RDPARTY</formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>APS</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>Exam</requirementDescription>
+			<securityFunction>lab_requirements</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APS</formCode>
+					<formDescription>Attending Physician Statement</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>	    
+	</requirements>
+</stepImport>

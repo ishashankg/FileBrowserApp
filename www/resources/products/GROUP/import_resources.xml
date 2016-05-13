@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<resources>
+		<resource>
+			<description>UI behavior </description>
+			<file>ui_behavior.xml</file>
+			<type>UI_BEHAVIOR</type>
+			<resourceCode>UI_BEHAVIOR</resourceCode>
+			<formatType>XML</formatType>
+		</resource>
+		<resource>
+			<description>Eform Converter</description>
+			<resourceCode>EFORM_CONVERTER1</resourceCode>
+			<file>eform_mapper.xml</file>
+			<type>EFORM_CONVERTER</type>
+			<formatType>XML</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+	</resources>
+</stepImport>

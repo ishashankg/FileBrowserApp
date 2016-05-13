@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<users>
+	<user>
+		<usUserName>JohnKnaff</usUserName>
+		<usPassword>P@ssword1</usPassword>
+		<usAgentCode>JOHKN</usAgentCode>
+		<usAgencyCode>UMBRELLA_LIFE_MedAg</usAgencyCode>
+		<usMemCode></usMemCode>
+		<usFirstName>John</usFirstName>
+		<usLastName>Knaff</usLastName>
+	</user>
+	<user>
+		<usUserName>UMBRELLA_AGENT</usUserName>
+		<usPassword>P@ssword1</usPassword>
+		<usAgentCode></usAgentCode>
+		<usMemCode></usMemCode>
+		<usFirstName>Agent</usFirstName>
+		<usLastName>External</usLastName>
+	</user>
+	<user>
+		<usUserName>UMBRELLA_UW</usUserName>
+		<usPassword>P@ssword1</usPassword>
+		<usAgentCode>MICBAC</usAgentCode>
+		<usAgencyCode>UMBRELLA_LIFE_MedAg</usAgencyCode>
+		<usMemCode></usMemCode>
+		<usFirstName>UMBRELLA</usFirstName>
+		<usLastName>UW</usLastName>
+	</user>
+	<user>
+		<usUserName>UMBRELLA_DEF_UW</usUserName>
+		<usPassword>P@ssword1</usPassword>
+		<usAgentCode>TOMHANK</usAgentCode>
+		<usFirstName>UMBRELLA_DEFAULT</usFirstName>
+		<usLastName>UW</usLastName>
+	</user>
+</users>
+</stepImport>

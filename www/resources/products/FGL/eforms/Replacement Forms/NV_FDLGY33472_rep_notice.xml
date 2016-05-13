@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">		
+		<section style="border:1px solid black">		
+			<group labelWidth="300px">
+				<paragragh text="You have been offered a policy to replace all or part of your existing policy of life insurance or annuity."  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="Before you replace your existing policy you should consider whether you could suffer a financial loss under the new policy  because of your age or the condition of your health. You should also consider whether you will pay more for premiums because of your age or health." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="You will incur additional costs to acquire the new policy, including the payment of commissions to the agent advocating the replacement of your existing policy." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="To make an informed decision about the replacement of your policy, you should discuss the provisions of your existing policy with your agent or the company which issued it to determine whether your policy can be changed to meet your present needs." styleClass="groupParagraph" >
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="Your new policy provides 30 days for you to decide whether you wish to keep it." styleClass="groupParagraph" >
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="The agent who is offering to replace your existing policy is required to obtain your signature on this notice. Also, he will be notifying your existing insurance company that you are considering the replacement of your policy." styleClass="groupParagraph" >
+				</paragragh>
+			</group>
+		</section>	
+		<section>
+			<group labelWidth="300px" style="font-weight: bold">
+				<paragragh  text="I have read this notice and received a copy of it for my records." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>			
+		<section>
+			<group associated="True">
+				<question id='applicant_signature' text="Applicant Signature" type='CHECKBOX' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='1'/>  
+				<question id='applicant_signature_date' text="Date" type='DATEF' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:150px' tabindex ='2'/>
+			</group>	
+			<group associated="True">
+				<question id='agent_signature' text="Agent Signature" type='CHECKBOX' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='3'/>  
+				<question id='agent_signature_date' text="Date" type='DATEF' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:150px' tabindex ='4'/>
+			</group>	
+			<group associated="True">
+				<question id='applicant_name' text="Applicant Name" type='TEXT' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='5'/>  
+				<question id='agent_name' text="Agent Name" type='TEXT' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:150px' tabindex ='6'/>
+			</group>				
+		</section>
+	</page>
+</form>

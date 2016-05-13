@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude" 
+   xmlns="http://www.stepsolutions.com/2013/configuration/">
+<agencies>
+	<agency>
+		<agCode>GROUPAGENCY15</agCode>
+		<agName>Group Agency15</agName>
+		<agBusType>Independent</agBusType>
+		<agents>
+			<agent>
+		
+				<agtCode>GROUPAGENT15</agtCode>
+				<agtFirstName>Group</agtFirstName>
+				<agtLastName>Agent15</agtLastName>
+
+				
+			</agent>
+		</agents>
+	</agency>
+</agencies>
+
+</stepImport>

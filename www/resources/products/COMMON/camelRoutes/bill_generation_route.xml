@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+
+<route id="billingIdentification" shortName="billingIdentification">
+                 <from uri="quartz://timerName?cron=0+0/5+13-18+?+*+MON-FRI"/>
+                 <to uri="billingIdentificationProcessor" />
+  </route>
+  <route id="bill_generation" shortName="bill_generation" >
+                 <from uri="activemq://job_process_queue?selector=routeId%3D%27bill_generation%27"/>
+                 <to uri="billGenerationProcessor"/>
+  </route>
+  
+</routes>

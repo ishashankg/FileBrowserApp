@@ -1,0 +1,31 @@
+$currentDate
+
+$agentFirstName $agentLastName
+$agentAddressLines
+$agentCityStateZip 
+
+Re:  $policyNumber:
+     $annuitantFirstName $annuitantLastName 
+
+Dear $agentFirstName $agentLastName:
+
+We are in the process of reviewing the annuity application you recently submitted as referenced above. Before we can process this application further, we have questions that will need your attention based on information on the Suitability Acknowledgment Form (SAF). This is not meant to suggest there is anything wrong necessarily but clarification is needed in order to continue with our suitability review.
+
+Please attend to this as quickly as possible. Once you provide the requested information, we can then proceed with our suitability review and processing of the application. If we still need additional information based on your answers to our questions below, we may contact you again.
+
+Please note this application will remain in NIGO (Not in Good Order) status until this information is received from you. If we do not receive the information within ten days, the application will be declined.
+
+Please provide the following additional information:
+
+The Suitability Acknowledgement Form indicates your client has a relatively high amount of short-term liabilities in comparison to remaining liquid assets. This may require closer review from a liquidity standpoint. Please provide additional information regarding your client’s debts both as to long-term and short-term liabilities. Helpful information includes: to what extent does the short-term debt consist of credit card debt; what is the debt for (mortgage, car, etc.); when does fixed term debt come due; are there balloon payments and if so when are those due; to what extent are regular payments for the debt already included in Approximate Monthly Household Expenses shown on the Suitability Acknowledgement Form; and any other details you believe would help demonstrate there are reasonable grounds to recommend the annuity to this applicant under these circumstances. Be as specific as possible since this information will be reviewed as part of our escalation review process.
+
+As indicated above, we need you to provide this information as soon as possible, so we may proceed with review of this application. Please understand that there could be additional questions – even after we get your answers to these questions – but we are committed to moving as quickly as possible consistent with our obligation to perform a suitability review as required by law and dictated by good sales practices.
+
+If you have questions or concerns, you may call us toll-free at 1-800-445-6758.
+
+Sincerely,
+
+
+Annuity New Business Department
+
+

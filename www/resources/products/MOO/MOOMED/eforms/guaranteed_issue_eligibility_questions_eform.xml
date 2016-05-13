@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+   <onLoad>formLoad</onLoad>
+   <onSave>importData</onSave>
+   <page title="Guaranteed Issue Eligibility">
+      <header />
+      <section title="Guaranteed Issue Eligibility Questions">
+         <group>
+            <question id="employee_welfare_benefit_termination" text="1. Within the last 63 days, did your employee welfare benefit plan terminate or cease to provide all supplemental Medicare health benefits to you?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="800px" labelStyle="margin-left:8px" />
+            <question id="medicare_advantage_termination" text="2. Within the last 63 days, did you terminate enrollment from a Medicare Advantage (formerly Medicare+Choice) plan or a Program of All-Inclusive Care for the Elderly (PACE), having enrolled in such a plan upon first becoming eligible for benefits under Part A, and enrolled in Part B, if eligible, of Medicare, and subsequently disenrolled within 12 months of enrollment?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="800px" labelStyle="margin-left:8px" />
+         </group>
+         <group>
+            <question id="any_medicare_plans_termination" text="3. Within the last 12 months, did you terminate Medicare Supplement coverage to enroll for the first time in a Medicare Select Pla, Medicare HMO, Medicare Demonstration Project, Medicare Health Care Prepayment Plan, Medicare Advantage (formerly Medicare+Choice) Plan, or a Program of All-Inclusive Care for the Elderly (PACE)?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="800px" labelStyle="margin-left:8px" />
+         </group>
+         <group>
+           <displayWhen>#{EFORM.any_medicare_plans_termination=="Y"}</displayWhen>
+            <question id="terminated_within_last_63_days" text="A. Within the past 63 days, did you terminate enrolment in such plan?" type="RADIO" answerSet="Y:Yes|N:No" required="true" labelStyle="margin-left:60px" labelWidth="749px" />
+         </group>
+         <group>
+            <question id="enrollment_discontinued" text="4. Within the last 63 days, did you discontinue enrolment in a Medicare Select policy, Medicare HMO, Medicare Demonstration Project, Medicare Cost Program under Section 1876 of the Social Security Act, Medicare Health Care Prepayment Plan, Medicare Advantage (formerly Medicare+Choice) Plan, or you are 65 years of age or older and discontinued enrolment in a Program of All-Inclusive Care for the Elderly (PACE)?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="800px" labelStyle="margin-left:8px" />
+         </group>
+         <group>
+           <displayWhen>#{EFORM.enrollment_discontinued=="Y"}</displayWhen>
+            <question id="plan_discontinued" text="A. because plan's certification was terminated or the plan was discontinued in the           area in which you live?" type="RADIO" answerSet="Y:Yes|N:No" required="true" labelStyle="margin-left:60px" labelWidth="750px" />
+            <question id="place_of_residence_changed" text="B. because you changed your place of residence or there was another change in circumstance (other than non payment of premium) which made you ineligible for the plan?" type="RADIO" answerSet="Y:Yes|N:No" required="true" labelStyle="margin-left:60px" labelWidth="750px" />
+            <question id="organization_violated_plan_provisions" text="C. because You have satisfactorily demonstrated that the organization substantially violated a material provision of the plan with respect to your care?" type="RADIO" answerSet="Y:Yes|N:No" required="true" labelStyle="margin-left:60px" labelWidth="750px" />
+         </group>
+      </section>
+   </page>
+</form>

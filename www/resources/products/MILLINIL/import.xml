@@ -1,0 +1,23 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<carrier>
+		<carrierCode>MILLINIL</carrierCode>
+		<carrierName>Millini Life</carrierName>
+		<carrierNAICCode>80940</carrierNAICCode>
+
+		<docTypes>
+			<docType>
+				<docTypeCode>NB</docTypeCode>
+				<docTypeName>New Business</docTypeName>
+			</docType>
+			<docType>
+				<docTypeCode>UW</docTypeCode>
+				<docTypeName>Underwriting</docTypeName>
+			</docType>
+		</docTypes>
+		<importProduct productCode="MILLINIL" />		
+
+		<file uri="import_agencies.xml" />
+		<file uri="import_users.xml" />
+	</carrier>
+</stepImport>

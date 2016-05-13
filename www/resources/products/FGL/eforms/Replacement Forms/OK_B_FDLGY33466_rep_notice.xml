@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section>		
+			<group labelWidth="300px">
+				<paragragh text="THIS NOTICE IS FOR YOUR BENEFIT AND IS REQUIRED BY LAW." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>
+		<section style="border:1px solid black">		
+			<group labelWidth="300px">
+				<paragragh text="1. If you are urged to purchase life insurance and to surrender, lapse, or in any other way change the status of existing life insurance, the agent is required to give you this notice."  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="2. It may not be advantageous to drop or change existing life insurance in favor of new life insurance, whether issued by the same or a different insurance. Some of the advantages are:" styleClass="groupParagraph" >
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:20px;margin-top:-10px">
+				<paragragh  text="a. The amount of the annual premium under an existing policy may be lower than under a new policy having the same or similar benefits." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:20px;margin-top:-10px">
+				<paragragh  text="b. Generally, the initial costs of life insurance policies are charged against the cash value increases in the early policy years. The replacement of an old policy could result in the policyholder sustaining the burden of the costs twice." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="margin-left:20px;margin-top:-10px">
+				<paragragh  text="c. The incontestable and suicide clauses begin anew in each policy. This could result in a claim under a new policy being denied by the company which would have been paid under the old policy."   styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:20px;margin-top:-10px">
+				<paragragh  text="d. Existing policies may have more favorable provisions than old policies in such areas as settlement options and disability benefits."  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:20px;margin-top:-10px">
+				<paragragh text="e. An existing policy may have a reserve value in addition to any cash value which may be of some benefit to the insured."   styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="margin-left:20px;margin-top:-10px">
+				<paragragh text="f. The insurance company carrying your current insurance policy can often make a desired change on terms which would be more favorable than if existing insurance is replaced with new insurance." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="height:60px;">
+				<paragragh text="3. It may not be advantageous to change an existing policy to reduced paid-up or extended term insurance or to borrow against its loan value beyond your expected ability or intention to repay in order to obtain funds for premiums on a new policy." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="height:60px;">
+				<paragragh text="4. There may be a situation in which a replacement policy is advantageous. You may want to receive the comment of the present insurance company before deciding this important financial matter." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>	
+		<section>
+			<group labelWidth="300px" style="height:60px;">
+				<paragragh text="I hereby acknowledge that I received the above “Notice to Applicants Regarding Replacement of Life Insurance or an Annuity” before I signed the application for the proposed new insurance." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>			
+		<section>
+			<group associated="true">
+				<question id='applicant_signature' text="Applicant Signature" type='CHECKBOX' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='1'/>  
+				<question id='applicant_signature_date' text="Date" type='DATEF' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='2'/>
+			</group>						
+		</section>
+	</page>
+</form>

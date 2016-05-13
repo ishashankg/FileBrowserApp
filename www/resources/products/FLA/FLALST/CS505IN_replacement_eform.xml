@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+    <onLoad>prefillData</onLoad>
+	<page title="INDIANA IMPORTANT NOTICE REGARDING REPLACEMENT OF LIFE INSURANCE">
+		<section>
+			<group>
+				<header>If you are thinking about DISCONTINUING or CHANGING an existing life insurance policy or annuity contract and BUYING a replacement, your decision could be a good one - or possible a mistake. Make sure that you understand the facts. You should:</header>
+				<paragragh
+					text=" - Make a careful comparison of your existing policy and the proposed policy."
+					styleClass="groupParagraph" />
+				<paragragh
+					text=" - Ask the company or agent that sold you your existing policy to provide you with complete information about it."
+					styleClass="groupParagraph" />
+				<paragragh text=" - Consider both sides before you decide."
+					styleClass="groupParagraph" />
+				<paragragh
+					text=" - Determine what you want your insurance program to do."
+					styleClass="groupParagraph" />
+				<paragragh
+					text=" - Consider your present health. You may have had a change which could affect your insurability, so make sure to continue your present policy until a new policy is delivered to you and accepted by you"
+					styleClass="groupParagraph" />
+			</group>
+		</section>
+		<section>
+			<header>EXISTING POLICY INFORMATION</header>
+			<group>
+				<header>This form MUST be completed in triplicate and the original given to you by the agent proposing replacement no later than at the time you apply for the new policy. (This form must be completed and given to you even though the proposed replacement policy is with the same company that sold you your existing policy.)</header>
+				<question id='exist_ins_name' text="EXISTING POLICY INFORMATION on "
+					type='TEXT' suffix="(Name of Insured)" labelWidth="220px;" />
+			</group>
+		</section>
+        <section title="Existing Policy" repeating="true">
+          <group associated="true">
+            <question id='replaced_carrier' text='Insurer Name'  labelWidth="180px" type='TEXT' answerWidth="150px;" />
+            <question id='replaced_issue_date' text='Date of Issue' type='DATEF' answerWidth="60px;" />
+          </group>
+          <group associated="true">
+            <question id='replaced_policy_type' text='Type of Policy*' labelWidth="180px" type='TEXT' answerWidth="150px;" />
+            <question id='replaced_policyno' text='Policy Number' labelWidth="100px" type='TEXT' answerWidth="100px;" />
+          </group>
+          <group associated="true">
+            <question id='replaced_faceamount' text='Face Amount of Base Policy' labelWidth="200px" type='TEXT' answerWidth="100px;" />
+            <question id='replaced_opt_bene' text='Type of Optional Benefits' labelWidth="200px" type='TEXT' answerWidth="100px;" />
+          </group>
+        </section>
+		<section>
+			<header>PROPOSED POLICY INFORMATION</header>
+			<group>
+				<question id='prop_ins_name' text="PROPOSED POLICY INFORMATION on "
+					type='TEXT' suffix="(Name of Insured)" labelWidth="220px;" />
+			</group>
+			<group associated="true">
+				<question id='prop_company' text='Company' labelWidth="180px"
+					type='TEXT' answerWidth="150px;" />
+			</group>
+			<group>
+				<question id='prop_policy_type' text='Type of Policy*'
+					type='TEXT' labelWidth="180px" answerWidth="150px;" />
+			</group>
+			<group associated="true">
+				<question id='prop_fa' text='Face Amount of Base Policy'
+					type='NUMBER' labelWidth="180px" answerWidth="80px;" />
+				<question id='prop_benefits_type' text='Type of Optional Benefits'
+					type='TEXT' />
+			</group>
+			<group>
+				<header>Indiana Department of Insurance Regulation 760 IAC 1-16.1 required that the company making the replacement notify your existing insurance company that you may be replacing your existing policy. (You have the right, within twenty days after delivery of a replacemtnt policy, to return it to the company and to claim an unconditional refund of all premiums paid on it.)</header>
+			</group>
+		</section>
+		<footer>* As shown on face of policy</footer>
+	</page>
+</form>

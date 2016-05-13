@@ -1,0 +1,15 @@
+import com.stepsoln.core.rules.uw.CaseUwRiskCalcData;
+import com.stepsoln.core.db.enums.AUTO_DECISION_STATUS;
+import com.stepsoln.core.rules.uw.*;
+import com.stepsoln.core.rules.requirements.*;
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "1 Auto Decision ACCEPT"
+       when
+              CaseUwRiskCalcData(uwStatus in ("ACCEPT")) or
+              CaseData(caseStatus=="APPROVED")
+       then
+              rulesResponse.getAutoDecisionResultData().setDecisionResult(AUTO_DECISION_STATUS.ACCEPT);
+              rulesResponse.getAutoDecisionResultData().setTakeFinalAction(true);
+              rulesResponse.addToRuleFiredList(1);
+end

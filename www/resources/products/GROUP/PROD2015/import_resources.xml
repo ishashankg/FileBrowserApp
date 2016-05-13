@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<resources>
+		<resource>
+			<description>Sequences</description>
+			<file>sequences.xml</file>
+			<type>SEQUENCE</type>
+			<resourceCode>sequence</resourceCode>
+			<formatType>XML</formatType>
+		</resource>
+		<resource>
+			<description>Group Email Template for Post Admin Register Group
+				Member
+			</description>
+			<resourceCode>begin_enrollment_email</resourceCode>
+			<file>emailTemplates/begin_enrollment_email.ftl</file>
+			<type>EMAIL_TEMPLATE</type>
+			<formatType>VELOCITY_TEMPLATE</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>Case Rules</description>
+			<file>rulesets/case_rules.drl</file>
+			<type>CASE_RULES</type>
+			<resourceCode>CASE_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Group additional functionality support </description>
+			<file>scripts/group_2015_functionality.groovy</file>
+			<type>FUNCTIONALITY_SCRIPT</type>
+			<resourceCode>GROUP_CARRIER_GROOVY_UTILS</resourceCode>
+			<formatType>GROOVY</formatType>
+		</resource>
+		<resource>
+			<description>Product Coverage Selection Rules</description>
+			<file>rulesets/coverage_selection_rules.drl</file>
+			<type>CVG_RULES</type>
+			<resourceCode>CVG_RULES</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>New Case Submit Rules</description>
+			<file>rulesets/newcasesubmit_rules.drl</file>
+			<type>NEWCASE_SUBMIT_RULES</type>
+			<resourceCode>NEWCASE_SUBMIT_RULES</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Requirements Signatures Rules</description>
+			<file>rulesets/requirements_signatures_rules.drl</file>
+			<type>REQ_SIG_RULES</type>
+			<resourceCode>REQ_SIG_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Requirements Rules</description>
+			<file>rulesets/requirements_rules.drl</file>
+			<type>REQ_RULES</type>
+			<resourceCode>REQ_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Underwriting Case Submit Rules</description>
+			<file>rulesets/underwritingcase_rules.drl</file>
+			<type>UNDERWRITINGCASE_SUBMIT_RULES</type>
+			<resourceCode>UNDERWRITINGCASE_SUBMIT_RULES1</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+		<resource>
+			<description>Post Coverage Scripts</description>
+			<file>scripts/PostCoverageScripts.groovy</file>
+			<type>EFORM_SCRIPT</type>
+			<resourceCode>PostCoverageScripts</resourceCode>
+			<formatType>GROOVY</formatType>
+		</resource>
+		<resource>
+			<description>New business mapping rules</description>
+			<file>nbmapping/nb_mapping.xml</file>
+			<type>NB_MAPPING</type>
+			<resourceCode>NB_MAPPING</resourceCode>
+			<formatType>XML</formatType>
+		</resource>
+		<resource>
+			<file>logo.png</file>
+			<description>Logo</description>
+			<resourceCode>LOGO_IMAGE</resourceCode>
+			<type>HEADER_LOGO_IMAGE</type>
+			<formatType>image/png</formatType>
+			<name>HEADER_LOGO_IMAGE</name>
+			<mimeType>application/octet-stream</mimeType>
+		</resource>
+		<resource>
+			<description>Group additional functionality support </description>
+			<file>scripts/iac_functionality.groovy</file>
+			<type>FUNCTIONALITY_SCRIPT</type>
+			<resourceCode>IAC_CARRIER_GROOVY_UTILS</resourceCode>
+			<formatType>GROOVY</formatType>
+		</resource>
+		<resource>
+			<description>Group Contribution Report</description>
+			<resourceCode>group_contribution_report.rptdesign</resourceCode>
+			<file>birtReports/group_contribution_report.rptdesign</file>
+			<type>BIRT_TEMPLATE</type>
+			<formatType>RPTDESIGN</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>Group 2015 custom properties</description>
+			<resourceCode>GROUP_2015_PROPERTIES</resourceCode>
+			<file>resources/product.properties</file>
+			<type>PRODUCT_PROPERTIES</type>
+			<formatType>PROPERTIES</formatType>
+			<mimeType>text/plain</mimeType>
+		</resource>
+		<resource>
+			<description>Eform access Rules</description>
+			<file>rulesets/eform_access_rules.drl</file>
+			<type>EFORM_ACCESS</type>
+			<resourceCode>EFORM_ACCESS</resourceCode>
+			<formatType>DRL</formatType>
+		</resource>
+	</resources>
+</stepImport>

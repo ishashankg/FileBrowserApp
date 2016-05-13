@@ -1,0 +1,16 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import com.stepsoln.core.rules.uw.*;
+import org.apache.commons.lang.StringUtils;
+import java.math.BigDecimal;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Standard requirements for this product #1"
+when
+		CaseData()
+		form:RequirementForm(code in ('MEDF','APPPART1','ASRRF'));
+then
+    	form.setRequired(true);
+    	rulesResponse.addToRuleFiredList(1);
+end

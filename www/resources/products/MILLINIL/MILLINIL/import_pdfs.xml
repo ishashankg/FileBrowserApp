@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<pdfs>
+	<pdf>
+		<file>MilliniLifeApplicationTemplate.pdf</file>
+		<mappingFile>MilliniLifeApplicationTemplateMapping.xml</mappingFile>
+		<type>PRIMARY_APPLICATION_PDF</type>
+		<formCode>MEDICAL_QUESTIONS</formCode>
+		<resourceGroup>APPLICATION</resourceGroup>
+	</pdf>	
+</pdfs>
+</stepImport>

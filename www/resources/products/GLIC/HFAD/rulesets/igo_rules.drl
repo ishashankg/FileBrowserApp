@@ -1,0 +1,552 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.EformCode;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.db.services.util.EmployeeUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.Requirement;
+import rules.*;
+import java.util.*;
+import com.stepsoln.core.rules.requirements.BeneficiaryData;
+import com.stepsoln.core.rules.RuleFilter;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+// Rule generation RE:
+//(^[\w]+$)
+//rule "require \1"\r\n\twhen\r\n\t\teval(!allAnswers.containsKey("\1"))\r\n\tthen\r\n\t\trulesResponse.addRequired("\1");\r\nend
+
+//START - Agent only rules
+rule "All forms should be reviewed"
+salience 101
+no-loop	
+	when
+		not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER'))
+		not EformCode(code == "PERSON")		
+		or ((not EformCode(code == "AGENT_ATTESTATION")) and CaseRulesObject(caseSource == 'EXTERNAL') and CaseData(StringUtils.isBlank(svcOwner)==true))
+		or not EformCode(code == "REFLEXIVE")
+	then
+		rulesResponse.addRequiredOnce("All forms should be reviewed");
+end
+
+//Producer certification (agent_attest_eform.xml)
+rule "require oth_pending_ind"
+	when
+	     theCaseRuleObj:CaseRulesObject()
+	     not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER') )
+	     CaseData(StringUtils.isBlank(svcOwner)==true)
+		 (not Question(id == 'oth_pending_ind')
+		 or not Question(id == 'replacement_ind')
+		 or not Question(id == 'y_1035_exch_ind')
+		 or not Question(id == 'internal_term_conv_ind')
+		 or not Question(id == 'attest_ind'))
+	then
+	     if (StringUtils.equals(theCaseRuleObj.getCaseSource(),'EXTERNAL'))
+	     {
+			rulesResponse.addRequiredOnce("All Producer Certification questions have to be answered", "AAT");
+		 }
+end
+
+rule "Agent Certification Y required"
+	when
+	    theCaseRuleObj:CaseRulesObject()
+	    not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER'))
+	    CaseData(StringUtils.isBlank(svcOwner)==true)
+		($question: Question(id == 'attest_ind'))
+	then
+		if (StringUtils.equals(theCaseRuleObj.getCaseSource(),'EXTERNAL') && ($question.getAnswer()!=null) && StringUtils.equals($question.getAnswer().toString(),"N")) 
+		{
+			rulesResponse.addRequiredOnce("I certify question should be answered as 'Yes'.", "AAT");
+		}
+end
+
+rule "Agent Certification Y required, none selected"
+	when 
+		theCaseRuleObj:CaseRulesObject()
+		not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER'))
+		CaseData(StringUtils.isBlank(svcOwner)==true)
+		(not Question(id == 'attest_ind'))
+	then 
+		if (StringUtils.equals(theCaseRuleObj.getCaseSource(),'EXTERNAL')) 
+   	    {
+   	    	rulesResponse.addRequiredOnce("I certify question should be answered as 'Yes'.", "AAT");
+		}
+end
+
+rule "Agent Signature Required"
+salience 210
+when
+		not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER') )
+		theCaseData:CaseData(StringUtils.isBlank(svcOwner)==true)
+	    Requirement(code == "AAT", target =="AGENT", type=="ESIGNATURE", status == "OPEN", required == true)
+	then
+		rulesResponse.addRequiredOnce("Agent Signature is required");		
+end
+
+rule "Agent Signature Date City State Required"
+salience 211
+when
+		not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER'))
+		CaseData(StringUtils.isBlank(svcOwner)==true)
+	    Requirement(code == "AAT", target =="AGENT", type=="ESIGNATURE", required == true, signatureDate == null || signatureCity == null || signatureState == null)
+	then
+		rulesResponse.addRequiredOnce("Agent Signature date, city and state are required");		
+end
+
+rule "Require Agent License ID for External Cases in FL"
+	when
+		not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER'))
+		CaseData(caseSource=="EXTERNAL", contractState=="FL")
+		(not Question(id=="agent_license_no"))
+	then
+		rulesResponse.addRequiredOnce("Agent License Number Required", "AAT");
+end
+
+//END - Agent only rules
+
+
+//START - Applicant only rules
+rule "HIPAA form should be reviewed"
+salience 101
+no-loop	
+	when
+		(RuleFilter(filter=='GLIC_WEB_USER') or not RuleFilter());
+		not EformCode(code == "AUTHORIZATION")		
+	then
+		rulesResponse.addRequiredOnce("HIPAA form should be reviewed");
+end
+
+rule "Full HIPAA Signature Required"
+salience 200
+when		
+		(RuleFilter(filter=='GLIC_WEB_USER') or not RuleFilter());
+	    Requirement(code == "FHP", target =="PRIMARY_INSURED", type=="ESIGNATURE", status == "OPEN", required == true) 	   	    
+	then
+		rulesResponse.addRequiredOnce("Full HIPAA Signature is required");
+end
+
+salience 220
+rule "Part 2 Signature Required"
+when
+		(RuleFilter(filter=='GLIC_WEB_USER') or not RuleFilter());
+	    Requirement(code == "HIP", target =="PRIMARY_INSURED", type=="ESIGNATURE", status == "OPEN", required == true)
+	then
+		rulesResponse.addRequiredOnce("Part 2 Signature is required");		
+end
+
+rule "Part 2 Signature Date City State Required"
+salience 221
+when
+		(RuleFilter(filter=='GLIC_WEB_USER') or not RuleFilter());
+	    Requirement(code == "HIP", target =="PRIMARY_INSURED", type=="ESIGNATURE", required == true, signatureDate == null || signatureCity == null || signatureState == null)
+	then
+		rulesResponse.addRequiredOnce("Part 2 Signature date, city and state are required");		
+end
+		
+rule "Part 4 ACK Signature Required"
+salience 230
+when
+		(RuleFilter(filter=='GLIC_WEB_USER') or not RuleFilter());
+	    Requirement(code == "ACK", target =="PRIMARY_INSURED", type=="ESIGNATURE", status == "OPEN", required == true)
+	then
+		rulesResponse.addRequiredOnce("Part 4 signature is required");		
+end	
+
+
+//END - Applicant only rules
+
+//START - Policy owner only rules
+rule "Policy Owner Unresolved Signatures"
+	when
+		not RuleFilter(filter=='SIGNATURE')
+		CaseData(caseOutOfNb==true)
+		theRequirementList:ArrayList() from collect(Requirement(type=='ESIGNATURE', target=='POLICY_OWNER', status not in ('RESOLVED'), orderStatus not in ('SIGNED')));
+    then
+        if (theRequirementList.size() > 0)
+		{
+			rulesResponse.addRequiredOnce("Policy Owner Signature are still unresolved.");
+		}
+end
+//END - Policy owner only rules
+
+//validate the Case object
+rule "required case fields"
+salience 100
+	when
+		aCase:CaseRulesObject()
+	then
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantFirstName()))
+			rulesResponse.addRequired("Primary Applicant First Name");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantLastName()))
+			rulesResponse.addRequired("Primary Applicant Last Name");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantSsn()))
+			rulesResponse.addRequired("Primary Applicant SSN");
+		if (null==aCase.getPrimaryApplicantGender())
+			rulesResponse.addRequired("Primary Applicant Gender");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantAddress()))
+			rulesResponse.addRequired("Primary Applicant Address");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantCity()))
+			rulesResponse.addRequired("Primary Applicant City");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantState()))
+			rulesResponse.addRequired("Primary Applicant State");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantZip()))
+			rulesResponse.addRequired("Primary Applicant Zip code");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantPrimaryPhone()))
+			rulesResponse.addRequired("Primary Applicant Primary Phone");
+end
+
+rule "require quote_item"
+salience 80
+	when
+		theCaseData:CaseData()
+	then
+		if (theCaseData.getFaceAmount() <= 0.0)
+		{
+			rulesResponse.addRequired("At least one quote item must be associated with the case");
+		}
+end
+
+rule "require at least one final quote"
+salience 80
+	when
+		theCaseData:CaseData(hasFinalQuote==false)
+	then
+		
+		rulesResponse.addRequired("At least one valid quote associated with this case");
+end
+
+
+rule "max coverage amount"
+salience 80
+	when
+		CaseData(faceAmount > maxInsuranceAmount)
+		Requirement(code == "ALF", status == "RESOLVED", required == true)
+	then
+		rulesResponse.addRequired("The coverage amount greater than maximum allowed");
+end
+
+//validate form data
+//generated rules
+rule "require citizenship_status"
+salience 91
+	when
+		not Question(id == "citizenship_status")
+	then
+		rulesResponse.addRequired("Citizenship", "PT1");
+end
+
+rule "require type_of_curr_employ"
+salience 90
+	when
+		not Question(id == "type_of_curr_employ")
+	then
+		rulesResponse.addRequired("Type of employ", "PT1");
+end
+
+rule "require annual_earned_income"
+salience 90
+	when
+		not Question(id == "annual_earned_income")
+	then
+		rulesResponse.addRequired("Earned income", "PT1");
+end
+
+rule "require curr_employer_dur"
+salience 90
+	when
+		not Question(id == "curr_employer_dur") 
+	then
+		rulesResponse.addRequired("Years employed", "PT1");
+end
+
+rule "require curr_employer_dur_mo"
+salience 90
+	when
+		not Question(id == "curr_employer_dur_mo")
+	then
+		rulesResponse.addRequired("Months employed", "PT1");
+end
+
+rule "invalid curr_employer_dur_mo"
+salience 90
+	when
+		Question(id == "curr_employer_dur_mo" && (answerAsNumber<0 || answerAsNumber>11))
+	then
+			rulesResponse.addRequired("Invalid months value", "PT1");
+end
+
+rule "require employer_name"
+salience 90
+	when
+		not Question(id == "employer_name")
+	then
+		rulesResponse.addRequired("Employer", "PT1");
+end
+
+rule "require occupation"
+salience 90
+	when
+		not Question(id == "occupation")
+	then
+		rulesResponse.addRequired("Occupation", "PT1");
+end
+
+rule "require place_of_birth_country"
+salience 91
+	when
+		not Question(id == "place_of_birth_country")
+	then
+		rulesResponse.addRequired("Place of birth (Country)", "PT1");
+end
+
+rule "require place_of_birth_state"
+salience 90
+	when
+		Question(id == "place_of_birth_country", answerAsString in ("UNITED STATES","US"))
+		not Question(id == "place_of_birth_state")
+	then
+		rulesResponse.addRequired("Place of birth (State)", "PT1");
+end
+
+rule "require NA of place_of_birth_state"
+salience 90
+	when
+		country:Question(id == "place_of_birth_country", answerAsString not in ("UNITED STATES","US"))
+		state:Question(id == "place_of_birth_state", answerAsString.toUpperCase() not in ("N_A","NOT APPLICABLE","ZZ")) 
+	then
+		rulesResponse.addRequired("Place of birth (State) should be Not Applicable", "PT1");
+end
+
+rule "require height_feet"
+salience 80
+	when
+		not Question(id == "height_feet")
+	then
+		rulesResponse.addRequired("Height, feet", "PT1");
+end
+
+rule "require height_inches"
+salience 80
+	when
+		not Question(id == "height_inches")
+	then
+		rulesResponse.addRequired("Height, inches", "PT1");
+end
+
+rule "require weight_pounds"
+salience 80
+	when
+		not Question(id == "weight_pounds")
+	then
+		rulesResponse.addRequired("Weight", "PT1");
+end
+
+rule "require weight_chg_ind"
+salience 80
+	when
+		not Question(id == "weight_chg_ind")
+	then
+		rulesResponse.addRequired("Weight Change Indicator", "PT3");
+end
+
+rule "require app_pending_answ"
+	when
+		not (Question(id == "app_pending_answ") or Question(id == "app_pending_answ_AZ"))
+	then
+		rulesResponse.addRequired("Other Pending Applications indicator", "PT3");
+end
+
+rule "require app_replace_answ"
+	when
+		not Question(id == "app_replace_answ")
+		not Question(id == "app_replace_question")
+		Question(id in ("app_pending_answ", "app_pending_answ_AZ"), answer=="Y")
+	then
+		rulesResponse.addRequired("Is new policy replacement for existing/prior ones?", "PT3");
+end
+
+//Acknowledgement of Information Provided (app_ack_eform.xml)
+
+rule "require oth_owner_ind"
+	when
+		not Question(id == 'oth_owner_ind')
+	then
+		rulesResponse.addRequired("Other Owner Applications indicator", "PT1");
+end
+
+rule "require smoker_ind"
+	when
+		 not Question(id == 'smoker_ind')
+	then
+		rulesResponse.addRequired("Smoker Indicator", "PT1");
+end
+
+rule "require bene_first_name"
+	when
+		 not Question(id == 'bene_first_name')
+		 theBeneficiaryList:ArrayList() from collect(BeneficiaryData(beneficiaryType=='PRIMARY'));
+	then
+		if (theBeneficiaryList.size() <= 0)
+		{
+			rulesResponse.addRequired("Primary Beneficiary's First Name Required", "PT3");
+		}
+end
+
+rule "require bene_last_name"
+	when
+		 not Question(id == 'bene_last_name')
+		 theBeneficiaryList:ArrayList() from collect(BeneficiaryData(beneficiaryType=='PRIMARY'));
+	then
+		if (theBeneficiaryList.size() <= 0)
+		{
+			rulesResponse.addRequired("Primary Beneficiary's Last Name Required", "PT3");
+		}
+end
+
+rule "require bene_relation"
+	when
+		 not Question(id == 'bene_relation')
+		 theBeneficiaryList:ArrayList() from collect(BeneficiaryData(beneficiaryType=='PRIMARY'));
+	then
+		if (theBeneficiaryList.size() <= 0)
+		{
+			rulesResponse.addRequired("Primary Beneficiary's relationship Required", "PT3");
+		}
+end
+rule "require bene_relation for all beneficiaries"
+	when
+		 countR: Number() from accumulate( i : Question( id.indexOf("bene_relation")>=0 ), count( i ))
+		 countLN: Number() from accumulate( i : Question( id.indexOf("bene_last_name")>=0 ), count( i ))
+		 theBeneficiaryList:ArrayList() from collect(BeneficiaryData(StringUtils.isEmpty(relationship)))
+	then
+		if (theBeneficiaryList.size() > 0 || (countR.intValue() < countLN.intValue()))
+		{
+			rulesResponse.addRequired("Beneficiary's relationship Required for all beneficiaries", "PT3");
+		}
+end
+
+rule "require proper month and year for smoker"
+	when
+		CaseRulesObject(tobaccoUsage == true)
+		and (Question(id == "last_tobacco_mm" && (answerAsNumber < 1 || answerAsNumber > 12))
+			or Question(id == "last_tobacco_yy" && (999 > answerAsNumber || answerAsNumber > 9999)))
+	then
+		rulesResponse.addRequiredOnce("Last Tobacco Month (MM) and Year (YYYY) must be in proper format", "PT1");
+end
+
+rule "require proper month and year for pregnancy treatment"
+	when
+		Question(id=="weight_chg_ind", answerAsString=="Y")
+		and Question(id=="weightchg_reasons", answerAsString=="Pregnancy")
+		and Question(id=="weight_gain_loss", answerAsString=="Gain")
+		and Question(id=="treatmentpresent", answerAsString=="N")
+		and (Question(id == "treatment_mm" && (answerAsNumber < 1 || answerAsNumber > 12))
+		or Question(id == "treatment_yy" && (999 > answerAsNumber || answerAsNumber > 9999)))
+	then
+		rulesResponse.addRequiredOnce("Pregnancy Treatment Month (MM) and Year (YYYY) must be in proper format", "PT3");
+end
+
+rule "require proper month and year for current insurance company"
+	when
+		(Question(id=="app_pending_answ", answerAsString=="Y") or Question(id=="app_pending_answ_AZ", answerAsString=="Y") 
+		or Question(id=="app_replace_answ", answerAsString=="Y"))
+			and (Question(id == "oth_ins_mm" && (answerAsNumber < 1 || answerAsNumber > 12))
+			or Question(id == "oth_ins_yy" && (999 > answerAsNumber || answerAsNumber > 9999)))
+	then
+		rulesResponse.addRequiredOnce("Current Coverage Issued Month (MM) and Year (YYYY) must be in proper format", "PT3");
+end
+
+rule "require proper month and year for additional insurance companies"
+	when
+		Question(id.startsWith("oth_ins_mm2") && (answerAsNumber < 1 || answerAsNumber > 12))
+		or Question(id.startsWith("oth_ins_yy2") && (999 > answerAsNumber || answerAsNumber > 9999))
+	then
+		rulesResponse.addRequiredOnce("Additional Coverage Issued Month (MM) and Year (YYYY) must be in proper format", "PT3");
+end
+
+/*
+//Part 3D - Additional Questions (reflexive_eform.xml)
+rule "require part3d_yes_no_questions"
+	when
+		not Question(id == 'app_pending_answ')
+		or not Question(id == 'app_replace_answ')
+	then
+		rulesResponse.addRequiredOnce("All Additional Questions of Part 3D have to be answered", "PT3");
+end
+*/
+/*
+rule "part3d additional fields required"
+	when
+		Question(id == 'oth_ins_company_input')
+		and ( not Question(id == 'oth_ins_city')
+			  or not Question(id == 'oth_ins_state')
+			  or not Question(id == 'oth_ins_replace')
+			  or not Question(id == 'oth_ins_face')
+			  or not Question(id == 'oth_ins_mm')
+			  or not Question(id == 'oth_ins_yy')
+			  or not Question(id == 'oth_ins_naic'))
+	then
+		rulesResponse.addRequiredOnce("All Additional Questions of Part 3D Current Coverage are required", "PT3");
+end
+*/
+
+
+
+rule "Other Owner Age greater 18"
+	when
+	    ApplicantData(type == "POLICY_OWNER", age < 18)
+	then
+		rulesResponse.addRequired("Policy Owner is a minor", "OWN");
+end
+
+rule "Policy Owner presence"
+	when
+		Question(id == "oth_owner_ind", answer == 'Y');
+		not ApplicantData(type=="POLICY_OWNER")
+	then
+		rulesResponse.addRequired("Policy Owner needs to be present.","OWN");
+end
+
+
+
+//UTS only rules
+salience 100
+rule "All NB Requirements need to be resolved for UTS or UW"
+when		
+	    Requirement(group =="NB", status == "OPEN", type!="ESIGNATURE", $code:description) 	   
+	    CaseData(caseOutOfNb == true)
+then
+		rulesResponse.addRequiredOnce("NB Requirement ("+$code+") is NOT resolved");
+end
+
+salience 100
+rule "All Signatures need to be resolved for UTS or UW"
+when
+	    Requirement(type=="ESIGNATURE", status == "OPEN", $code:description)
+	    CaseData(caseOutOfNb == true)
+then
+		rulesResponse.addRequiredOnce("Signature for ("+$code+") is NOT resolved");		
+end
+
+rule "no driver's license for UTS or UW"
+	when
+	    CaseData(caseOutOfNb == true)
+		Question(id == "driv_lic_number", answerAsString.toUpperCase() in ('NA','NONE', 'UNKNOWN')) 
+		and (Question(id == "driv_lic_state", answerAsString.toUpperCase() in ('N_A','NOT APPLICABLE','ZZ','', 'UNKNOWN'))
+			or not Question(id == "driv_lic_state"))
+		and (not Requirement(code=="NDL", status in( "RESOLVED", "CANCELLED")))
+	then
+		rulesResponse.addRequiredOnce("Driver's License Information", "PT1");
+end
+
+salience 100
+rule "Address Validation Required"
+	when
+		CaseData(caseOutOfNb == true)
+		and (Requirement(code=="NVA", status in("ERROR", "OPEN")))
+	then
+		rulesResponse.addRequiredOnce("Address Validation Required");
+end

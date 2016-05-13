@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">		
+		<section style="border:1px solid black">		
+			<group labelWidth="300px">
+				<paragragh text="Are you thinking about buying a new life insurance policy or annuity and discontinuing or changing an existing one? If you are, your decision could be a good one – or a mistake. You will not know for sure unless you make a careful comparison of your existing benefits and the proposed benefits."  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="Make sure you understand the facts. You should ask the company that sold you your existing policy to give you information about it. You are urged not to take action to terminate, assign or alter your existing life insurance coverage until you have been issued the new policy, examined it and have found it acceptable." styleClass="groupParagraph" >
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="Hear both sides before you decide. This way you can be sure you are making a decision that is in your best interest." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="font-weight: bold">
+				<paragragh  text="If you should fail to qualify for the life insurance for which you have applied, you may find yourself unable to purchase other life insurance or able to purchase it only at substantially higher rates." styleClass="groupParagraph" >
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="We are required by law to notify your existing company that you may be replacing their policy." styleClass="groupParagraph" >
+				</paragragh>
+			</group>
+		</section>			
+		<section>
+			<group associated="True">
+				<question id='applicant_signature' text="Applicant Signature" type='CHECKBOX' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='1'/>  
+				<question id='applicant_signature_date' text="Date" type='DATEF' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:150px' tabindex ='2'/>
+			</group>	
+			<group associated="True">
+				<question id='agent_signature' text="Agent Signature" type='CHECKBOX' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='3'/>  
+				<question id='agent_signature_date' text="Date" type='DATEF' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:150px' tabindex ='4'/>
+			</group>				
+		</section>
+	</page>
+</form>

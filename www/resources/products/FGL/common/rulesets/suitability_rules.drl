@@ -1,0 +1,343 @@
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.*;
+import com.stepsoln.core.rules.annuity.AnnuityData;
+import com.stepsoln.core.rules.requirements.*;
+import rules.*;
+import java.util.*;
+import java.lang.*;
+import java.math.BigDecimal;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "1. RemainingLiquidAssets of 20K rule"
+	when
+		Question(id=="total_liquid_assets", $totalLiquidAsset:answerAsDecimalOrZeroIfNull)
+		and Question(id=="initial_premium", $applicationPremium:answerAsDecimalOrZeroIfNull)
+		and eval($totalLiquidAsset.subtract($applicationPremium).compareTo(BigDecimal.valueOf(20000)) == -1)
+	then
+		rulesResponse.addRequiredOnce("Application has been declined because remaining liquid assets are less than $20,000", null, "SUITABILITY", "RED");
+end
+
+rule "2. RemainingLiquidAssetsOwnerAnnuitant"
+activation-group 'Owner employment'
+salience 20
+	when	    
+		Question(id=="owner_work_status", answer != null , answerAsString in ("E", "R"))
+		and Question(id=="monthly_expense", $monthlyExpense:answerAsDecimalOrZeroIfNull)
+		and Question(id=="total_liquid_assets", $totalLiquidAsset:answerAsDecimalOrZeroIfNull)
+		and Question(id=="initial_premium", $applicationPremium:answerAsDecimalOrZeroIfNull)
+		eval($totalLiquidAsset.subtract($applicationPremium).compareTo($monthlyExpense.multiply(BigDecimal.valueOf(6))) == -1)
+	then
+		rulesResponse.addRequiredOnce("Application has been declined because remaining liquid assets are less than 6 months household expenses", null, "SUITABILITY", "RED");
+end
+
+rule "3. Assets Less than 6 months expenses for Joint Owner"
+activation-group 'Owner employment'
+salience 10
+		when	    
+		Question(id=="joint_owner_work_status", answer != null , answerAsString in ("E", "R"))
+		and Question(id=="owner_work_status", answer != null , answerAsString =="U")
+		and Question(id=="monthly_expense", $monthlyExpense:answerAsDecimalOrZeroIfNull)
+		and Question(id=="total_liquid_assets", $totalLiquidAsset:answerAsDecimalOrZeroIfNull)
+		and Question(id=="initial_premium", $applicationPremium:answerAsDecimalOrZeroIfNull)
+		eval($totalLiquidAsset.subtract($applicationPremium).compareTo($monthlyExpense.multiply(BigDecimal.valueOf(6))) == -1)
+	then
+		rulesResponse.addRequiredOnce("Application has been declined because remaining liquid assets are less than 6 months household expenses", null, "SUITABILITY", "RED");
+end
+
+rule "4. Assets Less than 12 months expenses for Owner"
+activation-group 'Owner employment'
+salience 5
+	when	    
+		Question(id=="owner_work_status", answer != null , answerAsString == "U")
+		and (not  Question(id=="joint_owner_work_status")
+		or	Question(id=="joint_owner_work_status", answer != null , answerAsString not in ("E", "R")))
+		and Question(id=="monthly_expense", $monthlyExpense:answerAsDecimalOrZeroIfNull)
+		and Question(id=="total_liquid_assets", $totalLiquidAsset:answerAsDecimalOrZeroIfNull)
+		and Question(id=="initial_premium", $applicationPremium:answerAsDecimalOrZeroIfNull)
+		eval($totalLiquidAsset.subtract($applicationPremium).compareTo($monthlyExpense.multiply(BigDecimal.valueOf(12))) == -1)
+	then
+		rulesResponse.addRequiredOnce("Application has been declined because remaining liquid assets are less than 12 months household expenses", null, "SUITABILITY", "RED");
+end
+
+
+rule "5. Income below 18K and Remaining Assets below 100K"
+	when	    
+		Question(id=="monthly_income", answerAsDecimalOrZeroIfNull.multiply(BigDecimal.valueOf(12)) < 18000)
+		and Question(id=="total_liquid_assets", $totalLiquidAsset:answerAsDecimalOrZeroIfNull)
+		and Question(id=="initial_premium", $applicationPremium:answerAsDecimalOrZeroIfNull)
+		and eval($totalLiquidAsset.subtract($applicationPremium).compareTo(BigDecimal.valueOf(100000)) == -1)
+	then
+		rulesResponse.addRequiredOnce("Application has been declined because annual household income is less than $18,000 and remaining liquid assets are less than $100,000", null, "SUITABILITY", "RED");
+end
+	
+rule "6. Surrender charge exceeds 5.1%"
+	when
+		Question(id=="surrender_percent__0", answerAsDecimalOrZeroIfNull>5.1)
+		or 	Question(id=="surrender_percent__1", answerAsDecimalOrZeroIfNull>5.1)
+	then 
+		rulesResponse.addRequiredOnce("Application declined due to Surrender Charge exceeding 5.1%", null, "SUITABILITY", "RED");
+end
+
+rule "7. Annuitant > 65  and Annuity Cost exceeds 50% of Total Assets"
+	when ($annuitant:ApplicantData(type == "ANNUITANT") or $annuitant:ApplicantData(type == "POLICY_OWNER"))
+		and Question(id=="owner_age", $ownerAge:answerAsDecimalOrZeroIfNull)
+		and eval($ownerAge.compareTo(BigDecimal.valueOf(65))==1)  
+	    and Question(id=="initial_premium", $totalannuitypurchase:answerAsDecimalOrZeroIfNull)
+		Question(id=="total_liquid_assets", $totalLiquidAssets:answerAsDecimalOrZeroIfNull)
+		eval($totalannuitypurchase.compareTo($totalLiquidAssets.divide(BigDecimal.valueOf(2))) == 1)
+	then 
+		rulesResponse.addRequiredOnce("Application declined due to annuity purchase is > than 50% of total liquid assets", null, "SUITABILITY", "RED");
+end
+
+rule "8. Annuitant <  65  and Annuity Cost exceeds 75% of Total Assets"
+	when ($annuitant:ApplicantData(type == "ANNUITANT") or $annuitant:ApplicantData(type == "POLICY_OWNER"))
+		and Question(id=="owner_age", $ownerAge:answerAsDecimalOrZeroIfNull)
+		and eval($ownerAge.compareTo(BigDecimal.valueOf(65))==-1)
+	    and Question(id=="initial_premium",$totalannuitypurchase:answerAsDecimalOrZeroIfNull)
+	    Question(id=="total_liquid_assets", $totalLiquidAssets:answerAsDecimalOrZeroIfNull)
+	    and Question(id=="cash", $cash:answerAsDecimalOrZeroIfNull)
+	    and Question(id=="mutual_fund", $mutualFund:answerAsDecimalOrZeroIfNull)
+	    and Question(id=="savings", $savings:answerAsDecimalOrZeroIfNull)
+	    and Question(id=="stock_bonds",$stocksBonds:answerAsDecimalOrZeroIfNull)
+	    and Question(id=="cd", $cds:answerAsDecimalOrZeroIfNull)
+	    and Question(id=="life_insurance_without_surrender", $lifeInsurance:answerAsDecimalOrZeroIfNull)
+	    and	eval($totalLiquidAssets.multiply(BigDecimal.valueOf(0.75)).compareTo($cash.add($mutualFund).add($savings).add($stocksBonds).add($cds).add($lifeInsurance)) == 1)
+then 
+		rulesResponse.addRequiredOnce("Application declined due to Annuity purchase is > than 75% of Total Liquid Assets", null, "SUITABILITY", "RED");
+end
+
+rule "9. Reverse Mortgage Obligation of Owner"
+	when Question(id == "reverse_mortgage", answer !=null,  answerAsString =="Y" ) 
+then 
+		rulesResponse.addRequiredOnce("Application has been declined because of financial obligation of Owner for Reverse Mortgage", null, "SUITABILITY", "RED");
+end
+
+rule "10b. Monthly Disposable Income less than 75% of Remaining Liquid Assets"
+	when Question(id=="disposable_income", $monthlydisposableIncome:answerAsDecimalOrZeroIfNull)
+		and Question(id=="monthly_income", $monthlyHouseHoldIncome:answerAsDecimalOrZeroIfNull)
+		and eval($monthlydisposableIncome.compareTo($monthlyHouseHoldIncome.multiply(BigDecimal.valueOf(0.1))) == -1)
+		and Question(id=="annuity_period",  $surrenderChargePeriod:answerAsDecimalOrZeroIfNull)
+		and Question(id=="total_liquid_assets", $totalLiquidAsset:answerAsDecimalOrZeroIfNull)
+		and Question(id=="initial_premium", $applicationPremium:answerAsDecimalOrZeroIfNull)
+		eval(($monthlyHouseHoldIncome.multiply(BigDecimal.valueOf(0.1)).subtract($monthlydisposableIncome)).multiply(BigDecimal.valueOf(12)).multiply($surrenderChargePeriod).compareTo(($totalLiquidAsset.subtract($applicationPremium)).multiply(BigDecimal.valueOf(0.75))) == 1)
+then 
+		rulesResponse.addRequiredOnce("Application has been declined because annual household disposable income is less than 10% of annual household income and short fall disposable household income for annuity period is greater than 75% of remaining liquid assets", null, "SUITABILITY", "RED");
+end		
+
+
+rule "11. Risk Tolerance  AnnuityPurchase Amount > 25.0 of TotalAssets"
+	when Question(id=="risk_tolerance", answerAsString =="A")
+		and Question(id=="total_assets", $totalAssets:answerAsDecimalOrZeroIfNull)
+		and Question(id=="home_value", $homeValue:answerAsDecimalOrZeroIfNull)
+		and Question(id=="other_real_estate", $otherRealState:answerAsDecimalOrZeroIfNull)
+		and Question(id=="gold", $gold:answerAsDecimalOrZeroIfNull)
+		and Question(id=="initial_premium", $annuityPremium:answerAsDecimalOrZeroIfNull)
+		eval($annuityPremium.compareTo(($totalAssets.subtract($homeValue).subtract($otherRealState).subtract($gold)).multiply(BigDecimal.valueOf(0.25))) == 1)
+then 
+		rulesResponse.addRequiredOnce("Application has been declined because of aggressive risk tolerance and annuity purchase amount is greater than 25% of total assets excluding value of home, other real estate and gold, collectibles or other personal property", null, "SUITABILITY", "RED");
+end	
+
+rule "12. Distribution Timing and the Surrender Charge Period"
+	when Question(id=="annuity_distribution", answer != null, answerAsString=="Y")
+		and Question(id=="when_annuity_distribution", answer != null, $distributionTiming:answerAsNumber)
+		and (Question(id=="surrender_charges_confirmation", answerAsString == "Y")
+		and Question(id=="decline_years", answer != null, $declineYears:answerAsNumber))
+		and eval($distributionTiming.compareTo($declineYears) == -1)
+	then 
+		rulesResponse.addRequiredOnce("Application declined due to distribution timing is shorter than surrender charge period", null, "SUITABILITY", "RED");
+end	
+		
+rule "13. Available Liquid Assets for Emergencies"
+	when Question(id=="income_after_annuity_purchase", answer != null, answerAsString == "N")
+	then 
+		rulesResponse.addRequiredOnce("Application has been declined because of lack of liquid assets for emergencies", null, "SUITABILITY", "RED");
+end	
+
+
+rule "14. Replacement with same Agent, same funds"
+	when Question(id=="annuity_life_exchange", answer != null, answerAsString=="Y")
+	and Question(id=="annuity_replaced_exchanged", answer != null, answerAsString=="Y")	
+	and not CaseData(contractLocale in ('CA','MN'))
+	then 
+		rulesResponse.addRequiredOnce("Application declined as Replacement within 36 months with the same agent and the same funds", null, "SUITABILITY", "RED");
+end		
+
+rule "15 Replacement with same Agent, same funds"
+	when Question(id=="annuity_life_exchange", answer != null, answerAsString=="Y")
+	and Question(id=="annuity_replaced_exchanged", answer != null, answerAsString=="Y")
+	and CaseData(contractLocale in ('CA','MN'))
+	then 
+		rulesResponse.addRequiredOnce("Application declined as Replacement within 60 months with the same agent and the same fund", null, "SUITABILITY", "RED");
+end		
+
+
+rule "16 Deferred Annuity and Immediate Income"
+	when AnnuityData(annuityType == "DEFERRED") 
+	and Question(id=="reason", answer != null, asStrings.contains("8"))
+	then 
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because reason for annuity purchase is immediate income for annuity type deferred", null, "SUITABILITY", "YELLOW");
+end		
+
+rule "17 Immediate Annuity Income Purchase"
+	when AnnuityData(annuityType == "IMMEDIATE") 
+	and not Question(id=="reason", answer != null, asStrings.contains("8"))
+	then 
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because reason for annuity purchase is not immediate income for annuity type immediate", null, "SUITABILITY", "YELLOW");
+end	
+
+rule "18 Federal Tax Rate on Tax Deferral Purchases"
+when Question(id=="federal_tax_Rates", answer != null, answerAsString =="1")
+	and Question(id=="reason", answer != null, asStrings.contains("1"))
+then 
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because federal tax rate is 0% and reason for annuity purchase is tax deferral", null, "SUITABILITY", "YELLOW");
+end			
+
+
+rule "19 Work Status Other"
+	when Question(id=="owner_work_status", answer != null, answerAsString =="O")
+		and Question(id=="owner_status_specify", answer != null, $owner_status:answerAsString)
+		and eval(($owner_status.toUpperCase().contains("DISABLED") || $owner_status.toUpperCase().contains("SELFEMPLOYED")))
+then 
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because work status is other and description of work is not disabled or self employed", null, "SUITABILITY", "YELLOW");
+end			
+		
+rule "20. Residence in Assisted Living or Nursing Home"
+	when	    
+		Question(id=="owner_residence", answer != null , answerAsString in ("A","N"))
+		or Question(id=="joint_owner_residence", answer != null , answerAsString in ("A","N"))
+	then
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because owner/joint owner is residing in an assisted living facility or in nursing home", null, "SUITABILITY", "YELLOW");
+end
+		
+rule "21. Correlation of Federal Tax Rate to Approximate Monthly Income"
+	 when     
+  Question(id=="federal_tax_Rates", answer != null , $federalTaxRates:answerAsString)
+  and Question(id=="monthly_income" ,$annualIncome:answerAsDecimalOrZeroIfNull.multiply(BigDecimal.valueOf(12)))
+  not ( eval(($federalTaxRates.equals("1") || $federalTaxRates.equals("2")) 
+    && ($annualIncome.compareTo(BigDecimal.valueOf(1)) == 1)
+    && ($annualIncome.compareTo(BigDecimal.valueOf(18150)) == -1))
+  or eval($federalTaxRates.equals("3") && ($annualIncome.compareTo(BigDecimal.valueOf(18151)) == 1) && ($annualIncome.compareTo(BigDecimal.valueOf(73800))== -1 ))
+  or eval($federalTaxRates.equals("4") && ($annualIncome.compareTo(BigDecimal.valueOf(73801))) == 1 && ($annualIncome.compareTo(BigDecimal.valueOf(226850)) == -1))
+  or eval($federalTaxRates.equals("5") && ($annualIncome.compareTo(BigDecimal.valueOf(226851)) >= 0))
+  )
+ then
+  rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because federal tax rate and approximate monthly household income does not correlate", null, "SUITABILITY", "YELLOW");
+end
+
+
+rule "22. Other Securities"
+	when
+		Question(id=="product_list", $productList:asStrings)		
+		and eval(($productList != null && ($productList.contains("4") ^ $productList.contains("5") ^ $productList.contains("8"))))	    
+	then
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because applicant own or previously owned either certificates of Deposit or savings bonds and Other Government Securities or applicant does not own any of the other security product,", null, "SUITABILITY", "YELLOW");
+end
+
+rule "23. Qualification for Government Programs"
+	when
+		Question(id=="reason", answer != null , asStrings.contains("7"))
+	then 
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because reason for annuity purchase is qualify for government programs", null, "SUITABILITY", "YELLOW");	
+end   
+
+rule "24. Purpose of Purchase of Annuity Described as Other"
+	when
+		Question(id=="reason", answer != null , asStrings.contains("10"))
+	then 
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because reason for annuity purchase is other needs", null, "SUITABILITY", "YELLOW");	
+end   
+
+
+rule "25. Source of Income Salary/Wages"
+	when
+		Question(id=="income_source", answer != null , asStrings.contains("1"))
+		and not Question(id=="owner_work_status", answer != null , answerAsString == "E")
+	then 
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because source of income is salary/wages and applicant work status is not employed", null, "SUITABILITY", "YELLOW");	
+end  
+
+rule "26. Source of Income Social Security, Pension/IRA Payments"
+	when
+		(Question(id=="income_source", answer != null , asStrings.contains("3"))
+		or Question(id=="income_source", answer != null , asStrings.contains("5")))
+		and not Question(id=="owner_work_status", answer != null , answerAsString == "R")
+	then 
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because source of income is social security or pension/IRA payments and applicant work status is not retired", null, "SUITABILITY", "YELLOW");	
+end  
+
+rule "27. Total Amount of Non-Liquid Assets Applied to Annuity Purchase(Age >65)"
+	when ($annuitant:ApplicantData(type == "ANNUITANT") or $annuitant:ApplicantData(type == "POLICY_OWNER"))
+		and Question(id=="owner_age", $ownerAge:answerAsDecimalOrZeroIfNull)
+		and eval($ownerAge.compareTo(BigDecimal.valueOf(65))==1)
+		and Question(id=="total_non_liquid_assets", $totalNonLiquidAssets:answerAsDecimalOrZeroIfNull)
+		and Question(id=="total_liquid_assets", $totalLiquidAssets:answerAsDecimalOrZeroIfNull)
+		eval($totalNonLiquidAssets.compareTo($totalLiquidAssets) == 1)
+	then 
+		rulesResponse.addRequiredOnce("Non-Liquid Assets applied to Annuity purchase are greater than 100% of Total Liquid Assets", null, "SUITABILITY", "YELLOW");
+end
+
+rule "28. Total Amount of Non-Liquid Assets Applied to Annuity Purchase (Age<65)"
+	when ($annuitant:ApplicantData(type == "ANNUITANT") or $annuitant:ApplicantData(type == "POLICY_OWNER"))
+	    and Question(id=="owner_age", $ownerAge:answerAsDecimalOrZeroIfNull)
+		and eval($ownerAge.compareTo(BigDecimal.valueOf(65))==-1) 
+		and Question(id=="total_non_liquid_assets", $totalNonLiquidAssets:answerAsDecimalOrZeroIfNull)
+		and Question(id=="total_liquid_assets", $totalLiquidAssets:answerAsDecimalOrZeroIfNull)
+		eval($totalNonLiquidAssets.compareTo($totalLiquidAssets.multiply(BigDecimal.valueOf(2))) == 1)
+	then 
+		rulesResponse.addRequiredOnce("Non-Liquid Assets applied to Annuity purchase are greater than 200% of Total Liquid Assets", null, "SUITABILITY", "YELLOW");
+end
+
+rule "29. Adverse Change in Assets, Expenses and Income During Surrender Period"
+	when	    
+		Question(id=="adverse_changes_expenses", answer != null , answerAsString == "Y")
+	then	
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because adverse change in assets, living expenses, medical expense, and/or income  are anticipated", null, "SUITABILITY", "YELLOW");
+end
+
+rule "30. Annuity Connected to or Based on Trust"
+	when 
+		Question(id=="fgl_purchase_agent_attorney", answer != null , answerAsString == "Y")		
+	then 
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because annuity purchase is connected to establishment of a trust", null, "SUITABILITY", "YELLOW");
+end	
+
+rule "31. Source of the Funds to Purchase Annuity"
+	when 
+		Question(id=="liquid_assets", answer != null , asStrings.contains("7"))
+		or Question(id=="other_sources", answer != null , asStrings.contains("3"))
+	then 
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because source of funds to purchase annuity is from cash value from life insurance", null, "SUITABILITY", "YELLOW");
+end			
+
+rule "32. Net Surrender Value on Replaced Product"
+	when $annuitant:ApplicantData(type == "POLICY_OWNER" , age >= 65 )
+		and Question(id=="surrender_percent__0", answerAsDecimalOrZeroIfNull>5.1, answerAsDecimalOrZeroIfNull<=3.0 )
+		and Question(id=="surrender_percent__1", answerAsDecimalOrZeroIfNull>5.1, answerAsDecimalOrZeroIfNull<=3.0 )
+	then 
+		rulesResponse.addRequiredOnce("Net Surrender Value on Replacement Product out of range", null, "SUITABILITY", "YELLOW");
+end	
+
+rule "33. Net Worth, Total Assets vs. Total Liabilities"
+	when Question(id=="short_term_liabilities", $shortTermLiability:answerAsDecimalOrZeroIfNull ) 
+		and Question(id=="total_liquid_assets", $totalLiquidAsset:answerAsDecimalOrZeroIfNull)
+		and Question(id=="initial_premium", $applicationPremium:answerAsDecimalOrZeroIfNull)
+		eval($shortTermLiability.compareTo(($totalLiquidAsset.subtract($applicationPremium)).multiply(BigDecimal.valueOf(0.20))) == 1)
+	then 
+		rulesResponse.addRequiredOnce("Application has been escalated to suitability officer because short term liabilities exceed 20% of remaining liquid assets", null, "SUITABILITY", "YELLOW");
+end			
+	
+rule "34. Replacement or Exchanges within 36 months"
+	when Question(id=="annuity_replaced_exchanged", answer != null, answerAsString =="Y")
+	and not CaseData(contractLocale in ('CA','MN'))
+	then 
+		rulesResponse.addRequiredOnce("Replacement or Exchange within 36 months", null, "SUITABILITY", "YELLOW");
+end		
+
+rule "35. Replacement or Exchanges within 36 months"
+	when Question(id=="annuity_replaced_exchanged", answer != null, answerAsString =="Y")
+	and CaseData(contractLocale in ('CA','MN'))
+	then 
+		rulesResponse.addRequiredOnce("Replacement or Exchange within 60 months", null, "SUITABILITY", "YELLOW");
+end	

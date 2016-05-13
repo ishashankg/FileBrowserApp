@@ -1,0 +1,209 @@
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.RulesResponse;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.ArrayUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.db.cases.Case.CASE_SOURCE;
+import rules.*;
+import com.stepsoln.core.rules.SecurityOuCaseLoadFacts;
+import 	com.stepsoln.core.rules.OUGroupAssignmentData;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Atlantic Time Zone"
+activation-group "setTimezone"
+salience 100
+	when
+		CaseData(contractState in ("PR","VI"));
+	then
+		rulesResponse.setTimeZone("Atlantic");
+end
+
+rule "Eastern Time Zone"
+activation-group "setTimezone"
+salience 90
+	when
+		CaseData(contractState in ("CT","DE","DC","FL","GA","IN","ME","MD","MA","MI","NH","NJ","NY","NC","OH","PA","RI","SC","VT","VA","WV"));
+	then
+		rulesResponse.setTimeZone("Eastern");
+end
+
+rule "Central Time Zone"
+activation-group "setTimezone"
+salience 80
+	when
+		CaseData(contractState in ("AL","AR","IL","IA","KS","KY","LA","MN","MS","MO","NE","ND","OK","SD","TN","TX","WI"));
+	then
+		rulesResponse.setTimeZone("Central");
+end
+
+rule "Mountain Time Zone"
+activation-group "setTimezone"
+salience 70
+	when
+		CaseData(contractState in ("AZ","CO","ID","MT","NM","UT","WY"));
+	then
+		rulesResponse.setTimeZone("Mountain");
+end
+
+rule "Pacific Time Zone"
+activation-group "setTimezone"
+salience 60
+	when
+		CaseData(contractState in ("CA","NV","OR","WA"));
+	then
+		rulesResponse.setTimeZone("Pacific");
+end
+
+rule "Alaska Time Zone"
+activation-group "setTimezone"
+salience 50
+	when
+		CaseData(contractState in ("AK"));
+	then
+		rulesResponse.setTimeZone("Alaska");
+end
+
+rule "Hawaii Time Zone"
+activation-group "setTimezone"
+salience 40
+	when
+		CaseData(contractState in ("HI"));
+	then
+		rulesResponse.setTimeZone("Hawaii");
+end
+
+rule "Samoa Time Zone"
+activation-group "setTimezone"
+salience 30
+	when
+		CaseData(contractState in ("AS"));
+	then
+		rulesResponse.setTimeZone("Samoa");
+end
+
+rule "Chamorro Time Zone"
+activation-group "setTimezone"
+salience 20
+	when
+		CaseData(contractState in ("GU","MP"));
+	then
+		rulesResponse.setTimeZone("Chamorro");
+end
+
+rule "Marshall Islands Time Zone"
+activation-group "setTimezone"
+salience 10
+	when
+		CaseData(contractState in ("MH"));
+	then
+		rulesResponse.setTimeZone("Marshall Islands");
+end
+
+rule "FSM Time Zone"
+activation-group "setTimezone"
+salience 9
+	when
+		CaseData(contractState in ("FS"));
+	then
+		rulesResponse.setTimeZone("FSM");
+end
+
+rule "Palau Time Zone"
+activation-group "setTimezone"
+salience 8
+	when
+		CaseData(contractState in ("PW"));
+	then
+		rulesResponse.setTimeZone("Palau");
+end
+
+rule "Policy Assignment"
+	when
+		theCaseData:CaseData($source:caseSource in ('EXTERNAL', 'CAPTIVE', 'INTERNET'), $paperCaseFlag:paperCase,  StringUtils.isEmpty(externalCaseNumber), StringUtils.isEmpty(policyNumber));
+	then
+		String seqName="POLICY_NUMBER_EXTERNAL";
+		
+		if (Case.CASE_SOURCE.EXTERNAL.name().equalsIgnoreCase($source) && $paperCaseFlag)
+		{
+			seqName="POLICY_NUMBER_EPAPER";
+		}
+		else if (Case.CASE_SOURCE.INTERNET.name().equalsIgnoreCase($source))
+		{
+			seqName="POLICY_NUMBER_INTERNET";
+		}
+		if (Case.CASE_SOURCE.CAPTIVE.name().equalsIgnoreCase($source))
+		{
+			if($paperCaseFlag)
+			{
+				seqName="POLICY_NUMBER_IPAPER";
+			}
+			else
+			{
+				seqName="POLICY_NUMBER_CAPTIVE";
+			}
+		}
+		rulesResponse.setPolicyNumber(seqName);
+end
+
+rule "set flags for SUBMITTED case"
+activation-group "caseStatus"
+salience 200
+	when
+		theCase:CaseData(caseStatus == 'SUBMITTED')
+	then
+		theCase.setOrderRequirements(true);
+		theCase.setSubmitApplication(true);
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setUwOu("UWO");
+		
+end
+
+rule "set flags for AUTODECLINED case"
+activation-group "caseStatus"
+salience 180
+	when
+		theCase:CaseData(caseStatus == 'AUTODECLINE')
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setUwOu("MERICA");
+end
+
+rule "set flags for INCOMPLETE case"
+activation-group "caseStatus"
+salience 170
+	when
+		theCase:CaseData(caseStatus == 'INCOMPLETE')
+	then
+		theCase.setSvcOu("UTS");
+		theCase.setSendToService(true);
+end
+
+rule "set flags for UWINCOMPLETE case"
+activation-group "caseStatus"
+salience 160
+	when
+		theCase:CaseData(caseStatus == 'UWINCOMPLETE')
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setUwOu("UWO");
+end
+
+rule "set flags for DECLINED case"
+activation-group "caseStatus"
+salience 150
+	when
+		theCase:CaseData(caseStatus == 'DECLINED')
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setUwOu("MERICA");
+end
+
+
+rule "set UW OU code and default billing frequency"
+	when
+		eval(true);
+	then
+		rulesResponse.getOuGroupAssignmentData().setUwOuCode("UWO");
+end

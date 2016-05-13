@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+   <onLoad>formLoad</onLoad>
+   <onSave>importData</onSave>
+   <page title="Health Information">
+      <section title="Health and General Information">
+         <group title="For all plans, answer questions 1-10. The health questions below refer to condition, treatment or diagnosis that are provided by a physician." />
+         <group>
+            <question id="question1" text="1. Are you currently confined to a wheelchair or any motorized mobility device?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="80%" />
+            <question id="question2" text="2. Are you currently hospitalized, confined to a bed, in a nursing home or assisted living facility where you receive skilled nursing care, or receiving any occupational or physical therapy?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="80%" />
+            <question id="question3" text="3. Have you been advised by a medical professional to have treatment, further diagnostic evaluation, diagnostic testing or any surgery that has not been performed?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="80%" />
+         </group>
+         <group>
+            <paragragh text="4. At any time have you been medically diagnosed with, treated by a physician for, or had surgery for any of the following:" 
+            	styleClass="groupParagraph" />
+            <question id="question4A" text="A. Chronic kidney disease, kidney failure, or kidney disease requiring dialysis?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question4B" text="B. Emphysema, Chronic Obstructive Pulmonary Disease (COPD), any other chronic pulmonary disorder or any cardio-pulmonary disorder requiring oxygen?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question4C" text="C. Alzheimer’s Disease, dementia or any other cognitive disorder?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question4D" text="D. Parkinson’s Disease, Multiple Sclerosis or Amyotrophic Lateral Sclerosis (Lou Gehrig’s Disease)?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question4E" text="E. Systemic Lupus or Myasthenia Gravis?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question4F" text="F. An organ transplant or been advised to have an organ transplant (excluding cornea transplants)?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question4G" text="G. Chronic hepatitis or cirrhosis?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question4H" text="H. Osteoporosis with fractures?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question5" text="5. Have you tested positive for exposure to the HIV infection or been diagnosed as having Acquired Immune Deficiency Syndrome (AIDS) or AIDS Related Complex (ARC) caused by the HIV infection or other sickness or condition derived from such infection?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="80%" />
+            <question id="question6" text="6. Have you been diagnosed with or treated by a physician for diabetes with complications including retinopathy, neuropathy, peripheral vascular disease, any related heart disorder (Including hypertension/high blood pressure) or kidney disease?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="80%" />
+            <question id="question7" text="7. Do you have an implanted cardiac defibrillator?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="80%" />
+         </group>
+         <group>
+            <paragragh text="8. Within the past two years, have you been treated for, or been advised by a physician to have treatment for:" 
+            	styleClass="groupParagraph" />
+         </group>
+         <group>
+            <question id="question8A" text="A. Coronary artery disease, angina, heart attack, cardiac angioplasty, bypass surgery or stent placement?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+         </group>   
+         <group>   
+            <question id="question8Acompleter" text="Please specify" type="AUTOCOMPLETE" labelWidth="10%" labelStyle="margin-left:2% !important" required="true" autocompleteLookup="uw:DIAGNOSIS" reflexiveContext="uw:MEDIC:ATHEAR">
+               <displayWhen>#{EFORM.question8A=="Y"}</displayWhen>
+            </question>
+         </group>   
+         <group parentQuestionId="question8Acompleter" dynamicQuestionContext="uw:MEDIC:ATHEAR" labelWidth="20%" style="margin-left:2% !important"/>
+         <group>
+            <question id="question8B" text="B. Cardiomyopathy, Congestive Heart Failure, aortic or cardiac aneurysm, peripheral vascular disease, vascular angioplasty, endarterectomy, carotid artery disease, heart or heart valve disorder, atrial fibrillation, other heart rhythm disorder, or implantation of a pacemaker?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question8C" text="C. Alcoholism or drug abuse?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question8D" text="D. Any mental or nervous disorder requiring treatment (including hospital confinement) by a psychiatrist, psychologist, counselor or therapist?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question8E" text="E. Internal cancer, lymphoma or melanoma?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question8F" text="F. A stroke or transient ischemic attack (TIA)?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question8G" text="G. Degenerative bone disease, spinal stenosis, rheumatoid arthritis, psoriatic arthritis, arthritis that restricts mobility or have you been advised to have a joint replacement?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="78%" labelStyle="margin-left:2% !important" />
+            <question id="question9" text="9. Have you been advised by a medical professional that surgery may be required within the next 12 months for cataracts?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="80%" />
+            <question id="question10" text="10. Have you been hospital confined three or more times in the past two years for a same or similar condition?" 
+            	required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="80%" />
+         </group>
+      </section>
+
+		<section title="Drug Details">
+		 <group>
+            <paragragh text="11. At any time have, have you taken any of the following medications:" 
+            	styleClass="groupParagraph" />
+         </group>
+		</section>
+		<section>
+			<group>
+				<question id='drugSet1'
+					text='A. 3TC, Acetate, Alkeran, Amantadine, Apokyn, Aptivus, Aricept, Artane, Atripla, Interferon?'
+					type='RADIO' answerSet='Y|N' required="true" labelWidth="78%" labelStyle="margin-left:2% !important" />
+			</group>
+			<group>   
+           		 <question id="drugSet1completer" text="Which one of these drugs you consumed?" type="AUTOCOMPLETE" labelWidth="30%"  labelStyle="margin-left:2% !important" required="true" autocompleteLookup="uw:DRUG" reflexiveContext="uw:CDRUUN:ATPRID" >
+        			<displayWhen>#{EFORM.drugSet1=="Y"}</displayWhen>
+        		</question>
+        	</group>   
+       		<group labelWidth="50%"  style="margin-left:2% !important" parentQuestionId="drugSet1completer" dynamicQuestionContext="uw:CDRUUN:ATPRID" /> 
+		</section>
+		<section title="Additional Drug" repeating="true">
+			<displayWhen>#{EFORM.drugSet1=="Y"}</displayWhen>
+		 <group>   
+            <question id="drugSet1completer1" text="Which one of these drugs you consumed?" type="AUTOCOMPLETE" labelWidth="30%"  labelStyle="margin-left:2% !important" required="true" autocompleteLookup="uw:DRUG" reflexiveContext="uw:CDRUUN:ATPRID" />
+         </group>   
+         <group labelWidth="50%"  style="margin-left:2% !important" parentQuestionId="drugSet1completer1" dynamicQuestionContext="uw:CDRUUN:ATPRID" /> 
+		</section>
+		
+		<section>
+       		<group>
+				<question id='drugSet2'
+					text='B. Avonex, Azilect, AZT, Baclofen, BCG, Betaseron, Bicalutamide, Carbidopa, Casodex, Cerefolin?'
+					type='RADIO' answerSet='Y|N' required="true" labelWidth="78%" labelStyle="margin-left:2% !important" />
+			</group>
+			<group>   
+           		 <question id="drugSet2completer" text="Which one of these drugs you consumed?" type="AUTOCOMPLETE" labelWidth="30%"  labelStyle="margin-left:2% !important"  required="true" autocompleteLookup="uw:DRUG" reflexiveContext="uw:CDRUUN:ATSEDR" >
+        			<displayWhen>#{EFORM.drugSet2=="Y"}</displayWhen>
+        		</question>
+        	</group>   
+       		<group labelWidth="50%"  style="margin-left:2% !important" parentQuestionId="drugSet2completer" dynamicQuestionContext="uw:CDRUUN:ATSEDR" /> 
+		</section>
+		<section title="Additional Drug" repeating="true">
+			<displayWhen>#{EFORM.drugSet2=="Y"}</displayWhen>
+		 <group>   
+            <question id="drugSet2completer1" text="Which one of these drugs you consumed?" type="AUTOCOMPLETE" labelWidth="30%"  labelStyle="margin-left:2% !important"  required="true" autocompleteLookup="uw:DRUG" reflexiveContext="uw:CDRUUN:ATSEDR" />
+         </group>   
+         <group labelWidth="50%"  style="margin-left:2% !important" parentQuestionId="drugSet2completer1" dynamicQuestionContext="uw:CDRUUN:ATSEDR" /> 
+		</section>
+		
+		<section>
+       		<group>
+				<question id='drugSet3'
+					text='C. Cogentin, Cognex, Combivir, Comtan, Copaxone,Crixivan, Cytoxan, D4T, DDC, DDI, DES, DuoNeb?'
+					type='RADIO' answerSet='Y|N' required="true" labelWidth="78%" labelStyle="margin-left:2% !important"  />
+			</group>
+			<group>   
+           		 <question id="drugSet3completer" text="Which one of these drugs you consumed?" type="AUTOCOMPLETE" labelWidth="30%"  labelStyle="margin-left:2% !important"  required="true" autocompleteLookup="uw:DRUG" reflexiveContext="uw:CDRUUN:ATTERD" >
+        			<displayWhen>#{EFORM.drugSet3=="Y"}</displayWhen>
+        		</question>
+        	</group>   
+       		<group labelWidth="50%"  style="margin-left:2% !important" parentQuestionId="drugSet3completer" dynamicQuestionContext="uw:CDRUUN:ATTERD" /> 
+		</section>
+		<section title="Additional Drug" repeating="true">
+			<displayWhen>#{EFORM.drugSet3=="Y"}</displayWhen>
+		 <group>   
+            <question id="drugSet3completer1" text="Which one of these drugs you consumed?" type="AUTOCOMPLETE" labelWidth="30%"  labelStyle="margin-left:2% !important"  required="true" autocompleteLookup="uw:DRUG" reflexiveContext="uw:CDRUUN:ATTERD" />
+         </group>   
+         <group labelWidth="50%"  style="margin-left:2% !important" parentQuestionId="drugSet3completer1" dynamicQuestionContext="uw:CDRUUN:ATTERD" /> 
+		</section>
+  
+   </page>
+</form>

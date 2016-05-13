@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<eforms>	
+	<eform>
+		<file>eforms/guaranteed_issue_eligibility_questions_eform.xml</file>
+		<description>Guaranteed Issue Eligibility</description>
+		<code>GUARANTEED_ISSUE_ELIGIBILITY</code>
+	</eform>
+	<eform>
+		<file>eforms/health_and_general_information_questions.xml</file>
+		<description>Underwriting questions</description>
+		<code>MEDICAL_QUESTIONS</code>
+	</eform>
+	<eform>
+		<file>eforms/person_eform.xml</file>
+		<description>Person information</description>
+		<code>PERSON</code>
+	</eform>
+	<eform>
+		<file>eforms/authorization_eform.xml</file>
+		<description>Part 2</description>
+		<code>AUTHORIZATION</code>
+	</eform>
+</eforms>
+</stepImport>

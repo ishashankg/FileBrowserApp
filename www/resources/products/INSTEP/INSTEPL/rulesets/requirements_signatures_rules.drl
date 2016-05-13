@@ -1,0 +1,15 @@
+import com.stepsoln.core.util.DateUtil;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import java.lang.Boolean;
+import org.apache.commons.lang.StringUtils;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global org.slf4j.Logger logger;
+
+rule "Applicant Signature"
+	when
+		form:RequirementForm(code=='ASRRF');
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED"); 	
+end

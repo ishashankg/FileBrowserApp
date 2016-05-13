@@ -1,0 +1,1 @@
+Primary beneficiary's percentage shall be $primaryBeneficiaryPercentage

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<page title="Florida Supplement">
+		<section title="Florida Supplement Form">
+			<group associated="true">
+				<question id='FLSup_date' text='Date' type='DATEF'
+					required="true" tabindex='1' labelWidth="120px" answerWidth="100px" />
+				<question id='FLSup_multiple' text='Check if submitting multiple applications'
+					type='CHECKBOX' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='FLSup_owner_first_name' text="Owner's First Name" type='TEXT'
+					required="true" tabindex='1' labelWidth="120px" answerWidth="100px" />
+				<question id='FLSup_j_owner_first_name' text="Joint Owner's First Name"
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px">
+					<displayWhen>#{EFORMS.PERSON.joint_owner=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group associated="true">
+				<question id='FLSup_owner_middle_name' text="Owner's Middle Name" type='TEXT'
+					tabindex='1' labelWidth="120px" answerWidth="100px" />
+				<question id='FLSup_j_owner_middle_name' text="Joint Owner's Middle Name"
+					type='TEXT' tabindex='1' labelWidth="120px"
+					answerWidth="100px">
+					<displayWhen>#{EFORMS.PERSON.joint_owner=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group associated="true">
+				<question id='FLSup_owner_last_name' text="Owner's Last Name" type='TEXT'
+					required="true" tabindex='1' labelWidth="120px" answerWidth="100px" />
+				<question id='FLSup_j_owner_last_name' text="Joint Owner's Last Name"
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px">
+					<displayWhen>#{EFORMS.PERSON.joint_owner=="Y"}</displayWhen>
+				</question>
+			</group>
+		</section>
+		<section title="Financial Information(in $)">
+			<group associated="true">
+				<question id='FLSup_long_liab' text='Long Term Liabilities'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" mask="pnum" />
+				<question id='FLSup_short_liab' text='Short Term Liabilities'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" mask="pnum" />
+			</group>
+			<group>
+				<question id='FLSup_total_liab' text='Total Liabilities'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" mask="pnum" />
+			</group>
+			<group associated="true">
+				<question id='FLSup_total_liquid_assets' text='Total Liquid Assets'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" mask="pnum" />
+				<question id='FLSup_annuity_purchase_amount' text='Annuity Purchase Amount'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" mask="pnum" />
+			</group>
+			<group associated="true">
+				<question id='FLSup_from_liquid_assets' text='Amount from Liquid Assets'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" mask="pnum" />
+				<question id='FLSup_from_non_liquid_assets' text='Annuity from Non-Liquid Assets'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" mask="pnum" />
+			</group>
+			<group>
+				<question id='FLSup_remaining_liquid_assets' text='Remaining Liquid Assets'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" mask="pnum" />
+			</group>
+		</section>
+		<section title="Important Considerations">
+			<group>
+				<question id='FLSup_reverse_mortgage' text='1. Do you have a reverse mortgage?'
+					name="Reverse mortgage" type='LISTBOX' answerSet=' : |Y:Yes|N:No'
+					required="true" tabindex='1' labelWidth="435px" />
+				<question id='FLSup_FGL_info_provided'
+					text='2. Is the purchase of this annuity in any way connected to or based on information provided during the establishment of a trust sold to you by (i) your Fidelity and Guaranty Life (FGL) agent or affiliate of your FGL agent or (ii) an attorney provided to you through your FGL agent or affiliate of your FGL agent? '
+					name="Purchase of this annuity in any way connected" type='LISTBOX' answerSet=' : |Y:Yes|N:No'
+					required="true" tabindex='1' labelWidth="435px" />
+				<question id='FLSup_penalty_withdraw_funds'
+					text='3. Will you have to pay any surrender charge or penalty to withdraw funds from your current financial product (i.e., the source of funds for this annuity purchase)?'
+					name="Will you have to pay any surrender charge or penalty" type='LISTBOX' answerSet=' : |Y:Yes|N:No'
+					required="true" tabindex='1' labelWidth="435px" />
+			</group>
+		</section>
+		<section title="Existing Product">
+			<group associated="true">
+				<question id='FLSup_existing_company' text='Company' type='TEXT'
+					required="true" tabindex='1' labelWidth="120px" answerWidth="100px" />
+				<question id='FLSup_existing_product' text='Product' type='TEXT'
+					required="true" tabindex='1' labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='FLSup_existing_purchase_year' text='Year of Purchase'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+				<question id='FLSup_existing_value_prior'
+					text='Account Value Prior to Surrender Charge or MVA' type='TEXT'
+					required="true" tabindex='1' labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='FLSup_surrender_charge_amt' text='Surrender Charge Amount (Dollars)'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+				<question id='FLSup_surrender_charge_amt_percent' text='Surrender Charge Amount (Percent)'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='FLSup_MVA_amt' text='MVA Amount (Dollars)'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+		</section>
+		<section repeating="true" name="Existing Product">
+			<group associated="true">
+				<question id='FLSup_existing_company1' text='Company' type='TEXT'
+					required="true" tabindex='1' labelWidth="120px" answerWidth="100px" />
+				<question id='FLSup_existing_product1' text='Product' type='TEXT'
+					required="true" tabindex='1' labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='FLSup_existing_purchase_year1' text='Year of Purchase'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+				<question id='FLSup_existing_value_prior1'
+					text='Account Value Prior to Surrender Charge or MVA' type='TEXT'
+					required="true" tabindex='1' labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='FLSup_surrender_charge_amt1' text='Surrender Charge Amount (Dollars)'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+				<question id='FLSup_surrender_charge_amt_percent1' text='Surrender Charge Amount (Percent)'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='FLSup_MVA_amt1' text='MVA Amount (Dollars)'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+		</section>
+		<section>
+			<group>
+				<question id='FLSup_source_life_annuity'
+					text='4. Is Source of Funds a Life Insurance of Annuity Policy?'
+					name="Source of Funds" type='LISTBOX' answerSet=' : |Y:Yes|N:No'
+					required="true" tabindex='1' labelWidth="435px" />
+				<question id='FLSup_exchanged_life_annuity'
+					text='a.Have you replaced or exchanged any life or annuity contracts within the past 36 months (past 60 months if you reside in California or Minnesota)?'
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' required="true" tabindex='1'
+					labelWidth="435px" name="Replaced or exchanged annuity contracts" />
+				<question id='past_replacement_details' text='Describe Details of Past Replacements'
+					type='MEMO' required="true" tabindex='1' labelWidth="435px">
+					<displayWhen>#{EFORM.FLSup_exchanged_life_annuity=="Y"}
+					</displayWhen>
+				</question>
+				<question id='FLSup_replace_explanation'
+					text='b. Explain the basis for recommendation to replace or exchange an existing life or annuity policy and how this purchase – taking into account surrender costs and/or potential disadvantages – will result in a positive financial benefit to the applicant over the life of the annuity:'
+					name="Basis for recommendation" type='MEMO' required="true"
+					tabindex='1' labelWidth="435px" />
+			</group>
+		</section>
+		<section title="Acknowledgements">
+			<group>
+				<paragragh
+					text="• I understand an annuity is a long term contract that I should not plan to fully surrender before completion of the surrender charge period." />
+				<paragragh
+					text="• I understand that my principal may be subject to a surrender charge if I surrender or partially surrender my contract before completion of the surrender charge period." />
+				<paragragh
+					text="• I understand that this annuity charges a surrender charge schedule beginning at _____% and declines over _____ years (or in the case of a multi-year guarantee annuity has a surrender charge free withdrawal window at the end of that period)." />
+			</group>
+			<group associated="true">
+				<question id='FLSup_acknowledgements_percent' text='Surrender Charge at (Percent)'
+					type='TEXT' required="true" labelWidth="120px" answerWidth="100px"
+					tabindex='1' />
+				<question id='FLSup_acknowledgements_date' text='Surrender decline over (Years)'
+					type='TEXT' required="true" labelWidth="120px" answerWidth="100px"
+					tabindex='1' />
+			</group>
+			<group>
+				<paragragh
+					text="• I understand surrender charges may apply to withdrawals, withdrawals may be taxable and when made before age 59 ½, may result in tax penalties." />
+				<paragragh
+					text="• I understand annuities that offer bonus features may have higher fees and charges, lower credited interest, and longer surrender charge periods than annuities that do not provide a bonus feature." />
+				<paragragh
+					text="• (if replacement) I understand the benefits and costs of this replacement, including but not limited to surrender charges, possible loss of benefits, tax consequences, product features and enhancements, fees, and expenses. My Agent has provided a comparison of the benefits and restrictions of both contracts." />
+				<paragragh
+					text="• I understand that I should contact my tax professional or attorney for any tax or legal advice." />
+			</group>
+			<group associated="true">
+				<question id='FLSup_owner_sig_agent_state' text='Owner Signature'
+					type='CHECKBOX' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+				<question id='FLSup_agent_state_date' text='Date' type='DATEF'
+					name="Owner Signature date" required="true" tabindex='1'
+					labelWidth="120px" answerWidth="100px" />
+			</group>
+		</section>
+		<section title="Agent's Statement">
+			<group style="font-weight: bold">
+				<paragragh
+					text="I believe the purchase of this annuity contract is suitable after carefully reviewing the suitability information provided to me by the Owner(s). If applicable, I have discussed the advantages and disadvantages of any replacement or exchange of another annuity contract or life policy. I have reasonably informed the owner(s) of all important features of the annuity and proposed transaction." />
+				<paragragh
+					text="To the best of my knowledge, the questions on this form have been answered truthfully and I have complied with Fidelity and Guaranty Life suitability requirements consistent with my contractual obligations." />
+			</group>
+			<group associated="true">
+				<question id='FLSup_agent_signature_important' text='Agent Signature'
+					type='CHECKBOX' required="true" labelWidth="120px" answerWidth="100px"
+					tabindex='1' />
+				<question id='FLSup_signature_important_acknowledgements'
+					name="Agent Signature date" text='Date' type='DATEF' labelWidth="120px"
+					answerWidth="100px" required="true" tabindex='1' />
+			</group>
+			<group associated="true">
+				<question id='FLSup_agent_first_name' text='Agent First Name'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+				<question id='FLSup_agent_last_name' text='Agent Last Name'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+			<group>
+				<question id='FLSup_agent_prod_number' text='Agent Producer Number'
+					type='TEXT' required="true" tabindex='1' labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+		</section>
+	</page>
+</form>

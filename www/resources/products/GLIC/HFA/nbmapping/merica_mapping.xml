@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Merica>
+	<Map>
+		<!-- Term Level Life Insurance -->
+		<Item>
+			<StepPlanCode>TL</StepPlanCode>
+			<ClientProductCodes>BASE,HFA_TERM10,HFA_TERM15,HFA_TERM20,HFA_TERM30</ClientProductCodes>
+			<MericaProduct>
+				<Id>Life Term</Id>
+				<Name>Life Term</Name>
+				<Rider></Rider>
+			</MericaProduct>
+		</Item>
+
+		<!-- Whole Life Insurance -->
+		<Item>
+			<StepPlanCode>WL</StepPlanCode>
+			<ClientProductCodes>HFA_WL</ClientProductCodes>
+			<MericaProduct>
+				<Id>Life Term</Id>
+				<Name>Life Term</Name>
+				<Rider></Rider>
+			</MericaProduct>
+		</Item>
+
+		<!-- Waiver of Premium Rider -->
+		<Item>
+			<StepPlanCode>DWP</StepPlanCode>
+			<ClientProductCodes>HFA_DWP</ClientProductCodes>
+			<MericaProduct>
+				<Id>WOP</Id>
+				<Name>Waiver of Premium</Name>
+				<Rider>Life Term</Rider>
+			</MericaProduct>
+		</Item>
+		<!-- Guaranteed Insurabliluty Rider -->
+		<Item>
+			<StepPlanCode>GIR</StepPlanCode>
+			<ClientProductCodes>HFA_GIR</ClientProductCodes>
+			<MericaProduct>
+				<Id>NA</Id>
+				<Name></Name>
+				<Rider></Rider>
+			</MericaProduct>
+		</Item>
+
+	</Map>
+</Merica>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section title="Definition form">		
+			<group labelWidth="300px">
+				<paragragh text="The following definitions must be printed on a form and delivered to the applicant with the 'Notice' and 'Statement.' The definitions of 'incontestable clause' and 'suicide clause' must be in 12-point type." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>
+		<section style="border:1px solid black">		
+			<group labelWidth="300px">
+				<paragragh text="a. Premiums: Premiums are the payments you make on the life insurance or annuity contract. They are unlike deposits in a savings or investment program because if you drop the policy you might get back less than you paid in."           styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="b. Cash Surrender Value: This is the amount of money you can get if you surrender your life insurance policy or annuity. If there is a policy loan, the cash surrender value is the difference between the cash value printed in the policy and loan value. Not all policies have cash surrender values." styleClass="groupParagraph" >
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="c. Lapse: A life insurance policy may lapse when you do not pay the premiums within the grace period. If your policy had a cash surrender value, the insurer might change your policy to as much extended term insurance or paid-up insurance as the cash surrender value will buy. Sometimes the policy lets the insurer borrow from the cash surrender value to pay the premiums." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="d. Surrender: You surrender a life insurance policy when you either let it lapse or tell the company you want to drop it. If a policy has a cash surrender value, you can receive such value in cash if you return the policy to the company with a written request." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="e. Place on Extended Term: This means you use your cash surrender value to change your insurance to term insurance with the same insurer. In this case, the net death benefit will be the same as before but you will only be covered for a specified period of time."   styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="f. Borrow Policy Loan Values: If your life insurance policy has a cash surrender value, you can usually borrow all or part of said amount from the insurer. Interest will be charged according to the terms of the policy, and if the loan and unpaid interest ever exceeds the cash surrender value the policy will be terminated. If you die, the amount of the loan and any unpaid interest due will be subtracted from the death benefits."  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh text="g. Evidence of Insurability: This means proof that you are an acceptable risk. You have to meet the standards of the insurer regarding age, health, occupation, and such other standards as the insurer feels necessary to be eligible for coverage."   styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh text="h. Incontestable Clause: This says that after one (1) or two (2) years, according to the provisions of the contract, the insurer shall not resist a claim because you made a false or incomplete statement when you applied for the policy. During the first two (2) years if there are false or incomplete answers on the application and the insurer discovers them, the insurer can deny a claim as if the policy has never existed." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh text="i. Suicide Clause: This says that if you commit suicide after being insured for less than two (2) years, your beneficiaries will receive only a refund of the premiums that were paid." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>					
+		<section>
+			<group style='margin-top:15px'> 		
+				<question id='applicant_confirmation' text="I have read the NOTICE TO APPLICANTS REGARDING REPLACEMENT OF LIFE INSURANCE OR AN ANNUITY which was furnished to me by the agent taking the application for this policy. I wish to notify my present insurer regarding this transaction" type='RADIO'  required="true"  labelWidth="390px" labelStyle='margin-left:8px' answerSet="Y:Yes|N:No" tabindex ='1'/>  
+			</group> 
+			<group style='margin-top:5px' associated="True">
+				<question id='applicant_signature' text="Applicant Signature" type='CHECKBOX' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='2'/>  
+				<question id='applicant_signature_date' text="Date" type='DATEF' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='3'/>
+			</group> 
+			<group style='font-weight: bold'>   
+				<footer>*The signature of the applicant shall be that of the insured unless someone other than the insured is the owner of the policy. If someone other than the insured is the owner of the policy, the owner must sign. If the insured is under eighteen (18) years of age, the parent is deemed to be the owner of the policy.</footer>
+			</group>
+		</section>
+		<section title="CERTIFICATION BY THE AGENT:" style="height:80px;margin-top:15px">	
+			<group labelWidth="300px" style="height:60px;">
+				<paragragh text="I hereby certify that nothing was said or done during the sales presentation to influence the decision of the applicant regarding this Statement." styleClass="groupParagraph">
+				</paragragh>
+			</group>	
+			</section>
+			<section>
+			<group associated="True">
+				<question id='agent_signature' text="Agent Signature" type='CHECKBOX' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='4'/>  
+				<question id='agent_signature_date' text="Date" type='DATEF' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='5'/>
+			</group>	
+			<group associated="True">
+				<question id='agent_license_number' text="Agent License Number" type='TEXT'  answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='6'/>  
+				<question id='insurance_agency' text="Insurance Agency" type='TEXT'  answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='7'/>
+			</group>			
+		</section>
+	</page>
+</form>

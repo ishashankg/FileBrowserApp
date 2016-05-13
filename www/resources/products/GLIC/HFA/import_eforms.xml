@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<eforms>
+	<eform>
+		<file>eforms/person_eform.xml</file>
+		<description>Part 1</description>
+		<code>PERSON</code>
+		<script>
+			<description>EFORM Scripting Events</description>
+			<file>scripts/PersonScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>eforms/authorization_eform.xml</file>
+		<description>Part 2</description>
+		<code>AUTHORIZATION</code>
+	</eform>
+	<eform>
+		<file>eforms/owner_authorization_eform.xml</file>
+		<description>Owner Authorization</description>
+		<code>OWNER_AUTH</code>
+		<script>
+			<description>EFORM Scripting Events</description>
+			<file>scripts/OwnerAuthScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>eforms/full_hipaa_eform.xml</file>
+		<description>Full HIPAA</description>
+		<code>FULL_HIPAA</code>
+	</eform>
+	<eform>
+		<file>eforms/fcra_eform.xml</file>
+		<description>Fair Credit Reporting Act</description>
+		<code>FCRA</code>
+	</eform>
+	<eform>
+		<file>eforms/reflexive_eform.xml</file>
+		<description>Part 3</description>
+		<code>REFLEXIVE</code>
+		<script>
+			<description>EFORM Scripting Events</description>
+			<file>scripts/ReflexiveScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>eforms/reflexive_eform_step_uw_engine.xml</file>
+		<description>Part 3</description>
+		<code>REFLEXIVE_STEP_UW_ENGINE</code>
+		<script>
+			<description>EFORM Scripting Events</description>
+			<file>scripts/ReflexiveScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>eforms/app_ack_eform.xml</file>
+		<description>Part 4</description>
+		<code>APPLICANT_AUTHORIZATION</code>
+	</eform>
+	<eform>
+		<file>eforms/agent_attest_eform.xml</file>
+		<description>Part 5</description>
+		<code>AGENT_ATTESTATION</code>
+		<script>
+			<description>EFORM Scripting Events</description>
+			<file>scripts/AgentAttestScript.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>eforms/paper_app_eform.xml</file>
+		<description>Paper Application Entry Screen</description>
+		<code>HFA_PAPER_APP</code>
+		<script>
+			<description>EFORM Scripting Events(PaperApp)</description>
+			<file>scripts/PaperApplicationScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>eforms/paper_auth_ack_eform.xml</file>
+		<description>Paper Application Auth/Ack Eform</description>
+		<code>HFA_PAPER_AUTH</code>
+		<script>
+			<description>EFORM Scripting Events for HFA_PAPER_AUTH</description>
+			<file>scripts/PaperAuthScripts.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+</eforms>
+</stepImport>

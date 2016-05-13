@@ -1,0 +1,31 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<carrier>
+		<carrierCode>GROUP</carrierCode>
+		<carrierName>Group Carrier</carrierName>
+		<carrierNAICCode>70939</carrierNAICCode>
+
+		<docTypes>
+			<docType>
+				<docTypeCode>NB</docTypeCode>
+				<docTypeName>New Business</docTypeName>
+			</docType>
+			<docType>
+				<docTypeCode>UW</docTypeCode>
+				<docTypeName>Underwriting</docTypeName>
+			</docType>
+		</docTypes>
+
+		<importProduct productCode="PROD2015" />
+		<importProduct productCode="PROD2016" />
+
+		<file uri="import_groups.xml" />
+		<file uri="import_roles.xml" />
+		<file uri="import_users.xml" />
+		<file uri="import_userRoles.xml" />
+		<file uri="import_orgunits.xml" />
+		<file uri="import_ouUsers.xml" />
+		<file uri="import_resources.xml"/> 
+
+	</carrier>
+</stepImport>

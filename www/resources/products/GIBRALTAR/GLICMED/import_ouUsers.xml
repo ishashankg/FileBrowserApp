@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<ou-users>
+	<ou-user>
+		<ousOrguCode>DTC_GLIC_OU</ousOrguCode>
+		<ousUserName ousAdmin="Y">DTC_GLIC</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>GLIC_MEDSUPP</ousOrguCode>
+		<ousUserName ousAdmin="Y">JACKHARDY</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>GMED_UWO</ousOrguCode>
+		<ousUserName ousAdmin="Y">JOHNSMITH</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>DEF_GMED_UWO</ousOrguCode>
+		<ousUserName ousAdmin="Y">DEF_GMED_UW</ousUserName>
+	</ou-user>
+</ou-users>
+</stepImport>

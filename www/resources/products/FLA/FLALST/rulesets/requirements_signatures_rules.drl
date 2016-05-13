@@ -1,0 +1,21 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import java.lang.Boolean;
+import org.apache.commons.lang.StringUtils;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global org.slf4j.Logger logger;
+ 
+rule "Add FULL_HIPAA signature"
+salience 100
+	when
+		form:RequirementForm(code in ('HIPAA_07_05','HIPAA_09_11','HIPAA_09_11_KS',
+		                              'HIPAA_09_11_KY','HIPAA_ME_07_05','HIPAA_09_11_MA',
+			                          'HIPAA_09_11_MN','HIPAA_09_11_MT','HIPAA_09_11_NE',
+			                          'HIPAA_09_11_NM','HIPAA_09_11_ND','HIPAA_09_11_VT',
+			                          'HIPAA_VA_07_05','NO_HIPAA'));
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED");    	
+end
+
+

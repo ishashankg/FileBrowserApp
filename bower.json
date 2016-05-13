@@ -1,0 +1,33 @@
+{
+  "name": "step-nxt",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Nishant Chaturvedi"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "bootstrap": "^3.3.6",
+    "angular-route": "^1.5.0",
+    "jstree": "~3.2.1",
+    "bpmn-js": "^0.13.1",
+    "angular-json-tree": "*",
+    "ng-js-tree": "^0.0.8",
+    "AngularJS-Toaster": "angularjs-toaster#^1.2.0",
+    "angular-busy": "^4.1.3",
+    "underscore": "^1.8.3",
+    "jsTree-directive": "jstree-directive#^0.1.5",
+    "angular-ui-ace": "bower",
+    "angular-pdf-viewer": "^0.2.9"
+  }
+}

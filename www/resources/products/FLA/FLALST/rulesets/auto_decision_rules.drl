@@ -1,0 +1,27 @@
+import com.stepsoln.core.rules.uw.CaseUwRiskCalcData;
+import com.stepsoln.core.db.enums.AUTO_DECISION_STATUS;
+import com.stepsoln.core.rules.uw.*;
+import com.stepsoln.core.rules.requirements.*;
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Auto Decision DECLINE"
+salience 50
+	when
+		CaseUwRiskCalcData(uwStatus in ("DECLINE"))
+	then
+		rulesResponse.getAutoDecisionResultData().setDecisionResult(AUTO_DECISION_STATUS.DECLINE);
+		rulesResponse.getAutoDecisionResultData().setTakeFinalAction(true);
+end
+
+rule "Auto Decision ACCEPT"
+salience 50
+	when
+		CaseUwRiskCalcData(uwStatus in ("ACCEPT", "OFFER"), isRTU == false);
+		Requirement(status == 'RESOLVED', code =='MWS')
+		Requirement(status == 'RESOLVED', code =='ATT')
+		Requirement(status == 'RESOLVED', code =='RXD')
+		Requirement(status == 'RESOLVED', code =='IIX')
+	then
+		rulesResponse.getAutoDecisionResultData().setDecisionResult(AUTO_DECISION_STATUS.ACCEPT);
+		rulesResponse.getAutoDecisionResultData().setTakeFinalAction(true);
+end

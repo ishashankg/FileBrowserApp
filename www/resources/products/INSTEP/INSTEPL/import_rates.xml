@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<rates>
+		<rate>
+			<description>Rates</description>
+			<file>rates/instep_base.csv</file>
+			<type>RATE_TABLE</type>
+		</rate>
+		<rate>
+			<description>Rates</description>
+			<file>rates/instep_policy_fee.csv</file>
+			<type>RATE_TABLE</type>
+		</rate>
+		<rate>
+			<description>Rates</description>
+			<file>rates/instep_riders.csv</file>
+			<type>RATE_TABLE</type>
+		</rate>
+		<rate>
+			<description>Rates</description>
+			<file>rates/instep_rop_wp.csv</file>
+			<type>RATE_TABLE</type>
+		</rate>
+	</rates>
+</stepImport>

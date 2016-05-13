@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section>		
+			<group labelWidth="300px">
+				<paragragh text="Are you thinking about buying a new life insurance policy or annuity and discontinuing or changing an existing policy? If you are, your decision could be a good one – or a mistake. You will not know for sure unless you make a careful comparison of your existing benefits and the proposed policy."  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="Make sure you understand the facts. Georgia law gives you the right to obtain a policy summary statement from your existing insurer at any time. Ask the company or agent that sold you your existing policy to give you information about it. " styleClass="groupParagraph" >
+				</paragragh>
+			</group>			
+			<group labelWidth="300px">
+				<paragragh text="Below is the list that contains a checklist of some of the items you should consider in making your decision. Take time to read it. Do not let one agent or insurer prevent you from obtaining information from another agent or insurer which may be to your advantage. " styleClass="groupParagraph">
+				</paragragh>
+			</group>						
+		</section>	
+		<section title="Items to consider" style="margin-bottom:20px;font-weight: bold">
+			<group labelWidth="300px" style="height:15px;">
+				<paragragh text="Hear both sides before you decide. This way you can be sure you are making a decision that is in your best interest." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>
+		<section style="border:1px solid black">		
+			<group style="overflow:auto">
+				<paragragh
+          text="1. If the policy coverages are similar, premiums for a new policy may be higher because rates increase as your age increases."  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group style="overflow:auto">
+				<paragragh
+          text="2. Cash values and dividends, if any, may grow slower under a new policy initially because of the initial costs of issuing a new policy." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group style="overflow:auto">
+				<paragragh
+          text="3. Your present insurance company may be able to make a change in terms which may be more favorable than if you replace existing insurance with new insurance." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group style="overflow:auto">
+				<paragragh
+          text="4. If you borrow against an existing policy to pay premiums on a new policy, death benefits payable under your existing policy will be reduced by the amount of any unpaid loan, including unpaid interest." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group style="overflow:auto">
+				<paragragh
+          text="5. Current interest rates are not guaranteed. Guaranteed interest rates are usually considerably lower than current rates. What rates are guaranteed?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group style="overflow:auto">
+				<paragragh
+          text="6. Are premiums guaranteed or subject to change – up or down?" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group style="overflow:auto">
+				<paragragh
+          text="7. Participating policies pay dividends that may materially reduce the cost of insurance over the life of the contract. Dividends, however, are not guaranteed."  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group style="overflow:auto">
+				<paragragh
+          text="8. CAUTION. You are urged not to take action to terminate, assign, or alter your existing life insurance coverage until after you have been issued the new policy, examined it and have found it to be acceptable to you." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group style="overflow:auto">
+				<paragragh
+          text="and REMEMBER. You have ten (10) days following receipt of any individual life insurance policy to examine its contents. If you are not satisfied with it for any reason, you have the right to return it to the insurer at its home or branch office or to the agent through whom it was purchased, for a full refund of premium." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>			
+		<section>
+			<group style="margin-top:20px">
+				<question id='confirmation' text="If you wish a policy summary statement from your existing insurer, or insurers, check this checkbox." type='CHECKBOX' required="true" labelWidth="460px" labelStyle='margin-left:8px' tabindex ='1'/>
+			</group>
+		</section>
+		<section>					
+			<group style='font-weight: bold;margin-left:18px;margin-bottom:10px'>   
+				<footer>We are required to notify your existing company that you may be replacing their policy.</footer>
+			</group>
+			<group associated="True">
+				<question id='applicant_signature' text="Applicant's Signature" type='CHECKBOX' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='2'/>  
+				<question id='agent_signature' text="Agent's Signature" type='CHECKBOX' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:150px' tabindex ='3'/>
+			</group>
+			<group associated="True">
+				<question id='date_applicant_signature' text="Date" type='DATEF' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='4'/>  
+				<question id='date_agent_signature' text="Date" type='DATEF' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:150px' tabindex ='5'/>
+			</group>
+			<group associated="True">
+				<question id='applicant_name' text="Applicant Name" type='TEXT' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='6'/>  
+				<question id='agent_name' text="Agent Name" type='TEXT' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:150px' tabindex ='7'/>
+			</group>
+			<group associated="True">
+				<question id='applicant_address_line1' text="Applicant Address Line1" type='TEXT' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='8'/>  	
+				<question id='agent_address_line1' text="Agent Address Line1" type='TEXT' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:150px' tabindex ='9'/>				
+			</group>			
+			<group associated="True">
+				<question id='applicant_address_line2' text="Applicant Address Line2" type='TEXT'  answerWidth="100px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='10'/>  	
+				<question id='agent_address_line2' text="Agent Address Line2" type='TEXT' answerWidth="100px" labelWidth="120px" labelStyle='margin-left:150px' tabindex ='11'/>				
+			</group>	
+			<group associated="True">
+				<question id='agent_license' text="Agent License" type='TEXT' required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='12'/>  	
+				<question id='agent_phone' text="Agent Phone" type='PHONE'  required="true" answerWidth="100px" labelWidth="120px" labelStyle='margin-left:150px' tabindex ='13'/>				
+			</group>			
+		</section>					
+	</page>
+</form>

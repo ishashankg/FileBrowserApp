@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillData</onLoad>
+  <page>
+    <section>
+    	<header>DELAWARE NOTICE TO APPLICANT REGARDING REPLACEMENT OF LIFE INSURANCE</header>
+    	<group labelWidth="400px" height="120px" scrollable="true">
+    		<paragragh
+    			text="It is in your best interest to get all the facts before making a decision. Make sure you fully understand both the proposed new policy and your existing insurance. New policies may contain provisions which limit benefits during the initial period of the contract, in particular, the suicide and incontestability clauses."
+    			styleClass="groupParagraph"></paragragh>
+    		<paragragh
+    			text="To assist you in evaluating the proposed and the existing insurance, Delaware Insurance Regulation 30 requires that the insurer advising or recommending replacement:"
+    			styleClass="groupParagraph"></paragragh>
+    		<paragragh
+    			text="* Provide the consumer, not later than the date the policy or contract is delivered, a concise summary of the policy or contract to be issued."
+    			styleClass="groupParagraph"></paragragh>
+    		<paragragh
+    			text="* Allow a twenty day period following the delivery of the proposed policy during which time the consumer may surrender the new policy for a full refund."
+    			styleClass="groupParagraph"></paragragh>
+    		<paragragh
+    			text="* Advise the present insurance company(s) of the pending replacement."
+    			styleClass="groupParagraph"></paragragh>
+    		<paragragh
+    			text="This same regulation requires your present insurer to provide, on your request, a similar summary describing your present insurance. This information will be provided if you request it using the form below."
+    			styleClass="groupParagraph"></paragragh>
+    	</group>
+    </section>
+    <section>
+      <header>INFORMATION ON PRESENT POLICIES</header>
+      <group/>
+    </section>
+    <section title="Existing Company" repeating="true">
+      <group associated="true" labelWidth="250px;" answerWidth="250px;">
+      	<question id='replaced_carrier' text='Company Name' type='TEXT' required="true" />
+      	<question id='replaced_policyno' text='Policy Number' type='TEXT' />
+      	<question id='replaced_insured' text='Name of Insured' type='TEXT' />
+      	<question id='replaced_summary' text='Summary Requested (mark yes or no)' type='TEXT' />
+      </group>
+    </section>
+  </page>
+</form>

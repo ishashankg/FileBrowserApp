@@ -1,0 +1,84 @@
+
+
+RE:  $caseNumber - $correspondenceAppName
+
+Dear  $correspondenceAppName:
+
+Thank you for your application.  We are pleased to know that you are interested in having this valuable insurance protection.
+
+Some additional information is necessary to continue our processing.  Please complete the enclosed form(s).
+
+After you have supplied the information requested, please return it to us in the postage-paid reply envelope.
+
+We look forward to your reply and welcoming you into Gerber Life's growing family of policyholders
+
+
+
+
+
+Sincerely,
+
+
+Luci Moore
+Underwriting Department
+
+Enclosure:  	
+Y-BRE
+Correspondence
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                   Amendment of Application
+
+
+Policy number:               $policyNumber
+Proposed Insured:         $correspondenceAppName
+
+The Application to Gerber Life Insurance Company shall be amended as follows:
+
+$freeForm_RICHTEXT
+
+Except as provided by any conditional receipt issued in connection with the Application, it is hereby represented and agreed that, to the best of my  knowledge and belief:                                                          
+      -   the application, including this amendment, shall form the basis and   
+          become part of the policy applied for, and,                            
+      -   the above statement(s) and all other responses within all parts of    
+          the application continue to be complete and true, and,                
+      -   since the date of the application, the Proposed Insured and any other 
+          person(s) proposed for coverage have not had any injury or illness,   
+          and have not consulted or been treated by any physician or medical    
+          care professional or at any medical care facility.                    
+                                                                                
+                                                                                           
+
+																						   
+
+Signature of applicant:____________________________________________________
+                                                                     $correspondenceAppName
+
+Date:_________________________________
+
+Signature of proposed insured if other than applicant: ____________________________
+                                                                    
+
+
+AMEND-04(NY)
+
+

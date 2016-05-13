@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<ou-users>
+		<ou-user>
+			<ousOrguCode>GROUPAGENCYOU</ousOrguCode>
+			<ousUserName ousAdmin="Y">agent</ousUserName>
+			<ousUserName ousAdmin="Y">GroupAdmin</ousUserName>
+		</ou-user>
+		<ou-user>
+			<ousOrguCode>GROUP_UWO</ousOrguCode>
+			<ousUserName ousAdmin="Y">JAMESJOHNSON</ousUserName>
+		</ou-user>
+		<ou-user>
+			<ousOrguCode>DEF_GROUP_UWO</ousOrguCode>
+			<ousUserName ousAdmin="Y">MICHAELSMITH</ousUserName>
+		</ou-user>
+	</ou-users>
+</stepImport>

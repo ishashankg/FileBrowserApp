@@ -1,0 +1,22 @@
+$currentDate
+
+$correspondenceOwnerName
+$ownerAddressLines
+$ownerCityStateZip
+
+RE:	Policy #:				$policyNumber
+	Annuitant/Insured:		$annuitantFirstName $annuitantLastName 
+	Date of Application:	$appSubmitDate
+
+
+Dear $correspondenceOwnerName,
+
+We regret to inform you that your recent application for an annuity is being declined and your funds will be returned.
+Upon review of your application and the paperwork included appointing $freeForm_RICHTEXT as your Durable Power of Attorney, we found that the Power of Attorney document does not specifically grant $freeForm_RICHTEXT the power to purchase insurance/annuities or to designate himself as a beneficiary.  We encourage you to discuss this matter with your agent. 
+If you need any additional assistance from Fidelity & Guaranty Life, please contact Policyholder Services at 1-800-445-6758.  Our service professionals are ready to assist you Monday through Friday from 7:00 am to 6:00 pm CST.
+
+Sincerely,
+
+Policyholder Services
+
+Cc:  $agentFirstName $agentLastName

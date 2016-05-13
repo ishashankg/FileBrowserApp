@@ -1,0 +1,60 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import com.stepsoln.core.rules.requirements.CaseData;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.util.DateUtil;
+import java.util.Date;
+
+global RulesResponse rulesResponse;
+
+rule "require place_of_birth_state"
+salience 90
+	when
+		Question(id == "place_of_birth_country", answerAsString in ("UNITED STATES","US"))
+		not Question(id == "place_of_birth_state") or  Question(id == "place_of_birth_state", StringUtils.isBlank((String)answer))
+	then
+		rulesResponse.addRequired("Place of birth (State)", "PT1");
+end
+
+rule "require proper month and year for smoker"
+salience 90
+activation-group "tobaccoGroup"
+	when
+		applicant:ApplicantData(tobaccoUsage == true)
+		and (Question(id == "last_tobacco_mm" && (answerAsNumber < 1 || answerAsNumber > 12))
+			or Question(id == "last_tobacco_yy" && (999 > answerAsNumber || answerAsNumber > 9999)))
+	then
+		rulesResponse.addRequiredOnce("Last Tobacco Month (MM) and Year (YYYY) must be in proper format", "PT1");
+end
+
+rule "month and year should not be past 36 months"
+salience 85
+activation-group "tobaccoGroup"
+	when
+		applicant:ApplicantData(tobaccoUsage == true)
+		Question(id == "last_tobacco_mm", $month:answerAsString)
+		Question(id == "last_tobacco_yy", $year:answerAsString)
+		eval(DateUtil.monthsInBetween(DateUtil.parseDate("MM/yyyy", DateUtil.formatDateMonthYear(new Date())), DateUtil.parseDate("MM/yyyy", $month + "/" + $year)) < -36)
+	then
+		rulesResponse.addRequiredOnce("Last Tobacco Month (MM) and Year (YYYY) should not be past 36 months", "PT1");
+end
+
+rule "month and year cannot be in future"
+salience 80
+activation-group "tobaccoGroup"
+	when
+		applicant:ApplicantData(tobaccoUsage == true)
+		Question(id == "last_tobacco_mm", $month:answerAsString)
+		Question(id == "last_tobacco_yy", $year:answerAsString)
+		eval(DateUtil.monthsInBetween(DateUtil.parseDate("MM/yyyy", DateUtil.formatDateMonthYear(new Date())), DateUtil.parseDate("MM/yyyy", $month + "/" + $year)) > 0) 
+	then
+		rulesResponse.addRequiredOnce("Last Tobacco Month (MM) and Year (YYYY) cannot be in future", "PT1");
+end
+
+rule "require smoker_ind"
+	when
+		 not Question(id == 'smoker_ind')
+	then
+		rulesResponse.addRequired("Smoker Indicator", "PT1");
+end

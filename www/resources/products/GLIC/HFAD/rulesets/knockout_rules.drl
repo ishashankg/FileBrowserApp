@@ -1,0 +1,115 @@
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.coverages.CoverageOption;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.util.MathUtil
+import java.util.ArrayList;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+
+/*
+
+rule "All questions"
+	when
+		$question : Question()
+	then
+		System.out.println($question);
+end
+
+rule "All facts"
+	when
+		$fact : Object()
+	then
+		System.out.println($fact);
+end
+
+*/
+
+rule "Citizenship Kickout"
+	when
+		Question(id == "citizenship_status", answer != null, answer != "Y")
+	then
+		rulesResponse.issueKickout("Citizenship Kickout");
+		rulesResponse.setKnockoutHandlerBeanName("gerberFlowService");
+		rulesResponse.addToRuleFiredList(1,"KNOCKOUT_RULE_CITIZENSHIP");
+end
+
+
+rule "Occupation Kickout"
+	when
+		Question(id == "occupation", 
+		answer in ('BOUNCER', 'BOUNTY', 'HUNTER', 'ESCORT', 'EXOTIC DANCER', 'GAMBLER', 'PROFESSIONAL GAMBLER', 'MERCENARY', 'PROSTITUTE', 'SEX WORKER', 'STRIPPER', 'TEST PILOT'))
+	then
+		rulesResponse.issueKickout("Occupation Kickout");
+		rulesResponse.setKnockoutHandlerBeanName("gerberFlowService");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+end
+
+
+rule "10 Year Term Age"
+	when
+		CoverageOption(optionCode in ("TERM10"), selected==true);
+		ApplicantData(age > 70 || age < 18);
+    then
+		rulesResponse.issueKickout("Applicant Age Kickout");
+		rulesResponse.setKnockoutHandlerBeanName("gerberFlowService");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "15 Year Term Age"
+	when
+		CoverageOption(optionCode in ("TERM15"), selected==true);
+		ApplicantData(age > 65 || age < 18);
+    then
+		rulesResponse.issueKickout("Applicant Age Kickout");
+		rulesResponse.setKnockoutHandlerBeanName("gerberFlowService");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "20 Year Term Age"
+	when
+		CoverageOption(optionCode in ("TERM20"), selected==true);
+		ApplicantData(age > 60 || age < 18);
+    then
+		rulesResponse.issueKickout("Applicant Age Kickout");
+		rulesResponse.setKnockoutHandlerBeanName("gerberFlowService");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "30 Year Term Age"
+salience 100
+	when
+		CoverageOption(optionCode in ("TERM30"), selected==true);
+		ApplicantData(age > 50 || age < 18);
+    then
+		rulesResponse.issueKickout("Applicant Age Kickout");
+		rulesResponse.setKnockoutHandlerBeanName("gerberFlowService");
+		rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "Whole Life Age"
+	when
+       	//CoverageOption(optionCode in ("WL"), selected==true);
+		ApplicantData(age > 80 || age < 18);
+       	
+    then
+    	rulesResponse.issueKickout("Applicant Age Kickout");
+    	rulesResponse.setKnockoutHandlerBeanName("gerberFlowService");
+    	rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");
+end
+
+rule "maximum face amount restricted by age and income"
+	when
+		Question(id=="annual_earned_income", $income:answer)
+		Question(id=="occupation", answer not in ("DISABLED", "DISABILITY","UNEMPLOYED", "NOT EMPLOYED","RETIRED", "RETIREMENT", "STUDENT", "COLLEGE STUDENT", "LAW STUDENT", "UNIVERSITY STUDENT", "HOMEMAKER", "HOME MAKER", "HOME EXECUTIVE", "HOUSE HUSBAND", "STAY AT HOME MOM", "STAY AT HOME DAD", "AT HOME MOM", "HOUSEWIFE", "HOUSE WIFE"));
+		ApplicantData(type=="PRIMARY_INSURED", age>=18, $age:age )
+    then
+    	if((MathUtil.getEarnedIncomeFactorByAge($age) * MathUtil.convertToNumber($income.toString()) /1000)<25) 
+    	{
+    		rulesResponse.issueKickout("Maximum face amount restricted by age and income Kickout");
+    		rulesResponse.setKnockoutHandlerBeanName("gerberFlowService");
+	    	rulesResponse.addToRuleFiredList(2,"KNOCKOUT_RULE_GENERIC");		
+    	}
+end

@@ -1,0 +1,92 @@
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.RulesResponse;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.ArrayUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.db.cases.Case.CASE_SOURCE;
+import rules.*;
+import com.stepsoln.core.rules.SecurityOuCaseLoadFacts;
+import 	com.stepsoln.core.rules.OUGroupAssignmentData;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Policy Assignment"
+	when
+		theCaseData:CaseData($source:caseSource in ('EXTERNAL', 'CAPTIVE', 'INTERNET'), $paperCaseFlag:paperCase,  StringUtils.isEmpty(externalCaseNumber), StringUtils.isEmpty(policyNumber));
+	then
+		String seqName="POLICY_NUMBER_EXTERNAL";
+		
+		if (Case.CASE_SOURCE.EXTERNAL.name().equalsIgnoreCase($source) && $paperCaseFlag)
+		{
+			seqName="POLICY_NUMBER_EPAPER";
+		}
+		else if (Case.CASE_SOURCE.INTERNET.name().equalsIgnoreCase($source))
+		{
+			seqName="POLICY_NUMBER_INTERNET";
+		}
+		if (Case.CASE_SOURCE.CAPTIVE.name().equalsIgnoreCase($source))
+		{
+			if($paperCaseFlag)
+			{
+				seqName="POLICY_NUMBER_IPAPER";
+			}
+			else
+			{
+				seqName="POLICY_NUMBER_CAPTIVE";
+			}
+		}
+		rulesResponse.setPolicyNumber(seqName);
+end
+
+rule "set flags for SUBMITTED case"
+activation-group "caseStatus"
+salience 200
+	when
+		theCase:CaseData(caseStatus == 'SUBMITTED')
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setUwOu("GIBRALTAR_LIFE_UWO");
+		
+end
+
+rule "set flags for AUTODECLINED case"
+activation-group "caseStatus"
+salience 180
+	when
+		theCase:CaseData(caseStatus == 'AUTODECLINE')
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setUwOu("DEF_GLIFE_UWO");
+end
+
+rule "set flags for UWINCOMPLETE case"
+activation-group "caseStatus"
+salience 160
+	when
+		theCase:CaseData(caseStatus == 'UWINCOMPLETE')
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setUwOu("GIBRALTAR_LIFE_UWO");
+end
+
+rule "set flags for DECLINED case"
+activation-group "caseStatus"
+salience 150
+	when
+		theCase:CaseData(caseStatus == 'DECLINED')
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setUwOu("GIBRALTAR_LIFE_UWO");
+end
+
+
+rule "set UW OU code and default billing frequency"
+	when
+		eval(true);
+	then
+		rulesResponse.getOuGroupAssignmentData().setUwOuCode("UWO");
+		rulesResponse.setDefaultBillingFrequency("ANNUAL");
+end
+

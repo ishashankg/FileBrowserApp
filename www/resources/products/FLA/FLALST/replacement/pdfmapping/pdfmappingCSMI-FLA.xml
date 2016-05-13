@@ -1,0 +1,74 @@
+<map>
+  <entry>
+    <string>insurer1</string>
+    <string>${EFORMS.REPCSMI.replaced_carrier___0}</string>
+  </entry>
+  <entry>
+    <string>insured1</string>
+    <string>${EFORMS.REPCSMI.replaced_insured___0}</string>
+  </entry>
+  <entry>
+    <string>policyno1</string>
+    <string>${EFORMS.REPCSMI.replaced_policyno___0}</string>
+  </entry>
+  <entry>
+    <string>insured_dob1</string>
+    <string>${EFORMS.REPCSMI.insured_dob___0}</string>
+  </entry>
+  <entry>
+    <string>policy_type</string>
+    <string>${EFORMS.REPCSMI.policy_type}</string>
+  </entry>
+  <entry>
+    <string>face_amount</string>
+    <string>${COVERAGE_OPTIONS.LSTFA?:""}</string>
+  </entry>
+  <entry>
+    <string>applicant_name</string>
+    <string>${EFORMS.APPLICANT.ins_first_name?:""} ${EFORMS.APPLICANT.ins_middle_name?:""} ${EFORMS.APPLICANT.ins_last_name?:""}</string>
+  </entry>
+  <entry>
+    <string>applicant_signature</string>
+    <string>${caseHelper.insertSignature("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED", "Electronically Signed By:%s")}</string>
+  </entry>
+  <entry>
+    <string>applicant_date</string>
+    <string>${caseHelper.getSignatureDate("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED")}</string>
+  </entry>
+  <entry>
+    <string>applicant_address</string>
+    <string>${EFORMS.APPLICANT.legal_residence_address} ${EFORMS.APPLICANT.legal_residence_address_line2?:""}</string>
+  </entry>
+  <entry>
+    <string>applicant_city_state_zip</string>
+    <string> ${EFORMS.APPLICANT.city?:""} ${lookupService.getLookupCode("LOCALE_STATE", EFORMS.APPLICANT.state)} ${EFORMS.APPLICANT.zipcode}</string>
+  </entry>
+  <entry>
+    <string>applicant_phone</string>
+    <string>${EFORMS.APPLICANT.preferred_phone?:""}</string>
+  </entry>
+  <entry>
+    <string>agent_name</string>
+    <string>${EFORMS.AG_ATTEST.ag_first_name?:""} ${EFORMS.AG_ATTEST.ag_last_name?:""}</string>
+  </entry>
+  <entry>
+    <string>agent_signature</string>
+    <string>Electronically Signed By: (${EFORMS.AG_ATTEST.ag_first_name?:""} ${EFORMS.AG_ATTEST.ag_last_name?:""})</string>
+  </entry>
+  <entry>
+    <string>agent_date</string>
+    <string>${EFORMS.AG_ATTEST.ag_sig_date}</string>
+  </entry>
+  <entry>
+    <string>agent_address</string>
+    <string>${EFORMS.REPCSMI.agent_address?:""}</string>
+  </entry>
+  <entry>
+    <string>agent_city_state_zip</string>
+    <string>${EFORMS.REPCSMI.agent_city_state_zip?:""}</string>
+  </entry>
+  <entry>
+    <string>agent_phone</string>
+    <string>${EFORMS.AG_ATTEST.ag_contact?:""}</string>
+  </entry>
+</map>

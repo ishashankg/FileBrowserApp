@@ -1,0 +1,1101 @@
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<processRequirements>
+    <requirement>
+        <requirementCode>ADDRESS_VALIDATION</requirementCode>
+        <requirementDescription>Address Validation</requirementDescription>
+        <processType>ADDRESS_CHANGE</processType>
+        <processGroup>ENDORSEMENT</processGroup>
+        <requirementType>OTHER</requirementType>
+        <requirementSteps>
+			<requirementStep>
+                <stepCode>STEP</stepCode>
+                <stepDescription>Address Validation</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+            </requirementStep>
+        </requirementSteps>
+    </requirement>
+     <requirement>
+        <requirementCode>ADDRESS_CHANGE_CORRESPONDENCE</requirementCode>
+        <requirementDescription>Address Change Correspondence</requirementDescription>
+        <processType>ADDRESS_CHANGE</processType>
+        <processGroup>ENDORSEMENT</processGroup>
+        <requirementType>OTHER</requirementType>
+        <requirementSteps>
+			<requirementStep>
+                <stepCode>STEP</stepCode>
+                <stepDescription>Address Change Correspondence</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+            </requirementStep>
+        </requirementSteps>
+    </requirement>
+    <requirement>
+        <requirementCode>GLIC_POLICY</requirementCode>
+        <requirementDescription>Packet need to generate on policy issuance</requirementDescription>
+        <processType>POLICY_ISSUANCE</processType>
+        <processGroup>INSURANCE_POLICY</processGroup>
+        <requirementType>CORRESPONDENCE</requirementType>
+        <requirementSteps>
+			<requirementStep>
+                <stepCode>POLICY_PAGES</stepCode>
+                <stepDescription>Packet need to generate on policy issuance</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+            </requirementStep>
+        </requirementSteps>
+    </requirement>
+    <requirement>
+        <requirementCode>POLICY_ISSUANCE_SIGNATURE</requirementCode>
+        <requirementDescription>Signature required for policy issuance</requirementDescription>
+        <processType>ISSUED_TO_ACTIVE</processType>
+        <processGroup>INSURANCE_POLICY</processGroup>
+        <requirementType>ESIGNATURE</requirementType>
+        <requirementSteps>
+			<requirementStep>
+                <stepCode>ACTIVATION_STEP</stepCode>
+                <stepDescription>Signature required for policy issuance</stepDescription>
+				<signatureRequired>true</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+				<documentCode>POLICY_PAGE</documentCode>
+            </requirementStep>
+        </requirementSteps>
+    </requirement>
+    <requirement>
+		<requirementCode>POLICY_REINSTATEMENT_HIPAA</requirementCode>
+		<requirementDescription>Policy reinstatement requirement for HIPAA</requirementDescription>
+		<processType>POLICY_REINSTATEMENT</processType>
+		<processGroup>INSURANCE_POLICY</processGroup>
+	    <requirementType>DOCUMENT_UPLOAD</requirementType>
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>REINSTATE_HIPAA</stepCode>
+				<stepDescription>Policy reinstatement requirement for HIPAA</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+		</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>POLICY_REINSTATEMENT_APS</requirementCode>
+		<requirementDescription>Policy reinstatement requirement for APS</requirementDescription>
+		<processType>POLICY_REINSTATEMENT</processType>
+		<processGroup>INSURANCE_POLICY</processGroup>
+	    <requirementType>DOCUMENT_UPLOAD</requirementType>
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>REINSTATE_APS</stepCode>
+				<stepDescription>Policy reinstatement requirement for APS</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+		</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>POLICY_REINSTATEMENT_PAYMENT</requirementCode>
+		<requirementDescription>Policy reinstatement payment</requirementDescription>
+		<processType>POLICY_REINSTATEMENT</processType>
+		<processGroup>INSURANCE_POLICY</processGroup>
+	    <requirementType>PAYMENT</requirementType>
+		<requirementSteps>
+			<requirementStep>
+				<stepCode></stepCode>
+				<stepDescription>Policy reinstatement payment</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+		</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>POLICY_REINSTATEMENT_MIB</requirementCode>
+		<requirementDescription>Policy reinstatement requirement for MIB</requirementDescription>
+		<processType>POLICY_REINSTATEMENT</processType>
+		<processGroup>INSURANCE_POLICY</processGroup>
+	    <requirementType>DOCUMENT_UPLOAD</requirementType>
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>REINSTATE_MIB</stepCode>
+				<stepDescription>Policy reinstatement requirement for MIB</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+		</requirementStep>
+		</requirementSteps>
+	</requirement>
+	 <requirement>
+        <requirementCode>POLICY_REINSATEMENT</requirementCode>
+        <requirementDescription>Packet need to generate on policy reinstatement</requirementDescription>
+        <processType>POLICY_REINSTATEMENT</processType>
+        <processGroup>INSURANCE_POLICY</processGroup>
+        <requirementType>CORRESPONDENCE</requirementType>
+        <requirementSteps>
+			<requirementStep>
+                <stepCode>REINSTATEMENT_NOTICE</stepCode>
+                <stepDescription>Packet need to generate on policy reinstatement</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+            </requirementStep>
+        </requirementSteps>
+    </requirement>
+	<!-- Requirements related to endorsement -->
+	
+	<requirement>
+		<requirementCode>ADDRESS_CHANGE_SIGNATURE</requirementCode>
+		<requirementDescription>Address Change Signature</requirementDescription>
+		<processType>ADDRESS_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+  		<requirementType>ESIGNATURE</requirementType>		
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Address Change Signature</stepDescription>
+				<signatureRequired>true</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+				<documentCode>ADDRESS_CHANGE</documentCode>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>BIRTHDAY_CHANGE_CORRESPONDENCE</requirementCode>
+		<requirementDescription>Birth Day Change Correspondence</requirementDescription>
+		<processType>BIRTHDAY_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>CORRESPONDENCE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Birth Day Change Correspondence</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>BIRTHDAY_CHANGE_SIGNATURE</requirementCode>
+		<requirementDescription>Birth Day Change Signature</requirementDescription>
+		<processType>BIRTHDAY_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>ESIGNATURE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP1</stepCode>
+				<stepDescription>Birth Day Change Signature</stepDescription>
+				<signatureRequired>true</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+				<documentCode>BIRTHDAY_CHANGE</documentCode>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>BENEFICIARY_CHANGE_CORRESPONDENCE</requirementCode>
+		<requirementDescription>Beneficiary Change Correspondence</requirementDescription>
+		<processType>BENEFICIARY_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>CORRESPONDENCE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Beneficiary Change Correspondence</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	
+	<requirement>
+		<requirementCode>SETTLEMENT_CHANGE_SIGNATURE</requirementCode>
+		<requirementDescription>Settlement Option Change Signature</requirementDescription>
+		<processType>SETTLEMENT_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>ESIGNATURE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Settlement Change Signature</stepDescription>
+				<signatureRequired>true</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+				<documentCode>SETTLEMENT_CHANGE</documentCode>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>SETTLEMENT_CHANGE_CORRESPONDENCE</requirementCode>
+		<requirementDescription>Settlement Change Correspondence</requirementDescription>
+		<processType>SETTLEMENT_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>CORRESPONDENCE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Settlement Change Correspondence</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	
+	<requirement>
+		<requirementCode>BENEFICIARY_CHANGE_SIGNATURE</requirementCode>
+		<requirementDescription>Beneficiary Change Signature</requirementDescription>
+		<processType>BENEFICIARY_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>ESIGNATURE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Beneficiary Change Signature</stepDescription>
+				<signatureRequired>true</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+				<documentCode>BENEFICIARY_CHANGE</documentCode>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	
+	<requirement>
+		<requirementCode>OWNER_CHANGE_CORRESPONDENCE</requirementCode>
+		<requirementDescription>Owner Change Correspondence</requirementDescription>
+		<processType>OWNER_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>CORRESPONDENCE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Owner Change Correspondence</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>OWNER_CHANGE_SIGNATURE</requirementCode>
+		<requirementDescription>Owner Change Signature</requirementDescription>
+		<processType>OWNER_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>ESIGNATURE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Owner Change Signature</stepDescription>
+				<signatureRequired>true</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+				<documentCode>POLICY_OWNER_CHANGE</documentCode>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>SMOKER_STATUS_CHANGE_CORRESPONDENCE</requirementCode>
+		<requirementDescription>Smoker Status Change Correspondence</requirementDescription>
+		<processType>SMOKER_STATUS_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>CORRESPONDENCE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Smoker Status Change Correspondence</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>SMOKER_STATUS_CHANGE_SIGNATURE</requirementCode>
+		<requirementDescription>Smoker Status Change Signature</requirementDescription>
+		<processType>SMOKER_STATUS_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>ESIGNATURE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Smoker Status Change Signature</stepDescription>
+				<signatureRequired>true</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+				<documentCode>SMOKER_STATUS_CHANGE</documentCode>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>PAYMENT_CHANGE_CORRESPONDENCE</requirementCode>
+		<requirementDescription>Payment Method Change Correspondence</requirementDescription>
+		<processType>PAYMENT_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>CORRESPONDENCE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Payment Method Change Correspondence</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>PAYMENT_CHANGE_SIGNATURE</requirementCode>
+		<requirementDescription>Payment Method Change Signature</requirementDescription>
+		<processType>PAYMENT_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>ESIGNATURE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Payment Method Change Signature</stepDescription>
+				<signatureRequired>true</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+				<documentCode>PAYMENT_CHANGE</documentCode>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>PAYOR_CHANGE_CORRESPONDENCE</requirementCode>
+		<requirementDescription>Payor Change Correspondence</requirementDescription>
+		<processType>PAYOR_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>CORRESPONDENCE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Payor Change Correspondence</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>PAYOR_CHANGE_SIGNATURE</requirementCode>
+		<requirementDescription>Payor Change Signature</requirementDescription>
+		<processType>PAYOR_CHANGE</processType>
+		<processGroup>ENDORSEMENT</processGroup>
+		<requirementType>ESIGNATURE</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Payor Change Signature</stepDescription>
+				<signatureRequired>true</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+				<documentCode>PAYOR_CHANGE</documentCode>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	
+	<!--  Death Benefit Claim -->
+	<requirement>
+		<requirementCode>DEATH_BENEFIT_FORM</requirementCode>
+		<requirementDescription>death benefits form</requirementDescription>
+		<processType>DEATH_BENEFIT_CLAIM</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Death Benefit form</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>ORIGINAL_DEATH_CERTIFICATE</requirementCode>
+		<requirementDescription>Original Death Certificate</requirementDescription>
+		<processType>DEATH_BENEFIT_CLAIM</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Original Death Certificate</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>OBITUARY_IF_PUBLISHED</requirementCode>
+		<requirementDescription>An obituary if one published</requirementDescription>
+		<processType>DEATH_BENEFIT_CLAIM</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>An obituary if one published</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>false</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>DRIVING_LICENCE_OR_STATE_ISSUED_ID</requirementCode>
+		<requirementDescription>Driving license or State issued id card</requirementDescription>
+		<processType>DEATH_BENEFIT_CLAIM</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Driving license or State issued id card</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	
+	<!-- Acclerate Death Benefit Requirements -->
+	<requirement>
+		<requirementCode>INSURED_STATEMENT</requirementCode>
+		<requirementDescription>Insured statement/ABE claim form</requirementDescription>
+		<processType>ACCLERATED_DEATH_BENEFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Insured statement/ABE claim form</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>APS_ACCLERATED_DEATH_BENEFIT</requirementCode>
+		<requirementDescription>APS requirement for Acclerated Death Benefit</requirementDescription>
+		<processType>ACCLERATED_DEATH_BENEFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>		
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>APS requirement for Acclerated Death Benefit</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>ADB_RELEASE_INFORMATION_AUTHORISATION</requirementCode>
+		<requirementDescription>Authorisation for release of information</requirementDescription>
+		<processType>ACCLERATED_DEATH_BENEFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>		
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Authorisation for release of information</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	
+	<!-- Accidental Death and Dismemberment Requirements -->
+	<requirement>
+		<requirementCode>ADD_CLAIM_FORM</requirementCode>
+		<requirementDescription>AD and D claim form</requirementDescription>
+		<processType>ACCIDENTAL_DEATH_AND_DISMEMBERMENT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>AD and D claim form</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>APS_ACCIDENTAL_DEATH_DISMEMBERMENT</requirementCode>
+		<requirementDescription>APS Requirement for AD and D</requirementDescription>
+		<processType>ACCIDENTAL_DEATH_AND_DISMEMBERMENT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>APS Requirement for AD and D</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>ADD_RELEASE_INFORMATION_AUTH</requirementCode>
+		<requirementDescription>Authorisation for release of information</requirementDescription>
+		<processType>ACCIDENTAL_DEATH_AND_DISMEMBERMENT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Authorisation for release of information</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	
+	<!-- Waiver of Premium Requirements -->
+	<requirement>
+		<requirementCode>INSURED_STATEMENT_WOP_CLAIM_FORM</requirementCode>
+		<requirementDescription>Insured statement/WOP claim</requirementDescription>
+		<processType>WAIVER_OF_PREMIUM</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Insured statement/WOP claim</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>WOP_RELEASE_INFORMATION_AUTHORISATION</requirementCode>
+		<requirementDescription>Authorisation for release of information</requirementDescription>
+		<processType>WAIVER_OF_PREMIUM</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Authorisation for release of information</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>APS_WAIVER_OF_PREMIUM</requirementCode>
+		<requirementDescription>APS Requirement for WOP</requirementDescription>
+		<processType>WAIVER_OF_PREMIUM</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>APS Requirement for WOP</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>WOP_EMPLOYER_STATEMENT</requirementCode>
+		<requirementDescription>Employer's Statement</requirementDescription>
+		<processType>WAIVER_OF_PREMIUM</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Employer's Statement</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	
+	<!-- Family Benefit Requirements -->
+	<requirement>
+		<requirementCode>FAMILY_DEATH_BENEFIT_FORM</requirementCode>
+		<requirementDescription>death benefits form</requirementDescription>
+		<processType>FAMILY_BENFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>death benefits form</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>FAMILY_ORIGINAL_DEATH_CERTIFICATE</requirementCode>
+		<requirementDescription>Original death certificate</requirementDescription>
+		<processType>FAMILY_BENFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Original death certificate</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>MARRIAGE_CERTIFICATE</requirementCode><!-- Available for spousal rider -->
+		<requirementDescription>Marriage certificate</requirementDescription>
+		<processType>FAMILY_BENFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Marriage certificate</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>BIRTH_CERTIFICATE</requirementCode><!-- Available for Child rider -->
+		<requirementDescription>Birth certificate</requirementDescription>
+		<processType>FAMILY_BENFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Birth certificate</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>false</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>ADOPTION_CERTIFICATE</requirementCode>
+		<requirementDescription>Adoption certificate</requirementDescription>
+		<processType>FAMILY_BENFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Adoption certificate</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>false</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	
+	<!-- Critical Illness Requirements -->
+	<requirement>
+		<requirementCode>CRITICAL_ILLNESS_FORM</requirementCode>
+		<requirementDescription>Critical Illness form</requirementDescription>
+		<processType>CRITICAL_ILLNESS_BENEFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Critical Illness form</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>MEDICAL_DOCUMENT</requirementCode>
+		<requirementDescription>Medical documentation</requirementDescription>
+		<processType>CRITICAL_ILLNESS_BENEFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Medical documentation</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>APS_CRITICAL_ILLNESS_BENEFIT</requirementCode>
+		<requirementDescription>APS Requirement for Critical Illness</requirementDescription>
+		<processType>CRITICAL_ILLNESS_BENEFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>APS Requirement for Critical Illness</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>CRITICAL_ILLNESS_RELEASE_INFORMATION_AUTHORISATION</requirementCode>
+		<requirementDescription>Authorisation for release of information</requirementDescription>
+		<processType>CRITICAL_ILLNESS_BENEFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Authorisation for release of information</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>CRITICAL_ILLNESS_EMPLOYER_STATEMENT</requirementCode>
+		<requirementDescription>Employer's Statement</requirementDescription>
+		<processType>CRITICAL_ILLNESS_BENEFIT</processType>
+		<processGroup>CLAIM_SUBMISSION</processGroup>
+		<requirementType>DOCUMENT_UPLOAD</requirementType>	
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Employer's Statement</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>CLAIMANT</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	<requirement>
+		<requirementCode>POLICY_CONVERSION_SIGNATURE</requirementCode>
+		<requirementDescription>Policy Owner Signature</requirementDescription>
+		<processType>POLICY_CONVERSION</processType>
+		<processGroup>INSURANCE_POLICY</processGroup>
+  		<requirementType>ESIGNATURE</requirementType>		
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Policy Owner Signature</stepDescription>
+				<signatureRequired>true</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty>POLICY_OWNER</targetParty>
+				<isPostProcess>false</isPostProcess>
+				<isRequired>true</isRequired>
+				<documentCode>POLICY_CONVERSION</documentCode>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	
+	<requirement>
+		<requirementCode>COLLATERAL_ASSIGNMENT_SIGNATURE</requirementCode>
+		<requirementDescription>Collateral assignment Signatures</requirementDescription>
+		<processType>COLLATERAL_ASSIGNMENT</processType>
+		<processGroup>INSURANCE_POLICY</processGroup>
+  		<requirementType>ESIGNATURE</requirementType>		
+		<requirementSteps>
+			<requirementStep>
+			<stepCode>STEP1</stepCode>
+			<stepDescription>Policy owner Signature</stepDescription>
+			<signatureRequired>true</signatureRequired>
+			<hasEform>false</hasEform>
+			<isDeferred>false</isDeferred>
+			<targetParty>POLICY_OWNER</targetParty>
+			<isPostProcess>false</isPostProcess>
+			<isRequired>true</isRequired>
+		</requirementStep>
+		<requirementStep>
+			<stepCode>STEP2</stepCode>
+			<stepDescription>Irrevocable beneficiary Signature</stepDescription>
+			<signatureRequired>true</signatureRequired>
+			<hasEform>false</hasEform>
+			<isDeferred>false</isDeferred>
+			<targetParty>BENEFICIARY</targetParty>
+			<isPostProcess>false</isPostProcess>
+			<isRequired>true</isRequired>
+		</requirementStep>
+		<requirementStep>
+			<stepCode>STEP3</stepCode>
+			<stepDescription>Spouse Signature</stepDescription>
+			<signatureRequired>true</signatureRequired>
+			<hasEform>false</hasEform>
+			<isDeferred>false</isDeferred>
+			<targetParty>SPOUSE</targetParty>
+			<isPostProcess>false</isPostProcess>
+			<isRequired>true</isRequired>
+		</requirementStep>
+		<requirementStep>
+			<stepCode>STEP4</stepCode>
+			<stepDescription>Assignee Signature</stepDescription>
+			<signatureRequired>true</signatureRequired>
+			<hasEform>false</hasEform>
+			<isDeferred>false</isDeferred>
+			<targetParty>ASSIGNEE</targetParty>
+			<isPostProcess>false</isPostProcess>
+			<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+	
+	<requirement>
+        <requirementCode>COLLATERAL_ASSIGNMENT_CORRESPONDENCE</requirementCode>
+        <requirementDescription>Collateral Assignment Correspondence</requirementDescription>
+        <processType>COLLATERAL_ASSIGNMENT</processType>
+        <processGroup>INSURANCE_POLICY</processGroup>
+        <requirementType>CORRESPONDENCE</requirementType>
+        <requirementSteps>
+			<requirementStep>
+                <stepCode>STEP</stepCode>
+                <stepDescription>Collateral Assignment Correspondence</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+            </requirementStep>
+        </requirementSteps>
+    </requirement>
+	
+	<requirement>
+		<requirementCode>TERMINATE_ASSIGNMENT_SIGNATURE</requirementCode>
+		<requirementDescription>Terminate assignment Signatures</requirementDescription>
+		<processType>TERMINATE_ASSIGNMENT</processType>
+		<processGroup>INSURANCE_POLICY</processGroup>
+  		<requirementType>ESIGNATURE</requirementType>		
+		<requirementSteps>
+			<requirementStep>
+			<stepCode>STEP1</stepCode>
+			<stepDescription>Policy owner Signature</stepDescription>
+			<signatureRequired>true</signatureRequired>
+			<hasEform>false</hasEform>
+			<isDeferred>false</isDeferred>
+			<targetParty>POLICY_OWNER</targetParty>
+			<isPostProcess>false</isPostProcess>
+			<isRequired>true</isRequired>
+		</requirementStep>
+		<requirementStep>
+			<stepCode>STEP2</stepCode>
+			<stepDescription>Irrevocable beneficiary Signature</stepDescription>
+			<signatureRequired>true</signatureRequired>
+			<hasEform>false</hasEform>
+			<isDeferred>false</isDeferred>
+			<targetParty>BENEFICIARY</targetParty>
+			<isPostProcess>false</isPostProcess>
+			<isRequired>true</isRequired>
+		</requirementStep>
+		<requirementStep>
+			<stepCode>STEP3</stepCode>
+			<stepDescription>Spouse Signature</stepDescription>
+			<signatureRequired>true</signatureRequired>
+			<hasEform>false</hasEform>
+			<isDeferred>false</isDeferred>
+			<targetParty>SPOUSE</targetParty>
+			<isPostProcess>false</isPostProcess>
+			<isRequired>true</isRequired>
+		</requirementStep>
+		<requirementStep>
+			<stepCode>STEP4</stepCode>
+			<stepDescription>Assignee Signature</stepDescription>
+			<signatureRequired>true</signatureRequired>
+			<hasEform>false</hasEform>
+			<isDeferred>false</isDeferred>
+			<targetParty>ASSIGNEE</targetParty>
+			<isPostProcess>false</isPostProcess>
+			<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+		<requirement>
+		<requirementCode>TERMINATE_ASSIGNMENT_CORRESPONDENCE</requirementCode>
+		<requirementDescription>Terminate Assignment Correspondence</requirementDescription>
+		<processType>TERMINATE_ASSIGNMENT</processType>
+		<processGroup>INSURANCE_POLICY</processGroup>
+  		<requirementType>CORRESPONDENCE</requirementType>		
+		<requirementSteps>
+			<requirementStep>
+				<stepCode>STEP</stepCode>
+				<stepDescription>Terminate Assignment Correspondence</stepDescription>
+				<signatureRequired>false</signatureRequired>
+				<hasEform>false</hasEform>
+				<isDeferred>false</isDeferred>
+				<targetParty></targetParty>
+				<isPostProcess>true</isPostProcess>
+				<isRequired>true</isRequired>
+			</requirementStep>
+		</requirementSteps>
+	</requirement>
+</processRequirements>
+</stepImport>

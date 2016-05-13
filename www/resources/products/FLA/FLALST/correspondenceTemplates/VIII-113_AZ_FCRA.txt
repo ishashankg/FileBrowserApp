@@ -1,0 +1,76 @@
+
+Policy Number:		$policyNumber
+Proposed Insured:	$correspondenceAppName
+
+
+Dear $correspondenceAppName:
+
+Thank you for your interest in Gerber Life's insurance coverage.
+
+In order to continue processing, we may need to complete an investigative consumer report. Kindly sign the bottom half of the enclosed form authorizing this investigation and return it in the envelope provided.  Retain the top portion for your records.
+
+As soon as this information is received we can continue processing your applications.
+
+Thank you very much for your cooperation.
+
+Sincerely,
+
+
+Luci Moore
+Underwriting Department
+
+Enclosures:	
+FCRA
+Y-BRE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+No. $policyNumber        Proposed Insured:   $correspondenceAppName
+
+			Your Rights under the Fair Credit Reporting Act
+
+Depending on the size of the policy applied for, we may request that an investigative consumer report about the Proposed Insured be given to us.  It will be conducted by a national organization skilled in obtaining information about people.  A credit report may be requested in connection with this application to determine eligibility of insurance or premium to be charged.
+
+The kind of information we may be seeking includes such facts as residence verification, marital status, occupation, general reputation, personal characteristics and mode of living.  It will be obtained through personal interviews with the Proposed Insured's friends, neighbors, associates and other acquaintances.  Inquiries will not be directed toward determining the Proposed Insured's sexual orientation.
+
+The Proposed Insured, upon written request will be informed whether or not an investigative report was requested, and if a report was ordered, the name and address of the Consumer reporting agency.  A copy of this report is available to the Proposed Insured upon request. 
+
+The Proposed Insured may request to be interviewed in connection with the preparation of such investigative consumer report.
+__________________________________________________________________________________________________________________________________
+
+Name:        $correspondenceAppName			Application Number:        $policyNumber
+
+I have read the notice explaining the content of the investigative consumer report, and I hereby authorize Gerber Life to obtain such a report.
+
+Signature: _________________________________________	Date: ___________________
+
+Telephone: (business hours) _____________________
+
+FCRA
+
+
+ 
+
+
+
+

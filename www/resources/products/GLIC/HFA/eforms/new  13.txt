@@ -1,0 +1,110 @@
+
+  'page': {
+    'title': 'Part 3A  Beneficiary Election',
+    'section': [
+      {
+        'title': '1st Primary Beneficiary',
+        'group': [
+          {
+            'associated': 'true',
+            'question': [
+              {
+                'id': 'bene_first_name',
+                'text': 'Primary Beneficiary : First Name',
+                'required': 'true',
+                'type': 'TEXT'
+              },
+              {
+                'id': 'bene_middle_name',
+                'text': 'Middle',
+                'type': 'TEXT'
+              },
+              {
+                'id': 'bene_last_name',
+                'text': 'Last Name',
+                'required': 'true',
+                'type': 'TEXT'
+              }
+            ]
+          },
+          {
+            'question': {
+              'id': 'bene_relation',
+              'text': 'Relationship to the Insured',
+              'required': 'true',
+              'type': 'LISTBOX',
+              'lookup': 'glic:RELATIONSHIP_TYPE'
+            }
+          }
+        ]
+      },
+      {
+        'title': 'Primary Beneficiary',
+        'repeating': 'true',
+        'group': [
+          {
+            'associated': 'true',
+            'question': [
+              {
+                'id': 'bene_first_name2',
+                'text': 'Primary Beneficiary 2: First Name',
+                'type': 'TEXT'
+              },
+              {
+                'id': 'bene_middle_name2',
+                'text': 'Middle',
+                'type': 'TEXT'
+              },
+              {
+                'id': 'bene_last_name2',
+                'text': 'Last Name',
+                'type': 'TEXT'
+              }
+            ]
+          },
+          {
+            'question': {
+              'id': 'bene_relation2',
+              'text': 'Relationship to the Insured',
+              'type': 'LISTBOX',
+              'lookup': 'glic:RELATIONSHIP_TYPE'
+            }
+          }
+        ]
+      },
+      {
+        'title': 'Contingent Beneficiary',
+        'repeating': 'true',
+        'group': [
+          {
+            'associated': 'true',
+            'question': [
+              {
+                'id': 'contingent_bene_first_name2',
+                'text': 'Contingent Beneficiary 2: First Name',
+                'type': 'TEXT'
+              },
+              {
+                'id': 'contingent_bene_middle_name2',
+                'text': 'Middle',
+                'type': 'TEXT'
+              },
+              {
+                'id': 'contingent_bene_last_name2',
+                'text': 'Last Name',
+                'type': 'TEXT'
+              }
+            ]
+          },
+          {
+            'question': {
+              'id': 'contingent_bene_relation2',
+              'text': 'Relationship to the Insured',
+              'type': 'LISTBOX',
+              'lookup': 'glic:RELATIONSHIP_TYPE'
+            }
+          }
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,22 @@
+<map>
+	<entry>
+		<string>Name</string>
+		<string>${CASE.primaryApplicant.firstName+" "+CASE.primaryApplicant.middleName+" "+CASE.primaryApplicant.lastName}</string>
+	</entry>
+	<entry>
+		<string>PolicyNumber</string>
+		<string>${CASE.policyNo}</string>
+	</entry>
+	<entry>
+		<string>EffectiveDate</string>
+		<string>${POLICY_EFFECTIVE_DATE}</string>
+	</entry>	
+		<entry>
+		<string>GroupName</string>
+		<string>${GROUP_CODE}</string>
+	</entry>
+	<entry>
+		<string>GroupCode</string>
+		<string>${GROUP_NAME}</string>
+	</entry>
+</map>

@@ -1,0 +1,33 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import com.stepsoln.core.rules.uw.*;
+import java.util.ArrayList;
+import com.stepsoln.core.db.Lookup;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "1. DECLINED based on Step UW KNOCKOUT recommendation"
+salience 95
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData()
+		StepUWRecommendationData(recommendation=='KNOCKOUT' || recommendation=='BUILD_CHART_KO' || recommendation=='BUILD_CHART_ERROR_KO');
+	then
+		theCase.setCaseStatus("DECLINED");
+		theCase.setSubmitTaskDescription("DECLINED based on KNOCKOUT recommendation");
+		rulesResponse.addToRuleFiredList(1);
+end
+
+rule "2. SUBMITTED based on Step UW NON KNOCKOUT recommendation"
+salience 90
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData()
+		StepUWRecommendationData(recommendation!='KNOCKOUT' && recommendation!='BUILD_CHART_KO' && recommendation!='BUILD_CHART_ERROR_KO');
+	then
+		theCase.setCaseStatus("SUBMITTED");
+		theCase.setSubmitTaskDescription("SUBMITTED based on NON KNOCKOUT recommendation");
+		rulesResponse.addToRuleFiredList(2);
+end

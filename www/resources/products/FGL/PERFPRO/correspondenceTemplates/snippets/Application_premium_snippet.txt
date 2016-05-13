@@ -1,0 +1,1 @@
+Your new premium is $application.premium

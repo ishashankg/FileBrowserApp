@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<eforms>
+		<eform>
+			<file>eforms/reflexives_eform.xml</file>
+			<description>Medical questions</description>
+			<code>MEDICAL_QUESTIONS</code>
+		</eform>
+		<eform>
+			<file>eforms/demographic_eform.xml</file>
+			<description>Demographic information</description>
+			<code>PERSON</code>
+		</eform>
+	</eforms>
+</stepImport>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/1201/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section>
+			<group>
+				<question id="question1"
+					text="Do you have an existing life insurance or annuity policy/certificate?"
+					required="true" type="LISTBOX" answerSet=" : |Y:Yes|N:No"
+					labelWidth="400px" tabindex='1' />
+			</group>
+		</section>
+		<section>
+			<group style='font-weight: bold'>
+				<footer>It is not necessary to complete the rest of this form.
+					Please sign here.
+				</footer>
+			</group>
+			<group associated="true">
+				<question id='applicant_sign' text='Applicant Signature'
+					type='TEXT' labelWidth="120px" answerWidth="100px" required="true"
+					tabindex='2' />
+				<question id='applicantsign_date' text='Date' required="true"
+					labelWidth="100px" type='DATEF' answerWidth="100px" tabindex='4' />
+			</group>
+			<group associated="true">
+				<question id='producer_sign' text='Producer Signature'
+					type='TEXT' labelWidth="120px" answerWidth="100px" required="true"
+					tabindex='2' />
+				<question id='producersign_date' text='Date' required="true"
+					labelWidth="100px" type='DATEF' answerWidth="100px" tabindex='5' />
+			</group>
+		</section>
+		<section>
+			<group style='font-weight: bold;margin-bottom:10px'>
+				<footer>This document must be signed by the applicant and the agent,
+					a copy left with the applicant, and a copy included with the
+					application forwarded to the Home Office.
+				</footer>
+			</group>
+		</section>
+		<section>
+			<group labelWidth="120px">
+				<paragragh
+					text="You are contemplating the purchase of a life insurance policy or annuity contract. In some cases, this purchase may involve discontinuing or changing an existing policy or contract. If so, a replacement is occurring. Financed purchases are also considered replacements." />
+				<paragragh
+					text="A replacement occurs when a new policy or contract is purchased and, in connection with the sale, you discontinue making premium payments on the existing policy or contract, or an existing policy or contract is surrendered, forfeited, assigned to the replacing insurer, or otherwise terminated or used in a financed purchase." />
+				<paragragh
+					text="A financed purchase occurs when the purchase of a new life insurance policy involves the use of funds obtained by the withdrawal or surrender of or by borrowing some or all of the policy values, including accumulated dividends, of an existing policy, to pay all or part of any premium or payment due on the new policy. A financed purchase is a replacement." />
+				<paragragh
+					text="You should carefully consider whether a replacement is in your best interest. You will pay acquisition costs and there may be surrender costs deducted from your policy or contract. You may be able to make changes to your existing policy or contract to meet your insurance needs at less cost. A financed purchase will reduce the value of your existing policy and may reduce the amount paid upon the death of the insured." />
+			</group>
+		</section>
+		<section title="REPLACEMENT OF LIFE INSURANCE OR ANNUITIES">
+			<group style='font-weight: bold;margin-bottom:10px'>
+				<footer>We want you to understand the effects of replacements before
+					you make your purchase decision and ask that you answer the
+					following questions and consider the questions on the bottom of
+					this page.
+				</footer>
+			</group>
+			<group>
+				<question id='applicant_confirmation' text="Do you want this notice read aloud to you."
+					type='LISTBOX' answerSet=" : |Y:Yes|N:No" labelWidth="400px"
+					tabindex='19' />
+				<question id='applicant_confirmation_signature' text="Applicant's Signature"
+					type='CHECKBOX' required="true" answerWidth="120px" labelWidth="120px"
+					tabindex='20' />
+				<paragragh
+					text="(Applicants must initial only if they do not want the notice read aloud.)" />
+			</group>
+		</section>
+		<section>
+			<group style='font-weight: bold;margin-bottom:10px'>
+				<footer>NOTICE: You have the right within 30 days from the date of
+					delivery of your new life insurance policy or annuity contract, to
+					return it to our office and receive an unconditional full refund of
+					all premiums or considerations paid on it, including policy fees or
+					charges. In the case of a variable or market value adjustment
+					policy or contract, you will receive a payment of the cash
+					surrender benefits provided under the policy or contract, plus the
+					amount of all fees and other charges deducted from gross
+					considerations.
+				</footer>
+			</group>
+		</section>
+		<section style="border:1px solid black;margin-bottom:10px">
+			<group labelWidth="120px">
+				<paragragh
+					text="A replacement may not be in your best interest, or your decision could be a good one. You should make a careful comparison of the costs and benefits of your existing policy or contract and the proposed policy or contract. One way to do this is to ask the company or agent that sold you your existing policy or contract to provide you with information concerning your existing policy or contract. This may include an illustration of how your existing policy or contract is working now and how it would perform in the future based on certain assumptions. Illustrations should not, however, be used as a sole basis to compare policies or contracts. You should discuss the following with your agent to determine whether replacement or financing your purchase makes sense:" />
+				<paragragh text="PREMIUMS:" styleClass="boldText" />
+				<paragragh text="Are they affordable?" />
+				<paragragh text="Could they change?" />
+				<paragragh
+					text="You're older -- are premiums higher for the proposed new policy?" />
+				<paragragh
+					text="How long will you have to pay premiums on the new policy on the old policy?" />
+				<paragragh text="POLICY VALUES:" styleClass="boldText" />
+				<paragragh
+					text="New policies usually take longer to build cash values and to pay dividends." />
+				<paragragh
+					text="Acquisition costs for the old policy may have been paid; you will incur costs for the new one." />
+				<paragragh text="What surrender charges do the policies have?" />
+				<paragragh
+					text="What expense and sales charges will you pay on the new policy?" />
+				<paragragh text="Does the new policy provide more insurance coverage?" />
+				<paragragh text="INSURABILITY:" styleClass="boldText" />
+				<paragragh
+					text="If your health has changed since you bought your old policy, the new one could cost you more, or you could be turned down." />
+				<paragragh text="You may need a medical exam for a new policy." />
+				<paragragh
+					text="Claims on most new policies for up to the first two years can be denied based on inaccurate statements." />
+				<paragragh text="Suicide limitations may begin anew on the new coverage." />
+				<paragragh
+					text="IF YOU ARE KEEPING THE OLD POLICY AS WELL AS THE NEW POLICY:" />
+				<paragragh text="How are premiums for both policies being paid?" />
+				<paragragh
+					text="How will the premiums on your existing policy be affected?" />
+				<paragragh text="Will a loan be deducted from death benefits?" />
+				<paragragh
+					text="What values from the old policy are being used to pay premiums?" />
+				<paragragh
+					text="IF YOU ARE SURRENDERING AN ANNUITY OR INTEREST SENSITIVE LIFE PRODUCT:"
+					styleClass="boldText" />
+				<paragragh text="Will you pay surrender charges on your old contract?" />
+				<paragragh
+					text="What are the interest rate guarantees for the new contract?" />
+				<paragragh
+					text="Have you compared the contract charges or other policy expenses?" />
+				<paragragh text="OTHER ISSUES TO CONSIDER FOR ALL TRANSACTIONS:"
+					styleClass="boldText" />
+				<paragragh text="What are the tax consequences of buying the new policy?" />
+				<paragragh text="Is this a tax-free exchange? (See your tax advisor.)" />
+				<paragragh
+					text="Is there a benefit from favorable 'grandfathered' treatment of the old policy under the federal tax code?" />
+				<paragragh
+					text="Will the existing insurer be willing to modify the old policy?" />
+				<paragragh
+					text="How does the quality and financial stability of the new company compare with your existing company?" />
+			</group>
+		</section>
+		<section>
+			<group>
+				<question id="consider_discontinue" required="true" type="LISTBOX"
+					answerSet="Y:Yes|N:No" labelWidth="400px" tabindex='1'
+					text="1. Are you considering discontinuing making premium payments, surrendering, forfeiting, assigning to the insurer,or otherwise terminating your existing policy or contract?" />
+				<question id="consider_using_funds" required="true" type="LISTBOX"
+					answerSet="Y:Yes|N:No" labelWidth="400px" tabindex='1'
+					text="2. Are you considering using funds from your existing policies or contracts to pay premiums due on the new policy or contract?" />
+			</group>
+		</section>
+		<section>
+			<displayWhen>
+				#{EFORM.consider_discontinue=="Y" or
+				EFORM.consider_using_funds=="Y"}
+			</displayWhen>
+			<group styleClass="boldText">
+				<footer>If you answered "yes" to either of the above questions, list
+					each existing policy or contract you are contemplating replacing
+					(include the name of the insurer, the insured or annuitant, and the
+					policy or contract number if available) and whether each policy or
+					contract will be replaced or used as a source of financing:
+				</footer>
+			</group>
+			<group associated="true">
+				<question id='company_name' text="Insurer Name" type='TEXT'
+					required="true" answerWidth="120px" labelWidth="100px" tabindex='3' />
+				<question id='policy_number' text="Policy Number" type='TEXT'
+					required="true" answerWidth="120px" labelWidth="100px" tabindex='4' />
+			</group>
+			<group associated="true">
+				<question id='insured_name' text="Insured Name" type='TEXT'
+					required="true" answerWidth="120px" labelWidth="100px" tabindex='5' />
+			</group>
+			<group associated="true">
+				<question id='replacement_financing1'
+					text="Will this policy or contract be replaced or used as a source of financing?"
+					type='LISTBOX' required="true" answerSet="R:Replaced|F:Financing"
+					labelWidth="395px" tabindex='6' />
+			</group>
+		</section>
+		<section>
+			<group styleClass="boldText">
+				<footer>Make sure you know the facts. Contact your existing company
+					or its agent or information about the old policy or contract. (If
+					you request one, an in-force illustration, policy summary or
+					available disclosure documents must be sent to you by the existing
+					insurer.) Ask for and retain all sales material used by the agent
+					in the sales presentation. Be sure that you are making an informed
+					decision.
+				</footer>
+			</group>
+			<group style='margin-top:5px'>
+				<question id='replacement_confirmation'
+					text="Is the existing policy or contract being replaced?" type='LISTBOX'
+					required="true" answerSet="Y:Yes|N:No" labelWidth="400px" tabindex='11' />
+				<question id='replacement_reason'
+					text="If you answered “yes” above, the existing policy or contract is being replaced because"
+					type='MEMO' required="true" labelWidth="400px" tabindex='12' />
+			</group>
+		</section>
+
+		<section style="border:1px solid black;margin-bottom:10px">
+			<group styleClass="boldText">
+				<paragragh
+					text="Statement of Policy Regarding Replacements Producers should not advise, suggest, or recommend that an existing life insurance policy or annuity contract be replaced unless it is in the interest of the customer." />
+			</group>
+		</section>
+		<section>
+			<group styleClass="boldText">
+				<footer>I certify that the responses herein are, to the best of my
+					knowledge, accurate:
+				</footer>
+			</group>
+			<group associated="true">
+				<question id='applicant_signature' text="Applicant's Signature"
+					type='CHECKBOX' required="true" answerWidth="100px" labelWidth="120px"
+					tabindex='13' />
+				<question id='date_applicant_signature' text="Date" type='DATEF'
+					required="true" answerWidth="100px" labelWidth="120px" tabindex='14' />
+			</group>
+			<group associated="true">
+				<question id='producer_signature' text="Producer's Signature"
+					type='CHECKBOX' required="true" answerWidth="100px" labelWidth="120px"
+					tabindex='16' />
+				<question id='date_producer_signature' text="Date" type='DATEF'
+					required="true" answerWidth="100px" labelWidth="120px" tabindex='17' />
+			</group>
+		</section>
+	</page>
+</form>

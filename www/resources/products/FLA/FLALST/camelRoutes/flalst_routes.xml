@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+  <route id="flalst_pdf_index">
+    <from uri="activemq://pdf_generation?concurrentConsumers=5"/>
+    <to uri="correspondencePDFProcessor"/>
+    <setHeader headerName="generatedFileName"> 
+      <groovy>request.headers.documentType + request.headers.correspondenceId+'_'+'correspondence'</groovy>
+    </setHeader>
+    <to uri="file://{{rootOutputDirectory}}/FLA/correspondence?fileName=${in.header.generatedFileName}_${date:now:yyyy-MM-dd}.pdf"/>
+    <setBody>
+        <groovy>request.headers.documentType+','+request.headers.policyNumber+','+request.headers.generatedFileName+'.pdf'</groovy>
+    </setBody>
+    <to uri="file://{{rootOutputDirectory}}/FLA/correspondence?fileName=${in.header.generatedFileName}_${date:now:yyyy-MM-dd}.txt"/>
+  </route> 
+  <route id="flalst_ftp_drop">
+    <from uri="file://{{rootOutputDirectory}}/FLA/outbound/nb/?move=.done&amp;moveFailed=.error&amp;consumer.delay={{ftp.consumerDelay}}"/>
+    <to uri="{{fla.ftp.protocol}}://{{fla.ftp.user}}@{{fla.ftp.address}}/{{fla.ftp.folder}}?password={{fla.ftp.password}}&amp;binary=true"/>
+  </route>      
+  <route id="policy_import_fla">
+    <from uri="file://{{fla.import.directory}}/?delete=true&amp;consumer.delay={{ftp.consumerDelay}}"/>
+    <to uri="bean:policyImportExportProcessor"/>
+  </route>        
+</routes>
+
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isnull_179_0</property>
+            <property name="value">underwriter_179</property>
+        </structure>
+        <structure>
+            <property name="name">underwriter_179_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">underwriter_179_expr_</property>
+            <property name="value">dataSetRow["userId"]</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__date_184_1</property>
+            <property name="value">06/2012</property>
+        </structure>
+        <structure>
+            <property name="name">date_184_2</property>
+            <property name="value">06/2012</property>
+        </structure>
+        <structure>
+            <property name="name">date_184_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

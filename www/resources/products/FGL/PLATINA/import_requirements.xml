@@ -1,0 +1,1340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<requirements>
+   <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT1</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>
+        <requirementDescription>Application Part 1</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART1</formCode>
+                <formDescription>Annuitant Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>ANNUITANT</formEformCode>
+				<formSubGroup>APPLICATION</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT2</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Application Part 2</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART2</formCode>
+                <formDescription>Owner Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>PERSON</formEformCode>
+				<formSubGroup>APPLICATION</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT3</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Application Part 3</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART3</formCode>
+                <formDescription>Beneficiary Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>BENEFICIARY</formEformCode>
+				<formSubGroup>APPLICATION</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT5</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Application Part 5</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART5</formCode>
+                <formDescription>Replacement</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPLACEMENT</formEformCode>
+				<formSubGroup>APPLICATION</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT6</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Application Part 6</requirementDescription>
+		<securityFunction>case_auth</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART6</formCode>
+                <formDescription>Authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>AUTHORIZATION</formEformCode>
+				<formSubGroup>APPLICATION</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+     <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT8</requirementCode>
+ 		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Application Part 8</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART8</formCode>
+                <formDescription>Confirmation</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>CONFIRMATION</formEformCode>
+				<formSubGroup>APPLICATION</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+     <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT9</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Suitability Part 1</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART9</formCode>
+                <formDescription>Suitability Owner Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>SUITABILITY_PERSON</formEformCode>
+				<formSubGroup>SUITABILITY</formSubGroup>
+			</requirementForm>
+			<requirementForm>
+                <formCode>APPPART9_FL</formCode>
+                <formDescription>Suitability Owner Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>FL_SUITABILITY_PERSON</formEformCode>
+				<formSubGroup>SUITABILITY</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+      <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT10</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Suitability Part 2</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART10</formCode>
+                <formDescription>Suitability Financial Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>SUITABILITY_FINANCE</formEformCode>
+				<formSubGroup>SUITABILITY</formSubGroup>
+			</requirementForm>
+			<requirementForm>
+                <formCode>APPPART10_FL</formCode>
+                <formDescription>Suitability Financial Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>FL_SUITABILITY_FINANCE</formEformCode>
+				<formSubGroup>SUITABILITY</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+      <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT11</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Suitability Part 3</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART11</formCode>
+                <formDescription>Suitability Important Considerations</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>SUITABILITY_CONSIDERATIONS</formEformCode>
+				<formSubGroup>SUITABILITY</formSubGroup>
+			</requirementForm>
+			<requirementForm>
+                <formCode>APPPART11_FL</formCode>
+                <formDescription>Suitability Important Considerations</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>FL_SUITABILITY_CONSIDERATIONS</formEformCode>
+				<formSubGroup>SUITABILITY</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT112</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Suitability Part 4</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART12</formCode>
+                <formDescription>Suitability Fund Sources</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>SUITABILITY_FUND</formEformCode>
+				<formSubGroup>SUITABILITY</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+     <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT13</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Suitability Part 5</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+			<requirementForm>
+                <formCode>APPPART13_FL</formCode>
+                <formDescription>Suitability Additional Information</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>FL_ADDITIONAL_INFO</formEformCode>
+				<formSubGroup>SUITABILITY</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT14</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Suitability Part 6</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+			<requirementForm>
+                <formCode>APPPART14_FL</formCode>
+                <formDescription>Suitability Signature Acknowledgements</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>FL_SUITABILITY_SIG_ACK</formEformCode>
+				<formSubGroup>SUITABILITY</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+      <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT15</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Suitability Part 7</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+			<requirementForm>
+                <formCode>APPPART15_FL</formCode>
+                <formDescription>Suitability Supplement</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>FL_SUITABILITY_SUPPLEMENT</formEformCode>
+				<formSubGroup>SUITABILITY</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+     <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PT4</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Application Part 4</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>APPPART4</formCode>
+                <formDescription>Annuity Purpose and Premium</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>ANNUITY_PURPOSE</formEformCode>
+				<formSubGroup>APPLICATION</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>CA_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for CA</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>CA_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for CA</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>CA_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>WY_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for WY</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>WY_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for WY</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>WY_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>IL_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for IL</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>IL_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for IL</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>IL_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>IL_REP_NOTICE_B</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice exhibit B form for IL</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>IL_REP_NOTICE_B</formCode>
+                <formDescription>Replacement Notice exhibit B form for IL</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>IL_REP_NOTICE_B</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>DE_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for DE</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>DE_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for DE</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>DE_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>MO_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for MO</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>MO_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for MO</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>MO_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>OK_REP_NOTICE_APPLICANT</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form by applicant for OK</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>OK_REP_NOTICE_APPLICANT</formCode>
+                <formDescription>Replacement Notice form by applicant for OK</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>OK_REP_NOTICE_APPLICANT</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>OK_REP_NOTICE_APPLICATION</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form by application for OK</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>OK_REP_NOTICE_APPLICATION</formCode>
+                <formDescription>Replacement Notice form by application for OK</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>OK_REP_NOTICE_APPLICATION</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>ID_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for ID</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>ID_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for ID</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>ID_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>TN_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for TN</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>TN_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for TN</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>TN_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>NV_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for NV</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>NV_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for NV</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>NV_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>IN_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for IN</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>IN_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for IN</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>IN_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>IN_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for IN</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>IN_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for IN</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>IN_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>FL_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for FL</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>FL_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for FL</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>FL_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>GA_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for GA</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>GA_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for GA</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>GA_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>OR_VT_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for OR and VT</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>OR_VT_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for OR and VT</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>OR_VT_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>CT_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for CT</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>CT_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for CT</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>CT_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+        <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>AK_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for AK</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>AK_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for AK</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>AK_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+        <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>AZ_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for AZ</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>AZ_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for AZ</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>AZ_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>STANDARD_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Replacement Notice form for remaining states</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>STANDARD_REP_NOTICE</formCode>
+                <formDescription>Replacement Notice form for remaining states</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>STANDARD_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>NAIC_REGULATION_REP_NOTICE</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>NAIC Model Regulation Replacement Notice</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>NAIC_REGULATION_REP_NOTICE</formCode>
+                <formDescription>NAIC Model Regulation Replacement Notice</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>NAIC_REGULATION_REP_NOTICE</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	  <requirementLocale></requirementLocale>
+	  <requirementCode>AGENT_CREDENTIAL</requirementCode>
+	  <requirementType>OTHER</requirementType>
+	  <requirementDescription>Validate agent Credentials</requirementDescription>
+	  <securityFunction>case_requirements</securityFunction>
+	  <requirementForms>
+	   <requirementForm>
+		<formCode>AGENT_CREDENTIAL</formCode>
+		<formDescription>Validate agent Credentials</formDescription>
+		<responseRequired>false</responseRequired>
+		<signatureRequired>false</signatureRequired>
+		<formWorkflow></formWorkflow>
+		<formGroupType>NB</formGroupType>
+		<formSubGroup>OTHER</formSubGroup>
+	   </requirementForm>
+	  </requirementForms>
+	 </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>LARGEPREMIUM</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>Indexed and Traditional Large Premium Forms</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>LARGEPREMIUM</formCode>
+                <formDescription>Indexed and Large Premiums</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>LARGEPREMIUM</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PMT</requirementCode>
+        <requirementGroup>NB</requirementGroup>
+		<requirementType>OTHER</requirementType>
+        <requirementDescription>Payment Requirement for Monies Received</requirementDescription>
+        <requirementForms>
+            <requirementForm>
+                <formCode>PAYMENT</formCode>
+                <formDescription>Payment Requirement</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+   	
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>1035TRANSFER</requirementCode>
+		<requirementGroup>APPLICATION</requirementGroup>				
+        <requirementDescription>1035 Transfer Form</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>true</materialChange>
+        <requirementForms>
+            <requirementForm>
+                <formCode>1035TRANSFER</formCode>
+                <formDescription>1035 Transfer Form</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>1035TRANSFER</formEformCode>
+				<formSubGroup>OTHER</formSubGroup>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    
+    <requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>SUIT_CORR</requirementCode>
+        <requirementDescription>Suitability Correspondence</requirementDescription>
+		<securityFunction>case_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>SUITRED8</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Red Flag 8</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITRED10A</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Red Flag 10a</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITRED10B</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Red Flag 10b</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL1A</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 1a</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL1B</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 1b</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL2</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 2</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL3</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 3</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL4</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 4</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL5</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 5</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL6</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 6</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL7</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 7</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL8</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 8</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL9A</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 9a</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL9B</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 9b</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL10A</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 10a</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL10B</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 10b</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL11</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 11</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL12</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 12</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL13</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 13</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL14</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 14</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL15</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 15</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL16A</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 16a</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+			<requirementForm>
+                <formCode>SUITYEL16B</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Correspondence - Yellow Flag 16b</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+    <requirement>
+	    <requirementLocale>FL</requirementLocale>
+        <requirementCode>ADMIN5488</requirementCode>
+        <requirementDescription>Disclosure and Comparison Correspondence</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>ADMIN5488</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Disclosure and Comparison of Annuity Contract - FL</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale>FL</requirementLocale>
+        <requirementCode>ADMIN5526</requirementCode>
+        <requirementDescription>Comparative Info Correspondence</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>ADMIN5526</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Comparative Info Form</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>ADMIN5469</requirementCode>
+        <requirementDescription>Non Resident Sales Acknowledgement Form</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>ADMIN5469</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Non Resident Sales Acknowledgement Form/aka Cross Border Sales</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale>OH</requirementLocale>
+        <requirementCode>ADMIN5571</requirementCode>
+        <requirementDescription>SPDA Disclosure Correspondence</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>ADMIN5571</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>SPDA Disclosure</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+	    <requirementCode>AMENDMENT_CORRESPONDENCE</requirementCode>
+	    <requirementDescription>Amendment Correspondence</requirementDescription>
+	    <securityFunction>case_requirements</securityFunction>
+	    <requirementForms>
+		   <requirementForm>
+			   <formCode>AMENDMENT</formCode>
+			   <requirementType>CORRESPONDENCE</requirementType>
+			   <formDescription>Amendment Correspondence </formDescription>
+			   <responseRequired>false</responseRequired>
+			   <signatureRequired>false</signatureRequired>
+			   <formWorkflow></formWorkflow>
+			   <formEformCode></formEformCode>
+			   <formGroupType>NB</formGroupType>
+		   </requirementForm>
+	    </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>AGENTCNCL</requirementCode>
+        <requirementDescription>Agent Cancel - Not Appointed</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>AGENTCNCL</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Agent Cancel - Not Appointed</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>PREISSUECNCL</requirementCode>
+        <requirementDescription>Pre Issue Requirements Not Received - Cancel</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>PREISSUECNCL</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Pre Issue Requirements Not Received - Cancel</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>TRAINCNCL</requirementCode>
+        <requirementDescription>Product Training - Cancel</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>TRAINCNCL</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Product Training - Cancel</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>SUITDECLCONS</requirementCode>
+        <requirementDescription>Suitability Declination Base - Consumer</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>SUITDECLCONS</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Declination Base - Consumer</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>SUITDECLAGENT</requirementCode>
+        <requirementDescription>Suitability Decline Base - Agent</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>SUITDECLAGENT</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Suitability Decline Base - Agent</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>WTHDRWNAPP</requirementCode>
+        <requirementDescription>Withdrawn App Letter</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>WTHDRWNAPP</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Withdrawn App Letter</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>OWNAGENTCNCL</requirementCode>
+        <requirementDescription>Agent Cancel - Not Appointed - Owner</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>OWNAGENTCNCL</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Agent Cancel - Not Appointed - Owner</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>OWNPREISSUECNCL</requirementCode>
+        <requirementDescription>No Pre Issue Requirements - Cancel - Owner</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>OWNPREISSUECNCL</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>No Pre Issue Requirements - Cancel - Owner</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>OWNTRAINCNCL</requirementCode>
+        <requirementDescription>Product Training - Cancel - Owner</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>OWNTRAINCNCL</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Product Training - Cancel - Owner</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>POADECLSIG</requirementCode>
+        <requirementDescription>Decline Power of Attorny - No Signature - Owner</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>POADECLSIG</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Decline Power of Attorny - No Signature - Owner</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>TRANSCVRLTR</requirementCode>
+        <requirementDescription>Transfer Cover Letter LOA</requirementDescription>
+		<securityFunction>carrier_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>TRANSCVRLTR</formCode>
+                <requirementType>CORRESPONDENCE</requirementType>
+                <formDescription>Transfer Cover Letter LOA</formDescription>
+                <responseRequired>false</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode></formEformCode>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+     </requirements>
+</stepImport>
+

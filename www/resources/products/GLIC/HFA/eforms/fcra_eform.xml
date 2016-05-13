@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <page title="HIPAA Authorization">
+  <section>
+	<group labelWidth="400px" height="250px" title="Fair Credit Reporting Act"  scrollable="true" style="overflow:auto; height:120px; border:1px solid black">
+		<paragragh text="FCRA NOTICE" styleClass="groupParagraphBold"></paragragh>
+		<paragragh text="Para informacion en espanol, visite www.consumerfinance.gov/learnmore o escribe a la Consumer Financial Protection Bureau, 1700 G Street N.W., Washington, DC 20006." styleClass="groupParagraph"></paragragh>
+		<paragragh text="A Summary of Your Rights Under the Fair Credit Reporting Act" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="The federal Fair Credit Reporting Act (FCRA) promotes the accuracy, fairness, and privacy of information in the files of consumer reporting agencies. There are many types of consumer reporting agencies, including credit bureaus and specialty agencies (such as agencies that sell information about check writing histories, medical records, and rental history records). Here is a summary of your major rights under the FCRA. For more information, including information about additional rights, go to http://www.consumerfinance.gov/learnmore or write to: Consumer Financial Protection Bureau, 1700 G Street N.W., Washington, DC 20006." styleClass="groupParagraph"></paragragh>
+		<paragragh text="You may have additional rights under Maine's FCRA, Me. Rev. Stat. Ann. 10, SEc 1311 et seq." styleClass="groupParagraph"></paragragh>
+		<paragragh text="* You must be told if information in your file has been used against you. Anyone who uses a credit report or another type of consumer report to deny your application for credit, insurance, or employment -- or to take another adverse action against you -- must tell you, and must give you the name, address, and phone number of the agency that provided the information." styleClass="groupParagraph"></paragragh>
+		<paragragh text="* You have the right to know what is in your file. You may request and obtain all the information about you in the files of a consumer reporting agency (your &quot;file disclosure&quot;). You will be required to provide proper identification, which may include your Social Security number. In many cases, the disclosure will be free. You are entitled to a free file disclosure if:" styleClass="groupParagraph"></paragragh>
+		<paragragh text="* a person has taken adverse action against you because of information  in your credit report;" styleClass="groupParagraph"></paragragh>
+		<paragragh text="* you are the victim of identity theft and place a fraud alert in your file;" styleClass="groupParagraph"></paragragh>
+		<paragragh text="* your file contains inaccurate information as a result of fraud;" styleClass="groupParagraph"></paragragh>
+		<paragragh text="* you are on public assistance;" styleClass="groupParagraph"></paragragh>
+		<paragragh text="* you are unemployed but expect to apply for employment within 60 days." styleClass="groupParagraph"></paragragh>
+		<paragragh text="In addition, all consumers are entitled to one free disclosure every 12 months upon request from each nationwide credit bureau and from nationwide specialty consumer reporting agencies. See www.consumerfinance.gov/learnmore for additional information." styleClass="groupParagraph"></paragragh>
+		<paragragh text="- You have the right to ask for a credit score. Credit scores are numerical summaries of your credit-worthiness based on information from credit bureaus. You may request a credit score from consumer reporting agencies that create scores or distribute scores used in residential  real property loans, but you will have to pay for it. In some mortgage transactions, you will receive credit score information for free from the mortgage lender." styleClass="groupParagraph"></paragragh>
+		<paragragh text="- You have the right to dispute incomplete or inaccurate information. If you identify information in you file that is incomplete or inaccurate, and report it to the consumer reporting agency, the agency must investigate unless your dispute is frivolous. See www.consumerfinance.gov/learnmore for an explanation of dispute procedures." styleClass="groupParagraph"></paragragh>
+		<paragragh text="- Consumer reporting agencies must correct or delete inaccurate, incomplete, or unverifiable information. Inaccurate, incomplete or unverifiable information must be removed or corrected, usually within 30 days. However, a consumer reporting agency may continue to report information it has verified as accurate." styleClass="groupParagraph"></paragragh>
+		<paragragh text="- Consumer reporting agencies may not report outdated negative information. In most cases, a consumer reporting agency may not report negative information that is more than seven years old, or bankruptcies that are more than 10 years old." styleClass="groupParagraph"></paragragh>
+		<paragragh text="- Access to your file is limited. A consumer reporting agency may provide information about you only to people with a valid need -- usually to consider an application with a creditor, insurer, employer, landlord, or other business. The FCRA specifies those with a valid need for access." styleClass="groupParagraph"></paragragh>
+		<paragragh text="- You must give your consent for reports to be provided to employers. A consumer reporting agency may  not give out information about you to your employer, or a potential employer, without your written consent given to the employer. Written consent generally is not required in the trucking industry. For more information, go to www.consumerfinance.gov/learnmore." styleClass="groupParagraph"></paragragh>
+		<paragragh text="- You may limit &quot;prescreened&quot; offers of credit and insurance you get based on information in your credit report. Unsolicited &quot;prescreened&quot; offers for credit and insurance must include a toll-free phone number you can call if you choose to remove your name and address from the lists these offers are based on. You may opt-out with the nationwide credit bureaus at 1-888-567-8688." styleClass="groupParagraph"></paragragh>
+		<paragragh text="- You may seek damages from violators. If a consumer reporting agency, or, in some cases, a user of consumer reports or a furnisher of information to a consumer reporting agency violates the FCRA, you may be able to sue in state or federal court." styleClass="groupParagraph"></paragragh>
+		<paragragh text="- Identity theft victims and active duty military personnel have additional rights. For more information, visit www.consumerfinance.gov/learnmore." styleClass="groupParagraph"></paragragh>
+		<paragragh text="" styleClass="groupParagraph"></paragragh>
+		<paragragh text="States may enforce the FCRA, and many states have their own consumer reporting laws. In some cases, you may have more rights under state law. For more information, contact your state or local consumer protection agency or your state Attorney General. For more information about your federal rights, contact:" styleClass="groupParagraph"></paragragh>
+		<paragragh text="1.a. Banks, saving associations, and credit unions with total assets of over $10 billion and their affiliates." styleClass="groupParagraph"></paragragh>
+		<paragragh text="Bureau of Consumer Financial Protection" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="1700 G Street NW" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Washington, DC 20006" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="b. Such affiliates that are not banks, savings associations, or credit unions also should list, in addition to the Bureau:" styleClass="groupParagraph"></paragragh>
+		<paragragh text="Federal Trade Commission: Consumer Response Center - FCRA" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Washington, DC 20580" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="(877) 382-4357" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="2. To the extent not included in item 1 above:" styleClass="groupParagraph"></paragragh>
+		<paragragh text="a. National banks, federal savings associations, and federal branches and federal agencies of foreign banks" styleClass="groupParagraph"></paragragh>
+		<paragragh text="Office of the Comptroller of the Currency" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Customer Assistance Group" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="1301 McKinney Street, Suite 3450" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Houston, TX 77010-9050" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="b. State member banks, branches and agencies of foreign banks (other than federal branches, federal agencies, and insured state branches of foreign banks), commercial lending companies owned or controlled by foreign banks, and organizations operating under section 25 or 25A of the Federal Reserve Act" styleClass="groupParagraph"></paragragh>
+		<paragragh text="Federal Reserve Consumer Help Center" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="P.O. Box 1200" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Minneapolis, MN 55480" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="c. Nonmember Insured Banks, Insured State Branches of Foreign Banks, and insured state savings associations" styleClass="groupParagraph"></paragragh>
+		<paragragh text="FDIC Consumer Response Center" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="1100 Walnut Street, Box #11" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Kansas City, MO 64106" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="d. Federal Credit Unions" styleClass="groupParagraph"></paragragh>
+		<paragragh text="National Credit Union Administration" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Office of Consumer Protection (OCP)" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Division of Consumer Compliance and Outreach (DCCO)" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="1775 Duke Street" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Alexandria, VA 22314" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="3. Air carriers" styleClass="groupParagraph"></paragragh>
+		<paragragh text="Asst. General Counsel for Aviation Enforcement &amp; Proceedings" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Department of Transportation" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="400 Seventh Street SW" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Washington, DC 20590" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="4. Creditors Subject to Surface Transportation Board" styleClass="groupParagraph"></paragragh>
+		<paragragh text="Office of Proceedings, Surface Transportation Board" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Department of Transportation" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="1925 K Street NW" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Washington, DC 20423" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="5. Creditors Subject to Packers and Stockyards Act" styleClass="groupParagraph"></paragragh>
+		<paragragh text="Nearest Packers and Stockyards Administration area supervisor" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="6. Small Business Investment Companies" styleClass="groupParagraph"></paragragh>
+		<paragragh text="Associate Deputy Administrator for Capital Access" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="United States Small Business Administration" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="406 Third Street, SW, 8th Floor" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Washington, DC 20416" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="7. Brokers and Dealers" styleClass="groupParagraph"></paragragh>
+		<paragragh text="Securities and Exchange Commission" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="100 F St NE" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Washington, DC 20549" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="8. Federal Land Banks, Federal Land Bank Associations, Federal Intermediate Credit Banks, and Production Credit Associations" styleClass="groupParagraph"></paragragh>
+		<paragragh text="Farm Credit Administration" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="1501 Farm Credit Drive" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="McLean, VA 22102-5090" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="9. Retailers, Finance Companies, and All Other Creditors Not Listed Above" styleClass="groupParagraph"></paragragh>
+		<paragragh text="FTC Regional Office for regin in which the creditor operates or" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Federal Trade Commission: Consumer Response Center - FCRA" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Washington, DC 20580" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="(877) 382-4357" styleClass="groupParagraphCenter"></paragragh>
+    </group>
+  </section>
+  </page>
+</form>

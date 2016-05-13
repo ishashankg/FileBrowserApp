@@ -1,0 +1,169 @@
+<behavior>
+	<function name="CaseList.gotoCaseFlow">
+		<actionType>FLOW</actionType>
+		<actionName>flaPrequalificationFlow</actionName>
+		<description>Start Pre Qualification Flow</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="externalCaseNo" value="#{param['externalCaseNo']}"/>		
+		<param name="returnUrl" value="/pages/case/case_list.xhtml?ouId=#{param['ouId']}"/>
+	</function>
+	<function name="CaseList.gotoCaseDetails">
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/case_details</actionName>
+		<description>Go to High Level Case Information</description>>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="taskId" value="#{param['taskId']}"/>	
+		<param name="ouId" value="#{param['ouId']}"/>
+	</function>
+	<function name="CaseList.gotoCaseDetails">
+		<ouClass>UW</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/underwriter_workbench</actionName>
+		<description>Go to underwriter workbench</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="taskId" value="#{param['taskId']}"/>		
+	</function>
+	<function name="CaseList.display">
+		<ouCode>MERICA</ouCode>
+		<ouClass>UW</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/case_list</actionName>
+		<description>Display the case list showing archived cases</description>
+		<param name="showArchived" value="true"/>	
+	</function>
+	<function name="CaseList.undoFinalAction">
+		<ouCode>FLIFE</ouCode>
+		<actionType>LINK</actionType>
+		<actionName>/pages/case/case_list</actionName>
+		<description>Move to Fidelity Life OU after final action</description>	
+	</function>
+	<function name="SecurityInvitation.postSecurityInvitationSuccessAction">
+		<actionType>FLOW</actionType>
+		<actionName>flaPrequalificationFlow</actionName>
+		<description>Start Pre Qualification Flow</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="returnUrl" value="/pages/public/invite_status.xhtml"/>		
+	</function>
+	<function name="SecurityInvitation.postCreateUserSuccessAction">
+		<actionType>LINK</actionType>
+		<actionName>/pages/custom/fla_begin_main_flow</actionName>
+		<description>Page to go after user has setup an account</description>	
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="ouId" value="#{param['ouId']}"/>	
+		<param name="msgId" value="null}"/>
+	</function>
+	<function name="SecurityInvitation.resetPasswordAction">
+		<actionType>LINK</actionType>
+		<actionName>/pages/custom/reset_password.xhtml</actionName>
+		<description>Page to go after user has setup an account</description>	
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="ouId" value="#{param['ouId']}"/>	
+		<param name="msgId" value="null}"/>
+	</function>
+	<function name="SecurityInvitation.applicantESignatureFlowStartAction">
+		<actionType>LINK</actionType>
+		<actionName>/public/invite/invite_create_user</actionName>
+		<description>Page to go for the applicant ESignature flow</description>	
+		<param name="caseId" value="#{param['caseId']}"/>
+	</function>
+	<function name="CaseList.createNewCase">
+		<actionType>FLOW</actionType>
+		<actionName>flaPrequalificationFlow</actionName>
+		<description>Start Pre Qualification Flow</description>
+		<param name="carrierId" value="#{param['carrierId']}"/>
+		<param name="returnUrl" value="#{String.format('/pages/case/case_list.xhtml?ouId=%s', caseListController.getOuId() )}"/>
+	</function>
+	<function name="NewCaseController.postCaseSubmitAction">
+		<ouClass>NB</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/custom/fla_begin_main_flow</actionName>
+		<description>Page to go after user has submitted the case</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="ouId" value="#{param['ouId']}"/>	
+		<param name="targetPartyId" value="#{param['applicantId']}"/>
+		<param name="msgId" value="null"/>
+	</function>
+	<function group="CaseList.otherActions" name="CaseList.sendToService">
+		<actionType>WORKFLOW</actionType>
+		<actionName>sendToServiceWorkflow</actionName>			
+	</function>
+	
+	<function name="POST_NB_SERVICE_ADD_CASE">
+      <actionType>GROOVY</actionType>
+      <actionName>FLA_CARRIER_GROOVY_BEHAVIOR</actionName>
+      <actionMethod>postNBServiceAddCase</actionMethod>      
+    </function>
+    <function name="SEND_ACQUIRE_ESIGNATURE_EMAIL">
+      <actionType>GROOVY</actionType>
+      <actionName>FLA_CARRIER_GROOVY_BEHAVIOR</actionName>
+      <description>This action gets called before the new case is submitted</description>
+      <actionMethod>sendAcquireEsignataureEmailToApplicant</actionMethod>      
+    </function>
+    <function name="SEND_APPLICATION_UPDATE_REQUEST_EMAIL">
+      <actionType>GROOVY</actionType>
+      <actionName>FLA_CARRIER_GROOVY_BEHAVIOR</actionName>
+      <description>This action gets called when an applicant requests the agent make revisions</description>
+      <actionMethod>sendEmailToAgentForReview</actionMethod>      
+    </function>
+    <function name="GENERATE_APPLICATION_PACKET">
+      <actionType>GROOVY</actionType>
+      <actionName>FLA_CARRIER_GROOVY_BEHAVIOR</actionName>
+      <description>This event generates the application packet</description>
+      <actionMethod>generateApplicationPacket</actionMethod>      
+    </function> 
+
+    <function name="ADD_REVISION_NOTE_FOR_AGENT">
+      <actionType>GROOVY</actionType>
+      <actionName>FLA_CARRIER_GROOVY_BEHAVIOR</actionName>
+      <description>This saves the revision note that the applicant sends to the agent.</description>
+      <actionMethod>generateApplicationPacket</actionMethod>      
+    </function> 
+
+    <function name="RESET_PASSWORD">
+    	<actionType>GROOVY</actionType>
+    	<actionName>FLA_CARRIER_GROOVY_BEHAVIOR</actionName>
+    	<description>This event generates the application packet</description>
+    	<actionMethod>resetPassword</actionMethod>      
+    </function>   
+    <function name="CaseService.submitNewCase">
+      <actionType>JAVA</actionType>
+      <actionName>com.stepsoln.core.db.services.custom.CustomCaseService</actionName>
+      <actionMethod>submitNewCaseAndPeformFinalAction</actionMethod>  
+      <param name="case" value="com.stepsoln.core.db.cases.Case"/>    
+    </function>
+    <function name="CustomCaseService.orderRequirementsWithApplicationPacketForCase">
+      <actionType>JAVA</actionType>
+      <actionName>com.stepsoln.core.db.services.custom.CustomCaseService</actionName>
+      <actionMethod>orderRequirementsWithApplicationPacketForCase</actionMethod>  
+      <param name="case" value="com.stepsoln.core.db.cases.Case"/>    
+    </function>
+    <function name="CustomService.postMericaResponse">
+      <actionType>JAVA</actionType>
+      <actionName>com.stepsoln.core.db.services.custom.CustomCaseService</actionName>
+      <actionMethod>takeFinalAction</actionMethod>  
+      <param name="case" value="com.stepsoln.core.db.cases.Case"/>
+      <param name="risk" value="com.stepsoln.core.db.uw.CaseUwRiskCalc"/>
+      <param name="decision" value="com.stepsoln.core.rules.RiskCalculationDecisionResultData"/> 
+    </function>
+    <function name="getPolicyStatus">
+      <actionType>GROOVY</actionType>
+      <actionName>FLA_CARRIER_GROOVY_UTILS</actionName>
+      <description>getPolicyStatus</description>
+      <actionMethod>getPolicyStatus</actionMethod>  
+      <returnClassName>java.lang.String</returnClassName>    
+    </function>
+    <function name="getRepeatingPdfContent">
+      <actionType>GROOVY</actionType>
+      <actionName>FLA_CARRIER_GROOVY_UTILS</actionName>
+      <description>getRepeatingPdfContent</description>
+      <actionMethod>getRepeatingPdfContent</actionMethod>  
+      <returnClassName>java.util.List</returnClassName>    
+    </function>
+    <function name="getSupplementalPdfContent">
+      <actionType>GROOVY</actionType>
+      <actionName>FLA_CARRIER_GROOVY_UTILS</actionName>
+      <description>Supplemental Pdf Content</description>
+      <actionMethod>getSupplementalPdfContent</actionMethod>  
+      <returnClassName>java.lang.Boolean</returnClassName>    
+    </function>
+</behavior>

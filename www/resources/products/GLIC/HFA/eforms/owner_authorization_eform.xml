@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillForm</onLoad>
+  <onComplete>importData</onComplete>
+  <page title="Supplement to Application">
+	<onExitRule>OWNER_RULES</onExitRule>
+    <section title="Proposed Insured">
+      <group associated="true" readonly="true">
+        <question id='ins_first_name' text='Proposed Insured: First Name'
+          labelWidth="200px" type='TEXT' answerWidth="150px" />
+        <question id='ins_middle_name' text='Middle' labelWidth="40px"
+          type='TEXT' answerWidth="50px;" labelStyle='margin-left:8px;margin-top:3px'/>
+        <question id='ins_last_name' text='Last Name' labelWidth="75px"
+          type='TEXT' answerWidth="150px" labelStyle='margin-left:8px;margin-top:3px'/>
+      </group>
+    </section>
+    <section title="Owner Information">
+      <group associated="true">
+        <question id='owner_first_name' text='First Name' required="true"
+          labelWidth="120px" type='TEXT' answerWidth="150px;"  tabindex='1'/>
+		<question id='owner_residence_address' text='Legal Residence of Owner:'
+          required="true" type='TEXT' labelWidth="120px" answerWidth="150px;" labelStyle='margin-left:40px;' answerStyle='margin-left:8px;' tabindex='8'/>
+      </group>
+      <group associated="true">
+       <question id='owner_middle_name' text='Middle Initial' labelWidth="120px"
+          type='TEXT' answerWidth="25px;" tabindex='2'/>
+       <question id='owner_city' text='City:' type='TEXT'
+          required="true" labelWidth="120px" answerWidth="150px;" labelStyle='margin-left:165px;' answerStyle='margin-left:8px;' tabindex='9'/>   
+       </group>
+          
+       <group associated="true">  
+       <question id='owner_last_name' text='Last Name'
+          required="true" labelWidth="120px" type='TEXT' answerWidth="150px;" tabindex='3'/>
+         <question id='owner_residence_state' text='State:'
+          required="true" lookup="step:LOCALE_STATE" answerSet=":Please select a state"
+          type='LISTBOX' answerWidth="175px;" labelStyle='margin-left:41px;' labelWidth="120px" answerStyle='margin-left:8px;' tabindex='10'/>
+        </group>  
+          
+       <group associated="true">     
+        <question id='owner_date_of_birth' text='Owner Date of Birth:'
+          type='DATEF' required="true"  answerWidth="150px;"  tabindex='4' labelWidth="120px" />
+          <question id='owner_zip' text='Zip Code:' type='TEXT'
+          required="true" answerWidth="65px;" labelStyle='margin-left:38px;' labelWidth="120px" answerStyle='margin-left:8px;' tabindex='11'/>
+        </group>  
+          
+        <group associated="true">     
+        <question id='owner_social_security_number' text='Social Security Number: '
+          type='SSN' required="true"  labelWidth="120px" answerWidth="120px;" tabindex='5'/>
+          <question id='owner_relationship' text='Relationship of Owner to Insured:'
+          type='LISTBOX' lookup="step:RELATIONSHIP_TYPE" answerSet=""
+          required="true" answerWidth="175px;"  labelStyle='margin-left:67px;' answerStyle='margin-left:8px;' labelWidth="120px" tabindex='12'/>
+      </group>
+      <group >
+         <question id='owner_email_address' text='Email Address'
+          type='TEXT' answerWidth="150px;"  labelWidth="120px" tabindex='6'/>
+      </group>
+      <group>
+        <question id='future_owner'
+          text='Will ownership be transferred to another person or entity in the future:'
+          type='RADIO' answerSet='Y|N' required="true" labelWidth="423px" tabindex='13'/>
+        <question id='future_owner_info' text='If yes, please identify:'
+          type='MEMO' required="true" labelWidth="200px" answerWidth="350px;" tabindex='14'>
+         <displayWhen>#{EFORM.future_owner=="Y"}</displayWhen>
+        </question>
+      </group>
+      <group>
+        <question id='other_owner'
+          text='Has the Proposed Insured or Policyowner entered into or made plans to enter into a contract, agreement or arrangement to sell, transfer or assign the ownership of or a beneficial interest in the policy being applied for to an unrelated third party?'
+          type='RADIO' answerSet='Y|N' required="true" labelWidth="423px" tabindex='15'>
+          <displayWhen>#{CASE.contractLocale=="NY"}</displayWhen>
+        </question>
+        <question id='other_owner_completer' text='If yes, please identify:'
+          type='MEMO' answerWidth="350px;" required="true" labelWidth="200px" tabindex='16'>
+         <displayWhen>#{EFORM.other_owner=="Y" and CASE.contractLocale=="NY"}</displayWhen>
+        </question>
+        
+      </group>
+    </section>
+  </page>
+</form>

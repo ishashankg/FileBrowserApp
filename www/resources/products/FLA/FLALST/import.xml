@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude" 
+   xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<carrier>
+		<carrierCode>FLA</carrierCode>
+		<carrierName>Fidelity Life Association</carrierName>
+		<carrierNAICCode>63290</carrierNAICCode>	
+		<docTypes>
+			<docType>
+				<docTypeCode>NB</docTypeCode>
+				<docTypeName>New Business</docTypeName>
+			</docType>
+			<docType>
+				<docTypeCode>UW</docTypeCode>
+				<docTypeName>Underwriting</docTypeName>
+			</docType>
+		</docTypes>
+		
+	<product>
+		<code>FLALST</code>
+		<name>LifeStory Term</name>
+		<lineOfBusiness>LIFE</lineOfBusiness>
+		<ageCalculationMethod>LAST_BIRTHDAY</ageCalculationMethod>
+		<defaultPaymentMode>ANNUAL</defaultPaymentMode>
+		<defaultPaymentMethod>PAC</defaultPaymentMethod>
+		<rateFactors>
+			<rateFactor>
+				<ratePaymentMethod>PAC</ratePaymentMethod>
+				<rateOnetimeFactor></rateOnetimeFactor>
+				<rateAnnualFactor>1</rateAnnualFactor>
+				<rateSemiannualFactor>.520</rateSemiannualFactor>
+				<rateQuarterlyFactor>.28</rateQuarterlyFactor>
+				<rateMonthlyFactor>.087</rateMonthlyFactor>
+				<rateSemimonthlyFactor></rateSemimonthlyFactor>
+				<rateBiweeklyFactor></rateBiweeklyFactor>
+				<rateBimonthlyFactor></rateBimonthlyFactor>
+			</rateFactor>
+			<rateFactor>
+				<ratePaymentMethod>BILL</ratePaymentMethod>
+				<rateOnetimeFactor></rateOnetimeFactor>
+				<rateAnnualFactor>1</rateAnnualFactor>
+				<rateSemiannualFactor>.520</rateSemiannualFactor>
+				<rateQuarterlyFactor>.28</rateQuarterlyFactor>
+				<rateMonthlyFactor>.087</rateMonthlyFactor>
+				<rateSemimonthlyFactor></rateSemimonthlyFactor>
+				<rateBiweeklyFactor></rateBiweeklyFactor>
+				<rateBimonthlyFactor></rateBimonthlyFactor>
+			</rateFactor>
+		</rateFactors>
+		<rateClasses>
+			<rateClass>
+				<rateClassCode>PF</rateClassCode>
+				<isDefault>true</isDefault>
+				<name>Preferred LifeStory</name>
+				<sequence>1</sequence>
+			</rateClass>
+			<rateClass>
+				<rateClassCode>ST</rateClassCode>
+				<isDefault>false</isDefault>
+				<name>Standard LifeStory</name>
+				<sequence>2</sequence>
+			</rateClass>
+			<rateClass>
+				<rateClassCode>RB</rateClassCode>
+				<isDefault>false</isDefault>
+				<name>Rated B</name>
+				<sequence>3</sequence>
+			</rateClass>
+			<rateClass>
+				<rateClassCode>RD</rateClassCode>
+				<isDefault>false</isDefault>
+				<name>Rated D</name>
+				<sequence>4</sequence>
+			</rateClass>
+		</rateClasses>
+		<plans>
+			<plan>
+				<code>LSTFA</code>
+				<name>Face Amount</name>
+				<planType>BASE</planType>
+				<services>
+					<service>
+						<name>Face Amount</name>
+						<options>
+							<option>
+								<code>LSTFA</code>
+								<name>Face Amount</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>FACE_AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+										<max>500</max>
+										<increment>1000</increment>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+			<plan>
+				<code>LSTTL</code>
+				<name>Term Level Life</name>
+				<planType>BASE</planType>
+				<services>
+					<service>
+						<name>Term Life</name>
+						<options>
+							<option>
+								<code>LSTTERM30</code>
+								<name>30-Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>30</value>
+									</level>
+								</levels>
+							</option>
+							<option>
+								<code>LSTTERM20</code>
+								<name>20-Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>20</value>
+									</level>
+								</levels>
+							</option>
+							<option>
+								<code>LSTTERM15</code>
+								<name>15-Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>15</value>
+									</level>
+								</levels>
+							</option>
+							<option>
+								<code>LSTTERM10</code>
+								<name>10-Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>10</value>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+			<plan>
+				<code>LSTCTR1</code>
+				<name>Dependent Child Rider</name>
+				<planType>RIDER</planType>
+				<applicantType>DEPENDANT</applicantType>
+				<services>
+					<service>
+						<name>DEC Service</name>
+						<options>
+							<option>
+								<code>LSTCTR1</code>
+								<name>Dependent Child Rider</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+										<max>25</max>
+										<increment>5</increment>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+			<plan>
+				<code>LSTADB1</code>
+				<name>Accidental Death Benefit</name>
+				<planType>RIDER</planType>
+				<services>
+					<service>
+						<name>ADB Service</name>
+						<options>
+							<option>
+								<code>LSTADB1</code>
+								<name>Accidental Death Benefit</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+										<max>250</max>
+										<increment>1000</increment>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+<!-- 
+			<plan>
+				<code>LSTACD1</code>
+				<name>Accelerated Death Benefit Rider</name>
+				<planType>RIDER</planType>
+				<services>
+					<service>
+						<name>ACD Service</name>
+						<options>
+							<option>
+								<code>LSTACD1</code>
+								<name>Accelerated Death Benefit</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>										
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>	
+	-->
+			<plan>
+				<code>LSTPOLFEE</code>
+				<name>LifeStory Policy Fee</name>
+				<planType>RIDER</planType>
+				<services>
+					<service>
+						<name>Fee Service</name>
+						<options>
+							<option>
+								<code>LSTPOLFEE</code>
+								<name>LifeStory Policy Fee</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>										
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>	
+			<plan>
+				<code>LSTPREMIUM</code>
+				<name>LifeStory Premium Increase</name>
+				<planType>RIDER</planType>
+				<services>
+					<service>
+						<name>Premium Increase</name>
+						<options>
+							<option>
+								<code>LSTPREMIUM</code>
+								<name>LifeStory Premium Increase</name>
+								<showOnQuote>false</showOnQuote>
+								<optionValueType>PREMIUM</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>										
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+<!--		<plan>
+				<code>LSTWP</code>
+				<name>Waiver of Premium Rider</name>
+				<planType>RIDER</planType>
+				<services>
+					<service>
+						<name>WP Benefit</name>
+						<options>
+							<option>
+								<code>LSTWP</code>
+								<name>Waiver of Premium Rider</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan> -->
+			</plans>
+			<file uri="import_agencies.xml" />
+		    <file uri="import_users.xml" />
+			<file uri="import_orgunits.xml" />
+			<file uri="import_ouUsers.xml" />
+			<file uri="import_roles.xml" />
+			<file uri="import_userRoles.xml" />
+			<file uri="import_resources.xml" />
+			<file uri="import_eforms.xml" />
+			<file uri="import_pdfs.xml" />
+			<file uri="import_requirements.xml" />
+			<file uri="import_correspondence.xml" />
+			<file uri="import_licenses.xml" />
+		 	<file uri="import_rates.xml" />
+			<file uri="import_appointments.xml" />	 
+			<file uri="import_preferences.xml" />  
+			<file uri="import_buildchart.xml" />
+	</product>
+	</carrier>
+</stepImport>

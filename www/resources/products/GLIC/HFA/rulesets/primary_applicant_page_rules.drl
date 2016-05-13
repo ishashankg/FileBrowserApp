@@ -1,0 +1,88 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import com.stepsoln.core.rules.requirements.CaseData;
+import org.apache.commons.lang.StringUtils;
+
+global RulesResponse rulesResponse;
+
+rule "1. Applicant first name required"
+	when
+	    ApplicantData(type == "PRIMARY_INSURED", StringUtils.isEmpty(firstName))
+	then
+		rulesResponse.addRequired("Applicant firstname is required");
+		rulesResponse.addToRuleFiredList(1);
+end
+
+rule "2. Applicant last name required"
+	when
+	    ApplicantData(type == "PRIMARY_INSURED", StringUtils.isEmpty(lastName))
+	then
+		rulesResponse.addRequired("Applicant lastName is required");
+		rulesResponse.addToRuleFiredList(2);
+end
+
+
+
+rule "4. Applicant SSN required for online case"
+	when
+		CaseData(caseOutOfNb==true) or CaseData(paperCase == false);
+	    ApplicantData(type == "PRIMARY_INSURED", StringUtils.isEmpty(sSN))
+	then
+		rulesResponse.addRequired("Applicant SSN is required");
+		rulesResponse.addToRuleFiredList(4);
+end
+
+rule "5. Applicant Phone required for online case"
+	when
+		CaseData(caseOutOfNb==true) or CaseData(paperCase == false);
+	    ApplicantData(type == "PRIMARY_INSURED", StringUtils.isEmpty(phone))
+	then
+		rulesResponse.addRequired("Applicant primary phone is required");
+		rulesResponse.addToRuleFiredList(5);
+end
+
+
+rule "7. Applicant address line1 required for online case"
+	when
+		CaseData(caseOutOfNb==true) or CaseData(paperCase == false);
+	    ApplicantData(type == "PRIMARY_INSURED", StringUtils.isEmpty(address.addressLine1))
+	then
+		rulesResponse.addRequired("Applicant address line1 is required");
+		rulesResponse.addToRuleFiredList(7);
+end
+
+rule "8. Applicant address city required for online case"
+	when
+		CaseData(caseOutOfNb==true) or CaseData(paperCase == false);
+	    ApplicantData(type == "PRIMARY_INSURED", StringUtils.isEmpty(address.city))
+	then
+		rulesResponse.addRequired("Applicant address city is required");
+		rulesResponse.addToRuleFiredList(8);
+end
+
+rule "9. Applicant address state required for online case"
+	when
+		CaseData(caseOutOfNb==true) or CaseData(paperCase == false);
+	    ApplicantData(type == "PRIMARY_INSURED", StringUtils.isEmpty(address.state))
+	then
+		rulesResponse.addRequired("Applicant state city is required");
+		rulesResponse.addToRuleFiredList(9);
+end
+
+rule "10. Applicant address state required for online case"
+	when
+		CaseData(caseOutOfNb==true) or CaseData(paperCase == false);
+	    ApplicantData(type == "PRIMARY_INSURED", StringUtils.isEmpty(address.zip))
+	then
+		rulesResponse.addRequired("Applicant state zip is required");
+		rulesResponse.addToRuleFiredList(10);
+end
+
+rule "11. Contract locale required"
+	when
+		CaseData(contractLocaleFlag==false, StringUtils.isBlank(contractLocale))
+	then
+		rulesResponse.addRequired("Contract State is required if not same as state of residence");
+		rulesResponse.addToRuleFiredList(11);
+end

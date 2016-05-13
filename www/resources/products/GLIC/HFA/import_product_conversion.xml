@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<productPlanConversions>
+    <productPlanConversion>
+        <from product="HFA" plan="TL"/>
+        <to product="HFA" plan="WL" rules=""/>
+    </productPlanConversion>
+</productPlanConversions>
+</stepImport>
+
+
+
+
+
+
+
+
+

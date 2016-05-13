@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<rates>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premium-AllBands.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/ulife_policy_fee.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+</rates>
+</stepImport>

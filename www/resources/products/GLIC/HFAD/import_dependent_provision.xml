@@ -1,0 +1,23 @@
+<Provisions xsi:schemaLocation="http://stepsoln.com/Provision/3 provisions.xsd" xmlns="http://stepsoln.com/Provision/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ChildRiderProvisions>
+		<Description>
+			<![CDATA[
+				Children's Term Rider, which is available to children ages 14 days to 20 years.
+				Benefit amounts are $5,000 to $30,000 per child. The premium for the rider does not change when additional children are added.
+				The IAC Children's Term Rider also has a value added conversion privilege.
+				This allows rider holding young adults between the ages of 20 to 25 to exercise their conversion option.
+				Each insured child may convert to a new permanent policy (with no evidence of insurability) for an amount up to 10 times the Term Rider to a maximum of $150,000.
+				In addition, one will find a 20% discount on the converted policy for the first five policy years.
+			]]> 
+		</Description>
+	</ChildRiderProvisions>
+	<SpousalRiderProvisions>
+		<Description>
+			<![CDATA[
+				The minimum coverage amount is $50,000 for the spouse.
+				The IAC spouse's rider coverage amount can be a maximum of the face amount of the based insured.
+				If the Base Insured amount is $300,000 then the spouse rider can be up to $300,000.
+			]]> 
+		</Description>
+	</SpousalRiderProvisions>
+</Provisions>

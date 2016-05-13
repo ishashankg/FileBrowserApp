@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillData</onLoad>
+	<page title='IMPORTANT NOTICE:  REPLACEMENT OF LIFE INSURANCE OR ANNUITIES'>
+		<section>
+			<group labelWidth="400px" height="120px"
+				title="This document must be signed by the applicant and the producer, if there is one, and a copy left with the applicant."
+				scrollable="true">
+				<paragragh
+					text="You are contemplating the purchase of a life insurance policy or annuity contract.  In some cases this purchase may involve discontinuing or changing an existing policy or contract.  If so, a replacement is occurring.  Financed purchases are also considered replacements."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="A replacement occurs when a new policy or contract is purchased and, in connection with the sale, you discontinue making premium payments on the existing policy or contract, or an existing policy or contract is surrendered, forfeited, assigned to the replacing insurer, or otherwise terminated or used in a financed purchase."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="A financed purchase occurs when the purchase of a new life insurance policy involves the use of funds obtained by the withdrawal or surrender of or by borrowing some or all of the policy values, including accumulated dividends, of an existing policy to pay all or part of any premium or payment due on the new policy.  A financed purchase is a replacement."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="You should carefully consider whether a replacement is in your best interests.  You will pay acquisition costs and there may be surrender costs deducted from your policy or contract.  You may be able to make changes to your existing policy or contract to meet your insurance needs at less cost.  A financed purchase will reduce the value of your existing policy and may reduce the amount paid upon the death of the insured."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+			<group labelWidth="600px">
+				<header> We want you to understand the effects of replacements before you make your purchase decision and ask that you answer the following questions and consider the questions on the back of this form</header>
+				<question id='r1a'
+					text='1.  Are you considering discontinuing making premium payments, surrendering, forfeiting, assigning to the insurer, or otherwise terminating your existing policy or contract?'
+					type='RADIO' answerSet='Y|N' required="false" />
+				<question id='r2a'
+					text='2.  Are you considering using funds from your existing policies or contracts to pay premiums due on the new policy or contract?'
+					type='RADIO' answerSet='Y|N' required="false" />
+			</group>
+			<group labelWidth="400px" height="120px" title=" " scrollable="false">
+				<paragragh
+					text="If you answered &quot;yes&quot; to either of the above questions, list each existing policy or contract your are contemplating replacing (include the name of the insurer, the insured or annuitant, and the policy or contract number if available) and whether each policy or contract will be replaced or used as a source of financing:"
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale!='ME'}</displayWhen>
+			</group>
+			<group labelWidth="400px" height="120px" title=" " scrollable="false">
+				<paragragh
+					text="If you answered &quot;yes&quot; to either of the above questions, list each existing policy or contract your are contemplating replacing (include the name of the insurer, the insured, and the contract number if available) and whether each policy will be replaced or used as a source of funding"
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='ME'}</displayWhen>
+			</group>
+		</section>
+		<section title="Replacement Company" repeating="true">
+			<group associated="true">
+				<question id='replaced_carrier' text='Insurer Name'  labelWidth="150px" type='TEXT' answerWidth="150px;" required="true"/>
+				<question id='replaced_policyno' text='Contract or Policy #' labelWidth="200px" type='TEXT' answerWidth="100px;" />
+			</group>
+			<group associated="true">
+				<question id='replaced_insured' text='Insured or Annuitant' labelWidth="150px" type='TEXT' answerWidth="150px;" />
+				<question id='replaced_financing' text='Replaced (R) or Financing (F)' labelWidth="200px" type='RADIO' answerSet='R|F' />
+			</group>
+		</section>
+		<section>
+			<group labelWidth="400px">
+				<header> Make sure you know the facts.  Contact your existing company or its agent for information about the old policy or contract.  If you request one, an in force illustration, policy summary or available disclosure documents must be sent to you by the existing insurer.  Ask for and retain all sales material used by the agent in the sales presentation.  Be sure that you are making an informed decision.</header>
+				<displayWhen>#{CASE.contractLocale!='LA'}</displayWhen>
+			</group>
+			<group labelWidth="400px">
+				<header> Make sure you know the facts.  Contact your existing company or its agent for information about the old policy or contract.  [If you request one, an in force illustration, policy summary or available disclosure documents must be sent to you by the existing insurer.]  Ask for and retain all sales material used by the agent in the sales presentation.  Be sure that you are making an informed decision.</header>
+				<displayWhen>#{CASE.contractLocale=='LA'}</displayWhen>
+			</group>
+			<group>
+				<question id='replaced_reason'
+					text='The existing policy or contract is being replaced because '
+					type='TEXT' labelWidth="300px;" answerWidth="400px;" />
+			</group>
+			<group>
+				<header>You have the right to return the policy or contact within 30 days of delivery and receive an unconditional full refund of all premiums or considerations paid on it including any policy fees or charges or in the case of a variable or market value adjustment policy or contract, a payment of the cash surrender value provided under the policy or contract plus the fees and other charges deducted from the gross premiums or considerations or imposed under such policy or contract.</header>
+				<displayWhen>#{CASE.contractLocale!='AK' and CASE.contractLocale!='TX' and CASE.contractLocale!='WI' and CASE.contractLocale!='ME'}</displayWhen>
+			</group>
+			<group>
+				<question id='read_aloud' text='I do not want this notice read aloud to me (initial)'
+					type='TEXT' labelWidth="250px;" />
+			</group>
+			<group>
+				<question id='was_read_aloud' text="The insurance producer (check one) "
+					type='RADIO' answerSet="Y:did|N:did not" suffix="read aloud this notice to the applicant."
+					labelWidth="200px;" answerWidth="180px;" />
+				<displayWhen>#{CASE.contractLocale=='AR'}</displayWhen>
+			</group>
+		</section>
+	</page>
+</form>

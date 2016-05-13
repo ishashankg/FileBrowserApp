@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude" 
+   xmlns="http://www.stepsolutions.com/2013/configuration/">
+<agencies>
+	<agency>
+		<agCode>EFIN</agCode>
+		<agName>Efinancial Agency</agName>
+		<agBusType>Independent</agBusType>
+		<agCaptive>false</agCaptive>
+		<agents>
+			<agent>
+				<agtCode>8487536</agtCode>
+				<agtFirstName>Joe</agtFirstName>
+				<agtLastName>Boisseau</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>12828590</agtCode>
+				<agtFirstName>Marty</agtFirstName>
+				<agtLastName>Schoeder</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>eFinancial</agtCode>
+				<agtFirstName>Efinancial</agtFirstName>
+				<agtLastName>Test</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>EFIN5</agtCode>
+				<agtFirstName>EFIN</agtFirstName>
+				<agtLastName>AGENT</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>cbrady</agtCode>
+				<agtFirstName>Ciaran</agtFirstName>
+				<agtLastName>Brady</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>kmcintyre</agtCode>
+				<agtFirstName>Kim</agtFirstName>
+				<agtLastName>McIntyre</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>bmulconrey</agtCode>
+				<agtFirstName>Brian</agtFirstName>
+				<agtLastName>Mulconrey</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>canderson</agtCode>
+				<agtFirstName>Carl</agtFirstName>
+				<agtLastName>Anderson</agtLastName>
+			</agent>
+		</agents>
+	</agency>
+</agencies>
+</stepImport>

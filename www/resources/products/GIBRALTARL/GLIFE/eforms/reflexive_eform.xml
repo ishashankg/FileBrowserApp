@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>formLoad</onLoad>
+	<onSave>importData</onSave>
+	<page title="Prequalification medical questions">
+		<section title="Diagnosis">
+			<group labelWidth="760px">
+				<question id='d1Yes3'       text='1.Have you suffered from any problems related with Heart ?'       type='RADIO' answerSet='Y|N' required="true"/>
+			</group>
+			<group labelWidth="200px">
+				<question id='d1Yes3completer' text='Please specify' type='AUTOCOMPLETE'       required="true" autocompleteLookup="uw:DIAGNOSIS"       reflexiveContext="uw:MEDIC:ATHEAR">
+					<displayWhen>#{EFORM.d1Yes3=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="d1Yes3completer"      dynamicQuestionContext="uw:MEDIC:ATHEAR" labelWidth="400px"/>
+		</section>
+		<section title="Additional Condition" repeating="true" styleClass="display:none">
+			<displayWhen>#{EFORM.d1Yes3=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='d1Yes3completer1' text='Please specify' type='AUTOCOMPLETE'       required="true" autocompleteLookup="uw:DIAGNOSIS"       reflexiveContext="uw:MEDIC:ATHEAR"/>
+			</group>
+			<group parentQuestionId="d1Yes3completer1"      dynamicQuestionContext="uw:MEDIC:ATHEAR" labelWidth="400px"/>
+		</section>
+		<section>
+			<group labelWidth="760px">
+				<question id='d1Yes1'       text='2.Have you ever been diagnosed by a member of the medical profession as having Acquired Immune Deficiency Syndrome (AIDS) or AIDS Related Complex (ARC)?'       type='RADIO' answerSet='Y|N' required="true"/>
+			</group>
+			<group labelWidth="200px">
+				<question id='d1Yes1completer' text='Please specify' type='AUTOCOMPLETE'       required="true" autocompleteLookup="uw:DIAGNOSIS"       reflexiveContext="uw:MEDIC:ATOYPR">
+					<displayWhen>#{EFORM.d1Yes1=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="d1Yes1completer"      dynamicQuestionContext="uw:MEDIC:ATOYPR" labelWidth="400px"/>
+		</section>
+		<section title="Additional Condition" repeating="true" styleClass="display:none">
+			<displayWhen>#{EFORM.d1Yes1=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='d1Yes1completer1' text='Please specify' type='AUTOCOMPLETE'       required="true" autocompleteLookup="uw:DIAGNOSIS"       reflexiveContext="uw:MEDIC:ATOYPR"/>
+			</group>
+			<group parentQuestionId="d1Yes1completer1"      dynamicQuestionContext="uw:MEDIC:ATOYPR" labelWidth="400px"/>
+		</section>
+		<section>
+			<group labelWidth="760px">
+				<question id='d1Yes2'       text='3.Have you, within the past 5 years, been treated for, advised to Discontinue, Decrease or seek treatment for Drug or Alcohol Use?'       type='RADIO' answerSet='Y|N' required="true"/>
+			</group>
+			<group labelWidth="200px">
+				<question id='d1Yes2completer' text='Please specify' type='AUTOCOMPLETE'       required="true" autocompleteLookup="uw:DIAGNOSIS"       reflexiveContext="uw:MEDIC:ATALCO">
+					<displayWhen>#{EFORM.d1Yes2=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="d1Yes2completer"      dynamicQuestionContext="uw:MEDIC:ATALCO" labelWidth="400px"/>
+		</section>
+		<section title="Additional Condition" repeating="true" styleClass="display:none">
+			<displayWhen>#{EFORM.d1Yes2=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question id='d1Yes2completer1' text='Please specify' type='AUTOCOMPLETE'       required="true" autocompleteLookup="uw:DIAGNOSIS"       reflexiveContext="uw:MEDIC:ATALCO"/>
+			</group>
+			<group parentQuestionId="d1Yes2completer1"  dynamicQuestionContext="uw:MEDIC:ATALCO" labelWidth="400px"/>
+		</section>
+		<section >
+			<group labelWidth="760px">
+				<question id='weight_chg_ind' text='4.Has your weight changed in the past year?'       required="true" type='RADIO' answerSet='Y|N' reflexiveContext="uw:MEDIC:ATWEIL" />
+			</group>
+		</section>
+		<section>
+			<displayWhen>#{EFORM.weight_chg_ind=="Y"}</displayWhen>
+			<group parentQuestionId="weight_chg_ind"      dynamicQuestionContext="uw:MEDIC:ATWEIL" labelWidth="400px"/>
+		</section>
+	</page>
+	<page title="Prequalification avocation questions">
+		<section title="Avocation">
+			<group labelWidth="760px">
+				<question id='m1a'       text='a.Have you, within the past 2 years, engaged in, or do you plan within the next 2 years to engage in,        any form of, Skin or Scuba Diving, Hang-Gliding, Ultralight Flying,        Cave Exploration, Parachuting or Sky Diving, Mountain, Rock or Ice Climbing,        Rodeo, Bungee Jumping, Ballooning, Competitive Skiing, Snowmobiling , Snowboarding or Motor Racing?'       type='RADIO' answerSet='Y|N' required="true" />
+			</group>
+			<group labelWidth="200px">
+				<question id='m1acompleter' text='Please specify' type='AUTOCOMPLETE'       required="true" autocompleteLookup="uw:AVOCATION"       reflexiveContext="uw:AVOCA:ATAVOC">
+					<displayWhen>#{EFORM.m1a=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="m1acompleter" dynamicQuestionContext="uw:AVOCA:ATAVOC"      labelWidth="400px"/>
+		</section>
+	</page>
+	<page title="Prequalification mvr questions">
+		<section title="Motor Vehicle">
+			<group labelWidth="760px">
+				<question id='driver_license_revoked'       text='b.Have you, within the past 5 years, been convicted of  Moving Violations or been Suspended?'       required="true" type='RADIO' answerSet='Y|N' reflexiveContext="uw:CMOTVE:ATVEHI" />
+			</group>
+		</section>
+		<section>
+			<displayWhen>#{EFORM.driver_license_revoked=="Y"}</displayWhen>
+			<group parentQuestionId="driver_license_revoked"      dynamicQuestionContext="uw:CMOTVE:ATVEHI" labelWidth="400px"/>
+		</section>
+	</page>
+</form>

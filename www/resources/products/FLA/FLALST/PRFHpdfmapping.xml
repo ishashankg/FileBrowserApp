@@ -1,0 +1,22 @@
+<map>
+  <entry>
+    <string>Name of Proposed Insured</string>
+	<string>${CASE.primaryApplicant.firstName ?: ""} ${CASE.primaryApplicant.middleName ?: ""} ${CASE.primaryApplicant.lastName ?: ""}</string>
+  </entry>
+  <entry>
+    <string>Application number</string>
+    <string>$CASE.externalCaseNumber</string>
+  </entry>
+  <entry>
+    <string>Proposed Date</string>
+    <string>${caseHelper.getSignatureDate("HIP", "PRIMARY_INSURED")}</string>
+  </entry>
+  <entry>
+    <string>Relationship to Proposed Insured</string>
+    <string>${EFORMS.FULL_HIPAA.full_hipaa_relationship ?: "Self"}</string>
+  </entry>
+  <entry>
+  	<string>Signature of Proposed Insured or Authorized Representative</string>
+	<string>${caseHelper.insertSignature("HIP", "PRIMARY_INSURED")}</string>
+  </entry>
+</map>

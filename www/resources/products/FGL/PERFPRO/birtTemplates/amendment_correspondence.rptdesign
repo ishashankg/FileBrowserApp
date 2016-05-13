@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">fixed layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.datatools.enablement.oda.xml" name="Data Source" id="30">
+            <property name="FILELIST">src/test.xml</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.datatools.enablement.oda.xml.dataSet" name="Data Set" id="31">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">content</property>
+                    <text-property name="heading">content</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">content</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">content</property>
+                    <property name="nativeName">content</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[table0#-TNAME-#table0#:#[/reportRequest]#:#{content;STRING;/parameters/content}]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>content</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>content</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>MAX_ROW</name>
+                    <value>-1</value>
+                </ex-property>
+                <ex-property>
+                    <name>XML_FILE</name>
+                </ex-property>
+            </list-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="static" id="33">
+            <property name="height">300pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2"/>
+    </page-setup>
+    <body>
+        <text id="7">
+            <property name="fontSize">medium</property>
+            <property name="fontWeight">bold</property>
+            <property name="marginTop">auto</property>
+            <property name="paddingTop">15pt</property>
+            <property name="paddingBottom">5pt</property>
+            <property name="textAlign">center</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[FIDELITY &amp; GUARANTY LIFE INSURANCE COMPANY
+      AMENDMENT TO APPLICATION
+
+]]></text-property>
+        </text>
+        <text id="10">
+            <property name="marginTop">20pt</property>
+            <property name="marginLeft">0pt</property>
+            <property name="marginBottom">20pt</property>
+            <property name="marginRight">20pt</property>
+            <property name="paddingLeft">70pt</property>
+            <property name="paddingRight">1pt</property>
+            <property name="textAlign">left</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[I,                               ,hereby amend my application dated 10/15/2012 as follows: 	]]></text-property>
+        </text>
+        <text-data id="29">
+            <property name="style">static</property>
+            <property name="fontSize">10pt</property>
+            <property name="paddingLeft">100pt</property>
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">content</property>
+                    <text-property name="displayName">content</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["content"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <structure name="toc"/>
+            <expression name="valueExpr">row["content"]</expression>
+            <property name="contentType">html</property>
+        </text-data>
+        <text id="17">
+            <property name="marginTop">30pt</property>
+            <property name="marginLeft">0pt</property>
+            <property name="marginBottom">30pt</property>
+            <property name="marginRight">20pt</property>
+            <property name="paddingLeft">70pt</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[I agree that these changes shall be an amendment to and form a part of the original application and of the annuity issued if any]]></text-property>
+        </text>
+        <text id="19">
+            <property name="fontSize">10pt</property>
+            <property name="marginBottom">10pt</property>
+            <property name="marginRight">20pt</property>
+            <property name="paddingLeft">70pt</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[Dated at _______________, ________________ ,this ________ day of _____________, _____________   
+                        (City)                         (State)                 	                                  (Month)                      (Year) ]]></text-property>
+        </text>
+        <text id="20">
+            <property name="fontSize">10pt</property>
+            <property name="marginTop">10pt</property>
+            <property name="marginBottom">10pt</property>
+            <property name="marginRight">20pt</property>
+            <property name="paddingLeft">70pt</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[Signed    ___________________________    { Signed    _____________________________ }  
+                                     (Owner)                                            {Joint Owner}]]></text-property>
+        </text>
+        <text id="28">
+            <property name="fontSize">10pt</property>
+            <property name="marginTop">10pt</property>
+            <property name="marginBottom">10pt</property>
+            <property name="marginRight">20pt</property>
+            <property name="paddingLeft">70pt</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[Signed    ___________________________    { Signed    _____________________________ }  
+                                    (Annuitant)                                          {Joint Annuitant}]]></text-property>
+        </text>
+        <text id="21">
+            <property name="fontSize">10pt</property>
+            <property name="marginTop">10pt</property>
+            <property name="marginBottom">10pt</property>
+            <property name="marginRight">20pt</property>
+            <property name="paddingLeft">70pt</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[Witness ___________________________   Policy No. L924934]]></text-property>
+        </text>
+    </body>
+</report>

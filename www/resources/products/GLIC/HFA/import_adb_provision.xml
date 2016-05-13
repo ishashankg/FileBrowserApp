@@ -1,0 +1,11 @@
+<Provisions xsi:schemaLocation="http://stepsoln.com/Provision/3 provisions.xsd" xmlns="http://stepsoln.com/Provision/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<AcceleratedDeathBenefProvision>
+		<Description>
+			<![CDATA[
+				Accelerated death benefits in a life insurance contract that make it possible for a terminally ill policyholder to receive a portion of the life insurance payment before death actually takes place. 
+				it helps to pay for end of life expenses such as hospital care and other treatments and procedures that help to make the last months of the individual’s life as comfortable as possible.
+			]]>
+		</Description>
+		<MaxBenefitPercent>25</MaxBenefitPercent>
+	</AcceleratedDeathBenefProvision>
+</Provisions>	

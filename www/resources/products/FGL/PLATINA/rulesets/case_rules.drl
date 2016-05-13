@@ -1,0 +1,176 @@
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.RulesResponse;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.ArrayUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.db.cases.Case.CASE_SOURCE;
+import rules.*;
+
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Atlantic Time Zone"
+activation-group "setTimezone"
+salience 100
+	when
+		CaseData(contractState in ("PR","VI"));
+	then
+		rulesResponse.setTimeZone("Atlantic");
+end
+
+rule "Eastern Time Zone"
+activation-group "setTimezone"
+salience 90
+	when
+		CaseData(contractState in ("CT","DE","DC","FL","GA","IN","ME","MD","MA","MI","NH","NJ","NY","NC","OH","PA","RI","SC","VT","VA","WV"));
+	then
+		rulesResponse.setTimeZone("Eastern");
+end
+
+rule "Central Time Zone"
+activation-group "setTimezone"
+salience 80
+	when
+		CaseData(contractState in ("AL","AR","IL","IA","KS","KY","LA","MN","MS","MO","NE","ND","OK","SD","TN","TX","WI"));
+	then
+		rulesResponse.setTimeZone("Central");
+end
+
+rule "Mountain Time Zone"
+activation-group "setTimezone"
+salience 70
+	when
+		CaseData(contractState in ("AZ","CO","ID","MT","NM","UT","WY"));
+	then
+		rulesResponse.setTimeZone("Mountain");
+end
+
+rule "Pacific Time Zone"
+activation-group "setTimezone"
+salience 60
+	when
+		CaseData(contractState in ("CA","NV","OR","WA"));
+	then
+		rulesResponse.setTimeZone("Pacific");
+end
+
+rule "Alaska Time Zone"
+activation-group "setTimezone"
+salience 50
+	when
+		CaseData(contractState in ("AK"));
+	then
+		rulesResponse.setTimeZone("Alaska");
+end
+
+rule "Hawaii Time Zone"
+activation-group "setTimezone"
+salience 40
+	when
+		CaseData(contractState in ("HI"));
+	then
+		rulesResponse.setTimeZone("Hawaii");
+end
+
+rule "Samoa Time Zone"
+activation-group "setTimezone"
+salience 30
+	when
+		CaseData(contractState in ("AS"));
+	then
+		rulesResponse.setTimeZone("Samoa");
+end
+
+rule "Chamorro Time Zone"
+activation-group "setTimezone"
+salience 20
+	when
+		CaseData(contractState in ("GU","MP"));
+	then
+		rulesResponse.setTimeZone("Chamorro");
+end
+
+rule "Marshall Islands Time Zone"
+activation-group "setTimezone"
+salience 10
+	when
+		CaseData(contractState in ("MH"));
+	then
+		rulesResponse.setTimeZone("Marshall Islands");
+end
+
+rule "FSM Time Zone"
+activation-group "setTimezone"
+salience 9
+	when
+		CaseData(contractState in ("FS"));
+	then
+		rulesResponse.setTimeZone("FSM");
+end
+
+rule "Palau Time Zone"
+activation-group "setTimezone"
+salience 8
+	when
+		CaseData(contractState in ("PW"));
+	then
+		rulesResponse.setTimeZone("Palau");
+end
+
+rule "Policy Assignment"
+	when
+		theCaseData:CaseData(StringUtils.isEmpty(externalCaseNumber), StringUtils.isEmpty(policyNumber));
+	then
+		String seqName="POLICY_NUMBER_PLATINA";
+		
+		rulesResponse.setPolicyNumber(seqName);
+end
+
+rule "IGO case goes to Issuer"
+activation-group "caseStatus"
+salience 200
+	when
+		theCase:CaseData(caseStatus == 'IGO')
+	then		
+		theCase.setSubmitApplication(true);
+		theCase.setUwOu("");
+		
+end
+
+rule "NIGO case goes to Case Manager"
+activation-group "caseStatus"
+salience 200
+	when
+		theCase:CaseData(caseStatus == 'NIGO')
+	then		
+		theCase.setSubmitApplication(false);
+		theCase.setUwOu("CASE_MGR");
+		
+end
+
+rule "set flags for SUBMITTED case"
+activation-group "caseStatus"
+salience 200
+	when
+		theCase:CaseData(caseStatus == 'SUBMITTED')
+	then		
+		theCase.setSubmitApplication(true);
+		theCase.setUwOu("");
+		
+end
+
+rule "set flags for AUTODECLINED or DECLINED case"
+activation-group "caseStatus"
+salience 180
+	when
+		theCase:CaseData(caseStatus in ('AUTODECLINE', 'DECLINED'))
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setUwOu("AUTO");
+end
+
+
+
+
+

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>preFillForm</onLoad>
+	<onSave>saveAuthorizationDetails</onSave>
+	<page title="Authorization and Signatures">
+		<section style="border:1px solid black">
+			<group labelWidth="400px">
+				<paragragh
+					text="I (We) have read the statements made in this application. To the best of my (our) knowledge and belief, the statements made are complete, true, and correctly recorded. I (We) understand that: a copy of this application may form a part of any annuity issued; the annuity will not take effect until
+delivered to the Owner; no agent has the authority to modify any annuity issued; and there are terms, conditions, charges, and fees for any
+optional rider selected.
+I (We) understand that I (We) have applied for an indexed annuity. I (We) have received a copy of the Company’s disclosure material for
+this annuity. I (We) understand that: while the values of the annuity may be affected by an external index, the annuity does not directly
+participate in any stock, bond, or equity investments; any values shown, other than guaranteed minimum values, are not guarantees,
+promises or warranties; and the annuity describes how the minimum guaranteed surrender values and indexed interest credits are
+calculated. I (We) understand that the Company offers indexed annuity products with different features and benefits. I (We) can also apply for any of
+those products by contacting the Company or one of its agents. If the annuity is issued with a market value adjustment rider, the cash surrender values may increase or decrease based on a market value
+adjustment prior to the date or dates specified in the annuity; the market value adjustment applies when the surrender charge applies. I (We) certify, under penalties of perjury, that I am a (we are) U.S. Citizen(s) or resident(s) of the U.S. (includes U.S. resident aliens) and that the
+taxpayer identification number(s) is (are) correct. I (We) understand that federal law requires all financial institutions to obtain identity information in
+order to verify my (our) identity(ies) and I (we) authorize its use for this purpose. This information includes, but is not limited to, the name(s),
+residential address(es), date(s) of birth, Social Security or taxpayer identification number(s), and any other information necessary to sufficiently verify
+identity(ies). I (We) understand that failure to provide this information could result in the application being rejected. Third party sources may be used
+to verify the information provided." />
+			</group>
+		</section>
+		<section title="Owner/Annuitant">
+			<group associated="true">
+				<question id='owner_sign' text='Signature of Owner'
+					labelWidth="120px" required="true" type='CHECKBOX' answerWidth="100px"
+					tabindex='1' answerSet='Y'/>
+				<question id='annuitant_sign' text='Signature of Annuitant (If other than Owner)'
+					labelWidth="120px" required="true" type='CHECKBOX' answerWidth="100px"
+					tabindex='2' answerSet='Y'>
+					<displayWhen> #{EFORMS.PERSON.owner_Annuitant=="Y"} </displayWhen>
+				</question>
+			</group>
+			<group associated="true">
+				<question id='joint_owner_sign' text='Signature of Joint Owner'
+					labelWidth="120px" required="true" type='CHECKBOX' answerWidth="100px"
+					tabindex='3' answerSet='Y'>
+					<displayWhen> #{EFORMS.PERSON.joint_owner=="Y"} </displayWhen>
+				</question>
+				<question id='joint_annuitant_sign' text='Signature of Joint Annuitant'
+					labelWidth="120px" required="true" type='CHECKBOX' answerWidth="100px"
+					tabindex='4' answerSet='Y'>
+					<displayWhen> #{EFORMS.ANNUITANT.joint_annuitant=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group associated="true">
+				<question id='signed_at_city' text='Signed At (City)'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='5' />
+				<question id='signed_at_state' text='Signed At (State)'
+					labelWidth="120px" lookup="step:US_LOCALE_STATE" answerSet=" : |Unknown:Not Applicable"
+					required="true" type='LISTBOX' answerWidth="100px" tabindex='6' />
+			</group>
+			<group associated="true">
+				<question id='owner_signed_date' text='Date'
+					name='Owner Signature Date' labelWidth="120px" type='DATEF'
+					answerWidth="100px" tabindex='7' />
+			</group>
+		</section>
+		<section title="Agent">
+			<group>
+				<question id='check_existing_policy'
+					text='Does the applicant have an existing life or annuity policy?'
+					labelWidth="420px" required="true" type='LISTBOX' answerSet=' : |Y:Yes|N:No'
+					tabindex='8' />
+				<question id='check_replacing_policy'
+					text='To the best of your knowledge, does this application replace or change existing life insurance or annuities?'
+					name='Does this application replace or change any life insurance or annuities?'
+					labelWidth="420px" required="true" type='LISTBOX' answerSet=' : |Y:Yes|N:No'
+					tabindex='9' />
+			</group>
+		</section>
+		<section style="border:1px solid black">
+			<group labelWidth="400px" style="font-weight: bold">
+				<paragragh
+					text="I attest that I have witnessed all the signatures. I certify that the Company's disclosure has been presented to the applicant and a copy was provided to the applicant. I have not made any statements which differ from this material nor have I made any guarantees or promises about the expected future values of the annuity. I have received a copy of, have carefully read and compiled with the applied for fixed annuity's training manual." />
+				<paragragh
+					text="I have verified the identity of the Owner, Joint Owner, Annuitant and/or Joint Annuitant through an examination of a state or federal government photo identification card provided by the Owner, Joint Owner, Annuitant and/or Joint Annuitant such as driver's license or passport." />
+				<paragragh
+					text="I have truly and accurately recorded on this application the information provided by the applicant." />
+			</group>
+		</section>
+		<section>
+			<group associated="true">
+				<question id='agent_sign' text='Signature of Agent'
+					labelWidth="120px" required="true" type='CHECKBOX' answerWidth="100px"
+					tabindex='8' answerSet='Y'/>
+				<question id='agent_phone_number' text='Agent Phone No.'
+					labelWidth="120px" required="true" type='PHONE' answerWidth="100px"
+					tabindex='12' />
+			</group>
+			<group associated="true">
+				<question id='agent_signed_date' text='Date'
+					name='Agent Signature Date' labelWidth="120px" type='DATEF'
+					answerWidth="100px" required="true" tabindex='9' />
+				<question id='agent_fax_number' text='Agent Fax No.'
+					labelWidth="120px" required="true" type='PHONE' answerWidth="100px"
+					tabindex='13' />
+			</group>
+			<group associated="true">
+				<question id='agent_first_name' text='Agent First Name'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='10' />
+				<question id='agent_last_name' text='Agent Last Name'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='10' />
+			</group>
+			<group associated="true">
+				<question id='agent_email' text='Agent Email Address'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='14' />
+				<question id='agent_FG' text='FG Life Agent No.'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='11' />
+			</group>
+			<group>
+				<question id='commission_split' text='Commission Split'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='11' />
+				<question id='commission_adjustment' text='Commission Adjustment Code'
+					labelWidth="120px" required="true" type='LISTBOX' answerWidth="100px"
+					answerSet="100%:100%|50%:50%|0%:0%|RE:RE" tabindex='11'
+					requiredPermission="agent_commission_adjustment" />
+				<question id='agent_license' text='Agent License No.'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='15'>
+					<displayWhen> #{EFORMS.PERSON.state=="FL"} </displayWhen>
+				</question>
+			</group>
+		</section>
+		<section name="Agent" repeating="true" style="margin-left:0px">
+			<group associated="true">
+				<question id='agent_sign1' text='Signature of Agent'
+					labelWidth="120px" required="true" type='CHECKBOX' answerWidth="100px"
+					tabindex='8' answerSet='Y'/>
+				<question id='agent_phone_number1' text='Agent Phone No.'
+					labelWidth="120px" required="true" type='PHONE' answerWidth="100px"
+					tabindex='12' />
+			</group>
+			<group associated="true">
+				<question id='agent_signed_date1' text='Date' labelWidth="120px"
+					type='DATEF' answerWidth="100px" required="true" tabindex='9' />
+				<question id='agent_fax_number1' text='Agent Fax No.'
+					labelWidth="120px" required="true" type='PHONE' answerWidth="100px"
+					tabindex='13' />
+			</group>
+			<group associated="true">
+				<question id='agent_first_name1' text='Agent First Name'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='10' />
+				<question id='agent_last_name1' text='Agent Last Name'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='10' />
+			</group>
+			<group associated="true">
+				<question id='agent_email1' text='Agent Email Address'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='14' />
+				<question id='agent_FG1' text='FG Life Agent No.'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='11' />
+			</group>
+			<group>
+				<question id='commission_split1' text='Commission Split'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='11' />
+				<question id='commission_adjustment1' text='Commission Adjustment Code'
+					labelWidth="120px" required="true" type='LISTBOX' answerWidth="100px"
+					answerSet="100%:100%|50%:50%|0%:0%|RE:RE" tabindex='11'
+					requiredPermission="agent_commission_adjustment" />
+				<question id='agent_license1' text='Agent License No.'
+					labelWidth="120px" required="true" type='TEXT' answerWidth="100px"
+					tabindex='15'>
+					<displayWhen> #{EFORMS.PERSON.state=="FL"} </displayWhen>
+				</question>
+			</group>
+		</section>
+	</page>
+</form>

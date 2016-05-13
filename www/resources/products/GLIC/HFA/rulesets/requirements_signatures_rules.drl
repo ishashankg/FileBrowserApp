@@ -1,0 +1,185 @@
+import com.stepsoln.core.util.DateUtil;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import java.lang.Boolean;
+import org.apache.commons.lang.StringUtils;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global org.slf4j.Logger logger;
+
+/**
+ * Following form are not to be electronically signed:
+ * 'APPLICANTAUT'
+ * 'DLVR2EX2'
+ * 'DLVR1EX1'
+ * 'DLVR1EX2'
+ */
+rule "APPPART2"
+salience 100
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL','INTERNET'));
+		form:RequirementForm(code=='APPPART2');
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED");
+    	
+end
+
+rule "FULLHIPAAPDF"
+salience 100
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL','INTERNET'));
+		form:RequirementForm(code=='FULLHIPAAPDF');
+		RequirementForm(code=='APPPART2', $sharedSigFormId:formId);
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED", $sharedSigFormId);
+    	
+end
+
+rule "FCRA required if case created on or after July 31, 2013"
+salience 90
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL','INTERNET'), createdDate >= DateUtil.parseDate(DateUtil.FORMAT_YYYYMMDD, "20130731"));
+		form:RequirementForm(code in ('FCRA'));
+		RequirementForm(code=='APPPART2', $sharedSigFormId:formId);
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED", $sharedSigFormId);
+end
+
+rule "APPPART4 PRIMARY_INSURED online case for combined signature"
+salience 90
+activation-group "primaryInsuredPart4"
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL','INTERNET'), paperCase==false);
+		form:RequirementForm(code in ('APPPART4'));
+		RequirementForm(code=='APPPART2', $sharedSigFormId:formId);
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED", $sharedSigFormId);
+end
+
+rule "APPPART4 PRIMARY_INSURED paper case in NB"
+salience 89
+activation-group "primaryInsuredPart4"
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL'), paperCase==true, caseOutOfNb==false);
+		form:RequirementForm(code in ('APPPART4'));
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED");
+end
+
+rule "APPPART4 PRIMARY_INSURED paper case out of NB for combined signature"
+salience 88
+activation-group "primaryInsuredPart4"
+	when																																																																																																																																																								
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL'), paperCase==true, caseOutOfNb==true);
+		form:RequirementForm(code in ('APPPART4'));
+		RequirementForm(code=='APPPART2', $sharedSigFormId:formId);
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED", $sharedSigFormId);
+end
+
+rule "APPPART2 POLICY_OWNER"
+salience 100
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL','INTERNET'));
+		$form:RequirementForm(code=='APPPART2');
+		Question(id=="oth_owner_ind", answerAsBoolean==true);
+    then
+    	rulesResponse.addSignatureRequirement($form.getFormId(), "POLICY_OWNER");
+end
+
+rule "APPPART4 POLICY_OWNER online case for combined signature"
+salience 90
+activation-group "policyOwnerPart4"
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL','INTERNET'), paperCase==false);
+		form:RequirementForm(code=='APPPART4');
+		Question(id=="oth_owner_ind", answerAsBoolean==true);
+		RequirementForm(code=='APPPART2', $sharedSigFormId:formId);
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "POLICY_OWNER", $sharedSigFormId);
+end
+
+rule "APPPART4 POLICY_OWNER for paper case"
+salience 85
+activation-group "policyOwnerPart4"
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL'), paperCase==true, caseOutOfNb==false);
+		form:RequirementForm(code=='APPPART4');
+		Question(id=="oth_owner_ind", answerAsBoolean==true);
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "POLICY_OWNER");
+end
+
+rule "APPPART4 POLICY_OWNER for paper case out of NB for combined signature"
+salience 84
+activation-group "policyOwnerPart4"
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL'), paperCase==true, caseOutOfNb==true);
+		form:RequirementForm(code=='APPPART4');
+		Question(id=="oth_owner_ind", answerAsBoolean==true);
+		RequirementForm(code=='APPPART2', $sharedSigFormId:formId);
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "POLICY_OWNER", $sharedSigFormId);
+end
+
+/*
+rule "OWNEREFORM"
+salience 80
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL','INTERNET'));
+		form:RequirementForm(code=='OWNEREFORM');
+		Question(id=="oth_owner_ind", answerAsBoolean==true);
+		RequirementForm(code=='APPPART2', $sharedSigFormId:formId);
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "POLICY_OWNER", $sharedSigFormId);
+    	//logger.debug("Rule: " + form.getCode() + " sig required for POLICY_OWNER" );
+end
+*/
+
+rule "REDOSIGOWNER"
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL'));
+		form:RequirementForm(code=='REDOSIGOWNER');
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED");
+end
+
+rule "REDOSIGINSURE"
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL'));
+		form:RequirementForm(code=='REDOSIGINSURE');
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED");
+end
+
+
+
+
+rule "Remove FCRA if case created before July 31, 2013"
+salience 90
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL','INTERNET'), createdDate < DateUtil.parseDate(DateUtil.FORMAT_YYYYMMDD, "20130731"));
+		form:RequirementForm(code in ('FCRA'));
+		RequirementForm(code=='FULLHIPAAPDF', $sharedSigFormId:formId);
+    then
+    	rulesResponse.getSignatureRequirements().remove(form.getFormId());
+end
+
+rule "APPPART5"
+	when
+		CaseData(caseSource in ('CAPTIVE', 'EXTERNAL'), locked==true, StringUtils.isBlank(svcOu)==true, paperCase==false);
+		form:RequirementForm(code=='APPPART5');
+		AgencyData(agencyCaptive==false);
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "AGENT", true);
+    	
+end
+
+rule "APPPART5 for paper case"
+	when
+		CaseData(caseSource in ('EXTERNAL'), paperCase==true);
+		form:RequirementForm(code=='APPPART5');
+    then
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "AGENT");
+end
+

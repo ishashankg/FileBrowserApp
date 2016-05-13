@@ -1,0 +1,14 @@
+<list>
+	<com.stepsoln.core.db.services.util.PdFMappingEntity>
+		<value class="string">${CASE.primaryApplicant.firstName+" "+CASE.primaryApplicant.lastName}</value>
+		<isCaps>true</isCaps>
+	</com.stepsoln.core.db.services.util.PdFMappingEntity>
+	<com.stepsoln.core.db.services.util.PdFMappingEntity>
+		<value class="string">${CASE.policyNo?CASE.policyNo:"Not available"}</value>
+		<isCaps>true</isCaps>
+	</com.stepsoln.core.db.services.util.PdFMappingEntity>
+	<com.stepsoln.core.db.services.util.PdFMappingEntity>
+		<value class="string">${STATEMENTS}</value>
+		<isCaps>false</isCaps>
+	</com.stepsoln.core.db.services.util.PdFMappingEntity>
+</list>

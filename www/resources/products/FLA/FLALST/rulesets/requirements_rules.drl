@@ -1,0 +1,620 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.coverages.*;
+
+function java.lang.String FLA_NAIC()
+{
+	return "63290";
+}
+
+rule "Standard requirements for this product #1"
+	when
+		CaseData()
+		form:RequirementForm(code in ('PRE_QUAL_APP', 'PRE_QUAL_DEMO', 'PRE_QUAL_MED', 'APPLICANT', 'MED_REFLEXIVES','OTHER_COVERAGE','BENEFICIARY', 'AG_ATTEST'));
+    then
+    	form.setRequired(true);
+end
+
+rule "Add ADDITIONAL_MAILING if other_mailing_addr or secondary_addressee is answered yes on the APPLICANT eform"
+	when
+		Question(id in ('other_mailing_addr','secondary_addressee'), answerAsBoolean==true)  
+		form:RequirementForm(code=='ADDITIONAL_MAILING');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add OTHER_OWNER if other_owner is answered yes on the APPLICANT eform"
+when
+		Question(id =='other_owner', answerAsBoolean==true)  
+		form:RequirementForm(code=='OTHER_OWNER');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add DEPENDENT if coverage option LSTCTR1 is selected"
+	when
+		CoverageOption(selected==true, optionCode=="LSTCTR1")
+		form:RequirementForm(code=='DEPENDENT');
+    then
+       	form.setRequired(true);
+end
+
+rule "Keep DEPENDENT requirement when there are no CoverageOption data in rulefacts"
+	when
+		not CoverageOption()
+		form:RequirementForm(code=='DEPENDENT');
+    then
+       	form.setCancelRequirementWhenNotRequired(false);
+end
+
+rule "Add required eform HIPAA_07_05"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale in ('AK','CA'))
+		form:RequirementForm(code=='HIPAA_07_05');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_09_11"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale not in ('AK','CA','KS','KY','ME','MA','MN','MT','NE','NM','ND','VT','VA','WY'))
+		form:RequirementForm(code=='HIPAA_09_11');
+    then
+    	form.setRequired(true);
+end
+
+rule "No HIPAA"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale == 'WY')
+		form:RequirementForm(code=='NO_HIPAA');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_09_11_KS"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale ==  'KS')
+		form:RequirementForm(code=='HIPAA_09_11_KS');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_09_11_KY"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale ==  'KY')
+		form:RequirementForm(code=='HIPAA_09_11_KY');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_ME_07_05"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale ==  'ME')
+		form:RequirementForm(code=='HIPAA_ME_07_05');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_09_11_MA"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale ==  'MA')
+		form:RequirementForm(code=='HIPAA_09_11_MA');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_09_11_MN"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale ==  'MN')
+		form:RequirementForm(code=='HIPAA_09_11_MN');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_09_11_MT"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale ==  'MT')
+		form:RequirementForm(code=='HIPAA_09_11_MT');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_09_11_NE"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale ==  'NE')
+		form:RequirementForm(code=='HIPAA_09_11_NE');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_09_11_NM"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale ==  'NM')
+		form:RequirementForm(code=='HIPAA_09_11_NM');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_09_11_ND"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale ==  'ND')
+		form:RequirementForm(code=='HIPAA_09_11_ND');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_09_11_VT"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale == 'VT')
+		form:RequirementForm(code=='HIPAA_09_11_VT');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add required eform HIPAA_VA_07_05"
+salience 200
+activation-group "HIPAA requirement"
+when
+		CaseData(contractLocale ==  'VA')
+		form:RequirementForm(code=='HIPAA_VA_07_05');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform CS505N if coverage_cancelled is true"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale in ('AZ','CO','HI','MD','MS','MT','NC','NH','NM','OR','VA','VT'))
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505N');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform CS505 if coverage_cancelled is true"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale in ('CA', 'NE', 'OH'))
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform CS505SC if coverage_cancelled is true"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='SC')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505SC');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform CS505TN if coverage_cancelled is true"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='TN')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505TN');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS505IN if coverage_cancelled is true and contract locale is IN"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale =='IN')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505IN');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS505WA if coverage_cancelled is true and contract locale is WA"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale =='WA')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505WA');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCSSD if coverage_cancelled is true and contract locale is SD"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale =='SD')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCSSD');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS505FL if coverage_cancelled is true and contract locale is FL"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale =='FL')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505FL');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCOMPRIA if coverage_cancelled is true, contract locale is RI, and replacing different insurer"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='RI')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		Question(id =='oth_ins_naic', answerAsString != FLA_NAIC())
+		form:RequirementForm(code=='REPCOMPRIA');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCOMPRIB if coverage_cancelled is true, contract locale is RI, and replacing same insurer"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='RI')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		Question(id =='oth_ins_naic', answerAsString == FLA_NAIC())
+		form:RequirementForm(code=='REPCOMPRIB');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCOMPWVA if coverage_cancelled is true, contract locale is WV, and replacing different insurer"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='WV')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		Question(id =='oth_ins_naic', answerAsString != FLA_NAIC())
+		form:RequirementForm(code=='REPCOMPWVA');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCOMPWVB if coverage_cancelled is true, contract locale is WV, and replacing same insurer"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='WV')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		Question(id =='oth_ins_naic', answerAsString == FLA_NAIC())
+		form:RequirementForm(code=='REPCOMPWVB');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS505AK if coverage_cancelled is true and contract locale is AK"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='AK')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)
+		form:RequirementForm(code=='REPCS505AK');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS505AL if coverage_cancelled is true and contract locale is AL"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='AL')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)
+		form:RequirementForm(code=='REPCS505AL');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS505AR if coverage_cancelled is true and contract locale is AR"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='AR')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)
+		form:RequirementForm(code=='REPCS505AR');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform CS505IL if coverage_cancelled is true and contract locale is IL"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='IL')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505IL');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS500A if coverage_cancelled is true, contract locale is KS and replacing insurer is different company"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='KS')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)
+		Question(id =='oth_ins_naic', answerAsString != FLA_NAIC())
+		form:RequirementForm(code=='REPCS500A');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS500B if coverage_cancelled is true, contract locale is KS and replacing insurer is same company"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='KS')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)
+		Question(id =='oth_ins_naic', answerAsString == FLA_NAIC())
+		form:RequirementForm(code=='REPCS500B');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform CS505IA if coverage_cancelled is true and contract locale is IA"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='IA')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505IA');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform CS505LA if coverage_cancelled is true and contract locale is LA"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='LA')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505LA');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform CS505ME if coverage_cancelled is true and contract locale is ME"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='ME')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505ME');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform CS505TX if coverage_cancelled is true and contract locale is TX"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='TX')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505TX');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCSWI if coverage_cancelled is true and contract locale is WI"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='WI')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCSWI');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS505NJ if coverage_cancelled is true and contract locale is NJ"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='NJ')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505NJ');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS505ID if coverage_cancelled is true and contract locale is ID"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='ID')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505ID');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS505GA if coverage_cancelled is true and contract locale is GA"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='GA')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505GA');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS505MA if coverage_cancelled is true and contract locale is MA"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='MA')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505MA');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS505MO if coverage_cancelled is true and contract locale is MO"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='MO')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS505MO');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCSDE if coverage_cancelled is true and contract locale is DE"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='DE')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCSDE');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCSKY if coverage_cancelled is true and contract locale is KY"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='KY')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCSKY');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCSMI if coverage_cancelled is true and contract locale is MI"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='MI')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCSMI');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCSMN if coverage_cancelled is true and contract locale is MN"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='MN')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCSMN');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCSNV if coverage_cancelled is true and contract locale is NV"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='NV')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCSNV');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCSOK if coverage_cancelled is true and contract locale is OK"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='OK')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCSOK');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCSUT if coverage_cancelled is true and contract locale is UT"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='UT')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCSUT');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCSWY if coverage_cancelled is true and contract locale is WY"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='WY')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCSWY');
+    then
+    	form.setRequired(true);
+end
+
+rule "Add replacement eform REPCS500PA if coverage_cancelled is true and contract locale is PA"
+salience 210
+activation-group "replacementEformRule"
+when
+		CaseData(contractLocale=='PA')
+		Question(id =='coverage_cancelled', answerAsBoolean==true)  
+		form:RequirementForm(code=='REPCS500PA');
+    then
+    	form.setRequired(true);
+end
+
+rule "3rd party services"
+	when
+		Requirement(status == 'RESOLVED', code in ('HIPAA_07_05','HIPAA_09_11','HIPAA_09_11_KS','HIPAA_09_11_KY','HIPAA_ME_07_05','HIPAA_09_11_MA','HIPAA_09_11_MN','HIPAA_09_11_MT','HIPAA_09_11_NE','HIPAA_09_11_NM','HIPAA_09_11_ND','HIPAA_09_11_VT','HIPAA_VA_07_05' ), type == 'ESIGNATURE', target == 'PRIMARY_INSURED')
+		form:RequirementForm(code in ("ATTUS3RDPARTY","RX3RDPARTY","MIB3RDPARTY"))
+	then
+		form.setRequired(true);
+end
+
+rule "3rd party services only IIX"
+	when
+		Requirement(status == 'RESOLVED', code in ('HIPAA_07_05','HIPAA_09_11','HIPAA_09_11_KS','HIPAA_09_11_KY','HIPAA_ME_07_05','HIPAA_09_11_MA','HIPAA_09_11_MN','HIPAA_09_11_MT','HIPAA_09_11_NE','HIPAA_09_11_NM','HIPAA_09_11_ND','HIPAA_09_11_VT','HIPAA_VA_07_05' ), type == 'ESIGNATURE', target == 'PRIMARY_INSURED')
+		Question(id == "driv_lic_number", StringUtils.upperCase(answerAsString) not in ('NA','NONE')) 
+		and (Question(id == "driv_lic_state", StringUtils.upperCase(answerAsString) not in ('NOT APPLICABLE','N_A', 'ZZ')))
+		form:RequirementForm(code in ("IXX3RDPARTY"))
+	then
+		form.setRequired(true);
+end

@@ -1,0 +1,314 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude" 
+   xmlns="http://www.stepsolutions.com/2013/configuration/">
+<carrier>
+		<carrierCode>GLIC</carrierCode>
+		<carrierName>Gerber Life Insurance Company</carrierName>
+		<carrierNAICCode>70939</carrierNAICCode>	
+		<docTypes>
+			<docType>
+				<docTypeCode>NB</docTypeCode>
+				<docTypeName>New Business</docTypeName>
+			</docType>
+			<docType>
+				<docTypeCode>UW</docTypeCode>
+				<docTypeName>Underwriting</docTypeName>
+			</docType>
+		</docTypes>
+		
+
+	
+	<product>
+		<code>HFA</code>
+		<name>Gerber Term/Whole Life</name>
+		<lineOfBusiness>LIFE</lineOfBusiness>
+		<ageCalculationMethod>LAST_BIRTHDAY</ageCalculationMethod>
+		<type>TL</type>
+		<defaultPaymentMode>ANNUAL</defaultPaymentMode>
+		<defaultPaymentMethod>PAC</defaultPaymentMethod>
+		<provision>import_provisions.xml</provision>
+		<locales>
+			<locale>GU</locale>
+		</locales>
+		<ageCalculationMethod>LAST_BIRTHDAY</ageCalculationMethod>
+		<rateFactors>
+			<rateFactor>
+				<ratePaymentMethod>PAC</ratePaymentMethod>
+				<rateOnetimeFactor></rateOnetimeFactor>
+				<rateAnnualFactor>1</rateAnnualFactor>
+				<rateSemiannualFactor>.5</rateSemiannualFactor>
+				<rateQuarterlyFactor>.25</rateQuarterlyFactor>
+				<rateMonthlyFactor>.083334</rateMonthlyFactor>
+				<rateSemimonthlyFactor></rateSemimonthlyFactor>
+				<rateBiweeklyFactor></rateBiweeklyFactor>
+				<rateBimonthlyFactor>.166668</rateBimonthlyFactor>
+			</rateFactor>
+			<rateFactor>
+				<ratePaymentMethod>BILL</ratePaymentMethod>
+				<rateOnetimeFactor></rateOnetimeFactor>
+				<rateAnnualFactor>1</rateAnnualFactor>
+				<rateSemiannualFactor>.54</rateSemiannualFactor>
+				<rateQuarterlyFactor>.28</rateQuarterlyFactor>
+				<rateMonthlyFactor>.1</rateMonthlyFactor>
+				<rateSemimonthlyFactor></rateSemimonthlyFactor>
+				<rateBiweeklyFactor></rateBiweeklyFactor>
+				<rateBimonthlyFactor>.2</rateBimonthlyFactor>
+			</rateFactor>
+			<rateFactor>
+				<ratePaymentMethod>CC</ratePaymentMethod>
+				<rateOnetimeFactor></rateOnetimeFactor>
+				<rateAnnualFactor>1</rateAnnualFactor>
+				<rateSemiannualFactor>.54</rateSemiannualFactor>
+				<rateQuarterlyFactor>.28</rateQuarterlyFactor>
+				<rateMonthlyFactor>.1</rateMonthlyFactor>
+				<rateSemimonthlyFactor></rateSemimonthlyFactor>
+				<rateBiweeklyFactor></rateBiweeklyFactor>
+				<rateBimonthlyFactor>.2</rateBimonthlyFactor>
+			</rateFactor>
+		</rateFactors>
+		<rateClasses>
+			<rateClass>
+				<rateClassCode>ST</rateClassCode>
+				<isDefault>false</isDefault>
+				<name>Standard</name>
+				<minScore>21</minScore>
+				<maxScore>40</maxScore>
+				<sequence>3</sequence>
+			</rateClass>
+			<rateClass>
+				<rateClassCode>PF</rateClassCode>
+				<isDefault>true</isDefault>
+				<name>Preferred</name>
+				<minScore>11</minScore>
+				<maxScore>20</maxScore>
+				<sequence>2</sequence>
+			</rateClass>
+			<rateClass>
+				<rateClassCode>PP</rateClassCode>
+				<isDefault>false</isDefault>
+				<name>Preferred Plus</name>
+				<minScore>0</minScore>
+				<maxScore>10</maxScore>
+				<sequence>1</sequence>
+			</rateClass>
+			<rateClass>
+				<rateClassCode>TC</rateClassCode>
+				<isDefault>false</isDefault>
+				<name>Substandard Table C</name>
+				<minScore>41</minScore>
+				<maxScore>80</maxScore>
+				<sequence>4</sequence>
+			</rateClass>
+			<rateClass>
+				<rateClassCode>TF</rateClassCode>
+				<isDefault>false</isDefault>
+				<name>Substandard Table F</name>
+				<minScore>81</minScore>
+				<maxScore>1000</maxScore>
+				<sequence>5</sequence>
+			</rateClass>
+		</rateClasses>
+		<plans>
+			<plan>
+				<code>FA</code>
+				<name>Face Amount</name>
+				<planType>BASE</planType>
+				<services>
+					<service>
+						<name>Face Amount</name>
+						<options>
+							<option>
+								<code>FA</code>
+								<name>Face Amount</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>FACE_AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+										<max>1000</max>
+										<increment>1000</increment>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+			<plan>
+				<code>TL</code>
+				<name>Term Level Life Insurance</name>
+				<planType>BASE</planType>
+				<services>
+					<service>
+						<name>Term Life Benefit</name>
+						<options>
+							<option>
+								<code>TERM30</code>
+								<name>30 Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>30</value>
+									</level>
+								</levels>
+							</option>
+							<option>
+								<code>TERM20</code>
+								<name>20 Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>20</value>
+									</level>
+								</levels>
+							</option>
+							<option>
+								<code>TERM15</code>
+								<name>15 Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>15</value>
+									</level>
+								</levels>
+							</option>
+							<option>
+								<code>TERM10</code>
+								<name>10 Year Term</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>YEAR</optionValueType>
+								<levels>
+									<level>
+										<value>10</value>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+			<plan>
+				<code>WL</code>
+				<name>Whole Life Insurance</name>
+				<planType>BASE</planType>
+				<services>
+					<service>
+						<name>Whole Life Benefit</name>
+						<options>
+							<option>
+								<code>WL</code>
+								<name>Whole Life Insurance</name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+
+
+			<plan>
+				<code>GIR</code>
+				<name>Guaranteed Insurability Benefit Rider</name>
+				<planType>RIDER</planType>
+				<services>
+					<service>
+						<name>GIR Service</name>
+						<options>
+							<option>
+								<code>GIR</code>
+								<name> Guaranteed Insurability Benefit Rider </name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+
+			<plan>
+				<code>DWP</code>
+				<name>Waiver of Premium Rider</name>
+				<planType>RIDER</planType>
+				<services>
+					<service>
+						<name>DWP Benefit</name>
+						<options>
+							<option>
+								<code>TERMDWP</code>
+								<name>Term Waiver of Premium Rider </name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+									</level>
+								</levels>
+							</option>
+							<option>
+								<code>TERM30DWP</code>
+								<name>30 Year Term Waiver of Premium Rider </name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+									</level>
+								</levels>
+							</option>
+							<option>
+								<code>WLDWP</code>
+								<name>Whole Life Waiver of Premium Rider </name>
+								<showOnQuote>true</showOnQuote>
+								<optionValueType>AMOUNT</optionValueType>
+								<levels>
+									<level>
+										<value>0</value>
+									</level>
+									<level>
+										<value>1</value>
+									</level>
+								</levels>
+							</option>
+						</options>
+					</service>
+				</services>
+			</plan>
+	</plans>
+
+			<file uri="import_agencies.xml" />
+		    <file uri="import_users.xml" />
+			<file uri="import_orgunits.xml" />
+			<file uri="import_ouUsers.xml" />
+			<file uri="import_roles.xml" />
+			<file uri="import_userRoles.xml" />
+		
+			<file uri="import_resources.xml" />
+			<file uri="import_eforms.xml" />
+			<file uri="import_pdfs.xml" />
+		
+			<file uri="import_requirements.xml" />
+
+			<file uri="import_correspondence.xml" />
+			<file uri="import_licenses.xml" />
+			
+		 	<file uri="import_rates.xml" />
+			<file uri="import_appointments.xml" />	 
+			<file uri="import_preferences.xml" />
+			 
+			<file uri="import_buildchart.xml" />
+		</product>
+	</carrier>
+</stepImport>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<roles>
+		<commonPermission>
+			<permission functionCode="workbench_signature" accessType="R" />
+			<exclusionRoleCode>ext_agent</exclusionRoleCode>
+			<exclusionRoleCode>int_agent</exclusionRoleCode>
+		</commonPermission>
+		<role>
+			<roleName>External Agent</roleName>
+			<roleCode>ext_agent</roleCode>
+			<roleOuCode>EXT1</roleOuCode>
+			<containerRole>agent</containerRole>
+			<permissions>
+				<permission functionCode="case_eligibility_filter"
+				accessType="CRW"
+				expression="#{CASE_STATUS=='STARTED' or CASE_STATUS=='INCOMPLETE' or CASE_STATUS=='IGO' or CASE_STATUS=='NIGO' or CASE_STATUS=='AUTODECLINE'}" />
+				<permission functionCode="case_auth" accessType="CRW" />
+				<permission functionCode="personal_information"
+				accessType="CRW" />
+				<permission functionCode="product_reflexive" accessType="CRW" />
+				<permission functionCode="acknowledgements" accessType="CRW" />
+				<permission functionCode="agent_attestation" accessType="CRW" />
+				<permission functionCode="quick_quote" accessType="CRW" />
+				<permission functionCode="full_quote" accessType="CRW" />
+				<permission functionCode="case_cover" accessType="CRW" />
+				<permission functionCode="case_requirements" accessType="CRW" />
+				<permission functionCode="redo_signature_requirement"
+				accessType="CRW" />
+				<permission functionCode="sales_notes" accessType="CRW" />
+				<permission functionCode="system_log" accessType="CRW" />
+				<permission functionCode="case_benes" accessType="CRW" />
+				<permission functionCode="igo_submission" accessType="CRW" />
+				<permission functionCode="application_pdf" accessType="CRW" />
+				<permission functionCode="create_case" accessType="CRW" />
+				<permission functionCode="case_payment" accessType="CRW" />
+				<permission functionCode="send_case_to_applicant" accessType="CRW" />
+				<permission functionCode="disable_uw_class" accessType="R" />
+				<permission functionCode="clone_case" accessType="CRW" />
+				<permission functionCode="unlock_case" accessType="CRW" />
+				<permission functionCode="resend_invite" accessType="CRW" />
+				<permission functionCode="case_notes" accessType="CRW" />
+				<permission functionCode="case_activity_detail" accessType="CRW" />
+			</permissions>
+		</role>
+		<role>
+			<roleName>Underwriter</roleName>
+			<roleCode>uw_writer</roleCode>
+			<roleOuCode>UMBRELLA_LIFE_UWO</roleOuCode>
+			<containerRole>agent</containerRole>
+			<permissions>
+				<permission functionCode="case_eligibility_filter"
+				accessType="CRW"
+				expression="#{CASE_STATUS=='STARTED' or CASE_STATUS=='INCOMPLETE' or CASE_STATUS=='IGO' or CASE_STATUS=='NIGO' or CASE_STATUS=='AUTODECLINE'}" />
+				<permission functionCode="case_eligibility_filter"
+				accessType="R"
+				expression="#{CASE_STATUS=='SUBMITTED' or CASE_STATUS=='WAITING' or CASE_STATUS=='REVIEW'}" />
+				<permission functionCode="acknowledgements" accessType="CRW" />
+				<permission functionCode="application_pdf" accessType="CRW" />
+				<permission functionCode="case_auth" accessType="CRW" />
+				<permission functionCode="case_benes" accessType="CRW" />
+				<permission functionCode="case_cover" accessType="CRW" />
+				<permission functionCode="case_notes" accessType="CRW" />
+				<permission functionCode="case_activity_detail"
+				accessType="CRW" />
+				<permission functionCode="case_reopen" accessType="CRW" />
+				<permission functionCode="case_requirements" accessType="CRW" />
+				<permission functionCode="case_tasks" accessType="CRW" />
+				<permission functionCode="personal_information"
+					accessType="CRW" />
+				<permission functionCode="document_management"
+					accessType="CRW" />
+				<permission functionCode="product_reflexive" accessType="CRW" />
+				<permission functionCode="quick_quote" accessType="CRW" />
+				<permission functionCode="full_quote" accessType="CRW" />
+				<permission functionCode="qa_requirements" accessType="CRW" />
+				<permission functionCode="case_reassign" accessType="CRW" />
+				<permission functionCode="sales_notes" accessType="CRW" />
+				<permission functionCode="service_notes" accessType="CRW" />
+				<permission functionCode="system_log" accessType="CRW" />
+				<permission functionCode="close_out" accessType="CRW" />
+				<permission functionCode="decline" accessType="CRW" />
+				<permission functionCode="detailed_risk_assessment"
+				accessType="CRW" />
+				<permission functionCode="final_pend" accessType="CRW" />
+				<permission functionCode="lab_requirements" accessType="CRW" />
+				<permission functionCode="manual_underwriting_quote"
+				accessType="CRW" />
+				<permission functionCode="medical_underwriting_requirements"
+				accessType="CRW" />
+				<permission functionCode="phi_interview_requirements"
+				accessType="CRW" />
+				<permission functionCode="requirements_reassign"
+				accessType="CRW" />
+				<permission functionCode="underwriting_requirements_correspondence"
+				accessType="CRW" />
+				<permission functionCode="uw_decision" accessType="CRW" />
+				<permission functionCode="uw_notes" accessType="CRW" />
+				<permission functionCode="uw_recalc_igo" accessType="CRW" />
+				<permission functionCode="uw_tasks" accessType="CRW" />
+				<permission functionCode="document_upload" accessType="CRW" />
+				<permission functionCode="risk_recalculate" accessType="CRW" />
+				<permission functionCode="perform_final_action"
+					accessType="CRW" />
+				<permission functionCode="assign_from_pool" accessType="CRW" 
+					expression="#{CASE_STATUS == 'AUTODECLINE' or CASE_STATUS == 'APPROVED' or CASE_STATUS=='SUBMITTED' or AUTO_DECISION_STATUS == 'ACCEPT' or AUTO_DECISION_STATUS == 'DECLINE'}" />	
+			</permissions>
+		</role>
+		<role>
+			<roleName>Web Applicant</roleName>
+			<roleCode>webUser</roleCode>
+			<roleOuCode>ALISS</roleOuCode>
+			<containerRole>policyholder</containerRole>
+			<permissions>			
+				<permission functionCode="disable_send_to_service" accessType="R" />
+			</permissions>
+		</role>
+		<role>
+			<roleName>Underwriter Step</roleName>
+			<roleCode>default_uw</roleCode>
+			<roleOuCode>DEF_UMBRELLA_LIFE_UWO</roleOuCode>
+			<containerRole>agent</containerRole>
+			<permissions>
+				<permission functionCode="assign_from_pool" accessType="CRW"
+					expression="#{CASE_STATUS == 'AUTODECLINE' or CASE_STATUS == 'APPROVED' or AUTO_DECISION_STATUS == 'ACCEPT' or AUTO_DECISION_STATUS == 'DECLINE'}" />
+			</permissions>
+	</role>
+	</roles>
+</stepImport >

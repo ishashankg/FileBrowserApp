@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <page title="HIPAA Authorization">
+  <section>
+    <group labelWidth="200px">
+        <question id='full_hipaa_relationship' text='Relationship to the Insured' type='TEXT' />
+    </group>
+  </section>
+  </page>
+</form>

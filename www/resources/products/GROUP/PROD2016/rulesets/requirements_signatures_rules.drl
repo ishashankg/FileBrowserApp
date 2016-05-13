@@ -1,0 +1,27 @@
+import com.stepsoln.core.util.DateUtil;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import java.lang.Boolean;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.requirements.GroupData;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global org.slf4j.Logger logger;
+
+rule "Applicant Signature"
+	when
+		groupData:GroupData(waiverOfInsurance==false);
+		form:RequirementForm(code=='ASRRF');
+    then
+    	form.setRequired(true);
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED"); 	
+end
+
+rule "Waiver of Insurance Benefits Signature"
+	when
+		groupData:GroupData(waiverOfInsurance==true);
+		form:RequirementForm(code=='WOIRF');
+    then
+    	form.setRequired(true);
+    	rulesResponse.addSignatureRequirement(form.getFormId(), "PRIMARY_INSURED"); 	
+end

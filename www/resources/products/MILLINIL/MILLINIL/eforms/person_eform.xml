@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onSave>saveData</onSave>
+	<page title="Person Information">
+		<section title="Tobacco Consumption">
+			<group labelWidth="800px">
+				<question id="tobaccoUsage"   text="1. Do you use any form of tobacco or nicotine products?"  required="true" type="RADIO" answerSet="Y:Yes|N:No" labelStyle="margin-left:9px" />
+			</group>
+		</section>
+		<section title="Applicant Details">    
+			<group labelWidth="800px">
+				<question id="usCitizenship"  text="1. Are all persons to be insured U.S. Citizens?"       required="true" type="RADIO" answerSet="Y:Yes|N:No" labelStyle="margin-left:9px"/>      
+			</group>      
+			<group>
+				<paragragh text="2. Has any person to be insured:" styleClass="groupParagraph" />
+				<question id="intentionToResideOutsideUs" text="a) any intention within the next 2 years to travel or to reside outside the United States or Canada?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="760px" labelStyle="margin-left:50px" />
+				<question id="felony" text="b) been convicted of or charged, on probation or awaiting trial for a felony?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="760px" labelStyle="margin-left:50px" />
+				<question id="licenseSuspended" text="c) within the past 5 years: had a driver's license suspended or revoked; or been convicted of a moving/traffic violation?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="760px" labelStyle="margin-left:50px" />
+			</group> 
+			<group associated ="true">
+				<question id="licneseNumber" size="30" 
+					text="License #" type="TEXT" 
+					labelWidth="170px" required="true" answerWidth="170px;"
+					labelStyle="margin-left:50px"/>
+				<question id="licenseState" text="License state" type="LISTBOX"
+					lookup="step:LOCALE_STATE" required="true"
+					answerSet=":Select..|Unknown:Not Applicable" 
+					labelWidth="100px" answerWidth="180px;" 
+					labelStyle="margin-top:3px;"/>
+			</group>
+			<group>
+				<question id="aviation" text="d) engaged in or intends to engage in, within the next 2 years: aviation, hang gliding, mountain climbing, para sailing, organized racing (any type), rodeo, competitive skiing, scuba, or skydiving?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="760px" labelStyle="margin-left:50px" />
+				<question id="refusedPolicyAnyTime" text="e) ever been declined, postponed, rated or charged an extra premium for health, life insurance, been offered a policy different from that applied for, or been refused reinstatement or renewal of life or health insurance?" required="true" type="RADIO" answerSet="Y:Yes|N:No" labelWidth="760px" labelStyle="margin-left:50px" />           
+			</group>
+		</section>
+	</page>
+</form>

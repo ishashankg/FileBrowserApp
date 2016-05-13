@@ -1,0 +1,47 @@
+import com.stepsoln.core.rules.*;
+import org.apache.commons.lang.StringUtils;
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+#rule "Check for Product"
+#	when 
+#		xml:XMLDocFact()
+#		eval(!xml.valueEquals("/TXLife/a:TXLifeRequest/a:OLifE/a:Holding/a:Policy/a:ProductCode","FLALST"))
+#	then
+#		rulesResponse.addUserNotifcationInfo("expecting HFA for ProductCode but was: "+xml.elementValue("/TXLife/a:TXLifeRequest/a:OLifE/a:Holding/a:Policy/a:ProductCode"));
+#end
+rule "Check for Carrier"
+	when 
+		xml:XMLDocFact()
+		eval(!xml.valueEquals("/TXLife/a:TXLifeRequest/a:OLifE/a:Holding/a:Policy/a:CarrierCode","FLA"))
+	then
+		rulesResponse.addUserNotifcationInfo("expecting FLA but was: "+xml.elementValue("/TXLife/a:TXLifeRequest/a:OLifE/a:Holding/a:Policy/a:CarrierCode"));
+end
+rule "Check for TransRefGUID"
+	when 
+		xml:XMLDocFact()
+		eval(!xml.elementExists("/TXLife/a:TXLifeRequest/a:TransRefGUID"))
+	then
+		rulesResponse.addUserNotifcationInfo("TransRefGUID element is missing");
+end
+
+
+#NEW RULE - TO BE TESTED
+rule "Ensure Applicant Birthday When No Agent Present"
+	when 
+		xml:XMLDocFact();
+		eval(StringUtils.isBlank(xml.elementValue("/TXLife/a:TXLifeRequest/a:OLifE/a:Party/a:Producer/a:CarrierAppointment/a:CompanyProducerID")));
+		eval(StringUtils.isBlank(xml.elementValue("/TXLife/a:TXLifeRequest/a:OLifE/a:Party/a:Person/a:BirthDate")))
+	then
+		rulesResponse.addUserNotifcationInfo("Applicant birthday is missing; it is required when CompanyProducerID (agent) is not populated.");
+end
+#NEW RULE - TO BE TESTED
+
+
+rule "Check for Applicant Email"
+	when 
+		xml:XMLDocFact()
+		eval(!xml.elementExists("/TXLife/a:TXLifeRequest/a:OLifE/a:Party/a:Producer/a:CarrierAppointment/a:CompanyProducerID")) and 
+		eval(!xml.elementExists("/TXLife/a:TXLifeRequest/a:OLifE/a:Party/a:EMailAddress"))
+	then
+		rulesResponse.addUserNotifcationInfo("Applicant info is missing: EMailAddress element is missing.");
+end

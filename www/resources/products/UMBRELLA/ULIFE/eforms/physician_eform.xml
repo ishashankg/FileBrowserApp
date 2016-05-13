@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <page title="Physician Information">
+    <displayWhen>#{true}</displayWhen>
+    <section title="Primary Physician">
+      <group associated="true">
+        <question id='provider_name' text="Provider Name" type='TEXT' required="true" labelWidth="100px;" answerWidth="200px;" />
+        <question id='physician_phone' text="Phone (recommended)" type='PHONE' />
+        <question id='physician_fax' text="Fax" type='PHONE' />
+      </group>
+      <group associated="true">
+        <question id='physician_city' text="City" type='TEXT' labelWidth="100px;" />
+        <question id='physician_state' text="State" type='LISTBOX' lookup="step:LOCALE_STATE" answerSet=":Please select a state" />
+        <question id='physician_zip' text="Zip Code" type='TEXT' answerWidth="80px;"/>
+      </group>
+    </section>
+	<section title="Additional Physician" repeating="true">
+      <group associated="true">
+        <question id='provider_name2' text="Provider Name" type='TEXT' required="true" labelWidth="100px;" answerWidth="200px;" />
+        <question id='physician_phone2' text="Phone (recommended)" type='PHONE' />
+        <question id='physician_fax2' text="Fax" type='PHONE' />
+      </group>
+      <group associated="true">
+        <question id='physician_city2' text="City" type='TEXT' labelWidth="100px;" />
+        <question id='physician_state2' text="State" type='LISTBOX' lookup="step:LOCALE_STATE" answerSet=":Please select a state" />
+        <question id='physician_zip2' text="Zip Code" type='TEXT' answerWidth="80px;"/>
+      </group>
+    </section>
+  </page>
+ </form>

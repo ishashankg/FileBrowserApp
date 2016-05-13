@@ -1,0 +1,89 @@
+import com.stepsoln.core.document.DocumentTemplateData;
+import com.stepsoln.core.document.PlanData;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "template generate"
+salience 10
+	when
+		template:DocumentTemplateData(documentPartCode in ("GERBER_RIDER_TERM30DWP","GERBER_RIDER_TERM30","GERBER_RIDER_TERM20","GERBER_COVERAGE_PAGE","GERBER_WL_COVERAGE_PAGE", "GERBER_PROVISION", "GERBER_WL_PROVISION", "GERBER_TOC", "GERBER_WL_TOC"))
+	then
+		template.setIsAvailable(false);		 	
+end
+
+
+rule "template available for TERM30DWP"
+	activation-group "template option group"
+	salience 1
+
+	when
+		template:DocumentTemplateData(documentPartCode == "GERBER_RIDER_TERM30DWP")
+		$template : DocumentTemplateData()
+    	$planOption  :  PlanData(planOptionCode == "DWP") from $template.planDataList
+    	$plan :  PlanData(productPlanCode == "TL") from $template.planDataList
+	then
+		template.setIsAvailable(true);
+end
+
+rule "template available for TERM30"
+activation-group "template option group"
+salience 2
+	when
+	
+		template:DocumentTemplateData(documentPartCode == "GERBER_RIDER_TERM30")
+		$template : DocumentTemplateData()
+    	$planOption  :  PlanData(planOptionCode =="TERM30" ) from $template.planDataList
+    	$plan :  PlanData(productPlanCode == "TL") from $template.planDataList
+	then
+		template.setIsAvailable(true);
+end
+
+rule "template available for TERM20"
+activation-group "template option group"
+salience 3
+	when
+		template:DocumentTemplateData(documentPartCode == "GERBER_RIDER_TERM20")
+		$template : DocumentTemplateData()
+    	$planOption  :  PlanData(planOptionCode == "TERM20" ) from $template.planDataList
+    	$plan :  PlanData(productPlanCode == "TL") from $template.planDataList
+	then
+		template.setIsAvailable(true);
+end
+
+rule "confirmation letter"
+salience 4
+	when
+		template:DocumentTemplateData(documentPartCode == "CONFIRMATION_LETTER")
+	then
+		template.setIsAvailable(true);
+end
+
+rule "welcome letter"
+salience 5
+	when
+		template:DocumentTemplateData(documentPartCode == "WELCOME_LETTER")
+	then
+		template.setIsAvailable(true);
+end
+
+rule "Whole Life Pages"
+activation-group "template option group"
+salience 6
+	when
+		template:DocumentTemplateData(documentPartCode in ("GERBER_WL_COVERAGE_PAGE", "GERBER_WL_TOC", "GERBER_WL_PROVISION"))
+		$template : DocumentTemplateData()
+		$plan :  PlanData(productPlanCode == "WL") from $template.planDataList
+	then
+		template.setIsAvailable(true);
+end
+
+rule "Term Life Page"
+activation-group "template option group"
+salience 7
+	when
+		template:DocumentTemplateData(documentPartCode in ("GERBER_COVERAGE_PAGE", "GERBER_TOC", "GERBER_PROVISION"))
+		$template : DocumentTemplateData()
+		$plan :  PlanData(productPlanCode == "TL") from $template.planDataList
+	then
+		template.setIsAvailable(true);
+end

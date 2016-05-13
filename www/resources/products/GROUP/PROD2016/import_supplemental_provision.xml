@@ -1,0 +1,76 @@
+<Provisions xsi:schemaLocation="http://stepsoln.com/Provision/3 provisions.xsd" xmlns="http://stepsoln.com/Provision/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<DisabilityIncomeProvisions>
+		<Description>
+			<![CDATA[
+				Total disability income provision benefits are payable to individuals who :
+
+				-->	Have a TDIP Rider in force on the date that total disability began or one year from when the rider ceases and
+				-->	Have a mental or physical disability (it does not need to be service connected) which prevents him or her from performing substantially gainful employment and
+				-->	Total disability must begin before the insured's 65th birthday and
+				-->	Must continue for at least six consecutive months.
+				-->	shall be paid monthly disability benefits from the first day of the seventh consecutive month of and during the continuance of such total disability of $10 for each $1,000 of such insurance in effect when such benefits become payable.
+			]]>
+		</Description>
+	</DisabilityIncomeProvisions>
+	<WaiverOfPremiumProvisions>
+		<Description>
+			<![CDATA[
+				The IAC Waiver Of Premium Rider contain a waiver of premiums provision in the event that the insured becomes totally disabled. 
+				Generally, to qualify for a waiver of premiums, the insured must:
+				
+				-->	The insured must have a mental or physical disability which prevents him or her from performing substantially gainful employment.
+				-->	The total disability must begin before the insured's 65th birthday, 
+				and must continue for at least six consecutive months.
+				-->	The total disability may not begin prior to the effective date of the policy.
+			]]>
+		</Description>
+	</WaiverOfPremiumProvisions>
+	<AccidDeathAndDisProvisions>
+		<Description>
+			<![CDATA[
+				The IAC Death and Disability Benefit Rider is available in face amounts from $20,000 to $99,999.
+				&nbsp;If you suffer any one of the losses listed below, as a result of an injury, we will pay the benefit shown. The loss must be 
+				&nbsp;caused solely by an accident which occurs while you are insured, and must occur within 365 days of the accident. Only 
+				&nbsp;one benefit (the larger) will be paid for more than one loss resulting from any one accident.
+				
+				EXCLUSIONS :
+				A benefit will not be payable for a loss:
+				(1) caused by suicide or intentionally self-inflicted injuries; or
+				(2) caused by or resulting from war or any act of war, declared or undeclared; or
+				(3) caused by sickness or disease.
+			]]>
+		</Description>
+	</AccidDeathAndDisProvisions>
+	<GIORiderProvisions>
+		<Description>
+			<![CDATA[
+				-->	The primary insured must be between ages 0 and 37
+				-->	The minimum specified amount may not be less than the minimum amount available for the base product (under our issue rules on the option date) 
+				-->	The maximum specified amount is $50,000 or the face amount of the base policy, if less 
+				-->	This benefit is not issued with a special class 
+				-->	 It may be issued only to a primary insured who has no table ratings or is charged a flat extra premium of no more than $5 per thousand for aviation, occupation or avocation
+			]]> 
+		</Description>
+	</GIORiderProvisions>
+	<AcceleratedDeathBenefProvision>
+		<Description>
+			<![CDATA[
+				-->	Premiums payable and benefit to age 70. 
+				-->	$1,000 per unit if death occurs directly and independent of other causes as result of bodily injury.
+				-->	Minimum $5,000. Maximum equal to the policy face amount up to $300,000 provided that the total amount applied for and in force in all companies does not exceed this amount.
+			]]> 
+		</Description>
+		<MaxBenefitPercent>25</MaxBenefitPercent>
+	</AcceleratedDeathBenefProvision>
+	<ReturnOfPremiumProvisions>
+		<Description>
+			<![CDATA[
+				The Rider is implemented by using increasing term insurance. 
+				when added to a whole life policy, it provides that a death prior to a given age, 
+				not only is the original face amount payable, 
+				but an amount equal to all the premiums paid is also payable to the beneficiary. 
+				This rider usually expires at a specified age such as age 60.
+			]]>
+		</Description>
+	</ReturnOfPremiumProvisions>
+</Provisions>

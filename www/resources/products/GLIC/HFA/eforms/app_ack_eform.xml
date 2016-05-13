@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <page title="Acknowledgement of Information Provided">
+    <section>
+	  <group labelWidth="400px">
+		  <header>It is understood and agreed that:</header>
+	  </group>
+      <group labelWidth="400px">
+          <header>All statements and answers made in all parts of this application are true and complete to the best of my knowledge and belief, and shall be the basis for and become part of any policy issued as a result of this application. Other than as stated in any conditional receipt, any policy issued will not take effect until it has been approved and the initial full premium(s) due have been received by the Company while the proposed insured is alive and all statements and answers in all parts of the application continue to be true and complete. I will notify the Company of any changes to the statements and answers given in any part of the application which occur before the policy is approved and payment is received by the Company.</header>
+          <displayWhen>#{CASE.contractLocale!="CT" and CASE.contractLocale!="NY"}</displayWhen>
+	  </group>
+	  <group labelWidth="400px">
+          <header>All statements and answers made in all parts of this application are true and complete to the best of my knowledge and belief, and shall be the basis for and become part of any policy issued as a result of this application. Other than as stated in any conditional receipt, any policy issued will not take effect until it has been approved and the initial full premium(s) due have been received by the Company while the proposed insured is alive and all statements and answers in all parts of the application continue to be true and complete. I will notify the Company of any changes to the statements and answers given in any part of the application which occur before the policy is approved and payment is received by the Company. Review the answers on this application carefully. If any of your answers are incorrect or untrue, even if unintentional, the Company has the right to deny benefits or rescind your coverage.</header>
+          <displayWhen>#{CASE.contractLocale=="CT"}</displayWhen>
+	  </group>
+	  <group labelWidth="400px">
+          <header>All statements and answers made in all parts of this application are true and complete to the best of my knowledge and belief. This application will be attached to the policy. Any policy issued will not take effect until it has been approved and the initial full premium(s) due have been received by the Company while the proposed insured is alive. I will notify the Company of any changes to the statements and answers given in any part of the application which occur before the policy is approved and payment is received by the Company.</header>
+          <displayWhen>#{CASE.contractLocale=="NY"}</displayWhen>
+	  </group>
+    </section>
+  </page>
+</form>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section style="border:1px solid black">		
+			<group labelWidth="300px" style="height:60px;">
+				<paragragh text="If you are thinking about discontinuing or changing an existing life insurance policy or annuity contract and buying a replacement, your decision could be a good one – or possibly a mistake. Make sure that you understand the facts. You should:"  styleClass="groupParagraph">
+				</paragragh>
+			</group>			
+			<group labelWidth="300px"  style="margin-left:30px">
+				<paragragh  text=" - Make a careful comparison of your existing policy and the proposed policy." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:30px;">
+				<paragragh  text=" - Ask the company or agent that sold you your existing policy to provide you with complete information about it." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px" style="margin-left:30px;">
+				<paragragh  text=" - Consider both sides before you decide."   styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:30px;">
+				<paragragh  text=" - Determine what you want your insurance program to do."  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px"  style="margin-left:30px;">
+				<paragragh text=" - Consider your present health. You may have had a change which could affect your insurability, so make sure to continue your present policy until a new policy is delivered to you and accepted by you."   styleClass="groupParagraph">
+				</paragragh>
+			</group>			
+			<group labelWidth="300px">
+				<paragragh text="This form must be completed in triplicate and the original given to you by the agent proposing replacement no later than at the time you apply for the new policy. (This form must be completed and given to you even though the replacement policy is with the same company that sold you your existing policy)." styleClass="groupParagraph">
+				</paragragh>
+			</group>			
+		</section>					
+		<section title="Existing Policy Information">
+			<group associated="True">
+				<question id='insured_name' text="Name of Insured" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='1'/>  
+				<question id='company_name' text="Company Name" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='2'/>
+			</group>
+			<group associated="True">
+				<question id='policy_type' text="Type of Policy" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='3'/>  
+				<question id='policy_number' text="Policy Number" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='4'/>
+			</group>
+			<group associated="True">
+				<question id='issue_date' text="Date of Issue" type='DATEF' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='5'/>  
+				<question id='face_amount' text="Face Amount of Basic Policy" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='6'/>
+			</group>
+			<group associated="True">
+				<question id='optional_benefit_type' text="Types of Optional Benefit" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='7'/>  				
+			</group>			
+		</section>
+		<section name="Existing Policy Information" repeating="True">
+			<group associated="True">
+				<question id='insured_name1' text="Name of Insured" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='8'/>  
+				<question id='company_name1' text="Company Name" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='9'/>
+			</group>
+			<group associated="True">
+				<question id='policy_type1' text="Type of Policy" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='10'/>  
+				<question id='policy_number1' text="Policy Number" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='11'/>
+			</group>
+			<group associated="True">
+				<question id='issue_date1' text="Date of Issue" type='DATEF' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='12'/>  
+				<question id='face_amount1' text="Face Amount of Basic Policy" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='13'/>
+			</group>
+			<group associated="True">
+				<question id='optional_benefit_type1' text="Types of Optional Benefit" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='14'/>  				
+			</group>			
+		</section>
+		<section>		
+			<group labelWidth="300px">
+				<paragragh text="Indiana Department of Insurance Regulation, 760 IAC 1-16.1 requires that the company making the replacement notify your existing insurance company that you may be replacing your existing policy. (You have the right, within twenty days after delivery of a replacement policy, to return it to the company and to claim an unconditional refund of all premiums paid on it.)" styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>
+		<section>
+			<group associated="True">
+				<question id='insured_signature' text="Insured Signature" type='CHECKBOX' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='15'/>  
+				<question id='agent_signature' text="Replacing Agent's Signature" type='CHECKBOX' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='16'/>
+			</group>
+			<group associated="True">
+				<question id='signature_date' text="Date" type='DATEF' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='17'/>  
+				<question id='address1' text="Address Line1" required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='18'/>
+			</group>
+			<group associated="True">
+				<question id='phone' text="Phone" type='PHONE' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='19'/>  
+				<question id='address2' text="Address Line2" type='TEXT' answerWidth="110px" labelWidth="120px" labelStyle='margin-left:20px' tabindex ='20'/>
+			</group>
+			<group associated="True">
+				<question id='indiana_license' text="Indiana License Number" type='TEXT' required="true" answerWidth="110px" labelWidth="120px" labelStyle='margin-left:8px' tabindex ='21'/>  				
+			</group>			
+		</section>
+	</page>
+</form>

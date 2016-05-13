@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" targetNamespace="http://www.activiti.org/test">
+  <process id="fglDataEntryProcess" name="fglDataEntryProcess" isExecutable="true">
+    <startEvent id="create_data_entry_task" name="Start Create Data Entry" />
+    <scriptTask id="load_variables" name="Load Task Variables" scriptFormat="groovy" activiti:autoStoreVariables="false">    <script><![CDATA[execution.setVariable("timerDuration",
+				com.stepsoln.core.util.DateUtil.daysFromNowMidnightAsISODuration(5));
+				execution.setVariable("PRC_CASE_ID", execution.getVariable("caseId"));
+				execution.setVariable("PRC_CARRIER_ID", execution.getVariable("carrierId"));
+                execution.setVariable("PRC_PRODUCT_ID", execution.getVariable("productId"));]]></script>
+</scriptTask>
+    <userTask id="data_entry_task" name="Create Data Entry Task" activiti:candidateGroups="DEP">
+      <extensionElements>
+        <activiti:taskListener event="create" expression="#{stepWorkflowServices.assignTaskGroup(execution, &#39;DEP&#39;)}" />
+        <activiti:taskListener event="create" expression="#{workflowActivityLoggerService.forDataEntryStarted(execution,&#39;data_entry_started&#39;,&#39;NB&#39;)}" />
+        <activiti:taskListener event="create" class="com.stepsoln.core.workflow.activiti.AssignCaseToOUTaskListener" />
+        <activiti:taskListener event="assignment" expression="#{workflowActivityLoggerService.forCaseAssignedToUser(execution,&#39;data entry person&#39;,&#39;data_entry_assigned&#39;,&#39;NB&#39;)}" />
+        <activiti:taskListener event="complete" expression="#{workflowActivityLoggerService.forDataEntryCompleted(execution,&#39;data entry person&#39;,&#39;data_entry_complete&#39;,&#39;NB&#39;)} " />
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow1" sourceRef="create_data_entry_task" targetRef="load_variables" />
+    <sequenceFlow id="flow2" sourceRef="load_variables" targetRef="data_entry_task" />
+    <sequenceFlow id="flow10" sourceRef="data_entry_task" targetRef="scripttask_sendToDepQC" />
+    <sequenceFlow id="flow11" sourceRef="scripttask_sendToDepQC" targetRef="data_entry_qc_review" />
+    <scriptTask id="scripttask_sendToDepQC" name="Send Case to DEP QC" scriptFormat="groovy" activiti:autoStoreVariables="false">    <script><![CDATA[caseNumber = execution.getVariable("caseNo");
+			if(null == caseNumber){
+				caseNumber = stepWorkflowServices.getCurrentCase(execution).getExternalCaseNumber();
+				execution.setVariable('caseNo',caseNumber );
+			}
+			fileName = execution.getVariable("fileName")
+			batchId = execution.getVariable("batchId")
+			policyNo = execution.getVariable("policyNo")
+			execution.setVariable('Description', com.stepsoln.core.util.process.task.TaskDescriptionUtils.forCompleteOrReviewDataEntry(fileName,policyNo,batchId))
+			execution.removeVariable("Assignee");
+			execution.removeVariable("assigneeName");
+			execution.removeVariable("taskId");
+			execution.removeVariable("owner");]]></script>
+</scriptTask>
+    <userTask id="data_entry_qc_review" name="Data Entry QC Review" activiti:candidateGroups="DEP_QC">
+      <extensionElements>
+        <activiti:taskListener event="create" expression="#{stepWorkflowServices.assignTaskGroup(execution, &#39;DEP_QC&#39;)}" />
+        <activiti:taskListener event="create" expression="#{workflowActivityLoggerService.forDataEntryVerificationStarted(execution,&#39;data_entry_qc_started&#39;,&#39;NB&#39;)}" />
+        <activiti:taskListener event="create" class="com.stepsoln.core.workflow.activiti.AssignCaseToOUTaskListener" />
+        <activiti:taskListener event="assignment" expression="#{workflowActivityLoggerService.forCaseAssignedToUser(execution,&#39;data entry person quality check&#39;,&#39;data_entry_qc_started&#39;,&#39;NB&#39;)}" />
+        <activiti:taskListener event="complete" expression="#{workflowActivityLoggerService.forDataEntryVerificationCompleted(execution,&#39;data entry person quality check&#39;,&#39;data_entry_qc_complete&#39;,&#39;NB&#39;)} " />
+      </extensionElements>
+    </userTask>
+    <scriptTask id="suitability_igo_Check" name="Suitability And IGO Check" scriptFormat="javascript" activiti:autoStoreVariables="false">    <script><![CDATA[stepWorkflowServices.performIgoCheck(execution);
+      		sendToSO = stepWorkflowServices.isSuitabilityCheckFailed(execution);
+	      	execution.setVariable('sendToSuitability',sendToSO);
+	      	caseNumber = execution.getVariable("caseNo");
+			if(null == caseNumber){
+				caseNumber = stepWorkflowServices.getCurrentCase(execution).getExternalCaseNumber();
+				execution.setVariable('caseNo',caseNumber );
+			}
+			agentCredentialResponse= stepWorkflowServices.checkAgentCredential(execution);
+			execution.setVariable('agentCredentialCheck',agentCredentialResponse.isHasAppointment() );
+			
+			execution.setVariable("agentCode",agentCredentialResponse.getAgentCode());
+			execution.setVariable("contractState",agentCredentialResponse.getContractState() );
+			execution.setVariable("product",agentCredentialResponse.getProduct());
+			execution.setVariable("callRequestUUID",agentCredentialResponse.getUuid());
+			
+			execution.removeVariable("Assignee");
+			execution.removeVariable("assigneeName");
+			execution.removeVariable("taskId");
+			execution.removeVariable("owner");]]></script>
+</scriptTask>
+    <sequenceFlow id="flow15" sourceRef="data_entry_qc_review" targetRef="suitability_igo_Check" />
+    <inclusiveGateway id="inclusivegateway1" name="Inclusive Gateway" />
+    <sequenceFlow id="flow37" sourceRef="suitability_igo_Check" targetRef="inclusivegateway1" />
+    <userTask id="usertask_caseMgr1" name="Case Manager Review" activiti:candidateGroups="CASE_MGR">
+      <extensionElements>
+        <activiti:taskListener event="create" expression="#{stepWorkflowServices.selectOUUserRoundRobin(execution, &#39;CASE_MGR&#39;)}" />
+        <activiti:taskListener event="create" class="com.stepsoln.core.workflow.activiti.AssignCaseToOUTaskListener" />
+        <activiti:taskListener event="create" expression="#{stepWorkflowServices.saveCurrentTaskToCase(execution, &#39;CASE_MGR&#39;)}" />
+        <activiti:taskListener event="create" expression="#{workflowActivityLoggerService.forCompleteOrReviewAndFinalDecisionTaskStarted(execution,&#39;case_manager_started&#39;,&#39;SVC&#39;)}" />
+        <activiti:taskListener event="complete" expression="#{workflowActivityLoggerService.forCompleteOrReviewAndFinalDecisionCompleted(execution,&#39;case manager&#39;,&#39;case_manager_complete&#39;,&#39;SVC&#39;)} " />
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow51" sourceRef="inclusivegateway1" targetRef="scripttask_cm1">
+      <conditionExpression xsi:type="tFormalExpression">#{true}</conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway" />
+    <endEvent id="endevent1" name="End" />
+    <sequenceFlow id="flow55" sourceRef="exclusivegateway1" targetRef="endevent1">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[#{'APPROVED' != caseStatus}]]></conditionExpression>
+    </sequenceFlow>
+    <userTask id="usertask_issuer" name="Issuer Review" activiti:candidateGroups="ISS">
+      <extensionElements>
+        <activiti:taskListener event="create" expression="#{stepWorkflowServices.assignTaskGroup(execution, &#39;ISS&#39;)}" />
+        <activiti:taskListener event="create" expression="#{workflowActivityLoggerService.forCompleteOrTrackPaymentInformationStarted(execution,&#39;issuer_started&#39;,&#39;SVC&#39;)}" />
+        <activiti:taskListener event="create" class="com.stepsoln.core.workflow.activiti.AssignCaseToOUTaskListener" />
+        <activiti:taskListener event="assignment" expression="#{workflowActivityLoggerService.forCaseAssignedToUser(execution,&#39;issuer&#39;,&#39;issuer_assigned&#39;,&#39;SVC&#39;)}" />
+        <activiti:taskListener event="complete" expression="#{workflowActivityLoggerService.forCompleteOrTrackPaymentInformationCompleted(execution,&#39;issuer&#39;,&#39;issuer_complete&#39;,&#39;UW&#39;)} " />
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow56" sourceRef="exclusivegateway1" targetRef="script_issuer">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[#{'APPROVED' == caseStatus}]]></conditionExpression>
+    </sequenceFlow>
+    <inclusiveGateway id="inclusivegateway2" name="Inclusive Gateway" />
+    <sequenceFlow id="flow60" sourceRef="usertask_caseMgr1" targetRef="inclusivegateway2" />
+    <scriptTask id="scripttask_so" name="Send Case to SO" scriptFormat="groovy" activiti:autoStoreVariables="false">    <script><![CDATA[caseNumber = execution.getVariable("caseNo");    
+			if(null == caseNumber){
+				caseNumber = stepWorkflowServices.getCurrentCase(execution).getExternalCaseNumber();
+				execution.setVariable('caseNo',caseNumber );
+			} 
+			policyNo = execution.getVariable("policyNo")
+			if(null == policyNo){
+				policyNo = stepWorkflowServices.getCurrentCase(execution).getPolicyNo()
+			}
+			execution.setVariable('Description', com.stepsoln.core.util.process.task.TaskDescriptionUtils.forReviewSuitabilityDataAndRecommendation(policyNo));
+			execution.removeVariable("Assignee");
+			execution.removeVariable("assigneeName");
+			execution.removeVariable("taskId");
+			execution.removeVariable("owner");
+			execution.removeVariable("igoRuleResponse");]]></script>
+</scriptTask>
+    <scriptTask id="scripttask_cm1" name="Send Case to CM" scriptFormat="groovy" activiti:autoStoreVariables="false">    <script><![CDATA[caseNumber = execution.getVariable("caseNo");
+			if(null == caseNumber){
+				caseNumber = stepWorkflowServices.getCurrentCase(execution).getExternalCaseNumber();
+				execution.setVariable('caseNo',caseNumber );
+			}
+			policyNo = execution.getVariable("policyNo")
+			execution.setVariable('Description', com.stepsoln.core.util.process.task.TaskDescriptionUtils.forCompleteOrReviewAndFinalDecision(policyNo))
+			execution.removeVariable("Assignee");
+			execution.removeVariable("assigneeName");
+			execution.removeVariable("taskId");
+			execution.removeVariable("owner");
+			execution.removeVariable("igoRuleResponse");]]></script>
+</scriptTask>
+    <scriptTask id="script_issuer" name="Send Case to Issuer" scriptFormat="groovy" activiti:autoStoreVariables="false">    <script><![CDATA[caseNumber = execution.getVariable("caseNo");
+			if(null == caseNumber){
+				caseNumber = stepWorkflowServices.getCurrentCase(execution).getExternalCaseNumber();
+				execution.setVariable('caseNo',caseNumber );
+			}
+			policyNo = execution.getVariable("policyNo")
+			execution.setVariable('Description', com.stepsoln.core.util.process.task.TaskDescriptionUtils.forCompleteOrTrackPaymentInformation(policyNo))
+			execution.removeVariable("Assignee");
+			execution.removeVariable("assigneeName");
+			execution.removeVariable("taskId");
+			execution.removeVariable("owner");			
+			execution.removeVariable("caseStatus");]]></script>
+</scriptTask>
+    <sequenceFlow id="flow66" sourceRef="inclusivegateway1" targetRef="scripttask_so">
+      <conditionExpression xsi:type="tFormalExpression">#{sendToSuitability == true}</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow71" sourceRef="scripttask_cm1" targetRef="usertask_caseMgr1" />
+    <sequenceFlow id="flow72" sourceRef="script_issuer" targetRef="usertask_issuer" />
+    <sequenceFlow id="flow73" sourceRef="usertask_issuer" targetRef="endevent1" />
+    <scriptTask id="scripttask1" name="Check Case Approved" scriptFormat="groovy" activiti:autoStoreVariables="false">    <script><![CDATA[caseStatus = stepWorkflowServices.getCurrentCase(execution).getStatus().name();
+execution.setVariable('caseStatus',caseStatus );]]></script>
+</scriptTask>
+    <sequenceFlow id="flow75" sourceRef="inclusivegateway2" targetRef="scripttask1" />
+    <sequenceFlow id="flow76" sourceRef="scripttask1" targetRef="exclusivegateway1" />
+    <userTask id="usertask_soreview" name="Suitability Officer Review" activiti:candidateGroups="SUITABILITY">
+      <extensionElements>
+        <activiti:taskListener event="create" expression="#{stepWorkflowServices.selectOUUserRoundRobin(execution, &#39;SUITABILITY&#39;)}" />
+        <activiti:taskListener event="create" expression="#{stepWorkflowServices.ensureCaseId(execution)}" />
+        <activiti:taskListener event="create" class="com.stepsoln.core.workflow.activiti.AssignCaseToOUTaskListener" />
+        <activiti:taskListener event="create" expression="#{workflowActivityLoggerService.forReviewSuitabilityDataAndRecommendationStarted(execution,&#39;suitability_started&#39;,&#39;SVC&#39;)}" />
+        <activiti:taskListener event="assignment" expression="#{workflowActivityLoggerService.forCaseAssignedToUser(execution,&#39;suitability officer&#39;,&#39;suitability_assigned&#39;,&#39;SVC&#39;)}" />
+        <activiti:taskListener event="complete" expression="#{workflowActivityLoggerService.forReviewSuitabilityDataAndRecommendationCompleted(execution,&#39;suitability officer&#39;,&#39;suitability_complete&#39;,&#39;SVC&#39;)} " />
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow77" sourceRef="scripttask_so" targetRef="usertask_soreview" />
+    <sequenceFlow id="flow78" sourceRef="usertask_soreview" targetRef="inclusivegateway2" />
+    <callActivity id="agentCredentialCheck" name="Agent Credential" calledElement="agent_credential">
+      <extensionElements>
+        <activiti:in source="agentCode" target="agentCode" />
+        <activiti:in source="contractState" target="contractState" />
+        <activiti:in source="product" target="product" />
+        <activiti:in source="callRequestUUID" target="callRequestUUID" />
+      </extensionElements>
+    </callActivity>
+    <scriptTask id="resolve_agent_credential" name="Resolve Agent Credential Requirement" scriptFormat="groovy" activiti:autoStoreVariables="false">    <script>stepWorkflowServices.resolveAgentCredentialRequirement(execution);</script>
+</scriptTask>
+    <sequenceFlow id="flow79" sourceRef="inclusivegateway1" targetRef="agentCredentialCheck">
+      <conditionExpression xsi:type="tFormalExpression">#{agentCredentialCheck== false}</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow80" sourceRef="agentCredentialCheck" targetRef="resolve_agent_credential" />
+    <sequenceFlow id="flow81" sourceRef="resolve_agent_credential" targetRef="inclusivegateway2" />
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_fglDataEntryProcess">
+    <bpmndi:BPMNPlane id="BPMNPlane_fglDataEntryProcess" bpmnElement="fglDataEntryProcess">
+      <bpmndi:BPMNShape id="BPMNShape_create_data_entry_task" bpmnElement="create_data_entry_task">
+        <omgdc:Bounds x="50" y="130" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_load_variables" bpmnElement="load_variables">
+        <omgdc:Bounds x="126" y="120" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_data_entry_task" bpmnElement="data_entry_task">
+        <omgdc:Bounds x="249" y="94" width="105" height="69" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_data_entry_qc_review" bpmnElement="data_entry_qc_review">
+        <omgdc:Bounds x="410" y="236" width="105" height="62" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask_sendToDepQC" bpmnElement="scripttask_sendToDepQC">
+        <omgdc:Bounds x="260" y="236" width="105" height="62" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_suitability_igo_Check" bpmnElement="suitability_igo_Check">
+        <omgdc:Bounds x="540" y="236" width="105" height="62" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_inclusivegateway1" bpmnElement="inclusivegateway1">
+        <omgdc:Bounds x="700" y="246" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_usertask_caseMgr1" bpmnElement="usertask_caseMgr1">
+        <omgdc:Bounds x="1010" y="301" width="117" height="61" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_exclusivegateway1" bpmnElement="exclusivegateway1" isMarkerVisible="true">
+        <omgdc:Bounds x="1350" y="236" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_endevent1" bpmnElement="endevent1">
+        <omgdc:Bounds x="1678" y="239" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_usertask_issuer" bpmnElement="usertask_issuer">
+        <omgdc:Bounds x="1560" y="149" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_inclusivegateway2" bpmnElement="inclusivegateway2">
+        <omgdc:Bounds x="1170" y="236" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask_so" bpmnElement="scripttask_so">
+        <omgdc:Bounds x="833" y="166" width="105" height="62" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask_cm1" bpmnElement="scripttask_cm1">
+        <omgdc:Bounds x="820" y="301" width="105" height="62" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_script_issuer" bpmnElement="script_issuer">
+        <omgdc:Bounds x="1420" y="146" width="105" height="62" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask1" bpmnElement="scripttask1">
+        <omgdc:Bounds x="1230" y="226" width="105" height="62" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_usertask_soreview" bpmnElement="usertask_soreview">
+        <omgdc:Bounds x="1000" y="166" width="117" height="61" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_agentCredentialCheck" bpmnElement="agentCredentialCheck">
+        <omgdc:Bounds x="780" y="420" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_resolve_agent_credential" bpmnElement="resolve_agent_credential">
+        <omgdc:Bounds x="935" y="420" width="225" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow1" bpmnElement="flow1">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="85" y="147" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="126" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow2" bpmnElement="flow2">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="231" y="147" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="249" y="128" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow10" bpmnElement="flow10">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="301" y="163" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="301" y="200" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="312" y="200" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="312" y="236" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow11" bpmnElement="flow11">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="365" y="267" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="410" y="267" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow15" bpmnElement="flow15">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="515" y="267" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="540" y="267" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow37" bpmnElement="flow37">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="645" y="267" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="700" y="266" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow51" bpmnElement="flow51">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="720" y="286" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="720" y="332" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="820" y="332" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow55" bpmnElement="flow55">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1390" y="256" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1678" y="256" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow56" bpmnElement="flow56">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1370" y="236" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1370" y="176" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1420" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow60" bpmnElement="flow60">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1127" y="331" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1190" y="331" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1190" y="276" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow66" bpmnElement="flow66">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="720" y="246" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="719" y="196" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="833" y="197" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow71" bpmnElement="flow71">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="925" y="332" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1010" y="331" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow72" bpmnElement="flow72">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1525" y="177" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1560" y="176" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow73" bpmnElement="flow73">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1665" y="176" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1697" y="179" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1695" y="239" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow75" bpmnElement="flow75">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1210" y="256" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1230" y="257" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow76" bpmnElement="flow76">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1335" y="257" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1350" y="256" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow77" bpmnElement="flow77">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="938" y="197" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1000" y="196" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow78" bpmnElement="flow78">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1117" y="196" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1190" y="196" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1190" y="236" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow79" bpmnElement="flow79">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="720" y="286" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="720" y="447" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="780" y="447" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow80" bpmnElement="flow80">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="885" y="447" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="935" y="447" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow81" bpmnElement="flow81">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1160" y="447" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1190" y="442" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1190" y="276" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

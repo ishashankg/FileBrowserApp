@@ -1,0 +1,47 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.EformCode;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.db.services.util.EmployeeUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.Requirement
+import rules.*;
+import java.util.*;
+import java.math.BigDecimal;
+import com.stepsoln.core.rules.requirements.BeneficiaryData
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "sum primary beneficiaries must be 100"
+	when
+	  	$primBenIds: ArrayList() from accumulate(Question($id: id, id.indexOf("beneficiary_type") >= 0, answer == 'P'), 
+	  	init( ArrayList ids = new ArrayList(); ids.add("1"); ), 
+	  	action( ids.add($id.substring(16)); ),  
+	  	result( ids ))
+ 		$totalPercentage : Number(intValue != 100) from accumulate(Question(id.indexOf("bene_percent") >= 0 && $primBenIds.contains(id.substring(12)) == true, $id: id, $answer: answerAsNumber)
+         init( int total = 0; ),
+         action( total += $answer; ),
+         result( new Integer( total ) ) )
+	then
+		rulesResponse.addRequired("Sum of primary beneficiaries percentage must equal 100");
+end
+
+rule "sum contingent beneficiaries must be 100"
+	when
+	  	$contBenIds: ArrayList() from accumulate(Question($id: id, id.indexOf("beneficiary_type") >= 0, answer == 'C'), 
+	  	init( ArrayList ids = new ArrayList(); ), 
+	  	action( ids.add($id.substring(16)); ),  
+	  	result( ids ))
+ 		$totalPercentage: Number() from accumulate(Question(id.indexOf("bene_percent") >= 0 && $contBenIds.contains(id.substring(12)) == true, $id: id, $answer: answerAsNumber)
+         init( int total = 0; ),
+         action( total += $answer; ),
+         result( new Integer( total ) ) )
+	then
+		if ($totalPercentage.intValue() != 100 && $contBenIds.size() > 0)
+		{
+			rulesResponse.addRequired("Sum of contingent beneficiaries percentage must equal 100");
+		}
+end

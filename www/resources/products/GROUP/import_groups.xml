@@ -1,0 +1,19 @@
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<groups>
+		<group>
+			<groupCode>AGC</groupCode>
+			<groupType>1</groupType>
+			<groupTaxID>701</groupTaxID>
+			<memberProbationaryPeriod>30</memberProbationaryPeriod>
+			<memberEligibilityPeriod>30</memberEligibilityPeriod>
+			<enrollments>
+				<enrollment>
+					<year>2015</year>
+				</enrollment>
+				<enrollment>
+					<year>2016</year>
+				</enrollment>
+			</enrollments>
+		</group>
+	</groups>
+</stepImport>

@@ -1,0 +1,88 @@
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.coverages.*;
+import com.stepsoln.core.db.group.*;
+import com.stepsoln.core.rules.requirements.*;
+import com.stepsoln.core.util.MathUtil;
+import java.math.BigDecimal;
+import com.stepsoln.core.rules.Question;
+import org.apache.commons.collections.CollectionUtils;
+import com.stepsoln.core.rules.requirements.CaseData;
+import java.util.*;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global com.stepsoln.core.util.MathUtil math;
+
+rule "Min salary for dental plan"
+salience 100
+when 	
+	gm:GroupMemberData(salary < 50000);
+	faOption:CoverageOption(optionCode in ("DNTL-GRP"));
+then
+	faOption.setEditable(false);
+end
+
+rule "Auto select non contributory plan" 
+salience 100
+when
+	faOption:CoverageOption(employerContributionPct in (new BigDecimal(1)));
+then
+	faOption.setSelected(true);
+	faOption.setEditable(false);
+end
+
+rule "Default LookupBuildChart to true"
+when 
+	 eval( true )
+then
+	rulesResponse.setBuildChartSuccess(true);
+end
+
+rule "When case is in submit,approve and decline status and supplemental plan is selected, make supplemental plan as not editable"
+when 
+	 option:CoverageOption(optionCode in ("STFAGOVV-16"));
+	 case:CaseData(caseStatus in ("SUBMITTED","APPROVED","DECLINED")); 
+then
+	 option.setEditable(false);
+end
+
+rule "Disable child dependent Plans"
+when 
+	option:CoverageOption(optionCode == "Child-16");
+	childDependants: Number() from accumulate(i:DependantData(relationship == "CHILD" ),count(i));
+	eval(option!=null && childDependants.intValue() == 0)
+then
+		option.setSelected(false);
+		option.setEditable(false);
+    	option.setSelectable(false);
+end
+
+rule "Enable child dependent Plans"
+when 
+	option:CoverageOption(optionCode == "Child-16");
+	childDependants: Number() from accumulate(i:DependantData(relationship == "CHILD" ),count(i));
+	eval(option!=null && childDependants.intValue() > 0)
+then
+		option.setEditable(true);
+    	option.setSelectable(true);
+end
+
+rule "Disable spouse dependent Plans"
+when 
+	option:CoverageOption(optionCode == "Spouse-16");
+	spouseDependants: Number() from accumulate(i:DependantData(relationship == "SPOUSE" ),count(i))
+	eval(option!=null && spouseDependants.intValue() == 0)
+then
+		option.setSelected(false);
+		option.setEditable(false);
+    	option.setSelectable(false);
+end
+
+rule "Enable spouse dependent Plans"
+when 
+	option:CoverageOption(optionCode == "Spouse-16");
+	spouseDependants: Number() from accumulate(i:DependantData(relationship == "SPOUSE" ),count(i))
+	eval(option!=null && spouseDependants.intValue() > 0)
+then
+		option.setEditable(true);
+    	option.setSelectable(true);
+ end

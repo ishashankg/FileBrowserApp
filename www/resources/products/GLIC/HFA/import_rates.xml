@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<rates>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Disability_Waiver_of_Premium_DWP_Premiums.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Guaranteed_Insurability_Rider_for_WL_Premiums.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premium - 10B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 10B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 10B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 10B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 15B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 15B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 15B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 15B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 20B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 20B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 20B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 20B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 30B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 30B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 30B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - 30B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC10B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC10B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC10B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC10B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC15B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC15B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC15B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC15B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC20B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC20B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC20B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC20B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC30B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC30B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC30B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TC30B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF10B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF10B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF10B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF10B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF15B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF15B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF15B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF15B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF20B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF20B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF20B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF20B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF30B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF30B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF30B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premiums - TF30B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums - TCB1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums - TCB2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums - TCB3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums - TCB4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums - TFB1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums - TFB2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums - TFB3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums - TFB4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums-B1.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums-B2.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums-B3.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_Premiums-B4.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+</rates>
+</stepImport>

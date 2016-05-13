@@ -1,0 +1,60 @@
+<behavior>
+	<function name="CaseList.createNewCase">
+		<actionType>FLOW</actionType>
+		<actionName>mooMedSuppPreApplicationFlow</actionName>
+		<description>MOO Medical Supplement Pre Qualification Flow</description>
+		<param name="carrierId" value="#{param['carrierId']}"/>
+		<param name="returnUrl" value="#{String.format('/pages/case/case_list.xhtml?ouId=%s', caseListController.getOuId() )}"/>
+	</function>
+	<function name="CaseList.gotoCaseDetails">
+		<ouClass>NB</ouClass>
+		<actionType>FLOW</actionType>
+		<actionName>mooMedSuppPreApplicationFlow</actionName>
+		<description>MOO Medical Supplement Pre Qualification Flow</description>
+		<param name="carrierId" value="#{param['carrierId']}"/>
+		<param name="returnUrl" value="#{String.format('/pages/case/case_list.xhtml?ouId=%s', caseListController.getOuId() )}"/>
+		<param name="caseId" value="#{param['caseId']}"/>
+	</function>
+	<function name="CaseList.gotoCaseDetails">
+		<ouClass>UW</ouClass>
+		<actionType>LINK</actionType>
+		<actionName>/pages/underwriting/uw_workbench</actionName>
+		<description>Go to underwriter workbench</description>
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="taskId" value="#{param['taskId']}"/>	
+		<param name="ouId" value="#{param['ouId']}"/>
+	</function>
+	
+	<function name="CustomService.processKnockout">
+      <actionType>JAVA</actionType>
+      <actionName>com.stepsoln.core.db.services.custom.GerberCustomCaseService</actionName>
+      <actionMethod>processKnockout</actionMethod>  
+      <param name="case" value="com.stepsoln.core.db.cases.Case"/>
+      <param name="knockOutReasonCode" value="java.lang.String"/>
+    </function>
+    
+    <function name="SecurityInvitation.applicantESignatureFlowStartAction">
+		<actionType>LINK</actionType>
+		<actionName>/public/invite/invite_create_user</actionName>
+		<description>Page to go for the applicant ESignature flow</description>	
+		<param name="caseId" value="#{param['caseId']}"/>
+	</function>
+	
+	<function name="generateEmailContentForSendApplicantForReview">
+      <actionType>GROOVY</actionType>
+      <actionName>MOO_CARRIER_GROOVY_UTILS</actionName>
+      <description>generate email content for sending the case to applicant for review</description>
+      <actionMethod>generateEmailContentForSendApplicantForReview</actionMethod>  
+      <returnClassName>java.util.List</returnClassName>    
+    </function>
+    
+    <function name="SecurityInvitation.postCreateUserSuccessAction">
+		<actionType>LINK</actionType>
+		<actionName>/pages/custom/fla_begin_main_flow</actionName>
+		<description>Page to go after user has setup an account</description>	
+		<param name="caseId" value="#{param['caseId']}"/>
+		<param name="ouId" value="#{param['ouId']}"/>
+		<param name="targetPartyId" value="#{param['targetPartyId']}"/>	
+		<param name="msgId" value="null"/>
+	</function>
+</behavior>

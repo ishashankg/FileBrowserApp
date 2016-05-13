@@ -1,0 +1,21 @@
+import com.stepsoln.core.rules.*;
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.db.cases.*;
+import rules.*;
+import java.util.*;
+import com.stepsoln.core.rules.RuleFilter;
+import com.stepsoln.core.util.DateUtil;
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+
+rule "Signature date not older than one year"
+salience 101
+	when
+		CaseData(paperCase==true)	
+		$r:Requirement(type=="ESIGNATURE", status == "RESOLVED", required == true, parentSignatureRequirementId==null, $dt:signatureDate != null )
+		eval(DateUtil.calculateAge($dt)>0)
+	then
+		rulesResponse.addRequiredOnce("Signature date for "+ $r.getDescription() + " is either not filled or more than 1 year old.["+$dt+"]");
+end
+

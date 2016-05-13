@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<page title="Annuity Details">
+		<section title="Purpose of Annuity" style="margin-left:0px" >        
+			<group>      
+				<question id='annuity_purpose' text='Choose one plan and if applicable, transfer /exchange form:' name='Select a Plan' type='LISTBOX'  answerSet="|Q:Qualified|N:Non-Qualified|T:Traditional IRA|R:Roth IRA|S:Sep IRA|TSA:403(b) TSA|O:Other" labelWidth="280px" answerWidth="150px" labelStyle='margin-left:8px'  required="true" requiredOveride='ALLOW_OVERRIDE'/>  
+				<question id='employer_id' required="true" text='Employer ID' name='Employer ID' type='TEXT'  labelStyle='margin-left:8px' 
+          answerWidth="150px" labelWidth="280px"  maxlength='5'>
+					<displayWhen>#{EFORM.annuity_purpose=="TSA"}</displayWhen>
+				</question>				
+			</group> 
+			<group>      
+				<question id='other_plan_type' text='Please specify what is other plan type' name='Other Plan Type' size="50" type='MEMO'  answerWidth="400px" labelWidth="260px" labelStyle='margin-left:8px'  required="true">
+					<displayWhen>#{EFORM.annuity_purpose=="O"}</displayWhen>
+				</question>        
+			</group> 
+		</section>
+		<section title="Premium" style="margin-left:0px" >               
+			<group  labelWidth="280px" answerWidth="120px"  style='margin-top:10px'>      
+				<question id='initial_premium' text='Premium Initial/Single Paid (premium paid with application) $' name='Initial Premium' type='TEXT' labelStyle='margin-left:8px' answerWidth="150px" required="true" mask="pnum"/>    
+				<question id='premium_type' text='Type of Premium' type='LISTBOX'  answerSet="|R:Rollover|C:Contribution for Tax Year"  labelStyle='margin-left:8px' answerWidth="150px" required="true" requiredOveride='ALLOW_OVERRIDE' />  
+				<question id='interest_guarantee_rate' text='Interest Guarantee Rate(in%)' name='Interest Guarantee Rate' type='TEXT'  labelStyle='margin-left:8px' answerWidth="150px"  required="true" requiredOveride='ALLOW_OVERRIDE' mask="pnum"/>            
+				<question id='interest_annuity_year_rate' text='Interest Annuity Year 1 Rate(in%)' name='Interest Annuity Year 1 Rate' type='TEXT' answerWidth="150px"   labelStyle='margin-left:8px'  required="true" requiredOveride='ALLOW_OVERRIDE' mask="pnum"/>  
+				<question id='annuity_period' text='Annuity Period(in years)' name='Annuity Period(in years)' type='TEXT' answerWidth="150px" labelStyle='margin-left:8px'  required="true" requiredOveride='ALLOW_OVERRIDE' mask="pnum"/>        
+			</group>         
+		</section>
+	</page>
+</form>

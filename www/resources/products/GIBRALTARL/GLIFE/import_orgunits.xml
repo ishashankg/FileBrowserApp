@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<org-units>
+	<org-unit>
+		<ouName>GIBRALTAR LIFE Agency</ouName>
+		<ouCode>GLIFE_OU</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>GIBRALTAR_LIFE_Ag</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Gibraltar Life Underwriting</ouName>
+		<ouCode>GIBRALTAR_LIFE_UWO</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>DTC_GLIFE_OU</ouName>
+		<ouCode>DTC_GLIFE_OU</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Default GLIFE Underwriting</ouName>
+		<ouCode>DEF_GLIFE_UWO</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Applicant</ouName>
+		<ouCode>GLIFE_WEB_USER</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>UTS</ouName>
+		<ouCode>UTS</ouCode>
+		<ouClass>SVC</ouClass>
+		<ouAgency>GIBRALTAR</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+</org-units>
+</stepImport>

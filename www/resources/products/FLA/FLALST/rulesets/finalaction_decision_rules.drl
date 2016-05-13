@@ -1,0 +1,21 @@
+import com.stepsoln.core.rules.uw.CaseUwRiskCalcData;
+import com.stepsoln.core.db.enums.AUTO_DECISION_STATUS;
+import com.stepsoln.core.rules.uw.*;
+import com.stepsoln.core.rules.requirements.*;
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Set Case Risk Calc auto-decision_status to Accept if final action is DECLINED, CLOSED"
+salience 50
+	when
+		caseData:CaseData(uwCaseStatus in ("DECLINED", "CLOSED"))
+	then
+		rulesResponse.getAutoDecisionResultData().setDecisionResult(AUTO_DECISION_STATUS.DECLINE);
+end
+
+rule "Set Case Risk Calc auto-decision_status to Accept if final action is APPROVED, POSTPONED"
+salience 50
+	when
+		caseData:CaseData(uwCaseStatus in ("APPROVED", "POSTPONED"))
+	then
+		rulesResponse.getAutoDecisionResultData().setDecisionResult(AUTO_DECISION_STATUS.ACCEPT);
+end

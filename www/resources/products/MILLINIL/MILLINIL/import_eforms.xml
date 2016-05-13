@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<eforms>		
+		<eform>
+			<file>eforms/medical_condition.xml</file>
+			<description>Underwriting questions</description>
+			<code>MEDICAL_QUESTIONS</code>
+		</eform>
+		<eform>
+			<file>eforms/person_eform.xml</file>
+			<description>Person information</description>
+			<code>PERSON_INFO</code>
+		</eform>
+		<eform>
+			<file>eforms/demographic_eform.xml</file>
+			<description>Demographic information</description>
+			<code>PERSON</code>
+		</eform>
+	</eforms>
+</stepImport>

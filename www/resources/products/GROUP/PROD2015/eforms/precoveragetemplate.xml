@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>formLoad</onLoad>
+  <onSave>importData</onSave>
+  <page title="Employee Enrollment Forms">
+    <section title="Enrollment Form Questions">
+      <group>
+         <question id="proposdInsuredEmployerName" labelWidth="20%" name='GovernmentAgency/ Department'
+          size="23" text="GovernmentAgency/ Department" answerStyle="width: 18%;" required="true" />
+
+        <question id="jobtitle" text="Work/Job Title" type="TEXT" name='Work/Job Title'
+          labelWidth="20%" size="23" required="true" answerStyle="width: 18%;"/>
+        <question id="maritalstatus" text="Marital Status" type="LISTBOX"
+          size="20" name='Marital Status'
+          answerSet="single:Single|married:Married or Common-Law|divorced:Divorced|seperated:Seperated|"
+          labelWidth="20%" answerStyle="width: 18%;" required="true" />
+      </group>
+      <group>
+        <question id="proposedwork" text="Are you presently absent from work due to sickness, injury, or medical treatment or are you on unpaid leave of absence for personal reasons?" required="true" type="RADIO" answerSet="1:Yes|2:No" labelWidth="80%" labelStyle="margin-left:0px" />
+       </group>   
+       <group>   
+        <question id="proposedworkcompleter" text="Please specify" type="AUTOCOMPLETE"  required="true" autocompleteLookup="uw:DIAGNOSIS" reflexiveContext="uw:MEDIC:ATINJU" labelWidth="15%">
+           <displayWhen>#{EFORM.proposedwork=="1"}</displayWhen>
+        </question>
+       </group>   
+       <group parentQuestionId="proposedworkcompleter" dynamicQuestionContext="uw:MEDIC:ATINJU" labelWidth="250px"/>
+      <group>
+        <question id="emphours" name ='Do you work twenty (20) or more hours per week?'
+          text="Do you work twenty (20) or more hours per week? If 'NO' you are not eligible for coverage."
+          type="RADIO" labelWidth="80%" answerSet="1:Yes|2:No" required="true" />
+      </group>
+    </section>
+  </page>
+
+  <page title="Evidence of Insurability">
+    <section title="Evidence of Insurability Questions">
+        <group associated="true">
+        <question id="eoiform" name='Has Evidence of Insurability form been approved ?'
+          text="Has Evidence of Insurability form been approved ?" type="LISTBOX"
+          answerSet=" |No|Yes - Fully|Partial" labelWidth="60%" answerStyle="width: 25%;"
+          required="true" />
+        <question id="eoidatesigned" text="Date EOI form approved" name='Date EOI form approved'
+          type="DATEF" labelWidth="50%" required="true" answerStyle="width: 25%;"/>
+      </group>
+       <group associated="true">
+          <question id="enrollmentform" text="Do we have an Enrollment form ?" name='Do we have an Enrollment form ?'
+          type="RADIO" labelWidth="55%" answerSet="1:Yes|2:No" required="true" labelStyle="margin-right:0%;"/>
+        <question id="enrollmentdatesigned" text="Date Enrollment form signed" name='Date Enrollment form signed'
+          type="DATEF" labelWidth="50%" required="true" answerStyle="width: 25%;"/>
+      </group>
+    </section>
+  </page>
+
+</form>  

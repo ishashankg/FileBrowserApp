@@ -1,0 +1,17 @@
+
+RE:  $policyNumber - $correspondenceAppName
+
+Dear $correspondenceAppName:
+
+
+$freeForm_RICHTEXT
+
+
+
+Sincerely,
+
+
+Luci Moore
+Underwriting Department
+
+

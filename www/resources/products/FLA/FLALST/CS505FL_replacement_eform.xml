@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillData</onLoad>
+  <page>
+    <section title="FLORIDA NOTICE TO APPLICANT REGARDING REPLACEMENT OF LIFE INSURANCE">
+      <group>
+        <paragragh
+        	text="A decision to buy a new policy and discontinue or change an existing policy may be a wise choice or a mistake."
+        	styleClass="groupParagraph" />
+        <paragragh
+        	text="Get all the facts. Make sure you full understand both the proposed policy and your existing policy or policies. New policies may contain clauses which limit or exclude coverage of certain events in the initial period of the contract, such as the suicide and incontestable clause which may have already been satisfied in your existing policy or policies."
+        	styleClass="groupParagraph" />
+        <paragragh
+        	text="Your best source for facts on the proposed policy is the proposed company and its agent. The best source on your existing policy is the existing company and its agent."
+        	styleClass="groupParagraph" />
+        <paragragh
+        	text="Hear from both before you make your decision. This way you can be sure your decision is in your best interest."
+        	styleClass="groupParagraph" />
+        <paragragh
+        	text="If you indicate that you intend to replace or change an existing policy, Florida regulations require notification of the company that issued the policy."
+        	styleClass="groupParagraph" />
+        <paragragh
+        	text="Florida regulations give the right to recieve a written Comparitave Information Form which summarizes your policy values. Indicate whether or not you wish a Comparative Information Form from the proposed company and your existing insurer or insurers by placing your initials in the appropriate box below."
+        	styleClass="groupParagraph" />
+      </group>
+      <group associated="true" labelWidth="50px;">
+      	<question id='init_yes' text="YES" type='TEXT' answerWidth="40px;" />
+      	<question id='init_no' text="NO" type='TEXT' answerWidth="40px;" />
+      </group>
+    </section>
+    <section>
+      <header>DO NOT TAKE ACTION TO TERMINATE YOUR EXISTING POLICY UNTIL YOUR NEW POLICY HAS BEEN ISSUED AND YOU HAVE EXAMINED IT AND FOUND IT ACCEPTABLE</header>
+      <group>
+      	<header>Information on policies which may be replaced:</header>
+      </group>
+    </section>
+    <section title="Existing Policy" repeating="true">
+      <group associated="true">
+        <question id='replaced_carrier' text="Company name" type='TEXT' />
+        <question id='replaced_policyno' text="Policy Number" type='TEXT' />
+        <question id='replaced_insured' text="Name of Insured" type='TEXT' />
+      </group>
+    </section>
+    <section title="Florida Comparative Information Form">
+      <header>For Proposed Insurance</header>
+      <group>
+      	<question id='replaced_agent' text="Replacing agent's name"
+      		type='TEXT' labelWidth="150px" />
+      </group>
+    </section>
+    <section>
+      <header>Applicant Information</header>
+      <group associated="true" labelWidth="80px" readonly="true">
+      	<question id='ins_first_name' text='First Name: ' type='TEXT'
+      		answerWidth="180px;" />
+      	<question id='ins_middle_name' text='Middle Name: ' type='TEXT'
+      		answerWidth="130px;" />
+      	<question id='ins_last_name' text='Last Name: ' labelWidth="70px"
+      		type='TEXT' answerWidth="180px;" />
+      </group>
+      <group labelWidth="80px" associated="true" readonly="true">
+      	<question id='legal_residence_address' text='Address:' type='TEXT'
+      		answerWidth="400px;" />
+      	<question id='city' text='City:' type='TEXT' labelWidth="70px" />
+      </group>
+      <group associated="true" readonly="true">
+      	<question id='state' text='State:' type='LISTBOX'
+      		lookup="step:LOCALE_STATE" answerSet=":Please select a state"
+      		labelWidth="80px" />
+      	<question id='zipcode' text='Zipcode: ' type='TEXT'
+      		labelWidth="50px" />
+      </group>
+      <group associated="true" readonly="true">
+      	<question id='preferred_phone' text='Telephone:'
+      		type='PHONE' labelWidth="80px" answerWidth="100px;" />
+      		<question id='ins_dob' text='Date of Birth:'
+      		type='DATEF' answerWidth="100px;" />
+      		<question id='ins_age' text='Age:'
+      		type='NUMBER' answerWidth="50px;" />
+      </group>
+    </section>
+    <section>
+      <header>Policy Information</header>
+      <group associated="true" labelWidth="150px">
+      	<question id='policy_name' text="Policy generic name:" type='TEXT' answerWidth="200px;"/>
+      	<question id='policy_number' text="Policy Number:" type='TEXT'/>
+      </group>
+      <group associated="true" labelWidth="150px">
+      	<question id='issue_date' text="Date of issue:" type='DATEF' />
+      	<question id='issue_age' text="Issue age:" type='TEXT' />
+      	<question id='policy_loan_rate' text="Policy loan rate:" type='TEXT' />
+      </group>
+      <group associated="true" labelWidth="150px">
+      	<question id='contestable_expire' text="Contestable period expires:" type="DATEF" />
+      	<question id='suicide_expire' text="Suicide period expires:" type='DATEF' />
+      </group>
+    </section>
+    <section>
+      <header>Policy/Rider Description</header>
+      <group>
+      	<question id='policy_rider_name' text="Policy/Rider Name" type='TEXT' labelWidth="150px;" />
+      </group>
+      <group  associated="true">
+      	<question id='rider_benefit' text="Initial/Continuing Benefit" type='TEXT' labelWidth="150px;"/>
+      	<question id='benefit_start' text="(Age) Benefit From:" type='TEXT' labelWidth="120px;" answerWidth="50px;"/>
+      	<question id='benefit_end' text="To:" type='TEXT' labelWidth="50px;" answerWidth="50px;"/>
+      </group>
+      <group  associated="true">
+      	<question id='annual_premium' text="Initial/Renewal Annual Premium" type='TEXT' labelWidth="150px;" />
+      	<question id='payable_start' text="(Age) Payable From:" type='TEXT' labelWidth="120px;" answerWidth="50px;"/>
+      	<question id='payable_end' text="To:" type='TEXT' labelWidth="50px;" answerWidth="50px;"/>
+      </group>
+      <group  associated="true" >
+      	<question id='total_init_premium' text="Total initial annual premium:" type='TEXT' labelWidth="180px;"/>
+      	<question id='init_payment_mode' text="Mode of payment:" type='TEXT' />
+      	<question id='init_payment_amount' text="Amount:  $" type='NUMBER' answerWidth="60px;"/>
+      </group>
+      <group  associated="true">
+      	<question id='total_renew_premium' text="Total renewal annual premium:" type='TEXT' labelWidth="180px;"/>
+      	<question id='renew_payment_mode' text="Mode of payment:" type='TEXT' />
+      	<question id='renew_payment_amount' text="Amount:  $" type='NUMBER' answerWidth="60px;"/>
+      </group>
+    </section>
+  </page>
+</form>

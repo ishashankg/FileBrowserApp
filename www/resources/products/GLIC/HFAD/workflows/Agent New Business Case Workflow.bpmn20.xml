@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://stepsolutions.com/clients/glic">
+  <process id="AgentNewBusinessCaseWorkflow" name="Agent New Business Case Workflow">
+    <documentation>Place documentation for the 'Agent New Business Case Workflow' process here.</documentation>
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <exclusiveGateway id="exclusivegateway1" name="has PolicyNo"></exclusiveGateway>
+    <sequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="exclusivegateway1"></sequenceFlow>
+    <serviceTask id="servicetask1" name="Assign to UW Dept" activiti:expression="#{stepWorkflowServices.assignGroup(execution,'SVC','UTS')}"></serviceTask>
+    <sequenceFlow id="flow2" name="no policyNo" sourceRef="exclusivegateway1" targetRef="servicetask1">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[#{policyNo==null}]]></conditionExpression>
+    </sequenceFlow>
+    <receiveTask id="receivetask1" name="Part 1 Completion (wait)"></receiveTask>
+    <boundaryEvent id="boundarytimer1" name="" cancelActivity="false" attachedToRef="receivetask1">
+      <timerEventDefinition>
+        <timeDuration>PT5S</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <serviceTask id="mailtask1" name="Email Agent" activiti:type="mail">
+      <extensionElements>
+        <activiti:field name="to" expression="louis.parks@stepsolutions.com"></activiti:field>
+        <activiti:field name="from" expression="louis.parks@stepsolutions.com"></activiti:field>
+        <activiti:field name="subject" expression="Please finish your application"></activiti:field>
+        <activiti:field name="html">
+          <activiti:expression><![CDATA[<b>Please return to finish your application</b>]]></activiti:expression>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow3" name="" sourceRef="boundarytimer1" targetRef="mailtask1"></sequenceFlow>
+    <sequenceFlow id="flow4" name="" sourceRef="exclusivegateway1" targetRef="receivetask1"></sequenceFlow>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <sequenceFlow id="flow5" name="" sourceRef="servicetask1" targetRef="endevent1"></sequenceFlow>
+    <scriptTask id="scripttask1" name="Script Task" scriptFormat="groovy">
+      <script><![CDATA[println ('received the signal')]]></script>
+    </scriptTask>
+    <sequenceFlow id="flow6" name="" sourceRef="receivetask1" targetRef="scripttask1"></sequenceFlow>
+    <userTask id="usertask1" name="User Task" activiti:assignee="#{stepWorkflowServices.selectOUUserRoundRobin(execution,'NB')}">
+      <documentation>check application #{'true'}</documentation>
+    </userTask>
+    <sequenceFlow id="flow7" name="" sourceRef="mailtask1" targetRef="usertask1"></sequenceFlow>
+    <endEvent id="endevent2" name="ErrorEnd"></endEvent>
+    <sequenceFlow id="flow8" name="" sourceRef="usertask1" targetRef="endevent3"></sequenceFlow>
+    <endEvent id="endevent3" name="End"></endEvent>
+    <sequenceFlow id="flow9" name="" sourceRef="scripttask1" targetRef="endevent3"></sequenceFlow>
+    <serviceTask id="servicetask2" name="Email Task" activiti:expression="#{stepWorkflowServices.sendTemplateEmail(execution,'glic_template1','this is some content')}"></serviceTask>
+    <sequenceFlow id="flow10" name="" sourceRef="servicetask1" targetRef="servicetask2"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_AgentNewBusinessCaseWorkflow">
+    <bpmndi:BPMNPlane bpmnElement="AgentNewBusinessCaseWorkflow" id="BPMNPlane_AgentNewBusinessCaseWorkflow">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35" width="35" x="100" y="100"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40" width="40" x="97" y="200"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="servicetask1" id="BPMNShape_servicetask1">
+        <omgdc:Bounds height="55" width="105" x="65" y="320"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="receivetask1" id="BPMNShape_receivetask1">
+        <omgdc:Bounds height="55" width="105" x="299" y="200"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="boundarytimer1" id="BPMNShape_boundarytimer1">
+        <omgdc:Bounds height="30" width="30" x="310" y="240"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="mailtask1" id="BPMNShape_mailtask1">
+        <omgdc:Bounds height="55" width="105" x="272" y="350"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35" width="35" x="100" y="480"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask1" id="BPMNShape_scripttask1">
+        <omgdc:Bounds height="55" width="105" x="600" y="220"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask1" id="BPMNShape_usertask1">
+        <omgdc:Bounds height="55" width="105" x="440" y="350"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent3" id="BPMNShape_endevent3">
+        <omgdc:Bounds height="35" width="35" x="690" y="350"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="servicetask2" id="BPMNShape_servicetask2">
+        <omgdc:Bounds height="55" width="105" x="150" y="420"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="117" y="135"></omgdi:waypoint>
+        <omgdi:waypoint x="117" y="200"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="117" y="240"></omgdi:waypoint>
+        <omgdi:waypoint x="117" y="320"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="325" y="270"></omgdi:waypoint>
+        <omgdi:waypoint x="324" y="350"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="137" y="220"></omgdi:waypoint>
+        <omgdi:waypoint x="299" y="227"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="117" y="375"></omgdi:waypoint>
+        <omgdi:waypoint x="117" y="480"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="404" y="227"></omgdi:waypoint>
+        <omgdi:waypoint x="600" y="247"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="377" y="377"></omgdi:waypoint>
+        <omgdi:waypoint x="440" y="377"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="545" y="377"></omgdi:waypoint>
+        <omgdi:waypoint x="707" y="385"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="652" y="275"></omgdi:waypoint>
+        <omgdi:waypoint x="707" y="350"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
+        <omgdi:waypoint x="117" y="375"></omgdi:waypoint>
+        <omgdi:waypoint x="150" y="447"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

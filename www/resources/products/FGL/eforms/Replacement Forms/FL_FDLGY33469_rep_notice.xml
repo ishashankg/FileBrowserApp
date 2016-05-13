@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section style="border:1px solid black">		
+			<group labelWidth="300px">
+				<paragragh text="A decision to buy a new policy and discontinue or change an existing policy may be a wise choice or a mistake."  styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh  text="Get all the facts. Make sure you fully understand both the proposed policy and your existing policy or policies. New policies may contain clauses which limit or exclude coverage of certain events in the initial period of the contract, such as the suicide and incontestable clauses which may have already been satisfied in your existing policy or policies." styleClass="groupParagraph" >
+				</paragragh>
+			</group>			
+			<group labelWidth="300px">
+				<paragragh text="Your best source for facts on the proposed policy is the proposed company and its agent. The best source on your existing policy is the existing company and its agent." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh text="Hear from both before you make your decision. This way you can be sure your decision is in your best interest." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group labelWidth="300px">
+				<paragragh text="If you indicate that you intend to replace or change an existing policy, Florida regulations require notification of the company that issued the policy." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+		</section>		
+		<section>
+			<group style="margin-top:20px">
+				<question id='confirmation' text="Florida regulations give you the right to receive a written Comparative Information Form which summarizes your policy values. Indicate whether or not you wish a Comparative Information Form from the proposed company and your existing insurer or insurers by placing your initials in the appropriate box below." name="Comparative Information Form" type='RADIO' required="true" answerSet="Y:Yes|N:No" labelWidth="360px" labelStyle='margin-left:8px' tabindex ='1' answerWidth="120px"/>  				
+			</group>
+		</section>
+		<section>					
+			<group style='font-weight: bold;margin-left:18px'>   
+				<footer>Do not take action to terminate your existing policy until your new policy has been issued and you have examined it and found it acceptable.</footer>
+			</group>
+			<group labelWidth="300px" style="height:30px;">
+				<paragragh text="I have read this notice and received a copy of it." styleClass="groupParagraph">
+				</paragragh>
+			</group>
+			<group associated="True">
+				<question id='applicant_signature' text="Applicant's Signature" type='CHECKBOX' required="true" answerWidth="117px" labelWidth="117px" labelStyle='margin-left:8px' tabindex ='2'/>  
+				<question id='date_applicant_signature' text="Date"  name="Applicant's Signature Date" type='DATEF' required="true" answerWidth="117px" labelWidth="117px" labelStyle='margin-left:150px' tabindex ='3'/>
+			</group>
+			<group associated="True">
+				<question id='agent_signature' text="Agent's Signature" type='CHECKBOX' required="true" answerWidth="117px" labelWidth="117px" labelStyle='margin-left:8px' tabindex ='4'/>  
+				<question id='date_agent_signature' text="Date" name="Agent's Signature Date" type='DATEF' required="true" answerWidth="117px" labelWidth="117px" labelStyle='margin-left:150px' tabindex ='5'/>
+			</group>
+			<group associated="True">
+				<question id='agent_name' text="Agent Name" type='TEXT' required="true" answerWidth="117px" labelWidth="117px" labelStyle='margin-left:8px' tabindex ='6'/>  
+				<question id='address1' text="Address Line1" type='TEXT' required="true" answerWidth="117px" labelWidth="117px" labelStyle='margin-left:150px' tabindex ='7'/>
+			</group>
+			<group associated="True">
+				<question id='agent_company' text="Agent Company" type='TEXT' required="true" answerWidth="117px" labelWidth="117px" labelStyle='margin-left:8px' tabindex ='8'/>  	
+				<question id='address2' text="Address Line2" type='TEXT' answerWidth="117px" labelWidth="117px" labelStyle='margin-left:150px' tabindex ='9'/>				
+			</group>			
+		</section>	
+		<section title="Existing Policy Information" style="margin-left:0px; margin-top:0px;">						
+			<group associated="True">
+				<question id='company_name' text="Company Name" type='TEXT' required="true" answerWidth="117px" labelWidth="117px" tabindex ='10'/>  
+				<question id='insured_name' text="Name of Insured" type='TEXT' required="true" answerWidth="117px" labelWidth="117px" tabindex ='11'/>
+			</group>
+			<group associated="True">
+				<question id='policy_number' text="Policy Number" type='TEXT' required="true" answerWidth="117px" labelWidth="117px" tabindex ='12'/>  				
+			</group>			
+		</section>		
+		<section name="Existing Policy Information" repeating="true" style="margin-left:0px; margin-top:0px;">						
+			<group associated="true">
+				<question id='company_name1' text="Company Name" type='TEXT' required="true" answerWidth="117px" labelWidth="117px" tabindex ='13'/>  
+				<question id='insured_name1' text="Name of Insured" type='TEXT' required="true" answerWidth="117px" labelWidth="117px" tabindex ='14'/>
+			</group>
+			<group associated="true">
+				<question id='policy_number1' text="Policy Number" type='TEXT' required="true" answerWidth="117px" labelWidth="117px" tabindex ='15'/>  				
+			</group>			
+		</section>		
+	</page>
+</form>

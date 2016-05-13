@@ -1,0 +1,284 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<carrier>
+		<carrierCode>GIBRALTAR</carrierCode>
+		<carrierName>Gibraltar</carrierName>
+		<carrierNAICCode>70939</carrierNAICCode>
+
+
+		<product>
+			<code>GLICMED</code>
+			<name>MEDICARE SUPPLEMENT</name>
+			<lineOfBusiness>HEALTH</lineOfBusiness>
+			<ageCalculationMethod>LAST_BIRTHDAY</ageCalculationMethod>
+			<defaultPaymentMode>ANNUAL</defaultPaymentMode>
+			<defaultPaymentMethod>PAC</defaultPaymentMethod>
+			<type>MEDSUPP</type>
+			<productGroup>MEDSUPP</productGroup>
+
+			<rateFactors>
+				<rateFactor>
+					<ratePaymentMethod>PAC</ratePaymentMethod>
+					<rateOnetimeFactor></rateOnetimeFactor>
+					<rateAnnualFactor>1</rateAnnualFactor>
+					<rateSemiannualFactor>.5</rateSemiannualFactor>
+					<rateQuarterlyFactor>.25</rateQuarterlyFactor>
+					<rateMonthlyFactor>.083334</rateMonthlyFactor>
+					<rateSemimonthlyFactor></rateSemimonthlyFactor>
+					<rateBiweeklyFactor></rateBiweeklyFactor>
+					<rateBimonthlyFactor>.166668</rateBimonthlyFactor>
+				</rateFactor>
+				<rateFactor>
+					<ratePaymentMethod>BILL</ratePaymentMethod>
+					<rateOnetimeFactor></rateOnetimeFactor>
+					<rateAnnualFactor>1</rateAnnualFactor>
+					<rateSemiannualFactor>.54</rateSemiannualFactor>
+					<rateQuarterlyFactor>.28</rateQuarterlyFactor>
+					<rateMonthlyFactor>.1</rateMonthlyFactor>
+					<rateSemimonthlyFactor></rateSemimonthlyFactor>
+					<rateBiweeklyFactor></rateBiweeklyFactor>
+					<rateBimonthlyFactor>.2</rateBimonthlyFactor>
+				</rateFactor>
+				<rateFactor>
+				<ratePaymentMethod>CC</ratePaymentMethod>
+				<rateOnetimeFactor></rateOnetimeFactor>
+				<rateAnnualFactor>1</rateAnnualFactor>
+				<rateSemiannualFactor>.54</rateSemiannualFactor>
+				<rateQuarterlyFactor>.28</rateQuarterlyFactor>
+				<rateMonthlyFactor>.1</rateMonthlyFactor>
+				<rateSemimonthlyFactor></rateSemimonthlyFactor>
+				<rateBiweeklyFactor></rateBiweeklyFactor>
+				<rateBimonthlyFactor>.2</rateBimonthlyFactor>
+			</rateFactor>
+			</rateFactors>
+			<rateClasses>
+				<rateClass>
+					<rateClassCode>PF</rateClassCode>
+					<isDefault>true</isDefault>
+					<name>Preferred</name>
+					<minScore>0</minScore>
+					<maxScore>20</maxScore>
+					<sequence>1</sequence>
+				</rateClass>
+				<rateClass>
+					<rateClassCode>ST</rateClassCode>
+					<isDefault>false</isDefault>
+					<name>Standard</name>
+					<minScore>21</minScore>
+					<maxScore>1000</maxScore>
+					<sequence>2</sequence>
+				</rateClass>
+			</rateClasses>
+			<plans>
+				<plan>
+					<code>GLICMED_PA</code>
+					<name>Plan A</name>
+					<description>With Plan A, you will be responsible for paying both your Medicare Part A and Part B deductibles</description>
+					<planType>BASE</planType>
+					<services>
+						<service>
+							<name>Medsupp Plan A</name>
+							<options>
+								<option>
+									<code>GLICMED_PlanA</code>
+									<name>Standard</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>GLICMED_PB</code>
+					<name>Plan B</name>
+					<description>With Plan B, you will be responsible for paying your Part B deductible only</description>
+					<planType>BASE</planType>
+					<services>
+						<service>
+							<name>Medsupp Plan B</name>
+							<options>
+								<option>
+									<code>GLICMED_PlanB</code>
+									<name>Standard</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>GLICMED_PC</code>
+					<name>Plan C</name>
+					<description>Medicare Supplement Plan C is ideal for those who want predictable monthly expenses.</description>
+					<planType>BASE</planType>
+					<services>
+						<service>
+							<name>Medsupp Plan C</name>
+							<options>
+								<option>
+									<code>GLICMED_PlanC</code>
+									<name>Standard</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>GLICMED_PD</code>
+					<name>Plan D</name>
+					<description>Plan D may help lower your prescription drug expenses and protect against higher costs in the future</description>
+					<planType>BASE</planType>
+					<services>
+						<service>
+							<name>Medsupp Plan D</name>
+							<options>
+								<option>
+									<code>GLICMED_PlanD</code>
+									<name>Standard</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>GLICMED_PF</code>
+					<name>Plan F</name>
+					<description>With Medicare Supplement Plan F, you get the most complete coverage available.</description>
+					<planType>BASE</planType>
+					<services>
+						<service>
+							<name>Medsupp Plan F</name>
+							<options>
+								<option>
+									<code>GLICMED_PlanF</code>
+									<name>Standard</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>GLICMED_PG</code>
+					<name>Plan G</name>
+					<description>Medicare Supplement Plan G is a good fit for people who want some coverage for hospitalization, but are willing to pay the Part B deductible on their own.</description>
+					<planType>BASE</planType>
+					<services>
+						<service>
+							<name>Medsupp Plan G</name>
+							<options>
+								<option>
+									<code>GLICMED_PlanG</code>
+									<name>Standard</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>GLICMED_PK</code>
+					<name>Plan K</name>
+					<description>This plan is a good option if you prefer a lower premium but still want a fair amount of coverage for a wide variety of services.</description>
+					<planType>BASE</planType>
+					<services>
+						<service>
+							<name>Medsupp Plan K</name>
+							<options>
+								<option>
+									<code>GLICMED_PlanK</code>
+									<name>Standard</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>GLICMED_PL</code>
+					<name>Plan L</name>
+					<description>Plan L offers higher coinsurance amounts and a higher annual out-of-pocket limit.</description>
+					<planType>BASE</planType>
+					<services>
+						<service>
+							<name>Medsupp Plan L</name>
+							<options>
+								<option>
+									<code>GLICMED_PlanL</code>
+									<name>Standard</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>GLICMED_PM</code>
+					<name>Plan M</name>
+					<description>Medicare Supplement Plan M is another option if you want a Medicare Supplement insurance policy with an affordable premium, but still want a reasonable amount of coverage for a wide variety of services.</description>
+					<planType>BASE</planType>
+					<services>
+						<service>
+							<name>Medsupp Plan M</name>
+							<options>
+								<option>
+									<code>GLICMED_PlanM</code>
+									<name>Standard</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>GLICMED_PN</code>
+					<name>Plan N</name>
+					<description>Medicare Supplement Plan N provides more coverage than Plans K and L while still maintaining a lower premium than Plans A through G.</description>
+					<planType>BASE</planType>
+					<services>
+						<service>
+							<name>Medsupp Plan N</name>
+							<options>
+								<option>
+									<code>GLICMED_PlanN</code>
+									<name>Standard</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+			</plans>
+
+			<file uri="import_orgunits.xml" />
+			<file uri="import_ouUsers.xml" />
+			<file uri="import_roles.xml" />
+			<file uri="import_userRoles.xml" />
+			<file uri="import_preferences.xml" />
+			<file uri="import_resources.xml" />
+			<file uri="import_eforms.xml" />
+			<file uri="import_pdfs.xml" />
+			<file uri="import_requirements.xml" />
+			<file uri="import_rates.xml" />
+			<file uri="import_buildchart.xml" />
+			<file uri="import_licenses.xml" />
+			<file uri="import_appointments.xml" />
+			
+			<file uri="import_correspondence.xml" />
+			<file uri="import_recommend.xml" />
+			
+		</product>
+	</carrier>
+</stepImport>

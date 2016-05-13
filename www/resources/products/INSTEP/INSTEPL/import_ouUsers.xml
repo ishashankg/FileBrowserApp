@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<ou-users>
+		<ou-user>
+			<ousOrguCode>INSTEP_NB</ousOrguCode>
+			<ousUserName ousAdmin="Y">JNILE</ousUserName>
+		</ou-user>
+		<ou-user>
+			<ousOrguCode>INSTEP_UW</ousOrguCode>
+			<ousUserName ousAdmin="Y">OWATSON</ousUserName>
+		</ou-user>
+		<ou-user>
+			<ousOrguCode>DEF_INSTEP_UW</ousOrguCode>
+			<ousUserName ousAdmin="Y">DEF_INSTEP_UW</ousUserName>
+		</ou-user>
+		<ou-user>
+			<ousOrguCode>DTC_INSTEP_OU</ousOrguCode>
+			<ousUserName ousAdmin="Y">DTC_INSTEP</ousUserName>
+		</ou-user>
+	</ou-users>
+</stepImport>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<userRoles>
+		<userRole>
+			<urolUserName>GroupAdmin</urolUserName>
+			<urolRoleCode>group_admin</urolRoleCode>
+		</userRole>
+		<userRole>
+			<urolUserName>agent</urolUserName>
+			<urolRoleCode>agent</urolRoleCode>
+		</userRole>
+		<userRole>
+			<urolUserName>JAMESJOHNSON</urolUserName>
+			<urolRoleCode>uw_director</urolRoleCode>
+		</userRole>
+		<userRole>
+			<urolUserName>MICHAELSMITH</urolUserName>
+			<urolRoleCode>default_uw</urolRoleCode>
+		</userRole>
+	</userRoles>
+</stepImport>

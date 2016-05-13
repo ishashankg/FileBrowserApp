@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+    <onLoad>prefillData</onLoad>
+	<page title="COMPARATIVE INFORMATION FORM">
+		<section>
+			<displayWhen>#{CASE.contractLocale=='RI'}</displayWhen>
+			<header>for RHODE ISLAND</header>
+			<group/>
+		</section>
+		<section>
+			<displayWhen>#{CASE.contractLocale=='WV'}</displayWhen>
+			<header>for WEST VIRGINIA</header>
+			<group/>
+		</section>
+		<section>
+			<group associated="true" readonly="true">
+				<question id='insured_name' text="Name of Proposed Insured" type='TEXT' labelWidth="150px;" answerWidth="200px;"/>
+				<question id='insured_dob' text="Date of Birth" type='TEXT' />
+			</group>
+			<group readonly="true">
+				<question id='insured_address' text="Address" type='TEXT' labelWidth="150px;" answerWidth="400px;"/>
+				<question id='insured_citystate' text="City and State" type='TEXT' labelWidth="150px;" answerWidth="400px;"/>
+			</group>
+		</section>
+		<section title="EXISTING LIFE INSURANCE" repeating="true">
+			<group associated="true" labelWidth="150px;">
+				<question id='replaced_carrier' text="Name of Company" type='TEXT' required="true" />
+				<question id='replaced_policyno' text="Policy Number" type='TEXT' />
+			</group>
+			<group associated="true" labelWidth="150px;">
+				<question id='replaced_policy_generic' text="Basic Policy Generic Name" type='TEXT' />
+				<question id='replaced_policy_basic' text="Name of Basic Policy" type='TEXT' />
+			</group>
+			<group associated="true" labelWidth="140px;">
+				<question id='replaced_rider1_name' text="Rider 1, Generic Name" type='TEXT' />
+				<question id='replaced_rider2_name' text="Rider 2, Generic Name" type='TEXT' />
+				<question id='replaced_rider3_name' text="Rider 3, Generic Name" type='TEXT' />
+			</group>
+			<group associated="true">
+				<question id='replaced_issue_age' text="Issue Age" type='TEXT' labelWidth="80px;"/>
+				<question id='replaced_issue_date' text="Date of Issue" type='DATEF' />
+			</group>
+			<group associated="true">
+				<question id='replaced_contestable_expire' text="Contestable Period Expires**" type='DATEF' labelWidth="180px;"/>
+				<question id='replaced_suicide_expire' text="Suicide Clause Expires**" type='DATEF' />
+			</group>
+            <group>
+              <header>PREMIUM DATA/DEATH BENEFITS</header>
+            </group>
+			<group title="Basic Policy" associated="true" >
+				<question id='policy_premium_amount' text="Premium Mode Amount" prefix="$" type='TEXT' answerWidth="60px;" labelWidth="140px;"/>
+				<question id='policy_age_payable' text="Age Payable to" type='NUMBER' answerWidth="60px;" />
+				<question id='policy_death_bene' text="Death benefit" prefix="$" type='NUMBER' answerWidth="60px;" />
+				<question id='policy_age_benefit' text="Age Benefit Ceases" type='NUMBER' answerWidth="60px;" />
+			</group>
+			<group title="Rider 1" associated="true">
+				<question id='rider1_premium_amount' text="Premium Mode Amount" prefix="$" type='NUMBER' answerWidth="60px;" labelWidth="140px;"/>
+				<question id='rider1_age_payable' text="Age Payable to" type='NUMBER' answerWidth="60px;" />
+				<question id='rider1_death_bene' text="Death benefit" prefix="$" type='NUMBER' answerWidth="60px;" />
+				<question id='rider1_age_benefit' text="Age Benefit Ceases" type='NUMBER' answerWidth="60px;" />
+			</group>
+			<group title="Rider 2" associated="true">
+				<question id='rider2_premium_amount' text="Premium Mode Amount" prefix="$" type='NUMBER' answerWidth="60px;" labelWidth="140px;"/>
+				<question id='rider2_age_payable' text="Age Payable to" type='NUMBER' answerWidth="60px;" />
+				<question id='rider2_death_bene' text="Death benefit" prefix="$" type='NUMBER' answerWidth="60px;" />
+				<question id='rider2_age_benefit' text="Age Benefit Ceases" type='NUMBER' answerWidth="60px;" />
+			</group>
+			<group title="Rider 3" associated="true">
+				<question id='rider3_premium_amount' text="Premium Mode Amount" prefix="$" type='NUMBER' answerWidth="60px;" labelWidth="140px;"/>
+				<question id='rider3_age_payable' text="Age Payable to" type='NUMBER' answerWidth="60px;" />
+				<question id='rider3_death_bene' text="Death benefit" prefix="$" type='NUMBER' answerWidth="60px;" />
+				<question id='rider3_age_benefit' text="Age Benefit Ceases" type='NUMBER' answerWidth="60px;" />
+			</group>
+			<group title="Accidental Death Benefit" associated="true">
+				<question id='acc_death_premium_amount' text="Premium Mode Amount" prefix="$" type='NUMBER' answerWidth="60px;" labelWidth="140px;"/>
+				<question id='acc_death_age_payable' text="Age Payable to" type='NUMBER' answerWidth="60px;" />
+				<question id='acc_death_bene' text="Death benefit" prefix="$" type='NUMBER' answerWidth="60px;" />
+				<question id='acc_death_age_benefit' text="Age Benefit Ceases" type='NUMBER' answerWidth="60px;" />
+			</group>
+			<group title="Option to Purchase Additional Insurance" associated="true">
+				<question id='addl_option_premium_amount' text="Premium Mode Amount" prefix="$" type='NUMBER' answerWidth="60px;" labelWidth="140px;"/>
+				<question id='addl_option_age_payable' text="Age Payable to" type='NUMBER' answerWidth="60px;" />
+			</group>
+			<group title="Waiver of Premium Benefit" associated="true">
+				<question id='prem_waiver_premium_amount' text="Premium Mode Amount" prefix="$" type='NUMBER' answerWidth="60px;" labelWidth="140px;"/>
+				<question id='prem_waiver_age_payable' text="Age Payable to" type='NUMBER' answerWidth="60px;" />
+				<question id='prem_waiver_age_benefit' text="Age Benefit Ceases" type='NUMBER' answerWidth="60px;" />
+			</group>
+			<group title="Disability Income Benefit" associated="true">
+				<question id='disab_premium_amount' text="Premium Mode Amount" prefix="$" type='NUMBER' answerWidth="60px;" labelWidth="140px;"/>
+				<question id='disab_age_payable' text="Age Payable to" type='NUMBER' answerWidth="60px;" />
+				<question id='disab_mo_income' text="Mo. Income:" prefix="$" type='NUMBER' answerWidth="60px;" />
+				<question id='disab_age_benefit' text="Age Benefit Ceases" type='NUMBER' answerWidth="60px;" />
+			</group>
+			<group>
+				<question id='total_premium' text="Total Current Premium" prefix="$" type='NUMBER' />
+			</group>
+            <group>
+              <header>CASH VALUES/DIVIDENDS</header>
+            </group>
+			<group title="Currently (last policy anniversary)" associated="true">
+				<question id='current_cash_value' text="*Guaranteed Cash Value" prefix="$" type='NUMBER' labelWidth="150px;"/>
+				<question id='current_dividends' text="*Dividends" prefix="$" type='NUMBER' />
+			</group>
+			<group title="1 year hence" associated="true">
+				<question id='yr1_cash_value' text="*Guaranteed Cash Value" prefix="$" type='NUMBER' labelWidth="150px;"/>
+				<question id='yr1_dividends' text="*Dividends" prefix="$" type='NUMBER' />
+			</group>
+			<group title="5 years hence" associated="true">
+				<question id='yr5_cash_value' text="*Guaranteed Cash Value" prefix="$" type='NUMBER' labelWidth="150px;"/>
+				<question id='yr5_dividends' text="*Dividends" prefix="$" type='NUMBER' />
+			</group>
+			<group title="10 years hence" associated="true">
+				<question id='yr10_cash_value' text="*Guaranteed Cash Value" prefix="$" type='NUMBER' labelWidth="150px;"/>
+				<question id='yr10_dividends' text="*Dividends" prefix="$" type='NUMBER' />
+			</group>
+			<group title="At Age 65" associated="true">
+				<question id='age65_cash_value' text="*Guaranteed Cash Value" prefix="$" type='NUMBER' labelWidth="150px;"/>
+				<question id='age65_dividends' text="*Dividends" prefix="$" type='NUMBER' />
+			</group>
+			<group title="Other" associated="true" labelWidth="200px;">
+				<question id='death_bene_adds' text="*Current Death Benefit of Div. Adds" prefix="$" type='NUMBER' />
+				<question id='cash_value_adds' text="*Current Cash Value of Div. Adds" prefix="$" type='NUMBER' />
+			</group>	
+			<group associated="true" labelWidth="200px;">
+				<question id='accum_div' text="*Current Accum Div." prefix="$" type='NUMBER' />
+				<question id='policy_loan' text="*Current Policy Loan" prefix="$" type='NUMBER' />
+			</group>
+			<group labelWidth="200px;">
+				<question id='loan_interest_rate' text="Maximum Policy Loan Interest Rate" suffix="%" type='NUMBER' answerWidth="60px;" />
+				<question id='scale_year' text="*Dividends are based on the current" suffix="(year) scale" type='NUMBER' answerWidth="60px;" />
+			</group>
+            <group><header>AGENT'S STATEMENT</header></group>
+            <group>
+              <question id='agent_reason' text="1. The primary reasons for my recommending the proposed replacement of the existing life insurance by new life insurance are:" type='TEXT' labelWidth="700px;" answerWidth="600px;" />
+            </group>
+            <group>
+              <question id='agent_recommend' text="2. My recommendations as to the existing life insurance are that it be:" type='RADIO' answerSet="N:Not Changed|L:Lapsed|S:Surrendered|R:Reduced Paid-Up|X:Extended Term" labelWidth="700px;"/>
+              <question id='agent_recomend_other' text="Other (Explain)" answerWidth="500px;" labelWidth="150px;"/>
+              <question id='agent_borrowed_upon' text="Borrowed Upon (Explain)" answerWidth="500px;" labelWidth="150px;"/>
+            </group>
+            <group>
+              <question id='needs_reason' text="3. The existing life insurance does not meet the insured/buyer's needs for the insurance because:*" labelWidth="700px;" answerWidth="600px;" />
+              <footer>*Specific reasons must be given. For example, if you believe the existing life insurance cannot meet the insured/buyer's needs, you must specify why you think it does not.</footer>
+            </group>
+		</section>
+		<section>
+			<displayWhen>#{CASE.contractLocale=='RI'}</displayWhen>
+			<group>
+			<header>*Dividends, policy loan and certain guaranteed cash value information concerning your existing insurance may not be known to our agent. Dividends are not guaranteed. However, they may materially reduce the cost of insurance and are an important factor to consider. This, if dividends or other figures have been omitted from this Comparative Information Form, you should not reach a final decision to replace your existing insurance until you have them. You may obtain the omitted figures from the company that issued your existing policy.</header>
+			</group>
+		</section>
+		<section>
+			<displayWhen>#{CASE.contractLocale=='WV'}</displayWhen>
+			<group>
+			<header>*Dividends, policy loan and certain guaranteed cash value information concerning your existing insurance may not be known to our agent. Dividends are not guaranteed. However, they may materially reduce the cost of insurance and are an important factor to consider. This, if dividends or other figures have been omitted from this Comparative Information Form, you should not reach a final decision to replace your existing insurance until you have them. You may obtain the omitted figures from the company that issued your existing policy.</header>
+			</group>
+			<group>
+			<header>**For proposed life insurance, the insurer may, within two years from the date of issue, contest that amount of insurance, if any written and issued in excess of the amount of the existing life insurance.</header>
+			</group>
+		</section>
+		<section title="INSTRUCTIONAL NOTES FOR AGENT AND/OR BROKER">
+			<group>
+				<paragragh
+					text="1. Existing life insurance must be identified by name of insurer and the policy number. In the event that a policy number has not been asigned by the existing insurer, alternative identification information such as an application or receipt number must be shown."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="2. If a premium for the basic policy or any rider or benefit changes, indicate the changes; attach schedules, if necessary."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="3. If the death benefit for the basic policy or any rider or benefit changes, indicate the changes; attach schedules, if necessary."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="4. If the premium for benefits is not separable from the premium for the basic policy, insert 'Included' in Basic Policy Premium."
+					styleClass="groupParagraph" />
+				<paragragh
+					text="5. If more than one existing life insurance policy is to be replaced, a separate Comparative Information Form is to be provided for each such policy, or separate information is to be provided in one Comparative Information Form for each such policy, and a summary of all separate policy information must also be included to the extent possible."
+					styleClass="groupParagraph" />
+			</group>
+		</section>
+	</page>
+</form>

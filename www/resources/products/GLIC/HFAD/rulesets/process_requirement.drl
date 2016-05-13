@@ -1,0 +1,38 @@
+import com.stepsoln.core.rules.requirements.ProductProcessRequirementStepData;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "req_for_HIPPA_AL"
+	when
+		requirementStep:ProductProcessRequirementStepData(stepDescription == "Policy reinstatement requirement for HIPAA" , state =="IL")
+	then
+		requirementStep.setIsRequired(true);		 	
+end
+
+rule "req_for_HIPPA_TX"
+	when
+		requirementStep:ProductProcessRequirementStepData(stepDescription == "Policy reinstatement requirement for HIPAA" , state =="TX")
+	then
+		requirementStep.setIsRequired(true);		 	
+end
+
+rule "req_for_MIB_IL_50"
+	when
+		requirementStep:ProductProcessRequirementStepData(stepDescription == "Policy reinstatement requirement for MIB", state == "IL", policyHolderAge > 50)
+	then
+		requirementStep.setIsRequired(true);		 	
+end
+
+rule "req_for_APS"
+when
+		requirementStep:ProductProcessRequirementStepData(stepDescription == "Policy reinstatement requirement for APS")
+	then
+		requirementStep.setIsRequired(true);		 	
+end
+
+rule "req_for_payment"
+when
+		requirementStep:ProductProcessRequirementStepData(stepDescription == "Policy reinstatement payment")
+	then
+		requirementStep.setIsRequired(true);		 	
+end

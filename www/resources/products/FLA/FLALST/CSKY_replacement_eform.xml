@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillData</onLoad>
+  <page>
+    <section>
+      <header>KENTUCKY</header>
+      <group labelWidth="400px" height="120px" scrollable="true">
+        <header>NOTICE REGARDING REPLACEMENT OF LIFE INSURANCE</header>
+        <paragragh
+        	text="WARNING: CANCELING OR CHANGING an existing life insurance policy could be a good decision or a bad one. To make sure you understand the facts you should:"
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="* Compare your existing policy and the proposed policy before you make a final decision."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="* Ask the company or agent that sold you your policy to give you information."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="* Consider your present health. You may have had a change which could affect your ability to get insurance. If you change insurance policies, continue your present insurance until a new policy is delivered and accepted by you."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="You have the right, within thirty (30) days after delivery of a replacement policy, to return it to the company and to get a full refund of all premiums paid."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="Under your existing policy, the period of time during which the issuing company could deny coverage for death caused by suicide may have expired or may expire earlier than it will under the proposed policy. Kentucky law provides that a policy of life insurance can exclude coverage for death from suicide with two (2) years from the date of issue of the policy."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="Kentucky law established a two (2) year contestability period. The proposed insurance policy cannot have a different contestability period than the existing policy except for any additional amounts of insurance. If the contestability period has expired for the existing policy, there can be no contestability period for the same amount of insurance in the proposed policy."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="Kentucky Department of Insurance Regulation 806 KAR 12:080 requires that the company making the replacement notify your existing insurance company that you may be replacing your existing policy."
+        	styleClass="groupParagraph"></paragragh>
+      </group>
+    </section>
+    <section title="Existing Company" repeating="true">
+      <group associated="true">
+        <question id='replaced_carrier' text='Company Name' labelWidth="200px" type='TEXT' answerWidth="150px;" />
+        <question id='replaced_policyno' text='Policy No' labelWidth="200px" type='TEXT' answerWidth="100px;" />
+        <question id='replaced_amount' text='Policy Amount' labelWidth="150px" type='TEXT' answerWidth="150px;" />
+        <question id='replaced_issue_date' text='Issue Date' type='DATEF' labelWidth="200px" />
+      </group>
+    </section>
+  </page>
+</form>

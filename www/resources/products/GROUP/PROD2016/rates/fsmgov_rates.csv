@@ -1,0 +1,3 @@
+Option Cd,Gender,tobacco use,min age,max age,class,min level,max level,rate,rate_usage,rate_type,rate_basis_id,rate_basis_value
+TFASGOV,,,0,99,ST,,,0.45,ADD,ABSOLUTE,MONTH,50000
+STFAGOVV,,,18,30,ST,25000,25000,2.31,ADD,ABSOLUTE,MONTH,25000

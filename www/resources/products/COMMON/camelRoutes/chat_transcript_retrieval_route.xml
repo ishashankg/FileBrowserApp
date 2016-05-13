@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+	<route id="bchatTranscriptRetrieval" shortName="fetchChatTranscripts">
+		<from uri="quartz://timerName?cron=0+0+5+1/1+*+?+*" />
+		<to uri="direct://fetchBChatTranscripts" />
+	</route>
+	
+	<route id="fetchBChatTranscripts">
+		<from uri="direct://fetchBChatTranscripts"/>
+		<setBody>
+			<constant>
+				SELECT 
+				policy_no, case_id FROM eform_case
+				WHERE policy_no NOT IN (SELECT jp.param_name FROM job_param jp, job j WHERE j.job_id=jp.job_id
+				AND j.job_code='fetchChatTranscript' AND j.route='bchatTranscriptRetrieval');
+			</constant>
+		</setBody>
+		<to uri="jdbc:stepDataSource" />
+		<to uri="bean:chatTranscriptRetrievalProcessor" />
+	</route>
+</routes>

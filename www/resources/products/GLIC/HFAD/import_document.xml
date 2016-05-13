@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<!--  For Policy Packet start  -->
+	<packets>
+		<packet>
+			<packet_code>ADDRESS_CHANGE_CORRESPONDENCE</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_ADDRESS_CHANGE_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>ADDRESS_CHANGE_CORRESPONDENCE</requirement_code>
+		</packet>
+		<packet>
+			<packet_code>BIRTHDAY_CHANGE_CORRESPONDENCE</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_BIRTHDAY_CHANGE_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>BIRTHDAY_CHANGE_CORRESPONDENCE</requirement_code>
+		</packet>
+		<packet>
+			<packet_code>BENEFICIARY_CHANGE_CORRESPONDENCE</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_BENEFICIARY_CHANGE_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>BENEFICIARY_CHANGE_CORRESPONDENCE</requirement_code>
+		</packet>
+		<packet>
+			<packet_code>OWNER_CHANGE_CORRESPONDENCE</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_OWNER_CHANGE#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>OWNER_CHANGE_CORRESPONDENCE</requirement_code>
+		</packet>
+		<packet>
+			<packet_code>SMOKER_STATUS_CHANGE_CORRESPONDENCE</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_SMOKER_STATUS_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>SMOKER_STATUS_CHANGE_CORRESPONDENCE</requirement_code>
+		</packet>
+		<packet>
+			<packet_code>SETTLEMENT_CHANGE_CORRESPONDENCE</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_SETTLEMENT_CHANGE_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>SETTLEMENT_CHANGE_CORRESPONDENCE</requirement_code>
+		</packet>
+		<packet>
+			<packet_code>PAYMENT_CHANGE_CORRESPONDENCE</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_PAYMENT_CHANGE_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>PAYMENT_CHANGE_CORRESPONDENCE</requirement_code>
+		</packet>
+		<packet>
+			<packet_code>PAYOR_CHANGE_CORRESPONDENCE</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_PAYOR_CHANGE_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>PAYOR_CHANGE_CORRESPONDENCE</requirement_code>
+		</packet>
+		<packet>
+			<packet_code>GLIC_POLICY</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_POLICY_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>GLIC_POLICY</requirement_code>
+		</packet>
+		<packet>
+			<packet_code>POLICY_EXPORT</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_POLICY_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+		</packet>
+		<packet>
+			<packet_code>POLICY_REINSTATEMENT</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_POLICY_REINSTATEMENT#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>POLICY_REINSATEMENT</requirement_code>
+		</packet>
+		<packet>
+			<packet_code>POLICY_CONVERSION_SIGNATURE</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_POLICY_CONVERSION_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>POLICY_CONVERSION_SIGNATURE</requirement_code>
+		</packet>
+		
+		<packet>
+			<packet_code>COLLATERAL_ASSIGNMENT_CORRESPONDENCE</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_COLLATERAL_ASSIGNMENT_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>COLLATERAL_ASSIGNMENT_CORRESPONDENCE</requirement_code>
+		</packet>
+		
+		<packet>
+			<packet_code>TERMINATE_ASSIGNMENT_CORRESPONDENCE</packet_code>
+			<packet_file_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_TERMINATE_ASSIGNMENT_#{POLICY_NO}_#{GENERATED_DATE}.zip</packet_file_pattern>
+			<requirement_code>TERMINATE_ASSIGNMENT_CORRESPONDENCE</requirement_code>
+		</packet>
+		
+	</packets>
+	<documentPartTemplates>
+		<documentPartTemplate code="GERBER_COVERAGE_PAGE">
+			<sourceType>FILLABLE_PDF</sourceType>
+			<folder>policyDocument</folder>
+			<file>cover_page_fillable.pdf</file>
+			<mappingFile>gerbercoveragepdfmapping.xml</mappingFile>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="GERBER_WL_COVERAGE_PAGE">
+			<sourceType>FILLABLE_PDF</sourceType>
+			<folder>policyDocument</folder>
+			<file>coverpage_wl.pdf</file>
+			<mappingFile>gerbercoveragepdfmapping.xml</mappingFile>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="GERBER_POLICY_SPEC">
+			<sourceType>BIRT_REPORT</sourceType>
+			<folder>policyDocument</folder>
+			<file>policy_spec.rptdesign</file>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="GERBER_TOC">
+			<sourceType>FILLABLE_PDF</sourceType>
+			<folder>policyDocument</folder>
+			<file>table_of_content_gerber.pdf</file>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="GERBER_WL_TOC">
+			<sourceType>FILLABLE_PDF</sourceType>
+			<folder>policyDocument</folder>
+			<file>table_of_content_gerber_conversion.pdf</file>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="GERBER_PROVISION">
+			<sourceType>STATIC_PDF</sourceType>
+			<folder>policyDocument</folder>
+			<file>gerber_general_provision.pdf</file>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="GERBER_WL_PROVISION">
+			<sourceType>STATIC_PDF</sourceType>
+			<folder>policyDocument</folder>
+			<file>gerber_WL_provision.pdf</file>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="GERBER_DEFINITION">
+			<sourceType>STATIC_PDF</sourceType>
+			<folder>policyDocument</folder>
+			<file>gerber_definition.pdf</file>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="GERBER_RIDER_TERM20">
+			<sourceType>STATIC_PDF</sourceType>
+			<folder>policyDocument</folder>
+			<file>TERM20.pdf</file>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="GERBER_RIDER_TERM30">
+			<sourceType>STATIC_PDF</sourceType>
+			<folder>policyDocument</folder>
+			<file>TERM30.pdf</file>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="GERBER_RIDER_TERM30DWP">
+			<sourceType>STATIC_PDF</sourceType>
+			<folder>policyDocument</folder>
+			<file>TERM30DWP.pdf</file>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="CONFIRMATION_LETTER">
+			<sourceType>BIRT_REPORT</sourceType>
+			<folder>policyDocument</folder>
+			<file>confirmation_letter_template.rptdesign</file>
+			<mappingFile>signatureMapping.xml</mappingFile>
+			<mime_type>PDF</mime_type>
+			<applySignature>Y</applySignature>
+		</documentPartTemplate>
+		<documentPartTemplate code="WELCOME_LETTER">
+			<sourceType>BIRT_REPORT</sourceType>
+			<folder>policyDocument</folder>
+			<file>welcome_letter_template.rptdesign</file>
+			<mappingFile>signatureMapping.xml</mappingFile>
+			<mime_type>PDF</mime_type>
+			<applySignature>Y</applySignature>
+		</documentPartTemplate>
+		<documentPartTemplate code="REINSTATEMENT_NOTICE">
+			<sourceType>BIRT_REPORT</sourceType>
+			<folder>policyDocument</folder>
+			<file>reinstatement_notice.rptdesign</file>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		<documentPartTemplate code="CONVERSION_CONFIRMATION_LETTER">
+			<sourceType>BIRT_REPORT</sourceType>
+			<folder>policyDocument</folder>
+			<file>policy_conversion_confirmation_template.rptdesign</file>
+			<mappingFile>signatureMapping.xml</mappingFile>
+			<mime_type>PDF</mime_type>
+			<applySignature>Y</applySignature>
+		</documentPartTemplate>
+		
+		<documentPartTemplate code="GERBER_POLICY_CONVERSION_SPEC">
+			<sourceType>BIRT_REPORT</sourceType>
+			<folder>policyDocument</folder>
+			<file>policy_conversion_document.rptdesign</file>
+			<mime_type>PDF</mime_type>
+		</documentPartTemplate>
+		
+		<documentPartTemplate code="COLLATERAL_ASSIGNMENT">
+			<sourceType>BIRT_REPORT</sourceType>
+			<folder>assignment</folder>
+			<file>collateral_assignment.rptdesign</file>
+			<mime_type>PDF</mime_type>
+			<applySignature>Y</applySignature>
+		</documentPartTemplate>
+		
+		<documentPartTemplate code="TERMINATE_ASSIGNMENT">
+			<sourceType>BIRT_REPORT</sourceType>
+			<folder>assignment</folder>
+			<file>terminate_assignment.rptdesign</file>
+			<mime_type>PDF</mime_type>
+			<applySignature>Y</applySignature>
+		</documentPartTemplate>
+		
+	</documentPartTemplates>
+	
+	<documents>
+		<!--  For Endorsement start  -->
+		<document code="ADDRESS_CHANGE">
+			<documentDescription>Document generated for address change</documentDescription>
+			<requirement_code>ADDRESS_CHANGE_CORRESPONDENCE</requirement_code>
+			<file_name_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_ADDRESS_CHANGE_#{RESOURCE_ID}_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>APP</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+				</documentPart>
+			</documentParts>
+		</document>
+		<document code="SETTLEMENT_CHANGE">
+			<documentDescription>Document generated for settlement change</documentDescription>
+			<requirement_code>SETTLEMENT_CHANGE_CORRESPONDENCE</requirement_code>
+			<file_name_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_SETTLEMENT_CHANGE_#{RESOURCE_ID}_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>APP</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+				</documentPart>
+			</documentParts>
+		</document>
+		<document code="BIRTHDAY_CHANGE">
+			<documentDescription>Document generated for birthday change</documentDescription>
+			<requirement_code>BIRTHDAY_CHANGE_CORRESPONDENCE</requirement_code>
+			<file_name_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_BIRTHDAY_CHANGE_#{RESOURCE_ID}_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>APP</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+				</documentPart>
+			</documentParts>
+		</document>
+		<document code="BENEFICIARY_CHANGE">
+			<documentDescription>Document generated for beneficiary change</documentDescription>
+			<requirement_code>BENEFICIARY_CHANGE_CORRESPONDENCE</requirement_code>
+			<file_name_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_BENEFICIARY_CHANGE_#{RESOURCE_ID}_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>APP</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+				</documentPart>
+			</documentParts>
+		</document>
+		<document code="POLICY_OWNER_CHANGE">
+			<documentDescription>Document generated for policy owner change</documentDescription>
+			<requirement_code>OWNER_CHANGE_CORRESPONDENCE</requirement_code>
+			<file_name_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_POLICY_OWNER_CHANGE_#{RESOURCE_ID}_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>APP</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+				</documentPart>
+			</documentParts>
+		</document>
+		<document code="SMOKER_STATUS_CHANGE">
+			<documentDescription>Document generated for smoker status change</documentDescription>
+			<requirement_code>SMOKER_STATUS_CHANGE_CORRESPONDENCE</requirement_code>
+			<file_name_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_SMOKER_STATUS_CHANGE_#{RESOURCE_ID}_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>APP</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+				</documentPart>
+			</documentParts>
+		</document>
+		<document code="PAYMENT_CHANGE">
+			<documentDescription>Document generated for payment method change</documentDescription>
+			<requirement_code>PAYMENT_CHANGE_CORRESPONDENCE</requirement_code>
+			<file_name_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_PAYMENT_CHANGE_#{RESOURCE_ID}_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>APP</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+				</documentPart>
+			</documentParts>
+		</document>
+		<document code="PAYOR_CHANGE">
+			<documentDescription>Document generated for payor change</documentDescription>
+			<requirement_code>PAYOR_CHANGE_CORRESPONDENCE</requirement_code>
+			<file_name_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_PAYOR_CHANGE_#{RESOURCE_ID}_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>APP</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+				</documentPart>
+			</documentParts>
+		</document>
+		<!--  For Endorsement end  -->
+		<!--  For Policy Packet start  -->
+		<document code="POLICY_PAGE">
+			<documentDescription>Document generated for policy issuance</documentDescription>
+			<requirement_code>GLIC_POLICY</requirement_code>
+			<file_name_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_POLICY_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>WELCOME_LETTER</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>1</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>CONFIRMATION_LETTER</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>2</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>GERBER_COVERAGE_PAGE</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>3</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>GERBER_WL_COVERAGE_PAGE</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>4</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>GERBER_POLICY_SPEC</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>5</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>GERBER_TOC</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>6</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>GERBER_WL_TOC</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>7</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>GERBER_DEFINITION</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>8</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>GERBER_PROVISION</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>9</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>GERBER_WL_PROVISION</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>10</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>GERBER_RIDER_TERM20</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>11</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>GERBER_RIDER_TERM30</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>12</order>
+				</documentPart>
+				<documentPart>
+					<documentPartTemplateCode>GERBER_RIDER_TERM30DWP</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>13</order>
+				</documentPart>
+			</documentParts>
+		</document>
+		<document code="POLICY_XML">
+			<documentDescription>Policy XML</documentDescription>
+			<file_name_pattern>#{CARRIER_CODE}_#{POLICY_NO}_#{GENERATED_DATE}.xml</file_name_pattern>
+		</document>
+		<document code="CONTROL_FILE">
+			<documentDescription>Control File Xml</documentDescription>
+			<file_name_pattern>CONTROL_FILE_#{POLICY_NO}_#{GENERATED_DATE}.xml</file_name_pattern>
+		</document>
+		<document code="REINSTATEMENT_PAGE">
+			<documentDescription>Reinstatement document generation</documentDescription>
+			<file_name_pattern>REINSTATEMENT_DOC_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>REINSTATEMENT_NOTICE</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>1</order>
+				</documentPart>
+			</documentParts>
+		</document>
+		<document code="POLICY_CONVERSION">
+			<documentDescription>Policy document generation</documentDescription>
+			<file_name_pattern>POLICY_CONVERSION_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+			
+				<documentPart>
+					<documentPartTemplateCode>CONVERSION_CONFIRMATION_LETTER</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>1</order>
+				</documentPart>
+				
+				<documentPart>
+					<documentPartTemplateCode>GERBER_POLICY_CONVERSION_SPEC</documentPartTemplateCode>
+					<barcode_type></barcode_type>
+					<order>2</order>
+				</documentPart>
+			</documentParts>
+		</document>
+		
+		<document code="COLLATERAL_ASSIGNMENT">
+			<documentDescription>Collateral assignment document</documentDescription>
+			<requirement_code>COLLATERAL_ASSIGNMENT_CORRESPONDENCE</requirement_code>
+			<file_name_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_COLLATERAL_ASSIGNMENT_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>COLLATERAL_ASSIGNMENT</documentPartTemplateCode>
+					<order>1</order>
+					<barcode_type></barcode_type>
+				</documentPart>
+			</documentParts>
+		</document>
+		
+			<document code="TERMINATE_ASSIGNMENT">
+			<documentDescription>Collateral assignment termination document</documentDescription>
+			<requirement_code>TERMINATE_ASSIGNMENT_CORRESPONDENCE</requirement_code>
+			<file_name_pattern>#{CARRIER_CODE}_#{PRODUCT_CODE}_TERMINATE_ASSIGNMENT_#{POLICY_NO}_#{GENERATED_DATE}.pdf</file_name_pattern>
+			<documentParts>
+				<documentPart>
+					<documentPartTemplateCode>TERMINATE_ASSIGNMENT</documentPartTemplateCode>
+					<order>1</order>
+					<barcode_type></barcode_type>
+				</documentPart>
+			</documentParts>
+		</document>
+		
+	</documents>
+</stepImport>

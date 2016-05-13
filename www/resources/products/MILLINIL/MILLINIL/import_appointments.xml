@@ -1,0 +1,28 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<appointments>
+
+		<appointment>
+			<appointmentType>AGENT</appointmentType>
+			<appointmentStatus>ACTIVE</appointmentStatus>
+			<appointmentNumber>61001</appointmentNumber>
+			<licenseNumber>4100</licenseNumber>
+			<lineOfBusiness>LIFE</lineOfBusiness>
+			<productCode>MILLINI_LIFE</productCode>
+			<effectiveDate>01012012</effectiveDate>
+			<agentCode>GEOM</agentCode>
+			<agencyCode>MILLINI_LIFE_MedAg</agencyCode>
+		</appointment>
+		<appointment>
+			<appointmentType>AGENT</appointmentType>
+			<appointmentStatus>ACTIVE</appointmentStatus>
+			<appointmentNumber>61011</appointmentNumber>
+			<licenseNumber>4101</licenseNumber>
+			<lineOfBusiness>LIFE</lineOfBusiness>
+			<productCode>MILLINI_LIFE</productCode>
+			<effectiveDate>01012012</effectiveDate>
+			<agentCode>STES</agentCode>
+			<agencyCode>MILLINI_LIFE_MedAg</agencyCode>
+		</appointment>   
+	</appointments>
+</stepImport>

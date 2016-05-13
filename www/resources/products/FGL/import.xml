@@ -1,0 +1,28 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<carrier>
+		<carrierCode>FGL</carrierCode>
+		<carrierName>Fidelity Guaranteed Life</carrierName>
+		<carrierNAICCode>50939</carrierNAICCode>
+
+		<docTypes>
+			<docType>
+				<docTypeCode>NB</docTypeCode>
+				<docTypeName>New Business</docTypeName>
+			</docType>
+			<docType>
+				<docTypeCode>UW</docTypeCode>
+				<docTypeName>Underwriting</docTypeName>
+			</docType>
+		</docTypes>		
+			
+		<importProduct productCode="PERFPRO" />	
+		<importProduct productCode="PROELIT" />
+		<importProduct productCode="PLATINA" />
+
+		<file uri="import_resources.xml" />
+		<file uri="import_agencies.xml" />
+		<file uri="import_users.xml" />
+		
+	</carrier>
+</stepImport>

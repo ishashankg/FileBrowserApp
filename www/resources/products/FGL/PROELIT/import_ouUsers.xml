@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<ou-users>
+	<ou-user>
+		<ousOrguCode>DEP</ousOrguCode>
+		<ousUserName>SARAHC</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>DEP_QC</ousOrguCode>
+		<ousUserName>MICHAS</ousUserName>		
+	</ou-user>
+	
+	<ou-user>
+		<ousOrguCode>CASE_MGR</ousOrguCode>
+		<ousUserName>OWENJA</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>CASE_MGR</ousOrguCode>
+		<ousUserName>OWENJA2</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>AGENCY_SVC</ousOrguCode>
+		<ousUserName>MELISJ</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>FGLAGENT</ousOrguCode>
+		<ousUserName>TARAWI</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>AUTO</ousOrguCode>
+		<ousUserName>MICHASLA</ousUserName>
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>SUITABILITY</ousOrguCode>
+		<ousUserName>LISADA</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>ISS</ousOrguCode>
+		<ousUserName>DYAO</ousUserName>		
+	</ou-user>
+</ou-users>
+</stepImport>

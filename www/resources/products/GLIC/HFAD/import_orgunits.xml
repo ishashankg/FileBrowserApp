@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<org-units>
+	<org-unit>
+		<ouName>ABC Agency</ouName>
+		<ouCode>EXT1OU</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>EXT1</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>DEF Agency</ouName>
+		<ouCode>EXT2DOU</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>EXT2D</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>CC Sales Group 1</ouName>
+		<ouCode>CCSL1</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>GLIC</ouAgency>
+		<ouGroup></ouGroup>
+		<ouSignatureLine><![CDATA[ Luci Moore, Underwriting Department]]></ouSignatureLine> 
+		<ouSignatureImageFile>emailTemplates/ouSignatureCCSL1.png</ouSignatureImageFile> 
+	</org-unit> 
+	<org-unit>
+		<ouName>CC Service</ouName>
+		<ouCode>CCSVC</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>GLIC</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>UTS</ouName>
+		<ouCode>UTS</ouCode>
+		<ouClass>SVC</ouClass>
+		<ouAgency>GLIC</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>New Business</ouName>
+		<ouCode>NBO</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Underwriting</ouName>
+		<ouCode>UWO</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Merica Underwriting</ouName>
+		<ouCode>MERICA</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Admin</ouName>
+		<ouCode>GLADM</ouCode>
+		<ouClass>ADM</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Applicant</ouName>
+		<ouCode>GLIC_WEB_USER</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Policy Service Representative</ouName>
+		<ouCode>GLPSR</ouCode>
+		<ouClass>PSR</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+</org-units>
+</stepImport>

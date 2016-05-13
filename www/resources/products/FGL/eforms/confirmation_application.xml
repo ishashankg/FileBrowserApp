@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Confirmation">
+		<section title='Please sign below to indicate your understanding'>			
+			<group labelWidth="400px" style="margin-left:0px !important; border:1px solid #dfdfdf;"  >
+				<paragragh
+          text="By signing here, you are telling us that you have read this summary and understand the descriptions of the FG Guarantee-Platinum deferred fixed annuity features. You also understand that subject to the guarantee values in the annuity, the cash surrender values in the annuity may increase or decrease based on an MVA adjustment prior to the date or dates specified in the annuity. You are also telling us that neither Fidelity &amp; Guaranty Life nor your agent has made any guarantees or promises regarding interest rates under the annuity. The actual rate in your annuity will be based on current data as of the date the annuity is issued. You understand that the Company offers deferred annuity products with different features and benefits and that you can also apply for those products by contacting the Company or one of its agents. You have received a copy of the Buyer's Guide (and the Supplement-to-Buyer's Guide for VT only) and understand its disclosures."
+          styleClass="groupParagraph" style="margin-left:0px !important;">
+				</paragragh>
+			</group>     
+		</section>  
+		<section style='margin-top:10px'>     
+			<group associated="true">
+				<question id='owner_signature_confirmation' text='Signature of Owner' labelWidth="100px" required="true" type='CHECKBOX' answerSet='Y' answerWidth="100px" labelStyle='margin-left:0px'/>
+				<question id='owner_signature_date' text='Date' name ='Date when owner signed' type='DATEF'  labelWidth="100px" labelStyle='margin-left:0px' answerWidth="120px" required="true" tabindex='2'/>  
+			</group>  
+			<group associated="true">
+				<displayWhen> #{EFORMS.PERSON.joint_owner=="Y"} </displayWhen>
+				<question id='joint_owner_signature' text='Signature of Joint Owner' labelWidth="100px" required="true" type='CHECKBOX' answerSet='Y' answerWidth="120px" labelStyle='margin-left:0px' />
+				<question id='joint_owner_signature_date' text='Date' name ='Date when joint owner signed' type='DATEF'  labelWidth="100px" labelStyle='margin-left:0px' answerWidth="120px" required="true" tabindex='4'/>  
+			</group>  
+			<group associated="true">
+				<question id='agent_fullname' text='Agent Name' labelWidth="100px" required="false" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' />
+				<question id='agent_signature' text='Agent Signature' type='CHECKBOX'  answerSet='Y' labelWidth="100px" labelStyle='margin-left:0px' answerWidth="130px" required="true"/>
+			</group>
+			<group associated="true">
+				<question id='agency_address1' text='Agency Address' labelWidth="100px" required="false" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex='7'/>
+				<question id='agency_city' text='Agency City' type='TEXT'  labelWidth="100px" labelStyle='margin-left:0px' answerWidth="120px" required="false" tabindex='10'/>  
+			</group>
+			<group associated="true">
+				<question id='agency_address2' text='Agency Address Line 2' labelWidth="100px" type='TEXT' answerWidth="120px" tabindex='8' labelStyle='margin-left:0px' />
+				<question id='agency_state' text='Agency State' type='LISTBOX'  lookup="step:US_LOCALE_STATE"  answerSet=" : |Unknown:Not Applicable" labelWidth="100px" labelStyle='margin-left:0px' answerWidth="120px" required="false" tabindex='11'/>  
+			</group>
+			<group>
+				<question id='agency_zip' text='Agency Zip' labelWidth="100px" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex='9' />
+				<question id='verify_ADV1090' text='Verify Confirmation Statement Application Form #ADV 1090' name='Verify Confirmation Statement Checkbox' labelWidth="380px" type='CHECKBOX' answerSet='Y' answerWidth="120px" labelStyle='margin-left:0px' required="true" tabindex='12'/>        
+			</group>      
+		</section>     
+	</page>
+</form>

@@ -1,0 +1,73 @@
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.*;
+import rules.*;
+import java.util.*;
+import com.stepsoln.core.util.DateUtil;
+import com.stepsoln.core.rules.RuleResult;
+import com.stepsoln.core.rules.requirements.Requirement;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "4. Owner Max Age"
+	when
+		Question(id == "owner_date_of_birth", DateUtil.calculateAge(DateUtil.convertDate(answer)) < 0 || DateUtil.calculateAge(DateUtil.convertDate(answer)) > 90)
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Owner age shouldn't exceed 90 years")
+			   .setRuleNumber(4)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Owner Max Age")
+			   .setOverridable(false);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(4);
+end
+
+rule "5. Joint Owner Max Age"
+	when
+	  	$jointOwnerAgeCnt: Number(intValue > 0) from accumulate(Question($id: id, (id.indexOf("joint_owner_DOB") >= 0 && 
+	  		(DateUtil.calculateAge(DateUtil.convertDate(answer)) < 0 ||  DateUtil.calculateAge(DateUtil.convertDate(answer)) > 90))), 
+         init( int total = 0; ),
+         action( total += 1; ),
+         result(Integer.valueOf(total)) )
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Joint Owner age shouldn't exceed 90 years")
+			   .setRuleNumber(5)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Joint Owner Max Age")
+			   .setOverridable(false);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(5);
+end
+
+rule "6. Annuitant Max Age"
+	when
+		Question(id == "annuitant_date_of_birth", DateUtil.calculateAge(DateUtil.convertDate(answer)) < 0 || DateUtil.calculateAge(DateUtil.convertDate(answer)) > 90)
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Annuitant age shouldn't exceed 90 years")
+			   .setRuleNumber(6)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Annuitant Max Age")
+			   .setOverridable(false);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(6);
+end
+
+rule "7. Joint Annuitant Max Age"
+	when
+	  	$jointAnnuitantAgeCnt: Number(intValue > 0) from accumulate(Question($id: id, (id.indexOf("joint_annuitant_date_of_birth") >= 0 && 
+	  		(DateUtil.calculateAgeInWeeks(DateUtil.convertDate(answer)) < 0 ||  DateUtil.calculateAge(DateUtil.convertDate(answer)) > 90))), 
+         init( int total = 0; ),
+         action( total += 1; ),
+         result(Integer.valueOf(total)) )
+	then
+		RuleResult $result = new RuleResult();
+		$result.setMessage("Joint Annuitant age shouldn't exceed 90 years")
+			   .setRuleNumber(7)
+			   .setCategory("NON-SUITABILITY")
+			   .setRuleName("Joint Annuitant Max Age")
+			   .setOverridable(false);
+		rulesResponse.addResult($result);
+		rulesResponse.addToRuleFiredList(7);
+end

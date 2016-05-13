@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillData</onLoad>
+  <page>
+    <section>
+    <displayWhen>${CASE.contractLocale=='GA'}</displayWhen>
+    	<header>GEORGIA</header>
+    	<group/>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='GA'}</displayWhen>
+      <header>REPLACING YOUR LIFE INSURANCE POLICY?</header>
+      <group/>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='GA'}</displayWhen>
+      <group labelWidth="400px" height="120px" scrollable="true">
+        <paragragh
+        	text="Are you thinking about buying a new policy and discontinuing or changing an existing policy? If you are, your decision could be a good one - or a mistake. You will not know for sure unless you make a careful comparison of your existing policy and the proposed policy."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="Make sure you understand the facts. Georgia law gives you the right to obtain a policy summary statement from the existing insurer at any time. Ask the company or agent that sold you your existing policy to give you information about it."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="The reverse side contains a check list of some of the items you should consider in making your decision. TAKE TIME TO READ IT."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="Do not let one agent or insurer prevent you from obtaining information from another agent or insurer which may be to your advantage."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="Hear both sides before you decide. This way you can be sure you are making a decision that is in your best interest."
+        	styleClass="groupParagraph"></paragragh>
+      </group>
+	</section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='GA'}</displayWhen>
+      <group>
+        <question id='policy_summary' text='If you wish a policy summary statement from your existing insurer, or insurers, check this box.'
+        	labelWidth="200px" type='CHECKBOX' answerSet='Y:Yes' />
+      </group>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='GA'}</displayWhen>
+      <group>
+        <paragragh
+            text="We are required to notify your existing company that you are replacing their policy."
+            styleClass="groupParagraph"></paragragh>
+      </group>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='GA'}</displayWhen>
+      <header>ITEMS TO CONSIDER</header>
+      <group>
+        <paragragh
+        	text="1. If the policy coverages are basically similar, premiums for a new policy may be higher because rates increase as your age increases."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="2. Cash values and dividends, if any, may grow slower under a new policy initially because of the initial costs of issuing a policy."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="3. Your present insurance company may be able to make a change on terms which may be more favorable than if you replace existing insurance with new insurance."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="4. If you borrow against an existing policy to pay premiums on a new policy, death benefits payable under your existing policy will be reduced by the amount of any unpaid loan, including unpaid interest."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="5. Current interest rates are not guaranteed. Guaranteed interest rates are usually considerably lower than current rates. What rates are guaranteed?"
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="6. Are premiums guaranteed or subject to change - up or down?"
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="7. Participating policies pay dividends that may materially reduce the cost of insurance over the life of the contract. Dividends, however, are not guaranteed."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="8. CAUTION, you are urged not to take action to terminate, assign or alter your existing life insurance coverage until after you have been issued the new policy, examined it and have found it to be acceptable to you."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="and"
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="REMEMBER, you have ten (10) days following receipt of any individual life insurance policy to examine its contents. If you are not satisfied with it for any reason, you have the right to return it to the insurer at its home or branch office or to the agent through whom it was purchased, for a full refund of premium."
+        	styleClass="groupParagraph"></paragragh>
+      </group>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='MO'}</displayWhen>
+      <header>MISSOURI</header>
+      <group labelWidth="400px" height="120px" scrollable="true">
+      	<header>REPLACING YOUR LIFE INSURANCE POLICY OR ANNUITY?</header>
+      	<paragragh
+      		text="Are you thinking about buying a new policy and discontinuing or changing an existing policy? If you are, your decision could be a good one – or a mistake. You will not know for sure unless you make a careful comparison of your existing policy and the proposed policy."
+      		styleClass="groupParagraph"></paragragh>
+      	<paragragh
+      		text="Make sure you understand the facts. Ask the company or agent that sold you your existing policy to provide you with a policy summary statement."
+      		styleClass="groupParagraph"></paragragh>
+      	<paragragh
+      		text="The reverse side contains a check list of some of the items you should consider in making your decision. TAKE TIME TO READ IT."
+      		styleClass="groupParagraph"></paragragh>
+      	<paragragh
+      		text="Do not let one agent or insurer prevent you from obtaining information from another agent or insurer which may be to your advantage."
+      		styleClass="groupParagraph"></paragragh>
+      	<paragragh
+      		text="Hear both sides before you decide. This way you can be sure you are making a decision that is in your best interest."
+      		styleClass="groupParagraph"></paragragh>
+      	<paragragh
+      		text="We are required to notify your existing company that you are replacing their policy."
+      		styleClass="groupParagraph"></paragragh>
+      </group>
+      <group associated="true" labelWidth="300px;">
+      	<question id='agent_name' text="Agent's Name (Printed) and License Number" type='TEXT' answerWidth="200px;" />
+      	<question id='agent_address' text='Address:' type='TEXT' answerWidth="200px;" />
+      </group>
+      <group associated="true" labelWidth="300px;">
+      	<question id='agent_city_state_zip' text='City, State, Zip:' type='TEXT' answerWidth="200px;" />
+      	<question id='agent_phone' text='Telephone Number:' type='TEXT' answerWidth="200px;" />
+      </group>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='MO'}</displayWhen>
+      <header>ITEMS TO CONSIDER</header>
+      <group>
+        <paragragh
+        	text="1. If the policy coverages are basically similar, premiums for a new policy may be higher because rates increase as your age increases."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="2. Cash values and dividends, if any, may grow slower under a new policy initially because of the initial costs of issuing a policy."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="3. Your present insurance company may be able to make a change on terms which may be more favorable than if you replace existing insurance with new insurance."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="4. If you borrow against an existing policy to pay premiums on a new policy, death benefits payable under your existing policy will be reduced by the amount of any unpaid loan, including unpaid interest."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="5. Current interest rates are not guarantee. Guaranteed interest rates are usually considerably lower than current rates. What rates are guaranteed?"
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="6. Are premiums guaranteed or subject to change - up or down?"
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="7. Participating policies pay dividends that may materially reduce the cost of insurance over the life of the contract. Dividends, however, are not guaranteed."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="8. CAUTION, you are urged not to take action to terminate, assign or alter your existing life insurance coverage until after you have been issued the new policy, examined it and have found it to be acceptable to you."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="and"
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="REMEMBER, you have twenty (20) days following receipt to examine the contents of any individual life insurance policy or annuity. If you are not satisfied with it for any reason, you have the right to return it to the insurer at its home or branch office or to the agent through whom it was purchased, for a full refund of premium."
+        	styleClass="groupParagraph"></paragragh>
+      </group>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale == 'NV'}</displayWhen>
+      <header>NEVADA IMPORTANT NOTICE REGARDING THE REPLACEMENT OF YOUR POLICY OF LIFE INSURANCE</header>
+      <group labelWidth="400px" height="120px" scrollable="true">
+        <paragragh
+        	text="You have been offered a policy to replace all or part of your existing policy of life insurance."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="Before you replace your existing policy, you should consider whether you could suffer a FINANCIAL LOSS under the new policy because of your AGE or the condition of your HEALTH. You should also consider whether you will pay more for premiums because of your age or health."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="You WILL incur additional costs to acquire the new policy, including the payment of commissions to the agent advocating the replacement of your existing policy."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="To make an informed decision about the replacement of your policy, you should discuss the provisions of your existing policy with your agent or the company which issued it to determine whether your policy can be changed to meet your present needs."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="Your new policy provides 10 days for you to decide whether you wish to keep it."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="The agent who is offering to replace your existing policy is required to obtain your signature on this notice. Also, he will be notifying your existing insurance company that you are considering the replacement of your policy."
+        	styleClass="groupParagraph"></paragragh>
+      </group>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='CA' or CASE.contractLocale=='NE' or CASE.contractLocale=='OH'}</displayWhen>
+      <header>NOTICE REGARDING REPLACEMENT</header>
+      <group/>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='SC'}</displayWhen>
+      <header>SOUTH CAROLINA NOTICE REGARDING REPLACEMENT</header>
+      <group/>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='TN'}</displayWhen>
+      <header>TENNESSEE NOTICE REGARDING REPLACEMENT</header>
+      <group/>
+    </section>
+    <section>
+      <displayWhen>${CASE.contractLocale=='ID'}</displayWhen>
+      <header>IDAHO NOTICE REGARDING REPLACEMENT</header>
+      <group/>
+    </section>
+    <section >
+      <group labelWidth="400px">
+        <paragragh
+          text="Are you thinking about buying a new life insurance policy or annuity and discontinuing or changing an existing one? If you are, your decision could be a good one - or a mistake. You will not know for sure unless you make a careful comparison of your existing benefits and the proposed benefits."
+          styleClass="groupParagraph"></paragragh>
+      </group>
+      <group labelWidth="400px">
+        <paragragh
+            text="Make sure you understand the facts. You should ask the company or agent that sold you your existing policy to give you information about it."
+            styleClass="groupParagraph"></paragragh>
+        <paragragh
+            text="Hear both sides before you decide. That way you can be sure you are making a decision that is in your best interest."
+            styleClass="groupParagraph"></paragragh>
+        <displayWhen>${CASE.contractLocale!='ID'}</displayWhen>
+      </group>
+      <group labelWidth="400px">
+        <paragragh
+        	text="IF YOU SHOULD FAIL TO QUALIFY FOR THE LIFE INSURNCE FOR WHICH YOU HAVE APPLIED, YOU MAY FIND YOURSELF UNABLE TO PURCHASE OTHER LIFE INSURANCE OR ABLE TO PURCHASE IT ONLY AT SUBSTANTIALLY HIGHER RATES."
+        	styleClass="groupParagraph"></paragragh>
+        <displayWhen>${CASE.contractLocale=='TN'}</displayWhen>
+      </group>
+      <group labelWidth="400px">
+        <paragragh
+        	text="We are required by law to notify your existing company that you may be replacing their policy."
+        	styleClass="groupParagraph"></paragragh>
+        <displayWhen>${CASE.contractLocale!='ID'}</displayWhen>
+      </group>
+      <group labelWidth="400px">
+        <paragragh
+        	text="Make sure you understand the facts. You should ask for the advice of the company or agent that sold you your existing policy to give you information concerning any proposed replacement."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="As a general rule, there are disadvantages to dropping your existing life insurance or annuities. Hear both sides before you decide. That way you can be sure you are making a decision that is in your best interest."
+        	styleClass="groupParagraph"></paragragh>
+        <paragragh
+        	text="Idaho law requires your existing company to be notified that you may be replacing their policy."
+        	styleClass="groupParagraph"></paragragh>
+        <displayWhen>${CASE.contractLocale=='ID'}</displayWhen>
+      </group>
+    </section>
+    <section title="Existing Insurer" repeating="true">
+      <header>Existing Insurer to be Replaced</header>
+      <group associated="true">
+        <question id='replaced_carrier' text='Insurer' labelWidth="100px" type='TEXT' answerWidth="250px;" required="true"/>
+      </group>
+    </section>
+  </page>
+</form>

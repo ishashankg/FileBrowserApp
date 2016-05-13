@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<org-units>
+	<org-unit>
+		<ouName>MILLINI_LIFE Agency</ouName>
+		<ouCode>MILLINI_LIFE_Ou</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency>MILLINI_LIFE_MedAg</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+
+	<org-unit>
+		<ouName>MILLINI_LIFE Underwriting</ouName>
+		<ouCode>MILLINI_LIFE_UWO</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>DTC MILLINI_LIFE OU</ouName>
+		<ouCode>DTC_MILLINI_LIFE_OU</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Default MILLINI_LIFE Underwriting</ouName>
+		<ouCode>DEF_MILLINI_LIFE_UWO</ouCode>
+		<ouClass>UW</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>Applicant</ouName>
+		<ouCode>WEB_USER</ouCode>
+		<ouClass>NB</ouClass>
+		<ouAgency></ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+	<org-unit>
+		<ouName>UTS</ouName>
+		<ouCode>UTS</ouCode>
+		<ouClass>SVC</ouClass>
+		<ouAgency>MILLINI</ouAgency>
+		<ouGroup></ouGroup>
+	</org-unit>
+</org-units>
+</stepImport>

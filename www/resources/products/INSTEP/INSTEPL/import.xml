@@ -1,0 +1,484 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<carrier>
+		<carrierCode>INSTEP</carrierCode>
+		<carrierName>InStep Life Insurance</carrierName>
+		<carrierNAICCode>71439</carrierNAICCode>
+
+		<product>
+			<code>INSTEPL</code>
+			<name>InStep Life</name>
+			<lineOfBusiness>LIFE</lineOfBusiness>
+			<ageCalculationMethod>LAST_BIRTHDAY</ageCalculationMethod>
+			<type>TL</type>
+			<defaultPaymentMode>ANNUAL</defaultPaymentMode>
+			<defaultPaymentMethod>PAC</defaultPaymentMethod>
+			<productGroup>LIFE</productGroup>
+
+			<rateFactors>
+				<rateFactor>
+					<ratePaymentMethod>PAC</ratePaymentMethod>
+					<rateOnetimeFactor></rateOnetimeFactor>
+					<rateAnnualFactor>1</rateAnnualFactor>
+					<rateSemiannualFactor>.510</rateSemiannualFactor>
+					<rateQuarterlyFactor>.264</rateQuarterlyFactor>
+					<rateMonthlyFactor>.088</rateMonthlyFactor>
+					<rateSemimonthlyFactor></rateSemimonthlyFactor>
+					<rateBiweeklyFactor></rateBiweeklyFactor>
+					<rateBimonthlyFactor></rateBimonthlyFactor>
+				</rateFactor>
+				<rateFactor>
+					<ratePaymentMethod>BILL</ratePaymentMethod>
+					<rateOnetimeFactor></rateOnetimeFactor>
+					<rateAnnualFactor>1</rateAnnualFactor>
+					<rateSemiannualFactor>.610</rateSemiannualFactor>
+					<rateQuarterlyFactor>.164</rateQuarterlyFactor>
+					<rateMonthlyFactor>.048</rateMonthlyFactor>
+					<rateSemimonthlyFactor></rateSemimonthlyFactor>
+					<rateBiweeklyFactor></rateBiweeklyFactor>
+					<rateBimonthlyFactor></rateBimonthlyFactor>
+				</rateFactor>
+				<rateFactor>
+					<ratePaymentMethod>CC</ratePaymentMethod>
+					<rateOnetimeFactor></rateOnetimeFactor>
+					<rateAnnualFactor>1</rateAnnualFactor>
+					<rateSemiannualFactor>.54</rateSemiannualFactor>
+					<rateQuarterlyFactor>.28</rateQuarterlyFactor>
+					<rateMonthlyFactor>.1</rateMonthlyFactor>
+					<rateSemimonthlyFactor></rateSemimonthlyFactor>
+					<rateBiweeklyFactor></rateBiweeklyFactor>
+					<rateBimonthlyFactor>.2</rateBimonthlyFactor>
+				</rateFactor>
+			</rateFactors>
+			<rateClasses>
+				<rateClass>
+					<rateClassCode>PP</rateClassCode>
+					<isDefault>true</isDefault>
+					<name>Select Plus</name>
+					<minScore>0</minScore>
+					<maxScore>10</maxScore>
+					<sequence>1</sequence>
+				</rateClass>
+				<rateClass>
+					<rateClassCode>PF</rateClassCode>
+					<isDefault>false</isDefault>
+					<name>Select</name>
+					<minScore>11</minScore>
+					<maxScore>20</maxScore>
+					<sequence>2</sequence>
+				</rateClass>
+				<rateClass>
+					<rateClassCode>ST</rateClassCode>
+					<isDefault>false</isDefault>
+					<name>Standard</name>
+					<minScore>21</minScore>
+					<maxScore>40</maxScore>
+					<sequence>3</sequence>
+				</rateClass>
+			</rateClasses>
+
+			<plans>
+				<plan>
+					<code>FA</code>
+					<name>Face Amount</name>
+					<planType>BASE</planType>
+					<applicantType>PRIMARY_INSURED</applicantType>
+					<services>
+						<service>
+							<name>Face Amount</name>
+							<options>
+								<option>
+									<code>FA</code>
+									<name>Face Amount</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>FACE_AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>75000</value>
+											<max>150000</max>
+											<increment>1000</increment>
+										</level>
+									</levels>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>INSTEPTL</code>
+					<name>Term Level Life Insurance</name>
+					<planType>BASE</planType>
+					<applicantType>PRIMARY_INSURED</applicantType>
+					<services>
+						<service>
+							<name>Term Life</name>
+							<options>
+								<option>
+									<code>INSTEPTERM10</code>
+									<name>10-Year Term</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>YEAR</optionValueType>
+									<levels>
+										<level>
+											<value>10</value>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>INSTEPTERM15</code>
+									<name>15-Year Term</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>YEAR</optionValueType>
+									<levels>
+										<level>
+											<value>15</value>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>INSTEPTERM20</code>
+									<name>20-Year Term</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>YEAR</optionValueType>
+									<levels>
+										<level>
+											<value>20</value>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>INSTEPTERM30</code>
+									<name>30-Year Term</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>YEAR</optionValueType>
+									<levels>
+										<level>
+											<value>30</value>
+										</level>
+									</levels>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>INSTEPDWP</code>
+					<name>Waiver of Premium Rider</name>
+					<planType>RIDER</planType>
+					<applicantType>PRIMARY_INSURED</applicantType>
+					<services>
+						<service>
+							<name>WP Benefit</name>
+							<options>
+								<option>
+									<code>WOP10</code>
+									<name>10-Year Term Waiver of Premium Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+								<option>
+									<code>WOP15</code>
+									<name>15-Year Term Waiver of Premium Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+								<option>
+									<code>WOP20</code>
+									<name>20-Year Term Waiver of Premium Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+								<option>
+									<code>WOP30</code>
+									<name>30-Year Term Waiver of Premium Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>INSTEPDI</code>
+					<name>Monthly Disability Income Rider</name>
+					<planType>RIDER</planType>
+					<applicantType>PRIMARY_INSURED</applicantType>
+					<services>
+						<service>
+							<name>WP Benefit</name>
+							<options>
+								<option>
+									<code>DI10</code>
+									<name>10-Year Term Monthly Disability Income Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>DI15</code>
+									<name>15-Year Term Monthly Disability Income Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>DI20</code>
+									<name>20-Year Term Monthly Disability Income Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>DI30</code>
+									<name>30-Year Term Monthly Disability Income Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>INSTEPAODI</code>
+					<name>Accident Only Disability Income Rider</name>
+					<planType>RIDER</planType>
+					<applicantType>PRIMARY_INSURED</applicantType>
+					<services>
+						<service>
+							<name>WP Benefit</name>
+							<options>
+								<option>
+									<code>ADI10</code>
+									<name>10-Year Term Accident Only Disability Income Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>ADI15</code>
+									<name>15-Year Term Accident Only Disability Income Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>ADI20</code>
+									<name>20-Year Term Accident Only Disability Income Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>ADI30</code>
+									<name>30-Year Term Accident Only Disability Income Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>INSTEPCI</code>
+					<name>Critical Illness Rider</name>
+					<planType>RIDER</planType>
+					<applicantType>PRIMARY_INSURED</applicantType>
+					<services>
+						<service>
+							<name>DEC Service</name>
+							<options>
+								<option>
+									<code>CI10</code>
+									<name>10-Year Term Critical Illness Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>CI15</code>
+									<name>15-Year Term Critical Illness Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>CI20</code>
+									<name>20-Year Term Critical Illness Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>CI30</code>
+									<name>30-Year Term Critical Illness Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>INSTEPCTI</code>
+					<name>Children's Term Insurance Rider</name>
+					<planType>RIDER</planType>
+					<applicantType>PRIMARY_INSURED</applicantType>
+					<services>
+						<service>
+							<name>CTI Service</name>
+							<options>
+								<option>
+									<code>CR</code>
+									<name>Children's Term Insurance Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<levels>
+										<level>
+											<value>0</value>
+											<max>40000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>								
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>INSTEPRIP</code>
+					<name>Return of Premium Rider</name>
+					<planType>RIDER</planType>
+					<applicantType>PRIMARY_INSURED</applicantType>
+					<services>
+						<service>
+							<name>RIP Service</name>
+							<options>
+								<option>
+									<code>ROP20</code>
+									<name>20-Year Term Return of Premium Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+								<option>
+									<code>ROP30</code>
+									<name>30-Year Term Return of Premium Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>INSTEPFEE</code>
+					<name>Policy Fee</name>
+					<planType>RIDER</planType>
+					<applicantType>PRIMARY_INSURED</applicantType>
+					<services>
+						<service>
+							<name>Fee Service</name>
+							<options>
+								<option>
+									<code>PFEE</code>
+									<name>Policy Issuance Fee</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+			</plans>
+
+			<file uri="import_orgunits.xml" />
+			<file uri="import_ouUsers.xml" />
+			<file uri="import_roles.xml" />
+			<file uri="import_userRoles.xml" />
+			<file uri="import_preferences.xml" />
+			<file uri="import_resources.xml" />
+			<file uri="import_eforms.xml" />
+			<file uri="import_requirements.xml" />
+			<file uri="import_rates.xml" />
+			<file uri="import_buildchart.xml" />
+			<file uri="import_licenses.xml" />
+			<file uri="import_appointments.xml" />
+			<file uri="import_correspondence.xml" />
+
+		</product>
+	</carrier>
+</stepImport>

@@ -1,0 +1,14 @@
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.*;
+import com.stepsoln.core.rules.access.AccesssResponse;
+import com.stepsoln.core.rules.SecurityOuCode;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "1.Suitability Users can not edit forms"
+  when 
+  	SecurityOuCode(ouCode=="SUITABILITY")
+    $code : AccesssResponse()
+  then
+  	  $code.setReadOnly(true);
+end

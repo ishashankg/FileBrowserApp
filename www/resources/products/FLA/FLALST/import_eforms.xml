@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<eforms>
+		
+	<!-- FLA specific -->
+	<eform>
+		<file>fla_pre_qual_applicant_eform.xml</file>
+		<description>Applicant information display-Readonly</description>
+		<code>PRE_QUAL_APP</code>
+		<script>
+			<description>EFORM Scripting Events for fla_pre_qual_applicant_eform.xml</description>
+			<file>fla_pre_qual_applicant_script.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>		
+	</eform>
+	<eform>
+		<file>fla_pre_qual_demo_eform.xml</file>
+		<description>Prequalification demographic questions</description>
+		<code>PRE_QUAL_DEMO</code>
+		<script>
+			<description>EFORM Scripting Events for fla_pre_qual_demo_eform.xml</description>
+			<file>fla_pre_qual_demo_script.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>	
+	</eform>
+	<eform>
+		<file>fla_pre_qual_medical_eform.xml</file>
+		<description>fla_pre_qual_medical_eform</description>
+		<code>PRE_QUAL_MED</code>
+	</eform>
+	<eform>
+		<file>applicant_edit_eform.xml</file>
+		<description>Basic applicant information</description>
+		<code>APPLICANT</code>
+		<script>
+			<description>EFORM Scripting Events for applicant_edit_eform.xml</description>
+			<file>applicant_edit_script.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	
+	<eform>
+		<file>dependent_eform.xml</file>
+		<description>Dependent Child Rider</description>
+		<code>DEPENDENT</code>
+		<script>
+			<description>EFORM Scripting events for dependent_eform.xml</description>
+			<file>dependent_script.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>physician_eform.xml</file>
+		<description>Physician Info</description>
+		<code>PHYSICIAN</code>
+	</eform>
+	<eform>
+		<file>other_coverage_eform.xml</file>
+		<description>Other Coverage eform</description>
+		<code>OTHER_COVERAGE</code>
+		<script>
+			<description>EFORM Scripting events for other_coverage_eform.xml</description>
+			<file>other_coverage_script.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>additional_mailing_eform.xml</file>
+		<description>Additional Mailing eform</description>
+		<code>ADDITIONAL_MAILING</code>
+		<script>
+			<description>EFORM Scripting events for additional_mailing_eform.xml</description>
+			<file>additional_mailing_script.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>beneficiary_eform.xml</file>
+		<description>Beneficiary eform</description>
+		<code>BENEFICIARY</code>
+		<script>
+			<description>EFORM Scripting events for beneficiary_eform.xml</description>
+			<file>beneficiary_script.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>other_owner_eform.xml</file>
+		<description>Policy Owner Info</description>
+		<code>OTHER_OWNER</code>
+		<script>
+			<description>EFORM Scripting events for other_owner_eform.xml</description>
+			<file>other_owner_script.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>ag_attest_eform.xml</file>
+		<description>Agent Attest eform</description>
+		<code>AG_ATTEST</code>
+		<script>
+			<description>EFORM Scripting events for ag_attest_eform.xml</description>
+			<file>ag_attest_script.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>med_reflexives_eform.xml</file>
+		<description>Medical Reflexives eform</description>
+		<code>MED_REFLEXIVES</code>
+	</eform>
+	<eform>
+		<file>fla_CS505N_eform.xml</file>
+		<description>Replacement Form CS505-N</description>
+		<code>REPCS505N</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505IN_replacement_eform.xml</file>
+		<description>Replacement Form CS505IN</description>
+		<code>REPCS505IN</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505WA_replacement_eform.xml</file>
+		<description>Replacement Form CS505WA</description>
+		<code>REPCS505WA</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CSSD_replacement_eform.xml</file>
+		<description>Replacement Form CSSD</description>
+		<code>REPCSSD</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505FL_replacement_eform.xml</file>
+		<description>Replacement Form CS505FL</description>
+		<code>REPCS505FL</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>COMP_replacement_eform.xml</file>
+		<description>Replacement Form COMPRIA</description>
+		<code>REPCOMPRIA</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>COMP_replacement_eform.xml</file>
+		<description>Replacement Form COMPRIB</description>
+		<code>REPCOMPRIB</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>COMP_replacement_eform.xml</file>
+		<description>Replacement Form COMPWVA</description>
+		<code>REPCOMPWVA</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>COMP_replacement_eform.xml</file>
+		<description>Replacement Form COMPWVB</description>
+		<code>REPCOMPWVB</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505_replacement_eform.xml</file>
+		<description>Replacement Form CS505</description>
+		<code>REPCS505</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505_replacement_eform.xml</file>
+		<description>Replacement Form CS505SC</description>
+		<code>REPCS505SC</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505_replacement_eform.xml</file>
+		<description>Replacement Form CS505TN</description>
+		<code>REPCS505TN</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>fla_ZKL1058_eform.xml</file>
+		<description>Replacement Form REPZKL1058</description>
+		<code>REPZKL1058</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+    <eform>
+      <file>FLA_HIPAA.xml</file>
+      <description>HIPAA Form</description>
+      <code>NO_HIPAA</code>
+      <script>
+        <description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+        <file>FLA_HIPAA.groovy</file>
+        <type>FORM_SCRIPTS</type>
+      </script>
+    </eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_07_05</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_09_11</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_09_11_KS</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_09_11_KY</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_ME_07_05</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_09_11_MA</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_09_11_MN</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_09_11_MT</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_09_11_NE</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_09_11_NM</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_09_11_ND</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_09_11_VT</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>FLA_HIPAA.xml</file>
+		<description>HIPAA Form</description>
+		<code>HIPAA_VA_07_05</code>
+		<script>
+			<description>EFORM Scripting Events for FLA_HIPAA.xml</description>
+			<file>FLA_HIPAA.groovy</file>
+			<type>FORM_SCRIPTS</type>
+		</script>
+	</eform>
+	<eform>
+		<file>fla_CS505N_eform.xml</file>
+		<description>Replacement Form CS505AK</description>
+		<code>REPCS505AK</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>fla_CS505N_eform.xml</file>
+		<description>Replacement Form CS505AL</description>
+		<code>REPCS505AL</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505AR_replacement_eform.xml</file>
+		<description>Replacement Form CS505AR</description>
+		<code>REPCS505AR</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505IL_replacement_eform.xml</file>
+		<description>Replacement Form REPCS505IL</description>
+		<code>REPCS505IL</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS500_replacement_eform.xml</file>
+		<description>Replacement Form REPCS500A</description>
+		<code>REPCS500A</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS500_replacement_eform.xml</file>
+		<description>Replacement Form REPCS500B</description>
+		<code>REPCS500B</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>fla_CS505N_eform.xml</file>
+		<description>Replacement Form REPCS505IA</description>
+		<code>REPCS505IA</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>fla_CS505N_eform.xml</file>
+		<description>Replacement Form REPCS505LA</description>
+		<code>REPCS505LA</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>fla_CS505N_eform.xml</file>
+		<description>Replacement Form REPCS505ME</description>
+		<code>REPCS505ME</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>fla_CS505N_eform.xml</file>
+		<description>Replacement Form REPCS505TX</description>
+		<code>REPCS505TX</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>fla_CS505N_eform.xml</file>
+		<description>Replacement Form REPCSWI</description>
+		<code>REPCSWI</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>fla_CS505N_eform.xml</file>
+		<description>Replacement Form REPCS505NJ</description>
+		<code>REPCS505NJ</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505_replacement_eform.xml</file>
+		<description>Replacement Form REPCS505ID</description>
+		<code>REPCS505ID</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505_replacement_eform.xml</file>
+		<description>Replacement Form REPCS505GA</description>
+		<code>REPCS505GA</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505MA_replacement_eform.xml</file>
+		<description>Replacement Form REPCS505MA</description>
+		<code>REPCS505MA</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505_replacement_eform.xml</file>
+		<description>Replacement Form REPCS505MO</description>
+		<code>REPCS505MO</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CSDE_replacement_eform.xml</file>
+		<description>Replacement Form REPCSDE</description>
+		<code>REPCSDE</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CSKY_replacement_eform.xml</file>
+		<description>Replacement Form REPCSKY</description>
+		<code>REPCSKY</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CSMI_replacement_eform.xml</file>
+		<description>Replacement Form REPCSMI</description>
+		<code>REPCSMI</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CSMN_replacement_eform.xml</file>
+		<description>Replacement Form REPCSMN</description>
+		<code>REPCSMN</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CS505_replacement_eform.xml</file>
+		<description>Replacement Form REPCSNV</description>
+		<code>REPCSNV</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>CSOK_replacement_eform.xml</file>
+		<description>Replacement Form REPCSOK</description>
+		<code>REPCSOK</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>REPL_replacement_eform.xml</file>
+		<description>Replacement Form REPCSUT</description>
+		<code>REPCSUT</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>REPL_replacement_eform.xml</file>
+		<description>Replacement Form REPCSWY</description>
+		<code>REPCSWY</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+	<eform>
+		<file>fla_ZKL1058_eform.xml</file>
+		<description>Replacement Form REPCS500PA</description>
+		<code>REPCS500PA</code>
+        <script>
+          <description>EFORM Scripting Events for replacements</description>
+          <file>replacement_script.groovy</file>
+          <type>FORM_SCRIPTS</type>
+        </script>
+	</eform>
+</eforms>
+</stepImport>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<org-units>
+		<org-unit>
+			<ouName>Group Agency</ouName>
+			<ouCode>GROUPAGENCYOU</ouCode>
+			<ouClass>NB</ouClass>
+			<ouAgency>GROUPAGENCY</ouAgency>
+			<ouGroup>AGC</ouGroup>
+		</org-unit>
+		<org-unit>
+			<ouName>Group Underwriting</ouName>
+			<ouCode>GROUP_UWO</ouCode>
+			<ouClass>UW</ouClass>
+			<ouAgency></ouAgency>
+			<ouGroup></ouGroup>
+		</org-unit>
+		<org-unit>
+			<ouName>Default Group Underwriting</ouName>
+			<ouCode>DEF_GROUP_UWO</ouCode>
+			<ouClass>UW</ouClass>
+			<ouAgency></ouAgency>
+			<ouGroup></ouGroup>
+		</org-unit>
+	</org-units>
+</stepImport>

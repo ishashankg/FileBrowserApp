@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Replacement Notice">
+		<section>
+			<group labelWidth="400px">
+				<paragragh
+          text="Are you thinking about buying a new life insurance policy or annuity and discontinuing or changing an existing
+one? If you are, your decision could be a good one – or a mistake. You will not know for sure unless you make a careful comparison of your existing benefits and the proposed benefits. Make sure you understand the facts. You should ask the agent or company that sold you your existing policy to give you information about it. Hear both sides before you decide. This way you can be sure you are making a decision that is in your best interest. We are required by law to notify your existing company that you may be replacing their policy. LIST BELOW THE IDENTIFICATION OF POLICIES WHICH ARE INVOLVED IN THE REPLACEMENT TRANSACTION:">
+				</paragragh>
+			</group>     
+		</section>  
+		<section>
+			<group associated="true">
+				<question id='insured_name' text='Name of Insured'
+          required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='1'/>
+				<question id='insurance_company' text='Insurance Company' type='TEXT' labelWidth="120px"
+          answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='2' />        
+			</group>
+			<group associated="true">
+				<question id='policy_number' text='Policy Number' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='3'/>
+				<question id='face_amount' text='Face Amount' type='TEXT' labelWidth="120px" answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='4' />        
+			</group>
+			<group associated="true">
+				<question id='plan_name' text='Plan Name' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='5'/>           
+			</group>
+		</section>
+		<section title="More Policies" repeating="true">
+			<group associated="true">
+				<question id='insured_name_1' text='Name of Insured'
+          required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='6'/>
+				<question id='insurance_company_1' text='Insurance Company' type='TEXT' labelWidth="120px"
+          answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='7' />        
+			</group>
+			<group associated="true">
+				<question id='policy_number_1' text='Policy Number' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='8'/>
+				<question id='face_amount_1' text='Face Amount' type='TEXT' labelWidth="120px" answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='9' />        
+			</group>
+			<group associated="true">
+				<question id='plan_name_1' text='Plan Name' required="true" labelWidth="120px" type='TEXT' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='10'/>           
+			</group>
+		</section>  		
+		<section>
+			<group associated="true" style='margin-top:20px'>
+				<question id='applicant_signature' text='Applicant Signature' required="true" labelWidth="120px" type='CHECKBOX' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='11'/>
+				<question id='date_applicant_signed' text='Date' type='DATEF' labelWidth="120px" answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='12' />        
+			</group>
+			<group associated="true">
+				<question id='agent_signature' text='Agent Signature' required="true" labelWidth="120px" type='CHECKBOX' answerWidth="110px" labelStyle='margin-left:8px' tabindex ='13'/>
+				<question id='date_agent_signed' text='Date' type='DATEF' labelWidth="120px" answerWidth="110px" required="true" labelStyle='margin-left:20px' tabindex ='14' />           
+			</group>
+		</section>
+	</page>
+</form>

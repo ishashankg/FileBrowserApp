@@ -1,0 +1,26 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.RulesResponse;
+import java.util.ArrayList;
+
+rule "3rd party services" 
+	when
+		theCase:CaseData(uwCaseStatus=='INCOMPLETE', caseStatus=='SUBMITTED')
+		form:RequirementForm(code in ("ATTUS3RDPARTY","RX3RDPARTY","MIB3RDPARTY"))
+	then
+		form.setRequired(true);
+end
+
+rule "IIX 3rd party services only if DL Number present" 
+	when
+		theCase:CaseData(uwCaseStatus=='INCOMPLETE', caseStatus=='SUBMITTED')
+		theApplicant:ApplicantData(drivLicNum.toUpperCase() not in ("NA","NONE"))
+		form:RequirementForm(code in ("IXX3RDPARTY"))
+	then
+		System.out.println("IIX Requirement " + theCase.getUwCaseStatus() + " " + theCase.getCaseStatus() + " " + theApplicant.getDrivLicNum());
+		form.setRequired(true);
+end
+
+
+

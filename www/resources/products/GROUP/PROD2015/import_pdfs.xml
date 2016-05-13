@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<pdfs>
+	<pdf>
+		<file>group_certificate.pdf</file>
+		<mappingFile>pdfmapping.xml</mappingFile>
+		<type>PRIMARY_APPLICATION_PDF</type>
+		<formCode>POSTCOVERAGE</formCode>
+		<resourceGroup>APPLICATION</resourceGroup>
+		<barCodeFieldName>BarCode</barCodeFieldName>
+		<barCodeType>CODE39</barCodeType>
+	</pdf>	
+</pdfs>
+</stepImport>

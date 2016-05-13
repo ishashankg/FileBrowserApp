@@ -1,0 +1,70 @@
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<preferences>
+	<preference>
+		<category>SIGNATURE_MODE</category>
+		<code>MOUSE_SIGNATURE</code>
+		<description>Mouse Signature</description>
+	</preference>
+	<preference>
+		<category>SIGNATURE_MODE</category>
+		<code>CLICK_WRAP_SIGNATURE</code>
+		<description>Email Signature</description>
+	</preference>
+	<preference>
+		<category>COVERAGE_EFFECTIVE</category>
+		<code>NEXT_MONTHLY_OCCURRENCE</code>
+		<value>2</value>
+		<description>Next Monthly Occurrence</description>
+	</preference>	
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>ANNUAL</code>
+		<value>ANNUAL</value>
+		<description>Annual</description>
+	</preference>
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>SEMI_ANNUAL</code>
+		<value>SEMI_ANNUAL</value>
+		<description>Semi-Annual</description>
+	</preference>
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>QUARTERLY</code>
+		<value>QUARTERLY</value>
+		<description>Quarterly</description>
+	</preference>
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>MONTHLY</code>
+		<value>MONTHLY</value>
+		<description>Monthly</description>
+	</preference>
+	<preference>
+		<category>UW_ENGINE</category>
+		<code>STEP_UW_ENGINE</code>
+		<value>STEP_UW_ENGINE</value>
+		<description>Step UW Engine</description>
+	</preference>
+	<preference>
+		<category>CC_STORAGE</category>
+		<code>FULL</code>
+		<description>Save FULL CC information</description>
+	</preference>
+	<preference>
+		<category>RATE_CONFIGURATION</category>
+		<code>ZIP</code>
+		<description>Zip based rates configuration</description>
+	</preference>
+	<preference>
+		<category>CHAT</category>
+		<code>BCHAT</code>
+		<description>Barclay Chat</description>
+	</preference>
+	<preference>
+		<category>UW_RISK_EVAL_TYPE</category>
+		<code>SCORE</code>
+		<description>Score</description>
+	</preference>
+</preferences>
+</stepImport>

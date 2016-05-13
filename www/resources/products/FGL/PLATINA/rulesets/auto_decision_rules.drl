@@ -1,0 +1,35 @@
+import com.stepsoln.core.rules.uw.CaseUwRiskCalcData;
+import com.stepsoln.core.db.enums.AUTO_DECISION_STATUS;
+import com.stepsoln.core.rules.SuitabilityViolationFact;
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "1. Default Approved Decision"
+	salience 999
+	when eval(true)
+	then
+		rulesResponse.getAutoDecisionResultData().setDecisionResult(AUTO_DECISION_STATUS.ACCEPT);
+end
+
+rule "1. Yellow Flag"
+	salience 20
+	when
+		SuitabilityViolationFact(flag=="YELLOW")
+	then
+		rulesResponse.getAutoDecisionResultData().setDecisionResult(AUTO_DECISION_STATUS.ESCALATE);
+end
+
+rule "2. RemainingLiquidAssetsOwnerAnnuitant"
+	salience 10
+	when
+		SuitabilityViolationFact(flag=="RED")
+	then
+		rulesResponse.getAutoDecisionResultData().setDecisionResult(AUTO_DECISION_STATUS.DECLINE);
+end
+
+rule "3. Invalid Flag"
+	salience 5
+	when
+		SuitabilityViolationFact(flag=="INVALID")
+	then
+		rulesResponse.getAutoDecisionResultData().setDecisionResult(AUTO_DECISION_STATUS.NONE);
+end

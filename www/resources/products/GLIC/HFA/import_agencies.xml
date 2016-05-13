@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude" 
+   xmlns="http://www.stepsolutions.com/2013/configuration/">
+<agencies>
+	<agency>
+		<agCode>EXT1</agCode>
+		<agName>Abraham Agency</agName>
+		<agBusType>Independent</agBusType>
+		<agCaptive>false</agCaptive>
+		<agents>
+			<agent>
+				<agtCode>ABC2</agtCode>
+				<agtFirstName>Abe</agtFirstName>
+				<agtLastName>Cann</agtLastName>
+			</agent>
+		</agents>
+	</agency>
+	<agency>
+		<agCode>EXT2</agCode>
+		<agName>Dan Agency</agName>
+		<agBusType>Independent</agBusType>
+		<agCaptive>false</agCaptive>
+		<agents>
+			<agent>
+				<agtCode>DEF2</agtCode>
+				<agtFirstName>Dan</agtFirstName>
+				<agtLastName>Finn</agtLastName>
+			</agent>
+		</agents>
+	</agency>
+	<agency>
+		<agCode>GLIC</agCode>
+		<agName>Gerber Life Insurance</agName>
+		<agBusType>Captive</agBusType>
+		<agCaptive>true</agCaptive>
+		<agents>
+			<agent>
+				<agtCode>CC1</agtCode>
+				<agtFirstName>Cal</agtFirstName>
+				<agtLastName>Ander</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>CC2</agtCode>
+				<agtFirstName>Cara</agtFirstName>
+				<agtLastName>Ang</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>CC3</agtCode>
+				<agtFirstName>Cathy</agtFirstName>
+				<agtLastName>Aston</agtLastName>
+			</agent>
+
+			<agent>
+				<agtCode>CCA1</agtCode>
+				<agtFirstName>Carl</agtFirstName>
+				<agtLastName>Also</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>CCA2</agtCode>
+				<agtFirstName>Cami</agtFirstName>
+				<agtLastName>Aim</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>CCA3</agtCode>
+				<agtFirstName>Cane</agtFirstName>
+				<agtLastName>Ash</agtLastName>
+			</agent>
+
+			<agent>
+				<agtCode>UT1</agtCode>
+				<agtFirstName>Sara</agtFirstName>
+				<agtLastName>Uber</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>UT2</agtCode>
+				<agtFirstName>Sam</agtFirstName>
+				<agtLastName>Ullman</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>UT3</agtCode>
+				<agtFirstName>Sally</agtFirstName>
+				<agtLastName>Ulster</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>UT4</agtCode>
+				<agtFirstName>Sue</agtFirstName>
+				<agtLastName>Uke</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>UT5</agtCode>
+				<agtFirstName>Scott</agtFirstName>
+				<agtLastName>Usta</agtLastName>
+			</agent>
+			<agent>
+				<agtCode>UT6</agtCode>
+				<agtFirstName>Sean</agtFirstName>
+				<agtLastName>Uppa</agtLastName>
+			</agent>
+		</agents>
+	</agency>
+</agencies>
+</stepImport>

@@ -1,0 +1,1210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<requirements>
+    <requirement>
+      <requirementLocale></requirementLocale>
+      <requirementCode>NO_HIPAA</requirementCode>
+      <requirementDescription>FLA HIPAA form</requirementDescription>
+      <requirementForms>
+        <requirementForm>
+          <formCode>NO_HIPAA</formCode>
+          <formDescription>Full HIPAA authorization</formDescription>
+          <responseRequired>true</responseRequired>
+          <signatureRequired>true</signatureRequired>
+          <formWorkflow>FULLHIPAA</formWorkflow>
+          <formEformCode>NO_HIPAA</formEformCode>
+          <formGroupType>APPLICATION</formGroupType>
+        </requirementForm>
+      </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_07_05</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_07_05</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_07_05</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_09_11</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_09_11</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_09_11</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_09_11_KS</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_09_11_KS</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_09_11_KS</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_09_11_KY</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_09_11_KY</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_09_11_KY</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_ME_07_05</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_ME_07_05</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_ME_07_05</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_09_11_MA</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_09_11_MA</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_09_11_MA</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_09_11_MN</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_09_11_MN</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_09_11_MN</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_09_11_MT</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_09_11_MT</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_09_11_MT</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_09_11_NE</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_09_11_NE</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_09_11_NE</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_09_11_NM</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_09_11_NM</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_09_11_NM</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_09_11_ND</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_09_11_ND</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_09_11_ND</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_09_11_VT</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_09_11_VT</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_09_11_VT</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>HIPAA_VA_07_05</requirementCode>
+        <requirementDescription>FLA HIPAA form</requirementDescription>
+        <requirementForms>
+			<requirementForm>
+                <formCode>HIPAA_VA_07_05</formCode>
+                <formDescription>Full HIPAA authorization</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>true</signatureRequired>
+				<formWorkflow>FULLHIPAA</formWorkflow>
+				<formEformCode>HIPAA_VA_07_05</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>MWS</requirementCode>
+        <requirementDescription>MIB Disclosure</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>MIB3RDPARTY</formCode>
+                <formDescription>MIB 3rd Party Call</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>MIB3RDPARTY</formWorkflow>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>MIB</requirementCode>
+        <requirementDescription>MIB Disclosure</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>MIBREPORT</formCode>
+                <formDescription>MIB Disclosure</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>MIBDISCLOS</formWorkflow>
+				<formGroupType>UW</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>    
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>RXD</requirementCode>
+        <requirementDescription>Rx Database</requirementDescription>
+		<securityFunction>medical_underwriting_requirements</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>RX3RDPARTY</formCode>
+                <formDescription>Ingenix 3rd Party Call</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>RX3RDPARTY</formWorkflow>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>IIX</requirementCode>
+        <requirementDescription>MVR 3rd Party Call</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>IXX3RDPARTY</formCode>
+                <formDescription>Motor Vehicle Report</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>IIX3RDPARTY</formWorkflow>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>MVR</requirementCode>
+        <requirementDescription>Motor Vehicle Report</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>CORRMVR</formCode>
+                <formDescription>Motor Vehicle Report</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>MVREPORT</formWorkflow>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>    
+	<requirement>
+	    <requirementLocale></requirementLocale>
+        <requirementCode>ATT</requirementCode>
+        <requirementDescription>Attus Report</requirementDescription>
+		<securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>ATTUS3RDPARTY</formCode>
+                <formDescription>ATTUS 3rd Party Call</formDescription>
+                <responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow>ATTUS3RDPARTY</formWorkflow>
+				<formGroupType>NB</formGroupType>
+			</requirementForm>
+        </requirementForms>
+    </requirement>
+  <requirement>
+      <requirementLocale></requirementLocale>
+        <requirementCode>ATR</requirementCode>
+        <requirementDescription>Attus Report</requirementDescription>
+        <securityFunction>underwriting_requirements_correspondence</securityFunction>
+        <requirementForms>
+            <requirementForm>
+                <formCode>ATTUS3RDPARTY</formCode>
+                <formDescription>ATTUS 3rd Party Call</formDescription>
+                <responseRequired>true</responseRequired>
+                <signatureRequired>false</signatureRequired>
+                <formWorkflow>ATTUS3RDPARTY</formWorkflow>
+                <formGroupType>NB</formGroupType>
+            </requirementForm>
+        </requirementForms>
+    </requirement>    
+	<!-- FLA specific -->
+	<requirement>
+		    <requirementLocale></requirementLocale>
+	        <requirementCode>PRE_QUAL_APP</requirementCode>
+	        <requirementDescription>FLA_PRE_QUAL_APPLICANT</requirementDescription>
+			<materialChange>true</materialChange>
+	        <requirementForms>
+	            <requirementForm>
+	                <formCode>PRE_QUAL_APP</formCode>
+	                <formDescription>FLA_PRE_QUAL_APPLICANT</formDescription>
+	                <responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>PRE_QUAL_APP</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+	        </requirementForms>
+	    </requirement>
+	    <requirement>
+		    <requirementLocale></requirementLocale>
+	        <requirementCode>PRE_QUAL_MED</requirementCode>
+	        <requirementDescription>FLA_PRE_QUAL_MEDICAL</requirementDescription>
+			<materialChange>true</materialChange>
+	        <requirementForms>
+	            <requirementForm>
+	                <formCode>PRE_QUAL_MED</formCode>
+	                <formDescription>FLA_PRE_QUAL_MEDICAL</formDescription>
+	                <responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>PRE_QUAL_MED</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+	        </requirementForms>
+    </requirement>
+	<requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>PRE_QUAL_DEMO</requirementCode>
+   	        <requirementDescription>PRE_QUAL_DEMOGRAPHIC</requirementDescription>
+   			<materialChange>true</materialChange>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>PRE_QUAL_DEMO</formCode>
+   	                <formDescription>FLA_PRE_QUAL_DEMOGRAPHIC</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>PRE_QUAL_DEMO</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+	 </requirement>
+	 <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>APPLICANT</requirementCode>
+   	        <requirementDescription>APPLICANT</requirementDescription>
+   			<materialChange>true</materialChange>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>APPLICANT</formCode>
+   	                <formDescription>APPLICANT</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>APPLICANT</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>   
+    <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>MED_REFLEXIVES</requirementCode>
+   	        <requirementDescription>MED_REFLEXIVES</requirementDescription>
+   			<materialChange>true</materialChange>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>MED_REFLEXIVES</formCode>
+   	                <formDescription>MED_REFLEXIVES</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>MED_REFLEXIVES</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+    <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>DEPENDENT</requirementCode>
+   	        <requirementDescription>Dependent Child Rider</requirementDescription>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>DEPENDENT</formCode>
+   	                <formDescription>Dependent Child Rider</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>DEPENDENT</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+    <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>PHYSICIAN</requirementCode>
+   	        <requirementDescription>Physician Info</requirementDescription>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>PHYSICIAN</formCode>
+   	                <formDescription>Physician Info</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>PHYSICIAN</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+    <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>OTHER_COVERAGE</requirementCode>
+   	        <requirementDescription>Other Coverage</requirementDescription>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>OTHER_COVERAGE</formCode>
+   	                <formDescription>Other Coverage</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>OTHER_COVERAGE</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+    <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>OTHER_OWNER</requirementCode>
+   	        <requirementDescription>Policy Owner</requirementDescription>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>OTHER_OWNER</formCode>
+   	                <formDescription>Policy Owner</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>OTHER_OWNER</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+    <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>BENEFICIARY</requirementCode>
+   	        <requirementDescription>Beneficiary</requirementDescription>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>BENEFICIARY</formCode>
+   	                <formDescription>Beneficiary</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>BENEFICIARY</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+    <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>ADDITIONAL_MAILING</requirementCode>
+   	        <requirementDescription>Additional Mailing</requirementDescription>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>ADDITIONAL_MAILING</formCode>
+   	                <formDescription>Additional Mailing</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>ADDITIONAL_MAILING</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+    <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>AG_ATTEST</requirementCode>
+   	        <requirementDescription>Agent Attest</requirementDescription>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>AG_ATTEST</formCode>
+   	                <formDescription>Agent Attest</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>AG_ATTEST</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+       <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>REPCS505N</requirementCode>
+   	        <requirementDescription>REPCS505N</requirementDescription>
+   			<materialChange>false</materialChange>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>REPCS505N</formCode>
+   	                <formDescription>REPCS505N</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>REPCS505N</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+     <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>REPCS505IN</requirementCode>
+   	        <requirementDescription>Replacement Form CS505IN</requirementDescription>
+   			<materialChange>false</materialChange>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>REPCS505IN</formCode>
+   	                <formDescription>Replacement Form CS505IN</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>REPCS505IN</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+    <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>REPCS505WA</requirementCode>
+   	        <requirementDescription>Replacement Form REPCS505WA</requirementDescription>
+   			<materialChange>false</materialChange>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>REPCS505WA</formCode>
+   	                <formDescription>Replacement Form REPCS505WA</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>REPCS505WA</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+    <requirement>
+   		    <requirementLocale></requirementLocale>
+   	        <requirementCode>REPCSSD</requirementCode>
+   	        <requirementDescription>Replacement Form REPCSSD</requirementDescription>
+   			<materialChange>false</materialChange>
+   	        <requirementForms>
+   	            <requirementForm>
+   	                <formCode>REPCSSD</formCode>
+   	                <formDescription>Replacement Form CSSD</formDescription>
+   	                <responseRequired>true</responseRequired>
+   					<signatureRequired>false</signatureRequired>
+   					<formWorkflow></formWorkflow>
+   					<formEformCode>REPCSSD</formEformCode>
+   					<formGroupType>APPLICATION</formGroupType>
+   				</requirementForm>
+   	        </requirementForms>
+    </requirement>
+    <requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505FL</requirementCode>
+		<requirementDescription>Replacement Form CS505FL FLCOMP</requirementDescription>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505FL</formCode>
+				<formDescription>Replacement Form CS505FL FLCOMP</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505FL</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+    </requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCOMPRIA</requirementCode>
+		<requirementDescription>Replacement Form CS503A RICOMP</requirementDescription>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCOMPRIA</formCode>
+				<formDescription>Replacement Form CS503A RICOMP</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCOMPRIA</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCOMPRIB</requirementCode>
+		<requirementDescription>Replacement Form CS503B RICOMP</requirementDescription>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCOMPRIB</formCode>
+				<formDescription>Replacement Form CS503B RICOMP</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCOMPRIB</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCOMPWVA</requirementCode>
+		<requirementDescription>Replacement Form CS503AWV WVCOMP</requirementDescription>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCOMPWVA</formCode>
+				<formDescription>Replacement Form CS503AWV WVCOMP</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCOMPWVA</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCOMPWVB</requirementCode>
+		<requirementDescription>Replacement Form CS503BWV WVCOMP</requirementDescription>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCOMPWVB</formCode>
+				<formDescription>Replacement Form CS503BWV WVCOMP</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCOMPWVB</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505</requirementCode>
+		<requirementDescription>Replacement Form REPCS505</requirementDescription>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505</formCode>
+				<formDescription>Replacement Form REPCS505</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505SC</requirementCode>
+		<requirementDescription>Replacement Form REPCS505SC</requirementDescription>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505SC</formCode>
+				<formDescription>Replacement Form REPCS505SC</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505SC</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505TN</requirementCode>
+		<requirementDescription>Replacement Form REPCS505TN</requirementDescription>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505TN</formCode>
+				<formDescription>Replacement Form REPCS505TN</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505TN</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPZKL1058</requirementCode>
+		<requirementDescription>Replacement Form REPZKL1058</requirementDescription>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPZKL1058</formCode>
+				<formDescription>Replacement Form REPZKL1058</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPZKL1058</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505AK</requirementCode>
+		<requirementDescription>Replacement Form REPCS505AK</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505AK</formCode>
+				<formDescription>Replacement Form REPCS505AK</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505AK</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505AL</requirementCode>
+		<requirementDescription>Replacement Form CS505N ALREPL2</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505AL</formCode>
+				<formDescription>Replacement Form CS505N ALREPL2</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505AL</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505AR</requirementCode>
+		<requirementDescription>Replacement Form REPCS505AR</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505AR</formCode>
+				<formDescription>Replacement Form REPCS505AR</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505AR</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505IL</requirementCode>
+		<requirementDescription>Replacement Form REPCS505IL</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505IL</formCode>
+				<formDescription>Replacement Form REPCS505IL</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505IL</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS500A</requirementCode>
+		<requirementDescription>Replacement Form REPCS500A</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS500A</formCode>
+				<formDescription>Replacement Form REPCS500A</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS500A</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS500B</requirementCode>
+		<requirementDescription>Replacement Form REPCS500B</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS500B</formCode>
+				<formDescription>Replacement Form REPCS500B</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS500B</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505IA</requirementCode>
+		<requirementDescription>Replacement Form REPCS505IA</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505IA</formCode>
+				<formDescription>Replacement Form REPCS505IA</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505IA</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505LA</requirementCode>
+		<requirementDescription>Replacement Form REPCS505LA</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505LA</formCode>
+				<formDescription>Replacement Form REPCS505LA</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505LA</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505ME</requirementCode>
+		<requirementDescription>Replacement Form REPCS505ME</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505ME</formCode>
+				<formDescription>Replacement Form REPCS505ME</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505ME</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505TX</requirementCode>
+		<requirementDescription>Replacement Form REPCS505TX</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505TX</formCode>
+				<formDescription>Replacement Form REPCS505TX</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505TX</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCSWI</requirementCode>
+		<requirementDescription>Replacement Form REPCSWI</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCSWI</formCode>
+				<formDescription>Replacement Form REPCSWI</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCSWI</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505NJ</requirementCode>
+		<requirementDescription>Replacement Form CS505 NJ-REPL</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505NJ</formCode>
+				<formDescription>Replacement Form CS505 NJ-REPL</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505NJ</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505ID</requirementCode>
+		<requirementDescription>Replacement Form REPCS505ID</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505ID</formCode>
+				<formDescription>Replacement Form REPCS505ID</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505ID</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505GA</requirementCode>
+		<requirementDescription>Replacement Form REPCS505GA</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505GA</formCode>
+				<formDescription>Replacement Form REPCS505GA</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505GA</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505MA</requirementCode>
+		<requirementDescription>Replacement Form REPCS505MA</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505MA</formCode>
+				<formDescription>Replacement Form REPCS505MA</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505MA</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS505MO</requirementCode>
+		<requirementDescription>Replacement Form REPCS505MO</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS505MO</formCode>
+				<formDescription>Replacement Form REPCS505MO</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS505MO</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCSDE</requirementCode>
+		<requirementDescription>Replacement Form REPCSDE</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCSDE</formCode>
+				<formDescription>Replacement Form REPCSDE</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCSDE</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCSKY</requirementCode>
+		<requirementDescription>Replacement Form REPCSKY</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCSKY</formCode>
+				<formDescription>Replacement Form REPCSKY</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCSKY</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCSMI</requirementCode>
+		<requirementDescription>Replacement Form REPCSMI</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCSMI</formCode>
+				<formDescription>Replacement Form REPCSMI</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCSMI</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCSMN</requirementCode>
+		<requirementDescription>Replacement Form REPCSMN</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCSMN</formCode>
+				<formDescription>Replacement Form REPCSMN</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCSMN</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCSNV</requirementCode>
+		<requirementDescription>Replacement Form REPCSNV</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCSNV</formCode>
+				<formDescription>Replacement Form REPCSNV</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCSNV</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCSOK</requirementCode>
+		<requirementDescription>Replacement Form REPCSOK</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCSOK</formCode>
+				<formDescription>Replacement Form REPCSOK</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCSOK</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCSUT</requirementCode>
+		<requirementDescription>Replacement Form REPCSUT</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCSUT</formCode>
+				<formDescription>Replacement Form REPCSUT</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCSUT</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCSWY</requirementCode>
+		<requirementDescription>Replacement Form REPCSWY</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCSWY</formCode>
+				<formDescription>Replacement Form REPCSWY</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCSWY</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+	<requirement>
+		<requirementLocale></requirementLocale>
+		<requirementCode>REPCS500PA</requirementCode>
+		<requirementDescription>Replacement Form CS500PA ZKL1058</requirementDescription>
+		<securityFunction>personal_information</securityFunction>
+		<materialChange>false</materialChange>
+		<requirementForms>
+			<requirementForm>
+				<formCode>REPCS500PA</formCode>
+				<formDescription>Replacement Form CS500PA ZKL1058</formDescription>
+				<responseRequired>true</responseRequired>
+				<signatureRequired>false</signatureRequired>
+				<formWorkflow></formWorkflow>
+				<formEformCode>REPCS500PA</formEformCode>
+				<formGroupType>APPLICATION</formGroupType>
+			</requirementForm>
+		</requirementForms>
+	</requirement>
+</requirements>
+</stepImport>

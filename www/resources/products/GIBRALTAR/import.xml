@@ -1,0 +1,25 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<carrier>
+		<carrierCode>GIBRALTAR</carrierCode>
+		<carrierName>Gibraltar</carrierName>
+		<carrierNAICCode>70939</carrierNAICCode>
+
+		<docTypes>
+			<docType>
+				<docTypeCode>NB</docTypeCode>
+				<docTypeName>New Business</docTypeName>
+			</docType>
+			<docType>
+				<docTypeCode>UW</docTypeCode>
+				<docTypeName>Underwriting</docTypeName>
+			</docType>
+		</docTypes>
+				
+		<importProduct productCode="GLICMED" />
+		
+		<file uri="chart_of_accounts.xml" />
+		<file uri="import_agencies.xml" />
+		<file uri="import_users.xml" />
+	</carrier>
+</stepImport>

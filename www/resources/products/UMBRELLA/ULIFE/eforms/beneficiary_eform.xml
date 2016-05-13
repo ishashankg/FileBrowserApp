@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onSave>saveBeneficiaries</onSave>
+  <page title="Beneficiary Page">
+    <section title="Primary Beneficiary">
+      <group associated="true" answerWidth="400px;">
+        <question id='bene_grouping1' text='' type='RADIO' answerSet='I:Individual|O:Estate/Approved Designation' required="true"/>
+      </group>
+      <group associated="true" answerWidth="150px;">
+        <question id='bene_first_name1' text="First Name" type='TEXT' labelWidth="120px;" required="true">
+          <displayWhen>#{EFORM.bene_grouping1=="I"}</displayWhen>
+        </question>
+        <question id='bene_middle_name1' text="Middle Name" type='TEXT'>
+          <displayWhen>#{EFORM.bene_grouping1=="I"}</displayWhen>
+        </question>
+        <question id='bene_last_name1' text="Last Name" type='TEXT' required="true">
+          <displayWhen>#{EFORM.bene_grouping1=="I"}</displayWhen>
+        </question>
+      </group>
+      <group associated="true">
+        <question id='bene_org_name1' text="Organization Name" type='TEXT' labelWidth="200px;" answerWidth="400px;" required="true">
+          <displayWhen>#{EFORM.bene_grouping1=="O"}</displayWhen>
+        </question>
+      </group>
+      <group labelWidth="200px;">
+        <question id='bene_percent1' text="Percent of Benefit" suffix="%" type='NUMBER' answerWidth="50px;"/>
+        <question id='bene_relation1' text="Relationship to the Insured"  type='LISTBOX' lookup="fla:RELATIONSHIP_TYPE" answerSet="" required="true">
+          <displayWhen>#{EFORM.bene_grouping1=="I"}</displayWhen>
+        </question>
+        <question id='bene_ssn1' text="Social Security or Tax ID Number" type='SSN' answerWidth="80px;">
+          <displayWhen>#{EFORM.bene_grouping1=="I"}</displayWhen>
+        </question>
+        <question id='bene_org_relation1' text="Relationship to the Insured"  type='LISTBOX' lookup="fla_organization:RELATIONSHIP_TYPE" answerSet="" required="true">
+          <displayWhen>#{EFORM.bene_grouping1=="O"}</displayWhen>
+        </question>
+        <question id='bene_tax_id1' text="Social Security or Tax ID Number" type='TEXT' answerWidth="80px;">
+          <displayWhen>#{EFORM.bene_grouping1=="O"}</displayWhen>
+        </question>
+      </group>
+    </section>
+    <section title="Other Beneficiary" repeating="true">
+      <group associated="true">
+        <question id='beneficiary_type2' text='Beneficiary Type' type='RADIO' labelWidth="120px;" answerSet='P:Primary|C:Contingent' required="true"/>
+      </group>
+      <group associated="true">
+        <question id='bene_grouping2' text=' ' type='RADIO' labelWidth="120px;" answerSet='I:Individual|O:Estate/Approved Designation' required="true"/>
+      </group>
+      <group associated="true" answerWidth="150px;">
+        <question id='bene_first_name2' text="First Name" type='TEXT' labelWidth="120px;">
+          <displayWhen>#{EFORM.bene_grouping2___?=="I"}</displayWhen>
+        </question>
+        <question id='bene_middle_name2' text="Middle Name" type='TEXT'>
+          <displayWhen>#{EFORM.bene_grouping2___?=="I"}</displayWhen>
+        </question>
+        <question id='bene_last_name2' text="Last Name" type='TEXT'>
+          <displayWhen>#{EFORM.bene_grouping2___?=="I"}</displayWhen>
+        </question>
+      </group>
+      <group associated="true">
+        <question id='bene_org_name2' text="Organization Name" type='TEXT' labelWidth="200px;" answerWidth="400px;" required="true">
+          <displayWhen>#{EFORM.bene_grouping2___?=="O"}</displayWhen>
+        </question>
+      </group>
+      <group labelWidth="200px;">
+        <question id='bene_percent2' text="Percent of Benefit" suffix="%" type='NUMBER' answerWidth="50px;"/>
+        <question id='bene_relation2' text="Relationship to the Insured"  type='LISTBOX' lookup="fla:RELATIONSHIP_TYPE" answerSet="" required="true">
+          <displayWhen>#{EFORM.bene_grouping2___?=="I"}</displayWhen>
+        </question>
+        <question id='bene_ssn2' text="Social Security or Tax ID Number" type='SSN' answerWidth="80px;">
+          <displayWhen>#{EFORM.bene_grouping2___?=="I"}</displayWhen>
+        </question>
+        <question id='bene_org_relation2' text="Relationship to the Insured"  type='LISTBOX' lookup="fla_organization:RELATIONSHIP_TYPE" answerSet="" required="true">
+          <displayWhen>#{EFORM.bene_grouping2___?=="O"}</displayWhen>
+        </question>
+        <question id='bene_tax_id2' text="Social Security or Tax ID Number" type='TEXT' answerWidth="80px;">
+          <displayWhen>#{EFORM.bene_grouping2___?=="O"}</displayWhen>
+        </question>
+      </group>
+    </section>
+  </page>
+</form>

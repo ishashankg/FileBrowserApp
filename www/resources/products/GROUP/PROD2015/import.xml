@@ -1,0 +1,305 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude" 
+   xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<carrier>
+		<carrierCode>GROUP</carrierCode>
+		<carrierName>Group Carrier</carrierName>
+		<carrierNAICCode>70939</carrierNAICCode>	
+		<docTypes>
+			<docType>
+				<docTypeCode>NB</docTypeCode>
+				<docTypeName>IAC New Business</docTypeName>
+			</docType>
+			<docType>
+				<docTypeCode>UW</docTypeCode>
+				<docTypeName>Underwriting</docTypeName>
+			</docType>
+		</docTypes>
+
+		<product>
+			<code>PROD2015</code>
+			<name>Group Product15</name>
+			<lineOfBusiness>LIFE</lineOfBusiness>
+			<productGroup>GROUP</productGroup>
+			<ageCalculationMethod>LAST_BIRTHDAY</ageCalculationMethod>
+			<defaultPaymentMode>ANNUAL</defaultPaymentMode>
+			<defaultPaymentMethod>PAYROLL</defaultPaymentMethod>
+			<type>TL</type>
+			<provision>import_provisions.xml</provision>
+			<groupCode>AGC</groupCode>
+			<locales>
+				<locale>GU</locale>
+			</locales>
+			<ageCalculationMethod>LAST_BIRTHDAY</ageCalculationMethod>
+			<rateFactors>
+				<rateFactor>
+					<ratePaymentMethod>PAYROLL</ratePaymentMethod>
+					<rateOnetimeFactor/>
+					<rateAnnualFactor>1</rateAnnualFactor>
+					<rateSemiannualFactor>.5</rateSemiannualFactor>
+					<rateQuarterlyFactor>.25</rateQuarterlyFactor>
+					<rateMonthlyFactor>.083334</rateMonthlyFactor>
+					<rateSemimonthlyFactor/>
+					<rateBiweeklyFactor/>
+					<rateBimonthlyFactor>.166668</rateBimonthlyFactor>
+				</rateFactor>
+			</rateFactors>
+			<rateClasses>
+				<rateClass>
+					<rateClassCode>ST</rateClassCode>
+					<isDefault>false</isDefault>
+					<name>Standard</name>
+					<minScore>21</minScore>
+					<maxScore>40</maxScore>
+					<sequence>3</sequence>
+				</rateClass>
+				<rateClass>
+					<rateClassCode>PF</rateClassCode>
+					<isDefault>true</isDefault>
+					<name>Preferred</name>
+					<minScore>11</minScore>
+					<maxScore>20</maxScore>
+					<sequence>2</sequence>
+				</rateClass>
+				<rateClass>
+					<rateClassCode>PP</rateClassCode>
+					<isDefault>false</isDefault>
+					<name>Preferred Plus</name>
+					<minScore>0</minScore>
+					<maxScore>10</maxScore>
+					<sequence>1</sequence>
+				</rateClass>
+				<rateClass>
+					<rateClassCode>TC</rateClassCode>
+					<isDefault>false</isDefault>
+					<name>Substandard Table C</name>
+					<minScore>41</minScore>
+					<maxScore>80</maxScore>
+					<sequence>4</sequence>
+				</rateClass>
+				<rateClass>
+					<rateClassCode>TF</rateClassCode>
+					<isDefault>false</isDefault>
+					<name>Substandard Table F</name>
+					<minScore>81</minScore>
+					<maxScore>1000</maxScore>
+					<sequence>5</sequence>
+				</rateClass>
+			</rateClasses>
+			<plans>
+				<plan>
+					<code>L-2015-GROUP</code>
+					<name>Individual Term Life</name>
+					<planType>BASE</planType>
+					<services>
+						<service>
+							<name>Individual Term Life</name>
+							<code>I-TL-15</code>
+							<options>
+								<option>
+									<code>TFASGOV-15</code>
+									<name>Basic Life Insurance</name>
+									<type>COVERAGE</type>
+									<optionValueType>AMOUNT</optionValueType>
+									<groupContribution>
+										<precentage>100</precentage>
+									</groupContribution>
+									<levels>
+										<level>
+											<value>10000</value>
+											<max>100000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				
+				<plan>
+					<code>L-2015-DEP-GROUP</code>
+					<name>Spouse and Children's Insurance</name>
+					<planType>RIDER</planType>
+					<services>
+						<service>
+							<name>Health Plan</name>
+							<code>I-HT-15</code>
+							<options>
+								<option>
+									<code>Spouse-15</code>
+									<name>Spouse Life Insurance</name>
+									<type>COVERAGE</type>
+									<optionValueType>AMOUNT</optionValueType>
+									<groupContribution>
+										<precentage>20</precentage>
+									</groupContribution>
+									<levels>
+										<level>
+											<value>10000</value>
+											<max>50000</max>
+											<increment>10000</increment>
+										</level>
+									</levels>
+								</option>
+								<option>
+									<code>Child-15</code>
+									<name>Child Life Insurance</name>
+									<type>COVERAGE</type>
+									<optionValueType>AMOUNT</optionValueType>
+									<groupContribution>
+										<precentage>25</precentage>
+									</groupContribution>
+									<levels>
+										<level>
+											<value>5000</value>
+											<max>10000</max>
+											<increment>1000</increment>
+										</level>
+									</levels>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>			
+				
+				<plan>
+					<code>DI-GROUP</code>
+					<name>Monthly Disability Income Rider</name>
+					<planType>RIDER</planType>
+					<applicantType>PRIMARY_INSURED</applicantType>
+					<services>
+						<service>
+							<name>WP Benefit</name>
+							<options>
+								<option>
+									<code>DI10-GRP</code>
+									<name>Monthly Disability Income Rider</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<groupContribution>
+										<flatAmount>50</flatAmount>
+									</groupContribution>
+									<levels>
+										<level>
+											<value>2000</value>
+											<max>10000</max>
+											<increment>1000</increment>
+										</level>
+									</levels>
+								</option>
+							</options>
+						</service>
+					</services>
+				</plan>
+				<plan>
+					<code>SUP-2015-GROUP</code>
+					<name>Supplemental Term</name>
+					<planType>RIDER</planType>
+					<services>
+						<service>
+							<name>Supplemental Term Life</name>
+							<code>S-TL-15</code>
+							<options>
+								<option>
+									<code>STFAGOVV-15</code>
+									<name>Supplemental Term Face Amount</name>
+									<type>COVERAGE</type>
+									<optionValueType>AMOUNT</optionValueType>
+									<groupContribution>
+										<precentage>20</precentage>
+									</groupContribution>
+									<levels>
+										<level>
+											<value>1</value>
+											<max>5</max>
+											<increment>1</increment>
+											<levelType>4</levelType>
+										</level>
+									</levels>
+								</option>
+							</options>
+						</service>
+					</services>
+					<provision>import_supplemental_provision.xml</provision>
+				</plan>
+
+				<plan>
+					<code>ADBD-GROUP-15</code>
+					<name>Accelerated Death Benefit</name>
+					<planType>RIDER</planType>
+					<services>
+						<service>
+							<name>ADB Benefit D</name>
+							<options>
+								<option>
+									<code>ADBD-GRP-15</code>
+									<name>Term Accelerated Death Benefit</name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<groupContribution>
+										<flatAmount>70</flatAmount>
+									</groupContribution>
+									<levels>
+										<level>
+											<value>5000</value>
+											<max>10000</max>
+											<increment>1000</increment>
+										</level>
+									</levels>
+								</option>
+							</options>
+						</service>
+					</services>
+					<provision>import_adb_provision.xml</provision>
+				</plan>
+
+
+				<plan>
+					<code>DWP-GROUP-15</code>
+					<name>Waiver of Premium Rider</name>
+					<planType>RIDER</planType>
+					<services>
+						<service>
+							<name>DWP Benefit</name>
+							<options>
+								<option>
+									<code>TERMDWP-GRP-15</code>
+									<name>Term Waiver of Premium Rider </name>
+									<showOnQuote>true</showOnQuote>
+									<optionValueType>AMOUNT</optionValueType>
+									<groupContribution>
+										<precentage>30</precentage>
+									</groupContribution>
+									<levels>
+										<level>
+											<value>10000</value>
+											<max>100000</max>
+											<increment>1000</increment>
+										</level>
+									</levels>
+								</option>								
+							</options>
+						</service>
+					</services>
+				</plan>
+			</plans>
+
+			<file uri="import_agencies.xml"/>
+
+			<file uri="import_resources.xml"/> 
+			<file uri="import_eforms.xml"/>
+			<file uri="import_pdfs.xml" />
+			<file uri="import_requirements.xml"/>
+			<file uri="import_buildchart.xml" />
+			<file uri="import_licenses.xml"/>
+			<file uri="import_rates.xml" />
+			<file uri="import_appointments.xml"/> 
+			<file uri="import_preferences.xml" />
+			<file uri="import_provisions.xml"/>
+
+		</product>
+
+	</carrier>
+
+
+</stepImport>

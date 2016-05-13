@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillData</onLoad>
+  <page>
+    <section title="MICHIGAN">
+      <header>NOTICE TO APPLICANTS REGARDING REPLACEMENT OF LIFE INSURANCE</header>
+      <group>
+        <header>THIS NOTICE IS FOR YOUR PROTECTION AND IS REQUIRED BY REGULATIONS OF THE MICHIGAN COMMISSIONER OF INSURANCE. PLEASE READ IT CAREFULLY.</header>
+        <paragragh
+            text="Dropping or changing your existing life insurance to replace it with a new life insurance policy may be disadvantageous because:"
+            styleClass="groupParagraph" />
+        <paragragh
+            text="*  A company can deny a claim during the first two years if it can be shown that you withheld information from your application which was important to the decision of whether to insure you. This is called the &quot;CONTESTABLE PERIOD&quot;. If you drop or change policies, you may have to go through the two year period again."
+            styleClass="groupParagraph" />
+        <paragragh
+            text="*  You may pay HIGHER RATES for identical coverage because of your age. Life insurance rates go up as you get older."
+            styleClass="groupParagraph" />
+      </group>
+      <group>
+        <header>BEFORE YOU DROP, CHANGE OR CASH IN YOUR PRESENT INSURANCE and apply for new insurance, you should:</header>
+        <paragragh
+            text="1. Compare the policy BENEFITS and OPTIONS. The agent is required by law to provide you with all pertinent facts of the change and the insurance company you are considering must notify the company that issued your existing policy."
+            styleClass="groupParagraph" />
+        <paragragh
+            text="2. Be aware that you may be required to provide EVIDENCE OF INSURABILITY. If your health condition has changed since the application was taken on your present policy, you may be required to pay additional premiums under the new policy, or be denied coverage."
+            styleClass="groupParagraph" />
+        <paragragh
+            text="3. Compare the LOAN INTEREST RATE. The interest rate for new policies is probably higher than for the existing policy. Therefore, you will pay more when you want to borrow the cash value. If you are considering borrowing against your existing policy to pay the premiums on the proposed policy, you should understand that in the event of your death, the amount of any unpaid loan, including unpaid interest will be deducted from the benefits of your existing policy."
+            styleClass="groupParagraph" />
+        <paragragh
+            text="4. Find out if the existing policy and/or the proposed policy offers DIVIDENDS OR EXCESS INTEREST. Dividends or excess interest can have a significant impact on net policy cost. Remember that no company can guarantee the amount of dividends it will pay in the future, nor can excess interest projections be presented as to imply a guarantee."
+            styleClass="groupParagraph" />
+        <paragragh
+            text="5. CONTACT THE AGENT OF YOUR PRESENT COMPANY. Your present company can often make changes in your existing insurance on terms which are more favorable to you than can another company."
+            styleClass="groupParagraph" />
+        <paragragh
+            text="6. Find out if there are income or estate tax consequences if you drop or change your present policy."
+            styleClass="groupParagraph" />
+      </group>
+      <group>
+        <paragragh
+        	text="You should not drop or change your existing life insurance coverage until after you have been issued the new policy, examined it and found it to be acceptable to you. REMEMBER YOU HAVE TEN DAYS AFTER RECEIPT OF THE POLICY TO CANCEL AND OBTAIN A FULL REFUND."
+        	styleClass="groupParagraph" />
+      </group>
+    </section>
+    <section title='MICHIGAN INFORMATION STATEMENT'>
+      <header>THE LIFE INSURANCE I INTEND TO PURCHASE FROM THE COMPANY SHOWN ABOVE MAY REPLACE OR ALTER EXISTING LIFE INSURANCE.</header>
+      <group>
+        <paragragh
+            text="The following policy(ies) may be replaced as a result of this transaction:"
+            styleClass="groupParagraph" />
+      </group>
+    </section>
+    <section title='Replaced Policy' repeating='true'>
+      <group associated="true" labelWidth="250px" >
+      	<question id='replaced_carrier' text="Insurer as it appears on the policy" type='TEXT' answerWidth="200px;"/>
+      	<question id='replaced_insured' text="Insured as it appears on the policy" type='TEXT' answerWidth="200px;"/>
+      	<question id='replaced_policyno' text="Policy Number" type='TEXT' answerWidth="200px;"/>
+      </group>
+    </section>
+    <section title='Proposed Policy'>
+      <group associated="true" labelWidth="150px" >
+      	<paragragh text="The Proposed policy is:" styleClass="groupParagraph" />
+      </group>
+      <group associated="true" labelWidth="150px" >
+      	<question id='policy_type' text="Type of policy-generic name" type='TEXT' answerWidth="200px;"/>
+      	<question id='face_amount' text="Face Amount" type='TEXT'/>
+      </group>
+    </section>
+  </page>
+</form>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<agencies>
+	<agency>
+		<agCode>MedAg1</agCode>
+		<agName>MOO MedSupp Agency</agName>
+		<agBusType>Independent</agBusType>
+		<agCaptive>false</agCaptive>
+		<agents>
+			<agent>
+				<agtCode>SAMJ</agtCode>
+				<agtFirstName>Sam</agtFirstName>
+				<agtLastName>Jackson</agtLastName>
+				<agtEmail>Sam.Jackson@stepsolutions.com</agtEmail>				
+			</agent>
+			<agent>
+				<agtCode>JANDER</agtCode>
+				<agtFirstName>JACK</agtFirstName>
+				<agtLastName>Ander</agtLastName>
+				<agtEmail>Jack.Ander@stepsolutions.com</agtEmail>
+			</agent>
+		</agents>
+	</agency>
+</agencies>
+</stepImport>

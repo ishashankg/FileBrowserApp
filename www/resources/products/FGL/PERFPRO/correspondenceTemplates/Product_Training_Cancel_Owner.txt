@@ -1,0 +1,24 @@
+$currentDate
+
+$correspondenceOwnerName
+$ownerAddressLines
+$ownerCityStateZip
+
+RE:	Application #:			$policyNumber
+	Annuitant/Insured:		$annuitantFirstName $annuitantLastName 
+	Date of Application:	$appSubmitDate
+
+
+Dear $correspondenceOwnerName,
+
+Thank you for your recent application for a Fidelity & Guaranty Life annuity.  Unfortunately, we are unable to accept your application at this time because certain regulatory or administrative requirements were not completed by your agent prior to the sale of your policy.  We are therefore refunding your premium.    
+If you paid us by check, a refund check in the amount of «Funds», representing the amount submitted with your application, will be mailed to you.  If the purchase funds were being transferred from another insurance company through a 1035 exchange, we have cancelled the exchange and/or returned the money to the other insurance company.   
+If you have not already been contacted by your agent, we suggest you call your agent to determine whether a Fidelity & Guaranty Life annuity can be purchased after the administrative or regulatory requirements are satisfied.  If you need assistance contacting your agent, or assistance in locating a properly authorized agent, you may call us at 1-800-445-6758. 
+We are hopeful the matter can be rectified quickly by your agent and a Fidelity & Guaranty Life annuity can be a part of your financial plan.
+
+Sincerely,
+
+Annuity New Business Department
+
+
+Cc:  $agentFirstName $agentLastName

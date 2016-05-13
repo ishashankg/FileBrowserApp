@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onSave>saveData</onSave>
+	<page title="Pre-Qualification Demographics">
+		<section title="Applicant">
+			<group labelWidth="600px">
+				<question id='ins_citizen'       text='Are you a legal U.S. resident and have you resided in the U.S. for more than 2 years?'       required='true' type='RADIO' answerSet='Y:Yes|N:No' />
+				<question id='ins_employed' text='Are you currently employed?' required='true' type='RADIO' answerSet='Y:Yes|N:No' />
+			</group>
+		</section>
+		
+		<section title="Employment Details">
+			<displayWhen>#{EFORM.ins_employed=="Y"}</displayWhen>
+			<group labelWidth="600px">
+				<question id='occupation' size="30" text='Please enter an Occupation: ' type='AUTOCOMPLETE'   reflexiveContext='uw:OCCUP:ATAIRB'    labelWidth="150px" answerWidth="350px;" required="true"       autocompleteLookup="uw:OCCUPATION">
+					<displayWhen>#{EFORM.ins_employed=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId='occupation' labelWidth='400px'/>
+			<group labelWidth='600px'>
+				<question id='place_of_employment_country' size="30"  text='Place of Employment (Country): ' type='AUTOCOMPLETE'    autocompleteLookup="uw:COUNTRIES"    labelWidth="150px">
+					<displayWhen>#{EFORM.ins_employed=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId='place_of_employment_country'        labelWidth='400px'/>
+		</section>
+		
+		<section title="Demographic">
+			<group associated ="true">
+				<question id='driv_lic_state' text='DL State' type='LISTBOX'
+					lookup="step:LOCALE_STATE" required="true"
+					answerSet=":Select..|Unknown:Not Applicable" 
+					labelWidth="100px" answerWidth="180px;" 
+					labelStyle='margin-top:3px;'/>
+				<question id='driv_lic_number' size="30" 
+					text='Driver&apos;s License Number' type='TEXT' 
+					labelWidth="170px" required="true" answerWidth="170px;"
+					labelStyle="margin-right:10px"/>
+			</group>
+			
+			<group associated="true">
+				<question id='height_feet' text='Height: (ft.)' labelWidth="100px"
+					type='LISTBOX' required="true" answerSet=": |2|3|4|5|6|7" />
+				<question id='height_inches' text='(in.)' type='LISTBOX'
+					required="true" answerSet=": |0|1|2|3|4|5|6|7|8|9|10|11" />
+			</group>
+			
+			<group associated="true">
+				<question id='weight_pounds' text='Weight: (lbs)' type='NUMBER'
+					required="true" answerWidth="50px;" labelWidth="100px"/>
+			</group>
+			
+		</section>
+			
+		<section title="Tobacco">
+			<group labelWidth="760px">
+				<question id='smoker_ind'       text='Have you, within the last 24 months, used any form of Tobacco, Nicotine or Nicotine Products of any kind?'       type='RADIO' answerSet='Y:Yes|N:No' required='true' />
+			</group>
+			<group associated="true">
+				<question id='last_tobacco_state' text='What was the last state in which you used: '       type='LISTBOX' lookup="step:LOCALE_STATE" answerSet=":Please select a state"       labelWidth="150px">
+					<displayWhen>#{EFORM.ins_nicotine=="Y"}</displayWhen>
+				</question>
+				<question id="last_tobacco_mm" text='When was the last time you used tobacco? Month:'        type='NUMBER' labelWidth="280px;" answerWidth="40px;" required="true" >
+					<displayWhen>#{EFORM.smoker_ind=="Y"}</displayWhen>
+				</question>
+				<question id="last_tobacco_yy" text='Year:' type='NUMBER' answerWidth="70px;" required="true" >
+					<displayWhen>#{EFORM.smoker_ind=="Y"}</displayWhen>
+				</question>
+			</group>
+		</section>
+		<section title="Medical check up">
+			<group labelWidth="600px">
+				<question id='ins_physician'       text='Have you seen a Physician within the past 5 years?' type='RADIO'       answerSet='Y:Yes|N:No' required='true' />
+			</group>
+		</section>
+	</page>
+</form>

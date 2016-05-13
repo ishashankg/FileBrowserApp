@@ -1,0 +1,1 @@
+Please click on the link to register: ${url}

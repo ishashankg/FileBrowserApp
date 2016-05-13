@@ -1,0 +1,401 @@
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.UserData;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.coverages.*;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import com.stepsoln.core.db.group.*;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.util.*;
+import java.math.BigDecimal;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import com.stepsoln.core.helper.enums.UNIT_SYSTEM;
+import java.lang.*;
+
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global com.stepsoln.core.util.MathUtil math;
+
+rule "Indicate to lookup build chart data with UW Class data"
+salience 1000
+activation-group "buildChartLookup"
+	when
+		$app:ApplicantData(type=='PRIMARY_INSURED')
+		Question(id == "height_feet", $heightFeet:answerAsDecimal) ;
+		Question(id == "height_inches", $heightInches:answerAsDecimal) ; 
+		Question(id == "weight_pounds",$weightPounds:answerAsDecimal) ; 
+		Question(id == "smoker_ind", $smokeInd:answerAsBoolean);	
+		$uwClassData:UnderWritingClassData()
+	then
+	    rulesResponse.setUwClassType($uwClassData.getType());
+	    $app.setLookupBuildChart(true);
+		$app.setHeight($heightFeet.multiply(MathUtil.INCHES_IN_FOOT).add($heightInches).intValue());
+		$app.setWeight($weightPounds.intValue());
+		$app.setUnitSystem(UNIT_SYSTEM.IMPERIAL);
+		$app.setTobaccoUsage($smokeInd);
+		rulesResponse.addToRuleFiredList(100,"USE_BUILD_CHART_SERVICE");
+end
+
+rule "set options to face amount"
+salience  150
+	when
+       	faOption:CoverageOption(optionCode=="FA");
+       	selectedOption:CoverageOption(selected==true, optionCode in ("INSTEPTERM10","INSTEPTERM15","INSTEPTERM20","INSTEPTERM30"));
+    then
+       	selectedOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())*1000+"");
+end
+
+rule "Set options' coverage amount to face amount if no levels defined"
+salience  150
+	when
+		   faOption:CoverageOption(optionCode=="FA");
+		   selectedOption:CoverageOption(hasLevels==false,optionCode!="PFEE",selected==true);
+	then
+		   selectedOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())*1000+"");
+end
+
+rule "No coverage selected"
+salience  150
+	when
+		   selectedOption:CoverageOption(hasLevels==true,optionCode!="PFEE",selected==true,selectedValue==0);
+	then
+		rulesResponse.addUserNotifcationInfo("Please select coverage amount.");
+end
+
+rule "set description and remove decimal and trailing zeroes for FA option"
+salience  150
+	when
+       	faOption:CoverageOption(optionCode=="FA");
+    then
+    	faOption.setOptionDescription("Coverage Units");
+       	faOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())+"");
+       	
+end
+
+rule "Face Amount Plan Required"
+salience 100
+	when
+       	faPlan:CoveragePlan(planCode in ("FA"));
+    then
+    	faPlan.setOptional(false);
+end
+
+rule "Max FA Amount Rule"
+salience 99
+	when
+       	faOption:CoverageOption(faOption.optionCode in ("FA"), MathUtil.convertToNumber(faOption.getSelectedValue())*1000 > 1000000);
+    then
+    	modify(faOption){
+    		setOptionNotes("(Max $1,000,000)"),
+    		setSelectedValue(MathUtil.minNumber("1000", faOption.getSelectedValue()))
+    	}	
+    	rulesResponse.addUserNotifcationInfo("There is a maximum of $1,000,000 limit");
+end
+
+rule "Min FA Amount Rule"
+salience 100
+	when
+       	faOption:CoverageOption(faOption.optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue())*1000 < 25000, MathUtil.convertToNumber(faOption.getSelectedValue())>0);
+    then
+    	modify(faOption){
+    		setOptionNotes("(Min $25,000)"),
+    		setSelectedValue("25")
+    	}	
+    	rulesResponse.addUserNotifcationInfo("Minimum face amount needs to be 25");
+end
+
+rule "FA Amount should be greater than 0 message"
+salience 100
+	when
+       	faOption:CoverageOption(faOption.optionCode in ("FA"),MathUtil.convertToNumber(faOption.getSelectedValue())==0);
+    then
+    	rulesResponse.addUserNotifcationInfo("Face Amount has to be greater than 0");
+end
+
+rule "Face Amount Option Required"
+salience 100
+	when
+       	fa:CoverageOption(optionCode in ("FA")); 
+    then
+    	fa.setSelected(true);
+    	fa.setRequired(true);
+       	fa.setTextEntry(true);
+		fa.setSelectable(false);
+end
+
+rule "Calculate FA coverage amount"
+salience 100
+	when
+       	faOption:CoverageOption(optionCode in ("FA"));
+    then
+    	faOption.setSelectedValueCoverageAmount(new BigDecimal(MathUtil.convertToNumber(faOption.getSelectedValue())*1000));
+    	faOption.setSkipProcessCoverageAmount(true);
+end
+
+rule "Base Coverage Selection"
+	when
+		CoverageOption(optionCode in ("INSTEPTERM10"),selected==false);
+		and CoverageOption(optionCode in ("INSTEPTERM15"),selected==false);
+		and CoverageOption(optionCode in ("INSTEPTERM20"),selected==false);
+		and CoverageOption(optionCode in ("INSTEPTERM30"),selected==false);
+    then
+    	rulesResponse.addUserNotifcationInfo("At-least one Base Coverage must be selected");
+end
+
+rule "Disable already selected base plan's options"
+when
+	selectedCoverageOptionWithNoValue:CoverageOption(optionCode in ("INSTEPTERM10","INSTEPTERM15","INSTEPTERM20","INSTEPTERM30"),selected==true);
+then
+	selectedCoverageOptionWithNoValue.setSelectable(false);
+	selectedCoverageOptionWithNoValue.setEditable(false);
+end
+
+rule "Make nonselected options as unavailable as would be selected in pre-application flow."
+when
+	selectedCoverageOptionWithNoValue:CoverageOption(optionCode in ("INSTEPTERM10","INSTEPTERM15","INSTEPTERM20","INSTEPTERM30"),selected==false);
+then
+	selectedCoverageOptionWithNoValue.setAvailable(false);
+	selectedCoverageOptionWithNoValue.setSelectable(false);
+	selectedCoverageOptionWithNoValue.setEditable(false);
+end
+
+
+rule "Hide and remove policy fee by default"
+salience 160
+	when
+		feeOption:CoverageOption(optionCode=="PFEE");
+		feePlan:CoveragePlan(planCode=="PFEE");
+	then
+		feeOption.setAvailable(false);
+		feePlan.setAvailable(false);
+		feeOption.setSelected(false);
+end
+
+rule "Add policy fee to all valid quotes"
+salience 150
+	when
+		feeOption:CoverageOption(optionCode=="PFEE");
+		selectedOption:CoverageOption(selected==true, optionCode in ("INSTEPTERM10","INSTEPTERM15","INSTEPTERM20","INSTEPTERM30"));
+		faOption:CoverageOption(selected==true, optionCode=="FA", MathUtil.convertToNumber(faOption.getSelectedValue()) > 24 && MathUtil.convertToNumber(faOption.getSelectedValue()) < 501);
+	then
+		feeOption.setSelected(true);
+		feeOption.setSelectedValue("1");
+		feeOption.setSelectable(false);
+end
+
+rule "All riders selected should result in others cannot be selected."
+salience 101
+	when
+		   tlplan:CoverageOption(optionCode not in ("INSTEPTERM10","INSTEPTERM15","INSTEPTERM20","INSTEPTERM30"));
+	then
+		tlplan.setSelectable(true);
+end
+
+
+rule "INSTEPTERM10 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("INSTEPTERM10"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("INSTEPTERM15","INSTEPTERM20","INSTEPTERM30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+rule "INSTEPTERM15 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("INSTEPTERM15"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("INSTEPTERM10","INSTEPTERM20","INSTEPTERM30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+rule "INSTEPTERM20 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("INSTEPTERM20"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("INSTEPTERM15","INSTEPTERM10","INSTEPTERM30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+rule "INSTEPTERM30 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("INSTEPTERM30"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("INSTEPTERM15","INSTEPTERM20","INSTEPTERM10"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+rule "WOP10 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("WOP10"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("WOP15","WOP20","WOP30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+rule "WOP15 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("WOP15"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("WOP20","WOP10","WOP30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+rule "WOP20 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("WOP20"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("WOP15","WOP10","WOP30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+rule "WOP30 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("WOP30"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("WOP15","WOP20","WOP10"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+
+rule "DI10 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("DI10"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("DI15","DI20","DI30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+rule "DI15 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("DI15"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("DI10","DI20","DI30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+
+rule "DI20 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("DI20"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("DI15","DI10","DI30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+
+rule "DI30 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("DI30"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("DI15","DI20","DI10"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+
+
+rule "ADI10 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("ADI10"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("ADI20","ADI15","ADI30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+rule "ADI15 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("ADI15"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("ADI20","ADI10","ADI30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+rule "ADI20 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("ADI20"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("ADI10","ADI15","ADI30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+rule "ADI30 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("ADI30"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("ADI10","ADI15","ADI20"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+
+rule "CI10 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("CI10"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("CI15","CI20","CI30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+
+rule "CI15 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("CI15"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("CI10","CI20","CI30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+
+rule "CI20 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("CI20"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("CI15","CI10","CI30"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end
+
+
+rule "CI30 level selected should result in others cannot be selected."
+salience 100
+	when
+		   tlplan:CoverageOption(optionCode in ("CI30"), selected==true);
+		   notAllowed:CoverageOption(optionCode in ("CI15","CI20","CI10"));
+	then
+		notAllowed.setSelectable(false);
+		notAllowed.setSelected(false);
+end

@@ -1,0 +1,426 @@
+<map>
+  <entry>
+    <string>First Name</string>
+    <string>${CASE.primaryApplicant.firstName}</string>
+  </entry>
+  <entry>
+    <string>Last Name</string>
+    <string>${CASE.primaryApplicant.lastName}</string>
+  </entry>
+  <entry>
+    <string>Middle Initial</string>
+    <string>${CASE.primaryApplicant.middleName}</string>
+  </entry>
+  <entry>
+    <string>Gender</string>
+    <string>${CASE.primaryApplicant.gender}</string>
+  </entry>
+  <entry>
+    <string>Date of Birth</string>
+    <string>${CASE.primaryApplicant.birthdate.dateString}</string>
+  </entry>
+  <entry>
+    <string>Place of Birth stateCountry</string>
+    <string>${EFORMS.PERSON.place_of_birth_state == 'ZZ' ? '' : EFORMS.PERSON.place_of_birth_state == 'N_A' ? '' : EFORMS.PERSON.place_of_birth_state ? EFORMS.PERSON.place_of_birth_state + ', ': ''} ${EFORMS.PERSON.place_of_birth_country ? lookupService.getLookupDescription("step", "LOCALE_COUNTRY", EFORMS.PERSON.place_of_birth_country) : ""}</string>
+  </entry>
+  <entry>
+    <string>Social Security Number</string>
+    <string>${CASE.primaryApplicant.governmentId}</string>
+  </entry>
+  <entry>
+    <string>Drivers License Number</string>
+    <string>${EFORMS.PERSON.driv_lic_number}</string>
+  </entry>
+  <entry>
+    <string>State</string>
+    <string>${EFORMS.PERSON.driv_lic_state == 'ZZ' ? '' : EFORMS.PERSON.driv_lic_state == 'N_A' ? 'NONE' : EFORMS.PERSON.driv_lic_state ?: ''}</string>
+  </entry>
+  <entry>
+    <string>Legal Residence Address</string>
+    <string>${CASE.primaryApplicant.primaryAddress.addressLine1} ${CASE.primaryApplicant.primaryAddress.addressLine2 ?: ""} ${CASE.primaryApplicant.primaryAddress.addressLine3 ?: ""}</string>
+  </entry>
+  <entry>
+    <string>City</string>
+    <string>${CASE.primaryApplicant.primaryAddress.city}</string>
+  </entry>
+  <entry>
+    <string>State_2</string>
+    <string>${lookupService.getLookupCode("LOCALE_STATE", CASE.primaryApplicant.primaryAddress.state)}</string>
+  </entry>
+  <entry>
+    <string>Zip</string>
+    <string>${CASE.primaryApplicant.primaryAddress.zip}</string>
+  </entry>
+  <entry>
+    <string>Email Address</string>
+    <string>${CASE.primaryApplicant.email}</string>
+  </entry>
+  <entry>
+    <string>Primary Phone</string>
+    <string>${CASE.primaryApplicant.phone}</string>
+  </entry>
+  <entry>
+    <string>Primary Phone Cell</string>
+	<string>${CASE.primaryApplicant.phoneType == 'MOBILE' ? 1 : 0}</string>
+  </entry>
+  <entry>
+    <string>Secondary Phone</string>
+    <string>${CASE.primaryApplicant.secondaryPhone}</string>
+  </entry>
+  <entry>
+    <string>Secondary Phone Cell</string>
+    <string>${CASE.primaryApplicant.secondaryPhone ? (CASE.primaryApplicant.secondaryPhoneType == 'MOBILE' ? 1 : 0) : ''}</string>
+  </entry>
+  <entry>
+    <string>Secondary Address</string>
+    <string>${EFORMS.PERSON.fl_secondary_first_name?:''} ${EFORMS.PERSON.fl_secondary_middle_name?:''} ${EFORMS.PERSON.fl_secondary_last_name?:''}: ${EFORMS.PERSON.fl_secondary_address_1?:''} ${EFORMS.PERSON.fl_secondary_address_2?:''} ${EFORMS.PERSON.fl_secondary_city?:''} ${EFORMS.PERSON.fl_secondary_state ?: ''} ${EFORMS.PERSON.fl_secondary_zip?:''}</string>
+  </entry>
+  <entry>
+    <string>Occupations</string>
+    <string>${EFORMS.PERSON.occupation}</string>
+  </entry>
+  <entry>
+    <string>Employer or Business Name</string>
+    <string>${EFORMS.PERSON.employer_name}</string>
+  </entry>
+  <entry>
+    <string>Annual Earned Income</string>
+    <string>${EFORMS.PERSON.annual_earned_income}</string>
+  </entry>
+  <entry>
+    <string>How long with current employer</string>
+    <string>${EFORMS.PERSON.curr_employer_dur ?: ""}. ${EFORMS.PERSON.curr_employer_dur_mo ?: ""}</string>
+  </entry>
+  <entry>
+    <string>Type of business where currently employed</string>
+    <string>${EFORMS.PERSON.type_of_curr_employ}</string>
+  </entry>
+  <entry>
+    <string>Citizenship</string>
+    <string>${EFORMS.PERSON.citizenship_status}</string>
+  </entry>
+  <entry>
+	<string>Other Owner</string>
+	<string>${EFORMS.PERSON.oth_owner_ind}</string>
+  </entry>
+  <entry>
+  	<string>Base Coverage</string>
+  	<string>${COVERAGE_OPTIONS.WL ? 'Y' : 'N'}</string>
+  </entry>
+  <entry>
+  	<string>Term Period</string>
+  	<string>${COVERAGE_OPTIONS.TERM10 ? '10' : COVERAGE_OPTIONS.TERM15 ? '15' : COVERAGE_OPTIONS.TERM20 ? '20' : COVERAGE_OPTIONS.TERM30 ? '30' : '0'}</string>
+  </entry>
+  <entry>
+  	<string>Face Units</string>
+  	<string>${COVERAGE_OPTIONS.FA ? String.format('%,6.0f', COVERAGE_OPTIONS.FA / 1000) : ''}</string>
+  </entry>
+  <entry>
+    <string>Date</string>
+    <string>${caseHelper.getSignatureDate("HIP", "PRIMARY_INSURED")}</string>
+  </entry>
+  <entry>
+    <string>Date_2</string>
+    <string>${caseHelper.getSignatureDate("OWN", "POLICY_OWNER")}</string>
+  </entry>
+  <entry>
+    <string>Signed at City State</string>
+    <string>${caseHelper.getSignatureCity("HIP", "PRIMARY_INSURED") ?: ""}, ${caseHelper.getSignatureState("HIP", "PRIMARY_INSURED") ?: ""}</string>
+  </entry>
+  <entry>
+    <string>Primary Beneficiaryies</string>
+    <string>${CASE.primaryBeneficiary?.firstName ?: ""} ${CASE.primaryBeneficiary?.middleName ?: ""} ${CASE.primaryBeneficiary?.lastName ?: ""}</string>
+  </entry>
+  <entry>
+    <string>Contingent Beneficiaryies</string>
+    <string>${CASE?.contingentBeneficiary?.firstName ?: ""} ${CASE?.contingentBeneficiary?.middleName ?: ""} ${CASE?.contingentBeneficiary?.lastName ?: ""}</string>
+  </entry>
+  <entry>
+    <string>Relationship to the Insured</string>
+    <string>${CASE.primaryBeneficiary?.relationship ? lookupService.getLookupDescription("glic", "RELATIONSHIP_TYPE", CASE.primaryBeneficiary.relationship) : ""}</string>
+  </entry>
+  <entry>
+    <string>Relationship to the Insured_2</string>
+    <string>${CASE.contingentBeneficiary!=null ? lookupService.getLookupDescription("glic", "RELATIONSHIP_TYPE", CASE.contingentBeneficiary.relationship) : ""}</string>
+  </entry>
+	<entry>
+		<string>Height in Feet</string>
+		<string>${EFORMS.PERSON.height_feet}</string>
+	</entry>
+	<entry>
+		<string>Height Inches</string>
+		<string>${EFORMS.PERSON.height_inches}</string>
+	</entry>
+	<entry>
+		<string>Weight in Pounds</string>
+		<string>${EFORMS.PERSON.weight_pounds}</string>
+	</entry>
+  <entry>
+    <string>Pounds Change Indicator</string>
+    <string>${EFORMS.REFLEXIVE.weight_chg_ind}</string>
+  </entry>
+  <entry>
+    <string>Change in Pounds</string>
+    <string>${EFORMS.REFLEXIVE.weight_chg_pounds}</string>
+  </entry>
+   <entry>
+    <string>Tobacco Indicator</string>
+    <string>${CASE?.primaryApplicant?.tobaccoUsage ? "Y" : "N"}</string>
+  </entry>
+   <entry>
+    <string>m1a</string>
+    <string>$EFORMS.REFLEXIVE.m1a</string>
+  </entry>
+   <entry>
+    <string>m1b</string>
+    <string>$EFORMS.REFLEXIVE.m1b</string>
+  </entry>
+	<entry>
+		<string>m1c</string>
+		<string>$EFORMS.REFLEXIVE.m1c</string>
+	</entry>
+	<entry>
+		<string>m1d</string>
+		<string>$EFORMS.REFLEXIVE.m1d</string>
+	</entry>
+	<entry>
+		<string>m1e</string>
+		<string>$EFORMS.REFLEXIVE.m1e</string>
+	</entry>
+	<entry>
+		<string>m1f</string>
+		<string>${EFORMS.REFLEXIVE.m1f?:EFORMS.REFLEXIVE.m1fCT}</string>
+	</entry>
+	<entry>
+		<string>m1g</string>
+		<string>$EFORMS.REFLEXIVE.m1g</string>
+	</entry>
+	<entry>
+		<string>m1h</string>
+		<string>$EFORMS.REFLEXIVE.m1h</string>
+	</entry>
+	<entry>
+		<string>m1i</string>
+		<string>$EFORMS.REFLEXIVE.m1i</string>
+	</entry>
+	<entry>
+		<string>m1j</string>
+		<string>${EFORMS.REFLEXIVE.m1j?:EFORMS.REFLEXIVE.m1jCT}</string>
+	</entry>
+	<entry>
+		<string>m2</string>
+		<string>$EFORMS.REFLEXIVE.m2</string>
+	</entry>
+	<entry>
+		<string>m3</string>
+		<string>${EFORMS.REFLEXIVE.m3?:(EFORMS.REFLEXIVE.m3CA?:(EFORMS.REFLEXIVE.m3CT?:(EFORMS.REFLEXIVE.m3FL?:EFORMS.REFLEXIVE.m3NY)))}</string>
+	</entry>
+	<entry>
+		<string>m4a</string>
+		<string>$EFORMS.REFLEXIVE.m4a</string>
+	</entry>
+	<entry>
+		<string>m4b</string>
+		<string>$EFORMS.REFLEXIVE.m4b</string>
+	</entry>
+	<entry>
+		<string>m4c</string>
+		<string>$EFORMS.REFLEXIVE.m4c</string>
+	</entry>
+	<entry>
+		<string>m4d</string>
+		<string>$EFORMS.REFLEXIVE.m4d</string>
+	</entry>
+	<entry>
+		<string>m4e</string>
+		<string>$EFORMS.REFLEXIVE.m4e</string>
+	</entry>
+	<entry>
+		<string>m4f</string>
+		<string>$EFORMS.REFLEXIVE.m4f</string>
+	</entry>
+	<entry>
+		<string>m4g</string>
+		<string>$EFORMS.REFLEXIVE.m4g</string>
+	</entry>
+	<entry>
+		<string>m5a</string>
+		<string>${EFORMS.REFLEXIVE.m5a?:EFORMS.REFLEXIVE.m5aCT}</string>
+	</entry>
+	<entry>
+		<string>m5b</string>
+		<string>$EFORMS.REFLEXIVE.m5b</string>
+	</entry>
+	<entry>
+		<string>m6a</string>
+		<string>$EFORMS.REFLEXIVE.m6a</string>
+	</entry>
+	<entry>
+		<string>m6b</string>
+		<string>${EFORMS.REFLEXIVE.m6b?:EFORMS.REFLEXIVE.m6bCT}</string>
+	</entry>
+	<entry>
+		<string>m7</string>
+		<string>${EFORMS.REFLEXIVE.m7?:EFORMS.REFLEXIVE.m7CA}</string>
+	</entry>
+	<entry>
+		<string>m8</string>
+		<string>${EFORMS.REFLEXIVE.m8?:(EFORMS.REFLEXIVE.m8CT?:EFORMS.REFLEXIVE.m8FL)}</string>
+	</entry>
+	<entry>
+		<string>m9a</string>
+		<string>${EFORMS.REFLEXIVE.m9a?:(EFORMS.REFLEXIVE.m9aCT?:EFORMS.REFLEXIVE.m9aFL)}</string>
+	</entry>
+	<entry>
+		<string>m9b</string>
+		<string>${EFORMS.REFLEXIVE.m9b?:EFORMS.REFLEXIVE.m9bCT}</string>
+	</entry>
+	<entry>
+    <string>Additional information</string>
+    <string>$EFORMS.REFLEXIVE.additional_info</string>
+  </entry>
+	<entry>
+		<string>App Pending</string>
+		<string>${EFORMS.REFLEXIVE.app_pending_answ?:EFORMS.REFLEXIVE.app_pending_answ_AZ}</string>
+	</entry>
+	<entry>
+		<string>Company Name</string>
+		<string>$EFORMS.REFLEXIVE.oth_ins_company</string>
+	</entry>
+	<entry>
+		<string>City State</string>
+		<string>${EFORMS.REFLEXIVE.oth_ins_city ?: ""} ${EFORMS.REFLEXIVE.oth_ins_city ? "," : ""} ${EFORMS.REFLEXIVE.oth_ins_state ?: ""}</string>
+	</entry>
+	<entry>
+		<string>Face Amount</string>
+		<string>$EFORMS.REFLEXIVE.oth_ins_face</string>
+	</entry>
+	<entry>
+		<string>Month Issued</string>
+		<string>${EFORMS.REFLEXIVE.oth_ins_mm ?: ""} ${EFORMS.REFLEXIVE.oth_ins_mm ? "/" : ""} ${EFORMS.REFLEXIVE.oth_ins_yy ?: ""}</string>
+	</entry>
+	<entry>
+		<string>Other Replace 1</string>
+		<string>$EFORMS.REFLEXIVE.oth_ins_replace</string>
+	</entry>
+	<entry>
+		<string>Company Name_2</string>
+		<string>$EFORMS.REFLEXIVE.oth_ins_company2___0</string>
+	</entry>
+	<entry>
+		<string>City State_2</string>
+		<string>${EFORMS.REFLEXIVE.oth_ins_city2___0 ?: ""} ${EFORMS.REFLEXIVE.oth_ins_city2___0 ? "," : ""} ${EFORMS.REFLEXIVE.oth_ins_state2___0 ?: ""}</string>
+	</entry>
+	<entry>
+		<string>Face Amount_2</string>
+		<string>$EFORMS.REFLEXIVE.oth_ins_face2___0</string>
+	</entry>
+	<entry>
+		<string>Month Issued_2</string>
+		<string>${EFORMS.REFLEXIVE.oth_ins_mm2___0 ?: ""} ${EFORMS.REFLEXIVE.oth_ins_mm2___0 ? "/" : ""} ${EFORMS.REFLEXIVE.oth_ins_yy2___0 ?: ""}</string>
+	</entry>
+	<entry>
+		<string>Other Replace 2</string>
+		<string>$EFORMS.REFLEXIVE.oth_ins_replace2___0</string>
+	</entry>
+	<entry>
+		<string>Cancel Question</string>
+		<string>$EFORMS.REFLEXIVE.app_replace_answ</string>
+	</entry>
+	<entry>
+		<string>Other Owner</string>
+		<string>$EFORMS.OWNER_AUTH.other_owner?:''</string>
+	</entry>
+	<entry>
+		<string>DWP Option</string>
+		<string>${COVERAGE_OPTIONS.TERMDWP || COVERAGE_OPTIONS.TERM30DWP || COVERAGE_OPTIONS.WLDWP ? 'Y' : 'N'}</string>
+	</entry>
+	<entry>
+		<string>GIR Option</string>
+		<string>${COVERAGE_OPTIONS.GIR ? 'Y' : 'N'}</string>
+	</entry>
+	<entry>
+		<string>Date_3</string>
+		<string>${caseHelper.getSignatureDate("ACK", "PRIMARY_INSURED")}</string>
+	</entry>
+	<entry>
+		<string>Date_4</string>
+		<string>${caseHelper.getSignatureDate("ACK", "POLICY_OWNER")}</string>
+	</entry>
+	<entry>
+		<string>Signed at City State_2</string>
+		<string>${caseHelper.getSignatureCity("ACK", "PRIMARY_INSURED") ?: ""}, ${caseHelper.getSignatureState("ACK", "PRIMARY_INSURED") ?: ""}</string>
+	</entry>
+	<entry>
+		<string>Pending Insurance</string>
+		<string>$EFORMS.AGENT_ATTESTATION.oth_pending_ind</string>
+	</entry>
+	<entry>
+		<string>Replace Ind</string>
+		<string>$EFORMS.AGENT_ATTESTATION.replacement_ind</string>
+	</entry>
+	<entry>
+		<string>Exchange Ind</string>
+		<string>$EFORMS.AGENT_ATTESTATION.y_1035_exch_ind</string>
+	</entry>
+	<entry>
+		<string>Producer Certify</string>
+		<string>$EFORMS.AGENT_ATTESTATION.attest_ind</string>
+	</entry>
+	<entry>
+		<string>Conversion</string>
+		<string>$EFORMS.AGENT_ATTESTATION.internal_term_conv_ind</string>
+	</entry>
+	<entry>
+		<string>Agent ID</string>
+		<string>${EFORMS.AGENT_ATTESTATION.agent_license_no?:EFORMS.AGENT_ATTESTATION.agent_id}</string>
+	</entry>
+	<entry>
+		<string>Date_5</string>
+		<string>${caseHelper.getSignatureDate("AAT", "AGENT")}</string>
+	</entry>
+	<entry>
+		<string>Printed Name of Licensed Agent</string>
+		<string>$EFORMS.AGENT_ATTESTATION.printed_name</string>
+	</entry>
+	<entry>
+		<string>X Signature of Proposed Insured</string>
+		<string>${caseHelper.insertSignature("HIP", "PRIMARY_INSURED")}</string>
+	</entry>
+	<entry>
+		<string>X Signature of Policyowner if other than Proposed Insured or Applicant</string>
+		<string>${caseHelper.insertSignature("OWN", "POLICY_OWNER")}</string>
+	</entry>
+	<entry>
+		<string>X Signature of Proposed Insured_2</string>
+		<string>${caseHelper.insertSignature("ACK", "PRIMARY_INSURED")}</string>
+	</entry>
+	<entry>
+		<string>X Signature of Policyowner if other than Proposed Insured or Applicant_2</string>
+		<string>${caseHelper.insertSignature("ACK", "POLICY_OWNER")}</string>
+	</entry>
+	<entry>
+		<string>X Signature of Licensed Agent</string>
+		<string>${caseHelper.insertSignature("AAT", "AGENT")}</string>
+	</entry>
+	<entry>
+		<string>Signature of Proposed Insured or Authorized Representative</string>
+		<string>${caseHelper.insertSignature("FHP", "PRIMARY_INSURED")}</string>
+	</entry>
+	<entry>
+		<string>Proposed Date</string>
+		<string>${caseHelper.getSignatureDate("FHP", "PRIMARY_INSURED")}</string>
+	</entry>
+	<entry>
+		<string>a-1</string>
+		<string>${CASE.primaryApplicant.firstName+" "+CASE.primaryApplicant.lastName}</string>
+	</entry>
+	<entry>
+		<string>a-2</string>
+		<string>${CASE.policyNo?CASE.policyNo:"Not available"}</string>
+	</entry>
+	<entry>
+		<string>a-3</string>
+		<string>${caseHelper.getMericaStatementsTextBlock(STATEMENTS['PRIMARY_INSURED'])}</string>
+	</entry>
+</map>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillForm</onLoad>
+  <onComplete>importData</onComplete>
+  <onSave>saveOwner</onSave>
+  <page title="Non-Natural Owner Acknowledgement Form">
+  <section title="Owner Registration" style="margin-left:0px" >
+      <group associated="true">
+        <question id='owner_reg_check' text='Title'  type='LISTBOX'
+            answerStyle="margin-left:0px; margin-right:0px;"
+          answerSet="|Trust|Partnership|Estate|Corporation" labelWidth="80px"
+          labelStyle='margin-left:0px' tabindex ='1' answerWidth="130px" />
+        <question id='owner_reg_policyNo' text='Policy Number' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='8'/>
+       
+      </group>
+      <group associated="true">
+        <question id='nat_legal_first' text='First Name'
+          labelWidth="80px" required="true" type='TEXT' answerWidth="120px"
+          labelStyle='margin-left:0px' tabindex ='2' />
+        <question id='nat_taxpayerID' text='Taxpayer Identification Number' type='TEXT'
+          answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='9' />
+      </group>
+      <group associated="true">
+        <question id='nat_legal_last' text='Last Name' labelWidth="80px"
+          type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex ='3'/>
+      </group>
+      <group associated="true">
+        <question id='nat_annuitant_first_name' text='Annuitant First Name' labelWidth="80px"
+          required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex ='4' />
+          
+          
+        <question id='nat_joint_annuitant_first_name' text='State' type='LISTBOX' lookup="step:LOCALE_STATE"
+          required="true" answerSet=" : |Unknown:Not Applicable"
+                  labelWidth="100px" answerWidth="130px;" labelStyle='margin-left:20px;' tabindex ='12'><displayWhen>#{EFORMS.PERSON.joint_owner=="Y"}</displayWhen></question>
+      </group>
+        <group style='margin-top:8px' associated="true">
+        
+            <question id='nat_annuitant_last_name' text='Annuitant Last Name' labelWidth="80px"
+          required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex ='4' />
+        
+            <question id='nat_joint_annuitant_last_name' text='Joint Annuitant Last Name' type='TEXT'
+                  answerWidth="130px"
+          required="true" labelWidth="80px" labelStyle='margin-left:0px' tabindex ='5'> <displayWhen>#{EFORMS.PERSON.joint_owner=="Y"}</displayWhen></question>
+        
+      </group>
+    </section>
+    <section title="Beneficiaries">
+      <group associated="true">
+        <question id='nat_beneficiary_first' type='TEXT' text='Beneficiary First Name' labelWidth="80px"
+                  answerStyle="margin-left:0px; margin-right:0px;"
+          answerWidth="120px" required="true" labelStyle='margin-left:0px' tabindex ='6'/>
+          <question id='nat_beneficiary_last' type='TEXT' text='Beneficiary Last Name' labelWidth="80px"
+                  answerStyle="margin-left:0px; margin-right:0px;"
+          answerWidth="120px" required="true" labelStyle='margin-left:0px' tabindex ='6'/>
+
+        </group>
+      </section>
+      <section repeating="true">
+           <group associated="true">
+            <question id='nat_beneficiary_first' type='TEXT' text='Beneficiary First Name' labelWidth="80px"
+                      answerStyle="margin-left:0px; margin-right:0px;"
+              answerWidth="120px" required="true" labelStyle='margin-left:0px' tabindex ='6'/>
+              <question id='nat_beneficiary_last' type='TEXT' text='Beneficiary Last Name' labelWidth="80px"
+                      answerStyle="margin-left:0px; margin-right:0px;"
+              answerWidth="120px" required="true" labelStyle='margin-left:0px' tabindex ='6'/>
+
+            </group>
+      
+
+      </section>
+      
+    <section  style="overflow:auto; border:1px solid black">
+      <group labelWidth="400px"
+        style="overflow:auto; height:150px;">
+        <paragragh text="I/We acknowledge that Internal Revenue Code Section 72(u) provides that if a person who is not a natural person holds any
+annuity contract not as an agent for a natural person:
+The contract shall not be treated as an annuity contract for income tax purposes; and the income on the contract for any
+taxable year of the contract owner shall be treated as ordinary income received or accrued by the owner during any such
+taxable year. Removal of any annuitant or co-annuitant named in this contract, and/or the death of any annuitant or co
+annuitant named in this contract, may require the full distribution of the contract under the relevant provisions of the Internal
+Revenue Code.
+A non-natural person holding an annuity contract as an agent for a natural person should generally result in the annuity
+contract being treated as an annuity for income tax purposes. Income on the contract is deferred until distribution provided all
+beneficiaries to whom proceeds may be paid directly or indirectly are natural persons.
+Trusts and Estates need to indicate whether all ultimate beneficiaries of the entity are natural persons. List all beneficiaries
+above." styleClass="groupParagraph">
+          </paragragh>
+            
+        </group>
+      </section>
+      
+      <section>
+      
+      
+      </section>
+      
+   <section style="margin-left:0px">
+       <group associated="true">
+    <question id='authorized_first_name' text=' First Name of Authorized Person/Trustee/Corporate Officer' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+           
+           <question id='authorized_signature' text=' Signature' type='CHECKBOX'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+ 
+        </group>
+       
+      <group associated="true">
+       <question id='authorized_last_name' text=' First Name of Authorized Person/Trustee/Corporate Officer' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+       <question id='authorized_title' text='Title'  type='LISTBOX'
+            answerStyle="margin-left:0px; margin-right:0px;"
+          answerSet="|Mr.|Mrs.|Miss|Ms" labelWidth="80px"
+          labelStyle='margin-left:0px' tabindex ='29' answerWidth="130px" />
+          
+       </group>
+       
+       <group>
+       <question id='authorized_date' text='Date' type='DATEF'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+       </group>
+       
+<group associated="true">
+    <question id='coauthorized_first_name' text=' First Name of Authorized Person/Trustee/Corporate Officer' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+           
+           <question id='coauthorized_signature' text=' Signature' type='CHECKBOX'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+ 
+        </group>
+       
+      <group associated="true">
+       <question id='coauthorized_last_name' text=' First Name of Authorized Person/Trustee/Corporate Officer' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+       <question id='coauthorized_title' text='Title'  type='LISTBOX'
+            answerStyle="margin-left:0px; margin-right:0px;"
+          answerSet="|Mr.|Mrs.|Miss|Ms" labelWidth="80px"
+          labelStyle='margin-left:0px' tabindex ='29' answerWidth="130px" />
+          
+       </group>
+       
+       <group>
+       <question id='coauthorized_date' text='Date' type='DATEF'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+       </group>
+       
+       <group associated="true">
+       <question id='authorized_org_name' text='Name or Organization (if applicable)' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+        <question id='authorized_phone' text='Phone Number' type='PHONE'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+           
+       </group>
+       </section>
+       <section title="Trust">
+    <group>
+       <question id='trust_tax_ID' text='Trust Taxpayer Identification Number' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+       <question id='trust_SSN' text='Trust activity is reported under SSN' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+        <question id='trust_SSN_first_name' text='First Name' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+        
+        <question id='trust_SSN_last_name' text='Last Name' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='36'/>
+        
+       </group>
+
+ 
+
+    </section>    
+       
+  </page>
+</form>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.22" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.2.1.v201209101448 Build &lt;4.2.1.v20120912-1721></property>
+    <property name="units">in</property>
+    <property name="theme">defaultTheme</property>
+    <themes>
+        <theme name="defaultTheme" id="4"/>
+    </themes>
+    <components>
+        <image name="NewImage" id="5">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+            <property name="marginLeft">0pt</property>
+            <property name="marginRight">auto</property>
+            <property name="height">0.684in</property>
+            <property name="width">2.042in</property>
+            <property name="source">file</property>
+            <expression name="uri" type="constant">endorsement_hfa_Image.png</expression>
+        </image>
+    </components>
+    <page-setup>
+         <simple-master-page name="NewSimpleMasterPage" id="3">
+            <property name="topMargin">0in</property>
+            <property name="leftMargin">0in</property>
+            <property name="bottomMargin">0in</property>
+            <property name="rightMargin">0in</property>
+            <property name="showHeaderOnFirst">false</property>
+            <property name="showFooterOnLast">false</property>
+            <property name="headerHeight">0in</property>
+            <property name="footerHeight">0in</property>
+        </simple-master-page>
+    </page-setup>
+</library>

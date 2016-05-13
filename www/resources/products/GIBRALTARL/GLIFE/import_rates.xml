@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<rates>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premium_10_20_300.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premium_20_20_300.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Term_Premium_30_20_300.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Guaranteed_Insurability_Rider_for_WL_Premiums.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Disability_Waiver_of_Premium_DWP_Premiums.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/Whole_Life_20_300.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>
+	<rate>
+		<description>Rates</description>
+		<file>rates/AcceleratedDeathBenefit.csv</file>
+		<type>RATE_TABLE</type>
+	</rate>	
+</rates>
+</stepImport>

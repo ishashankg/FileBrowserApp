@@ -1,0 +1,15 @@
+<Provisions xsi:schemaLocation="http://stepsoln.com/Provision/3 provisions.xsd" xmlns="http://stepsoln.com/Provision/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<WaiverOfPremiumProvisions>
+		<Description>
+			<![CDATA[
+				The Gerber Waiver Of Premium Rider contain a waiver of premiums provision in the event that the insured becomes totally disabled. 
+				Generally, to qualify for a waiver of premiums, the insured must:
+				
+				-->	The insured must have a mental or physical disability which prevents him or her from performing substantially gainful employment.
+				-->	The total disability must begin before the insured's 65th birthday, 
+				and must continue for at least six consecutive months.
+				-->	The total disability may not begin prior to the effective date of the policy.
+			]]>
+		</Description>
+	</WaiverOfPremiumProvisions>
+</Provisions>

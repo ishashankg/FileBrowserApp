@@ -1,0 +1,12 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<common>
+	    <file uri="import_resources.xml" />
+		<file uri="import_processes.xml" />
+		<file uri="import_provisions_config.xml" />
+		<file uri="import_product_group.xml" />
+		<file uri="import_recommend.xml" />
+		<file uri="import_uw_rule_fact.xml"/>
+	</common>
+
+</stepImport>

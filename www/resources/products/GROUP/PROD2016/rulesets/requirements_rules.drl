@@ -1,0 +1,86 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import java.util.List;
+import com.stepsoln.core.db.group.AffinityGroupMember;
+import com.stepsoln.core.db.Lookup;
+import com.stepsoln.core.util.DateUtil;
+import com.stepsoln.core.rules.coverages.CoverageOption;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Data Capture Part 1 is required"
+	when
+		CaseData()
+		form:RequirementForm(code in("APPPART1","ASRRF"));
+	then
+    	form.setRequired(true);
+end
+
+rule "Data Capture Part 2 is required"
+	when
+		CaseData()
+		form:RequirementForm(code == "APPPART2");
+	then
+    	form.setRequired(true);
+end
+
+rule "Data Capture Part 3 is required"
+	when
+		CaseData()
+		form:RequirementForm(code == "APPPART3");
+	then
+    	form.setRequired(true);
+end
+
+rule "DECLINELTR"
+salience 90
+	when
+		(Question(id=="emphours", answerAsString == "2")  or Question(id=="absence", answerAsString == "2") or Question(id=="injury", answerAsString == "1") or Question(id=="proposedwork", answerAsString == "1"))
+		form:RequirementForm(code == "DECLINELTR");
+	then
+		form.setRequired(true);
+end
+
+rule "DECLINELTR for active, salaried employee above 80"
+salience 90
+	when
+		AffinityGroupMember(DateUtil.calculateAge(birthDate) > 79, membershipStatus == 1, employmentType == 1)
+		form:RequirementForm(code == "DECLINELTR");
+	then
+		form.setRequired(true);
+end
+
+rule "SUPPDCLNLTR"
+salience 90
+	when
+		(Question(id=="proposedMedical9a1", answerAsString == "1") or Question(id=="proposedMedical8a1", answerAsString == "1"))
+		CoverageOption(optionCode == "STFAGOV", selected == true)
+		form:RequirementForm(code == "SUPPDCLNLTR");
+	then
+		form.setRequired(true);
+end
+
+rule "Minor Beneficiary Form"
+	when
+		CaseData(primaryApplicantAge <= 70, primaryApplicantAge >= 51)
+		BeneficiaryData(age < 18)
+		form:RequirementForm(code=="MNRBENFORM");
+    then
+    	form.setRequired(true);
+end
+
+rule "Admin flow - member signature acknowledgement"
+	when
+		GroupData(groupAdminSignAcknowledgement==true)
+		form:RequirementForm(code in ("SIGNACKN"));
+    then
+    	form.setRequired(true);
+end
+
+rule "Do not cancel third party and uw suggested requirements"
+	when
+		form:RequirementForm(code in("MIB3RDPARTY","ATT3RDPARTY","RXD3RDPARTY","IIX3RDPARTY","APS","MVR"));
+	then
+    	form.setCancelRequirementWhenNotRequired(false);
+end

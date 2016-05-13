@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.22" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 3.7.0.v20110519 Build &lt;3.7.0.v20110523-2201></property>
+    <property name="units">in</property>
+    <property name="theme">defaultTheme</property>
+    <themes>
+        <theme name="defaultTheme" id="4"/>
+    </themes>
+    <components>
+        <image name="NewImage" id="5">
+            <property name="marginTop">0in</property>
+            <property name="marginLeft">0in</property>
+            <property name="marginBottom">0in</property>
+            <property name="marginRight">0in</property>
+            <property name="height">0.75in</property>
+            <property name="width">3.4in</property>
+            <property name="source">file</property>
+            <expression name="uri" type="constant">glic_birtImage.png</expression>
+        </image>
+    </components>
+    <page-setup>
+        <simple-master-page name="NewSimpleMasterPage" id="3">
+            <property name="topMargin">0in</property>
+            <property name="leftMargin">0in</property>
+            <property name="bottomMargin">0in</property>
+            <property name="rightMargin">0in</property>
+            <property name="showHeaderOnFirst">false</property>
+            <property name="showFooterOnLast">false</property>
+            <property name="headerHeight">0in</property>
+            <property name="footerHeight">0in</property>
+        </simple-master-page>
+    </page-setup>
+</library>

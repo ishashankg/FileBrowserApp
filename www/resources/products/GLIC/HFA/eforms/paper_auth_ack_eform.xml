@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onSave>saveData</onSave>
+	<page>
+		<section title="AUTHORIZATION TO OBTAIN INFORMATION">
+			<group labelWidth="400px">
+				<question id='hipaa_sig_insured' text='Signature of Proposed Insured'
+					type='CHECKBOX' answerSet='Y' />
+				<question id='hipaa_date_insured' text='Date' type='DATEF' />
+				<question id='hipaa_sig_owner'
+					text='Signature of Policyowner (if other than Proposed Insured or Applicant)'
+					type='CHECKBOX' answerSet='Y' />
+				<question id='hipaa_date_owner' text='Date' type='DATEF' />
+			</group>
+			<group labelWidth="200px">
+				<question id='contract_city' text='Signed at (City)' type='TEXT' />
+				<question id='contract_state' text='Signed at (State)' type='LISTBOX' lookup="step:LOCALE_STATE"
+					answerSet=":Please select a state|N_A:Not Applicable" answerWidth="180px;"  />
+			</group>
+		</section>
+		<section title="ACKNOWLEDGEMENT OF INFORMATION PROVIDED">
+			<group labelWidth="400px">
+				<question id='ack_sig_insured' text='Signature of Proposed Insured'
+					type='CHECKBOX' answerSet='Y' />
+				<question id='ack_date_insured' text='Date' type='DATEF' />
+				<question id='ack_sig_owner'
+					text='Signature of Policyowner (if other than Proposed Insured or Applicant)'
+					type='CHECKBOX' answerSet='Y' />
+				<question id='ack_date_owner' text='Date' type='DATEF' />
+			</group>
+			<group labelWidth="200px">
+				<question id='ack_city' text='Signed at (City)' type='TEXT' />
+				<question id='ack_state' text='Signed at (State)' type='LISTBOX' lookup="step:LOCALE_STATE"
+					answerSet=":Please select a state|N_A:Not Applicable" answerWidth="180px;"  />
+			</group>
+		</section>
+	</page>
+</form>

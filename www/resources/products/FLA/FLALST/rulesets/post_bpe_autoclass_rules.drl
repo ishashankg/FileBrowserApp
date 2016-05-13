@@ -1,0 +1,509 @@
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.RulesResponse;
+import java.util.*;
+import java.math.BigDecimal;
+import com.stepsoln.core.rules.uw.RiskCalculationRequirementData;
+import com.stepsoln.core.rules.uw.CaseMericaRecommendationData;
+import com.stepsoln.core.rules.coverages.CoverageChangeData;
+import com.stepsoln.core.rules.coverages.CoverageChangeItemData;
+import com.stepsoln.core.rules.coverages.UnderWritingClassData;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.Requirement;
+import com.stepsoln.core.util.FormatUtil;
+import com.stepsoln.core.util.DateUtil;
+import com.stepsoln.core.rules.uw.*;
+import com.stepsoln.core.util.MathUtil;
+import com.stepsoln.core.rules.RuleUtil;
+import java.util.Map;
+import java.util.HashMap;
+import java.lang.Boolean;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global com.stepsoln.core.rules.Counter numberOfMIBHits;
+global java.util.HashMap questionIdMap;
+global com.stepsoln.core.rules.Counter declineCase;
+
+rule "populate question ID map"
+salience 999
+when
+    eval( true )
+then
+    questionIdMap.put("med_q17","9");
+    questionIdMap.put("med_q18","10");
+    questionIdMap.put("med_q20","11");
+    questionIdMap.put("med_q21","12");
+    questionIdMap.put("med_q22","13");
+    questionIdMap.put("med_q23","14");
+    questionIdMap.put("med_q24","15");
+ 	questionIdMap.put("med_q25","16");
+    questionIdMap.put("med_q26","17");
+    questionIdMap.put("med_q31","22");
+    questionIdMap.put("med_q32","23");
+end
+
+rule "1. Occupations on List force; DECLINE"
+salience 80
+activation-group "declineCases"
+	when
+		Question(id == "occupation", answer in ("AMBASSADOR","ARMED SECURITY GUARD", "BODYGUARD", "DIPLOMAT", "DISABILITY", "DISABLED", 
+			"FLIGHT INSTRUCTOR", "INTERROGATOR", "MINER BELOW GROUND", "MISSIONARY", "MONEY LENDER", "PARATROOPER", "SHARPSHOOTER", "SNIPER", "SPELUNKER", 
+			"BOUNCER", "BOUNTY HUNTER", "ESCORT", "EXOTIC DANCER", "GAMBLER", "MERCENARY", "PROFESSIONAL GAMBLER", "PROSTITUTE", "SEX WORKER", "STRIPPER", "TEST PILOT"), $a:answer );
+	then
+		declineCase.addCount();
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.addUserNotifcationInfo("Final. Risk Calc. - Merica underwriting engine has returned DECLINE rating due to occupational risk. Occupation of ("+ $a +"); DECLINE");
+		rulesResponse.addToRuleFiredList(1);
+end
+
+rule "2. if Merica Decision is DECLINE; so case DECLINE "
+salience 80
+activation-group "declineCases"
+	when
+		CaseMericaRecommendationData( recommendation in("DECLINE"), $rec: recommendation)
+	then
+		declineCase.addCount();
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.getUserNotificationInfo().clear();
+		rulesResponse.addUserNotifcationInfo("Merica Decision is = DECLINE, so case will be AUTO DECLINE");
+		rulesResponse.addToRuleFiredList(2);
+end
+
+rule "3. DECLINE when the total flat extra in the case_merica_recommendation_detail is > $7.50"
+salience 80
+activation-group "declineCases"
+	when
+	  	$totalFlatExtra: Number(doubleValue > 7.5) from accumulate (
+			$rdd:CaseMericaRecommendationDetailData( null != permilleOfSum && permilleOfSum > 0 )
+			init( BigDecimal total = new BigDecimal("0"); ),
+         	action( total = total.add($rdd.getPermilleOfSum()); ),
+         	result( total )
+	  	)
+	then
+		declineCase.addCount();
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.addUserNotifcationInfo("The total flat extra is > $7.50; DECLINE");
+		rulesResponse.addToRuleFiredList(3);
+end
+
+rule "4. Decline based on Drug rules"
+salience 80
+activation-group "declineCases"
+	when
+		CaseUwMedicalDrugData(uwAction in("DECLINE")) 
+	then
+		declineCase.addCount();
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.addUserNotifcationInfo("Drugs' rules result in DECLINE");
+		rulesResponse.addToRuleFiredList(4);
+end
+
+rule "5. If no driver's license, DECLINE "
+salience 80
+activation-group "declineCases"
+	when
+		RiskCalculationRequirementData($d:driverLicense, driverLicense in ("NONE", "NA"))
+	then
+		declineCase.addCount();
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.addUserNotifcationInfo("No driver's license ("+$d+"); RTU");
+		rulesResponse.addToRuleFiredList(5);
+end
+
+rule "6. Driving violation results in flat fees greater than $7.5, DECLINE"
+salience 80
+activation-group "declineCases"
+	when
+		CaseUwMvrData(uwAction not in("ACCEPT", "DECLINE"), rateAmount > 7.50) 
+	then
+		declineCase.addCount();
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.addUserNotifcationInfo("Driving violation results in flat fees > $7.5; DECLINE");
+		rulesResponse.addToRuleFiredList(6);
+end
+
+rule "7. Decline based on MVR report"
+salience 80
+activation-group "declineCases"
+	when
+		CaseUwMvrData(uwAction in("DECLINE")) 
+	then
+		declineCase.addCount();
+		rulesResponse.setUwStatus("DECLINE");
+		rulesResponse.addUserNotifcationInfo("Driving violation results in DECLINE");
+		rulesResponse.addToRuleFiredList(7);
+end
+
+rule "8. if Merica Decision is NOT =  ACCEPT or OFFER  or BORDERLINE or DECLINE; RTU"
+salience 60
+	when
+		CaseMericaRecommendationData( recommendation not in("BORDERLINE","ACCEPT","OFFER","DECLINE"), $rec: recommendation)
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Merica Decision is NOT = ACCEPT or OFFER or BORDERLINE or DECLINE ("+ $rec +"); RTU");
+			rulesResponse.addToRuleFiredList(8);
+		}
+end
+
+rule "9. Family History: if more than 2 deaths reported prior to age 60- RTU"
+salience 60
+	when
+	    $deathCount : Number(intValue >= 2) from accumulate(
+         CaseUwMedicalFamilyHistoryData( isDeceased==true, ageAtDiagnosis < 60),
+         init( int total = 0; ),
+         action( total += 1; ),
+         reverse( total -= 1; ),
+         result( new Integer( total ) ) )
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Family History: more than 2 deaths reported prior to age 60; RTU");
+			rulesResponse.addToRuleFiredList(9);
+		}
+end
+
+/*rule "10. If Question  15 or 16 = Y; RTU"
+salience 60
+	when
+		Question(id in("med_q25", "med_q26"), answer == "Y", $id3:id);
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Question " + questionIdMap.get($id3) + " = Y; RTU");
+			rulesResponse.addToRuleFiredList(10);
+		}
+end
+*/
+
+// the rule refers to the displayed number on the eform, eg. 'med_q17' is '8.  Do  you  currently take more than 2 prescription...'
+rule "11. If Question  9, 10, 11, 12, 13, 14, 15, 16, 17, 22, 23 = Y; RTU"
+salience 60
+	when
+		Question(id in("med_q17", "med_q18", "med_q20", "med_q21", "med_q22", "med_q23", "med_q24", "med_q25", "med_q26","med_q31", "med_q32"), answer == "Y", $id4:id);
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Question " + questionIdMap.get($id4) + " = Y; RTU");
+			rulesResponse.addToRuleFiredList(11);
+		}
+end
+
+rule "12. Student age >28; RTU"
+salience 60
+	when
+		Question(id == "occupation", answer in ( "STUDENT", "COLLEGE STUDENT", "LAW STUDENT", "UNIVERSITY STUDENT"), $aa:answer );
+		RiskCalculationRequirementData(age>28, $a12:age)
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Proposed Insured occupation is "+ $aa +" and age is greater than 28. RTU");
+			rulesResponse.addToRuleFiredList(12);
+		}
+end
+
+rule "13. Retired  age <58; RTU"
+salience 60
+	when
+		Question(id == "occupation", answer in ( "RETIRED", "RETIREMENT") );
+		RiskCalculationRequirementData(age<58, $a13:age)
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Proposed Insured occupation is Retired and the age is less than 58. Age is ("+ $a13 +"); RTU");
+			rulesResponse.addToRuleFiredList(13);
+		}
+end
+
+rule "14. Case will RTU if there are more than 3 IAI MIB hits in the past 12 months"
+salience 60
+	when
+		CaseUwMibData(category =="IAI", $d:mIBDate );
+		eval(DateUtil.calculateAge($d)<1)
+	then
+		if (declineCase.getCount() < 1)
+		{
+		    numberOfMIBHits.addCount();
+		    if(numberOfMIBHits.getCount()>3) {
+				rulesResponse.setUwStatus("EVALUATE");
+				rulesResponse.addUserNotifcationInfo("Case will RTU if there are more than 3 IAI MIB hits in the past 12 months");
+				rulesResponse.addToRuleFiredList(14);
+			}
+		}
+end
+
+rule "15. Faulted Medical Condition results from 3rd party but not reconciliation issue"
+salience 60
+	when
+		$d:CaseUwMedicalConditionData(uwAction == "RTU", StringUtils.isNotBlank(uwComment));
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo($d.getUwComment()+"; RTU");
+			rulesResponse.addToRuleFiredList(15);
+		}
+end
+
+rule "16. Unreconciled Medical Drug results from 3rd party"
+salience 60
+	when
+		CaseUwMedicalDrugData(uwAction not in ("ACCEPT", "DECLINE") , currentStatus != "SUCCESSFUL" );
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Unreconciled Medical Drug results from 3rd party; RTU");
+			rulesResponse.addToRuleFiredList(16);
+		}
+end
+
+rule "17. ATTUS rules/flags"
+salience 60
+	when
+		CaseUwDemographicDetailData(source=="ATTUS", attributeValue in ("RED", "YELLOW") );
+		CaseUwDemographicData(source=="ATTUS", overridden==false, currentStatus != "SUCCESSFUL");
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("ATTUS returns YELLOW or RED demographic data; RTU");
+			rulesResponse.addToRuleFiredList(17);
+		}
+end
+
+rule "18. MVR ratings or MVR record not found; RTU"
+salience 60
+	when
+		Requirement(code == "IIX", (orderStatus=="ERROR" || status=="OPEN"), $c:description );
+		not CaseUwMvrData(isOverridden==true, currentStatus == "SUCCESSFUL");
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("MVR ratings or MVR record not found by state. (REQ Code="+$c+"); RTU" );
+			rulesResponse.addToRuleFiredList(18);
+		}
+end
+
+rule "19. MVR ratings or MVR record not found by state; RTU"
+salience 60
+	when
+		CaseUwDemographicDetailData(source=="IIX", returnType=="NOHIT");
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("MVR ratings or MVR record not found by state; RTU");
+			rulesResponse.addToRuleFiredList(19);
+		}
+end
+
+rule "20. Driving License status is CANCELLED, SUSPENDED, DISQUAL, REVOKED, NOT LICENSED/ VAL, UNLICENSED, REGULAR ID, UNLICEN ;RTU"
+salience 60
+	when
+		CaseUwMvrData((StringUtils.startsWith(originalStatus, "SUS") || StringUtils.startsWith(originalStatus, "EXP")  
+			|| StringUtils.startsWith(originalStatus, "INACT") || StringUtils.startsWith(originalStatus, "DIS")  
+			|| StringUtils.startsWith(originalStatus, "CAN") || StringUtils.startsWith(originalStatus, "DEC") 
+			|| StringUtils.startsWith(originalStatus, "DQ") || StringUtils.startsWith(originalStatus, "REV") 
+			|| StringUtils.startsWith(originalStatus, "TEMP") || StringUtils.startsWith(originalStatus, "NOT") 
+			|| StringUtils.startsWith(originalStatus, "UNLICEN") 
+			|| StringUtils.startsWith(originalStatus, "REGULAR ID CARD")), $s:originalStatus);
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Driving License status is not current(DL Status="+$s+"); RTU" );
+			rulesResponse.addToRuleFiredList(20);
+		}
+end
+
+rule "21. There are 2 or more DUI from MVR"
+salience 60
+	when
+ 		$duiCount : Number(intValue >= 2) from accumulate(
+         CaseUwMvrDetailData( violationGroup in ("6", "7") ),
+         init( int total = 0; ),
+         action( total += 1; ),
+         reverse( total -= 1; ),
+         result( new Integer( total ) ) )
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("There are 2 or more DUI from MVR ("+$duiCount +"); RTU");
+			rulesResponse.addToRuleFiredList(21);
+		}
+end
+
+rule "22. MIB Codes are not reconciled; RTU"
+salience 60
+	when
+		CaseUwMibHeaderData(currentStatus != "SUCCESSFUL");
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("MIB Codes are not reconciled; RTU" );
+			rulesResponse.addToRuleFiredList(22);
+		}
+end
+
+rule "23. BMI computed in application differs from the MIB data by more than 15%"
+salience 60
+	when
+		CaseUwDemographicDetailData(source=="APPLICANT", category=="BMI", $a1:attributeValue );
+		CaseUwDemographicDetailData(source=="MIB", category=="BMI", $a2:attributeValue);
+		eval(MathUtil.getPercentageDifference($a2, $a1 ) > 0.15)
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("BMI computed in application differs from the MIB data by more than 15%; RTU");
+			rulesResponse.addToRuleFiredList(23);
+		}
+end
+
+rule "24.1 DOB can not be verified by IIX"
+salience 60
+	when
+		CaseUwDemographicDetailData(source=="IIX", category=="DOB", $a1:attributeValue );
+		CaseUwDemographicDetailData(source=="APPLICANT", category=="DOB", $a2:attributeValue );
+		eval(!$a1.equals($a2))
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("DOB cannot be verified by IIX; RTU");
+			rulesResponse.addToRuleFiredList(241);
+		}
+end
+
+rule "24.2 DOB can not be verified by IIX"
+salience 60
+	when
+		not CaseUwDemographicDetailData(source=="IIX", category=="DOB");
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("DOB cannot be verified by IIX; RTU");
+			rulesResponse.addToRuleFiredList(242);
+		}
+end
+
+rule "25. Applicant name does not match the name returned from IIX"
+salience 60
+	when
+		CaseUwDemographicDetailData(source=="IIX", category=="FULLNAME", $a1:attributeValue );
+		CaseUwDemographicDetailData(source=="APPLICANT", category=="FULLNAME", $a2:attributeValue );
+		eval(!RuleUtil.isNameMatches($a2, $a1))
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Applicant name does not match the name returned from IIX; RTU");
+			rulesResponse.addToRuleFiredList(25);
+		}
+end
+
+rule "26. RTU case basing on MIB data"
+salience 60
+	when
+		data:CaseUwMibData(uwAction=='RTU')
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Unreconciled MIB data; RTU");
+			rulesResponse.addToRuleFiredList(26);
+		}
+end
+
+rule "27. If Child answers 'yes' to any of the health questions; RTU"
+salience 60
+	when
+		Question(id in ('cMedQ1', 'cMedQ2'), answer == "Y", $id20:id);
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Question "+$id20+" = Y; RTU");
+			rulesResponse.addToRuleFiredList(27);
+		}
+end
+
+rule "28. Relationship type: girlfriend, boyfriend, cousin, insured estate; RTU"
+salience 60
+	when 
+		Question(StringUtils.contains(id, "bene_relation") || StringUtils.contains(id, "bene_org_relation"), 
+				 answer in ('GI', 'BO', 'CO', 'IE'), 
+				 $id21:id, 
+				 $a:answer);
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Question "+$id21+" = "+ $a +"; RTU");
+			rulesResponse.addToRuleFiredList(28);
+		}
+end
+
+rule "29. If weight change is 40lbs or greater = RTU"
+salience 60
+	when
+		RiskCalculationRequirementData(weightChange<=-40 || weightChange>=40, $w:weightChange )
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Weight change exceeds 40lbs. Weight Change of ("+$w+"); RTU");
+			rulesResponse.addToRuleFiredList(29);
+		}
+end
+
+rule "30. Unreconciled Medical Condition results from 3rd party"
+salience 60
+	when
+		CaseUwMedicalConditionData(currentStatus != "SUCCESSFUL" );
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Unreconciled Medical Condition results from 3rd party; RTU");
+			rulesResponse.addToRuleFiredList(30);
+		}
+end
+
+rule "31. Occupations on List force; RTU"
+salience 60
+	when
+		Question(id == "occupation", answer in ("AIR FORCES", "AIRMAN", "ARMED FORCES", "ARMY", "MARINE", "MARKSMAN", "MILITARY PERSONNEL", 
+			"NAVY", "SOLDIER", "UNEMPLOYED", "LAID OFF", "NOT EMPLOYED"), $a:answer );
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo("Proposed Insured occupation is ("+ $a +"); RTU");
+			rulesResponse.addToRuleFiredList(31);
+		}
+end
+
+rule "32. When DemographicData from 3d party has errors: RTU" //a rule to indicate a problem not covered by reconciliation rules
+salience 60
+	when
+		$d:CaseUwDemographicData(uwAction=="RTU", StringUtils.isNotBlank(uwComment));
+	then
+		if (declineCase.getCount() < 1)
+		{
+			rulesResponse.setUwStatus("EVALUATE");
+			rulesResponse.addUserNotifcationInfo($d.getUwComment()+"; RTU");
+			rulesResponse.addToRuleFiredList(32);
+		}
+end

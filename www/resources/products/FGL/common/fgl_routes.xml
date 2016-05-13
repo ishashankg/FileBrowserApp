@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+
+  <route id="fgl_test">
+ 	<setHeader headerName="defaultOuCode"><simple>DEP</simple></setHeader>
+ 	<setHeader headerName="defaultCarrierCode"><simple>FGL</simple></setHeader>
+ 	<setHeader headerName="defaultProductCode"><simple>PLATINA</simple></setHeader>
+    <from uri="file://{{rootOutputDirectory}}/FGL/inbound/?move=.done&amp;moveFailed=.error"/>
+    <to uri="bean:intakeCaseProcessor"/>
+  </route>
+  
+  <route id="document_management_file_processor">
+   <setHeader headerName="defaultCarrierCode"><simple>FGL</simple></setHeader>
+    <from uri="file://{{rootOutputDirectory}}/FGL/documentmanagement/incoming/?include=.*\.pdf&amp;move=.done&amp;moveFailed=.error&amp;consumer.delay=5000"/>
+    <to uri="bean:documentIntakeFileProcessor"/>
+  </route>
+
+  <route id="acord_103_processor">
+  	<from uri="activemq://ACORD_103.QUEUE"/>
+    <to uri="bean:acord103FileProcessor"/>
+    <to uri="file://{{rootOutputDirectory}}/FGL/outbound/nb/?fileName=${in.header.fileName}.zip"/>
+  </route>
+  
+  <route id="nb_messages_packet_generator">
+		<from uri="timer://acordGenerateTimer?period={{modified.case.packet.generation.interval}}" />
+		<to uri="bean:nbMessagesPacketProcessor"/>
+		<choice>
+            <when>
+                <simple>${body} != null</simple>
+				<to	uri="file://{{rootOutputDirectory}}/FGL/outbound/acord/?fileName=${in.header.fileName}" /> 
+            </when>
+        </choice>
+  </route>
+
+</routes>

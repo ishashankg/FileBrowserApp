@@ -1,0 +1,22 @@
+<map>
+  <entry>
+    <string>Date</string>
+    <string>${com.stepsoln.core.util.DateUtil.formatDateSlash(CASE.createdDate)}</string>
+  </entry>
+  <entry>
+    <string>Policy Owner</string>
+    <string>${CASE.otherOwnerApplicant ? CASE.otherOwnerApplicant.firstName : CASE.primaryApplicant.firstName} ${CASE.otherOwnerApplicant ? CASE.otherOwnerApplicant.middleName?:'' : CASE.primaryApplicant.middleName?:''} ${CASE.otherOwnerApplicant ? CASE.otherOwnerApplicant.lastName : CASE.primaryApplicant.lastName}</string>
+  </entry>
+  <entry>
+    <string>Address1</string>
+    <string>${CASE.otherOwnerApplicant ? CASE.otherOwnerApplicant?.primaryAddress.addressLine1?:'' : CASE.primaryApplicant.primaryAddress.addressLine1?:''}</string>
+  </entry>
+  <entry>
+    <string>City State Zip</string>
+    <string>${CASE.otherOwnerApplicant ? CASE.otherOwnerApplicant.primaryAddress.city?:'' : CASE.primaryApplicant.primaryAddress.city?:''} ${CASE.otherOwnerApplicant ? CASE.otherOwnerApplicant.primaryAddress.state?:'' : CASE.primaryApplicant.primaryAddress.state?:''} ${CASE.otherOwnerApplicant ? CASE.otherOwnerApplicant.primaryAddress.zip?:'' : CASE.primaryApplicant.primaryAddress.zip?:''}</string>
+  </entry>
+  <entry>
+    <string>Policy No - Policy Insured</string>
+    <string>${CASE.externalCaseNumber ?: CASE.policyNo} - ${CASE.primaryApplicant.firstName ?: ""} ${CASE.primaryApplicant.middleName ?: ""} ${CASE.primaryApplicant.lastName ?: ""}</string>
+  </entry>
+</map>

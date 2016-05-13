@@ -1,0 +1,15 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.EformCode;
+import com.stepsoln.core.util.DateUtil;
+import java.util.Date;
+
+import com.stepsoln.core.rules.requirements.Requirement
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Appointment date must be in the future"
+	when
+		$q:Question (id=="ag_applicant_exam_date", answer!=null && DateUtil.daysInBetween(new Date(), (java.util.Date)answer)<0 );
+	then
+		rulesResponse.addRequiredOnce("Appointment date can not be before today's date");
+end

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <page title="HIPAA Authorization">
+  <section>
+	<group labelWidth="400px" height="250px" title="Full HIPAA" scrollable="true">
+		<paragragh text="PURPOSES" styleClass="groupParagraphBold"></paragragh>
+		<paragragh text="This authorization applies to any Personal Information (defined below) that may be obtained, used, or disclosed about the Proposed Insured by the Gerber Life Insurance Company (the &quot;Company,&quot; &quot;we&quot;, or &quot;us&quot;) for the purpose of determining the Proposed Insured&apos;s eligibility for insurance, which may include the processing of an application for insurance or any other legally permissible activities that relate to any coverage with the Company." styleClass="groupParagraph"></paragragh>
+		<paragragh text="PERSONAL INFORMATION" styleClass="groupParagraphBold"></paragragh>
+		<paragragh text="I understand and agree that the types of &quot;Personal Information&quot; that may be obtained, used, or disclosed about the Proposed Insured on the basis of this authorization may include, to the extent permitted by law: " styleClass="groupParagraph"></paragragh>
+		<paragragh text="(i) any and all health records about the Proposed Insured, including, but not limited to, information regarding medical, mental, or physical condition and treatment, prescription drug history, lab results, drug or alcohol use, and the diagnosis and treatment of Human Immunodeficiency Virus (&quot;HIV&quot;) or other sexually transmitted diseases; and, " styleClass="groupParagraph"></paragragh>
+		<paragragh text="(ii) non-health information about the Proposed Insured, including, but not limited to, information regarding finances, demographics (date of birth, birthplace, state of residence, etc.), employment, general reputation, insurance (including previous application activities), credit history, criminal history, and driving history. " styleClass="groupParagraph"></paragragh>
+	
+		<paragragh text="Personal Information does not include psychotherapy notes unless such notes are included with the medical record. " styleClass="groupParagraph"></paragragh>
+		<paragragh text="AUTHORIZATION FOR OTHERS TO DISCLOSE TO US" styleClass="groupParagraphBold"></paragragh>
+		<paragragh text="I authorize all of the following classes of people or entities to disclose Personal Information about the Proposed Insured to the Company and its authorized agents and representatives: physicians, medical practitioners, hospitals, clinics, laboratories, pharmacies, pharmacy benefit managers, medical care facilities, and all other providers of medical services or sources of medical records; consumer reporting agencies; financial sources; business associates; past or current employers; benefit plan sponsors; government units, including the Department of Motor Vehicles; the Medical Information Bureau (MIB); and insurance companies. I further authorize the Company, and its authorized agents and representatives, to collect and process such Personal Information. By signing below, I acknowledge that any prior agreement I have made to restrict or limit the disclosure of Personal Information about the Proposed Insured does not apply to this authorization." styleClass="groupParagraph"></paragragh>
+		<paragragh text="AUTHORIZATION FOR US TO DISCLOSE TO OTHERS (AND POTENTIAL FOR RE-DISCLOSURE)" styleClass="groupParagraphBold"></paragragh>
+		<paragragh text="I understand that the Company may disclose Personal Information for the purposes stated in this authorization to the Company's underwriters, administrators, reinsurers, contractors or others who may perform business services for the Company, or to the beneficiaries or other owners of the Proposed Insured's policy. In addition, Personal Information may be disclosed (i) to the Medical Information Bureau (MIB) in an effort to deter fraud, misrepresentation, or criminal activity, or (ii) as otherwise required or permitted by law. Personal Information which is used or disclosed pursuant to this authorization may be subject to re-disclosure by the recipient, and may no longer be protected under federal or state privacy laws. " styleClass="groupParagraph"></paragragh>
+		<paragragh text="FAILURE TO SIGN" styleClass="groupParagraphBold"></paragragh>
+		<paragragh text="I understand that I may refuse to sign this authorization. I realize that if I refuse to sign, the Company may not be able to issue the insurance for which I am applying or may not be able to make benefit payments." styleClass="groupParagraph"></paragragh>
+		<paragragh text="DURATION AND REVOCATION" styleClass="groupParagraphBold"></paragragh>
+		<paragragh text="Unless revoked earlier, this authorization will remain in effect for 24 months* from the date signed. I understand that I may revoke this authorization at any time, by written notice to: " styleClass="groupParagraph"></paragragh>
+		<paragragh text="Gerber Life Insurance Company" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="ATTN: Underwriting Department" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="445 State Street" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="Fremont, MI 49412" styleClass="groupParagraphCenter"></paragragh>
+		<paragragh text="I understand that my right to revoke this authorization is limited to the extent that the Company has already taken action in reliance upon this authorization or the law allows the Company to contest the issuance of a policy or a claim under a policy. " styleClass="groupParagraph"></paragragh>
+		<paragragh text="COPIES OF THIS FORM" styleClass="groupParagraphBold"></paragragh>
+      	<paragragh text="I agree that a copy of this authorization form (including faxes and electronic transmissions of this form) will be as valid as the original for purposes of obtaining or disclosing the required Personal Information about the Proposed Insured. I also understand that I am entitled to obtain a copy of this authorization form." styleClass="groupParagraph"></paragragh>
+    </group>    
+  </section>
+  </page>
+</form>

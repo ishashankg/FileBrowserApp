@@ -1,0 +1,121 @@
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.RulesResponse;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.ArrayUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.db.cases.Case.CASE_SOURCE;
+import rules.*;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Atlantic Time Zone"
+	when
+		CaseData(contractState in ("PR","VI"));
+	then
+		rulesResponse.setTimeZone("Atlantic");
+end
+
+rule "Eastern Time Zone"
+	when
+		CaseData(contractState in ("CT","DE","DC","FL","GA","IN","ME","MD","MA","MI","NH","NJ","NY","NC","OH","PA","RI","SC","VT","VA","WV"));
+	then
+		rulesResponse.setTimeZone("Eastern");
+end
+
+rule "Central Time Zone"
+	when
+		CaseData(contractState in ("AL","AR","IL","IA","KS","KY","LA","MN","MS","MO","NE","ND","OK","SD","TN","TX","WI"));
+	then
+		rulesResponse.setTimeZone("Central");
+end
+
+rule "Mountain Time Zone"
+	when
+		CaseData(contractState in ("AZ","CO","ID","MT","NM","UT","WY"));
+	then
+		rulesResponse.setTimeZone("Mountain");
+end
+
+rule "Pacific Time Zone"
+	when
+		CaseData(contractState in ("CA","NV","OR","WA"));
+	then
+		rulesResponse.setTimeZone("Pacific");
+end
+
+rule "Alaska Time Zone"
+	when
+		CaseData(contractState in ("AK"));
+	then
+		rulesResponse.setTimeZone("Alaska");
+end
+
+rule "Hawaii Time Zone"
+	when
+		CaseData(contractState in ("HI"));
+	then
+		rulesResponse.setTimeZone("Hawaii");
+end
+
+rule "Samoa Time Zone"
+	when
+		CaseData(contractState in ("AS"));
+	then
+		rulesResponse.setTimeZone("Samoa");
+end
+
+rule "Chamorro Time Zone"
+	when
+		CaseData(contractState in ("GU","MP"));
+	then
+		rulesResponse.setTimeZone("Chamorro");
+end
+
+rule "Marshall Islands Time Zone"
+	when
+		CaseData(contractState in ("MH"));
+	then
+		rulesResponse.setTimeZone("Marshall Islands");
+end
+
+rule "FSM Time Zone"
+	when
+		CaseData(contractState in ("FS"));
+	then
+		rulesResponse.setTimeZone("FSM");
+end
+
+rule "Palau Time Zone"
+	when
+		CaseData(contractState in ("PW"));
+	then
+		rulesResponse.setTimeZone("Palau");
+end
+
+rule "Policy Assignment"
+	when
+		theCaseData:CaseData(caseSource in ('IPAPER', 'EPAPER', 'EXTERNAL', 'CAPTIVE', 'INTERNET'), StringUtils.isEmpty(externalCaseNumber), StringUtils.isEmpty(policyNumber));
+	then
+		String seqName="POLICY_NUMBER_INTERNET";
+		if (Case.CASE_SOURCE.IPAPER.name().equalsIgnoreCase(theCaseData.getCaseSource()))
+		{
+			seqName="POLICY_NUMBER_IPAPER";
+		}
+		else if (Case.CASE_SOURCE.EPAPER.name().equalsIgnoreCase(theCaseData.getCaseSource()))
+		{
+			seqName="POLICY_NUMBER_EPAPER";
+		}
+		else if (Case.CASE_SOURCE.EXTERNAL.name().equalsIgnoreCase(theCaseData.getCaseSource()))
+		{
+			seqName="POLICY_NUMBER_INTERNET";
+		}
+		else if (Case.CASE_SOURCE.INTERNET.name().equalsIgnoreCase(theCaseData.getCaseSource()))
+		{
+			seqName="POLICY_NUMBER_INTERNET";
+		}
+		else if (Case.CASE_SOURCE.CAPTIVE.name().equalsIgnoreCase(theCaseData.getCaseSource()))
+		{
+			seqName="POLICY_NUMBER_CAPTIVE";
+		}
+		rulesResponse.setPolicyNumber(seqName);
+end

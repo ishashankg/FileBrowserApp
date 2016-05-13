@@ -1,0 +1,40 @@
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <page title="Health Questions for Supplemental Coverage">
+    <section title="Primary Insured Health Questions">
+      <group style="width:90%">
+        <header> If enrolling for Supplemental Coverage, please answer the
+          following questions. Supplemental Life Insurance Coverage is
+          available only to Eligible Employees who are below age 70 and
+          enrolled in Basic Life Insurance Coverage.
+          Note: If the answer is Yes to either question, you are not eligible for
+          Supplemental Life Insurance Coverage.
+        </header>
+        </group>
+         <group>
+        <question id="proposedMedical9a1"
+          text="Within the last five (5) years, have you received treatment for or been diagnosed as having any of the following: cancer, diabetes, stroke, nervous system or neuromuscular disease or disorder, blood disease or disorder, kidney disease or failure, liver disease or hepatitis (other than Type A), lung disease, or any condition of the heart, arteries or brain?"
+          type="RADIO" labelWidth="81%" answerSet="1:Yes|2:No" required="true" />
+
+        <question id="proposedMedical8a1"
+          text="Have you tested positive for any of the following:  HIV, AIDS, ARC or any immunological disorder?"
+          type="RADIO" labelWidth="81%" answerSet="1:Yes|2:No" required="true" />
+      </group>
+    </section>
+    <section title="Height and weight details" style="padding-top:1%;padding-bottom:2%">
+      <group associated="true">
+        <question id='height_feet' text='Height: (ft.)' 
+          type='LISTBOX' required="true" answerSet=": |2|3|4|5|6|7" answerStyle="width: 13%;"/>
+        <question id='height_inches' text='(in.)' type='LISTBOX'
+          required="true" answerSet=": |0|1|2|3|4|5|6|7|8|9|10|11" answerStyle="width: 13%;"/>
+       </group>
+      <group>
+        <question id='weight_pounds' text='Weight: (lbs)' type='NUMBER'
+          required="true" answerWidth="6%;" />
+      </group>
+    </section>
+  </page>
+    
+
+
+</form>

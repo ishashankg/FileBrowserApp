@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd" viewLayout="accordion" title="Annuitant;Joint Annuitant">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<onSave>saveAnnuitant</onSave>
+	<page>
+		<section title="Annuitant Information" style="margin-left:0px">
+			<group associated="true">
+				<question id='annuitant_title' text='Title' name='Annuitant Title' type='LISTBOX' answerSet="|Mr.|Mrs.|Miss|Ms"  labelWidth="100px" labelStyle='margin-left:8px' answerWidth="120px" tabindex ='1'/>
+				<question id='annuitant_address1' text='Address Line1' name='Annuitant Address Line1' type='TEXT' answerWidth="120px" labelWidth="100px" labelStyle='margin-left:8px' tabindex ='8' />
+			</group>
+			<group associated="true">
+				<question id='annuitant_first_name' text='First Name' name='Annuitant First Name' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:8px' tabindex ='2'/>
+				<question id='annuitant_address2' text='Address Line2' name='Annuitant Address Line2' type='TEXT' answerWidth="120px" labelWidth="100px" labelStyle='margin-left:8px' tabindex ='9' />
+			</group>
+			<group associated="true">
+				<question id='annuitant_middle_name' text='Middle Name' name='Annuitant Middle Name' labelWidth="100px" type='TEXT' answerWidth="120px" labelStyle='margin-left:8px' tabindex ='3' />
+				<question id='annuitant_city' required="false" text='City' name='Annuitant City' type='TEXT' labelWidth="100px" answerWidth="120px" labelStyle='margin-left: 20px' tabindex ='10' />      
+			</group>
+			<group associated="true">
+				<question id='annuitant_last_name' text='Last Name' name='Annuitant Last Name' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:8px' tabindex ='4' />
+				<question id='annuitant_state' text='State' name='Annuitant State' type='LISTBOX' lookup="step:US_LOCALE_STATE" required="false"
+          answerSet=" |Unknown:Not Applicable" labelWidth="100px" answerWidth="120px" labelStyle='margin-left:20px;' tabindex ='11' />     
+			</group>
+			<group style='margin-top:8px' associated="true">
+				<question id='annuitant_gender' text='Gender' name='Annuitant Gender' type='LISTBOX' answerSet='|1:Male|0:Female' required="true" labelWidth="100px" labelStyle='margin-left:8px' answerWidth="120px" tabindex ='5' />
+				<question id='annuitant_zip' required="false" text='Zipcode' name='Annuitant Zipcode' type='TEXT' labelWidth="100px" answerWidth="120px" labelStyle='margin-left:20px;' tabindex ='12' />           
+			</group>
+			<group associated="true" style='margin-top:8px;'>
+				<question id='annuitant_ssn' type='SSN' text='SSN' name='Annuitant SSN' answerStyle="margin-left:0px; margin-right:0px;"
+          labelWidth="100px" answerWidth="120px" required="true" labelStyle='margin-left:8px' tabindex ='6' />
+				<question id='annuitant_phone' text='Phone No.' name='Annuitant Phone No.' type='PHONE' answerStyle="margin-left:0px; margin-right:0px;"
+          required="false" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='13'/> 
+			</group>
+			<group associated="true">
+				<question id='annuitant_date_of_birth' text='Date of Birth' name='Annuitant Date of Birth'         type='DATEF' required="true" answerWidth="120px" labelWidth="100px" answerStyle="margin-left:0px; margin-right:0px;" labelStyle='margin-left:8px' tabindex ='7' />
+				<question id='annuitant_email_address' text='Email Address' name='Annuitant Email Address' answerStyle="margin-left:0px; margin-right:0px;"
+          type='TEXT' required="false" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='14' />     
+			</group>					
+		</section> 		
+		<section title="Additional Information" style="margin-left:0px">
+			<group>		
+				<question id='annuitant_identification_no' required="true" text='Identification No.' name='Annuitant Identification No.' type='TEXT' labelWidth="200px" answerWidth="120px" labelStyle='margin-left:19px' tabindex ='15' requiredOveride='ALLOW_OVERRIDE' /> 
+				<question id='annuitant_identification_state' text='Identification State' name='Annuitant Identification State' type='LISTBOX' lookup="step:US_LOCALE_STATE" required="true" answerSet=" |Unknown:Not Applicable" labelWidth="200px" answerWidth="120px" labelStyle='margin-left:20px;' tabindex ='16' requiredOveride='ALLOW_OVERRIDE' /> 
+				<question id='annuitant_identification_type' text='Identification Type' name='Annuitant Identification Type' type='LISTBOX'
+          answerSet='|SI:State Issued|I:Immigration|M:Military|P:Passport|O:Other' required="true" labelWidth="200px" labelStyle='margin-left:20px'
+          answerWidth="120px" tabindex ='17' requiredOveride='ALLOW_OVERRIDE'/>		
+				<question id='annuitant_other_identification_type' text='Please Specify Type' name='Annuitant Specify Identification Type' type='TEXT' required="true" answerWidth="120px" labelWidth="200px" labelStyle='margin-left:20px' tabindex ='18' requiredOveride='ALLOW_OVERRIDE'>
+					<displayWhen>#{EFORM.annuitant_identification_type=="O"}</displayWhen>
+				</question>    		  
+				<question id='joint_annuitant' required="true" text='Is there a Joint Annuitant?' name="Is there a Joint Annuitant" type='LISTBOX' style='margin-top:5px;' answerSet=' : |Y:Yes|N:No' answerWidth="120px" labelWidth="200px" labelStyle='margin-left:20px;' tabindex ='19'/>
+			</group>
+		</section> 
+	</page> 
+	<page>
+		<displayWhen>#{EFORM.joint_annuitant=="Y"}</displayWhen>
+		<section title="Joint Annuitant">			
+			<group associated="true">
+				<question id='joint_annuitant_title' text='Title' name='Joint Annuitant Title' type='LISTBOX'  answerSet="|Mr.|Mrs.|Miss|Ms"
+          labelWidth="100px" labelStyle='margin-left:0px' answerWidth="120px" tabindex ='20'/>
+				<question id='joint_annuitant_address1' text='Address Line1' name='Joint Annuitant Address Line1' type='TEXT' answerWidth="120px" labelWidth="100px" labelStyle='margin-left:0px' tabindex ='27' />        
+			</group>
+			<group associated="true">
+				<question id='joint_annuitant_first_name' text='First Name' name='Joint Annuitant First Name' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex ='21'/>
+				<question id='joint_annuitant_address2' text='Address Line2' name='Joint Annuitant Address Line2' type='TEXT' answerWidth="120px" labelWidth="100px" labelStyle='margin-left:0px' tabindex ='28' />
+			</group>
+			<group associated="true">
+				<question id='joint_annuitant_middle_name' text='Middle Name' name='Joint Annuitant Middle Name' labelWidth="100px" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex ='22' />
+				<question id='joint_annuitant_city' required="false" text='City' name='Joint Annuitant City' type='TEXT' labelWidth="100px" answerWidth="120px" labelStyle='margin-left:20px' tabindex ='29'/>				      
+			</group>
+			<group associated="true">
+				<question id='joint_annuitant_last_name' text='Last Name' name='Joint Annuitant Last Name' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex ='23'/>
+				<question id='joint_annuitant_state' text='State' name='Joint Annuitant State' type='LISTBOX' lookup="step:US_LOCALE_STATE" required="true" answerSet=" |Unknown:Not Applicable" labelWidth="100px" answerWidth="120px" labelStyle='margin-left:20px;' tabindex ='30'/>     
+			</group>
+			<group style='margin-top:0px' associated="true">
+				<question id='joint_annuitant_gender' text='Gender' name='Joint Annuitant Gender' type='LISTBOX' answerSet='|1:Male|0:Female' required="true" labelWidth="100px" labelStyle='margin-left:0px' answerWidth="120px" tabindex ='24'/>
+				<question id='joint_annuitant_zip' required="false" text='Zipcode' name='Joint Annuitant Zipcode' type='TEXT' labelWidth="100px" answerWidth="120px" labelStyle='margin-left:20px;' tabindex ='31'/>  				   
+			</group>
+			<group associated="true" style='margin-top:0px;'>
+				<question id='joint_annuitant_ssn' type='SSN' text='SSN' name='Joint Annuitant SSN' answerStyle="margin-left:0px; margin-right:0px;" labelWidth="100px" answerWidth="120px" required="true" labelStyle='margin-left:0px' tabindex ='25' />
+				<question id='joint_annuitant_phone' text='Phone No.' name='Joint Annuitant Phone No.' type='PHONE' answerStyle="margin-left:0px; margin-right:0px;" required="false" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='32' />          
+			</group>
+			<group associated="true">
+				<question id='joint_annuitant_date_of_birth' text='Date of Birth' name='Joint Annuitant Date of Birth' answerStyle="margin-left:0px; margin-right:0px;" type='DATEF' required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:0px' tabindex ='26' />
+				<question id='joint_annuitant_email_address' text='Email Address' name='Joint Annuitant Email Address' answerStyle="margin-left:1px; margin-right:0px;" type='TEXT' required="false" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='33'/>  
+			</group>			
+		</section> 		
+		<section title="Joint Annuitant Additional Information" style="margin-left:0px">	
+			<group>	
+				<question id='joint_annuitant_identification_no' required="true" text='Identification No.' type='TEXT' name='Joint Annuitant Identification No.' labelWidth="200px" answerWidth="120px" labelStyle='margin-left:20px' tabindex ='34' requiredOveride='ALLOW_OVERRIDE'/>  	
+				<question id='joint_annuitant_identification_state' text='Identification State' name='Joint Annuitant Identification State' type='LISTBOX' lookup="step:US_LOCALE_STATE" required="true" answerSet=" |Unknown:Not Applicable" labelWidth="200px" answerWidth="120px" labelStyle='margin-left:20px;' tabindex ='35' requiredOveride='ALLOW_OVERRIDE'/>  		  
+				<question id='joint_annuitant_identification_type' text='Identification Type' name='Joint Annuitant Identification Type' type='LISTBOX'   answerSet='|SI:State Issued|I:Immigration|M:Military|P:Passport|O:Other' required="true" labelWidth="200px" labelStyle='margin-left:20px' answerWidth="120px" tabindex ='36' requiredOveride='ALLOW_OVERRIDE'/>							
+				<question id='joint_annuitant_other_identification_type' text='Please Specify Type' name='Joint Annuitant Specify Identification Type' type='TEXT' required="true" answerWidth="120px" labelWidth="200px" labelStyle='margin-left:20px' tabindex ='37' requiredOveride='ALLOW_OVERRIDE'>
+					<displayWhen>#{EFORM.joint_annuitant_identification_type=="O"}</displayWhen>
+				</question>    
+			</group>					
+		</section>  
+	</page>
+</form>

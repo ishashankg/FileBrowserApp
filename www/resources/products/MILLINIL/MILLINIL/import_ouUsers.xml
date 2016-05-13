@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<ou-users>
+	<ou-user>
+		<ousOrguCode>DTC_MILLINI_LIFE_OU</ousOrguCode>
+		<ousUserName ousAdmin="Y">DTC_MILLINI_LIFE</ousUserName>		
+	</ou-user>
+	<ou-user>
+		<ousOrguCode>DEF_MILLINI_LIFE_UWO</ousOrguCode>
+		<ousUserName ousAdmin="Y">DEF_MILLINI_LIFE_UW</ousUserName>
+	</ou-user>
+</ou-users>
+</stepImport>

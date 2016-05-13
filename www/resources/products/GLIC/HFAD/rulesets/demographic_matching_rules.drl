@@ -1,0 +1,8 @@
+
+rule "GIR Max limit"
+salience  100
+	when
+		demographic:Demographic(category==DOB, attusValue==Yellow);
+    then
+    	"RTU"
+end

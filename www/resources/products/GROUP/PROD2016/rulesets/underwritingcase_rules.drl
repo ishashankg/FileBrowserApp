@@ -1,0 +1,20 @@
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import java.util.List;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "Required Third Party Requirements"
+	when
+		GroupData(attusValidated==true)
+		form:RequirementForm(code in("MIB3RDPARTY","RXD3RDPARTY","IIX3RDPARTY","ATT3RDPARTY"));
+	then
+    	form.setRequired(true);
+end
+
+rule "Do not cancel third party and uw suggested requirements"
+	when
+		form:RequirementForm(code in("MIB3RDPARTY","ATT3RDPARTY","RXD3RDPARTY","IIX3RDPARTY","APS","MVR"));
+	then
+    	form.setCancelRequirementWhenNotRequired(false);
+end

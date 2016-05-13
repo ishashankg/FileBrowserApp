@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<users>
+		<user>
+			<usUserName>JNILE</usUserName>
+			<usPassword>P@ssword1</usPassword>
+			<usAgentCode>JNILE</usAgentCode>
+			<usAgencyCode>InstepLAg1</usAgencyCode>
+			<usMemCode></usMemCode>
+			<usFirstName>John</usFirstName>
+			<usLastName>Nile</usLastName>
+		</user>
+		<user>
+			<usUserName>OWATSON</usUserName>
+			<usPassword>P@ssword1</usPassword>
+			<usAgentCode>OWATSON</usAgentCode>
+			<usAgencyCode></usAgencyCode>
+			<usMemCode></usMemCode>
+			<usFirstName>Olivia</usFirstName>
+			<usLastName>Watson</usLastName>
+		</user>
+		<user>
+			<usUserName>DTC_INSTEP</usUserName>
+			<usPassword>P@ssword1</usPassword>
+			<usAgentCode></usAgentCode>
+			<usFirstName>DTC</usFirstName>
+			<usLastName>InStep</usLastName>
+		</user>
+		<user>
+			<usUserName>DEF_INSTEP_UW</usUserName>
+			<usPassword>P@ssword1</usPassword>
+			<usAgentCode></usAgentCode>
+			<usFirstName>Default</usFirstName>
+			<usLastName>InStep Underwriter</usLastName>
+		</user>
+	</users>
+</stepImport>

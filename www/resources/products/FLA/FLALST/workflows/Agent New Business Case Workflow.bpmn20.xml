@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:activiti="http://activiti.org/bpmn" targetNamespace="http://stepsolutions.com/clients/glic">
+  <process id="AgentNewBusinessCaseWorkflow" name="Agent New Business Case Workflow">
+    <documentation><![CDATA[Place documentation for the 'Agent New Business Case Workflow' process here.]]></documentation>
+    <startEvent id="startevent1" name="Start" />
+    <exclusiveGateway id="exclusivegateway1" name="has PolicyNo" />
+    <sequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="exclusivegateway1" />
+    <serviceTask id="servicetask1" name="Assign to UW Dept" activiti:expression="#{stepWorkflowServices.assignGroup(execution,&#39;SVC&#39;,&#39;UTS&#39;)}" />
+    <sequenceFlow id="flow2" name="no policyNo" sourceRef="exclusivegateway1" targetRef="servicetask1">
+      <conditionExpression xsi:type="tFormalExpression">#{policyNo==null}</conditionExpression>
+    </sequenceFlow>
+    <receiveTask id="receivetask1" name="Part 1 Completion (wait)" />
+    <boundaryEvent id="boundarytimer1" name="" cancelActivity="false" attachedToRef="receivetask1">
+      <timerEventDefinition>
+        <timeDuration xsi:type="tExpression" />
+      </timerEventDefinition>
+    </boundaryEvent>
+    <serviceTask id="mailtask1" name="Email Agent" activiti:type="mail">
+      <extensionElements>
+        <activiti:field name="to" expression="louis.parks@stepsolutions.com" />
+        <activiti:field name="from" expression="louis.parks@stepsolutions.com" />
+        <activiti:field name="subject" expression="Please finish your application" />
+        <activiti:field name="html">
+          <activiti:expression><![CDATA[<b>Please return to finish your application</b>]]></activiti:expression>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow3" name="" sourceRef="boundarytimer1" targetRef="mailtask1" />
+    <sequenceFlow id="flow4" name="" sourceRef="exclusivegateway1" targetRef="receivetask1" />
+    <endEvent id="endevent1" name="End" />
+    <sequenceFlow id="flow5" name="" sourceRef="servicetask1" targetRef="endevent1" />
+    <scriptTask id="scripttask1" name="Script Task" scriptFormat="groovy">    <script><![CDATA[println ('received the signal')]]></script>
+</scriptTask>
+    <sequenceFlow id="flow6" name="" sourceRef="receivetask1" targetRef="scripttask1" />
+    <userTask id="usertask1" name="User Task" activiti:assignee="#{stepWorkflowServices.selectOUUserRoundRobin(execution,&#39;NB&#39;)}">
+      <documentation><![CDATA[check application #{'true'}]]></documentation>
+    </userTask>
+    <sequenceFlow id="flow7" name="" sourceRef="mailtask1" targetRef="usertask1" />
+    <endEvent id="endevent2" name="ErrorEnd" />
+    <sequenceFlow id="flow8" name="" sourceRef="usertask1" targetRef="endevent3" />
+    <endEvent id="endevent3" name="End" />
+    <sequenceFlow id="flow9" name="" sourceRef="scripttask1" targetRef="endevent3" />
+    <serviceTask id="servicetask2" name="Email Task" activiti:expression="#{stepWorkflowServices.sendTemplateEmail(execution,&#39;glic_template1&#39;,&#39;this is some content&#39;)}" />
+    <sequenceFlow id="flow10" name="" sourceRef="servicetask1" targetRef="servicetask2" />
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_AgentNewBusinessCaseWorkflow">
+    <bpmndi:BPMNPlane id="BPMNPlane_AgentNewBusinessCaseWorkflow" bpmnElement="AgentNewBusinessCaseWorkflow">
+      <bpmndi:BPMNShape id="BPMNShape_startevent1" bpmnElement="startevent1">
+        <omgdc:Bounds x="100" y="100" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_exclusivegateway1" bpmnElement="exclusivegateway1" isMarkerVisible="true">
+        <omgdc:Bounds x="97" y="200" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_servicetask1" bpmnElement="servicetask1">
+        <omgdc:Bounds x="65" y="320" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_receivetask1" bpmnElement="receivetask1">
+        <omgdc:Bounds x="299" y="200" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_boundarytimer1" bpmnElement="boundarytimer1">
+        <omgdc:Bounds x="310" y="240" width="30" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_mailtask1" bpmnElement="mailtask1">
+        <omgdc:Bounds x="272" y="350" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_endevent1" bpmnElement="endevent1">
+        <omgdc:Bounds x="100" y="480" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask1" bpmnElement="scripttask1">
+        <omgdc:Bounds x="600" y="220" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_usertask1" bpmnElement="usertask1">
+        <omgdc:Bounds x="440" y="350" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_endevent3" bpmnElement="endevent3">
+        <omgdc:Bounds x="690" y="350" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_servicetask2" bpmnElement="servicetask2">
+        <omgdc:Bounds x="150" y="420" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow1" bpmnElement="flow1">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="117" y="135" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="117" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow2" bpmnElement="flow2">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="117" y="240" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="117" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow3" bpmnElement="flow3">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="325" y="270" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="324" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow4" bpmnElement="flow4">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="137" y="220" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="299" y="227" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow5" bpmnElement="flow5">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="117" y="375" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="117" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow6" bpmnElement="flow6">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="404" y="227" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="600" y="247" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow7" bpmnElement="flow7">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="377" y="377" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="440" y="377" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow8" bpmnElement="flow8">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="545" y="377" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="707" y="385" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow9" bpmnElement="flow9">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="652" y="275" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="707" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow10" bpmnElement="flow10">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="117" y="375" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="150" y="447" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

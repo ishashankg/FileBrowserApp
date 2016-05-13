@@ -1,0 +1,26 @@
+$currentDate
+
+$agentFirstName $agentLastName
+$agentAddressLines
+$agentCityStateZip 
+
+RE:	Application #:			$policyNumber
+	Annuitant/Insured:		$annuitantFirstName $annuitantLastName 
+	Date of Application:	$appSubmitDate
+
+
+Dear $agentFirstName $agentLastName,
+
+The annuity application submitted on behalf of the above referenced applicant has been rejected.  Our records indicate that your Company required product training on this Fidelity & Guaranty Life annuity product series has not been completed.  
+This in no way implies that you are not knowledgeable about our products and we appreciate your business.  However, as indicated in compliance bulletins, Fidelity & Guaranty Life has implemented the revised NAIC Model Regulation on Suitability in Annuity Transactions which includes this formalized on-line product training and certification.  
+Please log on to Saleslink to complete the required product specific training.  Once you complete the training, you will be asked to complete an on-line certification evidencing satisfaction of this requirement.   
+A letter has been sent to the applicant advising that this application was not accepted, with a refund of any premium submitted with the application.
+Once you have completed the product training and the on-line certification, we hope you will submit a new application for your client.  
+Should you have any questions, you can find more information on Saleslink or contact our New Business Department at 1-800-445-6758. 
+
+Sincerely,
+
+Annuity New Business Department
+
+
+Cc:  $agentFirstName $agentLastName

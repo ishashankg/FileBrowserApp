@@ -1,0 +1,568 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.EformCode;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.db.services.util.EmployeeUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.Requirement;
+import rules.*;
+import java.util.*;
+import com.stepsoln.core.rules.requirements.BeneficiaryData;
+import com.stepsoln.core.rules.RuleFilter;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+// Rule generation RE:
+//(^[\w]+$)
+//rule "require \1"\r\n\twhen\r\n\t\teval(!allAnswers.containsKey("\1"))\r\n\tthen\r\n\t\trulesResponse.addRequired("\1");\r\nend
+
+//START - Agent only rules
+rule "All forms should be reviewed"
+salience 101
+no-loop	
+	when
+		not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER'))
+		not EformCode(code == "PERSON")		
+		or ((not EformCode(code == "AGENT_ATTESTATION")) and CaseRulesObject(caseSource == 'EXTERNAL') and CaseData(StringUtils.isBlank(svcOwner)==true))
+		or not EformCode(code == "REFLEXIVE")
+	then
+		rulesResponse.addRequiredOnce("All forms should be reviewed");
+end
+
+
+//END - Agent only rules
+
+rule "3. Applicant DOB required"
+	when
+	    ApplicantData(type == "PRIMARY_INSURED", age==0)
+	then
+		rulesResponse.addRequired("Applicant DOB is required");
+		//rulesResponse.addToRuleFiredList(3);
+end
+
+//validate the Case object
+rule "required case fields"
+salience 100
+	when
+		aCase:CaseRulesObject()
+	then
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantFirstName()))
+			rulesResponse.addRequired("Primary Applicant First Name");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantLastName()))
+			rulesResponse.addRequired("Primary Applicant Last Name");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantSsn()))
+			rulesResponse.addRequired("Primary Applicant SSN");
+		if (null==aCase.getPrimaryApplicantGender())
+			rulesResponse.addRequired("Primary Applicant Gender");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantAddress()))
+			rulesResponse.addRequired("Primary Applicant Address");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantCity()))
+			rulesResponse.addRequired("Primary Applicant City");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantState()))
+			rulesResponse.addRequired("Primary Applicant State");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantZip()))
+			rulesResponse.addRequired("Primary Applicant Zip code");
+		if (StringUtils.isBlank(aCase.getPrimaryApplicantPrimaryPhone()))
+			rulesResponse.addRequired("Primary Applicant Primary Phone");
+end
+
+rule "require quote_item"
+salience 80
+	when
+		theCaseData:CaseData()
+	then
+		if (theCaseData.getFaceAmount() <= 0.0)
+		{
+			rulesResponse.addRequired("At least one quote item must be associated with the case");
+		}
+end
+
+rule "require at least one final quote"
+salience 80
+	when
+		theCaseData:CaseData(hasFinalQuote==false)
+		or CaseData(hasFinalQuote==true, premiumAmount <= 0.0)
+		
+	then
+		
+		rulesResponse.addRequired("At least one valid final quote must be associated with this case");
+end
+
+
+rule "max coverage amount"
+salience 80
+	when
+		CaseData(faceAmount > maxInsuranceAmount)
+		Requirement(code == "ALF", status == "RESOLVED", required == true)
+	then
+		rulesResponse.addRequired("The coverage amount greater than maximum allowed");
+end
+
+//validate form data
+//generated rules
+rule "require citizenship_status"
+salience 91
+	when
+		not Question(id == "citizenship_status")
+	then
+		rulesResponse.addRequired("Citizenship", "PT1");
+end
+
+rule "require type_of_curr_employ"
+salience 90
+	when
+		not Question(id == "type_of_curr_employ")
+	then
+		rulesResponse.addRequired("Type of employ", "PT1");
+end
+
+rule "require annual_earned_income"
+salience 90
+	when
+		not Question(id == "annual_earned_income")
+	then
+		rulesResponse.addRequired("Earned income", "PT1");
+end
+
+rule "require curr_employer_dur"
+salience 90
+	when
+		not Question(id == "curr_employer_dur") 
+	then
+		rulesResponse.addRequired("Years employed", "PT1");
+end
+
+rule "require curr_employer_dur_mo"
+salience 90
+	when
+		not Question(id == "curr_employer_dur_mo")
+	then
+		rulesResponse.addRequired("Months employed", "PT1");
+end
+
+rule "invalid curr_employer_dur_mo"
+salience 90
+	when
+		Question(id == "curr_employer_dur_mo" && (answerAsNumber<0 || answerAsNumber>11))
+	then
+			rulesResponse.addRequired("Invalid months value", "PT1");
+end
+
+rule "require employer_name"
+salience 90
+	when
+		not Question(id == "employer_name")
+	then
+		rulesResponse.addRequired("Employer", "PT1");
+end
+
+rule "require occupation"
+salience 90
+	when
+		not Question(id == "occupation")
+	then
+		rulesResponse.addRequired("Occupation", "PT1");
+end
+
+rule "require place_of_birth_country"
+salience 91
+	when
+		not Question(id == "place_of_birth_country")
+	then
+		rulesResponse.addRequired("Place of birth (Country)", "PT1");
+end
+
+rule "require NA of place_of_birth_state"
+salience 90
+	when
+		country:Question(id == "place_of_birth_country", answerAsString not in ("UNITED STATES","US"))
+		state:Question(id == "place_of_birth_state", answerAsString.toUpperCase() not in ("N_A","NOT APPLICABLE","ZZ")) 
+	then
+		rulesResponse.addRequired("Place of birth (State) should be Not Applicable", "PT1");
+end
+
+rule "require height_feet"
+salience 80
+	when
+		not Question(id == "height_feet")
+	then
+		rulesResponse.addRequired("Height, feet", "PT1");
+end
+
+rule "require height_inches"
+salience 80
+	when
+		not Question(id == "height_inches")
+	then
+		rulesResponse.addRequired("Height, inches", "PT1");
+end
+
+rule "require weight_pounds"
+salience 80
+	when
+		not Question(id == "weight_pounds")
+	then
+		rulesResponse.addRequired("Weight", "PT1");
+end
+
+rule "require weight_chg_ind"
+salience 80
+	when
+		not Question(id == "weight_chg_ind")
+	then
+		rulesResponse.addRequired("Weight Change Indicator", "PT3");
+end
+
+rule "require app_pending_answ"
+	when
+		not (Question(id == "app_pending_answ"))
+	then
+		rulesResponse.addRequired("Other Pending Applications indicator", "PT3");
+end
+
+rule "require app_replace_answ"
+	when
+		not Question(id == "app_replace_answ_no")
+		not Question(id == "app_replace_question")
+		Question(id =="app_pending_answ", answer=="Y")
+	then
+		rulesResponse.addRequired("Is new policy replacement for existing/prior ones?", "PT3");
+end
+
+//Acknowledgement of Information Provided (app_ack_eform.xml)
+
+rule "require oth_owner_ind"
+	when
+		not Question(id == 'oth_owner_ind')
+	then
+		rulesResponse.addRequired("Other Owner Applications indicator", "PT1");
+end
+
+rule "require bene_first_name"
+	when
+		 not Question(id == 'bene_first_name')
+		 theBeneficiaryList:ArrayList() from collect(BeneficiaryData(beneficiaryType=='PRIMARY'));
+	then
+		if (theBeneficiaryList.size() <= 0)
+		{
+			rulesResponse.addRequired("Primary Beneficiary's First Name Required", "PT3");
+		}
+end
+
+rule "require bene_last_name"
+	when
+		 not Question(id == 'bene_last_name')
+		 theBeneficiaryList:ArrayList() from collect(BeneficiaryData(beneficiaryType=='PRIMARY'));
+	then
+		if (theBeneficiaryList.size() <= 0)
+		{
+			rulesResponse.addRequired("Primary Beneficiary's Last Name Required", "PT3");
+		}
+end
+
+rule "require bene_relation"
+	when
+		 not Question(id == 'bene_relation')
+		 theBeneficiaryList:ArrayList() from collect(BeneficiaryData(beneficiaryType=='PRIMARY'));
+	then
+		if (theBeneficiaryList.size() <= 0)
+		{
+			rulesResponse.addRequired("Primary Beneficiary's relationship Required", "PT3");
+		}
+end
+rule "require bene_relation for all beneficiaries"
+	when
+		 countR: Number() from accumulate( i : Question( id.indexOf("bene_relation")>=0 ), count( i ))
+		 countLN: Number() from accumulate( i : Question( id.indexOf("bene_last_name")>=0 ), count( i ))
+		 theBeneficiaryList:ArrayList() from collect(BeneficiaryData(StringUtils.isEmpty(relationship)))
+	then
+		if (theBeneficiaryList.size() > 0 || (countR.intValue() < countLN.intValue()))
+		{
+			rulesResponse.addRequired("Beneficiary's relationship Required for all beneficiaries", "PT3");
+		}
+end
+//Part 3B - Medical Questions of Proposed Insured (reflexive_eform.xml)
+rule "require part3b_yes_no_questions"
+	when
+		not Question(id == 'm1a')
+		or not Question(id == 'm1b')
+		or not Question(id == 'm1c')
+		or not Question(id == 'm1d')
+		or not Question(id == 'm1e')
+		or not (Question(id in ('m1f','m1fCT')))
+		or not Question(id == 'm1g')
+		or not Question(id == 'm1h')
+		or not Question(id == 'm1i')
+		or not (Question(id in ('m1j','m1jCT')))
+	then
+		rulesResponse.addRequiredOnce("All Medical Questions of Proposed Insured have to be answered", "PT3");
+end
+
+//Part 3C - Additional Questions (reflexive_eform.xml)
+rule "require part3c_yes_no_questions"
+	when
+		not Question(id == 'm2')
+		or not (Question(id in ('m3','m3FL','m3CA','m3CT','m3NY')))
+		or not Question(id == 'm4a')
+		or not Question(id == 'm4b')
+		or not Question(id == 'm4c')
+		or not Question(id == 'm4d')
+		or not Question(id == 'm4e')
+		or not Question(id == 'm4f')
+		or not Question(id == 'm4g')
+		or not (Question(id in ('m5a','m5aCT')))
+		or not Question(id == 'm5b')
+		or not Question(id == 'm6a')
+		or not (Question(id in ('m6b','m6bCT')))
+		or not (Question(id in ('m8','m8CT','m8FL')))
+		or not (Question(id in ('m9a','m9aFL','m9aCT')))
+		or not (Question(id in ('m9b','m9bCT')))
+	then
+		rulesResponse.addRequiredOnce("All Additional Questions of Part 3C have to be answered", "PT3");
+end
+
+rule "require reflexive question 7 (all states but FL)"
+	when
+		not CaseData(contractState=="FL")
+		and not (Question(id == 'm7') or Question(id == 'm7CA'))
+	then
+		rulesResponse.addRequiredOnce("All Additional Questions of Part 3C have to be answered", "PT3");
+end
+		
+rule "require proper month and year for pregnancy treatment"
+	when
+		Question(id=="weight_chg_ind", answerAsString=="Y")
+		and Question(id=="weightchg_reasons", answerAsString=="Pregnancy")
+		and Question(id=="weight_gain_loss", answerAsString=="Gain")
+		and Question(id=="treatmentpresent", answerAsString=="N")
+		and (Question(id == "treatment_mm" && (answerAsNumber < 1 || answerAsNumber > 12))
+		or Question(id == "treatment_yy" && (999 > answerAsNumber || answerAsNumber > 9999)))
+	then
+		rulesResponse.addRequiredOnce("Pregnancy Treatment Month (MM) and Year (YYYY) must be in proper format", "PT3");
+end
+
+rule "require proper month and year for current insurance company"
+	when
+		(Question(id=="app_pending_answ", answerAsString=="Y") or Question(id=="app_replace_answ", answerAsString=="Y"))
+			and (Question(id == "oth_ins_mm" && (answerAsNumber < 1 || answerAsNumber > 12))
+			or Question(id == "oth_ins_yy" && (999 > answerAsNumber || answerAsNumber > 9999)))
+	then
+		rulesResponse.addRequiredOnce("Current Coverage Issued Month (MM) and Year (YYYY) must be in proper format", "PT3");
+end
+
+rule "require proper month and year for additional insurance companies"
+	when
+		Question(id.startsWith("oth_ins_mm2") && (answerAsNumber < 1 || answerAsNumber > 12))
+		or Question(id.startsWith("oth_ins_yy2") && (999 > answerAsNumber || answerAsNumber > 9999))
+	then
+		rulesResponse.addRequiredOnce("Additional Coverage Issued Month (MM) and Year (YYYY) must be in proper format", "PT3");
+end
+
+rule "physician info required"
+	when
+		((Question(id == "weight_chg_ind", answerAsBoolean==true) and Question(id == "weightchg_reasons", StringUtils.upperCase(answerAsString)=="MEDICAL_WC"))
+		or (Question(id == "weight_chg_ind", answerAsBoolean==true) and Question(id == "weightchg_reasons", StringUtils.upperCase(answerAsString)=="PREGNANCY_WC") and Question(id == "weight_gain_loss", StringUtils.upperCase(answerAsString)=="GAIN"))
+		or Question(id == 'm1a', answerAsBoolean==true)
+		or Question(id == 'm1b', answerAsBoolean==true)
+		or Question(id == 'm1c', answerAsBoolean==true)
+		or Question(id == 'm1d', answerAsBoolean==true)
+		or Question(id == 'm1e', answerAsBoolean==true)
+		or Question(id == 'm1f', answerAsBoolean==true)
+		or Question(id == 'm1fCT', answerAsBoolean==true)
+		or Question(id == 'm1g', answerAsBoolean==true)
+		or Question(id == 'm1h', answerAsBoolean==true)
+		or Question(id == 'm1i', answerAsBoolean==true)
+		or Question(id == 'm1j', answerAsBoolean==true)
+		or Question(id == 'm1jCT', answerAsBoolean==true)
+		or Question(id == 'm2', answerAsBoolean==true)
+		or Question(id == 'm3', answerAsBoolean==true)
+		or Question(id == 'm3FL', answerAsBoolean==true)
+		or Question(id == 'm3CA', answerAsBoolean==true)
+		or Question(id == 'm3CT', answerAsBoolean==true)
+		or Question(id == 'm3NY', answerAsBoolean==true)
+		or Question(id == 'm4a', answerAsBoolean==true)
+		or Question(id == 'm4b', answerAsBoolean==true)
+		or Question(id == 'm4c', answerAsBoolean==true)
+		or Question(id == 'm4d', answerAsBoolean==true)
+		or Question(id == 'm4e', answerAsBoolean==true)
+		or Question(id == 'm4f', answerAsBoolean==true)
+		or Question(id == 'm4g', answerAsBoolean==true)
+		or Question(id == 'm5a', answerAsBoolean==true)
+		or Question(id == 'm5aCT', answerAsBoolean==true)
+		or Question(id == 'm5b', answerAsBoolean==true)
+		or Question(id == 'm6a', answerAsBoolean==true)
+		or Question(id == 'm6b', answerAsBoolean==true)
+		or Question(id == 'm6bCT', answerAsBoolean==true)
+		or Question (id=='age', answerAsNumber>=51))
+		and not CaseData(hasPhysicianData == true)
+	then
+		rulesResponse.addRequiredOnce("Physician Info is required.", "PT3");
+end
+
+/*
+//Part 3D - Additional Questions (reflexive_eform.xml)
+rule "require part3d_yes_no_questions"
+	when
+		not Question(id == 'app_pending_answ')
+		or not Question(id == 'app_replace_answ')
+	then
+		rulesResponse.addRequiredOnce("All Additional Questions of Part 3D have to be answered", "PT3");
+end
+*/
+/*
+rule "part3d additional fields required"
+	when
+		Question(id == 'oth_ins_company_input')
+		and ( not Question(id == 'oth_ins_city')
+			  or not Question(id == 'oth_ins_state')
+			  or not Question(id == 'oth_ins_replace')
+			  or not Question(id == 'oth_ins_face')
+			  or not Question(id == 'oth_ins_mm')
+			  or not Question(id == 'oth_ins_yy')
+			  or not Question(id == 'oth_ins_naic'))
+	then
+		rulesResponse.addRequiredOnce("All Additional Questions of Part 3D Current Coverage are required", "PT3");
+end
+*/
+
+rule "Part 1 - Personal Information Resolved"
+	when
+	    Requirement(code == "PT1", type=="EFORM", status == "OPEN", required == true)
+	then
+		rulesResponse.addRequiredOnce("Part 1 - Personal Information is required", "PT1");		
+end		
+
+rule "Part 3 - Medical Replacement Resolved"
+	when
+	    Requirement(code == "PT3", type=="EFORM", status == "OPEN", required == true)
+	then
+		rulesResponse.addRequiredOnce("Part 3 - Medical Replacement is required", "PT3");		
+end		
+
+
+rule "Policy Owner presence"
+	when
+		Question(id == "oth_owner_ind", answer == 'Y');
+		not ApplicantData(type=="POLICY_OWNER")
+	then
+		rulesResponse.addRequired("Policy Owner needs to be present.","OWN");
+end
+
+
+
+//UTS only rules
+salience 100
+rule "All NB Requirements need to be resolved for UTS or UW"
+when		
+	    Requirement(group =="NB", status == "OPEN", type!="ESIGNATURE", $code:description) 	   
+	    CaseData(caseOutOfNb == true)
+then
+		rulesResponse.addRequiredOnce("NB Requirement ("+$code+") is NOT resolved");
+end
+
+salience 100
+rule "All Signatures need to be resolved for UTS or UW"
+when
+		not RuleFilter(filter in ('SIGNATURE','GLIC_WEB_USER'))
+	    Requirement(type=="ESIGNATURE", status == "OPEN", $code:description)
+	    CaseData(caseOutOfNb == true)
+then
+		rulesResponse.addRequiredOnce("Signature for ("+$code+") is NOT resolved");		
+end
+
+rule "no driver's license for UTS or UW"
+	when
+	    CaseData(caseOutOfNb == true)
+		Question(id == "driv_lic_number", answerAsString.toUpperCase() in ('NA','NONE', 'UNKNOWN')) 
+			and (Question(id == "driv_lic_state", answerAsString.toUpperCase() in ('N_A','NOT APPLICABLE','ZZ','', 'UNKNOWN')) or not Question(id == "driv_lic_state"))
+			and (not Requirement(code == "NDL", status in ("RESOLVED", "CANCELLED" ,"WAIVED")))
+	then
+		rulesResponse.addRequiredOnce("Driver's License Information", "PT1");
+end
+
+salience 100
+rule "Address Validation Required"
+	when
+		CaseData(caseOutOfNb == true)
+		and (Requirement(code=="NVA", status in("ERROR", "OPEN")))
+	then
+		rulesResponse.addRequiredOnce("Address Validation Required");
+end
+
+rule "Part 3 - Replacement selected"
+	when
+	    Requirement(code == "PT3", type=="EFORM", status == "OPEN", required == true)
+	    Question(id in ("oth_ins_replace", "oth_ins_replace2___0"), answer == 'Y')
+	    CaseData(caseOutOfNb == true)
+	then
+		rulesResponse.addRequiredOnce("Replacement selected. Please verify to continue", "PT3");		
+end
+
+rule "require completers"
+	when
+		Question(id == "weight_chg_ind", answerAsString=='Y', $qid:id) and (not Question(id in ('weight_chg_pounds', 'weight_gain_loss', 'weightchg_reasons')) or Question(id in ('weight_chg_pounds', 'weight_gain_loss'), StringUtils.isBlank(answerAsString)) or Question(id == 'weightchg_reasons', answerAsString not in ('EATING_WC', 'LIFESTYLE_WC', 'PROGRAM_WC', 'MEDICAL_WC', 'OTHER_WC', 'PREGNANCY_WC')))
+		or Question(id == 'm1a', answerAsString=='Y', $qid:id) and (not Question(id == 'm1acompleter') or Question(id == 'm1acompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm1b', answerAsString=='Y', $qid:id) and (not Question(id == 'm1bcompleter') or Question(id == 'm1bcompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm1c', answerAsString=='Y', $qid:id) and (not Question(id == 'm1ccompleter') or Question(id == 'm1ccompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm1d', answerAsString=='Y', $qid:id) and (not Question(id == 'm1dcompleter') or Question(id == 'm1dcompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm1e', answerAsString=='Y', $qid:id) and (not Question(id == 'm1ecompleter') or Question(id == 'm1ecompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id in ('m1f','m1fCT'), answerAsString=='Y', $qid:id) and (not Question(id == 'm1fcompleter') or Question(id == 'm1fcompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm1g', answerAsString=='Y', $qid:id) and (not Question(id == 'm1gcompleter') or Question(id == 'm1gcompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm1h', answerAsString=='Y', $qid:id) and (not Question(id == 'm1hcompleter') or Question(id == 'm1hcompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm1i', answerAsString=='Y', $qid:id) and (not Question(id == 'm1icompleter') or Question(id == 'm1icompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id in ('m1j','m1jCT'), answerAsString=='Y', $qid:id) and (not Question(id == 'm1jcompleter') or Question(id == 'm1jcompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm2', answerAsString=='Y', $qid:id) and (not Question(id in ('family_disorder___0', 'family_relation___0', 'family_age_of_death___0', 'family_status___0')) or Question(id in ('family_disorder___0', 'family_relation___0', 'family_age_of_death___0', 'family_status___0'), StringUtils.isBlank(answerAsString)))
+		or Question(id in ('m3','m3FL','m3CA','m3CT','m3NY'), answerAsString=='Y', $qid:id) and (not Question(id == 'm3completer') or Question(id == 'm3completer', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm4a', answerAsString=='Y', $qid:id) and (not Question(id == 'm4acompleter') or Question(id == 'm4acompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm4b', answerAsString=='Y', $qid:id) and (not Question(id == 'm4bcompleter') or Question(id == 'm4bcompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm4c', answerAsString=='Y', $qid:id) and (not Question(id == 'm4ccompleter') or Question(id == 'm4ccompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm4e', answerAsString=='Y', $qid:id) and (not Question(id == 'm4ecompleter') or Question(id == 'm4ecompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm4f', answerAsString=='Y', $qid:id) and (not Question(id == 'm4fcompleter') or Question(id == 'm4fcompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id in ('m5a','m5aCT'), answerAsString=='Y', $qid:id) and (not Question(id == 'm5acompleter') or Question(id == 'm5acompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm5b', answerAsString=='Y', $qid:id) and (not Question(id == 'm5bcompleter') or Question(id == 'm5bcompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm6a', answerAsString=='Y', $qid:id) and (not Question(id == 'm6acompleter') or Question(id == 'm6acompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id in ('m6b','m6bCT'), answerAsString=='Y', $qid:id) and (not Question(id == 'm6bcompleter') or Question(id == 'm6bcompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id in ('m7','m7CA'), answerAsString=='Y', $qid:id) and (not Question(id == 'm7completer') or Question(id == 'm7completer', StringUtils.isBlank(answerAsString)))
+		or Question(id in ('m8','m8CT','m8FL'), answerAsString=='Y', $qid:id) and (not Question(id in ('military_status', 'enrollment_date', 'deployed_overseas', 'military_branch')) or Question(id in ('military_status', 'enrollment_date', 'deployed_overseas', 'military_branch'), StringUtils.isBlank(answerAsString)))
+		or Question(id in ('m9a','m9aFL','m9aCT'), answerAsString=='Y', $qid:id) and (not Question(id == 'm9acompleter') or Question(id == 'm9acompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id in ('m9b','m9bCT'), answerAsString=='Y', $qid:id) and (not Question(id == 'm9bcompleter') or Question(id == 'm9bcompleter', StringUtils.isBlank(answerAsString)))
+	then
+		rulesResponse.addRequired("Question '" + $qid + "' needs to be reviewed", "PT3");
+end
+
+rule "require completers m4d, m4g"
+	when
+		CaseData(contractLocale != "NY")
+		Question(id == 'm4d', answerAsString=='Y', $qid:id) and (not Question(id == 'm4dcompleter') or Question(id == 'm1acompleter', StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm4g', answerAsString=='Y', $qid:id) and (not Question(id == 'm4gcompleter') or Question(id == 'm1acompleter', StringUtils.isBlank(answerAsString)))
+	then
+		rulesResponse.addRequired("Question '" + $qid + "' needs to be reviewed", "PT3");
+end
+
+rule "require completers m4d, m4g for NY"
+	when
+		CaseData(contractLocale == "NY")
+		Question(id == 'm4d', answerAsString=='Y', $qid:id) and (not Question(id in ('m4d_treatment_details', 'm4d_date_of_treatment', 'm4d_condition_treated')) or Question(id in ('m4d_treatment_details', 'm4d_date_of_treatment', 'm4d_condition_treated'), StringUtils.isBlank(answerAsString)))
+		or Question(id == 'm4g', answerAsString=='Y', $qid:id) and (not Question(id in ('m4g_type_of_policy', 'm4g_date_of_app_or_benefits')) or Question(id in ('m4g_type_of_policy', 'm4g_date_of_app_or_benefits'), StringUtils.isBlank(answerAsString)))
+	then
+		rulesResponse.addRequired("Question '" + $qid + "' needs to be reviewed", "PT3");
+end
+
+rule "Cannot have replacement coverages if replacement question is NO"
+	when
+		Question(id =="app_replace_question", answer=="N")
+		Question(id.contains("oth_ins_replace"), answer=="Y")
+	then
+		rulesResponse.addRequired("If existing coverage is to be replaced then select 'Yes' to : 'If this policy is issued, will any other life, accident or health insurance or annuity be cancelled, terminated, lapsed or not renewed?'", "PT3");
+end
+
+rule "If replacement question is YES, must have replacement coverages"
+	when
+		Question(id =="app_replace_question", answer=="Y")
+		not Question(id.contains("oth_ins_replace"), answer=="Y")
+	then
+		rulesResponse.addRequired("If existing coverage is to be replaced then you must select 'Yes' to one of : 'Is Coverage to be Replaced?'", "PT3");
+end

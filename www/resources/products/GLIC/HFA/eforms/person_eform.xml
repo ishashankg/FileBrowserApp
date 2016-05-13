@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>preFilleForm</onLoad>
+	<onSave>importData</onSave>
+	<page title='APPLICATION FOR: INDIVIDUAL LIFE INSURANCE'>
+		<onExitRule>PERSON_RULES</onExitRule>
+		<section>
+			<group>
+				<question id='age' type='NUMBER'>
+					<displayWhen>#{false}</displayWhen>
+				</question>
+			</group>
+			<group>
+				<displayWhen>#{CASE.contractLocale=="NY" and CASE.caseSource=="CAPTIVE"}</displayWhen>
+				<facelet component="/pages/custom/glic_ny_disclosure.xhtml" />
+			</group>
+			<group>
+				<displayWhen>#{CASE.contractLocale=="CA" and CASE.caseSource=="CAPTIVE" and EFORM.age >= 65}</displayWhen>
+				<facelet component="/pages/custom/glic_ca_disclosure.xhtml" />
+			</group>
+		
+			<group associated="true">
+				<question id='place_of_birth_country' required="true" text='Birth Country'
+					type='LISTBOX' lookup="step:LOCALE_COUNTRY" defaultValue="US"
+					answerSet=":Please select a country" labelWidth="120px" answerWidth="180px;" tabindex='1'/>
+				<question id='occupation' size="30" text='Occupation' type='TEXT'
+					labelWidth="180px" answerWidth="180px;" required="true"
+					autocompleteLookup="merica:occupation"  labelStyle='margin-left:40px;' tabindex='9'/>
+			</group>
+			<group associated="true">
+				<question id='place_of_birth_state' required="false"
+					text='Place of Birth (State)' type='LISTBOX' lookup="step:LOCALE_STATE"
+					answerSet=":Please select a state|N_A:Not Applicable" labelWidth="120px" answerWidth="180px;" tabindex='2'/>
+				<question id='employer_name' required="true" size="30"
+					text='Employer or Business Name' type='TEXT' labelWidth="180px" answerWidth="180px;" labelStyle='margin-left:40px;' tabindex='10'/>	
+			</group>
+			<group associated="true">
+				<question id='driv_lic_number' size="30" required="true"
+					text='Driver&apos;s License Number' type='TEXT' labelWidth="120px" answerWidth="170px;" tabindex='3'/>
+				<question id='curr_employer_dur' text='How long with current employer?(Years)' maxlength="2"
+					labelWidth="180px" type='NUMBER' answerWidth="40px;" validation="numeric" required="true" labelStyle='margin-left:40px;' tabindex='11'/>
+				<question id='curr_employer_dur_mo' text='(Months)' maxlength="2"
+					labelWidth="60px" type='NUMBER' answerWidth="45px;" validation="month" required="true" labelStyle='margin-top:3px;' tabindex='12'/>	
+			</group>
+			<group associated="true">
+				<question id='driv_lic_state' text='DL State' type='LISTBOX'
+					lookup="step:LOCALE_STATE" required="true"
+					answerSet=":Please select a state|Unknown:Not Applicable" labelWidth="120px" answerWidth="180px;" labelStyle='margin-top:3px;' tabindex='4'/>
+				<question id='annual_earned_income' required="true" size="30"
+					text='Annual Earned Income (e.g.50000 = $50,000)' type='NUMBER'
+					labelWidth="180px" answerWidth="180px;" labelStyle='margin-left:40px;' tabindex='13'/>
+			</group>
+			<group associated="true">
+				<question id='height_feet' text='Height (feet)' type='LISTBOX'
+					required="true" answerSet=": |2|3|4|5|6|7" labelWidth="120px" labelStyle='margin-top:3px;' tabindex='5'/>
+				<question id='height_inches' text='(inches)' type='LISTBOX'
+					required="true" answerSet=": |0|1|2|3|4|5|6|7|8|9|10|11" labelStyle='margin-top:3px;margin-left:13px;' tabindex='6'/>
+				<question id='type_of_curr_employ' required="true" size="30"
+					text='Type of business where currently employed' type='TEXT'
+					labelWidth="180px" answerWidth="180px;" labelStyle='margin-left:43px;' tabindex='14'/>	
+			</group>
+			<group>
+				<question id='weight_pounds' text='Weight (pounds)' type='NUMBER'
+					required="true" size="2" labelStyle='margin-top:3px;' labelWidth="120px" answerWidth="30px;" tabindex='7' maxlength="4"/>
+			</group>
+			<group labelWidth="500px">
+				<question id='citizenship_status' required="true"
+					text='Are you a United States citizen or do you have Permanent Legal Resident (Green Card) status?'
+					type='RADIO' answerSet='Y|N' tabindex='15'/>
+			</group>
+			<group labelWidth="500px">
+				<question id='smoker_ind'
+					text='In the past 36 months, have you smoked or used tobacco in any form?'
+					required="true" type='RADIO' answerSet='true:Y|false:N'
+					beanValue="#{CASE.primaryApplicant.tobaccoUsage}" tabindex='16'/>
+			</group>
+			<group associated="true">
+				<question id="last_tobacco_mm"
+					text='When was the last time you used tobacco? Month:' type='NUMBER'
+					labelWidth="400px;" answerWidth="40px;" required="true" tabindex='17'>
+					<displayWhen>#{EFORM.smoker_ind=="true"}</displayWhen>
+				</question>
+				<question id="last_tobacco_yy" text='Year:' type='NUMBER'
+					answerWidth="70px;" required="true" tabindex='18'>
+					<displayWhen>#{EFORM.smoker_ind=="true"}</displayWhen>
+				</question>
+			</group>
+
+			<group labelWidth="500px">
+				<question id='oth_owner_ind' required="true"
+					text='Will someone other than the insured own the policy being applied for?'
+					type='RADIO' answerSet='Y|N' tabindex='19'/>
+			</group>
+			<group labelWidth="500px">
+				<question id='secondary_ind_fl' required="true"
+					text='Will there be a secondary addressee?'	type='RADIO' answerSet='Y|N' tabindex='20'>
+					<displayWhen>#{(63 >= EFORM.age) and CASE.contractLocale=="FL"}</displayWhen>
+				</question>
+				<question id='secondary_ind_seniors_fl' required="true"
+					text='Do you wish to name a secondary addressee to receive notification of any past due premium and possible lapse in coverage? If Yes, please give us the name and address of the secondary addressee.'	
+					type='RADIO' answerSet='Y|N' tabindex='21'>
+					<displayWhen>#{(EFORM.age >= 64) and CASE.contractLocale=="FL"}</displayWhen>
+				</question>
+				<question id='secondary_ind_seniors' required="true"
+					text='Do you wish to name a secondary addressee to receive notification of any past due premium and possible lapse in coverage? If Yes, please give us the name and address of the secondary addressee.'	
+					type='RADIO' answerSet='Y|N' tabindex='22'>
+					<displayWhen>#{(EFORM.age >= 64) and CASE.contractLocale=="VT"}</displayWhen>
+				</question>
+			</group>
+		</section>
+		<section>
+			<displayWhen>#{EFORM.secondary_ind_seniors=="Y"}</displayWhen>
+			<group associated="true">
+				<header>Secondary Addressee</header>
+				<question id='secondary_first_name' required="true" text="First Name" type='TEXT' tabindex='23'/>
+				<question id='secondary_middle_name' text="Middle Name" type='TEXT' tabindex='24'/>
+				<question id='secondary_last_name' required="true" text="Last Name" type='TEXT' tabindex='25'/>
+			</group>
+			<group>
+				<question id='secondary_address_1' required="true" text="Address Line 1" type='TEXT' answerWidth="200px" tabindex='26'/>
+				<question id='secondary_address_2' text="Address Line 2" type='TEXT' answerWidth="200px" tabindex='27'/>
+			</group>
+			<group associated="true">
+				<question id='secondary_city' required="true" text="City" type='TEXT' tabindex='28'/>
+				<question id='secondary_state' required="true" text='State' type='LISTBOX' lookup="step:LOCALE_STATE" tabindex='29'/>
+				<question id='secondary_zip' required="true" text="Zip" type='NUMBER' tabindex='30'/>
+			</group>
+		</section>
+		<section>
+			<displayWhen>#{EFORM.secondary_ind_fl=="Y" or EFORM.secondary_ind_seniors_fl=="Y"}</displayWhen>
+			<group associated="true">
+				<header>Secondary Addressee</header>
+				<question id='fl_secondary_first_name' required="true" text="First Name" type='TEXT' tabindex='31'/>
+				<question id='fl_secondary_middle_name' text="Middle Name" type='TEXT' tabindex='32'/>
+				<question id='fl_secondary_last_name' required="true" text="Last Name" type='TEXT' tabindex='33'/>
+			</group>
+			<group>
+				<question id='fl_secondary_address_1' required="true" text="Address Line 1" type='TEXT' answerWidth="200px" tabindex='34'/>
+				<question id='fl_secondary_address_2' text="Address Line 2" type='TEXT' answerWidth="200px" tabindex='35'/>
+			</group>
+			<group associated="true">
+				<question id='fl_secondary_city' required="true" text="City" type='TEXT' tabindex='36'/>
+				<question id='fl_secondary_state' required="true" text='State' type='LISTBOX' lookup="step:LOCALE_STATE" tabindex='37'/>
+				<question id='fl_secondary_zip' required="true" text="Zip" type='NUMBER' tabindex='38'/>
+			</group>
+		</section>
+	</page>
+</form>

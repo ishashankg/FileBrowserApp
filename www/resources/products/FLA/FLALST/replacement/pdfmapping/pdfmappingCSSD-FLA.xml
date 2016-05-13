@@ -1,0 +1,74 @@
+<map>
+  <entry>
+    <string>insured</string>
+    <string>${EFORMS.APPLICANT.ins_first_name} ${EFORMS.APPLICANT.ins_middle_name?:""} ${EFORMS.APPLICANT.ins_last_name}</string>
+  </entry>
+  <entry>
+    <string>insured_address_1</string>
+    <string>${EFORMS.APPLICANT.legal_residence_address} ${EFORMS.APPLICANT.legal_residence_address_line2?:""}</string>
+  </entry>
+  <entry>
+    <string>insured_address_2</string>
+    <string>${EFORMS.APPLICANT.city?:""} ${lookupService.getLookupCode("LOCALE_STATE", EFORMS.APPLICANT.state)} ${EFORMS.APPLICANT.zipcode}</string>
+  </entry>
+  <entry>
+    <string>insured_phone</string>
+    <string>${EFORMS.REPCSSD.preferred_phone?:""}</string>
+  </entry>
+  <entry>
+    <string>existing_insurer</string>
+    <string>${EFORMS.REPCSSD.replaced_carrier___0?:""}</string>
+  </entry>
+  <entry>
+    <string>existing_policy</string>
+    <string>${EFORMS.REPCSSD.replaced_policyno___0?:""}</string>
+  </entry>
+  <entry>
+    <string>existing_agent</string>
+    <string>${EFORMS.REPCSSD.replaced_agent___0?:""}</string>
+  </entry>
+  <entry>
+    <string>existing_coverage_type</string>
+    <string>${EFORMS.REPCSSD.replaced_exchange_type___0?:""}</string>
+  </entry>
+  <entry>
+    <string>replacing_insurer</string>
+    <string>${EFORMS.REPCSSD.prop_company?:""}</string>
+  </entry>
+  <entry>
+    <string>replacing_agent</string>
+    <string>${EFORMS.REPCSSD.prop_agent?:""}</string>
+  </entry>
+  <entry>
+    <string>replacing_policy</string>
+    <string>${EFORMS.REPCSSD.prop_policyno?:""}</string>
+  </entry>
+  <entry>
+    <string>replacing_description</string>
+    <string>${EFORMS.REPCSSD.prop_description?:""}</string>
+  </entry>
+  <entry>
+    <string>applicant_name</string>
+    <string>${EFORMS.APPLICANT.ins_first_name} ${EFORMS.APPLICANT.ins_middle_name?:""} ${EFORMS.APPLICANT.ins_last_name}</string>
+  </entry>
+  <entry>
+    <string>applicant_signature</string>
+    <string>${caseHelper.insertSignature("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED", "Electronically Signed By:%s")}</string>
+  </entry>
+  <entry>
+    <string>applicant_date</string>
+    <string>${caseHelper.getSignatureDate("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED")}</string>
+  </entry>
+  <entry>
+    <string>agent_date</string>
+    <string>${EFORMS.AG_ATTEST.ag_sig_date}</string>
+  </entry>
+  <entry>
+    <string>agent_name</string>
+    <string>${EFORMS.AG_ATTEST.ag_first_name?:""} ${EFORMS.AG_ATTEST.ag_last_name?:""}</string>
+  </entry>
+  <entry>
+    <string>agent_signature</string>
+    <string>Electronically Signed By: (${EFORMS.AG_ATTEST.ag_first_name?:""} ${EFORMS.AG_ATTEST.ag_last_name?:""})</string>
+  </entry>
+</map>

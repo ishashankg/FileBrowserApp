@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="stepImport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="carrier"/>
+        <xs:element ref="users"/>
+        <xs:element ref="product"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="carrier">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="carrierCode"/>
+        <xs:element ref="carrierName"/>
+        <xs:element ref="agencies"/>
+        <xs:element ref="org-units"/>
+        <xs:element ref="roles"/>
+        <xs:element ref="userRoles"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="carrierCode" type="xs:NCName"/>
+  <xs:element name="carrierName" type="xs:string"/>
+  <xs:element name="agencies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="agency"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agency">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="agCode"/>
+        <xs:element ref="agName"/>
+        <xs:element ref="agBusType"/>
+        <xs:element ref="agents"/>
+        <xs:element minOccurs="0" ref="affinityGroups"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agCode" type="xs:NCName"/>
+  <xs:element name="agName" type="xs:string"/>
+  <xs:element name="agBusType" type="xs:NCName"/>
+  <xs:element name="agents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="agent"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="agtCode"/>
+        <xs:element ref="agtFirstName"/>
+        <xs:element ref="agtLastName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agtCode" type="xs:NCName"/>
+  <xs:element name="agtFirstName" type="xs:NCName"/>
+  <xs:element name="agtLastName" type="xs:NCName"/>
+  <xs:element name="affinityGroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="affinityGroup"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="affinityGroup">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="org-units">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="org-unit"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="org-unit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ouName"/>
+        <xs:element ref="ouCode"/>
+        <xs:element ref="ouClass"/>
+        <xs:element ref="ouAgency"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ouName" type="xs:string"/>
+  <xs:element name="ouCode" type="xs:NCName"/>
+  <xs:element name="ouClass" type="xs:string"/>
+  <xs:element name="ouAgency" type="xs:string"/>
+  <xs:element name="roles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="role"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="role">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="roleName"/>
+        <xs:element ref="roleCode"/>
+        <xs:element ref="permissions"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="roleName" type="xs:string"/>
+  <xs:element name="roleCode" type="xs:NCName"/>
+  <xs:element name="permissions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="permission"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="permission">
+    <xs:complexType>
+      <xs:attribute name="accessType" use="required" type="xs:NCName"/>
+      <xs:attribute name="expression"/>
+      <xs:attribute name="functionCode" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="userRoles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="userRole"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="userRole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="urolRoleCode"/>
+        <xs:element ref="urolUserName"/>
+        <xs:element ref="urolSuper"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="urolRoleCode" type="xs:NCName"/>
+  <xs:element name="urolUserName" type="xs:NCName"/>
+  <xs:element name="urolSuper" type="xs:NCName"/>
+  <xs:element name="users">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="user"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="user">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="usUserName"/>
+        <xs:element ref="usPassword"/>
+        <xs:element ref="usAgentCode"/>
+        <xs:element ref="usFirstName"/>
+        <xs:element ref="usLastName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="usUserName" type="xs:NCName"/>
+  <xs:element name="usPassword" type="xs:NCName"/>
+  <xs:element name="usAgentCode" type="xs:string"/>
+  <xs:element name="usFirstName" type="xs:NCName"/>
+  <xs:element name="usLastName" type="xs:NCName"/>
+  <xs:element name="product">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="code"/>
+        <xs:element ref="name"/>
+        <xs:element ref="lineOfBusiness"/>
+        <xs:element ref="locales"/>
+        <xs:element ref="ageCalculationMethod"/>
+        <xs:element ref="rateClasses"/>
+        <xs:element ref="plans"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lineOfBusiness" type="xs:NCName"/>
+  <xs:element name="locales">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="locale"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="locale" type="xs:integer"/>
+  <xs:element name="ageCalculationMethod" type="xs:string"/>
+  <xs:element name="rateClasses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="rateClass"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rateClass">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="plans">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="plan"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="plan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="code"/>
+        <xs:element ref="name"/>
+        <xs:element ref="services"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="services">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="service"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="service">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="options"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="options">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="option"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="option">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element ref="code"/>
+          <xs:element ref="optionCode"/>
+        </xs:choice>
+        <xs:element ref="name"/>
+        <xs:choice>
+          <xs:element ref="optionValueType"/>
+          <xs:element ref="type"/>
+        </xs:choice>
+        <xs:element ref="levels"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="optionCode" type="xs:NCName"/>
+  <xs:element name="optionValueType" type="xs:NCName"/>
+  <xs:element name="type" type="xs:NCName"/>
+  <xs:element name="levels">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="level"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="level">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="value"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="max"/>
+          <xs:sequence>
+            <xs:element ref="minpercent"/>
+            <xs:element ref="maxpercent"/>
+          </xs:sequence>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="increment"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="value" type="xs:integer"/>
+  <xs:element name="max" type="xs:integer"/>
+  <xs:element name="minpercent" type="xs:integer"/>
+  <xs:element name="maxpercent" type="xs:integer"/>
+  <xs:element name="increment" type="xs:integer"/>
+  <xs:element name="code" type="xs:NCName"/>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="levelType" type="xs:integer"/>
+</xs:schema>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<page>
+		<section
+			title="Additional Questions Required by Florida Rule 69B-162.011, F.A.C.">
+			<group>
+				<footer>21. Does your income cover all of your living expenses
+					including medical?
+				</footer>
+			</group>
+			<group>
+				<question id='floridaRule162_incomeCoverList' text='Owner'
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' tabindex='1' required="true"
+					name="Owner income covers expenses" />
+				<question id='floridaRule162_incomeCoverExplain' text='Explain'
+					type='MEMO' tabindex='2' required="true"
+					name="Owner income covers expenses(reason)">
+					<displayWhen>#{EFORM.floridaRule162_incomeCoverList=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group>
+				<displayWhen>#{EFORMS.PERSON.joint_owner=="Y"}</displayWhen>
+				<question id='floridaRule162_incomeCoverList_joint' text=' Joint Owner'
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' tabindex='1' required="true"
+					name="Joint Owner income covers expenses(reason)" />
+				<question id='floridaRule162_incomeCoverExplain_joint'
+					text='Explain' type='MEMO' tabindex='2' required="true"
+					name=" Joint Owner income covers expenses(reason)">
+					<displayWhen>#{EFORM.floridaRule162_incomeCoverList_joint=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group>
+				<footer>22.Do you expect changes to your living expenses?
+				</footer>
+			</group>
+			<group>
+				<question id='floridaRule162_expenseChangeList' text='Owner'
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' tabindex='1' required="true"
+					name="Expect change in living expense" />
+				<question id='floridaRule162_expenseChangeExplain' text='Explain'
+					type='MEMO' tabindex='2' required="true"
+					name="Expect change in living expense (reason)">
+					<displayWhen>#{EFORM.floridaRule162_expenseChangeList=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group>
+				<displayWhen>#{EFORMS.PERSON.joint_owner=="Y"}</displayWhen>
+				<question id='floridaRule162_expenseChangeList_joint' text='Joint Owner'
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' tabindex='1' required="true"
+					name="Joint Owner expect change in living expense" />
+				<question id='floridaRule162_expenseChangeExplain_joint'
+					text='Explain' type='MEMO' tabindex='2' required="true"
+					name="Joint Owner expects change in living expense (reason)">
+					<displayWhen>#{EFORM.floridaRule162_expenseChangeList_joint=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group>
+				<footer>23. Do you anticipate changes in your out-of-pocket medical
+					expenses?
+				</footer>
+			</group>
+			<group>
+				<question id='floridaRule162_medicalChangeList' text='Owner'
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' tabindex='1' required="true"
+					name="Anticipate change in out-of-pocket medical expense" />
+				<question id='floridaRule162_medicalChangeExplain' text='Explain'
+					type='MEMO' tabindex='2' required="true"
+					name="Anticipate change in out-of-pocket medical expense (reason)">
+					<displayWhen>#{EFORM.floridaRule162_medicalChangeList=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group>
+				<displayWhen>#{EFORMS.PERSON.joint_owner=="Y"}</displayWhen>
+				<question id='floridaRule162_medicalChangeList_joint' text='Joint Owner'
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' tabindex='1' required="true"
+					name="Joint Owner anticipates change in out-of-pocket medical expense" />
+				<question id='floridaRule162_medicalChangeExplain_joint'
+					text='Explain' type='MEMO' tabindex='2' required="true"
+					name="Joint Owner anticipates change in out-of-pocket medical expense (reason)">
+					<displayWhen>#{EFORM.floridaRule162_medicalChangeList_joint=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group>
+				<footer>24. Is your income sufficient to cover future changes in
+					your living and/or out-of-pocket medical expenses during the
+					surrender charge period?
+				</footer>
+			</group>
+			<group>
+				<question id='floridaRule162_surrenderPerList' text='Owner'
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' tabindex='1' required="true"
+					name="Income sufficient to cover future changes" />
+				<question id='floridaRule162_surrenderPerExplain' text='Explain'
+					type='MEMO' tabindex='2' required="true"
+					name="Income sufficient to cover future changes (reason)">
+					<displayWhen>#{EFORM.floridaRule162_surrenderPerList=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group>
+				<displayWhen>#{EFORMS.PERSON.joint_owner=="Y"}</displayWhen>
+				<question id='floridaRule162_surrenderPerList_joint' text='Joint Owner'
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' tabindex='1' required="true"
+					name="Joint Owner income sufficient to cover future changes" />
+				<question id='floridaRule162_surrenderPerExplain_joint'
+					text='Explain' type='MEMO' tabindex='2' required="true"
+					name="Joint Owner income sufficient to cover future changes (reason)">
+					<displayWhen>#{EFORM.floridaRule162_surrenderPerList_joint=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group>
+				<footer>25. Do you have an emergency fund for unexpected expenses?
+				</footer>
+			</group>
+			<group>
+				<question id='floridaRule162_emergencyFundList' text='Owner'
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' tabindex='1' required="true"
+					name="Have an emergency fund for unexpected expenses" />
+				<question id='floridaRule162_emergencyFundExplain' text='Explain'
+					type='MEMO' tabindex='2' required="true"
+					name="Have an emergency fund for unexpected expenses(reason)">
+					<displayWhen>#{EFORM.floridaRule162_emergencyFundList=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group>
+				<displayWhen>#{EFORMS.PERSON.joint_owner=="Y"}</displayWhen>
+				<question id='floridaRule162_emergencyFundList_joint' text='Joint Owner'
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' tabindex='1' required="true"
+					name="Joint Onwer has an emergency fund for unexpected expenses " />
+				<question id='floridaRule162_emergencyFundExplain_joint'
+					text='Explain' type='MEMO' tabindex='2' required="true"
+					name="Joint Onwer has an emergency fund for unexpected expenses (reason)">
+					<displayWhen>#{EFORM.floridaRule162_emergencyFundList_joint=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+		</section>
+		<section title="Rationale">
+			<group>
+				<question id='annuity_advantages_flsuit'
+					text='26. Advantages of purchasing the proposed annuity:' type='MEMO'
+					labelWidth="400px" />
+				<question id='annuity_disadvantages_flsuit'
+					text='27. Disadvantages of purchasing the proposed annuity:' type='MEMO'
+					labelWidth="400px" />
+				<question id='annuity_basis_recommend_flsuit'
+					text='28. The basis for my recommendation to purchase the proposed annuity or to replace or exchange your existing annuity(ies):'
+					type='MEMO' labelWidth="500px" />
+			</group>
+		</section>
+		<section title="Agent Statement">
+			<group style="margin-left:0px !important; border:1px solid #dfdfdf;">
+				<footer> I believe the purchase of this annuity
+					contract is suitable
+					after carefully reviewing the suitability
+					information provided to me
+					by the Owner(s). If applicable, I have
+					discussed the advantages and
+					disadvantages of any replacement or
+					exchange of another annuity
+					contract or life policy. I have
+					reasonably informed the owner(s) of
+					all important features of the
+					annuity and proposed transaction. To
+					the best of my knowledge, the
+					questions on this form have been
+					answered truthfully and I have
+					complied with Fidelity and Guaranty
+					Life suitability requirements
+					consistent with my contractual
+					obligations.
+				</footer>
+			</group>
+			<group associated="true">
+				<question id='agent_sig_flsuit' text="Agent Signature"
+					required="true" name="Agent Signature" type="CHECKBOX" labelWidth="120px"
+					answerWidth="100px" />
+				<question id='agent_sig_date_flsuit' text='Date Signed'
+					required="true" name="Date Signed" type='DATEF' labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+		</section>
+	</page>
+</form>

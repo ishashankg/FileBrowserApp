@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<userRoles>
+	<userRole>
+		<urolUserName>TARAWI</urolUserName>
+		<urolRoleCode>ext_agent</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>SARAHC</urolUserName>
+		<urolRoleCode>data_entry</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>MICHAS</urolUserName>
+		<urolRoleCode>data_entry_qc</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>OWENJA</urolUserName>
+		<urolRoleCode>case_manager</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>JERRYT</urolUserName>
+		<urolRoleCode>case_manager</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>MARKS</urolUserName>
+		<urolRoleCode>case_manager</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>MELISJ</urolUserName>
+		<urolRoleCode>agency_services</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>LISADA</urolUserName>
+		<urolRoleCode>suitability_officer</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>RONT</urolUserName>
+		<urolRoleCode>suitability_officer</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>MICHASLA</urolUserName>
+		<urolRoleCode>auto_decision</urolRoleCode>
+	</userRole>
+	<userRole>
+		<urolUserName>DYAO</urolUserName>
+		<urolRoleCode>issuer</urolRoleCode>
+	</userRole>
+	
+</userRoles>
+</stepImport>

@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<page title="Personal Information">
+		<section title="Owner Information">
+			<group associated="true">
+				<question id='owner_first_name_flsuit' text='First Name'
+					type='TEXT' required="true" labelWidth="120px"  name ="Owner First Name" answerWidth="100px" />
+				<question id='owner_DOB_flsuit' text='Date Of Birth' type='DATEF' name="Owner's date of birth"
+					required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='owner_middle_name_flsuit' text='Middle Name'
+					type='TEXT' labelWidth="120px" name ="Owner Middle Name" answerWidth="100px" />
+				<question id='owner_age_flsuit' text='Age' type='TEXT' name="Owner's age"
+					required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='owner_last_name_flsuit' text='Last Name'
+					type='TEXT' required="true" labelWidth="120px" name ="Owner Last Name" answerWidth="100px" />
+				<question id='owner_gender_flsuit' text='Gender' type='LISTBOX' name="Owner's gender"
+					answerSet=' : |1:Male|0:Female' required="true" labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='owner_annuitant_relationship_flsuit' text='Relationship To Annuitant(s)'
+					type='LISTBOX' lookup="ACORD_225:OLI_LU_REL" answerSet=" : " required="true" labelWidth="120px" name = "Owner Relationship To Annuitant(s)" answerWidth="100px" />
+				<question id='owner_residence' text="Residence"
+					name="Owner Residence" type='LISTBOX' required="true" answerWidth="100px"
+					labelWidth="120px"
+					answerSet=" : |L:Living at home|A:Assisted Living Facility|N:Nursing Home" />
+			</group>
+			<group associated="true">
+				<question id='owner_work_status_flsuit' text="Work Status" type='LISTBOX'
+					required="true" answerSet=" : |R:Retired|E:Employed|U:Unemployed|O:Other" name="Owner's Work Status"
+					labelWidth="120px" answerWidth="100px" />
+				<question id='owner_taxrate_flsuit' text='Federal Tax Rate' type='LISTBOX'
+					answerSet=" : |1: 0%|2: 10%|3: 15%|4: 28%|5: 33% +" required="true" name="Owner's Federal Tax Rate"
+					labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='owner_work_status_flsuit_other' type='TEXT'
+					text="Please specify" labelWidth="120px" answerWidth="100px" > 
+					<displayWhen>#{EFORM.owner_work_status_flsuit=='O'}</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='owner_existing_annuity_flsuit' text="Do you currently own any annuities?" type='LISTBOX'
+					required="true" answerSet=' : |Y:Yes|N:No' labelWidth="120px" name="Does owner owns any annuities?"
+					answerWidth="100px" />
+			</group>
+			<group>
+				<question id='owner_list_existing_annuity_flsuit' text="Please List"
+					type='MEMO' required="true" labelWidth="120px" name="Provide owner's annuities list">
+					<displayWhen> #{EFORM.owner_existing_annuity_flsuit=="Y"} </displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='owner_existing_life_insurance_flsuit' text="Do you currently own any life insurance?" type='LISTBOX'
+					required="true" answerSet=' : |Y:Yes|N:No' labelWidth="120px" name="Does owner owns any life insurance?"
+					answerWidth="100px" />
+			</group>
+			<group>
+				<question id='owner_list_existing_life_insurance_flsuit' text="Please List"
+					type='MEMO' required="true" labelWidth="120px" name="Provide owner's life insurance list">
+					<displayWhen> #{EFORM.owner_existing_life_insurance_flsuit=="Y"} </displayWhen>
+				</question>
+			</group>
+		</section>
+		<section title="Joint Owner Information">
+			<displayWhen> #{EFORMS.PERSON.joint_owner=="Y"} </displayWhen>
+			<group associated="true">
+				<question id='joint_owner_first_name_flsuit' text='First Name'
+					type='TEXT' required="true" labelWidth="120px" name ="Joint Owner First Name" answerWidth="100px" />
+				<question id='joint_owner_DOB_flsuit' text='Date Of Birth' type='DATEF' name="Joint Owner's date of birth"
+					required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='joint_owner_middle_name_flsuit' text='Middle Name'
+					type='TEXT' labelWidth="120px" name ="Joint Owner Middle Name" answerWidth="100px" />
+				<question id='joint_owner_age_flsuit' text='Age' type='TEXT' name="Joint Owner's age"
+					required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='joint_owner_last_name_flsuit' text='Last Name'
+					type='TEXT' required="true" labelWidth="120px" name ="Joint Owner Last Name" answerWidth="100px" />
+				<question id='joint_owner_gender_flsuit' text='Gender' type='LISTBOX' name="Joint Owner's gender"
+					answerSet=' : |1:Male|0:Female' required="true" labelWidth="120px"
+					answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='joint_annuitant_relationship_flsuit' text='Relationship To Annuitant(s)'
+					type='LISTBOX' lookup="ACORD_225:OLI_LU_REL" answerSet=" : " required="true" labelWidth="120px" name = "Joint Owner Relationship To Annuitant(s)" answerWidth="100px" />
+				<question id='joint_owner_residence' text="Residence"
+					name="Joint Owner Residence" type='LISTBOX' required="true" answerWidth="100px"
+					labelWidth="120px"
+					answerSet=" : |L:Living at home|A:Assisted Living Facility|N:Nursing Home" />
+			</group>
+			<group associated="true">
+				<question id='joint_owner_work_status_flsuit' text="Work Status" type='LISTBOX'
+					required="true" answerSet=" : |R:Retired|E:Employed|U:Unemployed|O:Other" name="Joint Owner's Work Status"
+					labelWidth="120px" answerWidth="100px" />
+				<question id='joint_owner_taxrate_flsuit' text='Federal Tax Rate' type='LISTBOX'
+					answerSet=" : |1: 0%|2: 10%|3: 15%|4: 28%|5: 33% +" required="true" name="Joint Owner's Federal Tax Rate"
+					labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='joint_owner_work_status_flsuit_other' type='TEXT'
+					text="Please specify" labelWidth="120px" answerWidth="100px" > 
+					<displayWhen>#{EFORM.joint_owner_work_status_flsuit=='O'}</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='joint_owner_existing_annuity_flsuit' text="Do you currently own any annuities?" type='LISTBOX'
+					required="true" answerSet=' : |Y:Yes|N:No' labelWidth="120px" name="Does joint owner owns any annuities?"
+					answerWidth="100px" />
+			</group>
+			<group>
+				<question id='joint_owner_list_existing_annuity_flsuit' text="Please List"
+					type='MEMO' required="true" labelWidth="120px" name="Provide owner's annuities list">
+					<displayWhen> #{EFORM.joint_owner_existing_annuity_flsuit=="Y"} </displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='joint_owner_existing_life_insurance_flsuit' text="Do you currently own any life insurance?" type='LISTBOX'
+					required="true" answerSet=' : |Y:Yes|N:No' labelWidth="120px" name="Does joint owner owns any life insurance?"
+					answerWidth="100px" />
+			</group>
+			<group>
+				<question id='joint_owner_list_existing_life_insurance_flsuit' text="Please List"
+					type='MEMO' required="true" labelWidth="120px" name="Provide joint owner's life insurance list">
+					<displayWhen> #{EFORM.joint_owner_existing_life_insurance_flsuit=="Y"} </displayWhen>
+				</question>
+			</group>
+		</section>
+		<section title="Annuity Details">
+			<group associated="true">
+				<question id='entity_flsuit' text='Entity' type='TEXT'
+					required="true" labelWidth="120px" answerWidth="100px" />
+				<question id='form_ownership_flsuit' text='Form of Ownership'
+					type='TEXT' required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='tax_status_flsuit' text='Tax Status' type='TEXT'
+					required="true" labelWidth="120px" answerWidth="100px" />
+				<question id='annuitant_relation_flsuit' text='Relationship to Annuitant(s)'
+					type='LISTBOX' lookup="ACORD_225:OLI_LU_REL" answerSet=" : " required="true" labelWidth="120px" answerWidth="100px" />
+			</group>
+			<group>
+				<question id='supporting_doc_flsuit' text='Supporting Documents List'
+					type='MEMO' required="true" labelWidth="120px"/>
+			</group>
+		</section>
+		<section title="Suitability Questions">
+			<group>
+				<question id='investment_exp_flsuit' text='Describe your investment experience by type and length of time:'
+					type='MEMO' labelWidth="450px"/>
+			</group>
+			<group>
+				<footer>Check any current or previously owned products listed below and indicate number of years owned</footer>
+			</group>
+			<group associated="true" style='margin-top:10px;margin-bottom:10px'>
+				<question id='stock_bonds_flsuit_check' text='' type='CHECKBOX' labelWidth="0px" answerSet="SB:Stocks and Bonds"/>
+				<question id='stock_bonds_flsuit_years' text='Years' type='TEXT' labelWidth="50px" answerWidth="100px"/>
+			</group>
+			<group associated="true">
+				<question id='mutual_funds_flsuit_check' text='' type='CHECKBOX' labelWidth="0px" answerSet="MF:Mutual Funds"/>
+				<question id='mutual_funds_flsuit_years' text='Years' type='TEXT' labelWidth="50px" answerWidth="100px"/>
+			</group>
+			<group associated="true">
+				<question id='COD_flsuit_check' text='' type='CHECKBOX' labelWidth="0px" answerSet="COD:Certificates of Deposit"/>
+				<question id='COD_flsuit_years' text='Years' type='TEXT' labelWidth="50px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='gov_sec_flsuit_check' text='' type='CHECKBOX' labelWidth="0px" answerSet="GS:Gov't Securities"/>
+				<question id='gov_sec_flsuit_years' text='Years' type='TEXT' labelWidth="50px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='var_insurance_flsuit_check' text='' type='CHECKBOX' labelWidth="0px" answerSet="VI:Variable Insurance"/>
+				<question id='var_insurance_flsuit_years' text='Years' type='TEXT' labelWidth="50px" answerWidth="100px" />
+			</group>
+			<group associated="true">
+				<question id='fixed_ann_flsuit_check' text='' type='CHECKBOX' labelWidth="0px" answerSet="FA:Fixed Annuities"/>
+				<question id='fixed_ann_flsuit_years' text='Years' type='TEXT' labelWidth="50px" answerWidth="100px" />
+			</group>
+			<group>
+				<question id='other_flsuit' text='' type='CHECKBOX' labelWidth="0px" answerSet="O:Other"/>
+			</group>
+			<group associated="true">
+				<question id='other_flsuit_text' text='Specify Other' type='TEXT' answerWidth="100px">
+					<displayWhen>#{EFORM.other_flsuit=="Other"}</displayWhen>
+				</question>
+				<question id='other_flsuit_text_years' text='Years' type='TEXT' labelWidth="50px" answerWidth="100px">
+					<displayWhen>#{EFORM.other_flsuit=="Other"}</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='noprod_flsuit_check' text='' type='CHECKBOX' labelWidth="0px" answerSet="NP:I have not owned any of these products"/>
+			</group>
+			<group style='border:1px solid black; margin-top:10px; margin-bottom:10px'/> 
+			<group>
+				<question id='risk_tolerance_flsuit'
+					text="Describe your risk tolerance" type='LISTBOX' required="true"
+					answerSet=" : |C:Conservative|MC:Moderately Conservative|M:Moderate|Moderately Aggressive|A:Aggressive|O:Other"
+					labelWidth="120px" answerWidth="100px" />
+				<question id='risk_tolerance_other' text="Specify Other"
+					type="TEXT" labelWidth="120px" required="true" answerWidth="100px">
+					<displayWhen>#{EFORM.risk_tolerance_flsuit=="O"}</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='comments_risk_tolerance' text="Comments" type="MEMO" labelWidth="120px" />
+			</group>
+			<group style='border:1px solid black; margin-top:10px; margin-bottom:10px'/> 
+			<group>
+				<footer>What are your financial objectives for this purchase?</footer>
+			</group>
+			<group>
+				<question id='fin_obj_flsuit' text="" type='CHECKBOX' name="Financial objectives" required="true" labelWidth="0px" answerSet="I:Income|G:Growth(Long Term)|S:Safety of Principal and Income|:Safety of Principal and Growth|P:Pass assets to a beneficiary(ies) at death|O:Other" />
+				<question id='fin_obj_other' text="Specify Other" type="TEXT" answerWidth="100px">
+					<displayWhen>#{EFORM.fin_obj_flsuit=="O"}</displayWhen>
+				</question>
+			</group>
+			<group style='border:1px solid black; margin-top:10px; margin-bottom:10px'/> 
+			<group>
+				<footer>Why are you purchasing this annuity? </footer>
+			</group>
+			<group>
+				<question id='why_purchase_flsuit' text="" type='CHECKBOX' name="Reasons to purchase annuity"
+					required="true" labelWidth="0px"
+					answerSet="T:Tax Deferral|R:Retirement Income|D:Death Benefit|PBR:Potential for better rate|I:Immediate Income|M:Medicaid or VA Aid and Attendance|PMR:Protection from Market Risk|W:Wealth Accumulation|E:Estate Planning|O:Other" />
+				<question id='why_purchase_other' text="Specify Other"
+					type="TEXT" answerWidth="100px">
+					<displayWhen>#{EFORM.why_purchase_flsuit=="O"}</displayWhen>
+				</question>
+			</group>
+			<group style='border:1px solid black; margin-top:10px; margin-bottom:10px'/> 
+			<group>
+				<footer>What is the Source of Funds for this annuity purchase?</footer>
+			</group>
+			<group>
+				<question id='source_funds_flsuit' text="" type='CHECKBOX' name="Source of funds "
+					required="true" labelWidth="0px"
+					answerSet="C:Cash or Cash Equivalent|M:Mutual Fund Redemption|AFA:Another Fixed Annuity|I:Inheritance|V:Variable Annuity|R:Reverse Mortgage or Home Equity Loan|L:Life Insurance Cash Value|O:Other" />
+				<question id='source_funds_other' text="Specify Other"
+					type="TEXT" labelWidth="120px" answerWidth="100px">
+					<displayWhen> #{EFORM.source_funds_flsuit=="O"}</displayWhen>
+				</question>
+			</group>
+		</section>
+		<section>
+			<group style='border:1px solid black; margin-top:10px; margin-bottom:10px'/> 
+			<group>
+				<question id='prop_annuity_replace_flsuit'
+					text="Will the proposed annuity replace any product?" type='LISTBOX'
+					required="true" answerSet=' : |Y:Yes|N:No' labelWidth="400px"
+					answerWidth="100px" />
+				<question id='prop_annuity_replace_penalty_flsuit'
+					text="Will you pay a penalty or other charge to obtain these funds? "
+					type='LISTBOX' answerSet=' : |Y:Yes|N:No' labelWidth="400px"
+					answerWidth="100px">
+					<displayWhen> #{EFORM.prop_annuity_replace_flsuit=="Y"}
+					</displayWhen>
+				</question>
+				<question id='prop_annuity_replace_penalty_amount_flsuit'
+					text=" What is the amount of the charge or penalty?" type='TEXT'
+					labelWidth="400px" answerWidth="100px">
+					<displayWhen> #{EFORM.prop_annuity_replace_flsuit=="Y" and
+						EFORM.prop_annuity_replace_penalty_flsuit=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group>
+				<question id='prop_annuity_replace_prod' text="Type of Product/Account # "
+					type='TEXT' answerSet=' : |Y:Yes|N:No' labelWidth="400px"
+					answerWidth="100px">
+					<displayWhen> #{EFORM.prop_annuity_replace_flsuit=="Y" and
+						EFORM.prop_annuity_replace_penalty_flsuit=="Y"}
+					</displayWhen>
+				</question>
+				<question id='prop_annuity_replace_prod_charge' text="Charge or Penalty (%)"
+					type='TEXT' answerSet=' : |Y:Yes|N:No' labelWidth="400px"
+					answerWidth="100px">
+					<displayWhen> #{EFORM.prop_annuity_replace_flsuit=="Y" and
+						EFORM.prop_annuity_replace_penalty_flsuit=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+		</section>
+		<section repeating="true" name="Product/Account">
+			<displayWhen> #{EFORM.prop_annuity_replace_flsuit=="Y" and
+				EFORM.prop_annuity_replace_penalty_flsuit=="Y"}
+			</displayWhen>
+			<group>
+				<question id='prop_annuity_replace_prod1' text="Type of Product/Account # "
+					type='TEXT' answerSet=' : |Y:Yes|N:No' labelWidth="370px"
+					answerWidth="100px" />
+				<question id='prop_annuity_replace_prod1_charge' text="Charge or Penalty (%)"
+					type='TEXT' answerSet=' : |Y:Yes|N:No' labelWidth="370px"
+					answerWidth="100px" />
+			</group>
+		</section>
+		<section>
+			<group>
+				<question id="additional_info_flsuit" text="Additional Information"
+					type="MEMO" labelWidth="120px" />
+			</group>
+		</section>
+		<section title="Owner Acknowledgement">
+			<group associated="true">
+				<question id='owner_sig_flsuit' text="Owner Signature"
+					required="true" type="CHECKBOX" labelWidth="120px" answerWidth="100px" />
+				<question id='owner_sig_date_flsuit' text='Date Signed' required="true" type='DATEF' labelWidth="120px" answerWidth="100px" />
+			</group>
+		</section>
+	</page>
+</form>

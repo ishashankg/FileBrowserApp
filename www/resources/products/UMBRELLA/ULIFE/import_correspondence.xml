@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<correspondences>
+		<correspondence>
+	        <correspondenceCode>DeclineNoticeUlife</correspondenceCode>
+	        <correspondenceName>Default Decline Notification Ulife</correspondenceName>
+			<correspondenceCategory>Underwriting</correspondenceCategory>
+			<correspondenceFreeForm>false</correspondenceFreeForm>
+			<correspondenceTarget>PRIMARY_INSURED</correspondenceTarget>
+			<correspondenceFormCode>CMPDECLINE</correspondenceFormCode>
+			<correspondenceFileName>correspondenceTemplates/Base_Decline_letter.txt</correspondenceFileName>
+	    </correspondence>
+	</correspondences>
+</stepImport>

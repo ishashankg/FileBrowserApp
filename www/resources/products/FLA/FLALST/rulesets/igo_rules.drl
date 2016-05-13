@@ -1,0 +1,27 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.EformCode;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.db.services.util.EmployeeUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.Requirement
+import rules.*;
+import java.util.*;
+import com.stepsoln.core.rules.requirements.BeneficiaryData
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+
+rule "HIPAA Signature Required"
+when		
+	    Requirement(code in ('HIPAA_07_05','HIPAA_09_11','HIPAA_09_11_KS',
+		                              'HIPAA_09_11_KY','HIPAA_ME_07_05','HIPAA_09_11_MA',
+			                          'HIPAA_09_11_MN','HIPAA_09_11_MT','HIPAA_09_11_NE',
+			                          'HIPAA_09_11_NM','HIPAA_09_11_ND','HIPAA_09_11_VT','HIPAA_VA_07_05'), target =="PRIMARY_INSURED", type=="ESIGNATURE", status == "OPEN", required == true);
+	    theCaseData:CaseData(ignoreSignatureData == false);
+	then
+		rulesResponse.addRequiredOnce("HIPAA ESignature is required");
+end

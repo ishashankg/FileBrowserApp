@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<page title="Suitability Financial Information">
+		<section title="Financial Information (client household financial information prior to purchase of annuity)" >    			
+			<group style='margin-top:10px;margin-bottom:10px;font-weight: bold'> 
+				<footer>9. Source(s) of Income:</footer>
+			</group> 		
+			<group>   
+				<question id='income_source' type='CHECKBOX'  labelStyle='margin-left:100px;margin-top:10px;'  answerSet="1:Salary/Wages|2:Interest Income|3:Pension/IRA Payments|4:Trust Income|5:Social Security|6:Dividends|7:Other Annuities|8:Others" tabindex='1' required="true"/>	
+			</group>
+			<group>
+				<question id='income_reason_specify' text="Please Specify (if other is selected)" type='TEXT'
+			          answerWidth="120px;" labelWidth="100px"  labelStyle='margin-left:8px' tabindex="2" >
+					<displayWhen>#{EFORM.income_source[0]=="8" || EFORM.income_source[1]=="8" || EFORM.income_source[2]=="8" ||EFORM.income_source[3]=="8" ||EFORM.income_source[4]=="8" ||EFORM.income_source[5]=="8" ||EFORM.income_source[6]=="8" ||EFORM.income_source[7]=="8" }</displayWhen>
+				</question>
+			</group>  	 
+			<group style='border:1px solid black'>
+			</group> 
+			<group style='margin-top:10px;margin-bottom:10px;font-weight: bold'> 
+				<footer>10. Monthly Income/Expenses (in $):</footer>
+			</group> 
+			<group labelWidth="320px">				
+				<question id='monthly_income' text="Approximate Monthly Household Income (net after taxes)" name="Approximate Monthly Household Income" type='TEXT' required="true" answerWidth="120px;" labelStyle='margin-left:37px !important' tabindex="3" mask="pnum"/>
+				<question id='monthly_expense' text="Approximate Monthly Household Expenses" type='TEXT' required="true" answerWidth="120px;" labelStyle='margin-left:37px !important' tabindex="4" mask="pnum" />
+				<question id='disposable_income' text="Monthly Disposable Household Income" type='TEXT' required="true" answerWidth="120px;" labelStyle='margin-left:37px !important;font-weight:bold;margin-bottom:10px' tabindex="5" mask="pnum"/>
+			</group>    
+			<group style='margin-top:10px;border:1px solid black'>
+			</group> 
+			<group style='margin-top:10px;margin-bottom:10px;font-weight: bold'> 
+				<footer>11. Liquid Assets (in $):</footer>
+			</group> 	
+			<group labelWidth="320px">
+				<question id='cash' text="Cash" name="Liquid assets in cash" type='TEXT' answerWidth="120px;" required="true"  labelStyle='margin-left:37px !important' tabindex="6" mask="pnum" />
+				<question id='mutual_fund' text="Mutual Funds (except Class B funds subject to deferred sales charges)" answerWidth="120px;" name="Mutual Funds for liquid assets" type='TEXT' required="true"   labelStyle='margin-left:37px !important' tabindex="7" mask="pnum"/>			
+				<question id='savings' text="Checking/Savings/Money Market " type='TEXT' required="true" answerWidth="120px;"   labelStyle='margin-left:37px !important' tabindex="8" mask="pnum" />
+				<question id='annuity_with_no_surrender' text="Annuities not subject to surrender penalties " type='TEXT' required="true" answerWidth="120px;"  labelStyle='margin-left:37px !important' tabindex="9" mask="pnum"/>			
+				<question id='cd' text="CDs (in $)" name="CDs for liquid assets" type='TEXT' required="true" answerWidth="120px;"  labelStyle='margin-left:37px !important' tabindex="10" mask="pnum"/>
+				<question id='life_insurance_without_surrender' text="Life Insurance cash value not subject to surrender penalties " type='TEXT' required="true" answerWidth="120px;" labelStyle='margin-left:37px !important' tabindex="11" mask="pnum"/>		
+				<question id='ira_over' text="IRAs/Qualified Plans (if over 59½ and no surrender penalties) " name="IRAs/Qualified Plans for liquid assets"  type='TEXT' required="true" answerWidth="120px;"  labelStyle='margin-left:37px !important' tabindex="12" mask="pnum"/>
+				<question id='stock_bonds' text="Stocks/Bonds " type='TEXT' required="true" answerWidth="120px;" labelStyle='margin-left:37px !important' tabindex="13" mask="pnum"/>			
+				<question id='other_liquid_assets' text="Other " type='TEXT' helpText="(Personal property such as collectibles and gold are considered Non-Liquid Assets)" answerWidth="120px;"   labelStyle='margin-left:37px !important' tabindex="14" mask="pnum"/>			
+				<question id='total_liquid_assets' text="Total Liquid Assets " type='TEXT' answerWidth="120px;"  labelStyle='margin-left:37px !important;font-weight:bold;margin-bottom:10px' tabindex="15" mask="pnum" />  
+			</group>  
+			<group style='margin-top:10px;border:1px solid black'>
+			</group> 
+			<group style='margin-top:10px;margin-bottom:10px;font-weight: bold'> 
+				<footer>12. Non-Liquid Assets (in $):</footer>
+			</group> 
+			<group labelWidth="320px">
+				<question id='home_value' text="Value of Home " type='TEXT' required="true" answerWidth="120px;"  labelStyle='margin-left:37px !important' tabindex="16" mask="pnum"/>
+				<question id='gold' text="Gold, collectibles, or other valuable personal property " name="Gold, collectibles, or other valuable personal property details" type='TEXT' required="true" answerWidth="120px;"  labelStyle='margin-left:37px !important' tabindex="17" mask="pnum"/>
+				<question id='other_real_estate' text="Other Real Estate " type='TEXT' required="true" answerWidth="120px;" labelStyle='margin-left:37px !important' tabindex="18" mask="pnum"/>
+				<question id='annuity_with_surrender' text="Annuities subject to surrender penalties " type='TEXT' required="true" answerWidth="120px;" labelStyle='margin-left:37px !important'  tabindex="19" mask="pnum"/>
+				<question id='ira_under' text="IRAs/Qualified Plans (if under 59½) (in$)" name="IRAs/Qualified Plans for liquid assets" type='TEXT' required="true" answerWidth="120px;"  labelStyle='margin-left:37px !important' tabindex="20" mask="pnum"/>
+				<question id='life_insurance_with_surrender' text="Life Insurance cash value subject to surrender penalties " name="Life Insurance cash value for Non-liquid assets" type='TEXT' required="true" answerWidth="120px;" labelStyle='margin-left:37px !important' tabindex="21" mask="pnum"/>
+				<question id='classB_mutual_fund' text="Class B Mutual Funds (if subject to deferred sales charges) " name="Mutual Funds for non-liquid assets"  type='TEXT' required="true" answerWidth="120px;" labelStyle='margin-left:37px !important' tabindex="22" mask="pnum"/>
+				<question id='other_non_liquid_assets' text="Other " name="Other non-liquid assets" type='TEXT'
+          required="true" answerWidth="120px;" labelWidth="100px" labelStyle='margin-left:37px !important' tabindex="23" mask="pnum"/>
+				<question id='total_non_liquid_assets' text="Total Non-Liquid Assets " type='TEXT' answerWidth="120px;"  labelStyle='margin-left:37px !important;font-weight:bold;margin-bottom:10px' tabindex="24" mask="pnum"/>        
+			</group> 			
+			<group style='margin-top:10px;border:1px solid black'>
+			</group> 
+			<group style='margin-top:10px;margin-bottom:10px;font-weight: bold'> 
+				<footer>13. Net Worth (in $):</footer>
+			</group> 				  
+			<group labelWidth="320px">
+				<question id='total_assets' text="Total Assets (Liquid and Non-Liquid) " type='TEXT' required="true" answerWidth="120px;"  labelStyle='margin-left:37px !important;font-weight:bold' tabindex="25" mask="pnum"/>
+				<question id='total_liabilities' text="Total Liabilities (short term and long term) " type='TEXT' required="true" answerWidth="120px;"  labelStyle='margin-left:37px !important;font-weight:bold' tabindex="26" mask="pnum"/>				
+				<question id='short_term_liabilities' text="Total Short Term Liabilities " type='TEXT'
+          required="true" answerWidth="120px;" labelStyle='margin-left:37px !important' tabindex="27" mask="pnum"/>
+				<question id='long_term_liabilities' text="Total Long Term Liabilities " type='TEXT'
+          required="true" answerWidth="120px;" labelStyle='margin-left:37px !important' tabindex="28" mask="pnum" />
+				<question id='total_net_worth' text="Total Net Worth (Total Assets less Total Liabilities) " name="Total Net Worth" type='TEXT' required="true" answerWidth="120px;" labelWidth="100px"  labelStyle='margin-left:37px !important;font-weight:bold' tabindex="29" mask="pnum"/>
+			</group> 
+		</section>        
+	</page>
+</form>

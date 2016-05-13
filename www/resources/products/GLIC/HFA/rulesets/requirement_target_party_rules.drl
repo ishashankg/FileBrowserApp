@@ -1,0 +1,104 @@
+import com.stepsoln.core.rules.requirements.ProcessInstanceData;
+import com.stepsoln.core.db.party.Party;
+import com.stepsoln.core.db.enums.PROCESS_TYPE;
+import com.stepsoln.core.db.enums.PARTY_TYPE;
+import com.stepsoln.core.rules.requirements.ProcessInstanceData.FactualParty;
+import com.stepsoln.core.db.policy.AbstractDepBen.RELATIONSHIP_TYPE;
+import com.stepsoln.core.db.product.ProductProcessRequirement.REQUIREMENT_TYPE;
+
+/*rule "test"
+activation-group "endorsementGroup"
+salience  50
+	when
+		ProcessInstanceData( $partyList : inputPartyList )
+		$requiredParty : (FactualParty(partyType == PARTY_TYPE.POLICY_OWNER) from $partyList)
+		$processInstance:ProcessInstanceData( )
+	then
+		$processInstance.addParty($requiredParty.getId());
+		System.out.println("test ran."+$processInstance.getPocessType());
+end*/
+
+rule "Birth day change party filter rule"
+/*activation-group "endorsementGroup"
+salience  100*/
+	when
+		$processInstance:ProcessInstanceData( pocessType in (PROCESS_TYPE.BIRTHDAY_CHANGE) && requirementType == REQUIREMENT_TYPE.ESIGNATURE)
+		ProcessInstanceData( $partyList : inputPartyList )
+		$requiredParty : (FactualParty(partyType == PARTY_TYPE.POLICY_OWNER  || partyType == PARTY_TYPE.AGENT ) from $partyList )  
+	then
+		System.out.println("Birth day change party filter rule fired.");
+		$processInstance.addParty($requiredParty.getId());
+end
+
+
+rule "Address change party filter rule"
+/*activation-group "endorsementGroup"
+salience  100*/
+	when
+		$processInstance:ProcessInstanceData( pocessType in (PROCESS_TYPE.ADDRESS_CHANGE) )
+		ProcessInstanceData( $partyList : inputPartyList )
+		$requiredParty : (FactualParty(partyType == PARTY_TYPE.POLICY_OWNER ) from $partyList )  
+	then
+		System.out.println("Address change party filter rule fired.");
+		$processInstance.addParty($requiredParty.getId());
+end
+
+rule "Beneficiary change party filter rule"
+/*activation-group "endorsementGroup"
+salience  100*/
+	when
+		$processInstance:ProcessInstanceData( pocessType in (PROCESS_TYPE.BENEFICIARY_CHANGE) && requirementType == REQUIREMENT_TYPE.ESIGNATURE)
+		ProcessInstanceData( $partyList : inputPartyList )
+		$requiredParty : (FactualParty(partyType == PARTY_TYPE.POLICY_OWNER  || isRevocable == true ) from $partyList )
+	then
+		System.out.println("Beneficiary change party filter rule fired.");
+		$processInstance.addParty($requiredParty.getId());
+end
+
+rule "Owner change party filter rule"
+/*activation-group "endorsementGroup"
+salience  100*/
+	when
+		$processInstance:ProcessInstanceData( pocessType in (PROCESS_TYPE.OWNER_CHANGE) && requirementType == REQUIREMENT_TYPE.ESIGNATURE)
+		ProcessInstanceData( $partyList : inputPartyList )
+		$requiredParty : (FactualParty(partyType == PARTY_TYPE.POLICY_OWNER ) from $partyList )
+	then
+		System.out.println("Owner change party filter rule fired.");
+		$processInstance.addParty($requiredParty.getId());
+end
+
+rule "Smoker status change party filter rule"
+/*activation-group "endorsementGroup"
+salience  100*/
+	when
+		$processInstance:ProcessInstanceData( pocessType in (PROCESS_TYPE.SMOKER_STATUS_CHANGE) && requirementType == REQUIREMENT_TYPE.ESIGNATURE)
+		ProcessInstanceData( $partyList : inputPartyList )
+		$requiredParty : (FactualParty(partyType == PARTY_TYPE.POLICY_OWNER ) from $partyList )
+	then
+		System.out.println("Smoker status change party filter rule fired.");
+		$processInstance.addParty($requiredParty.getId());
+end
+
+rule "Payment change party filter rule"
+/*activation-group "endorsementGroup"
+salience  100*/
+	when
+		$processInstance:ProcessInstanceData( pocessType in (PROCESS_TYPE.PAYMENT_CHANGE) && requirementType == REQUIREMENT_TYPE.ESIGNATURE)
+		ProcessInstanceData( $partyList : inputPartyList )
+		$requiredParty : (FactualParty(partyType == PARTY_TYPE.POLICY_OWNER ) from $partyList )
+	then
+		System.out.println("Payment change party filter rule fired.");
+		$processInstance.addParty($requiredParty.getId());
+end
+
+rule "Payor change party filter rule"
+/*activation-group "endorsementGroup"
+salience  100*/
+	when
+		$processInstance:ProcessInstanceData( pocessType in (PROCESS_TYPE.PAYOR_CHANGE) && requirementType == REQUIREMENT_TYPE.ESIGNATURE)
+		ProcessInstanceData( $partyList : inputPartyList )
+		$requiredParty : (FactualParty(partyType == PARTY_TYPE.POLICY_OWNER ) from $partyList )
+	then
+		System.out.println("Payor change party filter rule fired.");
+		$processInstance.addParty($requiredParty.getId());
+end

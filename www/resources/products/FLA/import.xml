@@ -1,0 +1,24 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<carrier>
+		<carrierCode>FLA</carrierCode>
+		<carrierName>Fidelity Life Association</carrierName>
+		<carrierNAICCode>63290</carrierNAICCode>	
+
+		<docTypes>
+			<docType>
+				<docTypeCode>NB</docTypeCode>
+				<docTypeName>New Business</docTypeName>
+			</docType>
+			<docType>
+				<docTypeCode>UW</docTypeCode>
+				<docTypeName>Underwriting</docTypeName>
+			</docType>
+		</docTypes>
+		
+		<importProduct productCode="FLALST" />
+		
+		<file uri="chart_of_accounts.xml" />
+		
+	</carrier>
+</stepImport>

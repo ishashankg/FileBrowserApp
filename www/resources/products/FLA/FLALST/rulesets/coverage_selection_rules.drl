@@ -1,0 +1,415 @@
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.UserData;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.coverages.*;
+import com.stepsoln.core.rules.uw.CaseUwRiskCalcData;
+import com.stepsoln.core.rules.requirements.ApplicantData;
+import com.stepsoln.core.rules.requirements.DependantData;
+import com.stepsoln.core.db.group.*;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.util.*;
+import java.math.BigDecimal;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.helper.enums.UNIT_SYSTEM;
+import org.apache.commons.lang.StringUtils;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global com.stepsoln.core.util.MathUtil math;
+
+rule "Coverage Option Check"
+salience 180
+	when
+       	faOption:CoverageOption(optionCode in ("LSTFA", "LSTCTR1", "LSTADB1"));
+    then
+       	faOption.setTextEntry(true);
+       	faOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())+"");
+end
+
+rule "Enable Option when there is no valid risk calc data"
+salience 170
+	when
+		(not CaseUwRiskCalcData() or CaseUwRiskCalcData(isValid==false))
+       	options:CoverageOption(optionCode in ("LSTTERM10","LSTTERM20","LSTTERM15","LSTTERM30","LSTCTR1","LSTADB1","LSTACD1","LSTPOLFEE","LSTWP"));
+    then
+    	options.setAvailable(true);
+    	options.setSelectable(true);
+end
+
+rule "Disallow updates to the Option when there is a valid risk calc data"
+salience 170
+	when
+		CaseUwRiskCalcData(isValid==true)
+       	options:CoverageOption(optionCode in ("LSTTERM10","LSTTERM20","LSTTERM15","LSTTERM30","LSTCTR1","LSTADB1","LSTACD1","LSTPOLFEE","LSTWP"));
+    then
+    	options.setAvailable(true);
+    	options.setEditable(false);
+end
+
+rule "Face Amount Option Required"
+salience 161
+	when
+       	fa:CoverageOption(optionCode=="LSTFA"); 
+    then
+    	fa.setSelected(true);
+    	fa.setRequired(true);
+       	fa.setTextEntry(true);
+end
+
+rule "Face Amount Option not Required"
+salience 160
+	when
+       	fa:CoverageOption(optionCode=="LSTFA");
+       	(CaseUwRiskCalcData(isValid==true));
+       	CaseData(applicantEmailSent==true && StringUtils.isBlank(uwCaseStatus));
+    then
+    	fa.setSelected(true);
+    	fa.setRequired(false);
+       	fa.setTextEntry(true);
+       	fa.setEditable(false);
+end
+
+rule "Hide and remove Policy Fee"
+salience 160
+	when
+		feeOption:CoverageOption(optionCode=="LSTPOLFEE");
+		feePlan:CoveragePlan(planCode=="LSTPOLFEE");
+	then
+		feeOption.setAvailable(false);
+		feePlan.setAvailable(false);
+		feeOption.setSelected(false);
+end
+
+rule "Add Policy fee to all valid quotes"
+salience 150
+	when
+		feeOption:CoverageOption(optionCode=="LSTPOLFEE");
+		selectedOption:CoverageOption(selected==true, optionCode in ("LSTTERM10", "LSTTERM15", "LSTTERM20", "LSTTERM30"));
+		faOption:CoverageOption(selected==true, optionCode=="LSTFA", MathUtil.convertToNumber(faOption.getSelectedValue()) > 24 && MathUtil.convertToNumber(faOption.getSelectedValue()) < 501);
+	then
+		feeOption.setSelected(true);
+		feeOption.setSelectedValue("1");
+end
+
+rule "Dependent Child Rider Age Limit"
+salience 155
+	when
+       	faOption:CoverageOption(optionCode=="LSTCTR1");
+       	faPlan:CoveragePlan(planCode=="LSTCTR1");
+       	applicant:ApplicantData(type=='PRIMARY_INSURED', age < 20 || age > 60);
+    then;
+    	faOption.setAvailable(false);
+    	faOption.setSelectable(false);
+    	faOption.setSelected(false);
+    	faPlan.setAvailable(false);
+    	faPlan.setSelectable(false);
+    	faPlan.setSelected(false);
+end
+
+rule "Accidental Death Benefit Rider Age Limit"
+salience 155
+	when
+       	faOption:CoverageOption(optionCode=="LSTADB1");
+       	faPlan:CoveragePlan(planCode=="LSTADB1");
+       	applicant:ApplicantData(type=='PRIMARY_INSURED', age < 20 || age > 65);
+    then
+    	faOption.setAvailable(false);
+    	faOption.setSelectable(false);
+    	faOption.setSelected(false);
+    	faPlan.setAvailable(false);
+    	faPlan.setSelectable(false);
+    	faPlan.setSelected(false);
+end
+
+rule "Adjust LSTPREMIUM Option when there is a non zero value in calc_ptc_load of CaseUwRiskCalcData"
+salience 140
+activation-group "riskCalcPctLoad"
+	when
+		$riskCalc:CaseUwRiskCalcData(isValid==true, calcPctLoad!=null, calcPctLoad.doubleValue()>0.0)
+       	options:CoverageOption(optionCode == "LSTPREMIUM" );
+       	plan:CoveragePlan(planCode == "LSTPREMIUM")
+    then
+    	options.setSelectedValue($riskCalc.getCalcPctLoad().toString());
+    	options.setAvailable(true);
+    	options.setSelected(true);
+    	options.setSelectable(true);
+    	options.setSkipProcessCoverageAmount(true);
+    	plan.setAvailable(true);
+end
+
+rule "Adjust LSTPREMIUM Option when there is a zero value in calc_ptc_load of CaseUwRiskCalcData"
+salience 140
+activation-group "riskCalcPctLoad"
+	when
+		not CaseUwRiskCalcData(isValid==true, calcPctLoad!=null, calcPctLoad.doubleValue()>0.0)
+       	options:CoverageOption(optionCode == "LSTPREMIUM" );
+       	plan:CoveragePlan(planCode == "LSTPREMIUM")
+    then
+    	options.setSelectedValue("0");
+    	options.setAvailable(false);
+    	options.setSelected(false);
+    	options.setSelectable(false);
+    	plan.setAvailable(false);
+end
+
+rule "Face Amount"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+		faOption:CoverageOption(selected==true, optionCode=="LSTFA", MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 < 25000 || MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 500000);
+    then
+       	rulesResponse.addUserNotifcationInfo("Face Amount between 25,000 and 500,000");
+end
+
+rule "Base Coverage Selection"
+salience 150
+	when
+		CoverageOption(optionCode in ("LSTTERM30"),selected==false);
+		and CoverageOption(optionCode in ("LSTTERM20"),selected==false);
+		and CoverageOption(optionCode in ("LSTTERM15"),selected==false);
+		and CoverageOption(optionCode in ("LSTTERM10"),selected==false);
+    then
+    	rulesResponse.addUserNotifcationInfo("At-least one Base Coverage must be selected");
+end
+
+rule "10 year TERM Age Limit"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTTERM10");
+       	applicant:ApplicantData(type=='PRIMARY_INSURED', age < 18 || age > 65);
+    then
+       	rulesResponse.addUserNotifcationInfo("Applicant's Age must be between 18 and 65 for 10 year term");   	
+end
+
+rule "15 year TERM Age Limit"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTTERM15");
+       	applicant:ApplicantData(type=='PRIMARY_INSURED', age < 18 || age > 65);
+    then
+       	rulesResponse.addUserNotifcationInfo("Applicant's Age must be between 18 and 65 for 15 year term");   	
+end
+
+rule "20 year TERM Age Limit"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTTERM20");
+       	applicant:ApplicantData(type=='PRIMARY_INSURED', age < 18 || age > 60);
+    then
+       	rulesResponse.addUserNotifcationInfo("Applicant's Age must be between 18 and 60 for 20 year term");   	
+end
+
+rule "30 year TERM Age Limit for Non-Smoker"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTTERM30");
+       	applicant:ApplicantData(type=='PRIMARY_INSURED', age < 18 || age > 50, tobaccoUsage=="false");
+    then
+       	rulesResponse.addUserNotifcationInfo("Applicant's Age must be between 18 and 50 for 30 year term");   	
+end
+
+rule "30 year TERM Age Limit for Smoker"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTTERM30");
+       	applicant:ApplicantData(type=='PRIMARY_INSURED', age < 18 || age > 45, tobaccoUsage=="true");
+    then
+    	rulesResponse.addUserNotifcationInfo("Applicant's Age must be between 18 and 45 for 30 year term if smoker"); 
+end
+
+rule "Dependent Child Rider Coverage Units"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTCTR1", MathUtil.convertToNumber(faOption.getSelectedValue()) < 5 || MathUtil.convertToNumber(faOption.getSelectedValue()) > 25);
+    then
+    	rulesResponse.addUserNotifcationInfo("Dependent Child Rider coverage unit must be between 5 and 25.");     	
+end
+
+rule "Dependent Child Rider Coverage Units multiple of 5"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTCTR1", 
+       		MathUtil.convertToNumber(faOption.getSelectedValue()) > 5 && MathUtil.convertToNumber(faOption.getSelectedValue()) < 25 && eval(MathUtil.convertToNumber(faOption.getSelectedValue()).intValue() % 5 != 0));
+    then
+    	rulesResponse.addUserNotifcationInfo("Dependent Child Rider coverage unit must be multiple of 5.");     	
+end
+
+rule "Accidental Death Benefit Rider Face Amount"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTADB1", MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 < 25000 || MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 250000);
+    then
+    	rulesResponse.addUserNotifcationInfo("Accidental Death Benefit Rider face amount must be between 25,000 and 250,000");     	
+end
+
+rule "Check Accidental Death Benefit Rider Face Amount with Base Plan Face Amount"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTFA");
+       	faADBROption:CoverageOption(selected==true, optionCode=="LSTADB1", MathUtil.convertToNumber(faADBROption.getSelectedValue()) > MathUtil.convertToNumber(faOption.getSelectedValue()));
+    then
+    	rulesResponse.addUserNotifcationInfo("Accidental death benefit rider face amount should be less then base plan face amount");     	
+end
+
+rule "LSTTERM10 Level True"
+salience 100
+	when
+       	tlplan:CoverageOption(optionCode in ("LSTTERM10"), selected==true);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM15","LSTTERM20","LSTTERM30"));
+    then
+    	notAllowed.setSelectable(false);
+    	notAllowed.setSelected(false);
+end
+
+rule "LSTTERM10 Level False"
+salience 100
+	when
+		(not CaseUwRiskCalcData() or CaseUwRiskCalcData(isValid==false))
+       	tlplan:CoverageOption(optionCode in ("LSTTERM10"), selectable==true, selected==false);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM15","LSTTERM20","LSTTERM30"), selectable==false);
+    then
+    	notAllowed.setSelectable(true);
+end
+
+rule "LSTTERM15 Level True"
+salience 100
+	when
+       	tlplan:CoverageOption(optionCode in ("LSTTERM15"), selected==true);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM10","LSTTERM20","LSTTERM30"));
+    then
+    	notAllowed.setSelectable(false);
+    	notAllowed.setSelected(false);
+end
+
+rule "LSTTERM15 Level False"
+salience 100
+	when
+	    (not CaseUwRiskCalcData() or CaseUwRiskCalcData(isValid==false))
+       	tlplan:CoverageOption(optionCode in ("LSTTERM15"), selectable==true, selected==false);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM10","LSTTERM20","LSTTERM30"), selectable==false);
+    then
+    	notAllowed.setSelectable(true);
+end
+
+rule "LSTTERM20 Level True"
+salience 100
+	when
+       	tlplan:CoverageOption(optionCode in ("LSTTERM20"), selected==true);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM10","LSTTERM15","LSTTERM30"));
+    then
+    	notAllowed.setSelectable(false);
+    	notAllowed.setSelected(false);
+end
+
+rule "LSTTERM20 Level False"
+salience 100
+	when
+	    (not CaseUwRiskCalcData() or CaseUwRiskCalcData(isValid==false))
+       	tlplan:CoverageOption(optionCode in ("LSTTERM20"), selectable==true, selected==false);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM10","LSTTERM15","LSTTERM30"), selectable==false);
+    then
+    	notAllowed.setSelectable(true);
+end
+
+rule "LSTTERM30 Level True"
+salience 100
+	when
+       	tlplan:CoverageOption(optionCode in ("LSTTERM30"), selected==true);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM10","LSTTERM15","LSTTERM20"));
+    then
+    	notAllowed.setSelectable(false);
+    	notAllowed.setSelected(false);
+end
+
+rule "LSTTERM30 Level False"
+salience 100
+	when
+	    (not CaseUwRiskCalcData() or CaseUwRiskCalcData(isValid==false))
+       	tlplan:CoverageOption(optionCode in ("LSTTERM30"), selectable==true, selected==false);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM10","LSTTERM15","LSTTERM20"), selectable==false);
+    then
+    	notAllowed.setSelectable(true);
+end
+
+rule "Calculate FA coverage amount"
+salience 100
+	when
+       	faOption:CoverageOption(optionCode in ("LSTFA"));
+    then
+    	faOption.setSelectedValueCoverageAmount(new BigDecimal(MathUtil.convertToNumber(faOption.getSelectedValue())*1000));
+    	faOption.setSkipProcessCoverageAmount(true);
+end
+
+rule "set options to face amount"
+salience 100
+	when
+       	faOption:CoverageOption(optionCode=="LSTFA");
+       	selectedOption:CoverageOption(selected==true, optionCode in ("LSTTERM10", "LSTTERM15", "LSTTERM20", "LSTTERM30"));
+    then
+       	selectedOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())*1000+"");
+end
+
+rule "set dependent rider amount"
+salience 100
+	when
+       	depOption:CoverageOption(optionCode=="LSTCTR1", selected==true);
+    then
+       	depOption.setSelectedValueCoverageAmount(new BigDecimal(MathUtil.convertToNumber(depOption.getSelectedValue())*1000+""));
+       	depOption.setSkipProcessCoverageAmount(true);
+end
+
+rule "set accident rider amount"
+salience 100
+	when
+       	accOption:CoverageOption(optionCode=="LSTADB1", selected==true);
+    then
+       	accOption.setSelectedValueCoverageAmount(new BigDecimal(MathUtil.convertToNumber(accOption.getSelectedValue())*1000+""));
+       	accOption.setSkipProcessCoverageAmount(true);
+end 
+
+rule "Indicate to lookup build chart data with UW Class data"
+salience 180
+activation-group "buildChartLookup"
+	when
+		$app:ApplicantData(type=='PRIMARY_INSURED')
+		Question(id == "height_feet", $heightFeet:answerAsDecimal) ;
+		Question(id == "height_inches", $heightInches:answerAsDecimal) ; 
+		Question(id == "weight_pounds",$weightPounds:answerAsDecimal) ; 
+		Question(id == "smoker_ind", $smokeInd:answerAsBoolean);	
+		$uwClassData:UnderWritingClassData()	
+	then
+	    rulesResponse.setLookupBuildChart(true);
+	    rulesResponse.setUwClassType($uwClassData.getType());
+		$app.setHeight($heightFeet.multiply(MathUtil.INCHES_IN_FOOT).add($heightInches).intValue());
+		$app.setWeight($weightPounds.intValue());
+		$app.setUnitSystem(UNIT_SYSTEM.IMPERIAL);
+		$app.setTobaccoUsage($smokeInd);
+		rulesResponse.addToRuleFiredList(100,"USE_BUILD_CHART_SERVICE");
+end
+
+rule "Indicate to lookup build chart data with NO UW Class data"
+salience 175
+activation-group "buildChartLookup"
+	when
+		$app:ApplicantData(type=='PRIMARY_INSURED')
+		Question(id == "height_feet", $heightFeet:answerAsDecimal) ;
+		Question(id == "height_inches", $heightInches:answerAsDecimal) ; 
+		Question(id == "weight_pounds",$weightPounds:answerAsDecimal) ; 
+		Question(id == "smoker_ind", $smokeInd:answerAsBoolean);	
+		$uwClassData:UnderWritingClassData()	
+	then
+	    rulesResponse.setLookupBuildChart(true);
+		$app.setHeight($heightFeet.multiply(MathUtil.INCHES_IN_FOOT).add($heightInches).intValue());
+		$app.setWeight($weightPounds.intValue());
+		$app.setUnitSystem(UNIT_SYSTEM.IMPERIAL);
+		$app.setTobaccoUsage($smokeInd);
+		rulesResponse.addToRuleFiredList(100,"USE_BUILD_CHART_SERVICE");
+end

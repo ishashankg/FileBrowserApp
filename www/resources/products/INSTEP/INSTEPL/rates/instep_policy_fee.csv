@@ -1,0 +1,4 @@
+Option Cd,Gender,tobacco use,min age,max age,class,min level,max level,rate,rate_usage,rate_type,rate_basis_id,rate_basis_value
+PFEE,,,18,65,PP,0,1,85,,,,1
+PFEE,,,18,65,ST,0,1,85,,,,1
+PFEE,,,18,65,PF,0,1,85,,,,1

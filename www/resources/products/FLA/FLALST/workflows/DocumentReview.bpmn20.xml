@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:activiti="http://activiti.org/bpmn" targetNamespace="http://www.activiti.org/test">
+  <process id="DocumentReview" name="DocumentReview">
+    <documentation><![CDATA[Place documentation for the 'DocumentReview' process here.]]></documentation>
+    <startEvent id="startevent1" name="Start" />
+    <scriptTask id="scripttask1" name="Script Task" scriptFormat="groovy">    <script><![CDATA[println("hello world")
+println(processId)
+]]></script>
+</scriptTask>
+    <endEvent id="endevent1" name="End" />
+    <userTask id="usertask1" name="User Task" activiti:assignee="DEFinn2" />
+    <sequenceFlow id="flow3" name="" sourceRef="startevent1" targetRef="scripttask1" />
+    <sequenceFlow id="flow4" name="" sourceRef="scripttask1" targetRef="usertask1" />
+    <sequenceFlow id="flow5" name="" sourceRef="usertask1" targetRef="endevent1" />
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_DocumentReview">
+    <bpmndi:BPMNPlane id="BPMNPlane_DocumentReview" bpmnElement="DocumentReview">
+      <bpmndi:BPMNShape id="BPMNShape_startevent1" bpmnElement="startevent1">
+        <omgdc:Bounds x="155" y="246" width="35" height="35" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="128" y="281" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask1" bpmnElement="scripttask1">
+        <omgdc:Bounds x="120" y="394" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_endevent1" bpmnElement="endevent1">
+        <omgdc:Bounds x="620" y="290" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_usertask1" bpmnElement="usertask1">
+        <omgdc:Bounds x="347" y="394" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow3" bpmnElement="flow3">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="172" y="281" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="172" y="394" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow4" bpmnElement="flow4">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="225" y="421" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="347" y="422" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow5" bpmnElement="flow5">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="452" y="421" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="637" y="421" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="637" y="325" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

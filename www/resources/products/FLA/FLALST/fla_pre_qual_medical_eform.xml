@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Prequalification medical questions">
+		<section title="Proposed Insured">
+			<group labelWidth="800px">
+				<question id='med_q9'
+					text='In  the past 10 years have you received any treatment, medical advice or consultation for; been diagnosed by a member of the medical profession with or required follow-up for the following: '
+					type='RADIO' answerSet='Y:Yes|N:No' required='true' />
+			</group>
+
+			<group labelWidth="450px">
+				<paragragh
+					text="- Alzheimer&#39;s, Amyotrophic Lateral Sclerosis (ALS, Lou Gehrig&#39;s Disease), Aneurysm"
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="- Cancer(excluding basal cell or squamous cell carcinoma of the skin), Circulatory Disorder,"
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="- Congestive Heart Failure (CHF), Cystic Fibrosis, Dementia or Mental Retardation (including Down&#39;s Syndrome)"
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="- Leukemia, Lupus, Lymphoma, Malignant Neoplasm, Melanoma, Muscular Atrophy, Muscular Dystrophy, Multiple Sclerosis, Myasthenia Gravis"
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="- Parkinson&#39;s Disease, Schleroderma, Schizophrenia, Tumor, any disease or disorder of the Liver"
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="- Peripheral Vascular System, Systemantic Lupus Erythematosus (SLE)"
+					styleClass="groupParagraph"></paragragh>
+			</group>
+			<group labelWidth="800px">
+				<question id="med_q10"
+					text='Have you ever been diagnosed by a member of the medical profession as having Acquired Immune Deficiency Syndrome (AIDS) or AIDS Related Complex (ARC)?'
+					type='RADIO' answerSet='Y:Yes|N:No' required='true' />
+				<question id="med_q16"
+					text='Have you, within the past 5 years, been treated for, advised to Discontinue, Decrease or seek treatment for Drug or Alcohol Use?'
+					type='RADIO' answerSet='Y:Yes|N:No' required='true' />
+				<question id='med_q33' 
+					text='Have you, within the past 5 years, been treated by a Physician for, or been diagnosed as having Gauchers Disease?'
+					type='RADIO' answerSet='Y:Yes|N:No' required='true' />
+			</group>
+		</section>
+	</page>
+</form>

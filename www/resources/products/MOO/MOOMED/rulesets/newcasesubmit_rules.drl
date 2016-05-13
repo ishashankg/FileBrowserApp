@@ -1,0 +1,54 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.requirements.*;
+import com.stepsoln.core.rules.uw.*;
+import java.util.ArrayList;
+import com.stepsoln.core.db.Lookup;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.rules.RulesResponse;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "1. APPROVE case for Guaranteed Issue"
+salience 100
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData(guaranteedIssue == true);
+	then	
+		theCase.setCaseStatus("APPROVED");
+		theCase.setSubmitTaskDescription("APPROVE for Guaranteed Issue");
+		rulesResponse.addToRuleFiredList(1);
+end
+
+rule "2. DECLINED based on Step UW KNOCKOUT recommendation"
+salience 95
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData()
+		StepUWRecommendationData(recommendation=='KNOCKOUT');
+	then
+		theCase.setCaseStatus("DECLINED");
+		theCase.setSubmitTaskDescription("DECLINED based on KNOCKOUT recommendation");
+		rulesResponse.addToRuleFiredList(2);
+end
+
+rule "3. SUBMITTED based on Step UW NON KNOCKOUT recommendation"
+salience 90
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData()
+		StepUWRecommendationData(recommendation!='KNOCKOUT');
+	then
+		theCase.setCaseStatus("SUBMITTED");
+		theCase.setSubmitTaskDescription("SUBMITTED based on NON KNOCKOUT recommendation");
+		rulesResponse.addToRuleFiredList(3);
+end
+
+rule "4. SUBMITTED based on auto approved case and attus status invalid"
+salience 105
+activation-group "caseStatusUpdate"
+	when
+		theCase:CaseData(guaranteedIssue == true && attusValidated == false);
+	then
+		theCase.setCaseStatus("SUBMITTED");
+		theCase.setSubmitTaskDescription("SUBMITTED for auto approved case with Attus status invalid");
+end

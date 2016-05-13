@@ -1,0 +1,23 @@
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.uw.*;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "add DSCONAPP for any UW MIB added"
+	when
+	    $form:RequirementForm(code == 'DSCONAPP');
+	    $mibCount : Number() from accumulate(
+         CaseUwMibReportableData(reportable.booleanValue()),
+         init( int total = 0; ),
+         action( total += 1; ),
+         reverse( total -= 1; ),
+         result( new Integer( total ) ) )		
+    then
+        if($mibCount.intValue()>0)
+    		$form.setRequired(true);
+    	else
+    		$form.setRequired(false);
+end
+
+

@@ -1,0 +1,134 @@
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<page title="Dependent Information">
+		<section title="Dependent Information" repeating="true" >
+			<group associated="true">
+
+				<question id="DepFName" text="First Name:" type="TEXT"
+					labelWidth="35%"  answerStyle="width: 36%;"/>
+				<question id="DepMiddleIni" text="MI:" type="TEXT" size="3"
+					labelWidth="25%" answerStyle="width:35%;"/>
+				<question id="DepLName" text="Last Name:" type="TEXT"
+					labelWidth="35%"  answerStyle="width: 36%;"/>
+			</group>
+			<group associated="true">
+				<question id="DepDOB" text="Date of Birth:" type="DATEF"
+					labelWidth="35%"  answerStyle="width: 36%;"/>
+				<question id="Depsex1" text="Gender:" type="RADIO"
+					answerSet="1:Male|0:Female" labelWidth="22%" labelStyle="margin-right:0%" />
+			</group>
+			<group associated="true">
+				<question id='DepRel' text='Relationship to the Insured'
+					type='LISTBOX' answerSet="Spouse|Child|Parent" labelWidth="35%" 
+					answerStyle="width: 36%;" />
+				<question id="DepSSN" text="SSN or Tax ID:" type="SSN"
+					labelWidth="25%" answerStyle="width:35%;"/>
+			</group>
+			<group>
+				<question id="DepDisabilityForm" text="If EOI required, is Dependent approved ?"
+					type="RADIO" labelWidth="28%" answerSet="1:Yes|2:No" defaultValue="2" />
+			</group>
+			<group>
+			</group>
+		</section>
+	</page>
+	<page title="Beneficiary Information">
+		<section title="Beneficiary Information" >
+			<displayWhen>#{EFORMS.PRECOVERAGE.maritalstatus=='married'}</displayWhen>
+			<group associated="true">
+				<question id="BeneFName" text="First Name:" name="First Name" type="TEXT" required="true"
+					labelWidth="35%" answerStyle="width: 36%;"/>
+				<question id="BeneMiddleIni" text="MI:" type="TEXT" size="3" 
+					labelWidth="25%" answerStyle="width: 36%;" />
+				<question id="BeneLName" text="Last Name:" name="Last Name" type="TEXT" required="true"
+					labelWidth="35%" answerStyle="width: 36%;"/>
+			</group>
+			<group associated="true">
+				<question id='BeneType' text='Beneficiary Type:' name="Beneficiary Type" type='LISTBOX' required="true"
+					answerSet="Primary|Secondary|Tertiary|Contingent" labelWidth="35%"
+					answerStyle="width: 36%;" />
+				<question id="BeneDOB" text="Date of Birth:" name="Date of Birth" type="DATEF"
+					labelWidth="25%" answerStyle="width: 36%;"/>
+				<question id="Benesex" text="Gender:" name="Gender" type="RADIO"
+					answerSet="1:Male|0:Female" labelWidth="30%" />
+
+				<question id="BeneRel" text="Relationship:" name="Relationship" type="LISTBOX" required="true"
+					answerSet="Spouse|Child|Parent|Sibling|Estate|Trust|Uniform Gifts to Minors"
+					labelWidth="25%" answerStyle="width: 36%;" />
+			</group>
+			<group associated="true">
+				<question id="BeneSSN" text="SSN or Tax ID:" name="SSN or Tax ID" type="SSN"
+					labelWidth="35%" answerStyle="width: 36%;" />
+				<question id="BenePer" text="Percentage:" name="Percentage" type="TEXT" required="true"
+					labelWidth="25%" answerStyle="width: 36%;" />
+			</group>
+			<group>
+			</group>
+		</section>
+		<section name="Beneficiary Information" repeating="true" >
+			<displayWhen>#{EFORMS.PRECOVERAGE.maritalstatus=='married'}</displayWhen>
+			<group associated="true">
+				<question id="BeneFName1" text="First Name:" type="TEXT"
+					labelWidth="35%" answerStyle="width: 36%;"/>
+				<question id="BeneMiddleIni1" text="MI:" type="TEXT" size="3"
+					labelWidth="25%" answerStyle="width: 36%;" />
+				<question id="BeneLName1" text="Last Name:" type="TEXT"
+					labelWidth="35%" answerStyle="width: 36%;"/>
+			</group>
+			<group associated="true">
+				<question id='BeneType1' text='Beneficiary Type:' type='LISTBOX'
+					answerSet="Primary|Secondary|Tertiary|Contingent" labelWidth="35%"
+					answerStyle="width: 36%;" />
+				<question id="BeneDOB1" text="Date of Birth:" type="DATEF"
+					labelWidth="25%" answerStyle="width: 36%;"/>
+				<question id="Benesex1" text="Gender:" type="RADIO"
+					answerSet="1:Male|0:Female" labelWidth="30%" />
+
+				<question id="BeneRel1" text="Relationship:" type="LISTBOX"
+					answerSet="Spouse|Child|Parent|Sibling|Estate|Trust|Uniform Gifts to Minors"
+					labelWidth="25%" answerStyle="width: 36%;" />
+			</group>
+			<group associated="true">
+				<question id="BeneSSN1" text="SSN or Tax ID:" type="SSN"
+					labelWidth="35%" answerStyle="width: 36%;" />
+				<question id="BenePer1" text="Percentage:" type="TEXT"
+					labelWidth="25%" answerStyle="width: 36%;" />
+			</group>
+			<group>
+			</group>
+		</section>
+		
+		<section title="Beneficiary Information" repeating="true" >
+			<displayWhen>#{EFORMS.PRECOVERAGE.maritalstatus!='married'}</displayWhen>
+			<group associated="true">
+				<question id="BeneFName2" text="First Name:" type="TEXT"
+					labelWidth="35%" answerStyle="width: 36%;"/>
+				<question id="BeneMiddleIni2" text="MI:" type="TEXT" size="3"
+					labelWidth="25%" answerStyle="width: 36%;" />
+				<question id="BeneLName2" text="Last Name:" type="TEXT"
+					labelWidth="35%" answerStyle="width: 36%;"/>
+			</group>
+			<group associated="true">
+				<question id='BeneType2' text='Beneficiary Type:' type='LISTBOX'
+					answerSet="Primary|Secondary|Tertiary|Contingent" labelWidth="35%"
+					answerStyle="width: 36%;" />
+				<question id="BeneDOB2" text="Date of Birth:" type="DATEF"
+					labelWidth="25%" answerStyle="width: 36%;"/>
+				<question id="Benesex2" text="Gender:" type="RADIO"
+					answerSet="1:Male|0:Female" labelWidth="30%" />
+
+				<question id="BeneRel2" text="Relationship:" type="LISTBOX"
+					answerSet="Spouse|Child|Parent|Sibling|Estate|Trust|Uniform Gifts to Minors"
+					labelWidth="25%" answerStyle="width: 36%;" />
+			</group>
+			<group associated="true">
+				<question id="BeneSSN2" text="SSN or Tax ID:" type="SSN"
+					labelWidth="35%" answerStyle="width: 36%;" />
+				<question id="BenePer2" text="Percentage:" type="TEXT"
+					labelWidth="25%" answerStyle="width: 36%;" />
+			</group>
+			<group>
+			</group>
+		</section>
+	</page>
+</form>

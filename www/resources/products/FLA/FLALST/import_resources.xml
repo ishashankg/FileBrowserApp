@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<resources>
+<resource>
+		<description>Product Coverage Selection Rules</description>
+		<file>rulesets/coverage_selection_rules.drl</file>
+		<type>CVG_RULES</type>
+		<resourceCode>CVG_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Requirements Rules</description>
+		<file>rulesets/requirements_rules.drl</file>
+		<type>REQ_RULES</type>
+		<resourceCode>REQ_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Final Action Requirements Rules</description>
+		<file>rulesets/finalaction_requirements_rules.drl</file>
+		<type>FIN_ACT_REQ_RULES</type>
+		<resourceCode>FIN_ACT_REQ_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Pre Final Action Rules</description>
+		<file>rulesets/pre_finalaction_rules.drl</file>
+		<type>PRE_FIN_ACT_RULES</type>
+		<resourceCode>PRE_FIN_ACT_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Final Action Decision Rules</description>
+		<file>rulesets/finalaction_decision_rules.drl</file>
+		<type>FIN_ACT_DECISION_RULES</type>
+		<resourceCode>FIN_ACT_DECISION_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>UW Risk Calculation Rules</description>
+		<file>rulesets/uw_risk_calc_rules.drl</file>
+		<type>UW_RISK_CALC_RULE</type>
+		<resourceCode>UW_RISK_CALC_RULE1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+	  <description>Requirements Signatures Rules</description>
+	  <file>rulesets/requirements_signatures_rules.drl</file>
+	  <type>REQ_SIG_RULES</type>
+	  <resourceCode>REQ_SIG_RULES1</resourceCode>
+	  <formatType>DRL</formatType>  
+	</resource>
+	<resource>
+		<description>Knockout Rules</description>
+		<file>rulesets/knockout_rules.drl</file>
+		<type>KNOCKOUT_RULES</type>
+		<resourceCode>KNOCKOUT_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Applicant Rules</description>
+		<file>rulesets/applicant_rules.drl</file>
+		<type>IGO_RULES</type>
+		<resourceCode>APPLICANT_RULES</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+		<resource>
+		<description>Agent Attest Rules</description>
+		<file>rulesets/ag_attest_rules.drl</file>
+		<type>IGO_RULES</type>
+		<resourceCode>AG_ATTEST</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>		
+	<resource>
+		<description>IGO Rules</description>
+		<file>rulesets/igo_rules.drl</file>
+		<type>IGO_RULES</type>
+		<resourceCode>IGO_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>IGO UW Rules</description>
+		<file>rulesets/igo_uw_rules.drl</file>
+		<type>IGO_UW_RULES</type>
+		<resourceCode>IGO_UW_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>IGO Paper Rules</description>
+		<file>rulesets/igo_paper_rules.drl</file>
+		<type>IGO_PAPER_RULES</type>
+		<resourceCode>IGO_PAPER_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Case Rules</description>
+		<file>rulesets/case_rules.drl</file>
+		<type>CASE_RULES</type>
+		<resourceCode>CASE_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Pre BPE Rules</description>
+		<file>rulesets/pre_bpe_rules.drl</file>
+		<type>PRE_BPE_RULES</type>
+		<resourceCode>PRE_BPE_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Post BPE Rating Rules</description>
+		<file>rulesets/post_bpe_rating_rules.drl</file>
+		<type>POST_BPE_RATING_RULE</type>
+		<resourceCode>POST_BPE_RATING_RULE1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Post BPE Autoclass Rules</description>
+		<file>rulesets/post_bpe_autoclass_rules.drl</file>
+		<type>POST_BPE_AUTOCLASS_RULE</type>
+		<resourceCode>POST_BPE_AUTOCLASS_RULE1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Auto Decision Rules</description>
+		<file>rulesets/auto_decision_rules.drl</file>
+		<type>AUTO_DECISION_RULES</type>
+		<resourceCode>AUTO_DECISION_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>	
+	<resource>
+		<description>Camel Routes</description>
+		<file>camelRoutes/flalst_routes.xml</file>
+		<type>CAMEL_ROUTE</type>
+		<resourceCode>FLALST_CAMEL_ROUTES</resourceCode>
+		<formatType>CAMEL_XML_DSL</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>New Case Submit Rules</description>
+		<file>rulesets/newcasesubmit_rules.drl</file>
+		<type>NEWCASE_SUBMIT_RULES</type>
+		<resourceCode>NEWCASE_SUBMIT_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>Underwriting Case Submit Rules</description>
+		<file>rulesets/underwritingcase_rules.drl</file>
+		<type>UNDERWRITINGCASE_SUBMIT_RULES</type>
+		<resourceCode>UNDERWRITINGCASE_SUBMIT_RULES1</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+  <resource>
+    <description>New Case Rules from DTC</description>
+    <file>rulesets/dtc_newcasesubmitrules.drl</file>
+    <type>CASE_RULES</type>
+    <resourceCode>DTC_NEW_CASE_RULES</resourceCode>
+    <formatType>DRL</formatType>
+  </resource>    
+  <resource>
+    <description>EForm Question Rules</description>
+    <file>rulesets/eform_question_rules.drl</file>
+    <type>EFORM_QUESTION_RULES</type>
+    <resourceCode>EFORM_QUESTION_RULES</resourceCode>
+    <formatType>DRL</formatType>
+  </resource>    
+  <resource>
+    <description>Beneficiary Rules</description>
+    <file>rulesets/beneficiary_rules.drl</file>
+    <type>IGO_RULES</type>
+    <resourceCode>BENEFICIARY_RULES</resourceCode>
+    <formatType>DRL</formatType>
+  </resource>
+  <resource>
+    <description>Dependent Rules</description>
+    <file>rulesets/dependent_rules.drl</file>
+    <type>IGO_RULES</type>
+    <resourceCode>DEPENDENT_RULES</resourceCode>
+    <formatType>DRL</formatType>
+  </resource>
+  <resource>
+    <description>HIPAA Authorization Rules</description>
+    <file>rulesets/hipaa_rules.drl</file>
+    <type>IGO_RULES</type>
+    <resourceCode>HIPAA_RULES</resourceCode>
+    <formatType>DRL</formatType>
+  </resource>
+	<resource>
+		<description>Reconciliation Rules</description>
+		<file>rulesets/reconciliation_rules.drl</file>
+		<type>RECON_RULES</type>
+		<resourceCode>RECON_RULES</resourceCode>
+		<formatType>DRL</formatType>
+	</resource>
+	<resource>
+		<description>New business mapping rules</description>
+		<file>nbmapping/nb_mapping.xml</file>
+		<type>NB_MAPPING</type>
+		<resourceCode>NB_MAPPING</resourceCode>
+		<formatType>XML</formatType>
+	</resource>  
+	<resource>
+		<description>Merica products mapping.</description>
+		<file>nbmapping/merica_mapping.xml</file>
+		<type>MERICA_MAPPING</type>
+		<resourceCode>MERICA_MAPPING</resourceCode>
+		<formatType>XML</formatType>
+	</resource>  
+	<resource>
+		<description>FLA Branding</description>
+		<resourceCode>glic_css</resourceCode>
+		<file>branding.css</file>
+		<type>CUSTOM_CSS</type>
+		<formatType>CSS</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>FLA Customized User Messages</description>
+		<resourceCode>CUSTOM_MESSAGES1</resourceCode>
+		<file>messages.properties</file>
+		<type>CUSTOM_MESSAGES</type>
+		<formatType>PROPERTIES</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>FLA Correspondence Template</description>
+		<resourceCode>glic_birtTemplate</resourceCode>
+		<file>birtTemplates/gerber_correspondence.rptdesign</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>RPTDESIGN</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>FLA Correspondence CC Template</description>
+		<resourceCode>glic_cc_birtTemplate</resourceCode>
+		<file>birtTemplates/gerber_correspondence_cc.rptdesign</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>CCRPTDESIGN</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>FLA Correspondence Library</description>
+		<resourceCode>glic_birtLibrary</resourceCode>
+		<file>birtTemplates/gerber_correspondence.rptlibrary</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>RPTLIBRARY</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>FLA Image</description>
+		<resourceCode>glic_birtImage</resourceCode>
+		<file>birtTemplates/gerber-letterhead.png</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>IMAGE</formatType>
+		<mimeType>image</mimeType>
+	</resource>
+	<resource>
+		<description>FLA JavaScript</description>
+		<resourceCode>glic_birtScript</resourceCode>
+		<file>birtTemplates/gerber_scripts.js</file>
+		<type>BIRT_TEMPLATE</type>
+		<formatType>JAVASCRIPT</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	
+	<resource>
+		<file>tempfakeSignature.png</file>
+		<description>Fake Signature file</description>
+		<resourceCode>FAKE_SIGNATURE_IMAGE</resourceCode>
+		<type>CAPTURED_SIGNATURE_IMAGE</type>
+		<formatType>PNG</formatType>
+		<name>FAKE_SIGNATURE_IMAGE</name>
+		<mimeType>application/octet-stream</mimeType>
+	</resource>
+	<resource>
+		<file>logo.png</file>
+		<description>Logo</description>
+		<resourceCode>LOGO_IMAGE</resourceCode>
+		<type>HEADER_LOGO_IMAGE</type>
+		<formatType>image/png</formatType>
+		<name>HEADER_LOGO_IMAGE</name>
+		<mimeType>application/octet-stream</mimeType>
+	</resource>
+
+    <resource>
+      <description>Electronic Terms of Use - Applicant</description>
+      <resourceCode>glic_electronic_terms_of_use_applicant</resourceCode>
+      <file>text/terms_of_use_applicant.html</file>
+      <type>TERMS_OF_USE_APPLICANT</type>
+      <formatType>TEXT</formatType>
+      <mimeType>text/plain</mimeType>
+    </resource>  
+    <resource>
+      <description>Electronic Terms of Use - Agent</description>
+      <resourceCode>glic_electronic_terms_of_use_agent</resourceCode>
+      <file>text/terms_of_use_agent.html</file>
+      <type>TERMS_OF_USE_AGENT</type>
+      <formatType>TEXT</formatType>
+      <mimeType>text/plain</mimeType>
+    </resource>  
+
+	<!-- FLA specific -->
+    <resource>
+		<file>fla_pre_qual_applicant_eform.xml</file>
+		<description>fla_pre_qual_applicant_eform</description>
+		<resourceCode>PRE_QUAL_APP</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>PRE_QUAL_APP</name>
+	</resource>
+	
+	<resource>
+		<file>fla_pre_qual_demo_eform.xml</file>
+		<description>fla_pre_qual_demo_eform</description>
+		<resourceCode>PRE_QUAL_DEMO</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>PRE_QUAL_DEMO</name>
+	</resource>
+	<resource>
+		<file>fla_pre_qual_medical_eform.xml</file>
+		<description>fla_pre_qual_medical_eform</description>
+		<resourceCode>PRE_QUAL_MED</resourceCode>
+		<type>EFORM_TEMPLATE</type>
+		<formatType>XML</formatType>
+		<name>PRE_QUAL_MED</name>
+	</resource>
+	<resource>
+		<description>UI behavior </description>
+		<file>ui_behavior.xml</file>
+		<type>UI_BEHAVIOR</type>
+		<resourceCode>UI_BEHAVIOR</resourceCode>
+		<formatType>XML</formatType>
+	</resource>
+	<resource>
+		<description>FLA additional functionality support </description>
+		<file>scripts/fla_functionality.groovy</file>
+		<type>FUNCTIONALITY_SCRIPT</type>
+		<resourceCode>FLA_CARRIER_GROOVY_UTILS</resourceCode>
+		<formatType>GROOVY</formatType>
+	</resource>	
+	<resource>
+		<description>FLA behavior support (defined in ui_behavior) </description>
+		<file>scripts/fla_behavior.groovy</file>
+		<type>FUNCTIONALITY_SCRIPT</type>
+		<resourceCode>FLA_CARRIER_GROOVY_BEHAVIOR</resourceCode>
+		<formatType>GROOVY</formatType>
+	</resource>
+	<resource>
+    	<description>Sequences</description>
+    	<file>sequences.xml</file>
+    	<type>SEQUENCE</type>
+    	<resourceCode>sequence</resourceCode>
+    	<formatType>XML</formatType>
+  	</resource>
+  	<resource>
+		<description>FLA Email Template for Post Agent Sumbit Case to Applicant</description>
+		<resourceCode>fla_email_post_agent_submit</resourceCode>
+		<file>emailTemplates/fla_post_agent_submit_case_email.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>FLA Email Template for Post Acord Add Case to Applicant</description>
+		<resourceCode>fla_email_post_addcase_to_applicant</resourceCode>
+		<file>emailTemplates/fla_post_addcase_to_applicant_email.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+  	<resource>
+		<description>FLA Resend Email Template for Post Agent Sumbit Case to Applicant</description>
+		<resourceCode>fla_email_post_agent_submit_resend</resourceCode>
+		<file>emailTemplates/fla_post_agent_submit_case_resend_email.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>FLA Send Email to Agent for Updates Email Template</description>
+		<resourceCode>fla_agent_revision_email</resourceCode>
+		<file>emailTemplates/fla_agent_revision_email.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>FLA Email Template for Reset Password </description>
+		<resourceCode>fla_user_password_reset</resourceCode>
+		<file>emailTemplates/fla_user_password_reset_email.ftl</file>
+		<type>EMAIL_TEMPLATE</type>
+		<formatType>VELOCITY_TEMPLATE</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+	<resource>
+		<description>FLA Custom Properties</description>
+		<resourceCode>FLA_PROPERTIES1</resourceCode>
+		<file>product.properties</file>
+		<type>PRODUCT_PROPERTIES</type>
+		<formatType>PROPERTIES</formatType>
+		<mimeType>text/plain</mimeType>
+	</resource>
+</resources>
+</stepImport>

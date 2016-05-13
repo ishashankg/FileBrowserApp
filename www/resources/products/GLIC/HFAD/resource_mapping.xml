@@ -1,0 +1,14 @@
+<resourceMap>
+	<resource>
+		<resourceType>CVG_RULES</resourceType>
+		<resourceCode>CVG_RULES1</resourceCode>
+		<resource>
+			<resourceType>CAMEL_ROUTE</resourceType>
+			<resourceCode>COMMON_CAMEL_ROUTES1</resourceCode>
+		</resource>
+		<resource>
+			<resourceType>CAMEL_ROUTE</resourceType>
+			<resourceCode>ADDRESS_VALIDATION_ROUTE</resourceCode>
+		</resource>
+	</resource>
+</resourceMap>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+  
+  
+  <route id="generic_email_route" shortName="genericEmailRoute" >
+  	 <from uri="activemq://GENERIC_EMAIL.QUEUE"/>
+  	 <to uri="bean:stepEmailProcessor"/>
+  </route>
+  
+  
+</routes>

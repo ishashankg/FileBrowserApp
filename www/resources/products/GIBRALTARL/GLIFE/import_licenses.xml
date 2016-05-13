@@ -1,0 +1,32 @@
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<licenses>
+    <license>
+        <licenseType>LIFE_PRODUCER</licenseType>
+        <licenseClass>AGENT</licenseClass>
+        <licenseStatus>ACTIVE</licenseStatus>
+		<licenseNumber>4100</licenseNumber>
+		<effectiveDate>01012012</effectiveDate>
+		<expirationDate></expirationDate>
+		<initialFee>50</initialFee>
+		<renewalFee>100</renewalFee>
+		<licenseState>IL</licenseState>
+		<resident>true</resident>
+		<agentCode>JAHG</agentCode>
+		<agencyCode>GIBRALTAR_LIFE_Ag</agencyCode>
+    </license>
+    <license>
+        <licenseType>LIFE_PRODUCER</licenseType>
+        <licenseClass>AGENT</licenseClass>
+        <licenseStatus>ACTIVE</licenseStatus>
+		<licenseNumber>4101</licenseNumber>
+		<effectiveDate>01012012</effectiveDate>
+		<expirationDate></expirationDate>
+		<initialFee>50</initialFee>
+		<renewalFee>100</renewalFee>
+		<licenseState>IL</licenseState>
+		<resident>true</resident>
+		<agentCode>UWM</agentCode>
+		<agencyCode>GIBRALTAR_LIFE_Ag</agencyCode>
+    </license>
+   </licenses>
+</stepImport>

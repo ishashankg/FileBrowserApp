@@ -1,0 +1,28 @@
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<preferences>
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>ANNUAL</code>
+		<value>ANNUAL</value>
+		<description>Annual</description>
+	</preference>
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>SEMI_ANNUAL</code>
+		<value>SEMI_ANNUAL</value>
+		<description>Semi-Annual</description>
+	</preference>
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>QUARTERLY</code>
+		<value>QUARTERLY</value>
+		<description>Quarterly</description>
+	</preference>
+	<preference>
+		<category>PAYMENT_MODE</category>
+		<code>MONTHLY</code>
+		<value>MONTHLY</value>
+		<description>Monthly</description>
+	</preference>
+</preferences>
+</stepImport>

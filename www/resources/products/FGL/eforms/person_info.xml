@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd" viewLayout="accordion" title="Owner;Joint Owner">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<onSave>saveOwner</onSave>
+	<page>
+		<section title="Owner Information" style="margin-left:0px" >
+			<group associated="true">
+				<question id='title' text='Title' name='Owner Title' type='LISTBOX' answerStyle="margin-left:0px; margin-right:0px;"
+          answerSet="|Mr.|Mrs.|Miss|Ms" labelWidth="100px" labelStyle='margin-left:0px' tabindex ='1' answerWidth="120px" />
+				<question id='address1' text='Address Line1' name='Owner Address Line1' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="105px" labelStyle='margin-left:20px' tabindex ='8'/>
+			</group>
+			<group associated="true">
+				<question id='owner_first_name' text='First Name' name='Owner First Name' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex ='2' />
+				<question id='address2' text='Address Line2' type='TEXT' answerWidth="120px" labelWidth="105px" labelStyle='margin-left:20px' tabindex ='9' />
+			</group>
+			<group associated="true">
+				<question id='owner_middle_name' text='Middle Name' name='Owner Middle Name' labelWidth="100px" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex ='3'/>
+				<question id='city' required="true" text='City' name='Owner City' type='TEXT' labelWidth="105px" answerWidth="120px" labelStyle='margin-left:20px' tabindex ='10'/>
+			</group>
+			<group associated="true">
+				<question id='owner_last_name' text='Last Name' name='Owner Last Name' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex ='4' />
+				<question id='state' text='State' name='Owner State' type='LISTBOX' lookup="step:US_LOCALE_STATE"
+          required="true" answerSet=" : |Unknown:Not Applicable"
+          labelWidth="105px" answerWidth="120px" labelStyle='margin-left:20px;' tabindex ='11'/>
+			</group>
+			<group style='margin-top:8px' associated="true">        
+				<question id='owner_gender' text='Gender' name='Owner Gender' type='LISTBOX' answerSet=' : |1:Male|0:Female'
+                  answerWidth="120px"
+          required="true" labelWidth="100px" labelStyle='margin-left:0px' tabindex ='5' />
+				<question id='zip' required="true" text='Zipcode' name='Owner Zipcode' type='TEXT'  labelStyle='margin-left:20px'
+          labelWidth="105px" answerWidth="120px"  tabindex ='12'/>
+			</group>
+			<group associated="true">
+				<question id='owner_ssn' type='SSN' text='SSN/TIN' name='Owner SSN/TIN' labelWidth="100px"  answerStyle="margin-left:0px; margin-right:0px;" answerWidth="120px" required="true" labelStyle='margin-left:0px' tabindex ='6'/>
+				<question id='owner_phone' text='Phone No.' name='Owner Phone No.' type='PHONE' answerStyle="margin-left:0px; margin-right:0px;" answerWidth="120px" labelWidth="105px" labelStyle='margin-left:20px' tabindex ='13'/>
+			</group>
+			<group associated="true">
+				<question id='owner_date_of_birth' text='Date of Birth' name='Owner Date of Birth' type='DATEF' answerStyle="margin-left:0px; margin-right:0px;" required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:0px' tabindex ='7'/>
+				<question id='owner_email_address' text='Email Address' name='Owner Email Address' type='TEXT' required="false" answerWidth="120px" labelWidth="105px" labelStyle='margin-left:20px' tabindex ='14'/>
+			</group>
+			<group>
+				<question id='contract_state_check' required="true" text='Is contract state the same as residence state?' name='Owner Contract State and Residence State Verification' type='LISTBOX' answerSet=' : |Y:Yes|N:No'  labelStyle='margin-left:0px'
+          labelWidth="366px" answerWidth="120px"  tabindex ='15'/>
+				<question id='contract_state' required="true" text='Contract State' name='Owner Contract State' type='LISTBOX'  labelStyle='margin-left:0px' lookup="step:US_LOCALE_STATE" answerSet=" : |Unknown:Not Applicable"
+          labelWidth="366px" answerWidth="120px"  tabindex ='16'>
+					<displayWhen>#{EFORM.contract_state_check=="N"}</displayWhen>
+				</question>
+			</group>
+		</section>
+		<section title="Employer Information" style="margin-left:0px">
+			<group associated="true">
+				<question id='owner_employer' text='Name' name='Owner Employer Name' type='TEXT' required="false" answerWidth="120px" labelWidth="105px" labelStyle='margin-left:0px' tabindex ='17' />
+				<question id='employer_city' required="false" size="20"  text='City' name='Owner Employer City' type='TEXT' labelWidth="100px" answerWidth="120px" labelStyle='margin-left:20px' tabindex ='20'/>
+			</group>
+			<group associated="true">
+				<question id='owner_employer_address1' text='Address Line1' name='Owner Employer Address Line1' type='TEXT' required="false" answerWidth="120px" labelWidth="105px" labelStyle='margin-left:0px' tabindex ='18'/>
+				<question id='employer_state' text='State' name='Owner Employer State' type='LISTBOX' lookup="step:US_LOCALE_STATE" required="false" answerSet=" : |Unknown:Not Applicable" labelWidth="100px" answerWidth="120px" labelStyle='margin-left:20px' tabindex ='21' />
+			</group>
+			<group associated="true">
+				<question id='owner_employer_address2' text='Address Line2' name='Owner Employer Address Line2' type='TEXT' answerWidth="120px" labelWidth="105px" labelStyle='margin-left:0px' tabindex ='19'/>
+				<question id='employer_zip' required="false" text='Zipcode' name='Owner Employer Zipcode' type='TEXT' labelWidth="100px" answerWidth="120px" labelStyle='margin-left:20px' tabindex ='22' />
+			</group>
+		</section>
+		<section title="Additional Information" style="margin-left:0px">
+			<group>
+				<question id='annuitant_relation' text='Relationship to Annuitant' name='Owner Relationship to Annuitant' type='LISTBOX'  labelWidth="200px" labelStyle='margin-left:0px' lookup="ACORD_225:OLI_LU_REL"  answerWidth="150px" answerSet=" : " tabindex ='23' />
+				<question id='identification_type' text='Identification Type' name='Owner Identification Type' type='LISTBOX' answerWidth="150px" answerSet=' : |SI:State Issued|I:Immigration|M:Military|P:Passport|O:Other' required="true" labelWidth="200px" labelStyle='margin-left:0px' tabindex ='24'/>
+				<question id="owner_identification_specify" text="Please specify type" name='Specify Owner Identification Type'
+                    labelStyle='margin-left:0px' type='TEXT' answerWidth="140px" labelWidth="200px" required="true" tabindex ='25'>
+					<displayWhen>#{EFORM.identification_type=="O"}</displayWhen>
+				</question>
+				<question id='identification_no' required="true" size="20" text='Identification No.' name='Owner Identification No.' type='TEXT' labelWidth="200px" answerWidth="150px" labelStyle='margin-left:0px' tabindex ='26' />
+				<question id='identification_state' text='Identification State' name='Owner Identification State' type='LISTBOX' lookup="step:US_LOCALE_STATE" required="true" answerWidth="150px" answerSet=" : |Unknown:Not Applicable" labelWidth="200px"       labelStyle='margin-left:0px' tabindex ='27' />
+				<question id='joint_owner' required="true" text='Is there a Joint Owner?' name='Is there a Joint Owner' type='LISTBOX' answerSet=' : |Y:Yes|N:No' labelWidth="200px"  answerWidth="150px" labelStyle='margin-left:0px;' tabindex ='28'/> 
+				<question id='owner_Annuitant' required="true" text='Is annuitant other than the Owner?' name='Is annuitant other than the Owner' type='LISTBOX' answerSet=' : |Y:Yes|N:No' labelWidth="200px" answerWidth="150px" labelStyle='margin-left:0px;' tabindex ='29'/>        
+			</group>
+		</section>      
+	</page>
+	<page>
+		<displayWhen>#{EFORM.joint_owner=="Y"}</displayWhen>
+		<section title="Joint Owner Information" style="margin-left:0px">
+			<group associated="true">
+				<question id='joint_owner_title' text='Title' name='Joint Owner Title'  type='LISTBOX'
+            answerStyle="margin-left:0px; margin-right:0px;"
+          answerSet="|Mr.|Mrs.|Miss|Ms" labelWidth="100px"
+          labelStyle='margin-left:0px' tabindex ='30' answerWidth="120px" />
+				<question id='joint_owner_address1' text='Address Line1' name='Joint Owner Address Line1' type='TEXT'
+          required="true" answerWidth="120px" labelWidth="105px" labelStyle='margin-left:20px' tabindex ='37'/>
+			</group>
+			<group associated="true">
+				<question id='joint_owner_first_name' text='First Name' name='Joint Owner First Name'
+          labelWidth="100px" required="true" type='TEXT' answerWidth="120px"
+          labelStyle='margin-left:0px' tabindex ='31' />
+				<question id='joint_owner_address2' text='Address Line2' name='Joint Owner Address Line2' type='TEXT'
+          answerWidth="120px" labelWidth="105px" labelStyle='margin-left:20px' tabindex ='38' />
+			</group>
+			<group associated="true">
+				<question id='joint_owner_middle_name' text='Middle Name' name='Joint Owner Middle Name' labelWidth="100px"
+          type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex ='32'/>
+				<question id='joint_owner_city' required="true" text='City' name='Joint Owner City' type='TEXT'
+          labelWidth="105px" answerWidth="120px" labelStyle='margin-left:20px' tabindex ='39'/>
+			</group>
+			<group associated="true">
+				<question id='joint_owner_last_name' text='Last Name' name='Joint Owner Last Name' labelWidth="100px"
+          required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:0px' tabindex ='33' />
+				<question id='joint_owner_state' text='State' name='Joint Owner State' type='LISTBOX' lookup="step:US_LOCALE_STATE"
+          required="true" answerSet=" : |Unknown:Not Applicable" labelWidth="105px" answerWidth="119px;" labelStyle='margin-left:20px;' tabindex ='40'/>
+			</group>
+			<group style='margin-top:8px' associated="true">
+				<question id='joint_owner_gender' text='Gender' name='Joint Owner Gender' type='LISTBOX' answerSet=' : |1:Male|0:Female'
+                  answerWidth="118px" required="true" labelWidth="100px" labelStyle='margin-left:0px' tabindex ='34' />
+				<question id='joint_owner_zip' required="true" text='Zipcode' name='Joint Owner Zipcode' type='TEXT'  labelStyle='margin-left:20px' labelWidth="105px" answerWidth="120px"  tabindex ='41'/>
+			</group>
+			<group associated="true">
+				<question id='joint_owner_ssn' type='SSN' text='SSN/TIN' name='Joint Owner SSN/TIN' labelWidth="100px" answerStyle="margin-left:0px; margin-right:0px;" answerWidth="120px" required="true" labelStyle='margin-left:0px' tabindex ='35'/>
+				<question id='joint_owner_phone' text='Phone No.' name='Joint Owner Phone No.' type='PHONE'
+                 answerStyle="margin-left:0px; margin-right:0px;" answerWidth="120px" labelWidth="105px" labelStyle='margin-left:20px' tabindex ='42'/>
+			</group>
+			<group associated="true">
+				<question id='joint_owner_DOB' text='Date of Birth' name='Joint Owner Date of Birth' type='DATEF'
+                  answerStyle="margin-left:0px; margin-right:0px;" required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:0px' tabindex ='36'/>
+				<question id='joint_owner_email_address' text='Email Address' name='Joint Owner Email Address' type='TEXT' required="false" answerWidth="120px" labelWidth="105px" labelStyle='margin-left:20px' tabindex ='43'/>
+			</group>
+		</section>
+		<section title="Joint Owner Employer Information" style="margin-left:0px">
+			<group associated="true">
+				<question id='joint_owner_employer' text='Name' name='Joint Owner Employer Name' type='TEXT' required="false" answerWidth="120px" labelWidth="105px" labelStyle='margin-left:0px' tabindex ='44' />
+				<question id='joint_owner_employer_city' required="false" size="20"
+          text='City' name='Joint Owner City' type='TEXT' labelWidth="100px" answerWidth="120px"
+          labelStyle='margin-left:20px' tabindex ='47'/>
+			</group>
+			<group associated="true">
+				<question id='joint_owner_employer_address1' text='Address Line1' name='Joint Owner Employer Address Line1'
+          type='TEXT' required="false" answerWidth="120px" labelWidth="105px"
+          labelStyle='margin-left:0px' tabindex ='45'/>
+				<question id='joint_owner_employer_state' text='State' name='Joint Owner Employer State' type='LISTBOX'
+          lookup="step:US_LOCALE_STATE" required="false" answerSet=" : |Unknown:Not Applicable" labelWidth="100px"
+          answerWidth="120px;" labelStyle='margin-left:20px' tabindex ='48' />
+			</group>
+			<group associated="true">
+				<question id='joint_owner_owner_employer_address2' text='Address Line2' name='Joint Owner Employer Address Line2'
+          type='TEXT' answerWidth="120px" labelWidth="105px" labelStyle='margin-left:0px' tabindex ='46'/>
+				<question id='joint_owner_employer_zip' required="false" text='Zipcode' name='Joint Owner Employer Zipcode'
+          type='TEXT' labelWidth="100px" answerWidth="120px" labelStyle='margin-left:20px' tabindex ='49' />
+			</group>
+		</section>
+		<section title="Joint Owner Additional Information" style="margin-left:0px">
+			<group>
+				<question id='joint_owner_annuitant_relation' text='Relationship to Annuitant' name='Joint Owner Relationship to Annuitant'
+          type='LISTBOX'  labelWidth="200px" labelStyle='margin-left:0px' lookup="ACORD_225:OLI_LU_RELDESC"  answerWidth="150px"
+          answerSet=" : |Unknown:Not Applicable" tabindex ='50' />
+				<question id='joint_owner_identification_type' text='Identification Type' name='Joint Owner Identification Type'
+          type='LISTBOX' answerWidth="150px" answerSet=' : |SI:State Issued|I:Immigration|M:Military|P:Passport|O:Other'
+          required="true" labelWidth="200px" labelStyle='margin-left:0px' tabindex ='51'/>
+				<question id="joint_owner_identification_specify" text="Please specify type" name='Joint Owner Specify Identification type'
+                    labelStyle='margin-left:0px' type='TEXT' answerWidth="140px" labelWidth="200px" required="true" tabindex ='52'>
+					<displayWhen>#{EFORM.joint_owner_identification_type=="O"}</displayWhen>
+				</question>
+				<question id='joint_owner_identification_no' required="true" size="20" text='Identification No.' name='Joint Owner Identification No.' type='TEXT' labelWidth="200px" answerWidth="150px" labelStyle='margin-left:0px' tabindex ='53' />
+				<question id='joint_owner_identification_state' text='Identification State' name='Joint Owner Identification State'
+          type='LISTBOX' lookup="step:US_LOCALE_STATE" required="true" answerWidth="150px" answerSet=" : |Unknown:Not Applicable" labelWidth="200px" labelStyle='margin-left:0px' tabindex ='54' />    
+			</group>
+		</section>    
+	</page>
+
+</form>

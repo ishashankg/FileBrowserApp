@@ -1,0 +1,15 @@
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<appointments>
+    <appointment>
+    	<appointmentType>AGENT</appointmentType>
+    	<appointmentStatus>ACTIVE</appointmentStatus>
+    	<appointmentNumber>8000</appointmentNumber>
+        <licenseNumber>1000</licenseNumber>
+       	<lineOfBusiness>LIFE</lineOfBusiness>
+       	<productCode>PROD2016</productCode>
+       	<effectiveDate>01012012</effectiveDate>
+		<agentCode>GROUPAGENT16</agentCode>
+		<agencyCode>GROUPAGENCY16</agencyCode>
+    </appointment>
+</appointments> 
+</stepImport>

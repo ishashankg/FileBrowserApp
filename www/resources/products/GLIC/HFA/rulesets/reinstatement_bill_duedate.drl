@@ -1,0 +1,56 @@
+package com.stepsoln.core
+
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.policy.ReinstatementData;
+import com.stepsoln.core.db.enums.RECURRENCE;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+ 
+rule "YEARLY"        
+    when
+        reinstatementData:ReinstatementData(paymentMode == RECURRENCE.ANNUAL);
+    then
+        reinstatementData.setDueDaysforReinstatementBill(30);
+end
+
+rule "BI-YEARLY"        
+   when
+        reinstatementData:ReinstatementData(paymentMode == RECURRENCE.SEMI_ANNUAL);
+    then
+        reinstatementData.setDueDaysforReinstatementBill(25);
+end
+
+rule "QUARTERLY"        
+   when
+        reinstatementData:ReinstatementData(paymentMode == RECURRENCE.QUARTERLY);
+    then
+        reinstatementData.setDueDaysforReinstatementBill(20);
+end
+
+rule "BI-MONTHLY"        
+   when
+        reinstatementData:ReinstatementData(paymentMode == RECURRENCE.BIMONTHLY);
+    then
+        reinstatementData.setDueDaysforReinstatementBill(15);
+end
+
+rule "MONTHLY"
+    when
+        reinstatementData:ReinstatementData(paymentMode == RECURRENCE.MONTHLY);
+    then
+        reinstatementData.setDueDaysforReinstatementBill(10);
+end
+
+rule "BI-WEEKY"        
+    when
+        reinstatementData:ReinstatementData(paymentMode == RECURRENCE.BIWEEKLY);
+    then
+        reinstatementData.setDueDaysforReinstatementBill(7);
+end
+
+rule "WEEKY"        
+     when
+        reinstatementData:ReinstatementData(paymentMode == RECURRENCE.WEEKLY);
+    then
+        reinstatementData.setDueDaysforReinstatementBill(1);
+end

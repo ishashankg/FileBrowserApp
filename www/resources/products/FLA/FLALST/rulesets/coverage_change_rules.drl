@@ -1,0 +1,202 @@
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.UserData;
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.rules.coverages.*;
+import com.stepsoln.core.db.group.*;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.util.*;
+import java.math.BigDecimal;
+import org.apache.commons.lang.StringUtils;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+global com.stepsoln.core.util.MathUtil math;
+
+
+rule "Add Face Amount if 0 or not present"
+activation-group "Default selection"
+salience 999
+	when
+		termOption:CoverageOption(selected==true, optionCode in ("LSTTERM10", "LSTTERM15", "LSTTERM20", "LSTTERM30"));
+		faOption:CoverageOption(optionCode=="LSTFA", selectedValue == null || selectedValue == "0");
+	then
+		faOption.setSelectedValue("" + new BigDecimal(termOption.getSelectedValue()).divide(new BigDecimal("1000")).toBigInteger());
+end
+
+rule "Coverage Option Check"
+salience 180
+	when
+       	faOption:CoverageOption(optionCode in ("LSTFA", "LSTCTR1", "LSTADB1"));
+    then
+       	faOption.setTextEntry(true);
+       	faOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())+"");
+end
+
+rule "Face Amount Option Required"
+salience 161
+	when
+       	fa:CoverageOption(optionCode=="LSTFA"); 
+    then
+    	fa.setSelected(true);
+    	fa.setRequired(true);
+       	fa.setTextEntry(true);
+end
+
+rule "Hide and remove Policy Fee"
+salience 160
+	when
+		feeOption:CoverageOption(optionCode=="LSTPOLFEE");
+		feePlan:CoveragePlan(planCode=="LSTPOLFEE");
+	then
+		feeOption.setAvailable(false);
+		feePlan.setAvailable(false);
+		feeOption.setSelected(false);
+end
+
+rule "Add Policy fee to all valid quotes"
+salience 150
+	when
+		feeOption:CoverageOption(optionCode=="LSTPOLFEE");
+		selectedOption:CoverageOption(selected==true, optionCode in ("LSTTERM10", "LSTTERM15", "LSTTERM20", "LSTTERM30"));
+		faOption:CoverageOption(selected==true, optionCode=="LSTFA", MathUtil.convertToNumber(faOption.getSelectedValue()) > 24 && MathUtil.convertToNumber(faOption.getSelectedValue()) < 501);
+	then
+		feeOption.setSelected(true);
+		feeOption.setSelectedValue("1");
+end
+
+rule "Face Amount"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+		faOption:CoverageOption(selected==true, optionCode=="LSTFA", MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 < 25000 || MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 500000);
+    then
+       	rulesResponse.addUserNotifcationInfo("Face Amount between 25,000 and 500,000");
+end
+
+rule "Base Coverage Selection"
+salience 150
+	when
+		opt30:CoverageOption(optionCode in ("LSTTERM30"),selected==false)
+		opt20:CoverageOption(optionCode in ("LSTTERM20"),selected==false)
+		opt15:CoverageOption(optionCode in ("LSTTERM15"),selected==false)
+		opt10:CoverageOption(optionCode in ("LSTTERM10"),selected==false)
+    then
+    	opt30.setSelectable(true);
+    	opt20.setSelectable(true);
+    	opt15.setSelectable(true);
+    	opt10.setSelectable(true);
+    	rulesResponse.addUserNotifcationInfo("At-least one Base Coverage must be selected");
+end
+
+rule "Dependent Child Rider Coverage Units"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTCTR1", MathUtil.convertToNumber(faOption.getSelectedValue()) < 5 || MathUtil.convertToNumber(faOption.getSelectedValue()) > 25);
+    then
+    	rulesResponse.addUserNotifcationInfo("Dependent Child Rider coverage unit must be between 5 and 25.");     	
+end
+
+rule "Dependent Child Rider Coverage Units multiple of 5"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTCTR1", 
+       		MathUtil.convertToNumber(faOption.getSelectedValue()) > 5 && MathUtil.convertToNumber(faOption.getSelectedValue()) < 25 && eval(MathUtil.convertToNumber(faOption.getSelectedValue()).intValue() % 5 != 0));
+    then
+    	rulesResponse.addUserNotifcationInfo("Dependent Child Rider coverage unit must be multiple of 5.");     	
+end
+
+rule "Accidental Death Benefit Rider Face Amount"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTADB1", MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 < 25000 || MathUtil.convertToNumber(faOption.getSelectedValue()) * 1000 > 250000);
+    then
+    	rulesResponse.addUserNotifcationInfo("Accidental Death Benefit Rider face amount must be between 25,000 and 250,000");     	
+end
+
+rule "Check Accidental Death Benefit Rider Face Amount with Base Plan Face Amount"
+salience  150
+activation-group "fireOnlyOnce"
+	when
+       	faOption:CoverageOption(selected==true, optionCode=="LSTFA");
+       	faADBROption:CoverageOption(selected==true, optionCode=="LSTADB1", MathUtil.convertToNumber(faADBROption.getSelectedValue()) > MathUtil.convertToNumber(faOption.getSelectedValue()));
+    then
+    	rulesResponse.addUserNotifcationInfo("Accidental death benefit rider face amount should be less then base plan face amount");     	
+end
+
+rule "LSTTERM10 Level True"
+salience 100
+	when
+       	tlplan:CoverageOption(optionCode in ("LSTTERM10"), selected==true);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM15","LSTTERM20","LSTTERM30"));
+    then
+    	notAllowed.setSelectable(false);
+    	notAllowed.setSelected(false);
+end
+
+rule "LSTTERM15 Level True"
+salience 100
+	when
+       	tlplan:CoverageOption(optionCode in ("LSTTERM15"), selected==true);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM10","LSTTERM20","LSTTERM30"));
+    then
+    	notAllowed.setSelectable(false);
+    	notAllowed.setSelected(false);
+end
+
+rule "LSTTERM20 Level True"
+salience 100
+	when
+       	tlplan:CoverageOption(optionCode in ("LSTTERM20"), selected==true);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM10","LSTTERM15","LSTTERM30"));
+    then
+    	notAllowed.setSelectable(false);
+    	notAllowed.setSelected(false);
+end
+
+rule "LSTTERM30 Level True"
+salience 100
+	when
+       	tlplan:CoverageOption(optionCode in ("LSTTERM30"), selected==true);
+       	notAllowed:CoverageOption(optionCode in ("LSTTERM10","LSTTERM15","LSTTERM20"));
+    then
+    	notAllowed.setSelectable(false);
+    	notAllowed.setSelected(false);
+end
+
+rule "Calculate FA coverage amount"
+salience 100
+	when
+       	faOption:CoverageOption(optionCode in ("LSTFA"));
+    then
+    	faOption.setSelectedValueCoverageAmount(new BigDecimal(MathUtil.convertToNumber(faOption.getSelectedValue())*1000));
+    	faOption.setSkipProcessCoverageAmount(true);
+end
+
+rule "set options to face amount"
+salience 100
+	when
+       	faOption:CoverageOption(optionCode=="LSTFA");
+       	selectedOption:CoverageOption(selected==true, optionCode in ("LSTTERM10", "LSTTERM15", "LSTTERM20", "LSTTERM30"));
+    then
+       	selectedOption.setSelectedValue(MathUtil.convertToNumber(faOption.getSelectedValue())*1000+"");
+end
+
+rule "set dependent rider amount"
+salience 100
+	when
+       	depOption:CoverageOption(optionCode=="LSTCTR1", selected==true);
+    then
+       	depOption.setSelectedValueCoverageAmount(new BigDecimal(MathUtil.convertToNumber(depOption.getSelectedValue())*1000+""));
+       	depOption.setSkipProcessCoverageAmount(true);
+end
+
+rule "set accident rider amount"
+salience 100
+	when
+       	accOption:CoverageOption(optionCode=="LSTADB1", selected==true);
+    then
+       	accOption.setSelectedValueCoverageAmount(new BigDecimal(MathUtil.convertToNumber(accOption.getSelectedValue())*1000+""));
+       	accOption.setSkipProcessCoverageAmount(true);
+end 

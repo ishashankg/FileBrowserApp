@@ -1,0 +1,45 @@
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<carrier>
+		<carrierCode>FGL</carrierCode>
+		<carrierName>Fidelity Guaranteed Life</carrierName>
+		<carrierNAICCode>50939</carrierNAICCode>
+		<docTypes>
+			<docType>
+				<docTypeCode>SUIT</docTypeCode>
+				<docTypeName>Suitability</docTypeName>
+			</docType>
+			<docType>
+				<docTypeCode>AMEND</docTypeCode>
+				<docTypeName>Amendment</docTypeName>
+			</docType>
+		</docTypes>
+
+		<product>
+			<code>PERFPRO</code>
+			<name>Performance Pro</name>
+			<lineOfBusiness>ANNUITY</lineOfBusiness>
+			<ageCalculationMethod>LAST_BIRTHDAY</ageCalculationMethod>
+			<productGroup>ANNUITY</productGroup>
+			<type>TL</type>
+			<defaultPaymentMode>ANNUAL</defaultPaymentMode>
+			<defaultPaymentMethod>PAC</defaultPaymentMethod>
+			
+			<locales>
+				<locale>GU</locale>
+			</locales>					
+			
+			<file uri="import_orgunits.xml" />
+			<file uri="import_ouUsers.xml" />
+			<file uri="../import_roles.xml" />
+			<file uri="import_userRoles.xml" />			
+			<file uri="import_resources.xml" />
+			<file uri="import_eforms.xml" />			
+			<file uri="import_requirements.xml" />
+			<file uri="import_correspondence.xml" />
+			<file uri="import_correspondence_composition.xml" />
+			
+
+		</product>
+	</carrier>
+</stepImport>

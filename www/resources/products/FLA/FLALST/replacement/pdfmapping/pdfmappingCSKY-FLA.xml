@@ -1,0 +1,50 @@
+<map>
+  <entry>
+    <string>existing_company</string>
+    <string>${EFORMS.REPCSKY.replaced_carrier___0?:""}</string>
+  </entry>
+  <entry>
+    <string>existing_policyno</string>
+    <string>${EFORMS.REPCSKY.replaced_policyno___0?:""}</string>
+  </entry>
+  <entry>
+    <string>existing_amount</string>
+    <string>${EFORMS.REPCSKY.replaced_amount___0?:""}</string>
+  </entry>
+  <entry>
+    <string>issue_date</string>
+    <string>${EFORMS.REPCSKY.replaced_issue_date___0?:""}</string>
+  </entry>
+  <entry>
+    <string>replacing_company</string>
+    <string>${EFORMS.REPCSKY.replacing_company?:""}</string>
+  </entry>
+  <entry>
+    <string>policy_type</string>
+    <string>${EFORMS.REPCSKY.policy_type?:""}</string>
+  </entry>
+  <entry>
+    <string>applicant_name</string>
+    <string>${EFORMS.APPLICANT.ins_first_name} ${EFORMS.APPLICANT.ins_middle_name?:""} ${EFORMS.APPLICANT.ins_last_name}</string>
+  </entry>
+  <entry>
+    <string>applicant_signature</string>
+    <string>${caseHelper.insertSignature("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED", "Electronically Signed By:%s")}</string>
+  </entry>
+  <entry>
+    <string>applicant_date</string>
+    <string>${caseHelper.getSignatureDate("HIPAA_07_05,HIPAA_09_11,HIPAA_09_11_KS,HIPAA_09_11_KY,HIPAA_09_11_MA,HIPAA_09_11_MN,HIPAA_09_11_MT,HIPAA_09_11_ND,HIPAA_09_11_NE,HIPAA_09_11_NM,HIPAA_09_11_VT,HIPAA_ME_07_05,HIPAA_VA_07_05,NO_HIPAA", "PRIMARY_INSURED")}</string>
+  </entry>
+  <entry>
+    <string>agent_name</string>
+    <string>${EFORMS.AG_ATTEST.ag_first_name?:""} ${EFORMS.AG_ATTEST.ag_last_name?:""}</string>
+  </entry>
+  <entry>
+    <string>agent_signature</string>
+    <string>Electronically Signed By: (${EFORMS.AG_ATTEST.ag_first_name?:""} ${EFORMS.AG_ATTEST.ag_last_name?:""})</string>
+  </entry>
+  <entry>
+    <string>agent_date</string>
+    <string>${EFORMS.AG_ATTEST.ag_sig_date}</string>
+  </entry>
+</map>

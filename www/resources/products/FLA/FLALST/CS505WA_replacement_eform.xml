@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillData</onLoad>
+  <page title="WASHINGTON IMPORTANT NOTICE REGARDING REPLACEMENT OF INSURANCE">
+    <section>
+      <header>(Save this notice! It may be important to you in the future.)</header>
+      <group>
+      	<header>The decision to buy a new life insurance policy or annuity and discontinue or change an existing one is very important. Your decision could be a good one - or a mistake. It should be carefully considered. The Washington State Insurance Commissioner required us to give you this notice to help you make a wise decision.</header>
+      </group>
+    </section>
+    <section>
+      <header>STATEMENT TO APPLICANT BY AGENT OR BROKER</header>
+      <group labelWidth="900px;">
+        <header>I believe the replacement of insurance involved in this transaction materially improves your position. My conclusion has taken into account the following factors, which I call to your attention.</header>
+        <question id='r1'
+        	text="1.  Can there be reduced benefits or increased premiums in later years?"
+        	type='RADIO' answerSet='NO|YES' />
+        <question id='r1b' text="    b) YES, explain:" type='TEXT' answerWidth="500px;">
+        	<displayWhen>#{EFORM.r1b=='YES'}</displayWhen>
+        </question>
+        <question id='r2'
+        	text="2.  Are ther penalties, set up or surrender charges for the new policy?"
+        	type='RADIO' answerSet='NO|YES' />
+        <question id='r2b' text="    b) YES, explain, emphasizing any extra cost for early withdrawal:" type='TEXT' answerWidth="500px;">
+          <displayWhen>#{EFORM.r2b=='YES'}</displayWhen>
+        </question>
+        <question id='r3'
+        	text="3.  Will there be penalties or surrender charges under the existing insurance as a result of the proposed transaction?"
+        	type='RADIO' answerSet='NO|YES' />
+        <question id='r3b' text="    b) YES, explain:" type='TEXT' answerWidth="500px;">
+          <displayWhen>#{EFORM.r3b=='YES'}</displayWhen>
+        </question>
+        <question id='r4'
+        	text="4.  Are there adverse tax consequences from the replacement under current tax law?"
+        	type='RADIO' answerSet='NO|YES' />
+        <question id='r4b' text="    b) YES, explain:" type='TEXT' answerWidth="500px;">
+          <displayWhen>#{EFORM.r4=='YES'}</displayWhen>
+        </question>
+        <question id='r5a'
+        	text="5.  a) Are interest earnings a consideration in this replacement?"
+        	type='RADIO' answerSet='NO|YES' />
+        <question id='r5b'
+        	text="    b) If yes, explain what portions of premiums or contributions will produce limited or no earnings. As pertinent, include in your explanation the need for minimum deposits to enhance earnings, and the reduction of earnings that may result from set up charges, policy fees, and other factors."
+        	type='TEXT' answerWidth="500px;">
+        	<displayWhen>#{EFORM.r5a=='YES'}</displayWhen>
+        </question>
+        <question id='r6'
+        	text="6.  Are minimum amounts required to be on deposit before excess interest will be paid?"
+        	type='RADIO' answerSet='NO|YES' />
+        <question id='r7a'
+        	text="7.  If the new program is based on a variable or universal life insurance policy or single-premium policy or annuity: a) Are the interest rates quoted " type='RADIO' answerSet='B:before|A:or after' suffix=" fees and mortality charges have been deducted?" />
+        <question id='r7b'
+        	text="    b) Interest rates are guaranteed for how long?" type='TEXT' answerWidth="400px;" />
+        <question id='r7c'
+        	text="    c) The minimum interest rate to be paid is how much?" type='TEXT' answerWidth="400px;" />
+        <question id='r7d1'
+        	text="    d) If applicable, the rate you pay to borrow is" type='TEXT' answerWidth="160px;" />
+        <question id='r7d2'
+        	text=", and the limit on the amount that can be borrowed is" type='TEXT' answerWidth="160px;" />
+        <question id='r7e'
+        	text="    e) The surrender charges are?" type='TEXT' answerWidth="400px;" />
+        <question id='r7f'
+        	text="    f) The death benefit is?" type='TEXT' answerWidth="400px;" />
+        <question id='r8'
+        	text="8.  Are there other short or long term effects from the replacement that might be materially adverse?"
+        	type='RADIO' answerSet='NO|YES' />
+      </group>
+    </section>
+    <section><header>LIST OF POLICIES OR CONTRACTS TO BE REPLACED</header><group/></section>
+    <section title="Policy/Contract" repeating="true">
+      <group associated="true" >
+        <question id='replaced_carrier' text="Company:" type='TEXT' answerWidth="150px;" />
+        <question id='replaced_policyno' text="Contract Number:" type='TEXT' answerWidth="100px;" />
+      </group>
+      <group>
+        <question id='replaced_insured' text="Insured:" />
+      </group>
+    </section>
+    <section>
+      <group>
+      <header>CAUTION: This insurance commissioner suggests you consider these points:</header>
+      <paragragh
+          text=" - Usually, contestable and suicide periods start again under a new policy. Benefits might be excluded under a new policy that would be paid under existing insurance."
+          styleClass="groupParagraph" />
+      <paragragh
+          text=" - Terminating or altering existing coverage, before new insurance has been issued, might leave you unable to purchase other life insurance or let you buy it only ay substantially higher rates."
+          styleClass="groupParagraph" />
+      <paragragh
+          text=" - You are entitled to advice from the existing agent or company. Such advice might be helpful"
+          styleClass="groupParagraph" />
+      <paragragh
+          text=" - Study the comments made above by the agent or broker. They apply to you and this proposal. They are important to you and your future."
+          styleClass="groupParagraph" />
+      </group>
+    </section>
+    <section>
+      <header>THIS COMPLETED FORM SHOULD BE FILED PERMANENTLY WITH YOUR NEW INSURANCE POLICY.</header>
+      <group/>
+    </section>
+  </page>
+</form>

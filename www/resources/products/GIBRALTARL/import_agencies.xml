@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+<agencies>
+	<agency>
+		<agCode>GIBRALTAR_LIFE_Ag</agCode>
+		<agName>GIBRALTAR_LIFE Agency</agName>
+		<agBusType>Independent</agBusType>
+		<agCaptive>false</agCaptive>
+		<agents>
+			<agent>
+				<agtCode>JAHG</agtCode>
+				<agtFirstName>Jack</agtFirstName>
+				<agtLastName>Hardy</agtLastName>
+				<agtEmail>Jack.Hardyg@stepsolutions.com</agtEmail>
+			</agent>
+			<agent>
+				<agtCode>UWM</agtCode>
+				<agtFirstName>Ulda</agtFirstName>
+				<agtLastName>Whim</agtLastName>
+				<agtEmail>Ulda.WhimG@stepsolutions.com</agtEmail>
+			</agent>
+		</agents>
+	</agency>
+</agencies>
+</stepImport>

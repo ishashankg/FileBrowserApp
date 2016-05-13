@@ -1,0 +1,13 @@
+import com.stepsoln.uw.services.rules.facts.UWData;  
+import com.stepsoln.uw.services.rules.facts.BuildChartData;
+import com.stepsoln.uw.services.rules.facts.ProductRequirementData;
+
+
+rule "3rd party services" 
+	when
+		$category1 : UWData( category == "Medical Condition" , attribute == "HEART" , attributeValue =="Tuberculosis of heart")   
+		$buildChartData:BuildChartData(age > 30, weight > 200 , height > 60)
+		req:ProductRequirementData(reqCode in ("ATTUS3RDPARTY","RX3RDPARTY","MIB3RDPARTY"))
+	then
+		req.setRequired(true);
+end

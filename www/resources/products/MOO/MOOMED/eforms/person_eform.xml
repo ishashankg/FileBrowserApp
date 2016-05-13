@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>preFilleForm</onLoad>
+	<onSave>importData</onSave>
+	<page title='Demographic Information'>
+		<section title="Driving details" style="padding-top:1%;">
+			<group associated="true">
+				<question id='driv_lic_number' size="30" required="true" text='Driver&apos;s License Number' type='TEXT' labelWidth="120px"
+					answerWidth="170px;" tabindex='3' />
+				<question id='driv_lic_state' text='DL State' type='LISTBOX' lookup="step:LOCALE_STATE" required="true"
+					answerSet=":Please select a state|Unknown:Not Applicable" labelWidth="70px" answerWidth="180px;" labelStyle='margin-top:3px;'
+					tabindex='4' />
+			</group>
+		</section>
+
+		<section title="Height and weight details" style="padding-bottom:2%">
+			<group associated="true">
+				<question id='height_feet' text='Height: (ft.)' type='LISTBOX' labelWidth="120px"
+					required="true" answerSet=": |2|3|4|5|6|7" answerStyle="width: 13%;" />
+				<question id='height_inches' text='(in.)' type='LISTBOX' labelWidth="70px"
+					required="true" answerSet=": |0|1|2|3|4|5|6|7|8|9|10|11"
+					answerStyle="width: 13%;" />
+			</group>
+			<group>
+				<question id='weight_pounds' text='Weight: (lbs)' type='NUMBER' labelWidth="120px"
+					required="true" answerWidth="6%;" />
+			</group>
+		</section>
+
+	</page>
+</form>

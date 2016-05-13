@@ -1,0 +1,56 @@
+package com.stepsoln.pa
+ 
+import com.stepsoln.core.rules.policy.ActivityReminderData;
+import com.stepsoln.core.db.enums.RECURRENCE;
+
+ 
+rule "YEARLY"        
+    when
+        data : ActivityReminderData(paymentMode == RECURRENCE.ANNUAL)
+    then
+        data.setNoOfReminders(3);
+        data.setDaysFromWhichReminderNeedToBeSent(45);
+end
+rule "BI-YEARLY"        
+    when
+        data : ActivityReminderData(paymentMode == RECURRENCE.SEMI_ANNUAL)
+    then
+        data.setNoOfReminders(3);
+        data.setDaysFromWhichReminderNeedToBeSent(45);
+end
+rule "QUARTERLY"        
+    when
+        data : ActivityReminderData(paymentMode == RECURRENCE.QUARTERLY)
+    then
+        data.setNoOfReminders(3);
+        data.setDaysFromWhichReminderNeedToBeSent(45);
+end
+rule "BI-MONTHLY"        
+    when
+        data : ActivityReminderData(paymentMode == RECURRENCE.BIMONTHLY)
+    then
+        data.setNoOfReminders(2);
+        data.setDaysFromWhichReminderNeedToBeSent(30);
+end
+rule "MONTHLY"
+    when
+        data : ActivityReminderData(paymentMode == RECURRENCE.MONTHLY)
+    then
+        data.setNoOfReminders(3);
+        data.setDaysFromWhichReminderNeedToBeSent(20);
+end
+rule "BI-WEEKY"        
+    when
+        data : ActivityReminderData(paymentMode == RECURRENCE.BIWEEKLY)
+    then
+        data.setNoOfReminders(1);
+        data.setDaysFromWhichReminderNeedToBeSent(7);
+end
+
+rule "WEEKY"        
+    when
+        data : ActivityReminderData(paymentMode == RECURRENCE.WEEKLY)
+    then
+        data.setNoOfReminders(0);
+        data.setDaysFromWhichReminderNeedToBeSent(0);
+end

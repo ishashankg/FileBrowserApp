@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+
+	<route id="application_packet_route">
+		<from uri="activemq://GENERATE_APPLICATION_PACKET.QUEUE" />
+		<onException>
+			<exception>java.lang.RuntimeException</exception>
+			<redeliveryPolicy maximumRedeliveries="0" />
+			<handled>
+				<constant>true</constant>
+			</handled>
+			<setProperty propertyName="ERR_MSG">
+				<constant>Unexpected exception in the application_packet_route
+				</constant>
+			</setProperty>
+			<to uri="bean:caseActivityLogProcessor" />
+		</onException>
+		<to uri="bean:caseIdToAcordMessageProcessor" />
+		<choice>
+            <when>
+                <simple>${in.header.REQUIREMENT_TYPE} == 'GROUP_PACKET'</simple>
+                <to uri="bean:applicationGroupPacketProcessor" />
+            </when>
+            <otherwise>
+        		<to uri="bean:applicationPacketProcessor" />
+        	</otherwise>
+        </choice>
+        <to
+			uri="file://{{rootOutputDirectory}}/?fileName=${in.header.carrierCode}/outbound/nb/${in.header.fileName}" />   
+	</route>	
+	
+  <route id="application_packet_uw_route">
+  		<from uri="activemq://GENERATE_APPLICATION_UW_PACKET.QUEUE" />
+		<onException>
+			<exception>java.lang.RuntimeException</exception>
+			<redeliveryPolicy maximumRedeliveries="0" />
+			<handled>
+				<constant>true</constant>
+			</handled>
+			<setProperty propertyName="ERR_MSG">
+				<constant>Unexpected exception in the application_packet_uw_route
+				</constant>
+			</setProperty>
+			<to uri="bean:caseActivityLogProcessor" />
+		</onException>
+		<to uri="bean:caseIdUWToAcordMessageProcessor" />
+		<to uri="bean:applicationPacketProcessor" />
+		<to
+			uri="file://{{rootOutputDirectory}}/?fileName=${in.header.carrierCode}/outbound/uw/${in.header.fileName}" />  	
+  </route>
+  
+
+	<route id="application_edw_packet_route">
+		<from uri="activemq://GENERATE_APPLICATION_EDW_PACKET.QUEUE" />
+		<to uri="bean:caseIdUWToAcordMessageProcessor" />
+		<to uri="bean:applicationEDWPacketProcessor" />
+		<to
+			uri="file://{{rootOutputDirectory}}/outbound/edw/?fileName=${in.header.fileName}" />
+	</route>
+	<route id="edw_ftp_drop">
+		<from
+			uri="file://{{rootOutputDirectory}}/outbound/edw/?move=.done&amp;moveFailed=.error&amp;consumer.delay={{hannover.edw.ftp.consumerDelay}}" />
+		<setHeader headerName="cryptoKeyFile">
+			<simple>${properties:hannover.edw.ftp.pgpkeyfile}</simple>
+		</setHeader>
+		<to uri="bean:PGPEncryptProcessor" />
+		<to
+			uri="ftps://{{hannover.edw.ftp.user}}@{{hannover.edw.ftp.address}}:{{hannover.edw.ftp.port}}/{{hannover.edw.ftp.folder}}?password={{hannover.edw.ftp.password}}&amp;securityProtocol=SSL&amp;binary=true&amp;passiveMode=true&amp;isImplicit=true&amp;throwExceptionOnConnectFailed=true" />
+	</route>
+
+</routes>

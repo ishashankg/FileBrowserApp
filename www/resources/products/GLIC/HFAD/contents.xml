@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package>
+	<carrierCode>GLIC</carrierCode>
+	<productCode>HFA</productCode>
+
+	<eforms>
+		<file>import_eforms.xml</file>	
+	</eforms>
+	<import>
+		<file>import.xml</file>
+	</import>
+	<requirements>
+		<file>import_requirements.xml</file>
+	</requirements>
+	<processRequirements>
+		<file>import_process_requirements.xml</file>
+	</processRequirements>
+	<process_document>
+		<file>import_document.xml</file>
+	</process_document>
+	<process_packet>
+		<file>import_packet.xml</file>
+	</process_packet>
+	
+	<correspondences>
+		<file>import_correspondence.xml</file>
+	</correspondences>
+	<licenses>
+		<file>import_licenses.xml</file>
+	</licenses>
+	<appointments>
+		<file>import_appointments.xml</file>
+	</appointments>
+	<pdfs>
+		<file>import_pdfs.xml</file>
+	</pdfs>
+	
+	<preferences>
+		<file>import_preferences.xml</file>
+	</preferences>
+	
+	<resources>
+  	  <file>import_resources.xml</file>
+    </resources>
+      
+    <resourceMapping>
+    	<file>resource_mapping.xml</file>
+    </resourceMapping>
+  
+      <!-- product provisions -->
+    <provisions>
+    	<file>import_provisions.xml</file>
+    </provisions>
+  
+	<rates>
+		<file>import_rates.xml</file>
+	</rates>
+	<carrier>
+		<agencies>
+			<file>import_agencies.xml</file>
+	   	</agencies>
+		<org-units>
+			<file>import_orgunits.xml</file>
+		</org-units>
+		<roles>
+			<file>import_roles.xml</file>
+		</roles>
+		<userRoles>
+	      <file>import_userRoles.xml</file>
+	    </userRoles>
+	</carrier>
+	<users>
+	    <file>import_users.xml</file>
+	</users>
+	<ou-users>
+    	<file>import_ouUsers.xml</file>
+  	</ou-users>
+</package>

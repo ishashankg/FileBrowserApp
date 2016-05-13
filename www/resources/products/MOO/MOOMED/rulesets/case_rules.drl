@@ -1,0 +1,82 @@
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.RulesResponse;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.ArrayUtils;
+import com.stepsoln.core.db.cases.*;
+import com.stepsoln.core.db.cases.Case.CASE_SOURCE;
+import rules.*;
+import com.stepsoln.core.rules.SecurityOuCaseLoadFacts;
+import 	com.stepsoln.core.rules.OUGroupAssignmentData;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+import com.stepsoln.core.rules.uw.*;
+
+rule "Policy Assignment"
+	when
+		theCaseData:CaseData($source:caseSource in ('EXTERNAL', 'CAPTIVE', 'INTERNET'), $paperCaseFlag:paperCase,  StringUtils.isEmpty(externalCaseNumber), StringUtils.isEmpty(policyNumber));
+	then
+		String seqName="POLICY_NUMBER_EXTERNAL";
+		
+		if (Case.CASE_SOURCE.EXTERNAL.name().equalsIgnoreCase($source) && $paperCaseFlag)
+		{
+			seqName="POLICY_NUMBER_EPAPER";
+		}
+		else if (Case.CASE_SOURCE.INTERNET.name().equalsIgnoreCase($source))
+		{
+			seqName="POLICY_NUMBER_INTERNET";
+		}
+		if (Case.CASE_SOURCE.CAPTIVE.name().equalsIgnoreCase($source))
+		{
+			if($paperCaseFlag)
+			{
+				seqName="POLICY_NUMBER_IPAPER";
+			}
+			else
+			{
+				seqName="POLICY_NUMBER_CAPTIVE";
+			}
+		}
+		rulesResponse.setPolicyNumber(seqName);
+end
+
+rule "set flags for SUBMITTED case"
+	when
+		theCase:CaseData(caseStatus == 'SUBMITTED')
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setUwOu("MMED_UWO");
+		
+end
+
+rule "1.2 Set flags for SUBMITTED Guaranteed issue case"
+	when
+		theCase:CaseData(caseStatus == 'SUBMITTED')
+		CaseUwRiskCalcData(uwStatus == 'ACCEPT')
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setUwOu("DEF_MMED_UWO");
+		
+end
+
+rule "1.3 Set flags for AUTODECLINED Non-Guaranteed issue case"
+	when
+		theCase:CaseData(caseStatus == 'AUTODECLINE')
+		CaseUwRiskCalcData(uwStatus == 'DECLINE')
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setUwOu("DEF_MMED_UWO");
+		
+end
+
+rule "1.4 Set flags for APPROVED Guaranteed issue case"
+	when
+		theCase:CaseData(caseStatus == 'APPROVED')
+	then
+		theCase.setSubmitApplication(true);
+		theCase.setGenerateApplicationPacket(true);
+		theCase.setUwOu("DEF_MMED_UWO");
+		
+end

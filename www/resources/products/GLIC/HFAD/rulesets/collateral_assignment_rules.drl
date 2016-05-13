@@ -1,0 +1,10 @@
+import com.stepsoln.core.rules.assignment.CollateralAssignmentData;
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+rule "spouse signature"
+	when
+		assignment:CollateralAssignmentData(state in ("AZ","CA","ID","LA","NV","NM","TX","WA","WI"))
+	then
+		assignment.setIsApplicable(true);
+end

@@ -1,0 +1,27 @@
+import com.stepsoln.core.rules.RulesResponse;
+import org.apache.commons.lang.StringUtils;
+import com.stepsoln.core.rules.requirements.CaseData;
+import com.stepsoln.core.rules.requirements.Requirement;
+import rules.*;
+import java.util.*;
+
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+salience 100
+rule "All NB Requirements need to be resolved"
+when		
+	    Requirement(group =="NB", status == "OPEN", type!="ESIGNATURE", $code:description) 	   
+then
+		rulesResponse.addRequiredOnce("NB Requirement ("+$code+") is NOT resolved");
+end
+
+salience 100
+rule "All Signatures need to be resolved"
+when
+	    Requirement(type=="ESIGNATURE", status == "OPEN", $code:description)
+then
+		rulesResponse.addRequiredOnce("Signature for ("+$code+") is NOT resolved");		
+end
+
+

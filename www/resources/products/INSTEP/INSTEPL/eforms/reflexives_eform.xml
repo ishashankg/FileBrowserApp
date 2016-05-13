@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v2 https://demo.stepsolutions.com/schema/eforms.v2.xsd">
+	<onSave>savePrimaryReflexivesData</onSave>
+	<page title='MEDICAL 1'>
+		<section>
+			<group labelWidth="760px">
+				<paragragh text="1. Has the Proposed Insured ever consulted with or been
+					diagnosed, treated, hospitalized or prescribed medication by a
+					medical professional for any of the following:" styleClass="groupParagraph" />
+			</group>
+		</section>
+		<section>
+			<group >
+				<question labelStyle="margin-left:50px"  labelWidth="700px" id='med1a'
+					text='1a) Heart disorder, including a heart attack (myocardial infarction), angina, irregular heart beat or abnormal heart rhythm (arrhythmia), chest pain, hypertension (high blood pressure), heart murmur, any blockage or narrowing of the arteries, any aneurysm, stroke or transient ischemic attack (TIA or mini-stroke) or rheumatic fever ?'
+					type="RADIO" answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+			<group labelWidth="200px">
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1acompleter' text='Please specify' type='AUTOCOMPLETE'
+					 autocompleteLookup="uw:DIAGNOSIS"  required='true'  reflexiveContext="uw:MEDIC:ATHEAR">
+					<displayWhen>#{EFORM.med1a=="Y" or EFORM.med1aNH=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group parentQuestionId="med1acompleter"
+				dynamicQuestionContext="uw:MEDIC:ATHEAR" labelWidth="200px">
+			</group>
+		</section>
+		<section title="Additional Condition" repeating="true">
+			<displayWhen>#{EFORM.med1a=="Y" or EFORM.med1aNH=="Y"}
+			</displayWhen>
+			<group>
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1acompleter1' text='Please specify' type='AUTOCOMPLETE'
+				 autocompleteLookup="uw:DIAGNOSIS"    reflexiveContext="uw:MEDIC:ATHEAR"
+					 required="true">
+				</question>
+			</group>
+			<group parentQuestionId="med1acompleter1"
+				dynamicQuestionContext="uw:MEDIC:ATHEAR" labelWidth="400px">
+			</group>
+		</section>
+
+		<section>
+			<group >
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1b'
+					text='1b) Diabetes, high blood sugar, or sugar in the urine, anemia, blood or platelet disorders, elevated cholesterol, liver disease, hemophilia, kidney disease (other than kidney stones), protein or blood in the urine, Crohn&apos;s disease, ulcerative colitis, disease or disorder of the stomach, gall bladder, bladder or prostate, other intestinal or digestive tract disease or pancreatitis?'
+					type="RADIO" answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>	
+		</section>
+		
+		<section>
+			<group >
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1c'
+					text='1c) Internal cancer or tumor, cyst, melanoma, lymphoma, leukemia, disorder of lymph nodes or any glandular disorder?'
+					type="RADIO" answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+		
+		<section>
+			<group>
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1d'
+					text='1d) Alzheimer&apos;s disease, dementia, memory loss, seizures, mental retardation, (including Down&apos;s Syndrome), multiple sclerosis (MS), muscular dystrophy (MD), Parkinson&apos;s disease, amyotrophic lateral sclerosis (ALS), any brain or nervous system disorder, cerebral palsy or any form of muscular atrophy?'
+					type="RADIO" answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+		
+		<section>
+			<group >
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1e'
+					text='1e) Sleep apnea, cystic fibrosis, emphysema or chronic obstructive lung disease (COPD), shortness of breath, asthma or other respiratory disorder, rheumatoid arthritis, paralysis or connective tissue disorder (lupus or scleroderma)?'
+					type="RADIO" answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+
+		<section>
+			<group>
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1f'
+					text='1f) Dizziness, fainting spells, anxiety, depression, eating disorders or any other psychological or emotional disorder?'
+					type="RADIO" answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>			
+		</section>
+
+		<section>
+			<group>
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1g'
+					text='1g) Arthritis, rheumatism, or any disease or disorder of the back, spine, bones, joints or muscles?'
+					type="RADIO" answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+
+		<section>
+			<group>
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1h'
+					text='1h) Varicose veins, varicose ulcer or phlebitis, syphilis or a hernia?'
+					type="RADIO" answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+
+		<section>
+			<group>
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1i'
+					text='1i) Any disease or disorder of the eyes, ears, nose or throat?'
+					type="RADIO" answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+
+		<section>
+			<group >
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1j'
+					text='1j) Any other illness or injury requiring medical attention or blood transfusions?'
+					type="RADIO" answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+
+		<section>
+			<group>
+				<question labelStyle="margin-left:50px"  labelWidth="700px"  id='med1k'
+					text='1k) Within the past 5 years has the applicant visited or been examined by a physician?'
+					type="RADIO" answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+	</page>
+	<page title='MEDICAL 2'>
+		<section>
+			<group labelWidth="760px">
+				<paragragh text="2. During the past 5 years, has any proposed Insured:" />
+			</group>			
+		</section>
+		<section>
+			<group >
+				<question labelStyle="margin-left:50px"  labelWidth="710px"  id='med2a'
+					text='2a) Been a patient in any hospital, clinic, dependency program, halfway house or other medical facility?'
+					type='RADIO' answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+
+		<section>
+			<group>
+				<question labelStyle="margin-left:50px"  labelWidth="710px"  id='med2b'
+					text="2b) Used controlled substances such as cocaine, heroin, amphetamines, barbiturates, hallucinogens, or any other controlled substance not prescribed by a physician?"
+					type='RADIO' answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+
+		<section>
+			<group>
+				<question labelStyle="margin-left:50px"  labelWidth="710px"  id='med2c'
+					text="2c) Been treated by a physician or been advised by a physician to seek treatment for drug or alcohol use?"
+					type='RADIO' answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+
+		<section>
+			<group>
+				<question labelStyle="margin-left:50px"  labelWidth="710px"  id='med2d'
+					text="2d) Been advised to have any test (except HIV tests), treatment, surgery, hospitalization or consultation with a medical professional which has not been completed or for which results have not been received?"
+					type='RADIO' answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+
+		<section>
+			<group>
+				<question labelStyle="margin-left:50px"  labelWidth="710px"  id='med2e'
+					text="2e) Had any special examinations or laboratory tests such as X-rays, electrocardiograms, blood tests (other than AIDS-related blood tests) or urine tests?"
+					type='RADIO' answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+
+		<section>			
+			<group labelWidth="750px" >
+				<question  labelWidth="700px;" labelStyle="margin-left:10px"  id='med3ND'
+					text="3. Has any Proposed Insured ever been diagnosed or treated by a medical professional for acquired immune deficiency syndrome  (AIDS), AIDS-related complex (ARC) or antibodies to human T-lymphotropic virus type III (HTLV)?"
+					type='RADIO' answerSet='Y:Yes|N:No' required='true'>					
+				</question>
+			</group>	
+		</section>
+
+		<section>
+			<group labelWidth="750px">
+				<question  labelWidth="700px"  labelStyle="margin-left:10px"  id='med4'
+					text="4. Has the Proposed Insured had a natural parent or sibling who was diagnosed with or died of cancer, heart disease or diabetes prior to the age 60? (If YES, please identify family member, relationship to Insured, disorder and age at death)"
+					type='RADIO' answerSet='Y:Yes|N:No' required='true'>
+				</question>				
+			</group>
+		</section>
+		<section title="Family History">
+			<displayWhen>#{EFORM.med4=="Y" or EFORM.med4FL=="Y"}
+			</displayWhen>
+			<group labelWidth="230px">
+				<question  id='family_disorder1' text='Family member&apos;s disease'
+					type='RADIO' answerSet='Cancer|Diabetes|Heart Disease' required="true"
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}' answerWidth="250px" />
+			</group>
+			<group labelWidth="230px">
+				<question   id='family_relation1' text='Relationship to the Insured'
+					type='RADIO' answerSet='Natural Parent|Sibling' required="true"
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}'  answerWidth="250px" />
+				<question  id='family_age_of_death1' text='Age diagnosed or Age at death'
+					type='TEXT' validation='number' required="true"
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}' />
+				<question id='family_status1' text='Family member&apos;s status'
+					type='RADIO' answerSet='Living|Deceased' required="true"
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}'  answerWidth="170px" />
+			</group>
+		</section>
+		<section title="Other Family History" repeating="true">
+			<displayWhen>#{EFORM.med4=="Y" or EFORM.med4FL=="Y"}
+			</displayWhen>
+			<group labelWidth="200px">
+				<question id='family_disorder' text='Family member&apos;s disease'
+					type='RADIO' answerSet='Cancer|Diabetes|Heart Disease' required="true"
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}' />
+				<question  id='family_relation' text='Relationship to the Insured'
+					type='RADIO' answerSet='Natural Parent|Sibling' required="true"
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}' />
+				<question id='family_age_of_death' text='Age diagnosed or Age at death'
+					type='TEXT' validation='number' required="true"
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}' />
+				<question  id='family_status' text='Family member&apos;s status'
+					type='RADIO' answerSet='Living|Deceased' required="true"
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}' />
+			</group>
+		</section>
+
+		<section>
+			<group labelWidth="750px">
+				<question labelWidth="700px"  labelStyle="margin-left:10px"   id='med5a'
+					text="5a. Has the Proposed Insured ever had any disorder of any genital or reproductive organ, or a miscarriage, stillbirth or Caesarean section?"
+					type='RADIO' answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+		<section>
+			<group labelWidth="750px" readonly="#{CASE.primaryApplicant.gender == 1}">
+				<question  labelWidth="700px"  labelStyle="margin-left:10px"   id='med5b'
+					text='5b. Is the Proposed Insured currently pregnant?' type='RADIO'
+					answerSet='Y:Yes|N:No' required='true'
+					defaultValue="#{CASE.primaryApplicant.gender==1 ? 'N' : ''}">
+				</question>
+				<question labelStyle="margin-left:50px"   id='med5b_detail' text='If YES, date child is expected (MM/DD/YYYY)'
+					type='DATEF' answerWidth="100px;">
+					<displayWhen>#{EFORM.med5b=="Y" or EFORM.med5bFL=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+		</section>
+	</page>
+	<page title='PHYSICIAN'>
+		<section>
+			<group labelWidth="760px">
+				<paragragh text="1. Please list the last physician seen within the past 7
+					years" styleClass="groupParagraph" />
+				<displayWhen>${CASE.contractLocale=="MD"}
+				</displayWhen>
+			</group>
+		</section>
+		<section title="Primary Physician">
+			<group>
+				<facelet component="/pages/common/physicians_eform.xhtml" />
+			</group>
+		</section>
+		<section>
+			<group labelWidth="170px;" answerWidth="300px;">
+				<question labelStyle="margin-left:50px"  id='physician_is_primary' required='false'
+					text='PRIMARY PHYSICIAN?' type='RADIO' answerSet='Y:Yes|N:No'/>
+			</group>
+			<group labelWidth="170px;" associated="true">
+				<question id='consultation_dateMM' required='false'
+					text='Date Last Consulted' suffix='(MM)' type='NUMBER'
+					labelStyle='width:180px;display:inline;margin-left:50px;'
+					answerStyle='width:50px;' >
+				</question>
+				<question  id='consultation_dateYYYY' required='false'
+					suffix='(YYYY)' type='NUMBER' 
+					labelStyle='width:20px;display:inline;margin-left:50px;' answerWidth="50px;"	>
+				</question>
+			</group>
+			<group labelWidth="170px;">
+				<question labelStyle="margin-left:50px"  id='consultation_reason' required='true'
+					text='REASON FOR CONSULTATION' type='MEMO' answerWidth='500px;'>
+					<displayWhen>${CASE.contractLocale!="ME"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="170px;">
+				<question labelStyle="margin-left:50px"  id='consultation_reasonME' required='false'
+					text='REASON FOR CONSULTATION (Excluding HIV)' type='MEMO'
+					answerWidth='500px;' requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}'>
+					<displayWhen>${CASE.contractLocale=="ME"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="170px;">
+				<question labelStyle="margin-left:50px"  id='consultation_results' text='RESULTS' type='MEMO'
+					answerWidth='500px;'>
+					<displayWhen>${CASE.contractLocale!="ME"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="170px;">
+				<question labelStyle="margin-left:50px"  id='consultation_resultsME' text='RESULTS(excluding HIV)'
+					type='MEMO' answerWidth='500px;'>
+					<displayWhen>${CASE.contractLocale=="ME"}</displayWhen>
+				</question>
+			</group>
+		</section>
+	</page>
+	<page title='GENERAL'>
+		<section title="General Section">
+			<group labelWidth="640px">
+				<question id='general1' labelStyle="margin-left:10px"   required='true'
+					text='1. Does any Proposed Insured belong to or intend to join the National Guard or military?'
+					type='RADIO' answerSet='Y:Yes|N:No'>
+				</question>
+				<question labelStyle="margin-left:50px"  id='general1completer' required='true'
+					text='If YES, please explain' type='TEXT' answerWidth='500px;'
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}'>
+					<displayWhen>#{EFORM.general1=="Y"}</displayWhen>
+				</question>
+			</group>
+		</section>
+		<section>
+			<group labelWidth="600px">
+				<paragragh text="2. During the past 5 years or within the next 12 months:" styleClass="groupParagraph" />
+			</group>
+		</section>
+		<section>
+			<group labelWidth="600px">
+				<question labelStyle="margin-left:50px"  id='general2a1'
+					text='2a. Has any Proposed Insured flown other than as a fare-paying passenger, or is any Proposed Insured contemplating flying as a pilot, crew member or student?'
+					type='RADIO' answerSet='Y:Yes|N:No' required='true'>
+				</question>
+			</group>
+		</section>
+		<section>
+			<group labelWidth="600px">
+				<question labelStyle="margin-left:50px"  id='general2b1' required='true'
+					text='2b. Has any Proposed Insured participated in, or contemplated participation in, any hazardous sport or activities like, Skin or Scuba Diving, Hang-Gliding, Ultralight Flying, Cave Exploration, Parachuting or Sky Diving, Mountain, Rock or Ice Climbing, Rodeo, Bungee  Jumping, Ballooning, Competitive Skiing, Snowmobiling, Snowboarding or Motor Racing?'
+					type='RADIO' answerSet='Y:Yes|N:No'>
+				</question>
+			</group>
+		</section>
+		<section>
+			<group labelWidth="640px">
+				<question id='general3' labelStyle="margin-left:10px"  required='true'
+					text='3. During the next 12 months, does any Proposed Insured contemplate residence or travel outside of the United States?'
+					type='RADIO' answerSet='Y:Yes|N:No' />
+			</group>
+		</section>
+		<section>
+			<group labelWidth="600px">
+				<paragragh text="4. During the past 12 months:" styleClass="groupParagraph" />
+			</group>
+			<group labelWidth="600px">
+				<question labelStyle="margin-left:50px"  id='general4' required='true'
+					text='Has any Proposed Insured had a change in weight of more than 10 pounds?'
+					type='RADIO' answerSet='Y:Yes|N:No' />
+			</group>
+		</section>
+		<section title="Significant Weight Change">
+			<displayWhen>#{EFORM.general4=="Y"}</displayWhen>
+			<group labelWidth="200px">
+				<question labelStyle="margin-left:50px"  id='weight_change_pounds' text='(Weight change in pounds)'
+					type='TEXT' validation='number' required="true"/>
+				<question labelStyle="margin-left:50px"  id='weight_gain_loss' text='Was this change a gain or a loss?'
+					type='RADIO' answerSet='Gain|Loss' required="true"/>
+			</group>
+		</section>
+		<section>
+			<group labelWidth="600px">
+				<paragragh text="5. During the past 5 years, has any Proposed Insured:" styleClass="groupParagraph" />
+			</group>
+			<group labelWidth="600px">
+				<question labelStyle="margin-left:50px"  id='general5a' required='true'
+					text='5a. Had a life, health or hospital expense insurance application postponed, rated up or declined; had a condition excluded; or had insurance renewal or reinstatement refused?'
+					type='RADIO' answerSet='Y:Yes|N:No'>
+				</question>
+				<question labelStyle="margin-left:50px"  id='general5acompleter' required='true'
+					text='If YES, please explain' type='TEXT' answerWidth='500px;'
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}'>
+					<displayWhen>#{EFORM.general5a=="Y" or EFORM.general5aMO=="Y" or
+						EFORM.general5aCA=="Y"}
+					</displayWhen>
+				</question>
+				<question labelStyle="margin-left:50px"  id='general5b' required='true'
+					text='5b. Received benefit payments for accident or sickness, or applied to any government or insurance organization for such benefits?'
+					type='RADIO' answerSet='Y:Yes|N:No' />
+				<question labelStyle="margin-left:50px"  id='general5bcompleter' required='true'
+					text='If YES, please explain' type='TEXT' answerWidth='500px;'
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}'>
+					<displayWhen>#{EFORM.general5b=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="640px">
+				<question id='general6' required='true' labelStyle="margin-left:10px"  
+					text='6. Is any Proposed Insured currently negotiating for other insurance coverage?'
+					type='RADIO' answerSet='Y:Yes|N:No'>
+				</question>
+			</group>
+			<group labelWidth="600px">
+				<question labelStyle="margin-left:50px"  id='general6completer' required='true'
+					text='If YES, please explain' type='TEXT' answerWidth='500px;'
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}'>
+					<displayWhen>#{EFORM.general6=="Y" or EFORM.general6FL=="Y" or
+						EFORM.general6MA=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="600px">
+			<paragragh text="7. During the past 5 years, has any Proposed Insured:" styleClass="groupParagraph" />
+			</group>
+			<group labelWidth="600px">
+				<question labelStyle="margin-left:50px"  id='general7a' required='true'
+					text='7a. Had their driver&apos;s license suspended or revoked, been convicted of or entered a plea of &quot;guilty&quot; or &quot;no contest&quot; to driving under the influence (DUI/DWI), or had more than 3 moving violations?'
+					type='RADIO' answerSet='Y:Yes|N:No' />
+				<question labelStyle="margin-left:50px"  id='general7acompleter' required='true'
+					text='If YES, please explain' type='TEXT' answerWidth='500px;'
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}'>
+					<displayWhen>#{EFORM.general7a=="Y"}</displayWhen>
+				</question>
+				<question labelStyle="margin-left:50px"  id='general7b' required='true'
+					text='7b. Been convicted of a felony?' type='RADIO' answerSet='Y:Yes|N:No' />
+				<question labelStyle="margin-left:50px"  id='general7bcompleter' required='true'
+					text='If YES, please explain' type='TEXT' answerWidth='500px;'
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}'>
+					<displayWhen>#{EFORM.general7b=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group labelWidth="640px">
+				<question labelStyle="margin-left:10px"  id='general8' required='true'
+					text='8. Is any Proposed Insured currently on probation?' type='RADIO'
+					answerSet='Y:Yes|N:No'>
+				</question>
+				<question labelStyle="margin-left:50px"  id='general8completer' required='true' text='If YES, please list Proposed Insured&apos;s name, reason for probation and length of probationary period:'
+					type='TEXT' answerWidth='500px;'
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}'>
+					<displayWhen>#{EFORM.general8=="Y" or EFORM.general8FL=="Y"}
+					</displayWhen>
+				</question>
+			</group>
+		</section>
+		<section title="Other">
+			<group labelWidth="100%">
+				<question  id='general10'  labelStyle="margin-left:10px" text='1. What is the purpose of this insurance?'
+					required='true' type='RADIO'
+					answerSet="1:Personal|2:Key Person|3:Buy/Sell|4:Business Loan|5:Charitable Giving|6:Other" />
+				<question  labelStyle="margin-left:10px"  id='general10other' required='true'
+					text='If Other, please specify:' type='TEXT' answerWidth='300px;'
+					requiredOveride='#{CASE.caseSource=="INTERNET" or CASE.svcOu != null}'>
+					<displayWhen>#{EFORM.general10=="6"}</displayWhen>
+				</question>
+			</group>
+		</section>
+		<section>
+			<group labelWidth="640px">
+				<question  labelStyle="margin-left:10px"  id='general11a'
+					text='2a. Are there any agreements in place to assign/sell the policy?'
+					required='true' type='RADIO' answerSet='Y:Yes|N:No' />
+				<question  labelStyle="margin-left:10px"  id='general11b'
+					text='2b. Is there any intent to sell the policy after issuance?'
+					required='true' type='RADIO' answerSet='Y:Yes|N:No' />
+				<question  labelStyle="margin-left:10px"  id='general11c'
+					text='2c. Has the insured undergone any life expectancy or health exams in conjunction with a life insurance application or settlement option contract?'
+					required='true' type='RADIO' answerSet='Y:Yes|N:No' />
+			</group>
+		</section>
+	</page>
+	<page title="OTHER COVERAGES">
+		<section title="Existing Coverage">
+			<!-- A -->
+			<group labelWidth="640px;">
+				<question id='existing_coverageSET1' labelStyle="margin-left:10px"  required="true"
+					text='1a. Is other insurance coverage in force for any Proposed Insured? If YES, please provide the details below.'
+					type='RADIO' answerSet='Y:Yes|N:No'>
+				</question>
+			</group>
+			<group labelWidth="640px;">
+				<question  id='coverage_cancelledSET2' labelStyle="margin-left:10px"  required="true"
+					text='1b. If this insurance is issued, will it replace, modify or borrow against existing or pending coverage?. If Yes and applying for life or health coverage, please complete and return the appropriate State Replacement Form.'
+					type='RADIO' answerSet='Y:Yes|N:No'>
+				</question>
+			</group>
+		</section>
+		<section title="Coverage">
+			<displayWhen>#{EFORM.existing_coverage=="Y" or
+				EFORM.existing_coverageSET1=="Y" or EFORM.existing_coverageSET2=="Y"
+				or EFORM.existing_coverageSET3=="Y" or
+				EFORM.existing_coverageSET4=="Y"}
+			</displayWhen>
+			<header>Current Insurance Coverage</header>
+			<group associated="true">
+				<question labelStyle="margin-left:50px"  id='oth_ins_company1' text='Name of Company'
+					type='TEXT' labelWidth="120px;" answerStyle="width:200px; color:#303030;"
+					autocompleteLookup="naic:carrier"
+					externalId='oth_ins_naic1;oth_ins_street1;oth_ins_city1;oth_ins_state1;oth_ins_zip1' />
+			</group>
+			<group>
+				<question labelStyle="margin-left:50px"  id='oth_ins_naic1' text='NAIC' type='TEXT'
+					labelWidth="120px;" answerWidth="80px;" validation='number' />
+			</group>
+			<group associated="true">
+				<question id='oth_ins_street1' text='Street Address' type='TEXT'
+					labelWidth="120px;" answerWidth="180px;" labelStyle='margin-top:3px;margin-left:55px;'/>
+				<question id='oth_ins_city1' text='City' type='TEXT'
+					labelWidth="20px;" answerWidth="100px;"  labelStyle='margin-top:3px;margin-left:55px;'/>
+				<question id='oth_ins_state1' text='State' lookup="step:LOCALE_STATE"
+					answerSet=":Please select a state" type='LISTBOX' labelWidth="30px;"
+					answerWidth="158px;" labelStyle='margin-top:3px;margin-left:55px;'  />
+				<question id='oth_ins_zip1' text='Zip Code' type='TEXT'
+					labelWidth="60px;" answerWidth="40px;" labelStyle='margin-top:3px;margin-left:55px;'/>
+			</group>
+			<group associated="true">
+				<question id='oth_ins_face1' text="Face Amount" type='NUMBER'
+					labelWidth="120px;" answerWidth="60px;" labelStyle='margin-top:3px;margin-left:50px;'/>
+				<question id='oth_ins_year1' text="Year Issued" type='NUMBER'
+					labelWidth="80px;" answerWidth="80px;"  labelStyle='margin-top:3px;margin-left:55px;'/>
+			</group>
+			<group>
+				<question id='oth_ins_replace1' text="Is Coverage to be Replaced?"
+					type='RADIO' answerSet='Y:Yes|N:No' labelWidth="120px;" labelStyle='margin-top:3px;margin-left:50px;' answerStyle='margin-top:3px;'/>
+			</group>
+			<group>
+				<question labelStyle="margin-left:50px"  id='oth_group_individual1' text='Group/Individual?'
+					type='RADIO' answerSet='G:Group|I:Individual' labelWidth="120px;"/>
+			</group>
+			<group>		
+				<question labelStyle="margin-left:50px"  id='oth_coordinates_soc_sec1' text="Coordinates w/ Soc. Sec.?"
+					type='RADIO' answerSet='Y:Yes|N:No' labelWidth="120px;"/>
+			</group>
+			<group>	
+				<question labelStyle="margin-left:50px"  id='oth_employer_paid1' text="Employer Paid?"
+					type='RADIO' answerSet='Y:Yes|N:No' labelWidth="120px;"/>
+			</group>
+		</section>
+	<section title="Additional Coverage" repeating="true">
+			<displayWhen>#{EFORM.existing_coverage=="Y" or
+				EFORM.existing_coverageSET1=="Y" or EFORM.existing_coverageSET2=="Y"
+				or EFORM.existing_coverageSET3=="Y" or
+				EFORM.existing_coverageSET4=="Y"}
+			</displayWhen>
+			<header>Additional Insurance Coverage</header>
+			<group>
+				<question labelStyle="margin-left:50px"  id='oth_ins_company' text='Name of Company' type='TEXT'
+					labelWidth="120px;" answerStyle="width:200px; color:#303030;"
+					autocompleteLookup="naic:carrier"
+					externalId='oth_ins_naic;oth_ins_street;oth_ins_city;oth_ins_state;oth_ins_zip' />
+			</group>
+			<group>
+				<question labelStyle="margin-left:50px"  id='oth_ins_naic' text='NAIC' type='TEXT'
+					labelWidth="120px;" answerWidth="80px;" validation='number' />
+			</group>
+			<group associated="true">
+				<question id='oth_ins_street' text='Street Address' type='TEXT'
+					labelWidth="120px;" answerWidth="180px;" labelStyle='margin-top:3px;margin-left:50px;' />
+				<question id='oth_ins_city' text='City' type='TEXT'
+					labelWidth="20px;" answerWidth="100px;"  labelStyle='margin-top:3px;margin-left:55px;' />
+				<question id='oth_ins_state' text='State' lookup="step:LOCALE_STATE"
+					answerSet=":Please select a state" type='LISTBOX' labelWidth="30px;"
+					answerWidth="158px;" labelStyle='margin-top:3px;margin-left:55px;'  />
+				<question  id='oth_ins_zip' text='Zip Code' type='TEXT'
+					labelWidth="60px;" answerWidth="40px;" labelStyle='margin-top:3px;margin-left:55px;' />
+			</group>
+			<group associated="true">
+				<question id='oth_ins_face' type='NUMBER' text="Face Amount"
+					labelWidth="120px;" answerWidth="60px;" labelStyle='margin-top:3px;margin-left:50px;'/>
+				<question id='oth_ins_year' text="Year Issued" type='NUMBER'
+					labelWidth="80px;" answerWidth="80px;"  labelStyle='margin-top:3px;margin-left:55px;'/>
+			</group>
+			<group>
+				<question id='oth_ins_replace' text="Is Coverage to be Replaced?"
+					type='RADIO' answerSet='Y:Yes|N:No' labelWidth="120px;" labelStyle='margin-top:3px;margin-left:50px;' answerStyle='margin-top:3px;' />
+			</group>
+			<group>
+				<question labelStyle="margin-left:50px"  id='oth_group_individual' text='Group/Individual?'
+					type='RADIO' answerSet='G:Group|I:Individual' labelWidth="120px;"/>
+			</group>	
+			<group>
+				<question labelStyle="margin-left:50px"  id='oth_coordinates_soc_sec' text="Coordinates w/ Soc. Sec.?"
+					type='RADIO' answerSet='Y:Yes|N:No' labelWidth="120px;" />
+			</group>
+			<group>
+				<question labelStyle="margin-left:50px"  id='oth_employer_paid' text="Employer Paid?"
+					type='RADIO' answerSet='Y:Yes|N:No' labelWidth="120px;"/>
+			</group>
+		</section>
+	</page>
+</form>

@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v2 https://demo.stepsolutions.com/schema/eforms.v2.xsd">
+	<onLoad>initializePage</onLoad>
+	<onSave>saveSignatureInfo</onSave>
+	<page
+		title='Authorization for the Release of personal Health Information. This authorization complies with the HIPAA Privacy Rules'>
+		<section>
+			<group labelWidth="400px" height="200px" scrollable="true">
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy benefit manager,
+medical facility, health care provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and
+Accountability Act of 1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to
+disclose my entire medical record and any other protected health information concerning me to Fidelity Life Association, its
+agents, employees, representatives, insurance support organizations, and reinsurers (collectively, the Company). This
+includes all information relating to my health (except psychotherapy notes) and my insurance policies and claims, including
+but not limited to, hospital records, treatment records/office notes, consultation reports, workers compensation information,
+diagnosis, prescriptions, and test results. It also includes information concerning the diagnosis or treatment of Human
+Immunodeficiency Virus (HIV) infection and sexually transmitted diseases, and information on the diagnosis and treatment
+of mental illness and the use of alcohol, drugs, and tobacco."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy
+benefit manager, medical facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and
+disclose such information without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 26 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company. I understand that
+a revocation is not effective to the extent that the Company has already relied on this authorization or to the extent that the
+Company has a legal right to contest a claim under an insurance policy or to contest the policy itself. Such revocation shall
+not apply to any use or disclosure of my protected health information specifically allowed without authorization by HIPAA
+and no action relating to this authorization shall be construed as creating any restriction on the uses that HIPAA allows
+without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance. I understand that I am entitled to receive a copy of this authorization."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='AL' or CASE.contractLocale=='AZ' or CASE.contractLocale=='AR' or CASE.contractLocale=='CO'
+or CASE.contractLocale=='CT' or CASE.contractLocale=='DE' or CASE.contractLocale=='DC' or CASE.contractLocale=='FL'
+or CASE.contractLocale=='GA' or CASE.contractLocale=='HI' or CASE.contractLocale=='ID' or CASE.contractLocale=='IL' or
+CASE.contractLocale=='IN' or CASE.contractLocale=='IA' or CASE.contractLocale=='LA' or CASE.contractLocale=='MD' or CASE.contractLocale=='MI'
+or CASE.contractLocale=='MS' or CASE.contractLocale=='MO' or CASE.contractLocale=='NV' or CASE.contractLocale=='NH' or CASE.contractLocale=='NJ' or CASE.contractLocale=='NC' or CASE.contractLocale=='OH' or CASE.contractLocale=='OK' or CASE.contractLocale=='OR' or CASE.contractLocale=='PA' or CASE.contractLocale=='RI' or CASE.contractLocale=='SC' or CASE.contractLocale=='SD' or CASE.contractLocale=='TN' or CASE.contractLocale=='TX' or CASE.contractLocale=='UT' or CASE.contractLocale=='WA' or CASE.contractLocale=='WV' or CASE.contractLocale=='WI'}</displayWhen>
+
+			</group>
+
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy benefit manager,
+medical facility, health care provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and
+Accountability Act of 1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to
+disclose my entire medical record and any other protected health information concerning me to Fidelity Life Association, its
+agents, employees, representatives, insurance support organizations, and reinsurers (collectively, the Company). This
+includes all information relating to my health (except psychotherapy notes) and my insurance policies and claims, including
+but not limited to, hospital records, treatment records/office notes, consultation reports, workers compensation information,
+diagnosis, prescriptions, and test results. It also includes information concerning the diagnosis or treatment of Human
+Immunodeficiency Virus (HIV) infection and sexually transmitted diseases, and information on the diagnosis and treatment
+of mental illness and the use of alcohol, drugs, and tobacco."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy
+benefit manager, medical facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and
+disclose such information without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 24 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company. I understand that
+a revocation is not effective to the extent that the Company has already relied on this authorization or to the extent that the
+Company has a legal right to contest a claim under an insurance policy or to contest the policy itself. Such revocation shall
+not apply to any use or disclosure of my protected health information specifically allowed without authorization by HIPAA
+and no action relating to this authorization shall be construed as creating any restriction on the uses that HIPAA allows
+without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance. I understand that I am entitled to receive a copy of this authorization."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='KS'}</displayWhen>
+			</group>
+
+
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy benefit manager,
+medical facility, health care provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and
+Accountability Act of 1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to
+disclose my entire medical record and any other protected health information concerning me to Fidelity Life Association, its
+agents, employees, representatives, insurance support organizations, and reinsurers (collectively, the Company). This
+includes all information relating to my health (except psychotherapy notes) and my insurance policies and claims, including
+but not limited to, hospital records, treatment records/office notes, consultation reports, workers compensation information,
+diagnosis, prescriptions, and test results. It also includes information concerning the diagnosis or treatment of Human
+Immunodeficiency Virus (HIV) infection and sexually transmitted diseases, and information on the diagnosis and treatment
+of mental illness and the use of alcohol, drugs, and tobacco."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy
+benefit manager, medical facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and
+disclose such information without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 24 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company. I understand that
+a revocation is not effective to the extent that the Company has already relied on this authorization or to the extent that the
+Company has a legal right to contest a claim under an insurance policy or to contest the policy itself. Such revocation shall
+not apply to any use or disclosure of my protected health information specifically allowed without authorization by HIPAA
+and no action relating to this authorization shall be construed as creating any restriction on the uses that HIPAA allows
+without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance. I understand that I am entitled to receive a copy of this authorization"
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='KY'}</displayWhen>
+			</group>
+
+
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy benefit manager,
+medical facility, health care provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and
+Accountability Act of 1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to
+disclose my entire medical record and any other protected health information concerning me to Fidelity Life Association, its
+agents, employees, representatives, insurance support organizations, and reinsurers (collectively, the Company). This
+includes all information relating to my health (except psychotherapy notes) and my insurance policies and claims, including
+but not limited to, hospital records, treatment records/office notes, consultation reports, workers compensation information,
+diagnosis, prescriptions, and test results. It also includes information concerning the diagnosis or treatment of Human
+Immunodeficiency Virus (HIV) infection and sexually transmitted diseases, and information on the diagnosis and treatment
+of mental illness and the use of alcohol, drugs, and tobacco."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy
+benefit manager, medical facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and
+disclose such information without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 26 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company. I understand that
+a revocation is not effective to the extent that the Company has already relied on this authorization or to the extent that the
+Company has a legal right to contest a claim under an insurance policy or to contest the policy itself. Such revocation shall
+not apply to any use or disclosure of my protected health information specifically allowed without authorization by HIPAA
+and no action relating to this authorization shall be construed as creating any restriction on the uses that HIPAA allows
+without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance.I understand that I am entitled to receive a copy of this authorization"
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='MA'}</displayWhen>
+			</group>
+
+
+
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy benefit manager,
+medical facility, health care provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and
+Accountability Act of 1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to
+disclose my entire medical record and any other protected health information concerning me to Fidelity Life Association, its
+agents, employees, representatives, insurance support organizations, and reinsurers (collectively, the Company). This
+includes all information relating to my health (except psychotherapy notes) and my insurance policies and claims, including
+but not limited to, hospital records, treatment records/office notes, consultation reports, workers compensation information,
+diagnosis, prescriptions, and test results. It also includes information concerning the diagnosis or treatment of Human
+Immunodeficiency Virus (HIV) infection and sexually transmitted diseases, and information on the diagnosis and treatment
+of mental illness and the use of alcohol, drugs, and tobacco."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy
+benefit manager, medical facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and
+disclose such information without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this
+authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization is valid as long as I am continually insured with the insurer and a copy of this authorization is as valid as
+the original. I understand that I have the right to revoke this authorization at any time. The request for revocation must be in
+writing and sent to the attention of the Underwriting Department of the Company. I understand that a revocation is not
+effective to the extent that the Company has already relied on this authorization or to the extent that the Company has a legal
+right to contest a claim under an insurance policy or to contest the policy itself. Such revocation shall not apply to any use or
+disclosure of my protected health information specifically allowed without authorization by HIPAA and no action relating to
+this authorization shall be construed as creating any restriction on the uses that HIPAA allows without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance.
+I understand that I am entitled to receive a copy of this authorization."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='MN'}</displayWhen>
+
+			</group>
+
+
+
+
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy benefit manager,
+medical facility, health care provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and
+Accountability Act of 1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to
+disclose my entire medical record and any other protected health information concerning me to Fidelity Life Association, its
+agents, employees, representatives, insurance support organizations, and reinsurers (collectively, the Company). This
+includes all information relating to my health (except psychotherapy notes) and my insurance policies and claims, including
+but not limited to, hospital records, treatment records/office notes, consultation reports, workers compensation information,
+diagnosis, prescriptions, and test results. It also includes information concerning the diagnosis or treatment of Human
+Immunodeficiency Virus (HIV) infection and sexually transmitted diseases, and information on the diagnosis and treatment
+of mental illness and the use of alcohol, drugs, and tobacco."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy
+benefit manager, medical facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and
+disclose such information without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this
+authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to Montana state laws regarding redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 24 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company. I understand that
+a revocation is not effective to the extent that the Company has already relied on this authorization or to the extent that the
+Company has a legal right to contest a claim under an insurance policy or to contest the policy itself. Such revocation shall
+not apply to any use or disclosure of my protected health information specifically allowed without authorization by HIPAA
+and no action relating to this authorization shall be construed as creating any restriction on the uses that HIPAA allows
+without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance.
+I understand that I am entitled to receive a copy of this authorization."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='MT'}</displayWhen>
+
+			</group>
+
+
+
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy benefit manager,
+medical facility, health care provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and
+Accountability Act of 1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to
+disclose my entire medical record and any other protected health information concerning me to Fidelity Life Association, its
+agents, employees, representatives, insurance support organizations, and reinsurers (collectively, the Company). This
+includes all information relating to my health (except psychotherapy notes) and my insurance policies and claims, including
+but not limited to, hospital records, treatment records/office notes, consultation reports, workers compensation information,
+diagnosis, prescriptions, and test results. It also includes information concerning the diagnosis or treatment of Human
+Immunodeficiency Virus (HIV) infection and sexually transmitted diseases, and information on the diagnosis and treatment
+of mental illness and the use of alcohol, drugs, and tobacco."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy
+benefit manager, medical facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and
+disclose such information without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this
+authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 24 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company. I understand that
+a revocation is not effective to the extent that the Company has already relied on this authorization or to the extent that the
+Company has a legal right to contest a claim under an insurance policy or to contest the policy itself. Such revocation shall
+not apply to any use or disclosure of my protected health information specifically allowed without authorization by HIPAA
+and no action relating to this authorization shall be construed as creating any restriction on the uses that HIPAA allows
+without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance.
+I understand that I am entitled to receive a copy of this authorization."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='ND'}</displayWhen>
+
+			</group>
+
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy benefit manager,
+medical facility, health care provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and
+Accountability Act of 1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to
+disclose my entire medical record and any other protected health information concerning me to Fidelity Life Association, its
+agents, employees, representatives, insurance support organizations, and reinsurers (collectively, the Company). This
+includes all information relating to my health (except psychotherapy notes) and my insurance policies and claims, including
+but not limited to, hospital records, treatment records/office notes, consultation reports, workers compensation information,
+diagnosis, prescriptions, and test results. It also includes information concerning the diagnosis or treatment of Human
+Immunodeficiency Virus (HIV) infection and sexually transmitted diseases, and information on the diagnosis and treatment
+of mental illness and the use of alcohol, drugs, and tobacco."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy
+benefit manager, medical facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and
+disclose such information without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this
+authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 24 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company. I understand that
+a revocation is not effective to the extent that the Company has already relied on this authorization or to the extent that the
+Company has a legal right to contest a claim under an insurance policy or to contest the policy itself. Such revocation shall
+not apply to any use or disclosure of my protected health information specifically allowed without authorization by HIPAA
+and no action relating to this authorization shall be construed as creating any restriction on the uses that HIPAA allows
+without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance.
+I understand that I am entitled to receive a copy of this authorization."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='NE'}</displayWhen>
+
+			</group>
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy benefit manager,
+medical facility, health care provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and
+Accountability Act of 1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to
+disclose my entire medical record and any other protected health information concerning me to Fidelity Life Association, its
+agents, employees, representatives, insurance support organizations, and reinsurers (collectively, the Company). This
+includes all information relating to my health (except psychotherapy notes) and my insurance policies and claims, including
+but not limited to, hospital records, treatment records/office notes, consultation reports, workers compensation information,
+diagnosis, prescriptions, and test results. It also includes information concerning the diagnosis or treatment of Human
+Immunodeficiency Virus (HIV) infection and sexually transmitted diseases, and information on the diagnosis and treatment
+of mental illness and the use of alcohol, drugs, and tobacco."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy
+benefit manager, medical facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and
+disclose such information without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this
+authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 24 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company. I understand that
+a revocation is not effective to the extent that the Company has already relied on this authorization or to the extent that the
+Company has a legal right to contest a claim under an insurance policy or to contest the policy itself. Such revocation shall
+not apply to any use or disclosure of my protected health information specifically allowed without authorization by HIPAA
+and no action relating to this authorization shall be construed as creating any restriction on the uses that HIPAA allows
+without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance.
+I understand that I am entitled to receive a copy of this authorization."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='NM'}</displayWhen>
+
+			</group>
+
+
+
+
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy benefit manager,
+medical facility, health care provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and
+Accountability Act of 1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to
+disclose my entire medical record and any other protected health information concerning me to Fidelity Life Association, its
+agents, employees, representatives, insurance support organizations, and reinsurers (collectively, the Company). This
+includes all information relating to my health (except psychotherapy notes and the results of previously administered AIDS
+tests) and my insurance policies and claims, including but not limited to, hospital records, treatment records/office notes,
+consultation reports, workers compensation information, diagnosis, prescriptions, and test results. It also includes
+information concerning the diagnosis or treatment of Human Immunodeficiency Virus (HIV) infection and sexually
+transmitted diseases, and information on the diagnosis and treatment of mental illness and the use of alcohol, drugs, and
+tobacco. HIV testing information will only be released to reinsurers or to medical personnel, laboratories, insurance support
+organizations and insurance affiliates (excluding agents or brokers) who are involved in underwriting decisions regarding the
+specific application in question."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, pharmacy
+benefit manager, medical facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and
+disclose such information without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this
+authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 24 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company. I understand that
+a revocation is not effective to the extent that the Company has already relied on this authorization or to the extent that the
+Company has a legal right to contest a claim under an insurance policy or to contest the policy itself. Such revocation shall
+not apply to any use or disclosure of my protected health information specifically allowed without authorization by HIPAA
+and no action relating to this authorization shall be construed as creating any restriction on the uses that HIPAA allows
+without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance.
+I understand that I am entitled to receive a copy of this authorization."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='VT'}</displayWhen>
+
+			</group>
+
+
+
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, medical facility, health care
+provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and Accountability Act of
+1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to disclose my entire
+medical record and any other protected health information concerning me to Fidelity Life Association, its agents, employees,
+representatives, insurance support organizations, and reinsurers (collectively, the Company). This includes all information
+relating to my health (except psychotherapy notes) and my insurance policies and claims, including but not limited to,
+hospital records, treatment records/office notes, consultation reports, workers compensation information, diagnosis,
+prescriptions, and test results. It also includes information concerning the diagnosis or treatment of Human
+Immunodeficiency Virus (HIV) infection and sexually transmitted diseases, and information on the diagnosis and treatment
+of mental illness and the use of alcohol, drugs, and tobacco."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, medical
+facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and disclose such information
+without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this
+authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 26 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company at the address
+listed above. I understand that a revocation is not effective to the extent that the Company has already relied on this
+authorization or to the extent that the Company has a legal right to contest a claim under an insurance policy or to contest the
+policy itself. Such revocation shall not apply to any use or disclosure of my protected health information specifically allowed
+without authorization by HIPAA and no action relating to this authorization shall be construed as creating any restriction on
+the uses that HIPAA allows without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance.
+I understand that I am entitled to receive a copy of this authorization."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='AK' or CASE.contractLocale=='CA'}</displayWhen>
+
+			</group>
+
+
+
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, medical facility, health care
+provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and Accountability Act of
+1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to disclose my entire
+medical record and any other protected health information concerning me to Fidelity Life Association, its agents, employees,
+representatives, insurance support organizations, and reinsurers (collectively, the Company). This includes all information
+relating to my health (except psychotherapy notes) and my insurance policies and claims, including but not limited to,
+hospital records, treatment records/office notes, consultation reports, workers compensation information, diagnosis,
+prescriptions, and test results. It also includes information concerning the diagnosis or treatment of sexually transmitted
+diseases, and information on the diagnosis and treatment of mental illness and the use of alcohol, drugs, and tobacco. This
+authorization excludes divulging whether test for the presence of HIV antibiodies have been formed and excludes
+divulging the results of such tests. Such test shall not be disclosed or published. Nothing in this caveat will prohibit
+this authorization from divulging the fact that the applicant has AIDS/ARC."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, medical
+facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and disclose such information
+without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this
+authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 26 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company at the address
+listed above. I understand that a revocation is not effective to the extent that the Company has already relied on this
+authorization or to the extent that the Company has a legal right to contest a claim under an insurance policy or to contest the
+policy itself. Such revocation shall not apply to any use or disclosure of my protected health information specifically allowed
+without authorization by HIPAA and no action relating to this authorization shall be construed as creating any restriction on
+the uses that HIPAA allows without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that I have the right to revoke this authorization at any time. The request for revocation must be in writing and
+sent to the Company at the address listed below. I understand that a revocation is not effective to the extent that the Company
+has already relied on this authorization or to the extent that the Company has a legal right to contest a claim under an
+insurance policy or to contest the policy itself."
+					styleClass="groupParagraph"></paragragh>
+
+				<paragragh
+					text="I also understand that any modification to this Declaration Agreement and Authorization to Release Information or failure to
+sign will prevent the Company from processing my application. I understand that I am entitled to receive a copy of this
+authorization."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='ME'}</displayWhen>
+
+			</group>
+
+
+
+
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I authorize any physician, health care professional, hospital, clinic, laboratory, pharmacy, medical facility, health care
+provider, health plan, insurer, and/or any entity subject to the Health Insurance Portability and Accountability Act of
+1996 (HIPAA) that has provided treatment, service, payment, or coverage to me or on my behalf to disclose my entire
+medical record and any other protected health information concerning me to Fidelity Life Association, its agents, employees,
+representatives, insurance support organizations, and reinsurers (collectively, the Company). This includes all information
+relating to my health (except psychotherapy notes) and my insurance policies and claims, including but not limited to,
+hospital records, treatment records/office notes, consultation reports, workers compensation information, diagnosis,
+prescriptions, and test results. It also includes information concerning the treatment of Human Immunodeficiency Virus
+(HIV) infection and sexually transmitted diseases, and information on the diagnosis and treatment of mental illness and the
+use of alcohol, drugs, and tobacco."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="By my signature, I acknowledge that any agreements I have made to restrict my protected health information do not apply to
+this authorization and I instruct any physician, health care professional, hospital, clinic, laboratory, pharmacy, medical
+facility, health care provider, health plan, insurer and/or any entity subject to HIPAA to release and disclose such information
+without restriction."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that unless prohibited by state and/or Federal law, the protected health information is to be disclosed under this
+authorization so that the Company may: 1) underwrite my application for coverage, make eligibility, risk rating, policy
+issuance and enrollment determinations; 2) obtain reinsurance; 3) administer claims and determine or fulfill responsibility for
+coverage and provision of benefits; 4) administer coverage; and 5) conduct other legally permissible activities that relate to
+any coverage I have, have applied for, or may in the future apply for with the Company. I understand any information
+disclosed under this authorization may no longer be covered by Federal rules governing privacy and confidentiality of health
+information and may be subject to redisclosure."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="This authorization shall remain in force for 30 months following the date of my signature below, and a copy of this
+authorization is as valid as the original. I understand that I have the right to revoke this authorization at any time. The request
+for revocation must be in writing and sent to the attention of the Underwriting Department of the Company at the address
+listed above. I understand that a revocation is not effective to the extent that the Company has already relied on this
+authorization or to the extent that the Company has a legal right to contest a claim under an insurance policy or to contest the
+policy itself. In the case of authorization signed for the purpose of collecting information in connection with a claim for
+benefits under the policy, the authorization is valid for the duration of the claim. Such revocation shall not apply to any use
+or disclosure of my protected health information specifically allowed without authorization by HIPAA and no action relating
+to this authorization shall be construed as creating any restriction on the uses that HIPAA allows without my authorization."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I understand that if I refuse to sign this authorization, the Company may not be able to process my application for insurance.
+I understand that I am entitled to receive a copy of this authorization. I also understand that someone I authorize to act on
+my behalf, may obtain a copy of this authorization."
+					styleClass="groupParagraph"></paragragh>
+				<displayWhen>#{CASE.contractLocale=='VA'}</displayWhen>
+
+			</group>
+		</section>
+
+		<section
+			title="Declaration, Agreement and Authorization to release information">
+			<group labelWidth="400px" height="200px" scrollable="true">
+
+				<paragragh
+					text="I declare that each answer and statements given to the questions contained in this application is complete and true to the best of my knowledge and belief. I understand and agree that the Fidelity Life Association, A Legal Reserve Life Insurance Company (Fidelity Life) will rely on these answers, and the answers and statements I may give in any other form, taken as a part of this application, as representations and not warranties and that no such statement shall void the policy unless it is contained in a written application and a copy of such application shall be endorsed upon or attached to the policy when issued. I also understand that the Fidelity Life reserves the right to accept or deny this application after taking into account whatever information may be available to it, including availability as to coverage by its reinsurers.
+I understand that the statements and answers in the application are the basis for any policy issued by Fidelity Life, and that no information will be considered to have been given to the company unless it is stated in the application;
+I understand that a sales representative does not have the company's authorization to accept risk, pass on insurability, or make, void, waive or change any conditions or provisions of the application, policy or receipt, as applicable."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="The coverage will be effective on its date of issue if the: (a) health; (b) avocations; (c) occupation; and (d) any other condition relating to the Proposed Insured are as described in the application. The effective date will be shown on page 3 of the Policy, provided one is issued.
+I understand that Fidelity Life will have no liability until a policy is issued on this application and delivered to and accepted by the owner and the first premium is paid in full while the insured is alive."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I, the Proposed Insured, authorize any physician, medical practitioner, hospital, clinic, pharmacy, pharmacy benefit manager or other medical or medically related facility, insurance or reinsurance company, the MIB, Inc., consumer reporting agency or employer to give to Fidelity Life any information they might have regarding the diagnosis, treatment, prescription and prognosis of any physical or mental condition, my driving record, avocations, credit history, insurance history, occupation, character and hobbies, as applicable. To facilitate the rapid transmission of such information, I authorize all said sources, except the MIB, Inc., to give such records or knowledge to any agency employed by the Fidelity Life to collect and transmit such information."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="I agree that this authorization shall remain in effect for two years (24 months) from the date that it is signed and that a copy of it shall be as valid as the original. I understand that the information obtained with this authorization shall be used to evaluate my application for insurance. I also understand that I, or someone I authorize to act on my behalf, may obtain a copy of this authorization. I also understand that I have the right to revoke this authorization at any time."
+					styleClass="groupParagraph"></paragragh>
+				<paragragh
+					text="All or part of such information may be disclosed to a physician of my choosing, my insurance agent, the MIB, Inc., to other persons or organizations performing business or legal services in connection with this application, including reinsuring companies and as may be required by law."
+					styleClass="groupParagraph"></paragragh>
+
+				<paragragh
+					text="Fraud Warning: Any person who knowingly presents a false or fraudulent claim for payment of a loss or knowingly makes a false
+statement in an application for insurance may be guilty of criminal offense and subject to penalties under state law."
+					styleClass="groupParagraph"></paragragh>
+			</group>
+			<group>
+				<header>Please note, you are required to download and review the contents of the application before continuing:</header>
+				<facelet component="/pages/common/pdf_download_button.xhtml" />
+			</group>
+			<group>
+				<question id="accept_terms"
+					text="I acknowledge that I have reviewed the application and read, accept and agree to the terms and conditions listed above."
+					type="CHECKBOX" answerSet='Y:Yes' required="false" labelWidth="400px" />
+				<question id="ins_sign" labelStyle="font-weight: bold; width: 355px; color: #303030;" answerStyle="border: 1px solid #666666;" 
+					text="Electronically signed by (Signature of the proposed Insured): "
+					type="TEXT" answerWidth="230px" required="false" />
+			</group>
+			<group associated="true">
+				<question id="ins_city" text="Signed at City: " type="TEXT"
+					labelWidth="90px" answerWidth="200px" required="false" />
+				<question id="ins_state" required="false" text="State: "
+					type="LISTBOX" lookup="step:LOCALE_STATE" answerSet=":Please select a state"
+					labelWidth="40px" />
+			</group>
+			<group>
+				<question id="ins_date" text="Date: " type="DATEF" readonly="true" answerStyle="width: 180px; color: #a0a0a0;" 
+					required="false" labelWidth="90px" />
+			</group>
+			<group>
+				<facelet component="/pages/custom/fla_hipaa_onload.xhtml" />
+			</group>
+		</section>
+	</page>
+</form>

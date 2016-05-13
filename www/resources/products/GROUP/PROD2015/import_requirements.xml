@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<requirements>
+		<requirement>
+			<requirementLocale />
+			<requirementCode>PRE</requirementCode>
+			<requirementDescription>Application Part 1</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APPPART1</formCode>
+					<formDescription>Part 1 data capture</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow />
+					<formEformCode>PRECOVERAGE</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>MVR</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>Motor Vehicle Report</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence
+			</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>MVR</formCode>
+					<formDescription>Motor Vehicle Report</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>MVREPORT</formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>MWS</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>MIB Disclosure</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence
+			</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>MIB3RDPARTY</formCode>
+					<formDescription>MIB 3rd Party Call</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>MIB3RDPARTY</formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>RXD</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>RXD Disclosure</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence
+			</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>RXD3RDPARTY</formCode>
+					<formDescription>RXD 3rd Party Call</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>RXD3RDPARTY</formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>IIX</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>IIX Disclosure</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence
+			</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>IIX3RDPARTY</formCode>
+					<formDescription>IIX 3rd Party Call</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>IIX3RDPARTY</formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>ATT</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>ATT Disclosure</requirementDescription>
+			<securityFunction>underwriting_requirements_correspondence
+			</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>ATT3RDPARTY</formCode>
+					<formDescription>ATT 3rd Party Call</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>ATT3RDPARTY</formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>APS</requirementCode>
+			<requirementGroup>UW</requirementGroup>
+			<requirementDescription>Exam</requirementDescription>
+			<securityFunction>lab_requirements</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APS</formCode>
+					<formDescription>Attending Physician Statement</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formGroupType>UW</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale />
+			<requirementCode>PT1</requirementCode>
+			<requirementDescription>Application Part 1</requirementDescription>
+			<securityFunction>personal_information</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>APPPART2</formCode>
+					<formDescription>Part 2 data capture</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow />
+					<formEformCode>POSTCOVERAGE</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+				<requirementForm>
+					<formCode>APPPART3</formCode>
+					<formDescription>Part 3 data capture</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formEformCode>OTHERINFO</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>ASR</requirementCode>
+			<requirementDescription>Applicant signature requirement
+			</requirementDescription>
+			<securityFunction>case_auth</securityFunction>
+			<requirementGroup>NB</requirementGroup>
+			<requirementForms>
+				<requirementForm>
+					<formCode>ASRRF</formCode>
+					<formDescription>Applicant signature</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>true</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode></formEformCode>
+					<formGroupType>SIGNATURE</formGroupType>
+					<requirementType>ESIGNATURE</requirementType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale />
+			<requirementCode>MWV</requirementCode>
+			<requirementDescription>Member waiver acknowledgement
+			</requirementDescription>
+			<securityFunction>case_requirements</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>WAIVORLTR</formCode>
+					<formDescription>Letter confirming waiver</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>MEMWVRLTR</formWorkflow>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale />
+			<requirementCode>MSD</requirementCode>
+			<requirementDescription>Member supplemental decline
+			</requirementDescription>
+			<securityFunction>case_requirements</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>SUPPDCLNLTR</formCode>
+					<formDescription>Letter confirming supplemental decline
+					</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>MEMSUPPDEC</formWorkflow>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale />
+			<requirementCode>EOI</requirementCode>
+			<requirementDescription>Evidence of insurability
+			</requirementDescription>
+			<securityFunction>document_upload</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>EOIUPLOAD </formCode>
+					<formDescription>Upload evidence of insurability</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>false</signatureRequired>
+					<formWorkflow>OBTAINEOI</formWorkflow>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>SIGNACKN</requirementCode>
+			<requirementDescription>Signature Ack</requirementDescription>
+			<securityFunction>case_auth</securityFunction>
+			<requirementForms>
+				<requirementForm>
+					<formCode>SIGNACKN</formCode>
+					<formDescription>Signature Ack</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>true</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode>SIGN_ACKN</formEformCode>
+					<formGroupType>APPLICATION</formGroupType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+		<requirement>
+			<requirementLocale></requirementLocale>
+			<requirementCode>WOIR</requirementCode>
+			<requirementDescription>Waiver of Insurnace Requirement
+			</requirementDescription>
+			<securityFunction>case_auth</securityFunction>
+			<requirementGroup>NB</requirementGroup>
+			<requirementForms>
+				<requirementForm>
+					<formCode>WOIRF</formCode>
+					<formDescription>Applicant signature</formDescription>
+					<responseRequired>true</responseRequired>
+					<signatureRequired>true</signatureRequired>
+					<formWorkflow></formWorkflow>
+					<formEformCode></formEformCode>
+					<formGroupType>SIGNATURE</formGroupType>
+					<requirementType>CORRESPONDENCE</requirementType>
+				</requirementForm>
+			</requirementForms>
+		</requirement>
+	</requirements>
+</stepImport>

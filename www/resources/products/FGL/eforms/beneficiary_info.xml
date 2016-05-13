@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>formLoad</onLoad>
+	<onComplete>importData</onComplete>
+	<onSave>saveBeneficiary</onSave>
+	<page title='Beneficiary Information'>
+		<onEnterRule>BENE_RULES</onEnterRule>
+		<section title="Primary Beneficiary" style="margin-left:0px; margin-top:0px;">
+			<group associated="true">
+				<question id='bene_first_name' text='First Name' name='Primary Beneficiary First Name' required="true" labelWidth="100px" type='TEXT' answerWidth="120px" tabindex ='1'/>
+				<question id='date_of_birth' text='Date of Birth' name='Primary Beneficiary Date of Birth' type='DATEF' answerStyle="margin-left:0px; margin-right:0px;" required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='5' />
+			</group>
+			<group associated="true">
+				<question id='bene_middle_name' text='Middle Name' name='Primary Beneficiary Middle Name' labelWidth="100px" type='TEXT' answerWidth="120px" tabindex ='2'/>
+				<question id='ssn' type='SSN' text='SSN' name='Primary Beneficiary SSN' labelWidth="100px" answerStyle="margin-left:0px; margin-right:0px;" answerWidth="120px" required="true" labelStyle='margin-left:20px'  tabindex ='6' />
+			</group>
+			<group associated="true">
+				<question id='bene_last_name' text='Last Name' name='Primary Beneficiary Last Name' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" tabindex ='3'/>  
+				<question id='share_percentage' text='Percentage' name='Primary Beneficiary Percentage' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:20px' answerStyle='margin-left:0px;' tabindex ='7' mask="pnum"/>            
+			</group>
+			<group associated="true">
+				<question id='bene_relation' text='Relationship to the Owner' name='Primary Beneficiary Relationship to Owner' required="true" type='LISTBOX' lookup="ACORD_225:OLI_LU_REL" answerSet=" : " labelWidth="100px" answerWidth="120px" tabindex='4' />
+			</group>       
+		</section>
+		<section name="Primary Beneficiary" repeating="true" style="margin-left:0px">
+			<group associated="true">
+				<question id='other_bene_first_name' text='First Name' name='Other Primary Beneficiary First Name' required="true" labelWidth="100px" type='TEXT' answerWidth="120px" tabindex ='8'/>
+				<question id='other_date_of_birth' text='Date of Birth' name='Other Primary Beneficiary Date of Birth' type='DATEF' required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' answerStyle='margin-left:0px;' tabindex ='12'/>
+			</group>
+			<group associated="true">
+				<question id='other_bene_middle_name' text='Middle Name' name='Other Primary Beneficiary Middle Name' labelWidth="100px" type='TEXT' answerWidth="120px" tabindex ='9'/>
+				<question id='other_ssn' type='SSN' text='SSN' name='Other Primary Beneficiary SSN' labelWidth="100px" answerStyle="margin-left:0px; margin-right:0px;" answerWidth="120px" required="true" labelStyle='margin-left:20px' tabindex ='13' />
+			</group>
+			<group associated="true">
+				<question id='other_bene_last_name' text='Last Name' name='Other Primary Beneficiary Last Name' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" tabindex ='10'/>  
+				<question id='other_share_percentage' text='Percentage' name='Other Primary Beneficiary Percentage' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:20px' answerStyle='margin-left:0px;' tabindex ='14' mask="pnum"/>            
+			</group>
+			<group associated="true">        
+				<question id='other_bene_relation' text='Relationship to the Owner' name='Other Primary Beneficiary Relationship to Owner' required="true" type='LISTBOX' lookup="ACORD_225:OLI_LU_REL" answerSet=" : " labelStyle='margin-left:0px'  labelWidth="100px" answerWidth="118px" tabindex ='11' />
+			</group>     
+		</section>  
+		<section title="Contingent Beneficiary" style="margin-left:0px; margin-top:0px;">
+			<group>
+			</group>
+		</section>
+		<section name="Contingent Beneficiary" repeating="true" style="margin-left:0px; margin-top:0px;" >
+			<group associated="true">
+				<question id='contingent_bene_first_name' text='First Name' name='Contingent Beneficiary First Name' required="true" labelWidth="100px" type='TEXT' answerWidth="120px" tabindex ='15'/>
+				<question id='contingent_date_of_birth' text='Date of Birth' name='Contingent Beneficiary Date of Birth' type='DATEF' answerStyle="margin-left:0px; margin-right:0px;" required="true" answerWidth="120px" labelWidth="100px" labelStyle='margin-left:20px' tabindex ='19'/>
+			</group>
+			<group associated="true">
+				<question id='contingent_bene_middle_name' text='Middle Name' name='Contingent Beneficiary Middle Name' labelWidth="100px" type='TEXT' answerWidth="120px" tabindex ='16'/>
+				<question id='contingent_ssn' type='SSN' text='SSN' name='Contingent Beneficiary SSN' labelWidth="100px" answerWidth="120px" required="true" labelStyle='margin-left:20px' answerStyle='margin-left:0px;' tabindex ='20'/>
+			</group>
+			<group associated="true">
+				<question id='contingent_bene_last_name' text='Last Name' name='Contingent Beneficiary Last Name' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" tabindex ='17'/>  
+				<question id='contingent_share_percentage' text='Percentage' name='Contingent Beneficiary Percentage' labelWidth="100px" required="true" type='TEXT' answerWidth="120px" labelStyle='margin-left:20px' answerStyle='margin-left:0px;' tabindex ='21' mask="pnum"/>            
+			</group>
+			<group associated="true">        
+				<question id='contingent_bene_relation' text='Relationship to the Owner' name='Contingent Beneficiary Relationship to Owner' required="true" type='LISTBOX' lookup="ACORD_225:OLI_LU_REL" answerSet=" : " labelWidth="100px" answerWidth="120px" tabindex ='18'/>
+			</group>   
+		</section>
+	</page>
+</form>

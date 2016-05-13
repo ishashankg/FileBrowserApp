@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+  <onLoad>prefillForm</onLoad>
+  <page title="Agent">
+    <section title="Additional Information">
+      <group>
+        <question id='ag_applicant_addtl_face'
+          text='Does the applicant want a different face amount after underwriting?'
+          type='RADIO' answerSet='Y:Yes|N:No' required='true' labelWidth="400px"/>
+        <question id='ag_applicant_addtl_face_amt' text='Please specify, how much: '
+          type='NUMBER' labelWidth="150px" />  
+        <question id='ag_applicant_exam_date' text='When would the applicant like to schedule the exam (date)?' labelWidth="330px" type='DATE' />
+        <question id='ag_applicant_exam_time' text='Preferred time of appointment: ' labelWidth="180px" type='LISTBOX' 
+          answerSet=": |7am-9am|9am-11am|11am-1pm|1pm-3pm|3pm-5pm|5pm-7pm|7pm-9pm" />
+      </group>
+    </section>
+    <section title="Agent Attestation">
+      <group labelWidth="550px">
+        <question id='ag_ques1'
+          text='To the best of your knowledge, will the coverage applied for replace any life or annuity coverage now in force on the life of any proposed insured? (If yes, complete appropriate state replacement forms)'
+          type='RADIO' answerSet='Y:Yes|N:No' required="true" />
+        <question id='ag_ques2'
+          text='Does any Proposed Insured have existing Life Insurance or Annuity contracts in force?'
+          type='RADIO' answerSet='Y:Yes|N:No' required="true" />
+      </group>  
+      <group associated= "true" labelWidth="125px" readonly="true">
+        <question id='ag_first_name' text='First Name: ' required="true" type='TEXT' answerWidth="150px;" />
+        <question id='ag_last_name' text='Last Name: ' required="true" type='TEXT' answerWidth="150px;"  />
+      </group>
+      <group associated= "true" labelWidth="125px" readonly="true">
+        <question id='ag_id' text='Agent ID: ' required="true" type='TEXT' answerWidth="150px;" />
+        <question id='ga_id' text='General AgentID: ' type='TEXT' answerWidth="150px"/>
+      </group>
+      <group associated="true" labelWidth="125px" readonly="true">        
+        <question id='st_license_num' text='State License Number: ' type='TEXT' answerWidth="150px;"  />
+        <question id='ag_email' text='Agent Email: ' required="true" type='TEXT' answerWidth="150px;" />
+      </group>
+      <group associated="true" labelWidth="125px" readonly="true"> 
+        <question id='ag_sig_date' text='Date: ' required="true" type='TEXT' answerWidth="150px;" />
+        <question id='ag_contact' text='Telephone Number of Agent: ' type='TEXT' answerWidth="150px;" />
+      </group>
+    </section>
+  </page>
+</form>

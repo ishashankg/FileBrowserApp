@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://stepsolns.com/eform/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://stepsolns.com/eform/v1 https://demo.stepsolutions.com/schema/eforms.v1.xsd">
+	<onLoad>prefillForm</onLoad>
+	<onComplete>importData</onComplete>
+	<page title="Suitability Important Considerations">
+		<section title="Important Considerations">
+			<group style='border:1px solid black'>
+				<question id='annuity_distribution' labelWidth="400px"
+					text='14. Do you anticipate taking distributions from this annuity during the surrender charge period that would result in a surrender charge?'
+					name='Anticipation of Annuity distribution' type='LISTBOX'
+
+					answerWidth="100px" answerSet=" : |Y:Yes|N:No" required="true"
+					tabindex='1' />
+				<question id='when_annuity_distribution'
+					text='If Yes, how many years from now (not applicable to single premium immediate annuities)?'
+					name='Anticipated duration for annuity distribution' type='LISTBOX'
+					labelWidth="400px" required="true" answerWidth="100px"
+					answerSet=" : |5:0-5|7:6-7|10:8-10|14:11-14|15:15 or more"
+					tabindex='2'>
+					<displayWhen>#{EFORM.annuity_distribution=="Y"}</displayWhen>
+				</question>
+			</group>
+			<group style='border:1px solid black'>
+				<question id='surrender_charges_confirmation' answerWidth="100px"
+					labelWidth="400px"
+					text='15. Do you understand this annuity has surrender charges on withdrawals beginning at __% and declines over __ years (or in the case of a multi-year guarantee annuity has a surrender charge free withdrawal window at the end of that period)?'
+					name='Agreement on surrender charges' type='LISTBOX' answerSet=" : |Y:Yes|N:No"
+					required="true" tabindex='3' />
+			</group>
+		</section>
+		<section>
+			<displayWhen>#{EFORM.surrender_charges_confirmation=="Y"}
+			</displayWhen>
+			<group>
+				<question id='surrender_charges' text="Surrender Charges beginning at(in %)"
+					type='TEXT' labelWidth="400px" answerWidth="100px" required="true"
+					tabindex='4' mask="pnum" />
+				<question id='decline_years' text="Decline Over the years"
+					answerWidth="100px" type='TEXT' labelWidth="400px" required="true"
+					tabindex='5' mask="pint" />
+			</group>
+		</section>
+		<section>
+			<group style='border:1px solid black'>
+				<question id='income_after_annuity_purchase' answerWidth="100px"
+					labelWidth="400px"
+					text='16. After purchase of this annuity, will you have enough remaining liquid assets and other sources of income to cover any emergencies or contingencies such as sudden health care needs or increased living expenses?'
+					name='Liquid assets after purchase of annuity' type='LISTBOX'
+					required="true" answerSet=" : |Y:Yes|N:No" tabindex='6' />
+			</group>
+		</section>
+		<section>
+			<group style='border:1px solid black'>
+				<question id='adverse_changes_expenses' labelWidth="400px"
+					answerWidth="100px"
+					text='17. Do you anticipate any adverse change in assets, living expenses, medical expenses, and/or income during the surrender period of this contract?'
+					type='LISTBOX' required="true" answerSet=" : |Y:Yes|N:No"
+					name='Anticipation of adverse changes in expenses' tabindex='7' />
+				<question id='specify_adverse_expense_change' required="true"
+					text='If Yes, please explain' name='Explanation of adverse changes in expenses'
+					type='MEMO' labelWidth="150px"  tabindex='8'>
+					<displayWhen>#{EFORM.adverse_changes_expenses=="Y"}</displayWhen>
+				</question>
+			</group>
+		</section>
+	</page>
+</form>

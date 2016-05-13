@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stepImport xmlns="http://www.stepsolutions.com/2013/configuration/">
+	<correspondence-compositions>
+		<correspondence-composition>
+			<parentCorrespondenceCode>AMENDMENT</parentCorrespondenceCode>
+			<childCorrespondenceCode>ANNUITANT_NAME</childCorrespondenceCode>
+		</correspondence-composition>
+		<correspondence-composition>
+			<parentCorrespondenceCode>AMENDMENT</parentCorrespondenceCode>
+			<childCorrespondenceCode>OWNER_DOB</childCorrespondenceCode>
+		</correspondence-composition>
+		<correspondence-composition>
+			<parentCorrespondenceCode>AMENDMENT</parentCorrespondenceCode>
+			<childCorrespondenceCode>APPLICATION_PREMIUM</childCorrespondenceCode>
+		</correspondence-composition>
+		<correspondence-composition>
+			<parentCorrespondenceCode>AMENDMENT</parentCorrespondenceCode>
+			<childCorrespondenceCode>OWNER_NAME</childCorrespondenceCode>
+		</correspondence-composition>
+		<correspondence-composition>
+			<parentCorrespondenceCode>AMENDMENT</parentCorrespondenceCode>
+			<childCorrespondenceCode>BENE_NAME</childCorrespondenceCode>
+		</correspondence-composition>
+		<correspondence-composition>
+			<parentCorrespondenceCode>AMENDMENT</parentCorrespondenceCode>
+			<childCorrespondenceCode>BENE_PERCENTAGE</childCorrespondenceCode>
+		</correspondence-composition>
+	</correspondence-compositions>
+</stepImport>

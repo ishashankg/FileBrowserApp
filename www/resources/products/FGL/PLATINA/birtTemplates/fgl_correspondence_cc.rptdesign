@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.22" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 3.7.0.v20110519 Build &lt;3.7.0.v20110523-2201></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.datatools.enablement.oda.xml.dataSet" name="Data Set" id="9">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">fullAddress</property>
+                    <expression name="expression">createAddress(dataSetRow["address1"] , dataSetRow["address2"] , dataSetRow["address3"] , dataSetRow["address4"])</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">fullName</property>
+                    <expression name="expression">createName(dataSetRow["firstName"], dataSetRow["middleName"], dataSetRow["lastName"], dataSetRow["sub"])</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">firstName</property>
+                    <property name="analysis">attribute</property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">firstName</text-property>
+                    <property name="analysisColumn">firstName</property>
+                </structure>
+                <structure>
+                    <property name="columnName">lastName</property>
+                    <property name="analysis">attribute</property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">lastName</text-property>
+                    <property name="analysisColumn">lastName</property>
+                </structure>
+                <structure>
+                    <property name="columnName">middleName</property>
+                    <property name="analysis">attribute</property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">middleName</text-property>
+                    <property name="analysisColumn">middleName</property>
+                </structure>
+                <structure>
+                    <property name="columnName">sub</property>
+                    <property name="analysis">attribute</property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">sub</text-property>
+                    <property name="analysisColumn">sub</property>
+                </structure>
+                <structure>
+                    <property name="columnName">gender</property>
+                    <property name="analysis">attribute</property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">gender</text-property>
+                    <property name="analysisColumn">gender</property>
+                </structure>
+                <structure>
+                    <property name="columnName">address1</property>
+                    <property name="analysis">attribute</property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">address1</text-property>
+                    <property name="analysisColumn">address1</property>
+                </structure>
+                <structure>
+                    <property name="columnName">address2</property>
+                    <property name="analysis">attribute</property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">address2</text-property>
+                    <property name="analysisColumn">address2</property>
+                </structure>
+                <structure>
+                    <property name="columnName">address3</property>
+                    <property name="analysis">attribute</property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">address3</text-property>
+                    <property name="analysisColumn">address3</property>
+                </structure>
+                <structure>
+                    <property name="columnName">address4</property>
+                    <property name="analysis">attribute</property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">address4</text-property>
+                    <property name="analysisColumn">address4</property>
+                </structure>
+                <structure>
+                    <property name="columnName">date</property>
+                    <property name="analysis">attribute</property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">date</text-property>
+                    <property name="analysisColumn">date</property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">firstName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">lastName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">middleName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">sub</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">gender</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">address1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">address2</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">address3</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">address4</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">date</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">fullAddress</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">fullName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">firstName</property>
+                    <property name="nativeName">firstName</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">lastName</property>
+                    <property name="nativeName">lastName</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">middleName</property>
+                    <property name="nativeName">middleName</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">sub</property>
+                    <property name="nativeName">sub</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">gender</property>
+                    <property name="nativeName">gender</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">address1</property>
+                    <property name="nativeName">address1</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">address2</property>
+                    <property name="nativeName">address2</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">address3</property>
+                    <property name="nativeName">address3</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">address4</property>
+                    <property name="nativeName">address4</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">date</property>
+                    <property name="nativeName">date</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[table0#-TNAME-#table0#:#[/reportRequest/ccParameters]#:#{firstName;STRING;/firstName},{lastName;STRING;/lastName},{middleName;STRING;/middleName},{sub;STRING;/sub},{gender;STRING;/gender},{address1;STRING;/address1},{address2;STRING;/address2},{address3;STRING;/address3},{address4;STRING;/address4},{date;STRING;../date}]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>firstName</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>firstName</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>lastName</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>lastName</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>middleName</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>middleName</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>sub</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>sub</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>gender</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>gender</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>address1</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>address1</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>address2</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>address2</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>address3</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>address3</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>address4</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>address4</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>MAX_ROW</name>
+                    <value>-1</value>
+                </ex-property>
+                <ex-property>
+                    <name>XML_FILE</name>
+                </ex-property>
+            </list-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">us-letter</property>
+            <property name="topMargin">0.25in</property>
+            <property name="leftMargin">0.25in</property>
+            <property name="bottomMargin">0.25in</property>
+            <property name="rightMargin">0.25in</property>
+            <property name="showHeaderOnFirst">false</property>
+            <property name="showFooterOnLast">false</property>
+            <property name="headerHeight">0.75in</property>
+            <property name="footerHeight">0.75in</property>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <image name="NewImage" id="7" extends="library.NewImage">
+            <property name="marginTop">-0.75in</property>
+            <property name="marginLeft">1in</property>
+            <property name="marginBottom">0in</property>
+            <property name="marginRight">0in</property>
+            <property name="height">0.75in</property>
+            <property name="width">3.39in</property>
+            <structure name="toc"/>
+            <method name="onCreate"><![CDATA[this.altText = "";]]></method>
+        </image>
+        <data id="10">
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">date</property>
+                    <text-property name="displayName">date</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["date"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <method name="onRender"><![CDATA[if (this.getValue() != null)
+{
+this.getStyle().marginTop = "0.5in";
+this.getStyle().marginLeft = "1in";
+this.getStyle().marginBottom = "0in";
+this.getStyle().marginRight = "0.6in";
+this.getStyle().paddingTop = "0in";
+this.getStyle().paddingLeft = "0in";
+this.getStyle().paddingBottom = "0in";
+this.getStyle().paddingRight = "0in";
+this.getStyle().fontFamily = "Arial";
+this.getStyle().fontSize = "10pt";
+this.getStyle().pageBreakBefore = "auto";
+this.getStyle().pageBreakAfter = "auto";
+this.getStyle().pageBreakInside = "auto";
+}
+else
+{
+this.getStyle().display="none";
+}]]></method>
+            <property name="resultSetColumn">date</property>
+        </data>
+        <data id="11">
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">fullName</property>
+                    <text-property name="displayName">fullName</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["fullName"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <method name="onRender"><![CDATA[if (this.getValue() != null)
+{
+this.getStyle().marginTop = "0.5in";
+this.getStyle().marginLeft = "1in";
+this.getStyle().marginBottom = "0in";
+this.getStyle().marginRight = "0.6in";
+this.getStyle().paddingTop = "0in";
+this.getStyle().paddingLeft = "0in";
+this.getStyle().paddingBottom = "0in";
+this.getStyle().paddingRight = "0in";
+this.getStyle().fontFamily = "Arial";
+this.getStyle().fontSize = "10pt";
+this.getStyle().pageBreakBefore = "auto";
+this.getStyle().pageBreakAfter = "auto";
+this.getStyle().pageBreakInside = "auto";
+}
+else
+{
+this.getStyle().display="none";
+}]]></method>
+            <property name="resultSetColumn">fullName</property>
+        </data>
+        <data id="12">
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">fullAddress</property>
+                    <text-property name="displayName">fullAddress</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["fullAddress"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <method name="onRender"><![CDATA[if (this.getValue() != null)
+{
+this.getStyle().marginTop = "0in";
+this.getStyle().marginLeft = "1in";
+this.getStyle().marginBottom = "0in";
+this.getStyle().marginRight = "0.6in";
+this.getStyle().paddingTop = "0in";
+this.getStyle().paddingLeft = "0in";
+this.getStyle().paddingBottom = "0in";
+this.getStyle().paddingRight = "0in";
+this.getStyle().fontFamily = "Arial";
+this.getStyle().fontSize = "10pt";
+this.getStyle().pageBreakBefore = "auto";
+this.getStyle().pageBreakAfter = "auto";
+this.getStyle().pageBreakInside = "auto";
+}
+else
+{
+this.getStyle().display="none";
+}]]></method>
+            <property name="resultSetColumn">fullAddress</property>
+        </data>
+    </body>
+</report>

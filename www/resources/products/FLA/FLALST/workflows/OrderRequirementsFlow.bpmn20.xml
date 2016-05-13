@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:activiti="http://activiti.org/bpmn" targetNamespace="http://www.activiti.org/test">
+  <process id="OrderRequirementsFlow" name="OrderRequirementsFlow">
+    <documentation><![CDATA[Place documentation for the 'OrderRequirementsFlow' process here.]]></documentation>
+    <startEvent id="startevent1" name="Start" />
+    <subProcess id="subprocess1" name="Sub Process">
+      <startEvent id="startevent2" name="Start" />
+      <scriptTask id="scripttask1" name="Script Task" scriptFormat="groovy">      <script><![CDATA[println("Ordering Requirements.")]]></script>
+</scriptTask>
+      <sequenceFlow id="flow3" name="" sourceRef="startevent2" targetRef="scripttask1" />
+      <serviceTask id="order_requirements_route_iix" name="Order IIX" activiti:delegateExpression="${camelBehaviour.setRouteAndType(&#39;order_requirements_route&#39;,&#39;IIX&#39;)}" />
+      <sequenceFlow id="flow4" name="" sourceRef="scripttask1" targetRef="parallelgateway1" />
+      <scriptTask id="scripttask2" name="Log Message" scriptFormat="groovy">      <script><![CDATA[println("Ordering IIX")]]></script>
+</scriptTask>
+      <receiveTask id="iix_requirement_receive_signal" name="Receive IIX" />
+      <scriptTask id="scripttask3" name="Log Message" scriptFormat="groovy">      <script><![CDATA[println("IIX Signal Received")]]></script>
+</scriptTask>
+      <sequenceFlow id="flow7" name="" sourceRef="iix_requirement_receive_signal" targetRef="scripttask3" />
+      <endEvent id="endevent2" name="End" />
+      <parallelGateway id="parallelgateway1" name="Parallel Gateway" />
+      <parallelGateway id="parallelgateway2" name="Parallel Gateway" />
+      <sequenceFlow id="flow13" name="" sourceRef="parallelgateway1" targetRef="scripttask2" />
+      <sequenceFlow id="flow14" name="" sourceRef="scripttask2" targetRef="order_requirements_route_iix" />
+      <sequenceFlow id="flow15" name="" sourceRef="order_requirements_route_iix" targetRef="iix_requirement_receive_signal" />
+      <sequenceFlow id="flow16" name="" sourceRef="scripttask3" targetRef="parallelgateway2" />
+      <sequenceFlow id="flow17" name="" sourceRef="parallelgateway2" targetRef="endevent2" />
+      <scriptTask id="scripttask6" name="Log Message" scriptFormat="groovy">      <script><![CDATA[println("Ordering INGENIX")]]></script>
+</scriptTask>
+      <sequenceFlow id="flow18" name="" sourceRef="parallelgateway1" targetRef="scripttask6" />
+      <serviceTask id="order_requirements_route_ingenix" name="Order Ingenix" activiti:delegateExpression="${camelBehaviour.setRouteAndType(&#39;order_requirements_route&#39;,&#39;RXD&#39;)}" />
+      <sequenceFlow id="flow19" name="" sourceRef="scripttask6" targetRef="order_requirements_route_ingenix" />
+      <receiveTask id="ingenix_requirement_receive_signal" name="Receive Task" />
+      <sequenceFlow id="flow20" name="" sourceRef="order_requirements_route_ingenix" targetRef="ingenix_requirement_receive_signal" />
+      <scriptTask id="scripttask7" name="Log Message" scriptFormat="groovy">      <script><![CDATA[println("Ingenix Signal Received")]]></script>
+</scriptTask>
+      <sequenceFlow id="flow21" name="" sourceRef="ingenix_requirement_receive_signal" targetRef="scripttask7" />
+      <sequenceFlow id="flow22" name="" sourceRef="scripttask7" targetRef="parallelgateway2" />
+      <scriptTask id="scripttask8" name="Log Message" scriptFormat="groovy">      <script><![CDATA[println("Ordering MIB")]]></script>
+</scriptTask>
+      <serviceTask id="order_requirements_route_mib" name="Order MIB" activiti:delegateExpression="${camelBehaviour.setRouteAndType(&#39;order_requirements_route&#39;,&#39;MWS&#39;)}" />
+      <receiveTask id="mib_requirement_receive_signal" name="Receive Task" />
+      <scriptTask id="scripttask9" name="Log Message" scriptFormat="groovy">      <script><![CDATA[println("MIB Signal Received")]]></script>
+</scriptTask>
+      <sequenceFlow id="flow25" name="" sourceRef="scripttask8" targetRef="order_requirements_route_mib" />
+      <sequenceFlow id="flow26" name="" sourceRef="order_requirements_route_mib" targetRef="mib_requirement_receive_signal" />
+      <sequenceFlow id="flow27" name="" sourceRef="mib_requirement_receive_signal" targetRef="scripttask9" />
+      <scriptTask id="scripttask10" name="Log Message" scriptFormat="groovy">      <script><![CDATA[println("Ordering Attus")]]></script>
+</scriptTask>
+      <serviceTask id="order_requirements_route_attus" name="Order Attus" activiti:delegateExpression="${camelBehaviour.setRouteAndType(&#39;order_requirements_route&#39;,&#39;ATT&#39;)}" />
+      <receiveTask id="attus_requirement_receive_signal" name="Receive Task" />
+      <scriptTask id="scripttask11" name="Log Message" scriptFormat="groovy">      <script><![CDATA[println("Attus Signal Received")]]></script>
+</scriptTask>
+      <sequenceFlow id="flow30" name="" sourceRef="scripttask10" targetRef="order_requirements_route_attus" />
+      <sequenceFlow id="flow31" name="" sourceRef="order_requirements_route_attus" targetRef="attus_requirement_receive_signal" />
+      <sequenceFlow id="flow32" name="" sourceRef="attus_requirement_receive_signal" targetRef="scripttask11" />
+      <sequenceFlow id="flow34" name="" sourceRef="parallelgateway1" targetRef="scripttask8" />
+      <sequenceFlow id="flow35" name="" sourceRef="scripttask9" targetRef="parallelgateway2" />
+      <sequenceFlow id="flow36" name="" sourceRef="parallelgateway1" targetRef="scripttask10" />
+      <sequenceFlow id="flow37" name="" sourceRef="scripttask11" targetRef="parallelgateway2" />
+      <scriptTask id="scripttask12" name="Log Message" scriptFormat="groovy">      <script><![CDATA[println("Ordering ExamOne")]]></script>
+</scriptTask>
+      <serviceTask id="order_requirements_route_examone" name="Order ExamOne" activiti:delegateExpression="${camelBehaviour.setRouteAndType(&#39;order_requirements_route&#39;,&#39;EXM&#39;)}" />
+      <receiveTask id="examone_requirement_receive_signal" name="Receive Task" />
+      <scriptTask id="scripttask13" name="Log Message" scriptFormat="groovy">      <script><![CDATA[println("ExamOne Signal Received")]]></script>
+</scriptTask>
+      <sequenceFlow id="flow38" name="" sourceRef="parallelgateway1" targetRef="scripttask12" />
+      <sequenceFlow id="flow39" name="" sourceRef="scripttask13" targetRef="parallelgateway2" />
+      <sequenceFlow id="flow40" name="" sourceRef="scripttask12" targetRef="order_requirements_route_examone" />
+      <sequenceFlow id="flow41" name="" sourceRef="order_requirements_route_examone" targetRef="examone_requirement_receive_signal" />
+      <sequenceFlow id="flow42" name="" sourceRef="examone_requirement_receive_signal" targetRef="scripttask13" />
+    </subProcess>
+    <boundaryEvent id="boundarytimer1" attachedToRef="subprocess1">
+      <timerEventDefinition>
+        <timeDuration xsi:type="tExpression" />
+      </timerEventDefinition>
+    </boundaryEvent>
+    <endEvent id="endevent1" name="End" />
+    <sequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="subprocess1" />
+    <scriptTask id="scripttask4" name="Log Message" scriptFormat="groovy">    <script><![CDATA[println("Sub Process. SUCCESS.")]]></script>
+</scriptTask>
+    <sequenceFlow id="flow9" name="" sourceRef="subprocess1" targetRef="scripttask4" />
+    <scriptTask id="scripttask5" name="Log Message" scriptFormat="groovy">    <script><![CDATA[println("Sub process time out. ERROR.")]]></script>
+</scriptTask>
+    <sequenceFlow id="flow23" name="" sourceRef="boundarytimer1" targetRef="scripttask5" />
+    <serviceTask id="order_requirements_route_bpe" name="Order BPE" activiti:delegateExpression="${camelBehaviour.setRouteAndType(&#39;order_requirements_route&#39;,&#39;BPE&#39;)}" />
+    <receiveTask id="bpe_requirement_receive_signal" name="Receive Task" />
+    <boundaryEvent id="boundarytimer2" attachedToRef="bpe_requirement_receive_signal">
+      <timerEventDefinition>
+        <timeDuration xsi:type="tExpression" />
+      </timerEventDefinition>
+    </boundaryEvent>
+    <sequenceFlow id="flow45" name="" sourceRef="scripttask4" targetRef="order_requirements_route_bpe" />
+    <sequenceFlow id="flow46" name="" sourceRef="order_requirements_route_bpe" targetRef="bpe_requirement_receive_signal" />
+    <sequenceFlow id="flow48" name="" sourceRef="scripttask5" targetRef="order_requirements_route_bpe" />
+    <sequenceFlow id="flow49" name="" sourceRef="bpe_requirement_receive_signal" targetRef="endevent1" />
+    <scriptTask id="scripttask14" name="Log Message" scriptFormat="groovy">    <script><![CDATA[println("BPE Time out. ERROR.")]]></script>
+</scriptTask>
+    <sequenceFlow id="flow50" name="" sourceRef="boundarytimer2" targetRef="scripttask14" />
+    <sequenceFlow id="flow51" name="" sourceRef="scripttask14" targetRef="endevent1" />
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_OrderRequirementsFlow">
+    <bpmndi:BPMNPlane id="BPMNPlane_OrderRequirementsFlow" bpmnElement="OrderRequirementsFlow">
+      <bpmndi:BPMNShape id="BPMNShape_startevent1" bpmnElement="startevent1">
+        <omgdc:Bounds x="20" y="273" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_subprocess1" bpmnElement="subprocess1">
+        <omgdc:Bounds x="80" y="30" width="911" height="521" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_startevent2" bpmnElement="startevent2">
+        <omgdc:Bounds x="100" y="278" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask1" bpmnElement="scripttask1">
+        <omgdc:Bounds x="160" y="268" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_order_requirements_route_iix" bpmnElement="order_requirements_route_iix">
+        <omgdc:Bounds x="470" y="110" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask2" bpmnElement="scripttask2">
+        <omgdc:Bounds x="340" y="110" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_iix_requirement_receive_signal" bpmnElement="iix_requirement_receive_signal">
+        <omgdc:Bounds x="600" y="110" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask3" bpmnElement="scripttask3">
+        <omgdc:Bounds x="740" y="110" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_endevent2" bpmnElement="endevent2">
+        <omgdc:Bounds x="940" y="271" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_parallelgateway1" bpmnElement="parallelgateway1">
+        <omgdc:Bounds x="290" y="275" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_parallelgateway2" bpmnElement="parallelgateway2">
+        <omgdc:Bounds x="880" y="268" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask6" bpmnElement="scripttask6">
+        <omgdc:Bounds x="340" y="200" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_order_requirements_route_ingenix" bpmnElement="order_requirements_route_ingenix">
+        <omgdc:Bounds x="470" y="200" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ingenix_requirement_receive_signal" bpmnElement="ingenix_requirement_receive_signal">
+        <omgdc:Bounds x="600" y="200" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask7" bpmnElement="scripttask7">
+        <omgdc:Bounds x="740" y="200" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask8" bpmnElement="scripttask8">
+        <omgdc:Bounds x="340" y="297" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_order_requirements_route_mib" bpmnElement="order_requirements_route_mib">
+        <omgdc:Bounds x="470" y="295" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_mib_requirement_receive_signal" bpmnElement="mib_requirement_receive_signal">
+        <omgdc:Bounds x="600" y="295" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask9" bpmnElement="scripttask9">
+        <omgdc:Bounds x="740" y="295" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask10" bpmnElement="scripttask10">
+        <omgdc:Bounds x="340" y="370" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_order_requirements_route_attus" bpmnElement="order_requirements_route_attus">
+        <omgdc:Bounds x="470" y="370" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_attus_requirement_receive_signal" bpmnElement="attus_requirement_receive_signal">
+        <omgdc:Bounds x="600" y="370" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask11" bpmnElement="scripttask11">
+        <omgdc:Bounds x="740" y="370" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask12" bpmnElement="scripttask12">
+        <omgdc:Bounds x="340" y="450" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_order_requirements_route_examone" bpmnElement="order_requirements_route_examone">
+        <omgdc:Bounds x="470" y="450" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_examone_requirement_receive_signal" bpmnElement="examone_requirement_receive_signal">
+        <omgdc:Bounds x="600" y="450" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask13" bpmnElement="scripttask13">
+        <omgdc:Bounds x="740" y="450" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow3" bpmnElement="flow3">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="135" y="295" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="160" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow4" bpmnElement="flow4">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="265" y="295" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="290" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow7" bpmnElement="flow7">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="705" y="137" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="740" y="137" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow13" bpmnElement="flow13">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="310" y="275" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="310" y="137" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="340" y="137" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow14" bpmnElement="flow14">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="445" y="137" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="470" y="137" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow15" bpmnElement="flow15">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="575" y="137" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="600" y="137" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow16" bpmnElement="flow16">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="845" y="137" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="900" y="137" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="900" y="268" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow17" bpmnElement="flow17">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="920" y="288" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="940" y="288" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow18" bpmnElement="flow18">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="310" y="275" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="310" y="227" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="340" y="227" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow19" bpmnElement="flow19">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="445" y="227" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="470" y="227" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow20" bpmnElement="flow20">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="575" y="227" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="600" y="227" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow21" bpmnElement="flow21">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="705" y="227" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="740" y="227" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow22" bpmnElement="flow22">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="845" y="227" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="900" y="227" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="900" y="268" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow25" bpmnElement="flow25">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="445" y="324" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="470" y="322" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow26" bpmnElement="flow26">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="575" y="322" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="600" y="322" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow27" bpmnElement="flow27">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="705" y="322" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="740" y="322" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow30" bpmnElement="flow30">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="445" y="397" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="470" y="397" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow31" bpmnElement="flow31">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="575" y="397" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="600" y="397" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow32" bpmnElement="flow32">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="705" y="397" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="740" y="397" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow34" bpmnElement="flow34">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="310" y="315" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="310" y="324" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="340" y="324" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow35" bpmnElement="flow35">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="845" y="322" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="900" y="322" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="900" y="308" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow36" bpmnElement="flow36">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="310" y="315" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="310" y="397" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="340" y="397" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow37" bpmnElement="flow37">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="845" y="397" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="900" y="397" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="900" y="308" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow38" bpmnElement="flow38">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="310" y="315" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="310" y="477" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="340" y="477" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow39" bpmnElement="flow39">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="845" y="477" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="900" y="477" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="900" y="308" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow40" bpmnElement="flow40">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="445" y="477" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="470" y="477" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow41" bpmnElement="flow41">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="575" y="477" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="600" y="477" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow42" bpmnElement="flow42">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="705" y="477" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="740" y="477" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_endevent1" bpmnElement="endevent1">
+        <omgdc:Bounds x="1290" y="363" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask4" bpmnElement="scripttask4">
+        <omgdc:Bounds x="1014" y="268" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask5" bpmnElement="scripttask5">
+        <omgdc:Bounds x="1017" y="537" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_boundarytimer1" bpmnElement="boundarytimer1">
+        <omgdc:Bounds x="890" y="550" width="30" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_order_requirements_route_bpe" bpmnElement="order_requirements_route_bpe">
+        <omgdc:Bounds x="1017" y="353" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_bpe_requirement_receive_signal" bpmnElement="bpe_requirement_receive_signal">
+        <omgdc:Bounds x="1140" y="353" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_boundarytimer2" bpmnElement="boundarytimer2">
+        <omgdc:Bounds x="1230" y="403" width="30" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_scripttask14" bpmnElement="scripttask14">
+        <omgdc:Bounds x="1205" y="525" width="105" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow1" bpmnElement="flow1">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="55" y="290" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="80" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow9" bpmnElement="flow9">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="991" y="290" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1014" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow23" bpmnElement="flow23">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="905" y="580" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1017" y="564" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow45" bpmnElement="flow45">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1066" y="323" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1069" y="353" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow46" bpmnElement="flow46">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1122" y="380" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1140" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow48" bpmnElement="flow48">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1069" y="537" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1069" y="408" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow49" bpmnElement="flow49">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1245" y="380" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1290" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow50" bpmnElement="flow50">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1245" y="433" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1257" y="525" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_flow51" bpmnElement="flow51">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1257" y="525" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="1307" y="398" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

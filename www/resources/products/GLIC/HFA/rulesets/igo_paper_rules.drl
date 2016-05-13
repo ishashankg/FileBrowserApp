@@ -1,0 +1,865 @@
+import com.stepsoln.core.rules.Question;
+import com.stepsoln.core.db.Lookup;
+import com.stepsoln.core.rules.RulesResponse;
+import com.stepsoln.core.rules.CaseRulesObject;
+import com.stepsoln.core.db.cases.Case;
+import com.stepsoln.core.rules.requirements.*;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
+import java.util.ArrayList;
+import java.math.BigDecimal;
+import com.stepsoln.core.db.services.util.EmployeeUtils;
+
+
+
+global com.stepsoln.core.rules.RulesResponse rulesResponse;
+
+
+rule "required FN"
+salience 108
+	when
+		not Question(id == "first_name")
+	then
+		rulesResponse.addRequired("Primary Applicant First Name");
+end
+rule "required LN"			
+salience 107
+	when
+		not Question(id == "last_name")
+	then
+		rulesResponse.addRequired("Primary Applicant Last Name");
+end
+rule "required SSN"			
+salience 106
+	when
+		not Question(id == "social_security_number")
+	then		
+		rulesResponse.addRequired("Primary Applicant SSN");
+end
+
+rule "SSN is valid"			
+	when
+		$question:Question(id == "social_security_number")
+	then
+		if (!StringUtils.containsOnly($question.getAnswer().toString(),'0123456789') || !($question.getAnswer().toString().length()==9)) 		
+			rulesResponse.addRequired("Primary Applicant SSN is not valid");
+end
+
+
+rule "required Gender"			
+salience 105
+	when
+		((not Question(id == "Male")) and (not Question(id == "Female"))) or
+		((Question(id == "Male")) and (Question(id == "Female")))
+	then		
+		rulesResponse.addRequired("Primary Applicant Gender");
+end		
+rule "required AddrLn"			
+salience 104
+	when
+		not Question(id == "legal_residence_address")
+	then
+		rulesResponse.addRequired("Primary Applicant Address");
+end
+rule "required City"			
+salience 103
+	when
+		not Question(id == "legal_city")
+	then		
+		rulesResponse.addRequired("Primary Applicant City");
+end		
+rule "required State"			
+salience 102
+	when
+		not Question(id == "legal_residence_state")
+	then	
+		rulesResponse.addRequired("Primary Applicant State");
+end
+rule "required State is Valid"			
+salience 102
+	when
+		$question:Question(id == "legal_residence_state")
+		not Lookup((code == $question.getAnswer().toString().toUpperCase() ||  
+			description.toString().toUpperCase() == $question.getAnswer().toString().toUpperCase()) && 
+			name == "LOCALE_STATE")
+	then
+		rulesResponse.addRequired("Primary Applicant residence State is not a valid State");
+end
+rule "driver license State is Valid"			
+	when
+		$question:Question(id == "driv_lic_state")
+		not Lookup((code == $question.getAnswer().toString().toUpperCase() ||  
+			description.toString().toUpperCase() == $question.getAnswer().toString().toUpperCase()) && 
+			name == "LOCALE_STATE")
+	then
+		rulesResponse.addRequired("Driver License State is not a valid State");
+end
+
+rule "required Signing City and State"			
+salience 102
+no-loop 
+	when
+		Question(id in ("hipaa_sig_insured", "hipaa_sig_owner"))
+		not Question(id =="contract_state") or
+		not Question(id =="contract_city")
+	then
+		rulesResponse.addRequiredOnce("Signing City and State");
+end
+rule "Signed State is Valid"			
+	when
+		$question:Question(id == "contract_state")
+		not Lookup((code == $question.getAnswer().toString().toUpperCase() ||  
+			description.toString().toUpperCase() == $question.getAnswer().toString().toUpperCase()) && 
+			name == "LOCALE_STATE")
+	then
+		rulesResponse.addRequired("Signing State is not a valid State");
+end
+
+
+rule "required Zip"			
+salience 101
+	when
+		not Question(id == "legal_zip")
+	then		
+		rulesResponse.addRequired("Primary Applicant Zip code");
+end
+rule "required Phone"			
+salience 100
+	when
+		not Question(id == "phone1")
+	then		
+		rulesResponse.addRequired("Primary Applicant Primary Phone");
+end
+rule "required Phone type"
+salience 100
+	when
+		not Question(id == "phone1_business")
+		not Question(id == "phone1_home")
+		not Question(id == "phone1_mobile")
+	then		
+		rulesResponse.addRequired("Primary Applicant Primary Phone Type");
+end
+rule "required Secondary Phone type"
+salience 100
+	when
+		Question(id == "phone2")
+		not Question(id == "phone2_business")
+		not Question(id == "phone2_home")
+		not Question(id == "phone2_mobile")
+	then		
+		rulesResponse.addRequired("Primary Applicant Secondary Phone Type");
+end
+
+rule "required DOB"			
+salience 99
+	when
+		not Question(id == "date_of_birth")
+	then		
+		rulesResponse.addRequired("Primary Applicant Primary Date of Birth");
+end
+rule "valid DOB"			
+salience 98
+	when
+		Question(id == "date_of_birth", isdate == false)
+	then
+		rulesResponse.addRequired("Primary Applicant Date of Birth is not a valid date");
+end
+rule "valid Insured Sig AOI info"			
+	when
+		Question(id == "hipaa_sig_insured")
+		not Question(id=="hipaa_date_insured") 
+	then
+		rulesResponse.addRequired("Date on the Signature of Proposed Insured for Authorization to Obtain Information has to be provided");
+end
+
+rule "valid Policyowner Sig AOI info"			
+	when
+		Question(id == "hipaa_sig_owner")
+		not Question(id=="hipaa_date_owner")
+	then
+		rulesResponse.addRequired("Date on the Signature of Policyowner for Authorization to Obtain Information has to be provided");
+end
+
+rule "valid InsuredSigDateAOI"			
+	when
+		Question(id == "hipaa_date_insured", isdate == false)
+	then
+		rulesResponse.addRequired("Date on the Signature of Proposed Insured for Authorization to Obtain Information is not a valid date");
+end
+
+rule "valid OwnerSigDateAOI"			
+	when
+		Question(id == "hipaa_date_owner", isdate == false)
+	then
+		rulesResponse.addRequired("Date on the Signature of Policyowner for Authorization to Obtain Information is not a valid date");
+end
+
+//validate form data
+//generated rules
+rule "require citizenship_status"
+salience 91
+	when
+		(not Question(id == 'CYes') and (not Question(id == 'CNo'))) or
+		(Question(id == 'CYes') and (Question(id == 'CNo')))	then
+		rulesResponse.addRequired("Citizenship");
+end
+
+rule "require type_of_curr_employ"
+salience 90
+	when
+		not Question(id == "type_of_curr_employ")
+	then
+		rulesResponse.addRequired("Type of employ");
+end
+
+rule "require annual_earned_income"
+salience 90
+	when
+		not Question(id == "annual_earned_income")
+	then
+		rulesResponse.addRequired("Earned income");
+end
+
+rule "Annual earned income should have numeric"
+salience 80
+	when
+		$question:Question(id == "annual_earned_income")
+	then
+		if ($question.getAnswer()!=null && StringUtils.isNotBlank($question.getAnswer().toString()) && StringUtils.containsNone($question.getAnswer().toString(),'0123456789.')) 		
+			rulesResponse.addRequired("Annual earned income is not valid");
+end
+
+rule "require curr_employer_dur"
+salience 90
+	when
+		not Question(id == "curr_employer_dur")
+	then
+		rulesResponse.addRequired("Years employed");
+end
+
+rule "require curr_employer_dur_mo"
+salience 90
+	when
+		not Question(id == "curr_employer_dur_mo")
+	then
+		rulesResponse.addRequired("Months employed");
+end
+
+rule "validate curr_employer_dur"
+salience 90
+	when
+		y:Question(id=="curr_employer_dur")
+	then
+		if(!NumberUtils.isNumber(y.getAnswerAsString()) || !EmployeeUtils.isEmployerDuartionValid(y.getAnswer() + " years"))
+		{
+			rulesResponse.addRequired("Please specify number of years at employer.");
+		}
+end
+
+rule "validate curr_employer_dur_mo"
+salience 90
+	when
+		m:Question(id=="curr_employer_dur_mo")
+	then
+		if(!NumberUtils.isNumber(m.getAnswerAsString()) || !EmployeeUtils.isEmployerDuartionValid(m.getAnswer() + " months"))
+		{
+			rulesResponse.addRequired("Please specify number of months at employer.");
+		}
+		else if (m.getAnswerAsNumber() < 0 || m.getAnswerAsNumber() > 11)
+		{
+			rulesResponse.addRequired("Invalid months at employer value '" + m.getAnswer() + "'. Enter a number between 0 and 11");
+		}
+end
+
+rule "require employer_name"
+salience 90
+	when
+		not Question(id == "employer_name")
+	then
+		rulesResponse.addRequired("Employer");
+end
+
+rule "require occupation"
+salience 90
+	when
+		not Question(id == "occupation_1")
+	then
+		rulesResponse.addRequired("Occupation");
+end
+
+rule "require place_of_birth_country"
+salience 90
+	when
+		not Question(id == "place_of_birth_country")
+	then
+		rulesResponse.addRequired("Place of birth (Country)");
+end
+
+rule "require place_of_birth_state"
+salience 90
+	when
+	    qCountry:Question(id == "place_of_birth_country", qCountry.getAnswerAsString() in ("UNITED STATES OF AMERICA","UNITED STATES","US","USA"))
+		not Question(id == "place_of_birth_state")
+	then
+		rulesResponse.addRequired("Place of birth (State)");
+end
+
+rule "require place_of_birth__valid_state"
+salience 89
+	when
+		$question:Question(id == "place_of_birth_state")
+		not Lookup((code == $question.getAnswer().toString().toUpperCase() ||  
+			description.toString().toUpperCase() == $question.getAnswer().toString().toUpperCase()) && 
+			name == "LOCALE_STATE")
+	then
+		rulesResponse.addRequired("Place of birth (State) is not a valid State");
+end
+
+
+
+rule "require height_feet"
+salience 80
+	when
+		not Question(id == "height_feet")
+		or not Question(id == "height_inches")
+	then
+		rulesResponse.addRequired("Height feet and inches are both required");
+end
+
+rule "require height_feet in proper range"
+salience 80
+	when
+		Question(id == "height_feet", answerAsString not in ("2","3","4","5","6","7"))
+	then
+		rulesResponse.addRequired("Height feet must be numeric between 2 and 7");
+end
+
+rule "require height_inches in proper range"
+salience 80
+	when
+		Question(id == "height_inches", answerAsString not in ("0","1","2","3","4","5","6","7","8","9","10","11"))
+	then
+		rulesResponse.addRequired("Height inches must be numeric between 0 and 11");
+end
+
+rule "require weight_pounds"
+salience 80
+	when
+		not Question(id == "weight_pounds")
+	then
+		rulesResponse.addRequired("Weight");
+end
+
+rule "Weight should have numeric"
+salience 80
+	when
+		$question:Question(id == "weight_pounds")
+	then
+		if (StringUtils.isNotBlank($question.getAnswer().toString()) && StringUtils.containsNone($question.getAnswer().toString(),'0123456789.')) 		
+			rulesResponse.addRequired("Weight is not valid");
+end
+
+rule "require weight_chg_ind"
+salience 80
+	when
+		(not Question(id == 'WCYes') and (not Question(id == 'WCNo'))) or
+		(Question(id == 'WCYes') and (Question(id == 'WCNo')))
+	then
+		rulesResponse.addRequired("Weight Change Indicator");
+end
+
+
+rule "require smoker_ind"
+salience 80
+	when
+		(not Question(id == 'SYes') and (not Question(id == 'SNo'))) or
+		(Question(id == 'SYes') and (Question(id == 'SNo')))
+	then
+		rulesResponse.addRequired("Smoker Indicator");
+end
+
+//Coverage rules
+rule "require coverage period"
+	when
+		(not Question(id == 'whole_life') and (not Question(id == 'level_term'))) or
+		(Question(id == 'whole_life') and (Question(id == 'level_term')))	
+	then
+		rulesResponse.addRequiredOnce("Coverage Period is a required field");
+end
+
+rule "whole life level-term period not period"
+	when
+		(Question(id == 'whole_life')) and
+		(Question(id == 'years_10') or Question(id == 'years_15') or Question(id == 'years_20') or Question(id == 'years_30'))
+	then
+		rulesResponse.addRequiredOnce("Level-Term Period cannot be combined with whole life");
+	end
+
+rule "require level-term period"
+	when
+		(Question(id == 'level_term')) and
+		((Question(id == 'years_10') and Question(id == 'years_15') and Question(id == 'years_20') and Question(id == 'years_30')) or
+		(not Question(id == 'years_10') and not Question(id == 'years_15') and not Question(id == 'years_20') and not Question(id == 'years_30')) or
+		(Question(id == 'years_10') and (Question(id == 'years_15') or Question(id == 'years_20') or Question(id == 'years_30'))) or
+		(Question(id == 'years_15') and (Question(id == 'years_10') or Question(id == 'years_20') or Question(id == 'years_30'))) or
+		(Question(id == 'years_20') and (Question(id == 'years_15') or Question(id == 'years_10') or Question(id == 'years_30'))) or
+		(Question(id == 'years_30') and (Question(id == 'years_15') or Question(id == 'years_20') or Question(id == 'years_10'))))
+	then
+		rulesResponse.addRequiredOnce("Level-Term is a required field");
+	end
+
+rule "require face amount"
+	when
+		(Question(id == 'whole_life') or Question(id == 'level_term')) and
+		(not Question(id == 'requested_face'))
+	then
+		rulesResponse.addRequiredOnce("Face Amount is a required field");
+end
+
+rule "face amount should be numeric"
+	when
+		(Question(id == 'whole_life') or Question(id == 'level_term')) 
+		$question:Question(id == 'requested_face')	
+	then
+		if ($question.getAnswer()!=null &&
+			StringUtils.isNotBlank($question.getAnswer().toString()) &&  
+			!StringUtils.containsOnly($question.getAnswer().toString(),'0123456789')) 		
+			rulesResponse.addRequiredOnce("Requested face amount is not numeric");
+end
+
+rule "check range of face amount"
+	when
+		(Question(id == 'whole_life') or Question(id == 'level_term')) 
+		$question:Question(id == 'requested_face')	
+	then
+		if ($question.getAnswer()!=null && 
+			StringUtils.isNotBlank($question.getAnswer().toString()) && 
+			StringUtils.containsOnly($question.getAnswer().toString(),'0123456789') && 
+			($question.getAnswerAsDecimal().compareTo(new BigDecimal(25.00)) < 0 || $question.getAnswerAsDecimal().compareTo(new BigDecimal(1000.00)) > 0)) 		
+			{
+				rulesResponse.addRequiredOnce("face amount should be between 25,000 and 1,000,000");
+			}
+end
+
+rule "Guaranteed Insurability Benefit Rider Level-Term"
+	when
+		(Question(id == 'level_term')) and 
+		(Question(id == 'GIRYes'))
+	then		
+		rulesResponse.addRequiredOnce("Level-Term and Guaranteed Insurability Benefit Rider cannot be combined");
+end
+
+
+rule "require app_pending_answ"
+	when
+		(not Question(id == 'OOYes') and (not Question(id == 'OONo'))) or
+		(Question(id == 'OOYes') and (Question(id == 'OONo')))	
+	then
+		rulesResponse.addRequiredOnce("Invalid answer to other owner question");
+end
+
+//Producer certification (agent_attest_eform.xml)
+rule "require producer_answers"
+no-loop
+	when
+	     theCaseRuleObj:CaseRulesObject()
+	    
+		(not Question(id == 'OPYes') and (not Question(id == 'OPNo')))
+		or (not Question(id == 'REYes') and (not Question(id == 'RENo')))
+		or (not Question(id == 'EXCHYes') and (not Question(id == 'EXCHNo')))
+		or (not Question(id == 'CONVYes') and (not Question(id == 'CONVNo')))
+		or (not Question(id == 'ATTYes') and (not Question(id == 'ATTNo')))
+	then
+	    if (!StringUtils.equals(theCaseRuleObj.getCaseSource(),'IPAPER')) {	
+  		rulesResponse.addRequiredOnce("All Producer Certification questions have to be answered");
+		}
+end
+
+rule "require producer_answers_once"
+no-loop
+	when
+	      theCaseRuleObj:CaseRulesObject()
+	    
+	    (Question(id == 'OPYes') and (Question(id == 'OPNo')))
+		or (Question(id == 'REYes') and (Question(id == 'RENo')))
+		or (Question(id == 'EXCHYes') and (Question(id == 'EXCHNo')))
+		or (Question(id == 'CONVYes') and (Question(id == 'CONVNo')))
+		or (Question(id == 'ATTYes') and (Question(id == 'ATTNo')))
+	then
+	    if (!StringUtils.equals(theCaseRuleObj.getCaseSource(),'IPAPER')){
+		rulesResponse.addRequiredOnce("All Producer Certification questions have to be answered only once");
+		}
+end
+
+rule "Agent Certification Y required"
+no-loop
+	when
+	      theCaseRuleObj:CaseRulesObject()
+	    
+	      (not Question(id == 'ATTYes'))
+	then
+	    if (StringUtils.equals(theCaseRuleObj.getCaseSource(),'EPAPER')){
+		rulesResponse.addRequiredOnce("I certify question should be answered as 'Yes'.");
+		}
+end
+
+//Part 3B - Medical Questions of Proposed Insured (reflexive_eform.xml)
+rule "require part3b_yes_no_questions"
+no-loop 
+	when
+		(not Question(id == 'm1aYes') and (not Question(id == 'm1aNo')))
+		or (not Question(id == 'm1bYes') and (not Question(id == 'm1bNo')))
+		or (not Question(id == 'm1cYes') and (not Question(id == 'm1cNo')))
+		or (not Question(id == 'm1dYes') and (not Question(id == 'm1dNo')))
+		or (not Question(id == 'm1eYes') and (not Question(id == 'm1eNo')))
+		or (not Question(id == 'm1fYes') and (not Question(id == 'm1fNo')))
+		or (not Question(id == 'm1gYes') and (not Question(id == 'm1gNo')))
+		or (not Question(id == 'm1hYes') and (not Question(id == 'm1hNo')))
+		or (not Question(id == 'm1iYes') and (not Question(id == 'm1iNo')))
+		or (not Question(id == 'm1jYes') and (not Question(id == 'm1jNo')))		
+	then
+		rulesResponse.addRequiredOnce("All Medical Questions of Proposed Insured have to be answered");
+end
+
+rule "require part3b_yes_no_questions_single_answer"
+no-loop 
+	when
+		(Question(id == 'm1aYes') and Question(id == 'm1aNo'))
+		or (Question(id == 'm1bYes') and Question(id == 'm1bNo'))
+		or (Question(id == 'm1cYes') and Question(id == 'm1cNo'))
+		or (Question(id == 'm1dYes') and Question(id == 'm1dNo'))
+		or (Question(id == 'm1eYes') and Question(id == 'm1eNo'))
+		or (Question(id == 'm1fYes') and Question(id == 'm1fNo'))
+		or (Question(id == 'm1gYes') and Question(id == 'm1gNo'))
+		or (Question(id == 'm1hYes') and Question(id == 'm1hNo'))
+		or (Question(id == 'm1iYes') and Question(id == 'm1iNo'))
+		or (Question(id == 'm1jYes') and Question(id == 'm1jNo'))		
+	then
+		rulesResponse.addRequiredOnce("All Medical Questions of Proposed Insured have to be answered with one choice only");
+end
+
+rule "require reflexive question 7 (all states but FL)"
+	when
+		not CaseData(contractState=="FL")
+		not Question(id == 'm7Yes')
+		not Question(id == 'm7No')
+	then
+		rulesResponse.addRequiredOnce("All Additional Questions of Part 3C have to be answered", "PT3");
+end
+
+//Part 3C - Additional Questions (reflexive_eform.xml)
+rule "require part3c_yes_no_questions"
+no-loop 
+	when
+		(not Question(id == 'm2Yes') and (not Question(id == 'm2No')))
+		or (not Question(id == 'm3Yes') and (not Question(id == 'm3No')))
+		or (not Question(id == 'm4aYes') and (not Question(id == 'm4aNo')))
+		or (not Question(id == 'm4bYes') and (not Question(id == 'm4bNo')))
+		or (not Question(id == 'm4cYes') and (not Question(id == 'm4cNo')))
+		or (not Question(id == 'm4dYes') and (not Question(id == 'm4dNo')))
+		or (not Question(id == 'm4eYes') and (not Question(id == 'm4eNo')))
+		or (not Question(id == 'm4fYes') and (not Question(id == 'm4fNo')))
+		or (not Question(id == 'm4gYes') and (not Question(id == 'm4gNo')))
+		or (not Question(id == 'm5aYes') and (not Question(id == 'm5aNo')))
+		or (not Question(id == 'm5bYes') and (not Question(id == 'm5bNo')))
+		or (not Question(id == 'm6aYes') and (not Question(id == 'm6aNo')))
+		or (not Question(id == 'm6bYes') and (not Question(id == 'm6bNo')))
+		or (not Question(id == 'm8Yes') and (not Question(id == 'm8No')))
+		or (not Question(id == 'm9aYes') and (not Question(id == 'm9aNo')))
+		or (not Question(id == 'm9bYes') and (not Question(id == 'm9bNo')))		
+	then
+		rulesResponse.addRequiredOnce("All Additional Questions of Part 3C have to be answered");
+end
+
+
+
+rule "require part3c_yes_no_questions_single_answer"
+no-loop 
+	when
+		(Question(id == 'm2Yes') and Question(id == 'm2No'))
+		or (Question(id == 'm3Yes') and Question(id == 'm3No'))
+		or (Question(id == 'm4aYes') and Question(id == 'm4aNo'))
+		or (Question(id == 'm4bYes') and Question(id == 'm4bNo'))
+		or (Question(id == 'm4cYes') and Question(id == 'm4cNo'))
+		or (Question(id == 'm4dYes') and Question(id == 'm4dNo'))
+		or (Question(id == 'm4eYes') and Question(id == 'm4eNo'))
+		or (Question(id == 'm4fYes') and Question(id == 'm4fNo'))
+		or (Question(id == 'm4gYes') and Question(id == 'm4gNo'))
+		or (Question(id == 'm5aYes') and Question(id == 'm5aNo'))
+		or (Question(id == 'm5bYes') and Question(id == 'm5bNo'))
+		or (Question(id == 'm6aYes') and Question(id == 'm6aNo'))
+		or (Question(id == 'm6bYes') and Question(id == 'm6bNo'))
+		or (Question(id == 'm8Yes') and Question(id == 'm8No'))
+		or (Question(id == 'm9aYes') and Question(id == 'm9aNo'))
+		or (Question(id == 'm9bYes') and Question(id == 'm9bNo'))		
+	then
+		rulesResponse.addRequiredOnce("All Additional Questions of Part 3C have to be answered with one choice only");
+end
+
+
+rule "pregnancy for a male rule"
+	when
+		Question(id == 'Male') and Question(id == 'm5bYes') and not Question(id == 'm5bNo')
+	then
+		rulesResponse.addRequiredOnce("Question 5b can not be answered Yes for a Male");
+end
+
+//Part 3D - Additional Questions (reflexive_eform.xml)
+rule "require part3d_yes_no_questions"
+no-loop 
+	when
+		(not Question(id == 'IFYes') and (not Question(id == 'IFNo')))
+		or (not Question(id == 'CREP1Yes') and (not Question(id == 'CREP1No')) and Question(id=='oth_ins1_company'))
+		or (not Question(id == 'CREP2Yes') and (not Question(id == 'CREP2No')) and Question(id=='oth_ins2_company'))		
+		or (not Question(id == 'CTLRYes') and (not Question(id == 'CTLRNo')))
+		or (not Question(id == 'WOPYes') and (not Question(id == 'WOPNo')))
+		or (not Question(id == 'GIRYes') and (not Question(id == 'GIRNo')))		
+	then
+		rulesResponse.addRequiredOnce("All Additional Questions of Part 3D have to be answered");
+end
+rule "require part3d_yes_no_questions_single_answer"
+no-loop 
+	when
+		(Question(id == 'IFYes') and Question(id == 'IFNo'))
+		or (Question(id == 'CREP1Yes') and Question(id == 'CREP1No'))
+		or (Question(id == 'CREP2Yes') and Question(id == 'CREP2No'))
+		or (Question(id == 'CTLRYes') and Question(id == 'CTLRNo'))
+		or (Question(id == 'WOPYes') and Question(id == 'WOPNo'))
+		or (Question(id == 'GIRYes') and Question(id == 'GIRNo'))		
+	then
+		rulesResponse.addRequiredOnce("All Additional Questions of Part 3D have to be answered with one choice only");
+end
+
+rule "beneficiary_1_rules"
+	when
+		(Question(id=="bene1_first_name") and not Question(id=="bene1_last_name")) or
+		(not Question(id=="bene1_first_name") and Question(id=="bene1_last_name"))
+	then
+		rulesResponse.addRequired("Primary Beneficiary should have First and Last Name");
+end
+rule "beneficiary_1_rules_relationship"
+	when
+		Question(id=="bene1_first_name") and Question(id=="bene1_last_name") and not Question(id=="bene1_relation")
+	then
+		rulesResponse.addRequired("Primary Beneficiary should have Relationship specified");
+end		
+		
+rule "beneficiary_2_rules"
+no-loop 
+	when
+		(Question(id=="bene2_first_name") and not Question(id=="bene2_last_name")) or
+		(not Question(id=="bene2_first_name") and Question(id=="bene2_last_name"))
+	then
+		rulesResponse.addRequired("Secondary Beneficiary should have First and Last Name");
+end
+rule "beneficiary_2_rules_relationship"
+	when
+		Question(id=="bene2_first_name") and Question(id=="bene2_last_name") and not Question(id=="bene2_relation")
+	then
+		rulesResponse.addRequired("Secondary Beneficiary should have Relationship specified");
+end		
+			
+rule "cont_beneficiary_rules"
+no-loop 
+	when
+		(Question(id=="contingent_bene1_first_name") and (not Question(id=="contingent_bene1_last_name"))) or
+		(not Question(id=="contingent_bene1_first_name") and Question(id=="contingent_bene1_last_name")) or
+		(Question(id=="contingent_bene2_first_name") and (not Question(id=="contingent_bene2_last_name"))) or
+		(not Question(id=="contingent_bene2_first_name") and Question(id=="contingent_bene2_last_name"))		
+	then
+		rulesResponse.addRequired("Contingent Beneficiary should have First and Last Name");
+end
+rule "cont_beneficiary_rules_relationship"
+no-loop 
+	when
+		(Question(id=="contingent_bene1_first_name") and Question(id=="contingent_bene1_last_name") and not Question(id=="contingent_bene1_relation")) or
+		(Question(id=="contingent_bene2_first_name") and Question(id=="contingent_bene2_last_name") and not Question(id=="contingent_bene2_relation")) 
+	then
+		rulesResponse.addRequired("Contingent Beneficiary should have Relationship specified");
+end
+rule "other coverage1 state is valid"
+	when
+		$question:Question(id == "oth_ins1_state")
+		not Lookup((code == $question.getAnswer().toString().toUpperCase() ||
+			description.toString().toUpperCase() == $question.getAnswer().toString().toUpperCase()) && 
+			name == "LOCALE_STATE")
+	then
+		rulesResponse.addRequired("Other Coverage 1 (State) is not a valid State");
+end
+
+rule "other coverage2 state is valid"
+	when
+		$question:Question(id == "oth_ins2_state")
+		not Lookup((code == $question.getAnswer().toString().toUpperCase() ||  
+			description.toString().toUpperCase() == $question.getAnswer().toString().toUpperCase()) && 
+			name == "LOCALE_STATE")
+	then
+		rulesResponse.addRequired("Other Coverage 2 (State) is not a valid State");
+end
+
+rule "primary beneficiary relationship is valid"
+	when
+		$question:Question(id == "bene1_relation")
+		not Lookup((code == $question.getAnswer().toString().toUpperCase() || 
+			description.toString().toUpperCase() == $question.getAnswer().toString().toUpperCase()) && 
+			name == "RELATIONSHIP_TYPE")
+	then
+		rulesResponse.addRequired("Primary Beneficiary relationship is not valid");
+end
+rule "secondary beneficiary relationship is valid"
+	when
+		$question:Question(id == "bene2_relation")
+		not Lookup((code == $question.getAnswer().toString().toUpperCase() || 
+			description.toString().toUpperCase() == $question.getAnswer().toString().toUpperCase()) && 
+			name == "RELATIONSHIP_TYPE")
+	then
+		rulesResponse.addRequired("Second Beneficiary relationship is not valid");
+end
+rule "contingent beneficiary relationship is valid"
+	when
+		$question:Question(id == "contingent_bene1_relation")
+		not Lookup((code == $question.getAnswer().toString().toUpperCase() || 
+			description.toString().toUpperCase() == $question.getAnswer().toString().toUpperCase()) && 
+			name == "RELATIONSHIP_TYPE")
+	then
+		rulesResponse.addRequired("First Contingent Beneficiary relationship is not valid");
+end
+rule "contingent second beneficiary relationship is valid"
+	when
+		$question:Question(id == "contingent_bene2_relation")
+		not Lookup((code == $question.getAnswer().toString().toUpperCase() || 
+			description.toString().toUpperCase() == $question.getAnswer().toString().toUpperCase()) && 
+			name == "RELATIONSHIP_TYPE")
+	then
+		rulesResponse.addRequired("Second Contingent Beneficiary relationship is not valid");
+end
+
+rule "MMYY is valid"			
+	when
+		$question:Question(id in ("oth_ins1_mm","oth_ins1_yy", "oth_ins2_mm","oth_ins2_yy"))
+	then
+		if (!StringUtils.containsOnly($question.getAnswer().toString(),'0123456789')) 		
+			rulesResponse.addRequired("Coverage MM or YY value is not valid");
+end
+rule "Face amount is valid"			
+	when
+		$question:Question(id in ("oth_ins1_face","oth_ins2_face"))
+	then
+		if (!StringUtils.containsOnly($question.getAnswer().toString(),'0123456789')) 		
+			rulesResponse.addRequired("Replacement Face amount is not valid");
+end
+rule "Phone number is valid"			
+	when
+		$question:Question(id in ("phone1", "phone2"))
+	then
+		if (!StringUtils.containsOnly($question.getAnswer().toString(),'0123456789') || !($question.getAnswer().toString().length()==10)) 		
+			rulesResponse.addRequired( $question.getId() + " is not valid");
+end
+
+rule "Require Agent ID for all states except Florida"
+	when
+		theCaseRuleObj:CaseRulesObject(caseSource=='EPAPER')
+		not CaseData(contractState=="FL")
+		not Question(id == "agent_id")
+	then
+		rulesResponse.addRequired("Agent ID is required");
+end
+
+rule "Require Agent License State"
+	when
+		theCaseRuleObj:CaseRulesObject(caseSource=='EPAPER')
+		not Question(id == "agent_license_state")
+	then
+		rulesResponse.addRequired("Agent License State is required");
+end
+
+rule "Require Agent Date"
+	when
+		theCaseRuleObj:CaseRulesObject(caseSource=='EPAPER')
+		not Question(id == "agent_date")
+	then
+		rulesResponse.addRequired("Producer Certification Date is required");
+end
+
+rule "Agent Date is Valid"
+	when
+		theCaseRuleObj:CaseRulesObject(caseSource=='EPAPER')
+		Question(id == "agent_date" , isdate == false)
+	then
+		rulesResponse.addRequired("Producer Certification Date is not a valid date");
+end
+
+rule "Agent is valid"
+	when
+		CaseRulesObject(caseSource=='EPAPER')
+		Question(id == "agent_present", answerAsString == "N")
+	then
+    	rulesResponse.addRequired("Agent Not Present");
+end
+
+rule "Agent Code and Name mismatch"
+	when
+		CaseRulesObject(caseSource=='EPAPER')
+		Question(id == "agent_name_mismatch", answerAsString == "Y")
+	then
+    	rulesResponse.addRequired("Agent Code and Name doesn't match");
+end
+
+rule "Agent License State is valid"
+	when
+		CaseRulesObject(caseSource=='EPAPER')
+		Question(id == "state_present", answerAsString == "N")
+	then
+		rulesResponse.addRequired("Agent License State is not a valid State");
+end
+
+rule "Agent License State Validation"
+	when
+		CaseRulesObject(caseSource=='EPAPER')
+		Question(id == "agent_lic_state_valid", answerAsString == "N")
+    then
+    	rulesResponse.addRequired("Agent License State Validation Failed");
+end
+
+rule "Agent License State should always match Contract State (Non Compact State) Validation"
+	when
+	    CaseRulesObject(caseSource=='EPAPER')
+	    Question(id == "agent_lic_state_valid_non_compact", answerAsString == "N")
+	then
+		rulesResponse.addRequired("Agent License State should match Contract State for Non-Compact State");
+end
+
+rule "require bene_first_name"
+	when
+		 not Question(id == 'bene1_first_name')
+		 theBeneficiaryList:ArrayList() from collect(BeneficiaryData(beneficiaryType=='PRIMARY'));
+	then
+		if (theBeneficiaryList.size() <= 0)
+		{
+			rulesResponse.addRequired("Primary Beneficiary's First Name Required");
+		}
+end
+
+rule "require bene_last_name"
+	when
+		 not Question(id == 'bene1_last_name')
+		 theBeneficiaryList:ArrayList() from collect(BeneficiaryData(beneficiaryType=='PRIMARY'));
+	then
+		if (theBeneficiaryList.size() <= 0)
+		{
+			rulesResponse.addRequired("Primary Beneficiary's Last Name Required");
+		}
+end
+
+rule "require bene_relation"
+	when
+		 not Question(id == 'bene1_relation')
+		 theBeneficiaryList:ArrayList() from collect(BeneficiaryData(beneficiaryType=='PRIMARY'));
+	then
+		if (theBeneficiaryList.size() <= 0)
+		{
+			rulesResponse.addRequired("Primary Beneficiary's relationship Required");
+		}
+end
+
+
